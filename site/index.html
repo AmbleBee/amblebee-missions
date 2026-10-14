@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AmbleBee Missions</title>
+<meta name="description" content="Date and adventure ideas to get you out the door together. Roll a mission, go do it, take a few photos.">
+<meta name="theme-color" content="#EFE7D8">
+<meta property="og:title" content="AmbleBee Missions">
+<meta property="og:description" content="Date and adventure ideas to get you out the door together.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="fonts/fonts.css">
+<link rel="stylesheet" href="style.css">
+<script src="app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to the missions</a>
+
+<header class="top">
+  <a class="brand" href="./" aria-label="AmbleBee Missions, home">
+    <svg aria-hidden="true" width="52" height="44" viewBox="0 0 52 44">
+      <path d="M6 40 h30" stroke="#7A5A42" stroke-width="3" stroke-linecap="round"/>
+      <path d="M9 40 C9 30 11 22 21 13 C31 22 33 30 33 40z" fill="#D8A65A"/>
+      <path d="M11.5 32 h19 M10 36 h22 M13.5 27 h15 M16.5 22 h9" stroke="#B5853F" stroke-width="2" stroke-linecap="round"/>
+      <path d="M17 40 v-4 a4 4 0 0 1 8 0 v4z" fill="#5A3E2B"/>
+      <path d="M30 10 q6 -8 12 -3" fill="none" stroke="#7A5A42" stroke-width="1.6" stroke-dasharray="1.5 3.5" stroke-linecap="round"/>
+      <ellipse cx="43" cy="9" rx="4" ry="2.6" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.2" transform="rotate(-25 43 9)"/>
+      <ellipse cx="45" cy="14" rx="5.5" ry="4" fill="#E8B54A"/>
+      <path d="M44 10.4 v7.2 M47 10.8 v6.4" stroke="#5A3E2B" stroke-width="1.6"/>
+      <circle cx="50" cy="13.6" r="2.4" fill="#5A3E2B"/>
+    </svg>
+    <span>AmbleBee <em>Missions</em></span>
+  </a>
+  <nav aria-label="Sections">
+    <a href="#browse">Browse</a>
+    <a href="#about">About</a>
+    <a href="#share">Share a mission</a>
+  </nav>
+</header>
+
+<main id="main">
+
+<section class="roll" aria-labelledby="roll-title">
+  <div class="roll-intro">
+    <h1 id="roll-title">Where to next?</h1>
+    <p class="hand">A little nudge to get out the door together.</p>
+    <p class="lede">Roll a date or an adventure. Go do it, take a few photos, and come home with a story. Missions are invitations, never tasks you can fail.</p>
+
+    <fieldset class="modes">
+      <legend>Who's it for?</legend>
+      <label><input type="radio" name="mode" value="any" checked><span>Anything</span></label>
+      <label><input type="radio" name="mode" value="date"><span>A date</span></label>
+      <label><input type="radio" name="mode" value="adventure"><span>An adventure</span></label>
+    </fieldset>
+
+    <div class="roll-row">
+      <label class="pack-pick">
+        <span>Roll from</span>
+        <select id="pack-select"><option value="all">Every pack</option></select>
+      </label>
+      <button type="button" class="btn primary" id="roll-btn">
+        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg>
+        Roll a mission
+      </button>
+    </div>
+    <p class="match" id="match-count" aria-live="polite"></p>
+    <button type="button" class="linkish" id="filters-toggle" aria-expanded="false" aria-controls="filters">More filters</button>
+  </div>
+
+  <div class="ticket-slot" id="ticket-slot" aria-live="polite">
+    <p class="loading">Loading missions…</p>
+  </div>
+</section>
+
+<section id="filters" class="filters" hidden aria-label="Filters">
+  <div class="filter-grid">
+    <fieldset>
+      <legend>Who's coming</legend>
+      <div class="chips" data-filter="who">
+        <label><input type="checkbox" value="solo"><span>Just me</span></label>
+        <label><input type="checkbox" value="friends"><span>Friends</span></label>
+        <label><input type="checkbox" value="family"><span>Family</span></label>
+        <label><input type="checkbox" value="kids"><span>Kids</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>How long</legend>
+      <div class="chips" data-filter="duration">
+        <label><input type="checkbox" value="short"><span>1-3 hours</span></label>
+        <label><input type="checkbox" value="half-day"><span>Half day</span></label>
+        <label><input type="checkbox" value="all-day"><span>All day</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Effort</legend>
+      <div class="chips" data-filter="effort">
+        <label><input type="checkbox" value="easy"><span>Easy</span></label>
+        <label><input type="checkbox" value="moderate"><span>Moderate</span></label>
+        <label><input type="checkbox" value="hard"><span>Hard</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Cost for two</legend>
+      <div class="chips" data-filter="cost">
+        <label><input type="checkbox" value="free"><span>Free</span></label>
+        <label><input type="checkbox" value="$"><span>Under $20</span></label>
+        <label><input type="checkbox" value="$$"><span>$20-60</span></label>
+        <label><input type="checkbox" value="$$$"><span>Splurge</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Inside or out</legend>
+      <div class="chips" data-filter="setting">
+        <label><input type="checkbox" value="indoor"><span>Indoors</span></label>
+        <label><input type="checkbox" value="outdoor"><span>Outdoors</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
+      <legend>Right now</legend>
+      <div class="chips">
+        <label><input type="checkbox" id="f-season"><span>In season now</span></label>
+        <label><input type="checkbox" id="f-gonow"><span>Go right now</span></label>
+      </div>
+      <p class="hint">"Go right now" skips anything that needs tickets or a reservation.</p>
+    </fieldset>
+    <fieldset class="near">
+      <legend>Near me</legend>
+      <div class="near-row">
+        <button type="button" class="btn small" id="locate-btn">
+          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
+          Use my location
+        </button>
+        <label class="within"><span>Within</span>
+          <select id="within-select" disabled><option value="">any distance</option></select>
+        </label>
+        <div class="units" role="group" aria-label="Units">
+          <button type="button" data-unit="mi" aria-pressed="true">mi</button>
+          <button type="button" data-unit="km" aria-pressed="false">km</button>
+        </div>
+      </div>
+      <p class="hint" id="locate-status">Your location stays in this browser tab. It's never sent anywhere.</p>
+    </fieldset>
+  </div>
+  <button type="button" class="linkish" id="filters-reset">Clear filters</button>
+</section>
+
+<section id="browse" class="browse" aria-labelledby="browse-title">
+  <div class="browse-head">
+    <h2 id="browse-title">Every mission</h2>
+    <p class="hand" id="browse-count"></p>
+  </div>
+  <div id="packs"></div>
+</section>
+
+<section id="about" class="about" aria-labelledby="about-title">
+  <div class="about-text">
+    <h2 id="about-title">What is AmbleBee?</h2>
+    <p>AmbleBee is a little camera that hands you a <b>mission</b>: a date or adventure idea to go out and do. Pick a coffee shop you've never tried, hike to a waterfall, get the strangest doughnut on the menu. You take photos along the way, and when you come home the camera docks into the <b>Hive</b>, a picture frame that keeps your photos as memories of where you've been.</p>
+    <p>The camera is a personal project, built by hand and still in progress. The missions are here for everyone, with or without one.</p>
+    <p>No points, no streaks, nothing to fail: just a reason to go.</p>
+  </div>
+  <ul class="packs-legend" id="pack-legend" aria-label="Mission packs"></ul>
+</section>
+
+<section id="share" class="share" aria-labelledby="share-title">
+  <h2 id="share-title">Know a great spot?</h2>
+  <p>Share a date spot or adventure and it might end up in a pack. It takes about five minutes, and every one gets read.</p>
+  <div class="share-row">
+    <a class="btn primary" id="form-link" href="#share">Share a mission</a>
+    <a class="btn" id="repo-link" href="https://github.com/AmbleBee/amblebee-missions">Or send a pull request</a>
+  </div>
+  <p class="hint" id="form-note"></p>
+</section>
+
+</main>
+
+<footer class="foot">
+  <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
+  <p id="catalog-meta"></p>
+</footer>
+
+<dialog id="mission-dialog" aria-labelledby="dialog-title">
+  <div class="dialog-body" id="dialog-body"></div>
+  <form method="dialog"><button class="btn close" aria-label="Close">Close</button></form>
+</dialog>
+
+<noscript><p class="noscript">The mission picker needs JavaScript. The missions themselves are all on <a href="https://github.com/AmbleBee/amblebee-missions">GitHub</a>.</p></noscript>
+</body>
+</html>
