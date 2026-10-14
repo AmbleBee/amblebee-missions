@@ -17,6 +17,7 @@ const L = {
   check: { hours: "opening hours", tickets: "tickets", reservation: "a reservation", seasonal: "if it's open this season", conditions: "weather and trail conditions" },
   who: { solo: "just you", friends: "friends", family: "family", kids: "kids" },
 };
+const NEAR_MAX = 24;
 const WITHIN = { mi: [5, 15, 30, 60, 100], km: [10, 25, 50, 100, 150] };
 const M_PER = { mi: 1609.344, km: 1000 };
 
@@ -62,7 +63,10 @@ const S = {
   catalog: null, missions: [], packs: [], packById: {},
   current: null,
   unit: readPref("unit") || (/^en-US/.test(navigator.language || "") ? "mi" : "km"),
-  here: null,   // {lat, lon}: in memory only
+  here: null,   // {lat, lon} of the ZIP: in memory only, never stored or sent
+  zip: null,
+  zips: null,   // ZIP -> [lat, lon], downloaded whole the first time someone sets a ZIP
+  browse: null, // which pack "Every mission" shows ("all", "near", or a pack id)
 };
 function readPref(k) { try { return localStorage.getItem("amble." + k); } catch (e) { return null; } }
 function writePref(k, v) { try { localStorage.setItem("amble." + k, v); } catch (e) { /* private mode: fine */ } }
@@ -178,7 +182,7 @@ function ticket(m, { titleId } = {}) {
     place = h("div", { class: "place" },
       h("span", {}, svg(ICON.pin, 18), " ", h("b", {}, m.place.name || ""), m.place.area ? `, ${m.place.area}` : ""),
       m.place.address ? h("span", {}, m.place.address) : null,
-      d != null ? h("span", { class: "dist" }, `${fmtDist(d)} as the bee flies`) : null,
+      d != null ? h("span", { class: "dist" }, `${fmtDist(d)} from ${S.zip} as the bee flies`) : null,
       links.length ? h("div", { class: "links" }, links) : null);
   }
 
@@ -275,30 +279,59 @@ function renderBrowse() {
   fc.setAttribute("aria-label", `${active} on`);
   $("#browse-count").textContent = n === total ? `${total} missions, ${S.packs.length} packs` : `${n} match your filters`;
 
+  renderBrowsePick(matches);
   const wrap = $("#packs");
   wrap.replaceChildren();
-  for (const p of S.packs) {
-    const ms = matches.filter((m) => m.pack === p.id);
-    if (!ms.length) continue;
-    if (S.here) ms.sort((a, b) => (distM(a) ?? 0) - (distM(b) ?? 0) || a.number - b.number);
-    wrap.append(h("section", { class: "pack", "aria-label": p.name },
+  const card = (m) => {
+    const d = distM(m);
+    const pack = S.packById[m.pack];
+    return h("button", { type: "button", class: "card", onclick: () => openDialog(m) },
+      h("span", { class: "no" }, S.browse === "near" && pack ? `${pack.name} · Mission ${m.number}`
+        : `Mission ${m.number}${m.place && m.place.area ? " · " + m.place.area : ""}`),
+      h("h4", {}, m.name),
+      h("p", { class: "s" }, m.short),
+      h("span", { class: "meta" },
+        d != null ? h("span", { class: "d" }, fmtDist(d)) : null,
+        h("span", {}, L.mode[m.mode] || m.mode),
+        h("span", {}, L.duration[m.duration] || m.duration),
+        h("span", {}, L.cost[m.cost] || m.cost)));
+  };
+  if (S.browse === "near" && S.here) {
+    const near = matches.filter((m) => distM(m) != null).sort((x, y) => distM(x) - distM(y)).slice(0, NEAR_MAX);
+    if (near.length) wrap.append(h("section", { class: "pack", "aria-label": "Closest to your ZIP" },
       h("div", { class: "pack-head" },
-        h("span", { class: "badge" }, svg(packIcon(p), 26)),
-        h("div", {}, h("h3", {}, p.name), p.description ? h("p", {}, p.description) : null)),
-      h("div", { class: "cards" }, ms.map((m) => {
-        const d = distM(m);
-        return h("button", { type: "button", class: "card", onclick: () => openDialog(m) },
-          h("span", { class: "no" }, `Mission ${m.number}${m.place && m.place.area ? " · " + m.place.area : ""}`),
-          h("h4", {}, m.name),
-          h("p", { class: "s" }, m.short),
-          h("span", { class: "meta" },
-            d != null ? h("span", { class: "d" }, fmtDist(d)) : null,
-            h("span", {}, L.mode[m.mode] || m.mode),
-            h("span", {}, L.duration[m.duration] || m.duration),
-            h("span", {}, L.cost[m.cost] || m.cost)));
-      }))));
+        h("span", { class: "badge" }, svg(ICON.pin, 26)),
+        h("div", {}, h("h3", {}, `Closest to ${S.zip}`),
+          h("p", {}, `The ${near.length} nearest places, as the bee flies. Amble Anywhere missions work from any ZIP.`))),
+      h("div", { class: "cards" }, near.map(card))));
+  } else {
+    for (const p of S.packs) {
+      if (S.browse !== "all" && S.browse !== p.id) continue;
+      const ms = matches.filter((m) => m.pack === p.id);
+      if (!ms.length) continue;
+      if (S.here) ms.sort((x, y) => (distM(x) ?? 0) - (distM(y) ?? 0) || x.number - y.number);
+      wrap.append(h("section", { class: "pack", "aria-label": p.name },
+        h("div", { class: "pack-head" },
+          h("span", { class: "badge" }, svg(packIcon(p), 26)),
+          h("div", {}, h("h3", {}, p.name), p.description ? h("p", {}, p.description) : null)),
+        h("div", { class: "cards" }, ms.map(card))));
+    }
   }
-  if (!wrap.children.length) wrap.append(h("p", { class: "none" }, "No missions match those filters. Try clearing one or two."));
+  if (!wrap.children.length) wrap.append(h("p", { class: "none" },
+    matches.length ? "Nothing in this pack fits your filters. Try another pack, or clear a filter or two."
+      : "No missions match those filters. Try clearing one or two."));
+}
+function renderBrowsePick(matches) {
+  const sel = $("#browse-pack");
+  const count = (id) => matches.filter((m) => id === "all" || m.pack === id).length;
+  const opts = [];
+  if (S.here) opts.push(h("option", { value: "near" }, `Closest to ${S.zip}`));
+  opts.push(h("option", { value: "all" }, `Every pack (${count("all")})`));
+  for (const p of S.packs) opts.push(h("option", { value: p.id }, `${p.name} (${count(p.id)})`));
+  sel.replaceChildren(...opts);
+  if (S.browse === "near" && !S.here) S.browse = null;
+  if (!S.browse || ![...sel.options].some((o) => o.value === S.browse)) S.browse = S.packById.anywhere ? "anywhere" : "all";
+  sel.value = S.browse;
 }
 
 // ---- near me -------------------------------------------------------------------------------------
@@ -311,17 +344,40 @@ function renderWithin() {
   sel.disabled = !S.here;
   document.querySelectorAll(".units button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.unit === S.unit)));
 }
-function locate() {
-  const status = $("#locate-status");
-  if (!navigator.geolocation) { status.textContent = "This browser can't share a location."; return; }
-  status.textContent = "Finding you…";
-  navigator.geolocation.getCurrentPosition((pos) => {
-    S.here = { lat: pos.coords.latitude, lon: pos.coords.longitude };
-    status.textContent = "Got it. Distances are as the bee flies, so check the drive in your map app.";
-    renderWithin(); refresh(false);
-    if (S.current) show(S.current);
-  }, () => { status.textContent = "Couldn't get your location. You can still browse everything."; },
-  { enableHighAccuracy: false, timeout: 15000, maximumAge: 600000 });
+async function setZip(e) {
+  e.preventDefault();
+  const status = $("#zip-status");
+  const zip = ($("#zip-input").value || "").trim();
+  if (!/^\d{5}$/.test(zip)) { status.textContent = "A ZIP code is 5 numbers, like 97201."; return; }
+  if (!S.zips) {
+    status.textContent = "Looking it up…";
+    try {
+      const r = await fetch("zips.json");
+      if (!r.ok) throw new Error(r.status);
+      S.zips = (await r.json()).zips || {};
+    } catch (err) {
+      status.textContent = "ZIP lookup isn't available right now. You can still browse everything.";
+      return;
+    }
+  }
+  const c = S.zips[zip];
+  if (!c) { status.textContent = `Couldn't find ${zip}. Double-check the number? (US ZIP codes only for now.)`; return; }
+  const first = !S.here;
+  S.here = { lat: c[0], lon: c[1] }; S.zip = zip;
+  if (first && (S.browse === "anywhere" || S.browse === "all" || !S.browse)) S.browse = "near";
+  status.replaceChildren(h("span", { class: "zip-set" }, `Distances from ${zip}`),
+    ", as the bee flies. Check the drive in your map app.",
+    h("button", { type: "button", class: "linkish zip-clear", onclick: clearZip }, "Clear"));
+  renderWithin(); refresh(false);
+  if (S.current) show(S.current);
+}
+function clearZip() {
+  S.here = null; S.zip = null; $("#zip-input").value = "";
+  if (S.browse === "near") S.browse = null;
+  $("#within-select").value = "";
+  $("#zip-status").textContent = "Home, or wherever the trip starts. Your ZIP is looked up in this browser tab and never sent anywhere.";
+  renderWithin(); refresh(false);
+  if (S.current) show(S.current);
 }
 
 // ---- wiring --------------------------------------------------------------------------------------
@@ -352,7 +408,9 @@ async function start() {
 
   const sel = $("#pack-select");
   S.packs.forEach((p) => sel.append(h("option", { value: p.id }, p.name)));
-  $("#pack-legend").replaceChildren(...S.packs.map((p) => h("li", {}, svg(packIcon(p), 20), h("b", {}, p.name), h("span", {}, `${p.count} ${p.count === 1 ? "mission" : "missions"}`))));
+  $("#pack-legend").replaceChildren(...S.packs.map((p) => h("li", {}, h("button", { type: "button", onclick: () => {
+    S.browse = p.id; renderBrowse(); $("#browse").scrollIntoView({ behavior: "smooth" });
+  } }, svg(packIcon(p), 20), h("b", {}, p.name), h("span", {}, `${p.count} ${p.count === 1 ? "mission" : "missions"}`)))));
   const src = data.source || {};
   $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} missions · updated ${src.updated || "recently"}`;
 
@@ -361,10 +419,11 @@ async function start() {
   else { form.href = REPO_URL; $("#form-note").textContent = "The submission form opens soon. Until then, a pull request on GitHub works, or check back."; }
   $("#repo-link").href = REPO_URL;
 
-  document.querySelectorAll('input[name="mode"], #filters input, #pack-select, #within-select')
+  document.querySelectorAll('input[name="mode"], #filters input[type="checkbox"], #pack-select, #within-select')
     .forEach((el) => el.addEventListener("change", () => refresh(true)));
   $("#roll-btn").addEventListener("click", roll);
-  $("#locate-btn").addEventListener("click", locate);
+  $("#zip-form").addEventListener("submit", setZip);
+  $("#browse-pack").addEventListener("change", (e) => { S.browse = e.target.value; renderBrowse(); });
   document.querySelectorAll(".units button").forEach((b) => b.addEventListener("click", () => {
     S.unit = b.dataset.unit; writePref("unit", S.unit); renderWithin(); refresh(false); if (S.current) show(S.current);
   }));

@@ -139,12 +139,13 @@
       <p class="hint">"Go right now" skips anything that needs tickets or a reservation.</p>
     </fieldset>
     <fieldset class="near">
-      <legend>Near me</legend>
+      <legend>Starting from</legend>
       <div class="near-row">
-        <button type="button" class="btn small" id="locate-btn">
-          <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg>
-          Use my location
-        </button>
+        <form class="zip-form" id="zip-form" autocomplete="on">
+          <label class="sr" for="zip-input">ZIP code</label>
+          <input id="zip-input" name="postal-code" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="ZIP code" required>
+          <button type="submit" class="btn small">Set</button>
+        </form>
         <label class="within"><span>Within</span>
           <select id="within-select" disabled><option value="">any distance</option></select>
         </label>
@@ -153,7 +154,7 @@
           <button type="button" data-unit="km" aria-pressed="false">km</button>
         </div>
       </div>
-      <p class="hint" id="locate-status">Your location stays in this browser tab. It's never sent anywhere.</p>
+      <p class="hint" id="zip-status">Home, or wherever the trip starts. Your ZIP is looked up in this browser tab and never sent anywhere.</p>
     </fieldset>
   </div>
   <div class="filters-bar">
@@ -179,6 +180,10 @@
   <div class="browse-head">
     <h2 id="browse-title">Every mission</h2>
     <p class="hand" id="browse-count"></p>
+  </div>
+  <div class="browse-pick">
+    <label for="browse-pack">Show missions from</label>
+    <select id="browse-pack"></select>
   </div>
   <div id="packs"></div>
 </section>

@@ -15,6 +15,7 @@ updates, since the Hive downloads the same `catalog.json`).
 | `site/fonts/` | Fraunces, Nunito and Caveat, downloaded at build time (self-hosted, so nobody's browser talks to Google). |
 | `tools/check_missions.py` | Checks every mission file. Runs on every push and pull request. |
 | `tools/build_catalog.py` | Builds `catalog.json` from the mission files. |
+| `tools/build_zips.py` | Builds `zips.json` (ZIP code → map point) from the Census file at build time. |
 | `tools/fetch_fonts.sh` | Downloads the fonts (needs `npm`). |
 | `tools/preview.sh` | Builds and serves the site on your laptop. |
 | `.github/workflows/pages.yml` | The GitHub Action that does all of the above and publishes. |
@@ -22,8 +23,8 @@ updates, since the Hive downloads the same `catalog.json`).
 ## Turning it on (one time)
 
 1. Copy `site/`, `tools/`, `.github/`, `.gitignore` and this file into the `amblebee-missions` repo.
-   If that repo already has its own `missions/` folder, keep it (`missions-TEST-DATA/` in this zip is
-   my test copy; rename it to `missions/` only if the repo has none). If the repo has an older workflow that also builds `catalog.json`, delete it so
+   If that repo already has its own `missions/` folder, keep it (the `missions/` in this zip is
+   test data). If the repo has an older workflow that also builds `catalog.json`, delete it so
    the two don't fight.
 2. The repo has to be **public** (Pages is free on public repos only).
 3. On GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
@@ -48,8 +49,9 @@ Without `npm` the fonts are skipped and the page falls back to system fonts; eve
 
 ## Privacy
 
-- "Use my location" stays in the browser tab. It's only used to sort and filter by distance and is
-  never stored or sent anywhere. Distances are as the bee flies.
+- "Starting from" takes a ZIP code. The page downloads the whole US ZIP list (`zips.json`, built
+  from the Census Bureau's public ZCTA file by `tools/build_zips.py`) and looks the ZIP up inside the
+  browser, so the ZIP itself is never sent anywhere or stored. Distances are as the bee flies.
 - The mi/km choice is remembered in the browser (localStorage), nothing else is.
 - No analytics. GitHub Pages itself keeps standard server logs (IP addresses) like any web host.
 

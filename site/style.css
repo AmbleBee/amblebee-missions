@@ -230,6 +230,26 @@ details.extra li { margin: 2px 0; }
 .filters .near { grid-column: 1 / -1; }
 .near-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .within { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; }
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.zip-form { display: inline-flex; gap: 8px; align-items: center; }
+.zip-form input {
+  font: 800 1.1rem var(--body); color: var(--ink); width: 7.5em; min-height: 48px; padding: 0 14px; border-radius: 14px;
+  border: 0; box-shadow: inset 0 0 0 2px var(--line-strong); background: var(--paper); letter-spacing: 1px;
+}
+.zip-form input::placeholder { color: var(--walnut-soft); font-weight: 700; letter-spacing: 0; }
+.zip-set { font-weight: 800; color: var(--sage-ink); }
+.zip-clear { margin-left: 8px; min-height: 0; padding: 0; }
+.browse-pick {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 10px 14px; margin: 0 0 26px;
+  padding: 14px 18px; border-radius: 20px; background: var(--linen); box-shadow: 0 2px 0 var(--line);
+}
+.browse-pick label { font-weight: 800; color: var(--walnut); }
+.browse-pick select { min-width: 16rem; }
+.packs-legend button {
+  appearance: none; border: 0; background: none; padding: 0; cursor: pointer; font: inherit; color: inherit;
+  display: flex; gap: 12px; align-items: baseline; text-align: left;
+}
+.packs-legend button:hover b { text-decoration: underline; text-underline-offset: 3px; }
 .units { display: inline-flex; background: var(--paper); border-radius: 14px; padding: 4px; box-shadow: inset 0 0 0 2px var(--line); }
 .units button {
   appearance: none; border: 0; background: none; min-height: 40px; min-width: 48px; border-radius: 10px;
@@ -329,4 +349,5 @@ dialog .close { min-height: 48px; }
   .roll-row .btn { width: 100%; }
   .pack-pick { width: 100%; }
   .pack-pick select { width: 100%; }
+  .browse-pick select { width: 100%; min-width: 0; }
 }
