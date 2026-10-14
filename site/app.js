@@ -120,6 +120,10 @@ function passes(m, f) {
   if (f.within != null) { const d = distM(m); if (d != null && d > f.within * M_PER[S.unit]) return false; }
   return true;
 }
+function activeFilters(f) {
+  return f.who.length + f.duration.length + f.effort.length + f.cost.length + f.setting.length
+    + (f.inSeason ? 1 : 0) + (f.goNow ? 1 : 0) + (f.within != null ? 1 : 0);
+}
 const pool = () => { const f = readFilters(); return S.missions.filter((m) => passes(m, f)); };
 
 // ---- the ticket ---------------------------------------------------------------------------------
@@ -255,7 +259,20 @@ function renderBrowse() {
   const f = readFilters();
   const matches = S.missions.filter((m) => passes(m, f));
   const n = matches.length, total = S.missions.length;
-  $("#match-count").textContent = n === total ? `${total} missions to roll from` : `${n} of ${total} missions match`;
+  const active = activeFilters(f);
+  const mc = $("#match-count");
+  const word = (k) => (k === 1 ? "mission" : "missions");
+  mc.className = "match" + (n === total ? "" : " filtered") + (n === 0 ? " zero" : "");
+  mc.textContent = n === total ? `${total} missions to roll from`
+    : n === 0 ? "No missions fit these filters. Try clearing one."
+    : n === 1 ? "Only 1 mission fits these filters"
+    : `Rolling from ${n} ${word(n)} that fit these filters`;
+  const fm = $("#filters-match");
+  fm.replaceChildren(n === 0 ? "No missions fit. Try clearing one."
+    : h("span", {}, h("b", {}, String(n)), ` ${word(n)} ${n === total ? "(everything)" : "with these filters"}`));
+  const fc = $("#filters-count");
+  fc.hidden = !active; fc.textContent = String(active);
+  fc.setAttribute("aria-label", `${active} on`);
   $("#browse-count").textContent = n === total ? `${total} missions, ${S.packs.length} packs` : `${n} match your filters`;
 
   const wrap = $("#packs");
@@ -335,7 +352,7 @@ async function start() {
 
   const sel = $("#pack-select");
   S.packs.forEach((p) => sel.append(h("option", { value: p.id }, p.name)));
-  $("#pack-legend").replaceChildren(...S.packs.map((p) => h("li", {}, svg(packIcon(p), 20), h("b", {}, p.name), h("span", {}, `${p.count} missions`))));
+  $("#pack-legend").replaceChildren(...S.packs.map((p) => h("li", {}, svg(packIcon(p), 20), h("b", {}, p.name), h("span", {}, `${p.count} ${p.count === 1 ? "mission" : "missions"}`))));
   const src = data.source || {};
   $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} missions · updated ${src.updated || "recently"}`;
 
@@ -352,10 +369,19 @@ async function start() {
     S.unit = b.dataset.unit; writePref("unit", S.unit); renderWithin(); refresh(false); if (S.current) show(S.current);
   }));
   const toggle = $("#filters-toggle");
+  const setPanel = (open) => {
+    const panel = $("#filters"); panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+    $("#filters-label").textContent = open ? "Hide filters" : "More filters";
+  };
   toggle.addEventListener("click", () => {
-    const panel = $("#filters"); panel.hidden = !panel.hidden;
-    toggle.setAttribute("aria-expanded", String(!panel.hidden));
-    toggle.textContent = panel.hidden ? "More filters" : "Fewer filters";
+    const opening = $("#filters").hidden;
+    setPanel(opening);
+    if (opening) $("#filters").scrollIntoView({ behavior: "smooth", block: "nearest" });
+  });
+  $("#filters-done").addEventListener("click", () => {
+    setPanel(false);
+    $(".roll").scrollIntoView({ behavior: "smooth", block: "start" });
   });
   $("#filters-reset").addEventListener("click", () => {
     document.querySelectorAll("#filters input").forEach((i) => { i.checked = false; });
