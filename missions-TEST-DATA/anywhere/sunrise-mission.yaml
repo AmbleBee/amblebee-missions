@@ -1,0 +1,18 @@
+number: 16
+name: Sunrise Mission
+mode: adventure
+who: [solo, friends, family]
+short: Be somewhere with a view before sunrise. Bring coffee.
+description: >
+  Set an early alarm, grab coffee, and get to a hill, viewpoint, or open
+  spot facing east before the sun comes up. Watch the whole thing, from
+  the first light to the sun clearing the horizon.
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: local
+check_ahead: [conditions]
+tags: [sunrise, early, nature, outdoors]

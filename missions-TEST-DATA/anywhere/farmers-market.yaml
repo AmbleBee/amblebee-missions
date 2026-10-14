@@ -1,0 +1,18 @@
+number: 12
+name: Farmers Market Morning
+mode: date
+short: Stroll a farmers market. Try something you've never eaten before.
+description: >
+  Head to a farmers market in the morning, coffee in hand. Wander the
+  stalls, sample what's offered, and each try at least one thing you've
+  never eaten. Pick up something to cook together later if anything
+  catches your eye.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: morning
+travel: local
+check_ahead: [hours, seasonal]
+tags: [food, local, seasonal, outdoors]

@@ -1,0 +1,29 @@
+number: 25
+name: Neighborhood Photo Walk
+mode: both
+who: [solo, friends, family, kids]
+short: A walk with a photo prompt at every step. Hold the shutter to move on.
+description: >
+  Walk somewhere close to home and follow the prompts on the camera. Take
+  as many or as few photos at each step as you like.
+steps:
+  - Find a door you'd love to own.
+  - Something that made you laugh.
+  - The best view on the walk.
+  - A selfie at the end.
+for_kids:
+  short: Photo walk! Find each thing and take its picture.
+  steps:
+    - Something red
+    - A tree with a funny shape
+    - Something tiny
+    - A door you like
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [walk, guided, photo]

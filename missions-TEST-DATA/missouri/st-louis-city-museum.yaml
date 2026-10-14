@@ -1,0 +1,33 @@
+number: 1
+name: City Museum
+mode: both
+who: [friends, family, kids]
+place:
+  name: City Museum
+  area: Downtown West, St. Louis
+  address: 750 N 16th St, St. Louis, MO 63103
+  coords: [38.63360, -90.20060]  # APPROX: set at the entrance before publishing
+  website: https://www.citymuseum.org
+short: Crawl the caves, ride the 10-story slide, climb MonstroCity. Grown-ups play too.
+description: >
+  Spend the day exploring an old shoe warehouse turned into a giant climbable
+  maze: caves and tunnels, a 10-story slide, the outdoor MonstroCity jungle gym,
+  and in warmer months a rooftop Ferris wheel (go around sunset). Wear closed-toe
+  shoes and knee pads, and get your tickets online to skip the line.
+for_kids:
+  short: Adventure castle! Find each thing.
+  steps:
+    - A secret tunnel
+    - The giant slide!
+    - The big whale
+    - The highest place you can climb
+    - A selfie with your grown-up!
+duration: half-day
+effort: moderate
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets, seasonal]
+tags: [playful, climbing, slides, museum, rainy-day-option]

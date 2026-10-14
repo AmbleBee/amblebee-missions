@@ -1,0 +1,31 @@
+number: 1
+name: Up the Space Needle
+mode: both
+who: [friends, family, kids]
+place:
+  name: Space Needle
+  area: Seattle Center
+  address: 400 Broad St, Seattle, WA 98109
+  coords: [47.62050, -122.34930]  # APPROX
+  website: https://www.spaceneedle.com/plan-your-visit
+short: Go up the Space Needle. Find your favorite thing in the view.
+description: >
+  Head up the Space Needle, ideally on a clear day or at sunset. Walk the
+  whole way around, and each pick one thing in the view you want to go and
+  see up close another day.
+for_kids:
+  short: Look out from the top! Find each thing.
+  steps:
+    - The tallest building you can see
+    - A boat on the water
+    - A mountain far away
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [tickets, hours]
+tags: [views, landmark, seattle]

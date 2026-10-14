@@ -1,0 +1,32 @@
+# Copy this file into general/ or a pack folder, name it after the mission
+# (lowercase-with-dashes.yaml), then delete the lines you don't need.
+# Field reference: SCHEMA.md. Check with: python tools/check_missions.py
+number: 99
+name: Mission Name
+mode: date
+# who: [solo, friends, family, kids]
+# place:
+#   name: Place Name
+#   area: Neighborhood, City
+#   address: 123 Example St, City, ST 00000
+#   website: https://example.com
+short: One line for the camera screen, under 100 characters.
+description: >
+  A few sentences describing the mission for the Hive's mission card.
+# steps:
+#   - First photo prompt
+#   - Second photo prompt
+# for_kids:
+#   short: Simple sentence for kids!
+#   steps:
+#     - Something red
+#     - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: any
+travel: local
+# check_ahead: [hours]
+tags: []

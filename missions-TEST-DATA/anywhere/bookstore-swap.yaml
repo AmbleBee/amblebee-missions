@@ -1,0 +1,17 @@
+number: 2
+name: Bookstore Swap
+mode: date
+short: Pick a book for each other, under $10. Swap over a drink.
+description: >
+  Head to a used or local bookstore. Split up and each pick a book you
+  think the other would love, keeping it a secret, under $10. Swap them
+  over coffee or a drink afterward and explain your pick.
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours]
+tags: [books, gifts, rainy-day]

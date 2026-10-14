@@ -1,0 +1,23 @@
+number: 11
+name: Pyramid Mountain Lookout
+mode: both
+who: [solo, friends]
+place:
+  name: Pyramid Mountain trailhead (North Shore Road, Lake Crescent)
+  area: North shore of Lake Crescent, Olympic National Park
+  coords: [48.07900, -123.89200]  # APPROX: set at the trailhead before publishing
+short: Hike up to the WWII spotter cabin on Pyramid Mountain. Lunch above Lake Crescent.
+description: >
+  A real climb: about 7 miles round trip and nearly 2,800 feet up through the
+  forest to a tiny World War II aircraft-spotting cabin perched on the summit.
+  Eat lunch beside it with Lake Crescent spread out below. Start early, bring
+  plenty of water, and give yourselves the whole day.
+duration: all-day
+effort: hard
+cost: free
+setting: outdoor
+season: [summer, fall]
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, lookout, views, olympic]

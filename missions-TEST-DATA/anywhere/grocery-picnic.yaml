@@ -1,0 +1,17 @@
+number: 6
+name: $20 Grocery Picnic
+mode: date
+short: $20 each, split up in a grocery store, build a picnic. Find a park.
+description: >
+  Go to a grocery store or market together, then split up. Each of you
+  gets $20 and five minutes to buy your half of a picnic, no peeking. Meet
+  at the register, find a park or patch of grass nearby, and unpack to see
+  what you ended up with.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+tags: [food, picnic, surprise, outdoors]

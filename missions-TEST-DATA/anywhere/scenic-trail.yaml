@@ -1,0 +1,19 @@
+number: 19
+name: Scenic Trail Hike
+mode: both
+who: [solo, friends, family]
+short: Hike a trail with a viewpoint. Stop and take in the view at the top.
+description: >
+  Pick a trail known for its view, like a ridge, overlook, or summit.
+  Bring water and a snack, take breaks whenever you want, and spend a few
+  minutes at the viewpoint before heading back down. Check conditions
+  before you go.
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [conditions]
+tags: [hiking, nature, views, outdoors]

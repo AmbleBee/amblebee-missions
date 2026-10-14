@@ -1,0 +1,22 @@
+number: 2
+name: Powell's Book Swap
+mode: date
+place:
+  name: Powell's City of Books
+  area: Pearl District, Portland
+  address: 1005 W Burnside St, Portland, OR 97209
+  coords: [45.52310, -122.68130]  # APPROX
+short: Split up in Powell's. Each pick the other a book under $10.
+description: >
+  Grab a store map at the entrance, split up, and each pick a book for the
+  other from a room you'd never usually go into, under $10. Meet at the
+  coffee shop and swap.
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours]
+tags: [books, gifts, rainy-day, portland]

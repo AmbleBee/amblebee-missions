@@ -1,0 +1,18 @@
+number: 10
+name: Historical Site or Center
+mode: date
+short: Visit a historical site or center. Learn one story you didn't know.
+description: >
+  Visit a local history center, historic house, or landmark. Read the
+  plaques, talk to a docent if there is one, and find one story about the
+  place you didn't know before. Tell each other your favorite on the way
+  home.
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [history, culture, learning]

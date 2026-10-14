@@ -1,0 +1,17 @@
+number: 11
+name: Garden Visit
+mode: date
+short: Wander a public or botanical garden. Find your favorite quiet spot.
+description: >
+  Visit a public, botanical, or Japanese garden. Walk slowly, notice
+  what's blooming or changing with the season, and find a bench or quiet
+  corner you both like. Sit there for a bit before you leave.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [nature, calm, seasonal, outdoors]
