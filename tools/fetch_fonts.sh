@@ -7,7 +7,7 @@ cd "$(dirname "$0")/.."
 work="$(mktemp -d)"
 trap 'rm -rf "$work"' EXIT
 ( cd "$work" && npm pack --silent @fontsource-variable/fraunces @fontsource-variable/nunito @fontsource/caveat >/dev/null )
-for t in "$work"/*.tgz; do mkdir -p "$work/x" && tar -xzf "$t" -C "$work/x" && mv "$work/x/package" "$work/$(basename "$t" .tgz)" && rm -rf "$work/x"; done
+for t in "$work"/*.tgz; do mkdir -p "$work/x" && tar -xzf "$t" -C "$work/x" && mv "$work/x/package" "$work/$(basename "$t" .tgz)" && rm -rf "$work/x" "$t"; done
 
 pick() {  # first file that exists
   for f in "$@"; do if [ -f "$f" ]; then echo "$f"; return; fi; done
