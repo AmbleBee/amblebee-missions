@@ -17,6 +17,12 @@ from datetime import date
 
 URL = "https://www2.census.gov/geo/docs/maps-data/data/gazetteer/{y}_Gazetteer/{y}_Gaz_zcta_national.zip"
 
+# census.gov turns away Python's default user agent (HTTP 403), so look like a normal browser download.
+HEADERS = {
+    "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/130.0 Safari/537.36",
+    "Accept": "application/zip,application/octet-stream,*/*",
+}
+
 
 def parse(text):
     lines = text.splitlines()
@@ -33,12 +39,13 @@ def parse(text):
 
 def download():
     year = date.today().year
-    for y in range(year, year - 4, -1):  # newest file that exists
+    for y in range(year, year - 7, -1):  # newest file that exists
         try:
-            with urllib.request.urlopen(URL.format(y=y), timeout=60) as r:
+            req = urllib.request.Request(URL.format(y=y), headers=HEADERS)
+            with urllib.request.urlopen(req, timeout=90) as r:
                 data = r.read()
         except Exception as e:  # noqa: BLE001
-            print(f"  {y}: {e}")
+            print(f"  {y}: {e}", flush=True)
             continue
         with zipfile.ZipFile(io.BytesIO(data)) as z:
             name = next(n for n in z.namelist() if n.endswith(".txt"))
