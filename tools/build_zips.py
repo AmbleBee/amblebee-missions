@@ -25,15 +25,31 @@ HEADERS = {
 
 
 def parse(text):
-    lines = text.splitlines()
-    head = [c.strip().upper() for c in lines[0].split("\t")]
-    i_zip, i_lat, i_lon = head.index("GEOID"), head.index("INTPTLAT"), head.index("INTPTLONG")
+    """Reads the gazetteer whatever its separator (tab, pipe or comma) and exact column names."""
+    lines = text.lstrip("\ufeff").splitlines()
+    first = lines[0]
+    sep = max(["\t", "|", ","], key=first.count)
+    head = [c.strip().strip('"').upper() for c in first.split(sep)]
+
+    def col(*tests):
+        for i, h in enumerate(head):
+            if any(t(h) for t in tests):
+                return i
+        raise SystemExit(f"Unexpected columns in the Census file: {head}")
+
+    i_zip = col(lambda h: h == "GEOID", lambda h: h.startswith("GEOID"), lambda h: "ZCTA" in h)
+    i_lat = col(lambda h: h == "INTPTLAT", lambda h: h.endswith("LAT"))
+    i_lon = col(lambda h: h == "INTPTLONG", lambda h: h.endswith("LONG"), lambda h: h.endswith("LON"))
     out = {}
     for line in lines[1:]:
-        cols = [c.strip() for c in line.split("\t")]
+        cols = [c.strip().strip('"') for c in line.split(sep)]
         if len(cols) <= max(i_zip, i_lat, i_lon) or not cols[i_zip]:
             continue
-        out[cols[i_zip].zfill(5)] = [round(float(cols[i_lat]), 2), round(float(cols[i_lon]), 2)]
+        try:
+            z = cols[i_zip][-5:].zfill(5)
+            out[z] = [round(float(cols[i_lat]), 2), round(float(cols[i_lon]), 2)]
+        except ValueError:
+            continue
     return out
 
 
@@ -49,7 +65,7 @@ def download():
             continue
         with zipfile.ZipFile(io.BytesIO(data)) as z:
             name = next(n for n in z.namelist() if n.endswith(".txt"))
-            return y, z.read(name).decode("utf-8", "replace")
+            return y, z.read(name).decode("utf-8-sig", "replace")
     raise SystemExit("Couldn't download the Census ZIP file.")
 
 
