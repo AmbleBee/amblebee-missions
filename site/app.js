@@ -334,6 +334,27 @@ function renderBrowsePick(matches) {
   sel.value = S.browse;
 }
 
+// ---- pack list in "What is AmbleBee?": Anywhere first, then the 4 biggest packs, then "+ N more"
+const LEGEND_TOP = 4;
+function renderLegend() {
+  const word = (n, one, many) => `${n} ${n === 1 ? one : many}`;
+  const goTo = (id) => { S.browse = id; renderBrowse(); $("#browse").scrollIntoView({ behavior: "smooth" }); };
+  const item = (p) => h("li", {}, h("button", { type: "button", onclick: () => goTo(p.id) },
+    svg(packIcon(p), 20), h("b", {}, p.name), h("span", {}, word(p.count, "mission", "missions"))));
+  const pinned = S.packs.filter((p) => p.id === "anywhere");
+  const rest = S.packs.filter((p) => p.id !== "anywhere")
+    .sort((x, y) => y.count - x.count || (x.name || x.id).localeCompare(y.name || y.id));
+  const shown = rest.slice(0, LEGEND_TOP), hidden = rest.slice(LEGEND_TOP);
+  const items = [...pinned, ...shown].map(item);
+  if (hidden.length) {
+    const more = hidden.reduce((n, p) => n + p.count, 0);
+    items.push(h("li", { class: "more" }, h("button", { type: "button", onclick: () => goTo("all") },
+      h("b", {}, `+ ${word(hidden.length, "more pack", "more packs")}`),
+      h("span", {}, `${word(more, "more mission", "more missions")}`))));
+  }
+  $("#pack-legend").replaceChildren(...items);
+}
+
 // ---- near me -------------------------------------------------------------------------------------
 function renderWithin() {
   const sel = $("#within-select");
@@ -408,9 +429,7 @@ async function start() {
 
   const sel = $("#pack-select");
   S.packs.forEach((p) => sel.append(h("option", { value: p.id }, p.name)));
-  $("#pack-legend").replaceChildren(...S.packs.map((p) => h("li", {}, h("button", { type: "button", onclick: () => {
-    S.browse = p.id; renderBrowse(); $("#browse").scrollIntoView({ behavior: "smooth" });
-  } }, svg(packIcon(p), 20), h("b", {}, p.name), h("span", {}, `${p.count} ${p.count === 1 ? "mission" : "missions"}`)))));
+  renderLegend();
   const src = data.source || {};
   $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} missions · updated ${src.updated || "recently"}`;
 
