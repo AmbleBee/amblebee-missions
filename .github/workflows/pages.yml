@@ -30,6 +30,7 @@ jobs:
         with:
           node-version: "20"
       - name: Fetch fonts
+        continue-on-error: true   # site still works with system fonts
         run: bash tools/fetch_fonts.sh
       - name: Build site
         run: |
