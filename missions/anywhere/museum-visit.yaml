@@ -1,0 +1,18 @@
+number: 9
+name: Museum Visit
+mode: date
+short: Visit a museum. Each find one piece you'd hang at home, if you could.
+description: >
+  Pick an art, science, or any museum that sounds interesting and take
+  your time wandering. Along the way, each of you can keep an eye out for
+  the one piece you'd love to have at home. Share your picks over a coffee
+  afterward.
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [tickets, hours]
+tags: [art, culture, learning, rainy-day]

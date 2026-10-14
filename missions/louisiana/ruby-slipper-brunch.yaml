@@ -1,0 +1,23 @@
+number: 4
+name: Brunch at the Ruby Slipper
+mode: both
+who: [friends, family]
+place:
+  name: The Ruby Slipper Cafe (Canal Street flagship)
+  area: Canal Street, New Orleans
+  address: 1001 Canal St, New Orleans, LA 70112
+  coords: [29.95610, -90.07320]  # APPROX: set at the entrance before publishing
+short: Brunch at the Ruby Slipper. Order one sweet and one savory and share both.
+description: >
+  Get brunch at the Ruby Slipper, a New Orleans favorite for Southern breakfast.
+  Order one sweet dish and one savory one and split them. Expect a wait on
+  weekends; it's part of the experience.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: morning
+travel: local
+check_ahead: [hours]
+tags: [food, brunch, new-orleans]

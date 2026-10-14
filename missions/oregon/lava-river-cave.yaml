@@ -1,0 +1,25 @@
+number: 14
+name: Lava River Cave
+mode: both
+who: [solo, friends, family]
+place:
+  name: Lava River Cave, Newberry National Volcanic Monument
+  area: South of Bend
+  coords: [43.89600, -121.36900]  # APPROX: set at the cave parking before publishing
+short: Walk a mile into a lava tube in the dark. Turn off your lights for ten seconds.
+description: >
+  Bring warm layers and two good lights each, then walk into a lava tube that runs
+  almost a mile underground. Partway in, switch your lights off together and stand
+  in total darkness for ten seconds. It stays cold inside even in summer.
+gear:
+  - item: headlamps
+    rent: on-site      # lanterns rent at the cave; bring two lights each anyway
+duration: short
+effort: moderate
+cost: $
+setting: indoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [cave, volcano, adventure]

@@ -1,0 +1,24 @@
+number: 20
+name: Geocaching
+mode: both
+who: [solo, friends, family, kids]
+short: Try geocaching nearby. Find a hidden cache or two with the free app.
+description: >
+  Download a geocaching app and look for a few caches near you. Follow the
+  clues to find them, sign the logbook, and if there's a trinket inside,
+  trade it for something small you brought. Finding even one counts.
+for_kids:
+  short: Treasure hunt! Follow the map to a hidden box.
+  steps:
+    - The start of the trail
+    - A clue you found
+    - The hidden box!
+    - The treasure inside
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [explore, treasure-hunt, outdoors]

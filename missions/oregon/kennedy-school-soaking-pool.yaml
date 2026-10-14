@@ -1,0 +1,23 @@
+number: 32
+name: Kennedy School Soaking Pool
+mode: date
+place:
+  name: McMenamins Kennedy School
+  area: Concordia, Northeast Portland
+  address: 5736 NE 33rd Ave, Portland, OR 97211
+  coords: [45.56440, -122.63110]  # APPROX: set at the entrance before publishing
+  website: https://www.mcmenamins.com/kennedy-school/soaking-pool
+short: Book an hour in the Kennedy School soaking pool. Then wander the old school halls.
+description: >
+  Reserve an hour in the warm outdoor soaking pool at this old elementary school
+  turned hotel. Soak, talk, and do nothing else. Afterward, explore the halls,
+  the painted murals and the little bars tucked into old classrooms.
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [reservation]
+tags: [relaxing, quirky, portland]

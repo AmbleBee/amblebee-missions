@@ -1,0 +1,17 @@
+number: 15
+name: Stargazing Night
+mode: date
+short: Drive away from city lights. Bring a blanket and find one constellation.
+description: >
+  On a clear night, drive somewhere away from city lights. Bring a blanket
+  and something warm to drink, lie back, and let your eyes adjust for a
+  while. Try to find at least one constellation together.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: night
+travel: drive
+check_ahead: [conditions]
+tags: [night, nature, calm, outdoors]

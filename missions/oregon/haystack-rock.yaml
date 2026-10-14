@@ -1,0 +1,30 @@
+number: 12
+name: Haystack Rock
+mode: both
+who: [friends, family, kids]
+place:
+  name: Haystack Rock
+  area: Cannon Beach
+  coords: [45.88400, -123.96800]  # APPROX: set at the beach access before publishing
+short: Visit Haystack Rock at low tide. Find a starfish in the tide pools.
+description: >
+  Time your visit for low tide and walk out toward Haystack Rock to explore the
+  tide pools. Look but don't touch: starfish, anemones, and puffins in spring and
+  summer. Then walk the beach and grab something warm in town.
+for_kids:
+  short: Tide pool hunt! Find each sea creature.
+  steps:
+    - The giant rock
+    - A starfish
+    - A green anemone
+    - A bird on the rock
+    - A selfie on the beach!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [coast, tide-pools, beach]
