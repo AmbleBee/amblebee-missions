@@ -1,0 +1,22 @@
+number: 21
+name: Pittock Mansion
+mode: date
+place:
+  name: Pittock Mansion
+  area: West Hills, Portland
+  address: 3229 NW Pittock Dr, Portland, OR 97210
+  coords: [45.52500, -122.71600]  # APPROX: set at the entrance before publishing
+short: Tour the Pittock Mansion. Pick the room you'd live in. Then the view from the lawn.
+description: >
+  Tour the 1914 mansion high above Portland and each pick the room you'd claim if
+  it were yours. Afterward, sit on the lawn for one of the best views of the city
+  and the mountains.
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [history, views, portland]

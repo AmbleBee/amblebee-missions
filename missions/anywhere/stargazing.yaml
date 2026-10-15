@@ -1,11 +1,24 @@
+# UPDATED: replaces the original #15 with the same id; keeps number 15
 number: 15
-name: Stargazing Night
-mode: date
-short: Drive away from city lights. Bring a blanket and find one constellation.
+name: Dark Sky Stargazing
+mode: both
+who: [solo, friends, family, kids]
+short: Find the darkest sky near you on a light pollution map. Lie back and find three constellations.
 description: >
-  On a clear night, drive somewhere away from city lights. Bring a blanket
-  and something warm to drink, lie back, and let your eyes adjust for a
-  while. Try to find at least one constellation together.
+  Look up a light pollution map (lightpollutionmap.info works well) and find the
+  darkest spot you can reasonably drive to. Pick a clear night with little or no
+  moon, bring blankets, warm layers, snacks and something hot to drink. Let your
+  eyes adjust for 20 minutes with phones away, then use a free sky app on its
+  red night mode to find three constellations together. Try for a long-exposure
+  photo of the two of you under the stars.
+for_kids:
+  short: Star hunt! Find each thing.
+  steps:
+    - The Big Dipper
+    - A really bright star
+    - A shooting star
+    - The Moon or a planet
+    - A selfie under the stars!
 duration: short
 effort: easy
 cost: free
@@ -14,4 +27,4 @@ season: any
 time_of_day: night
 travel: drive
 check_ahead: [conditions]
-tags: [night, nature, calm, outdoors]
+tags: [stars, night, astronomy, dark-sky]

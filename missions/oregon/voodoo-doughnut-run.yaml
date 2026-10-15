@@ -6,12 +6,12 @@ place:
   name: Voodoo Doughnut
   area: Old Town, Portland
   address: 22 SW 3rd Ave, Portland, OR 97204
-  coords: [45.52270, -122.67300]  # APPROX
+  coords: [45.52266, -122.67306]  # APPROX: set at the entrance before publishing
 short: Get the strangest doughnut you can find. Rate it out of ten together.
 description: >
-  Head to Voodoo Doughnut, wait in the line (it's part of it), and each
-  pick the weirdest doughnut on the menu. Find somewhere to sit, take a
-  photo of both before the first bite, and rate them out of ten.
+  Head to Voodoo Doughnut, wait in the line (it's part of it), and each pick
+  the weirdest doughnut on the menu. Find somewhere to sit, take a photo of
+  both before the first bite, and rate them out of ten.
 for_kids:
   short: Doughnut hunt! Pick the silliest doughnut.
   steps:

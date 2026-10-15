@@ -1,0 +1,19 @@
+number: 27
+name: Rooftop Sunset Drinks
+mode: date
+short: Find a rooftop with a west-facing view. Order something new and watch the sun go down.
+description: >
+  Find a rooftop bar, terrace or restaurant near you with a view toward the
+  sunset, and get there about 45 minutes early so you can grab a good spot.
+  Each order a drink you've never tried, then put your phones away and watch
+  the sky change. Get one photo of the two of you against the glow before it's
+  gone. Many rooftops take reservations for sunset, so check ahead.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [reservation]
+tags: [sunset, drinks, views, dress-up]

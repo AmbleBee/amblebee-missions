@@ -1,0 +1,36 @@
+number: 1
+name: Nez Perce National Historical Park at Spalding
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Nez Perce National Historical Park, Spalding Visitor Center
+  area: Spalding, on the Clearwater River east of Lewiston
+  address: 39063 US Hwy 95, Lapwai, ID 83540  # park HQ address; verify it matches the visitor center
+  coords: [46.44800, -116.81700]  # APPROX: set at the visitor center parking before publishing
+  website: https://www.nps.gov/nepe
+short: Learn the Nez Perce story at the Spalding visitor center. Then walk down to the Clearwater River.
+description: >
+  Start at the park's visitor center and museum, where the Nez Perce (Nimiipuu)
+  people tell their own history: life along these rivers for thousands of years,
+  the treaties, and the 1877 flight from the U.S. Army. Take your time, and each
+  pick one thing you learned that you want to remember. Then walk the grounds
+  down to the Clearwater River for a quiet moment and a photo of the two of you
+  by the water. It's free. The visitor center keeps shorter hours in winter
+  (it has been closed Sundays and Mondays), so check before you go.
+for_kids:
+  short: History hunt! Find each thing.
+  steps:
+    - A beaded bag or moccasin
+    - A horse in a picture
+    - A canoe
+    - The river
+    - A selfie by the water!
+duration: short
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [history, culture, museum, river, nez-perce]

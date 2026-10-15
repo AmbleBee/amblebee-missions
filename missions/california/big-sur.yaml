@@ -1,0 +1,32 @@
+number: 23
+name: "Big Sur: Bixby Bridge to McWay Falls"
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Bixby Bridge north viewpoint, Highway 1
+  area: Big Sur coast, south of Carmel
+  coords: [36.37200, -121.90200]  # APPROX: set at the north-side pullout before publishing
+short: Drive Highway 1 through Big Sur. Photograph Bixby Bridge, then the waterfall onto the beach.
+description: >
+  Drive south from Carmel on Highway 1 and pull over at Bixby Bridge for the
+  classic photo of the arch over the canyon. Keep going down the coast, stopping
+  at whatever pullout makes you both say wow, to Julia Pfeiffer Burns State
+  Park, where McWay Falls drops straight onto a little beach. Only stop in real
+  pullouts and never walk along the highway. Winter storms can close sections,
+  so check road conditions first, and fill up before you go.
+for_kids:
+  short: Coast drive! Find each thing.
+  steps:
+    - The big bridge
+    - The ocean crashing on rocks
+    - A waterfall on the beach
+    - A selfie by the ocean!
+duration: all-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [scenic-drive, coast, waterfall, views, road-trip]

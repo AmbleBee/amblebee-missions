@@ -1,0 +1,27 @@
+number: 31
+name: Split Coloring Page
+mode: both
+who: [friends, family, kids]
+short: Tear a coloring page in half. Each color your half without peeking, then put it back together.
+description: >
+  Pick a coloring page from a book or print one out, and tear it down the
+  middle. Each take one half and color it however you like, without peeking at
+  the other's side or saying what colors you're using. When you're both done,
+  line the halves up, reveal the mash-up, and take a photo of the finished
+  picture held together. Then guess what the other was going for.
+for_kids:
+  short: Coloring surprise! Do each thing.
+  steps:
+    - Pick a picture
+    - Tear it in half
+    - Color your half, no peeking!
+    - Put it back together
+    - A selfie with your picture!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+tags: [at-home, art, coloring, playful, rainy-day]

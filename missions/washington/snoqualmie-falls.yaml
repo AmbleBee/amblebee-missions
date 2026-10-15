@@ -1,0 +1,31 @@
+number: 21
+name: Snoqualmie Falls
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Snoqualmie Falls Park (upper observation deck)
+  area: Snoqualmie
+  address: 6501 Railroad Ave SE, Snoqualmie, WA 98065  # verify against the park's site
+  coords: [47.54200, -121.83700]  # APPROX: set at the upper parking lot before publishing
+short: Watch Snoqualmie Falls thunder down 268 feet. Hike to the bottom and feel the spray.
+description: >
+  Start at the upper viewing deck for the classic view of the falls dropping
+  into the gorge, with the historic lodge perched on the edge. Then take the
+  steep trail down to the river and the lower viewpoint, where the spray can
+  soak you in spring. Grab something warm at the lodge after. Winter and spring
+  have the most water.
+for_kids:
+  short: Waterfall hunt! Find each thing.
+  steps:
+    - The big waterfall
+    - The river at the bottom
+    - A rainbow in the mist
+    - A selfie with the falls!
+duration: short
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+tags: [waterfall, views, hiking]

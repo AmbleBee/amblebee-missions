@@ -1,0 +1,34 @@
+number: 5
+name: The Magic House
+mode: adventure
+who: [family, kids]
+place:
+  name: The Magic House, St. Louis Children's Museum
+  area: Kirkwood, St. Louis County
+  address: 516 S Kirkwood Rd, Kirkwood, MO 63122  # verify against the museum's site
+  coords: [38.57540, -90.40680]  # APPROX: set at the entrance before publishing
+  website: https://www.magichouse.org
+short: Make your hair stand up at the Magic House. Let the kids lead the way.
+description: >
+  A family day at St. Louis's beloved hands-on children's museum. Touch the
+  famous electrostatic ball and watch your hair stand on end, climb the
+  three-story beanstalk, run a kid-sized town, and splash at the water
+  exhibits. Let the kids pick the order, and get a photo of everyone's crazy
+  hair. Timed tickets can sell out on busy days, so book ahead.
+for_kids:
+  short: Magic house! Find each thing.
+  steps:
+    - Your hair standing up!
+    - The giant beanstalk
+    - Something with water
+    - Your favorite room
+    - A selfie with your crazy hair!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [kids, museum, hands-on, rainy-day, st-louis]

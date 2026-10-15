@@ -1,0 +1,22 @@
+number: 13
+name: Walla Walla Wine Tasting
+mode: date
+place:
+  name: Downtown Walla Walla
+  area: Walla Walla
+  coords: [46.06670, -118.33810]  # APPROX: set on Main Street downtown before publishing
+short: Make a weekend of Walla Walla wine country. Toast with your favorite pour.
+description: >
+  Head to Walla Walla for a weekend of wine tasting, with plenty of tasting rooms
+  right downtown and more out among the vineyards. Each pick your favorite pour
+  of the trip and bring a bottle home to remember it. Pick a designated driver
+  or stay downtown and walk.
+duration: all-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, reservation]
+tags: [wine, food, weekend, splurge]

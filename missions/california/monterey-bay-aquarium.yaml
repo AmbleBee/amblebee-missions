@@ -1,0 +1,34 @@
+number: 9
+name: Monterey Bay Aquarium
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Monterey Bay Aquarium
+  area: Cannery Row, Monterey
+  address: 886 Cannery Row, Monterey, CA 93940
+  coords: [36.61820, -121.90170]  # APPROX: set at the entrance before publishing
+  website: https://www.montereybayaquarium.org
+short: Watch the sea otters and stand under the kelp forest at Monterey Bay Aquarium.
+description: >
+  Spend the day at one of the best aquariums anywhere, built on the site of an
+  old sardine cannery. Catch a sea otter feeding, stand in front of the
+  towering kelp forest, and sit by the giant open-ocean window. Each pick your
+  favorite creature of the day. Afterward, walk Cannery Row and look out over
+  the bay for wild otters and sea lions.
+for_kids:
+  short: Ocean hunt! Find each animal.
+  steps:
+    - A sea otter
+    - A shark
+    - A jellyfish
+    - The big kelp forest
+    - A selfie with your grown-up!
+duration: all-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets]
+tags: [aquarium, animals, ocean, rainy-day, splurge]

@@ -1,0 +1,23 @@
+number: 42
+name: McMenamins Edgefield
+mode: date
+place:
+  name: McMenamins Edgefield
+  area: Troutdale
+  address: 2126 SW Halsey St, Troutdale, OR 97060
+  coords: [45.53930, -122.40240]  # APPROX: set at the main entrance before publishing
+short: Spend a cozy day at Edgefield. Find every hidden little bar on the grounds.
+description: >
+  Wander the old poor farm turned hotel: painted hallways, gardens, a winery and
+  little bars tucked into odd corners. Add the soaking pool or the movie theater
+  if you like. Try to find every hidden bar on the property, and pick your
+  favorite for one last drink.
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, reservation]
+tags: [cozy, quirky, rainy-day, food]

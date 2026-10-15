@@ -1,0 +1,35 @@
+number: 4
+name: "Golden Gate Park: Tower and Bison"
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: de Young Museum (Hamon Observation Tower)
+  area: Golden Gate Park, San Francisco
+  address: 50 Hagiwara Tea Garden Dr, San Francisco, CA 94118
+  coords: [37.77150, -122.46870]  # APPROX: set at the museum entrance before publishing
+  website: https://www.famsf.org/visit/de-young
+short: Ride up the free de Young tower, then wander Golden Gate Park west to find the bison.
+description: >
+  Start at the de Young and take the elevator up the glass-walled observation
+  tower. It's free, even without a museum ticket, and looks out over the city,
+  the park and the bay. Then walk west through the park along JFK Drive, past
+  lakes and meadows, to the Bison Paddock near Spreckels Lake, where a small
+  herd has lived since the 1890s. It's a long walk (well over two miles each
+  way), so pick just one if you'd rather, or rent bikes. Get a photo with the
+  bison behind you.
+for_kids:
+  short: Park explorer! Find each thing.
+  steps:
+    - The city from the tall tower
+    - A duck on a lake
+    - A big shaggy bison!
+    - A selfie in the park!
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [park, views, animals, walking, san-francisco]

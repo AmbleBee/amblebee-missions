@@ -1,0 +1,24 @@
+number: 11
+name: Adults-Only Ghost and Vampire Tour
+mode: both
+who: [friends]
+place:
+  name: French Quarter (most ghost tours start near Jackson Square)
+  area: French Quarter, New Orleans
+  coords: [29.95800, -90.06350]  # APPROX: pick one tour operator's meeting point before publishing
+short: Take a small-group, adults-only ghost and vampire tour of the French Quarter after dark.
+description: >
+  After dark, join a small-group, adults-only tour of the Quarter's haunted
+  corners: the houses, courtyards and legends of ghosts, voodoo and vampires
+  that New Orleans is famous for. Hold hands at the creepiest stop, each pick
+  the story that gave you chills, and see who's braver on the walk back to the
+  car. Get one spooky photo under a gas lamp.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: night
+travel: local
+check_ahead: [tickets]
+tags: [ghosts, spooky, history, walking, night, new-orleans]

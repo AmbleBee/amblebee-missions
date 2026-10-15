@@ -1,0 +1,22 @@
+number: 9
+name: Crater Lake
+mode: both
+who: [solo, friends, family]
+place:
+  name: Rim Village, Crater Lake National Park
+  area: Crater Lake National Park
+  coords: [42.91000, -122.14500]  # APPROX: set at Rim Village parking before publishing
+short: Stand at the rim of Crater Lake. Agree on one word for that blue.
+description: >
+  Drive up to the rim and get your first look at the deepest lake in the country.
+  Walk part of the rim, find a viewpoint you like, and each pick one word for the
+  color. Summer opens up the whole Rim Drive; in winter only some of it is open.
+duration: all-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [lake, views, national-park]

@@ -1,0 +1,23 @@
+number: 12
+name: Dog Mountain Wildflowers
+mode: both
+who: [solo, friends]
+place:
+  name: Dog Mountain Trailhead
+  area: Columbia River Gorge, Washington side (SR 14)
+  coords: [45.69940, -121.70830]  # APPROX: set at the trailhead before publishing
+short: Climb Dog Mountain in spring for the meadows of yellow balsamroot.
+description: >
+  One of the Gorge's hardest classic hikes, rewarded in spring with hillsides
+  covered in yellow balsamroot and big views over the Columbia. Bring lots of
+  water and take it slow. On spring weekends you need a permit to park at the
+  trailhead, or you can take the shuttle instead.
+duration: half-day
+effort: hard
+cost: $
+setting: outdoor
+season: [spring]
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, seasonal, conditions]
+tags: [hiking, wildflowers, gorge, views]

@@ -1,0 +1,22 @@
+number: 33
+name: Movie at the Kennedy School
+mode: date
+place:
+  name: McMenamins Kennedy School Theater
+  area: Concordia, Northeast Portland
+  address: 5736 NE 33rd Ave, Portland, OR 97211
+  coords: [45.56440, -122.63110]  # APPROX: set at the entrance before publishing
+short: Catch a movie in the old school auditorium. Pizza and a drink from your couch.
+description: >
+  See a movie in the Kennedy School's old auditorium, where you sink into couches
+  and armchairs and order pizza and drinks to your seat. Take a photo in the
+  hallway before the lights go down.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, tickets]
+tags: [movies, food, cozy, rainy-day, portland]

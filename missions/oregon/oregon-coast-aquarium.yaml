@@ -1,0 +1,31 @@
+number: 43
+name: Oregon Coast Aquarium
+mode: both
+who: [friends, family, kids]
+place:
+  name: Oregon Coast Aquarium
+  area: Newport
+  address: 2820 SE Ferry Slip Rd, Newport, OR 97365
+  coords: [44.61770, -124.04730]  # APPROX: set at the entrance before publishing
+short: Walk under the sharks at the Oregon Coast Aquarium. Each pick a favorite creature.
+description: >
+  Spend a rainy coast day at the aquarium: sea otters, tide pools, and the
+  tunnels where sharks and rays swim over your head. Each pick your favorite
+  creature, then walk Newport's bayfront to hear the sea lions bark.
+for_kids:
+  short: Sea creature hunt! Find each animal.
+  steps:
+    - A sea otter
+    - A shark above you
+    - A jellyfish
+    - A sea star
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets]
+tags: [aquarium, animals, coast, rainy-day]

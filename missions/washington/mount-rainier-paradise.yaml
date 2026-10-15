@@ -1,0 +1,23 @@
+number: 7
+name: Mount Rainier at Paradise
+mode: both
+who: [solo, friends, family]
+place:
+  name: Paradise, Mount Rainier National Park
+  area: Mount Rainier National Park
+  coords: [46.78600, -121.73500]  # APPROX: set at the visitor center parking before publishing
+short: Walk the meadows at Paradise under Mount Rainier. Wildflowers in summer, snow in winter.
+description: >
+  Drive up to Paradise and walk a stretch of trail right under the mountain. In
+  summer the meadows fill with wildflowers; in winter it's snowshoes and snow
+  play. Find a spot where the whole mountain fits behind the two of you. Summer
+  weekends get very busy, so go early.
+duration: all-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [mountain, national-park, wildflowers, hiking]

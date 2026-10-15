@@ -1,0 +1,34 @@
+number: 2
+name: Manhattan Beach Pier and Roundhouse Aquarium
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Manhattan Beach Pier (Roundhouse Aquarium at the end)
+  area: Downtown Manhattan Beach
+  address: 2 Manhattan Beach Blvd, Manhattan Beach, CA 90266
+  coords: [33.88480, -118.41040]  # APPROX: set at the pier entrance before publishing
+  website: https://roundhouseaquarium.org
+short: Walk to the end of Manhattan Beach Pier. Visit the tiny free aquarium at the tip.
+description: >
+  Walk the whole length of the pier, watching the surfers below and keeping an
+  eye out for dolphins. At the very end, step into the little Roundhouse
+  Aquarium for touch pools, sharks, an octopus and jellyfish. It's free, but a
+  small donation helps. No food or drinks inside, so finish your snacks
+  first. On the walk back, get a photo with the whole pier behind you.
+for_kids:
+  short: Pier and fish hunt! Find each thing.
+  steps:
+    - The end of the pier
+    - A surfer in the waves
+    - A shark in a tank
+    - A sea star
+    - A selfie on the pier!
+duration: short
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [beach, pier, aquarium, ocean, los-angeles]

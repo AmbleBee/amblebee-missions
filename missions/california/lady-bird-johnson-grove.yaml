@@ -1,0 +1,35 @@
+number: 22
+name: Old-Growth Redwoods at Lady Bird Johnson Grove
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Lady Bird Johnson Grove trailhead, Redwood National and State Parks
+  area: Bald Hills Road, near Orick
+  coords: [41.30320, -124.01780]  # APPROX: set at the trailhead parking before publishing
+  website: https://www.nps.gov/places/lbjtrailhead.htm
+short: Walk among old-growth redwoods hundreds of feet tall. Lie on the ground and look straight up.
+description: >
+  Drive three miles up Bald Hills Road and walk the easy loop through a grove of
+  ancient redwoods that were never logged. Only a tiny share of the world's
+  old-growth redwood forest is left, and much of it is right here. Find the
+  biggest tree on the loop, stand at its base for a photo that shows how small
+  you are, then lie back and look straight up its trunk. Go early or late if
+  there's fog for the most magical light. The lot is too small for RVs or
+  trailers.
+for_kids:
+  short: Giant tree hunt! Find each thing.
+  steps:
+    - The biggest tree you can find
+    - A fern
+    - A banana slug
+    - The wooden bridge
+    - A selfie with a giant tree!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [redwoods, old-growth, forest, national-park, humboldt]

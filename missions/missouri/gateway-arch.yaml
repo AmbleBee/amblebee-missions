@@ -1,0 +1,32 @@
+number: 2
+name: Gateway Arch
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Gateway Arch National Park
+  area: Downtown riverfront, St. Louis
+  address: 11 N 4th St, St. Louis, MO 63102  # verify against gatewayarch.com
+  coords: [38.62470, -90.18480]  # APPROX: set at the visitor entrance before publishing
+  website: https://www.gatewayarch.com
+short: Ride the tiny tram to the top of the Gateway Arch. Then photograph it from below.
+description: >
+  Take the little pod-shaped tram up inside the Arch and look out the windows at
+  the top over the Mississippi and the city. Back on the ground, walk out under
+  the legs and find your best angle: straight up from the base, or the whole
+  curve from across the park.
+for_kids:
+  short: Up the giant arch! Find each thing.
+  steps:
+    - The arch from the ground
+    - The tiny tram car
+    - The river from the top
+    - A selfie under the arch!
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [tickets, hours]
+tags: [landmark, views, national-park]

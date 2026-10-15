@@ -1,0 +1,34 @@
+number: 26
+name: Alcatraz Island
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Alcatraz Landing, Pier 33
+  area: Embarcadero, San Francisco
+  address: Pier 33, The Embarcadero, San Francisco, CA 94111  # verify against the ferry operator's site
+  coords: [37.80700, -122.40500]  # APPROX: set at the Pier 33 ferry entrance before publishing
+  website: https://www.nps.gov/alca/planyourvisit/index.htm
+short: Take the ferry to Alcatraz. Tour the cellhouse and find the cell from the famous escape.
+description: >
+  Ride the ferry across the bay to the old federal prison island and take the
+  cellhouse audio tour, told by former guards and inmates. Find the cells from
+  the 1962 escape attempt, step into a cell for a photo, and look back at the
+  city skyline from the island. Bring a jacket; it's windy on the water. Tours
+  sell out, so book the ferry ahead.
+for_kids:
+  short: Prison island! Find each thing.
+  steps:
+    - The ferry boat
+    - The old lighthouse
+    - A tiny jail cell
+    - A seagull
+    - A selfie with the city behind you!
+duration: half-day
+effort: moderate
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [tickets]
+tags: [history, island, boat, san-francisco, rainy-day]

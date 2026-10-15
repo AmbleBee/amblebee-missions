@@ -1,0 +1,18 @@
+number: 35
+name: Recreate Your First Date
+mode: date
+short: Recreate your first date as closely as you can. Same food, same music, same place if you can.
+description: >
+  Remember your first date and do it all again: the same place if you can get
+  there, or the same food, the same music and the same outfits if you can't. Fill
+  in each other's memory gaps along the way and tell each other what you were
+  really thinking that first time. Take the photo you wish you'd taken on the
+  real first date.
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: any
+travel: local
+tags: [sentimental, anniversary, food, nostalgia]

@@ -1,0 +1,26 @@
+number: 14
+name: Bacchanal Backyard Wine Night
+mode: date
+place:
+  name: Bacchanal Wine
+  area: Bywater, New Orleans
+  address: 600 Poland Ave, New Orleans, LA 70117  # verify against bacchanalwine.com
+  coords: [29.95890, -90.03420]  # APPROX: set at the entrance before publishing
+  website: https://bacchanalwine.com
+short: Pick a bottle and cheese inside Bacchanal, then sit out back under string lights with live jazz.
+description: >
+  Walk into Bacchanal's little wine shop, pick a bottle together and a few
+  cheeses, then carry them out to the rambling backyard under the string lights,
+  where a live band plays every night. Grab mismatched chairs, order a plate
+  from the kitchen, and stay for a second set. Each pick the song of the night,
+  and get a photo of the two of you clinking glasses in the lights. It gets
+  busy; go early for a good table.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [wine, music, jazz, food, new-orleans]

@@ -1,0 +1,22 @@
+number: 1
+name: Bourbon Street Night
+mode: both
+who: [friends]
+place:
+  name: Bourbon Street, French Quarter
+  area: French Quarter, New Orleans
+  coords: [29.95830, -90.06570]  # APPROX: set at a spot on Bourbon Street before publishing
+short: Walk Bourbon Street at night. Follow the best live music you hear in for one song.
+description: >
+  Head to the French Quarter after dark and walk Bourbon Street with the music
+  spilling out of every door. Pick the bar with the best live band you hear and
+  go in for at least one song. Try one drink you've never had, stay together in
+  the crowds, and take a photo under the neon.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: night
+travel: local
+tags: [nightlife, music, new-orleans]

@@ -1,0 +1,30 @@
+number: 15
+name: Pearson Air Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Pearson Air Museum, Fort Vancouver National Historic Site
+  area: Vancouver, WA
+  address: 1115 E 5th St, Vancouver, WA 98661
+  coords: [45.62290, -122.65750]  # APPROX: set at the entrance before publishing
+short: Explore the old planes at Pearson Air Museum. Each pick the one you'd fly.
+description: >
+  Visit one of the oldest operating airfields in the country and look over the
+  vintage aircraft in the hangar. Each pick the plane you'd most want to fly,
+  then walk over to the fort next door.
+for_kids:
+  short: Airplane hunt! Find each thing.
+  steps:
+    - The oldest plane
+    - A propeller
+    - A plane with two wings
+    - Your favorite plane!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [aviation, history, museum, rainy-day]

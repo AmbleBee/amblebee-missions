@@ -1,0 +1,24 @@
+number: 10
+name: Devil's Punchbowl at Lake Crescent
+mode: both
+who: [solo, friends, family]
+place:
+  name: Spruce Railroad Trailhead (east end, Lake Crescent)
+  area: North shore of Lake Crescent, Olympic National Park
+  coords: [48.09420, -123.80200]  # APPROX: set at the trailhead parking before publishing
+short: Walk the Spruce Railroad Trail to the Devil's Punchbowl bridge. Photo over the blue water.
+description: >
+  Follow the old railroad grade along the north shore of Lake Crescent to the
+  little bridge over Devil's Punchbowl, a cove of unbelievably clear blue water.
+  Peek into the old train tunnel nearby. In summer, wade in from the shore if
+  you're brave; the water is freezing. Skip jumping off the bridge, which has
+  killed people.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [lake, hiking, swimming, olympic]

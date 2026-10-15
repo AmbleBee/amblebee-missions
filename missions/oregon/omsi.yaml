@@ -1,0 +1,31 @@
+number: 38
+name: OMSI
+mode: both
+who: [friends, family, kids]
+place:
+  name: Oregon Museum of Science and Industry (OMSI)
+  area: Central Eastside, Portland
+  address: 1945 SE Water Ave, Portland, OR 97214
+  coords: [45.50840, -122.66550]  # APPROX: set at the entrance before publishing
+short: Spend the day at OMSI. Each find the experiment that blows your mind.
+description: >
+  Explore the hands-on science halls, and add the submarine tour, planetarium
+  or big-screen theater if you like. Each find the one exhibit that surprised
+  you most and show it to the other. Great for a rainy day.
+for_kids:
+  short: Science hunt! Find each thing.
+  steps:
+    - Something that lights up
+    - A big machine
+    - An experiment you tried
+    - The submarine!
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [museum, science, rainy-day, portland]

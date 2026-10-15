@@ -1,0 +1,30 @@
+number: 6
+name: Oaks Park
+mode: both
+who: [friends, family, kids]
+place:
+  name: Oaks Amusement Park
+  area: Sellwood, Portland
+  address: 7805 SE Oaks Park Way, Portland, OR 97202
+  coords: [45.47300, -122.66100]  # APPROX: set at the entrance before publishing
+short: Ride something at Oaks Park, then skate the old roller rink. Loser buys the treats.
+description: >
+  Spend an afternoon at one of the oldest amusement parks in the country. Ride a
+  few rides, try the historic roller rink with its pipe organ, and grab a classic
+  fair treat. Take a photo on the ride you were most nervous about.
+for_kids:
+  short: Fun park day! Find each thing.
+  steps:
+    - Your favorite ride
+    - Something that spins
+    - A yummy treat
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets, seasonal]
+tags: [playful, rides, portland]

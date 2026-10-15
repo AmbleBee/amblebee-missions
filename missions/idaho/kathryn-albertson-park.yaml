@@ -1,0 +1,31 @@
+number: 9
+name: Kathryn Albertson Park
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Kathryn Albertson Park
+  area: Boise River, near downtown Boise
+  coords: [43.60700, -116.21000]  # APPROX: set at the main parking lot before publishing
+short: Wander the quiet ponds and gazebos of Kathryn Albertson Park. Count the wildlife you spot.
+description: >
+  Walk the winding paths of a quiet wildlife park right by downtown Boise, with
+  ponds, little bridges and gazebos. Count the ducks, geese, turtles and
+  herons you spot, and find the prettiest gazebo for a photo of the two of you.
+  Then step out onto the Boise River Greenbelt for a longer walk or ride. It's
+  free; no dogs or bikes inside the park.
+for_kids:
+  short: Pond hunt! Find each thing.
+  steps:
+    - A duck
+    - A turtle
+    - A little bridge
+    - A gazebo
+    - A selfie by the pond!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [park, wildlife, calm, walking, boise]

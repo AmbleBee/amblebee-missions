@@ -3,9 +3,9 @@ name: Pantry Challenge
 mode: date
 short: Each pick 3 random ingredients at home. Make a meal using all 6.
 description: >
-  No shopping allowed. Each of you secretly picks three ingredients from
-  the fridge or pantry. Reveal them, then cook one dish (or a small meal)
-  together that uses all six. Name it and rate it.
+  No shopping allowed. Each of you secretly picks three ingredients
+  from the fridge or pantry. Reveal them, then cook one dish (or a
+  small meal) together that uses all six. Name it and rate it.
 duration: short
 effort: easy
 cost: free

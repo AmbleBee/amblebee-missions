@@ -1,0 +1,35 @@
+number: 5
+name: The Huntington Gardens
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Huntington Library, Art Museum, and Botanical Gardens
+  area: San Marino, near Pasadena
+  address: 1151 Oxford Rd, San Marino, CA 91108
+  coords: [34.12910, -118.11440]  # APPROX: set at the visitor entrance before publishing
+  website: https://www.huntington.org/plan-your-visit
+short: Each pick a garden at the Huntington and lead the other through it. Desert, Japanese, Chinese?
+description: >
+  Spend a slow half-day at the Huntington. Look at the map, and each secretly
+  pick one garden "world" to lead the other through: the spiky Desert Garden,
+  the Japanese Garden with its moon bridge, the Chinese Garden's pavilions and
+  lake, or the Rose Garden. Give your best tour-guide pitch for why yours is the
+  best. Finish in the art galleries to find The Blue Boy, and get a photo of the
+  two of you in your favorite spot of the day.
+for_kids:
+  short: Garden explorer! Find each thing.
+  steps:
+    - A giant spiky cactus
+    - A curved bridge
+    - A fish in a pond
+    - The boy in the blue painting
+    - A selfie in your favorite garden!
+duration: half-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [garden, art, calm, splurge, los-angeles]

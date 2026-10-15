@@ -1,0 +1,27 @@
+number: 30
+name: Bob Ross Painting Night
+mode: both
+who: [solo, friends, family, kids]
+short: Pick a Bob Ross episode and paint along. Happy little trees, side by side.
+description: >
+  Pick a Bob Ross episode (many are free on the official Bob Ross YouTube
+  channel) and paint along together, with paints, cheap acrylics, or even
+  colored pencils if that's what you have. Pause and rewind as often as you
+  need; nobody keeps up with Bob. When you're done, hold your paintings up side
+  by side for a photo, then each name the other's painting. Bonus points for a
+  happy little tree.
+for_kids:
+  short: Painting night! Make each thing.
+  steps:
+    - A blue sky
+    - A happy little tree
+    - A mountain
+    - A selfie with your painting!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+tags: [at-home, art, painting, cozy, rainy-day]

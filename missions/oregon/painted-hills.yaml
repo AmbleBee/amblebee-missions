@@ -1,0 +1,22 @@
+number: 11
+name: Painted Hills
+mode: both
+who: [solo, friends, family]
+place:
+  name: Painted Hills Unit, John Day Fossil Beds
+  area: Near Mitchell
+  coords: [44.66150, -120.26550]  # APPROX: set at the overlook parking before publishing
+short: Walk the Painted Hills overlook. Photograph the stripes in the late light.
+description: >
+  Drive out to the Painted Hills and walk the short overlook trail above the red,
+  gold and black striped hills. The colors change with the light, so late
+  afternoon is best. Stay on the trails; the hills scar for decades.
+duration: all-day
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [desert, geology, views]

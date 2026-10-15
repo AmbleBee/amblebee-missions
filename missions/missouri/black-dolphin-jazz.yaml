@@ -1,0 +1,25 @@
+number: 17
+name: Kansas City Jazz Night
+mode: date
+place:
+  name: The Black Dolphin
+  area: Crossroads, Kansas City
+  address: 1813 Grand Blvd, Kansas City, MO 64108
+  coords: [39.08960, -94.58190]  # APPROX: set at the entrance before publishing
+short: Dress up and listen to live Kansas City jazz at the Black Dolphin. Then try the bar next door.
+description: >
+  Kansas City is one of jazz's hometowns. Dress up a little and spend an
+  evening at the Black Dolphin, a dark, vintage lounge with live jazz, then
+  walk next door to its sister club, the Green Lady Lounge, for one more set.
+  Put your phones away and really listen; each pick your favorite song of the
+  night. Get one photo of the two of you in the lounge glow. Closed Sunday and
+  Monday.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: night
+travel: local
+check_ahead: [hours]
+tags: [jazz, music, night, dress-up, kansas-city]

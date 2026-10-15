@@ -1,0 +1,33 @@
+number: 10
+name: Santa Monica Pier
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Santa Monica Pier
+  area: Santa Monica
+  address: 200 Santa Monica Pier, Santa Monica, CA 90401
+  coords: [34.00920, -118.49720]  # APPROX: set at the pier entrance (Ocean Ave) before publishing
+  website: https://www.santamonicapier.org
+short: Find the Route 66 "End of the Trail" sign. Ride the Ferris wheel at sunset.
+description: >
+  Walk out onto the pier and find the "End of the Trail" sign, the symbolic
+  finish line of Route 66, for a photo. Ride the solar-powered Ferris wheel
+  around sunset and watch its lights come on over the water, play one midway
+  game each, and grab something fried. Finish with a walk down to the sand.
+for_kids:
+  short: Pier fun! Find each thing.
+  steps:
+    - The Ferris wheel
+    - The end of the road sign
+    - A seagull
+    - A yummy treat
+    - A selfie by the ocean!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [beach, pier, rides, route-66, sunset, los-angeles]

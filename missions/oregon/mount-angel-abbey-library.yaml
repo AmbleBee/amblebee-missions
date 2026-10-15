@@ -1,0 +1,22 @@
+number: 27
+name: Mount Angel Abbey Library
+mode: date
+place:
+  name: Mount Angel Abbey
+  area: St. Benedict, near Mt. Angel
+  address: 1 Abbey Dr, St. Benedict, OR 97373
+  coords: [45.05880, -122.77450]  # APPROX: set at the parking lot before publishing
+short: Visit the Alvar Aalto library at Mount Angel Abbey. Then the hilltop view.
+description: >
+  Visit the abbey's library, a quiet, light-filled building by the architect
+  Alvar Aalto. Speak softly; it's a working monastery. Afterward, walk the hilltop
+  grounds and look out over the valley.
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [hours]
+tags: [architecture, books, calm, views]

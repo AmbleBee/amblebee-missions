@@ -1,0 +1,26 @@
+number: 14
+name: Ancient Bristlecone Pine Forest
+mode: both
+who: [solo, friends, family]
+place:
+  name: Schulman Grove Visitor Center, Ancient Bristlecone Pine Forest
+  area: White Mountains, east of Bishop and Big Pine
+  coords: [37.38550, -118.17860]  # APPROX: set at the visitor center parking before publishing
+  website: https://www.fs.usda.gov/r05/inyo/recreation/schulman-grove
+short: Hike among the oldest trees on Earth. Photograph the most ancient one you can find.
+description: >
+  Drive up into the White Mountains to a forest of twisted bristlecone pines,
+  some more than 4,000 years old. Walk the Methuselah Trail, a 4.5-mile loop
+  that passes the world's oldest known tree, which is kept unmarked on
+  purpose. Each hunt for the most ancient-looking tree you can find and
+  photograph it, then compare and guess its age. You're above 10,000 feet:
+  take it slow, bring water and layers, and stay on the trail.
+duration: all-day
+effort: moderate
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [hiking, trees, mountains, photography, high-altitude]

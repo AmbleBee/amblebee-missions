@@ -1,0 +1,33 @@
+number: 18
+name: Museum of Flight
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Museum of Flight
+  area: Boeing Field, Tukwila / South Seattle
+  address: 9404 E Marginal Way S, Seattle, WA 98108
+  coords: [47.51800, -122.29660]  # APPROX: set at the main entrance before publishing
+  website: https://www.museumofflight.org
+short: Walk under the planes at the Museum of Flight. Board a real jet and each pick the one you'd fly.
+description: >
+  Explore the Great Gallery full of hanging aircraft, then cross to the Aviation
+  Pavilion and walk aboard real planes, from a Concorde to an old Air Force One.
+  Each pick the aircraft you'd take on a dream trip and where you'd fly it. Don't
+  skip the space gallery and its shuttle trainer.
+for_kids:
+  short: Airplane hunt! Find each thing.
+  steps:
+    - A plane hanging from the ceiling
+    - A rocket
+    - A plane you can go inside
+    - A pilot seat
+    - A selfie with your favorite plane!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [aviation, space, museum, rainy-day, seattle]

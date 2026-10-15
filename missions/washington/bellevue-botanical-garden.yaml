@@ -1,0 +1,30 @@
+number: 33
+name: Bellevue Botanical Garden
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Bellevue Botanical Garden
+  area: Wilburton Hill Park, Bellevue
+  address: 12001 Main St, Bellevue, WA 98005
+  coords: [47.60800, -122.17800]  # APPROX: set at the visitor center before publishing
+short: Wander Bellevue Botanical Garden and cross the suspension bridge over the ravine.
+description: >
+  Wander the free garden's borders, the Japanese garden and the woodland trail,
+  and cross the suspension bridge over the ravine. Each find the bloom of the
+  day and photograph it. In winter, come back after dark for the garden's
+  holiday light show (that one is ticketed).
+for_kids:
+  short: Garden hunt! Find each thing.
+  steps:
+    - The wobbly bridge
+    - A flower bigger than your hand
+    - A bee or a butterfly
+    - A selfie in the garden!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [garden, flowers, calm, bellevue]

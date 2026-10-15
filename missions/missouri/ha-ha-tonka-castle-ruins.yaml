@@ -1,0 +1,34 @@
+number: 18
+name: Ha Ha Tonka Castle Ruins
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Ha Ha Tonka State Park (castle ruins parking)
+  area: Lake of the Ozarks, near Camdenton
+  coords: [37.97300, -92.76700]  # APPROX: set at the castle ruins lot before publishing
+  website: https://mostateparks.com/park/ha-ha-tonka-state-park
+short: Explore the stone castle ruins on a bluff over the Lake of the Ozarks. Then hike down to the spring.
+description: >
+  Walk out to the shell of a 1900s stone mansion that burned in 1942, standing
+  on a bluff high above the Lake of the Ozarks. Explore the ruins and the old
+  water tower, then take the boardwalk stairs down to the big blue spring and
+  the natural bridge. Each pick the room you'd have claimed if the castle were
+  still standing, and get a photo framed in one of the empty stone windows. The
+  stairs back up are a workout.
+for_kids:
+  short: Castle hunt! Find each thing.
+  steps:
+    - A castle window
+    - The tall stone tower
+    - The lake far below
+    - The blue spring
+    - A selfie in the castle!
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [ruins, history, hiking, views, ozarks]

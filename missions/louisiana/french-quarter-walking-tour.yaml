@@ -1,0 +1,26 @@
+# UPDATED 2026-10-14: now daytime history and architecture only.
+# Ghost tours (#11) and cocktail tours (#9) have their own missions.
+number: 2
+name: French Quarter History Walk
+mode: both
+who: [solo, friends, family]
+place:
+  name: Jackson Square
+  area: French Quarter, New Orleans
+  coords: [29.95740, -90.06290]  # APPROX: set at the square's main gate before publishing
+short: Take a daytime history walk through the French Quarter. Find your favorite iron balcony.
+description: >
+  Join a guided daytime walking tour of the French Quarter's history and
+  architecture. Many start around Jackson Square. Learn why the "French"
+  Quarter mostly looks Spanish, peek into hidden courtyards, and each pick
+  your favorite iron-lace balcony along the way. Remember the one story
+  you'll retell, and get a photo in front of St. Louis Cathedral.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [tickets]
+tags: [history, architecture, tour, walking, new-orleans]

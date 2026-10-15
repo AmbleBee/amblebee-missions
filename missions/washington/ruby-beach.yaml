@@ -1,0 +1,32 @@
+number: 20
+name: Ruby Beach
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Ruby Beach, Olympic National Park
+  area: Olympic Coast, south of Forks
+  coords: [47.71050, -124.41500]  # APPROX: set at the Ruby Beach parking lot before publishing
+short: Walk down to Ruby Beach. Climb over the driftwood and photograph the sea stacks.
+description: >
+  Take the short path down from Highway 101 to one of the wildest beaches on the
+  coast: giant bleached driftwood logs, sea stacks rising out of the surf, and
+  tide pools at low tide. Each build a tiny rock stack or find the best piece of
+  driftwood to sit on, and get a photo with Abbey Island behind you. Watch the
+  waves and never climb on logs in the surf; they roll.
+for_kids:
+  short: Beach hunt! Find each thing.
+  steps:
+    - A giant log
+    - A rock tower in the ocean
+    - A sea star or crab
+    - A smooth stone
+    - A selfie on the beach!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [beach, coast, sea-stacks, tide-pools, olympic]

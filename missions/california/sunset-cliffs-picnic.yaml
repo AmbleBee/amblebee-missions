@@ -1,0 +1,25 @@
+number: 3
+name: Sunset Cliffs Picnic
+mode: both
+who: [solo, friends, family]
+place:
+  name: Sunset Cliffs Natural Park (Ladera Street area)
+  area: Point Loma, San Diego
+  coords: [32.71680, -117.25460]  # APPROX: set at the Ladera St parking area before publishing
+short: Bring a picnic to Sunset Cliffs. Watch the sun drop into the waves, well back from the edge.
+description: >
+  Pack a homemade picnic, or on a Wednesday grab treats from the Ocean Beach
+  farmers market on Newport Avenue just up the road. Get to the cliffs about an
+  hour before sunset, since parking fills up. Find a spot well back from the edge
+  (the bluffs crumble and some sections are fenced off), spread out a blanket and
+  watch the sun sink into the Pacific. Bring a jacket for when the wind picks up,
+  and get one photo of the two of you in silhouette against the glow.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [conditions]
+tags: [picnic, sunset, ocean, cliffs, views, san-diego]

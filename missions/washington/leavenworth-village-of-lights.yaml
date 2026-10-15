@@ -1,0 +1,33 @@
+number: 26
+name: Leavenworth Village of Lights
+mode: both
+who: [friends, family, kids]
+place:
+  name: Front Street Park, Leavenworth
+  area: Downtown Leavenworth
+  coords: [47.59640, -120.66130]  # APPROX: set at Front Street Park before publishing
+short: Walk Leavenworth's Bavarian village lit with half a million lights. Mulled cider in hand.
+description: >
+  After dark, the whole Bavarian-style town glows with half a million lights.
+  Wander Front Street with something warm to drink, listen for carolers, and
+  each pick your favorite lit-up building. Christmastown festivities run from
+  Thanksgiving to Christmas Eve, but the lights stay on through February, and
+  January and February are far less crowded. December weekends get packed, so
+  go midweek if you can.
+for_kids:
+  short: Light hunt! Find each thing.
+  steps:
+    - The biggest Christmas tree
+    - A nutcracker
+    - The brightest building
+    - A yummy treat
+    - A selfie in the lights!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [fall, winter]
+time_of_day: night
+travel: day-trip
+check_ahead: [seasonal]
+tags: [christmas, lights, holiday, leavenworth]

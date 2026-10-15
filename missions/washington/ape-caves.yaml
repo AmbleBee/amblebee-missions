@@ -13,7 +13,7 @@ description: >
   means scrambling over rock piles and a short lava ledge.
 gear:
   - item: headlamps
-    rent: on-site
+    rent: on-site      # lanterns rent at the cave; bring two lights each anyway
 duration: half-day
 effort: moderate
 cost: $

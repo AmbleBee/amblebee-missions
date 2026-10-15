@@ -1,0 +1,31 @@
+number: 12
+name: Coeur d'Alene Lake
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Coeur d'Alene City Park and Independence Point
+  area: Downtown Coeur d'Alene
+  coords: [47.67400, -116.78600]  # APPROX: set at Independence Point before publishing
+short: Walk the floating boardwalk on Coeur d'Alene Lake. Take a lake cruise if you can.
+description: >
+  Walk the long floating boardwalk around the resort marina, one of the longest
+  in the world, then stroll the beach and park downtown. For the best view, take
+  a lake cruise out onto the water, which runs in the warmer months, and watch
+  for osprey and eagles. Get a photo of the two of you with the lake behind you
+  at sunset.
+for_kids:
+  short: Lake day! Find each thing.
+  steps:
+    - A boat
+    - The floating walkway
+    - A big bird
+    - A selfie by the lake!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [seasonal]
+tags: [lake, boat, sunset, walking, north-idaho]

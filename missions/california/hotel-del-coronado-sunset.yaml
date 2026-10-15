@@ -1,0 +1,24 @@
+number: 28
+name: Sunset at the Hotel del Coronado
+mode: date
+place:
+  name: Hotel del Coronado
+  area: Coronado, San Diego
+  address: 1500 Orange Ave, Coronado, CA 92118
+  coords: [32.68060, -117.17890]  # APPROX: set at the main entrance before publishing
+  website: https://www.hoteldel.com
+short: Walk the beach at the Hotel del Coronado at sunset, then toast with a drink at the Del.
+description: >
+  Dress up a little and head to the Del, the grand red-roofed hotel on the sand
+  since 1888. Walk the wide, flat beach out front as the sun sets, shoes in hand,
+  then wander the historic lobby and finish with a drink at the hotel. Get a
+  photo of the two of you on the beach with the red turrets glowing behind you.
+  In winter, the hotel's seaside ice rink makes it even better.
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: evening
+travel: local
+tags: [sunset, beach, history, drinks, dress-up, san-diego]

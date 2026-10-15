@@ -1,0 +1,26 @@
+number: 25
+name: Emerald Bay and Vikingsholm
+mode: both
+who: [solo, friends, family]
+place:
+  name: Vikingsholm parking lot, Emerald Bay State Park
+  area: Highway 89, Lake Tahoe west shore
+  coords: [38.95400, -120.11000]  # APPROX: set at the Vikingsholm lot off Highway 89 before publishing
+  website: https://www.sierrastateparks.org/vikingsholm
+short: Look down on Emerald Bay and its little island, then hike down to the lakeside Viking castle.
+description: >
+  Start at the overlook above Emerald Bay and photograph the green water with
+  tiny Fannette Island in the middle. Then take the steep one-mile trail down
+  to Vikingsholm, a 1920s Scandinavian-style mansion on the shore. In summer,
+  take the 30-minute tour inside. Picnic on the beach before the climb back up,
+  which is harder than the way down. The lot fills by mid-morning in summer,
+  and winter storms close the road around the bay.
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [lake, mountains, history, hiking, tahoe]

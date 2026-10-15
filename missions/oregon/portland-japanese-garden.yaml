@@ -1,0 +1,22 @@
+number: 23
+name: Portland Japanese Garden
+mode: date
+place:
+  name: Portland Japanese Garden
+  area: Washington Park, Portland
+  address: 611 SW Kingston Ave, Portland, OR 97205
+  coords: [45.51900, -122.70800]  # APPROX: set at the entrance before publishing
+short: Walk the Japanese Garden slowly. Find the quietest spot and sit there.
+description: >
+  Take your time through the ponds, moss and stone paths. Find the spot you both
+  think is the most peaceful and sit for a few minutes without talking. Then have
+  tea at the café.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [garden, calm, seasonal, portland]

@@ -1,0 +1,23 @@
+number: 18
+name: Petersen Rock Garden
+mode: both
+who: [solo, friends, family]
+place:
+  name: Petersen Rock Garden and Museum
+  area: Near Redmond
+  address: 7930 SW 77th St, Redmond, OR 97756
+  coords: [44.19600, -121.24700]  # APPROX: set at the entrance before publishing
+short: Explore the tiny stone castles and bridges. Find the strangest little building.
+description: >
+  Wander this odd, wonderful folk-art garden of miniature castles, bridges and
+  towers built from rocks by one farmer starting in the 1930s. Each find your
+  favorite tiny building and take a photo of it.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [roadside, quirky, folk-art]

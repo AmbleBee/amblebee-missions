@@ -1,0 +1,34 @@
+number: 15
+name: Petersen Automotive Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Petersen Automotive Museum
+  area: Museum Row, Miracle Mile, Los Angeles
+  address: 6060 Wilshire Blvd, Los Angeles, CA 90036
+  coords: [34.06240, -118.36110]  # APPROX: set at the entrance before publishing
+  website: https://www.petersen.org
+short: Tour the Petersen's car galleries and the Vault below. Each pick your dream garage of three.
+description: >
+  Explore three floors of car history and LA car culture, then add the Vault,
+  the basement full of rare classics, supercars, movie cars and head-of-state
+  limousines. Each pick the three cars for your dream garage as you go, then
+  compare lists over lunch. Take a photo with the wild red-and-steel building
+  outside.
+for_kids:
+  short: Car hunt! Find each car.
+  steps:
+    - A really old car
+    - A race car
+    - A car from a movie
+    - Your favorite color car
+    - A selfie with your favorite car!
+duration: half-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [cars, museum, rainy-day, los-angeles]

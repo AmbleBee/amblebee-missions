@@ -1,0 +1,21 @@
+number: 15
+name: International Rose Test Garden
+mode: date
+place:
+  name: International Rose Test Garden
+  area: Washington Park, Portland
+  address: 400 SW Kingston Ave, Portland, OR 97205
+  coords: [45.51900, -122.70600]  # APPROX: set at the garden entrance before publishing
+short: Wander the rose garden. Each pick the rose you'd name after the other.
+description: >
+  Stroll the terraces of thousands of roses with the city and, on a clear day,
+  Mount Hood behind them. Read the name tags and each find the rose you'd name
+  after the other. Best from late spring through summer.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer]
+time_of_day: any
+travel: local
+tags: [garden, flowers, views, portland]

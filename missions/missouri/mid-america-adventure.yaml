@@ -1,0 +1,34 @@
+number: 4
+name: Mid America Adventure
+mode: both
+who: [friends, family, kids]
+place:
+  name: Mid America Adventure (formerly Six Flags St. Louis)
+  area: Eureka, west of St. Louis
+  address: 4900 Six Flags Rd, Eureka, MO 63025  # verify: road name may change after the rebrand
+  coords: [38.51400, -90.67600]  # APPROX: set at the main gate before publishing
+  website: https://midamericaadventure.enchantedparks.com
+short: Ride the wooden coasters at Mid America Adventure. Each pick one ride the other must take.
+description: >
+  Spend the day at St. Louis's big theme park, open since 1971. Ride the classic
+  wooden coasters like the Screamin' Eagle and American Thunder, cool off on the
+  rapids, and each pick one ride the other has to go on with you. Get a photo of
+  the two of you right after the scariest drop. The park runs spring through
+  fall, with Halloween events in October.
+for_kids:
+  short: Theme park day! Find each thing.
+  steps:
+    - Your favorite ride
+    - A roller coaster
+    - The carousel
+    - A yummy treat
+    - A selfie with your grown-up!
+duration: all-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets, seasonal]
+tags: [theme-park, rides, roller-coasters, playful, st-louis]

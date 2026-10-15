@@ -1,18 +1,20 @@
+# UPDATED: replaces the original #16 with the same id; keeps number 16
 number: 16
 name: Sunrise Mission
-mode: adventure
+mode: both
 who: [solo, friends, family]
-short: Be somewhere with a view before sunrise. Bring coffee.
+short: Get up before dawn, bring coffee in a thermos, and watch the sun rise somewhere with a view.
 description: >
-  Set an early alarm, grab coffee, and get to a hill, viewpoint, or open
-  spot facing east before the sun comes up. Watch the whole thing, from
-  the first light to the sun clearing the horizon.
+  Set an early alarm, fill a thermos with coffee or cocoa, and head out in the
+  dark to a spot facing east: a hilltop, a lake, a beach, or just an open field.
+  Get there 20 minutes before sunrise, since the sky starts changing well before
+  the sun shows up. Watch the whole thing without phones, then get a photo of
+  the two of you in the first light. Breakfast afterward is mandatory.
 duration: short
-effort: moderate
+effort: easy
 cost: free
 setting: outdoor
 season: any
 time_of_day: morning
 travel: local
-check_ahead: [conditions]
-tags: [sunrise, early, nature, outdoors]
+tags: [sunrise, views, early, coffee]

@@ -1,0 +1,34 @@
+number: 17
+name: Knott's Berry Farm
+mode: both
+who: [friends, family, kids]
+place:
+  name: Knott's Berry Farm
+  area: Buena Park
+  address: 8039 Beach Blvd, Buena Park, CA 90620
+  coords: [33.84430, -117.99890]  # APPROX: set at the main entrance before publishing
+  website: https://www.knotts.com
+short: Ride GhostRider at Knott's, explore the old ghost town, and split a boysenberry pie.
+description: >
+  Spend the day at the park that started as a berry stand. Ride the GhostRider
+  wooden coaster, wander the old Ghost Town, pan for gold, and each pick one ride
+  the other has to go on with you. Finish with a slice of boysenberry pie and a
+  photo in the Ghost Town. Prices change by date, so buy online and pick a
+  quieter weekday.
+for_kids:
+  short: Theme park day! Find each thing.
+  steps:
+    - Your favorite ride
+    - The old ghost town
+    - Something gold
+    - A yummy treat
+    - A selfie with your grown-up!
+duration: all-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [theme-park, rides, playful, food, splurge]

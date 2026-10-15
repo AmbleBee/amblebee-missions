@@ -1,0 +1,31 @@
+number: 8
+name: Lava Hot Springs
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Lava Hot Springs Hot Pools
+  area: Lava Hot Springs
+  coords: [42.61900, -112.00900]  # APPROX: set at the hot pools entrance before publishing
+short: Soak in the natural hot pools at Lava Hot Springs. Work up to the hottest one.
+description: >
+  Soak in the town's natural mineral hot pools, each a different temperature.
+  Start in the warm one and dare each other up to the hottest pool you can
+  stand. Go on a cold winter evening, when steam rises off the water. In summer,
+  add a tube float down the Portneuf River through town. Bring a towel and
+  water; stay hydrated in the heat.
+for_kids:
+  short: Hot pool day! Find each thing.
+  steps:
+    - Steam on the water
+    - The warmest pool
+    - A rock wall
+    - A selfie in the pool!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: any
+travel: day-trip
+check_ahead: [hours]
+tags: [hot-springs, relaxing, winter, small-town]

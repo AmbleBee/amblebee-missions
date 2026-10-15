@@ -1,0 +1,31 @@
+number: 19
+name: Elephant Rocks
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Elephant Rocks State Park
+  area: Belleview, St. Francois Mountains
+  coords: [37.65300, -90.68800]  # APPROX: set at the main parking lot before publishing
+  website: https://mostateparks.com/park/elephant-rocks-state-park
+short: Climb among giant pink granite boulders lined up like a herd of elephants. Name the biggest one.
+description: >
+  Walk the short paved Braille Trail loop to a "herd" of huge pink granite
+  boulders, some as big as a house, lined up like circus elephants. Scramble
+  around the smaller rocks, find the old quarry pond, and each name the biggest
+  elephant. Get a photo of the two of you standing on top of one. The rocks get
+  slick when wet, so watch your footing and keep off the steep edges.
+for_kids:
+  short: Rock elephants! Find each thing.
+  steps:
+    - The biggest rock elephant
+    - A rock you can climb
+    - The quarry pond
+    - A selfie on top of a rock!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [rocks, climbing, geology, ozarks]

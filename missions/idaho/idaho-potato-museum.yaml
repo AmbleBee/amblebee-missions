@@ -1,0 +1,33 @@
+number: 7
+name: Idaho Potato Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Idaho Potato Museum
+  area: Downtown Blackfoot
+  address: 130 NW Main St, Blackfoot, ID 83221
+  coords: [43.19100, -112.34500]  # APPROX: set at the entrance before publishing
+  website: https://www.idahopotatomuseum.com
+short: Learn everything about potatoes in Blackfoot. Grab a free tater if you're from out of state.
+description: >
+  Tour a museum devoted entirely to the potato, in an old train depot: the
+  history of Idaho spuds, odd old farm tools, and the largest potato crisp
+  Pringles ever made. Each find the weirdest potato fact and quiz the other.
+  Out-of-staters get a free potato in the gift shop with admission. Get a photo
+  with the giant potato out front, then have a baked potato at the café.
+for_kids:
+  short: Potato hunt! Find each thing.
+  steps:
+    - The giant potato
+    - A potato chip
+    - An old farm tool
+    - A selfie with a potato!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [quirky, roadside, food, museum, rainy-day]

@@ -1,0 +1,32 @@
+number: 32
+name: Diablo Lake Vista Point
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Diablo Lake Overlook, State Route 20
+  area: North Cascades Highway
+  coords: [48.71200, -121.10000]  # APPROX: set at the overlook parking lot before publishing
+short: Drive the North Cascades Highway to Diablo Lake. Photograph that unreal turquoise water.
+description: >
+  Drive the North Cascades Highway up the Skagit River into the mountains and
+  pull into the Diablo Lake overlook, where glacier silt turns the lake an
+  impossible turquoise. Agree on one word for the color, then get a photo of the
+  two of you with the lake and peaks behind you. Stop at the Gorge Creek Falls
+  pullout on the way. The highway beyond closes in winter and rockfall has
+  closed the road here before, so check WSDOT first.
+for_kids:
+  short: Mountain drive! Find each thing.
+  steps:
+    - The blue-green lake
+    - A snowy mountain
+    - A waterfall
+    - A selfie at the lookout!
+duration: all-day
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [lake, mountains, scenic-drive, views, north-cascades]

@@ -1,0 +1,34 @@
+number: 6
+name: Forest Park Free Day
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Forest Park (Art Hill and the Grand Basin)
+  area: Forest Park, St. Louis
+  coords: [38.63860, -90.29480]  # APPROX: set at the top of Art Hill before publishing
+  website: https://www.forestparkforever.org
+short: Spend a free day in Forest Park. Zoo, art museum, then the view from Art Hill.
+description: >
+  Forest Park is bigger than Central Park, and its big museums are free. Pick
+  two: the Saint Louis Zoo, the Art Museum on top of Art Hill, the Science
+  Center, or the History Museum. Then sit at the top of Art Hill and look down
+  over the Grand Basin's fountains, and each say which stop was your favorite.
+  In warm months, rent a paddleboat at the Boathouse. In winter, Art Hill is
+  the city's sledding hill.
+for_kids:
+  short: Park day! Find each thing.
+  steps:
+    - An animal at the zoo
+    - A statue on a horse
+    - The fountains
+    - A duck on the water
+    - A selfie on the big hill!
+duration: all-day
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [park, museum, zoo, free, st-louis]

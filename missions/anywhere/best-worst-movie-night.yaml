@@ -1,0 +1,19 @@
+number: 32
+name: Best Worst Movie Night
+mode: both
+who: [friends, family]
+short: Find a famously bad movie neither of you has seen. Make popcorn and enjoy every terrible minute.
+description: >
+  Hunt down a movie famous for being so bad it's good, one neither of you has
+  ever seen. Each pitch a candidate and vote. Make popcorn, dim the lights, and
+  keep a running list of the best terrible lines, plot holes and worst special
+  effects. Take a photo of the two of you with your best "what did we just
+  watch" faces, then each rate it out of 10 for how good the bad was.
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: night
+travel: local
+tags: [at-home, movies, cozy, playful, rainy-day]

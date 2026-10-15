@@ -1,0 +1,34 @@
+number: 24
+name: Joshua Tree Boulders and Stars
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Hidden Valley Picnic Area, Joshua Tree National Park
+  area: Park Boulevard, Joshua Tree National Park
+  coords: [34.01200, -116.16800]  # APPROX: set at the Hidden Valley parking lot before publishing
+  website: https://www.nps.gov/jotr/planyourvisit/fees.htm
+short: Explore Joshua Tree's boulders and Skull Rock in the afternoon. Stay after dark for the stars.
+description: >
+  Walk the Hidden Valley loop through the giant boulder piles and spiky Joshua
+  trees, then stop at Skull Rock for a photo. Each find the weirdest Joshua tree
+  you can. Stay through sunset and wait for full dark: it's a dark sky park,
+  and on a moonless night the Milky Way is incredible. There's no food or gas
+  in the park, so bring plenty of water, snacks and warm layers. Skip summer
+  afternoons; the heat is dangerous.
+for_kids:
+  short: Desert hunt! Find each thing.
+  steps:
+    - A funny-shaped Joshua tree
+    - The skull rock
+    - A giant boulder
+    - A lizard
+    - A selfie under the stars!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: [fall, winter, spring]
+time_of_day: evening
+travel: day-trip
+check_ahead: [conditions]
+tags: [desert, national-park, stars, rocks, night]

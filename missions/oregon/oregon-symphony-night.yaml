@@ -1,0 +1,24 @@
+number: 30
+name: Oregon Symphony Night
+mode: date
+place:
+  name: Arlene Schnitzer Concert Hall (the Schnitz)
+  area: Downtown Portland
+  address: 1037 SW Broadway, Portland, OR 97205
+  coords: [45.51720, -122.68150]  # APPROX: set at the entrance before publishing
+  website: https://www.orsymphony.org/plan-your-visit
+short: Dress up fancy and see the Oregon Symphony. Photo under the Portland sign.
+description: >
+  Pick a concert, get dressed up properly, and make a night of it: dinner or a
+  drink downtown first, then the Oregon Symphony at the Schnitz. Take a photo of
+  the two of you under the big Portland marquee, and each pick your favorite
+  piece on the way home.
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [music, dress-up, fancy, portland]

@@ -1,0 +1,32 @@
+number: 24
+name: Manito Park
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Manito Park
+  area: South Hill, Spokane
+  address: 1702 S Grand Blvd, Spokane, WA 99203  # verify against the city's park page
+  coords: [47.64050, -117.41200]  # APPROX: set at the Gaiser Conservatory before publishing
+short: Wander Manito Park's gardens. Each crown your favorite and warm up in the conservatory.
+description: >
+  Spend a slow afternoon in Spokane's favorite park: the formal Duncan Garden,
+  the rose garden, the Japanese garden and the Gaiser Conservatory's tropical
+  greenhouse, which is warm even in winter. Each crown one garden the winner,
+  then feed the ducks at Mirror Pond. The gardens are free.
+for_kids:
+  short: Garden hunt! Find each thing.
+  steps:
+    - A fountain
+    - A duck
+    - A giant tropical leaf
+    - Your favorite flower
+    - A selfie in the garden!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, seasonal]
+tags: [garden, flowers, park, spokane]

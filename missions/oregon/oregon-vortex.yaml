@@ -1,0 +1,23 @@
+number: 16
+name: Oregon Vortex
+mode: both
+who: [solo, friends, family]
+place:
+  name: The Oregon Vortex and House of Mystery
+  area: Gold Hill
+  address: 4303 Sardine Creek L Fork Rd, Gold Hill, OR 97525
+  coords: [42.49300, -123.08500]  # APPROX: set at the entrance before publishing
+short: Visit the Oregon Vortex. Swap places on the board and see who "shrinks."
+description: >
+  Take the tour of this classic roadside mystery spot, where the guides show you
+  how people seem to grow and shrink. Swap places on the level board and take a
+  photo of each of you. Decide afterward whether you believe it.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets, seasonal]
+tags: [roadside, quirky, mystery]

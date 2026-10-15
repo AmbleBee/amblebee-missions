@@ -1,0 +1,33 @@
+number: 3
+name: Craters of the Moon
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Craters of the Moon visitor center
+  area: US-20/26/93, near Arco
+  coords: [43.46100, -113.56300]  # APPROX: set at the visitor center before publishing
+  website: https://www.nps.gov/crmo
+short: Climb a cinder cone and walk into a lava tube at Craters of the Moon. Bring a flashlight.
+description: >
+  Drive the loop road through a black, otherworldly lava field, climb Inferno
+  Cone for the view over the volcanic plain, then walk into the lava tubes at
+  the Caves Area. Get your free cave permit at the visitor center first and
+  bring a good flashlight each. Each find the strangest lava shape you can and
+  photograph it. Summer afternoons on black rock get very hot; go early.
+for_kids:
+  short: Moon hunt! Find each thing.
+  steps:
+    - A black lava rock
+    - The top of a cinder hill
+    - A cave
+    - A lizard or chipmunk
+    - A selfie on the moon!
+duration: half-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: morning
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [volcano, caves, national-park, geology]

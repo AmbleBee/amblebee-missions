@@ -1,0 +1,34 @@
+number: 30
+name: Cape Flattery
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Cape Flattery trailhead, Makah Reservation
+  area: Near Neah Bay, northwest tip of the Olympic Peninsula
+  coords: [48.38450, -124.71500]  # APPROX: set at the trailhead parking lot before publishing
+  website: https://makah.com/attractions/recreation-permits/
+short: Hike the boardwalk to the far northwest tip of the lower 48. Look for whales and sea caves.
+description: >
+  Drive out to Neah Bay and walk the short boardwalk trail through the forest to
+  the cliffs at the most northwestern point of the lower 48. From the viewing
+  decks, look down into sea caves, out to Tatoosh Island and its lighthouse, and
+  watch for whales, sea lions and seabirds. This is Makah land: buy a Makah
+  Recreation Pass in Neah Bay first, stay on the trail, and stop by the Makah
+  Museum in town.
+for_kids:
+  short: Edge of the map! Find each thing.
+  steps:
+    - The wooden boardwalk
+    - The lighthouse island
+    - A sea cave
+    - A bird or a whale
+    - A selfie at the edge!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [coast, hiking, views, wildlife, olympic]

@@ -5,7 +5,7 @@ place:
   name: Powell's City of Books
   area: Pearl District, Portland
   address: 1005 W Burnside St, Portland, OR 97209
-  coords: [45.52310, -122.68130]  # APPROX
+  coords: [45.52310, -122.68130]  # APPROX: set at the entrance before publishing
 short: Split up in Powell's. Each pick the other a book under $10.
 description: >
   Grab a store map at the entrance, split up, and each pick a book for the

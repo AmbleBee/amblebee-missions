@@ -1,0 +1,33 @@
+number: 21
+name: Yosemite Valley
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Tunnel View, Yosemite National Park
+  area: Yosemite Valley, Yosemite National Park
+  coords: [37.71560, -119.67700]  # APPROX: set at the Tunnel View parking lot before publishing
+  website: https://www.nps.gov/yose/planyourvisit/index.htm
+short: Take in Tunnel View, then walk to the base of Lower Yosemite Fall. Photo with El Capitan.
+description: >
+  Stop at Tunnel View for the famous first look down Yosemite Valley: El
+  Capitan, Bridalveil Fall and Half Dome all in one frame. Get a photo of the
+  two of you there, then drive into the valley and walk the easy loop to the
+  base of Lower Yosemite Fall. Spring has the most water; by late summer the
+  falls can be a trickle. Leave early to beat the lines and the parking crunch,
+  and bring a card, since the entrance stations are cashless.
+for_kids:
+  short: Big valley hunt! Find each thing.
+  steps:
+    - The giant rock wall
+    - A waterfall
+    - A squirrel or a deer
+    - A selfie at the lookout!
+duration: all-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [national-park, waterfall, mountains, views, hiking]

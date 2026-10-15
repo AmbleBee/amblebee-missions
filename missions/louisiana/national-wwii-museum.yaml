@@ -1,0 +1,27 @@
+number: 6
+name: The National WWII Museum
+mode: both
+who: [solo, friends, family]
+place:
+  name: The National WWII Museum
+  area: Warehouse District, New Orleans
+  address: 945 Magazine St, New Orleans, LA 70130
+  coords: [29.94310, -90.07050]  # APPROX: set at the main entrance before publishing
+  website: https://www.nationalww2museum.org
+short: Spend a day at the National WWII Museum. Each follow one real person's story through the war.
+description: >
+  Give yourselves most of a day for one of the best history museums in the
+  country. At the start, each get a dog tag card linking you to a real person
+  who lived through the war, and follow their story through the galleries.
+  Walk under the planes hanging in the big pavilion, and add the 4D film Beyond
+  All Boundaries if you can. Afterward, swap your person's story over lunch.
+  It's heavy in places; take breaks.
+duration: all-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [history, museum, aviation, rainy-day, new-orleans]

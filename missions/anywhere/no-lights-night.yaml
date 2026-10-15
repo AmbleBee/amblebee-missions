@@ -1,0 +1,19 @@
+number: 28
+name: No Lights Night
+mode: date
+short: Turn off every screen and light, light candles, and spend the evening by candlelight.
+description: >
+  Pick a night, put both phones in a drawer, and turn off the TV and every
+  light in the house. Light a few candles (or lanterns) and spend the evening
+  together by candlelight: play a board game or cards, read to each other, or
+  just talk. Make a simple snack before the lights go out. The one
+  exception is the camera: take one photo of the two of you in the candlelight.
+  Never leave candles burning unattended.
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: night
+travel: local
+tags: [at-home, cozy, unplugged, games, books, rainy-day]

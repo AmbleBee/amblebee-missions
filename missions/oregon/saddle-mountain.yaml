@@ -1,0 +1,23 @@
+number: 37
+name: Saddle Mountain
+mode: both
+who: [solo, friends]
+place:
+  name: Saddle Mountain State Natural Area trailhead
+  area: Northern Coast Range, near Seaside
+  coords: [45.96250, -123.68900]  # APPROX: set at the trailhead before publishing
+short: Climb Saddle Mountain to the summit. On a clear day you can see the ocean.
+description: >
+  A steep climb through forest and up open rocky slopes to one of the best views
+  in northwest Oregon: the Pacific on one side and Cascade volcanoes on the
+  other. Spring brings wildflowers. Wear good boots; the top section is steep
+  and slick when wet. The park has had closures for repairs, so check first.
+duration: half-day
+effort: hard
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, summit, views, wildflowers]

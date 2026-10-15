@@ -1,0 +1,30 @@
+number: 20
+name: Rice NW Museum of Rocks and Minerals
+mode: both
+who: [friends, family, kids]
+place:
+  name: Rice Northwest Museum of Rocks and Minerals
+  area: Hillsboro
+  address: 26385 NW Groveland Dr, Hillsboro, OR 97124
+  coords: [45.55270, -122.94160]  # APPROX: set at the entrance before publishing
+short: Tour the rock museum. Each pick the crystal you'd keep if you could.
+description: >
+  Explore the crystals, meteorites, fossils and the glowing fluorescent mineral
+  room. Each pick the one specimen you'd take home if you were allowed, and
+  photograph it.
+for_kids:
+  short: Rock hunt! Find each treasure.
+  steps:
+    - A sparkly crystal
+    - A rock from space
+    - A rock that glows
+    - Your favorite rock!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, tickets]
+tags: [museum, geology, rainy-day]

@@ -1,0 +1,22 @@
+number: 6
+name: Gas Works Park
+mode: both
+who: [solo, friends, family]
+place:
+  name: Gas Works Park
+  area: Wallingford, Seattle
+  address: 2101 N Northlake Way, Seattle, WA 98103
+  coords: [47.64560, -122.33440]  # APPROX: set at the park entrance before publishing
+short: Picnic by the rusted towers at Gas Works Park. Climb the hill for the skyline.
+description: >
+  Explore the old rusted gas plant towers, then climb Kite Hill for the view
+  across Lake Union to downtown. Bring a blanket and a snack, watch the
+  seaplanes take off, and stay for sunset if you can.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+tags: [park, views, picnic, seattle]

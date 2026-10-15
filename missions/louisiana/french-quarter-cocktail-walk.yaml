@@ -1,0 +1,23 @@
+number: 9
+name: French Quarter Cocktail Walking Tour
+mode: date
+place:
+  name: Jackson Square (most cocktail tours start nearby)
+  area: French Quarter, New Orleans
+  coords: [29.95740, -90.06290]  # APPROX: pick one tour operator's meeting point before publishing
+short: Take a guided cocktail walk through the French Quarter. Taste the Sazerac where it began.
+description: >
+  Join a guided cocktail tour through the Quarter's historic bars and learn the
+  stories behind the drinks New Orleans gave the world: the Sazerac, the
+  Ramos Gin Fizz, the Hurricane. Each pick your favorite pour of the night and
+  the best story you heard. Get a photo of the two of you clinking glasses at
+  the last stop. Eat first, pace yourselves, and take a ride home.
+duration: short
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [cocktails, history, tour, walking, new-orleans]

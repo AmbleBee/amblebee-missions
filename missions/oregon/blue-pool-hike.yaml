@@ -1,0 +1,23 @@
+number: 3
+name: Tamolitch Blue Pool Hike
+mode: both
+who: [solo, friends, family]
+place:
+  name: Tamolitch Blue Pool trailhead
+  area: McKenzie River, Willamette National Forest
+  coords: [44.38800, -122.00000]  # APPROX: set at the trailhead before publishing
+short: Hike the McKenzie River Trail to the impossibly blue pool. Photo from the rim.
+description: >
+  Follow the McKenzie River Trail through old lava flows and mossy forest to
+  Tamolitch Blue Pool, where the river comes up from underground. Find a spot on
+  the rim, eat a snack and take in the color. The water is ice cold, so enjoy it
+  from above.
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, water, forest]

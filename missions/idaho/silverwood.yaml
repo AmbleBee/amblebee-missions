@@ -1,0 +1,32 @@
+number: 6
+name: Silverwood Theme Park
+mode: both
+who: [friends, family, kids]
+place:
+  name: Silverwood Theme Park
+  area: Athol, north of Coeur d'Alene
+  coords: [47.90700, -116.70700]  # APPROX: set at the main entrance before publishing
+  website: https://www.silverwoodthemepark.com
+short: Ride the wooden coasters at Silverwood. Each pick one ride the other has to go on.
+description: >
+  Spend the day at the Northwest's biggest theme park. Ride the wooden coasters,
+  cool off at the water park next door, and each pick one ride the other has to
+  go on with you. Get a photo right after the scariest drop. Open in summer,
+  with weekend Halloween nights in the fall.
+for_kids:
+  short: Theme park day! Find each thing.
+  steps:
+    - Your favorite ride
+    - A roller coaster
+    - The old steam train
+    - A yummy treat
+    - A selfie with your grown-up!
+duration: all-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets, seasonal]
+tags: [theme-park, rides, roller-coasters, playful, north-idaho]

@@ -1,0 +1,33 @@
+number: 29
+name: Woodland Park Zoo
+mode: both
+who: [friends, family, kids]
+place:
+  name: Woodland Park Zoo
+  area: Phinney Ridge, Seattle
+  address: 5500 Phinney Ave N, Seattle, WA 98103
+  coords: [47.66850, -122.35050]  # APPROX: set at the West Entrance before publishing
+  website: https://www.zoo.org
+short: Visit Woodland Park Zoo. Each find the animal most like the other.
+description: >
+  Spend a day wandering the zoo's forests, savanna and tropical rain forest.
+  Watch the grizzlies and the snow leopards, and each find the animal that's
+  most like the other person. Explain your pick over a snack, then walk the rose
+  garden by the entrance on the way out.
+for_kids:
+  short: Zoo hunt! Find each animal.
+  steps:
+    - A bear
+    - A big cat
+    - Something with feathers
+    - An animal that is sleeping
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [animals, zoo, seattle]

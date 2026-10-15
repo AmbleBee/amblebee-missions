@@ -1,0 +1,20 @@
+number: 29
+name: Cook Something New
+mode: both
+who: [friends, family]
+short: Pick a dish you've never made, shop for it together, cook it with good music and rate it.
+description: >
+  Choose a meal neither of you would ever normally make: a cuisine you've never
+  cooked, a recipe that looks a little too ambitious, or a dish from a place you
+  want to visit. Shop for the ingredients together, put on a playlist you both
+  love, and cook it side by side. Plate it like a restaurant, take a photo of
+  the finished dish, then each rate it out of 10 and decide whether it earns a
+  spot in your regular rotation.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+tags: [at-home, cooking, food, music, rainy-day]

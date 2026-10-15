@@ -1,0 +1,33 @@
+number: 25
+name: Leavenworth Reindeer Farm
+mode: both
+who: [friends, family, kids]
+place:
+  name: Leavenworth Reindeer Farm
+  area: Chumstick Highway, just outside Leavenworth
+  address: 10395 Chumstick Hwy, Leavenworth, WA 98826
+  coords: [47.60280, -120.65250]  # APPROX: set at the farm entrance before publishing
+  website: https://leavenworthreindeer.com
+short: Step inside the reindeer pen and hand-feed the herd. Then hot cocoa in Leavenworth.
+description: >
+  Take the farm tour, learn about the reindeer, then step right inside the
+  enclosure and feed them by hand. Get a photo with the biggest antlers you can
+  find. In November and December Santa visits every tour and tickets sell out
+  months ahead; January and February are snowy and quieter. Book ahead, wear
+  clean boots, and note the farm closes in March.
+for_kids:
+  short: Reindeer farm! Find each thing.
+  steps:
+    - A reindeer
+    - Big antlers
+    - You feeding a reindeer!
+    - A selfie with the herd!
+duration: short
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [animals, farm, christmas, leavenworth]

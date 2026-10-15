@@ -1,0 +1,23 @@
+number: 27
+name: Napa Valley Wine Tasting
+mode: date
+place:
+  name: Downtown Napa
+  area: Napa, Napa Valley
+  coords: [38.29890, -122.28560]  # APPROX: set on First Street downtown before publishing
+short: Taste your way through Napa. Each pick your favorite pour and bring one bottle home.
+description: >
+  Spend a day in Napa Valley, starting with the tasting rooms you can walk
+  between downtown, then a winery or two out among the vineyards. Each pick your
+  favorite pour of the day, then buy one bottle together to save for a special
+  occasion. Most wineries want reservations and tasting fees add up fast, so
+  plan two or three stops, not six. Pick a designated driver or book a tour.
+duration: all-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, hours]
+tags: [wine, food, views, splurge]

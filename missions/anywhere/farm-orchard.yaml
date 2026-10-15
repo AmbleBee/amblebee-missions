@@ -3,9 +3,9 @@ name: Farm or Orchard Visit
 mode: date
 short: Visit a local farm or orchard. Pick something fresh to take home.
 description: >
-  Find a local farm, orchard, or u-pick nearby. Wander the fields or rows,
-  pick some fruit or produce if they allow it, and bring something home to
-  eat or cook with together.
+  Find a local farm, orchard, or u-pick nearby. Wander the fields or
+  rows, pick some fruit or produce if they allow it, and bring
+  something home to eat or cook with together.
 duration: half-day
 effort: easy
 cost: $

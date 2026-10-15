@@ -4,8 +4,8 @@ mode: both
 who: [solo, friends, family, kids]
 short: A walk with a photo prompt at every step. Hold the shutter to move on.
 description: >
-  Walk somewhere close to home and follow the prompts on the camera. Take
-  as many or as few photos at each step as you like.
+  Walk somewhere close to home and follow the prompts on the camera.
+  Take as many or as few photos at each step as you like.
 steps:
   - Find a door you'd love to own.
   - Something that made you laugh.

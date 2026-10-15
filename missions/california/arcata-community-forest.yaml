@@ -1,0 +1,32 @@
+number: 20
+name: Arcata Community Forest Redwoods
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Redwood Park (Arcata Community Forest trailhead)
+  area: East Arcata
+  coords: [40.87400, -124.07300]  # APPROX: set at the Redwood Park parking lot before publishing
+short: Hike into the redwoods from Arcata's Redwood Park. Find the biggest stump and stand inside it.
+description: >
+  Start at Redwood Park on the east edge of Arcata and walk into the town's
+  community forest, the first city-owned forest in California. The short
+  nature trail winds through a fern glade with markers about the old logging
+  days, and more than ten miles of trails go deeper into the redwoods. Find the
+  biggest old stump you can and get a photo of the two of you inside or in
+  front of it. Then picnic back at the park.
+for_kids:
+  short: Forest hunt! Find each thing.
+  steps:
+    - A giant redwood
+    - A big fern
+    - An old stump
+    - A banana slug
+    - A selfie with the tallest tree!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [redwoods, forest, hiking, humboldt]

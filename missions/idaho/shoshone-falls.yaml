@@ -1,0 +1,31 @@
+number: 2
+name: Shoshone Falls
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Shoshone Falls Park
+  area: Snake River Canyon, Twin Falls
+  coords: [42.59380, -114.40080]  # APPROX: set at the main overlook parking before publishing
+short: Watch Shoshone Falls thunder into the Snake River Canyon. Spring has the most water.
+description: >
+  Drive down into the Snake River Canyon to the "Niagara of the West," a wide
+  curtain of water that's actually taller than Niagara. Walk the overlooks and
+  find the angle where the mist makes a rainbow. Come in spring when the river
+  runs high; by late summer much of the water is diverted for farms and the
+  falls can shrink to a trickle. Picnic at Dierkes Lake nearby.
+for_kids:
+  short: Waterfall hunt! Find each thing.
+  steps:
+    - The giant waterfall
+    - A rainbow in the mist
+    - The deep canyon
+    - A selfie at the overlook!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [waterfall, canyon, views, twin-falls]

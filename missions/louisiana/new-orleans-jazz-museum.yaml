@@ -1,0 +1,26 @@
+number: 7
+name: New Orleans Jazz Museum
+mode: both
+who: [solo, friends, family]
+place:
+  name: New Orleans Jazz Museum at the Old U.S. Mint
+  area: Esplanade Ave, edge of the French Quarter
+  address: 400 Esplanade Ave, New Orleans, LA 70116
+  coords: [29.96130, -90.05740]  # APPROX: set at the entrance before publishing
+  website: https://nolajazzmuseum.org
+short: Explore jazz history in the Old U.S. Mint. Then walk to Frenchmen Street for the real thing.
+description: >
+  Explore the story of jazz in the city that invented it, inside the old
+  granite U.S. Mint: instruments, recordings and the musicians who made New
+  Orleans sound like New Orleans. Each pick a song from the exhibits you've
+  never heard before. Check the calendar for a free concert upstairs, then walk
+  two blocks to Frenchmen Street and follow the best live band you hear.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [jazz, music, history, museum, new-orleans]

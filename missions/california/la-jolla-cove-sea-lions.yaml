@@ -1,0 +1,33 @@
+number: 11
+name: La Jolla Cove Sea Lions
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: La Jolla Cove
+  area: La Jolla, San Diego
+  address: 1100 Coast Blvd, La Jolla, CA 92037  # verify against the city's park page
+  coords: [32.85030, -117.27170]  # APPROX: set at the cove overlook before publishing
+short: Watch the sea lions at La Jolla Cove from the boardwalk. Count them and find a pup.
+description: >
+  Walk the coastal path above La Jolla Cove and watch the sea lions sprawled on
+  the rocks, barking, napping and squabbling. Count how many you can see, try to
+  spot a pup, and each pick the laziest one. Watch from the boardwalk and stay
+  well back; they're wild, protected, and the big males do charge people who
+  get close. No selfies with them. Then walk on to the Children's Pool to see
+  the harbor seals.
+for_kids:
+  short: Sea lion watch! Find each thing.
+  steps:
+    - A sleeping sea lion
+    - A baby sea lion
+    - A sea lion in the water
+    - A bird on the rocks
+    - A selfie by the ocean!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [wildlife, ocean, sea-lions, coast, san-diego]

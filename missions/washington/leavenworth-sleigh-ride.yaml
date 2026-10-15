@@ -1,0 +1,33 @@
+number: 34
+name: Leavenworth Sleigh Ride
+mode: both
+who: [friends, family, kids]
+place:
+  name: Red Tail Canyon Farm
+  area: Freund Canyon, just outside Leavenworth
+  address: 11780 Freund Canyon Rd, Leavenworth, WA 98826
+  coords: [47.64000, -120.66500]  # APPROX: set at the farm entrance before publishing
+short: Bundle up under wool blankets for a horse-drawn sleigh ride through the snowy fields.
+description: >
+  Ride a horse-drawn sleigh pulled by big draft horses through snowy woods and
+  fields outside Leavenworth, tucked under blankets, then warm up by the fire
+  with hot cider. Get a photo of the two of you in the sleigh with the horses.
+  Rides depend on snow, and December dates sell out weeks ahead, so book early.
+  Finish in town under the lights.
+for_kids:
+  short: Sleigh ride! Find each thing.
+  steps:
+    - The big horses
+    - The sleigh
+    - Snow on the trees
+    - A cozy blanket
+    - A selfie in the sleigh!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [winter]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, seasonal, conditions]
+tags: [winter, horses, snow, christmas, leavenworth]

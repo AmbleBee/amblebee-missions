@@ -1,0 +1,24 @@
+number: 10
+name: Jackson Square Murder Mystery Hunt
+mode: both
+who: [friends, family]
+place:
+  name: Jackson Square
+  area: French Quarter, New Orleans
+  coords: [29.95740, -90.06290]  # APPROX: pick one hunt's start point before publishing
+short: Solve a self-guided murder mystery around Jackson Square. Clues, suspects and a race to the answer.
+description: >
+  Book a self-guided mystery hunt that turns the streets around Jackson Square
+  into a crime scene. Follow clues on your phone from corner to corner, size up
+  the suspects, and each make your guess before the big reveal. Loser buys
+  the beignets. It takes about two hours of easy walking. Get a photo of the
+  two of you looking suspicious in front of the cathedral.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [tickets]
+tags: [puzzles, mystery, walking, playful, new-orleans]

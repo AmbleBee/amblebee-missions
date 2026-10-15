@@ -1,0 +1,22 @@
+number: 29
+name: Mount Hood from Trillium Lake
+mode: both
+who: [solo, friends, family]
+place:
+  name: Trillium Lake Day Use Area
+  area: Mount Hood National Forest
+  coords: [45.27000, -121.73700]  # APPROX: set at the day-use parking before publishing
+short: Walk around Trillium Lake. Catch Mount Hood reflected in the water.
+description: >
+  Walk the easy loop around Trillium Lake and find the spot where Mount Hood
+  reflects in the water. Calm mornings give the best reflection. In winter the
+  road closes and it becomes a snowshoe trip.
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [lake, mountain, views]

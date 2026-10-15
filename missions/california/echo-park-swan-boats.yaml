@@ -1,0 +1,33 @@
+number: 1
+name: Echo Park Swan Boats
+mode: both
+who: [friends, family, kids]
+place:
+  name: Echo Park Lake boathouse (Wheel Fun Rentals dock)
+  area: Echo Park, Los Angeles
+  address: 751 Echo Park Ave, Los Angeles, CA 90026
+  coords: [34.07250, -118.26050]  # APPROX: set at the boathouse dock before publishing
+short: Rent a swan boat on Echo Park Lake. Pedal past the fountain with the skyline behind you.
+description: >
+  Rent one of the big swan pedal boats and take a slow loop around Echo Park
+  Lake, past the fountain and the lotus beds, with the downtown skyline rising
+  behind the palms. Take turns pedaling and taking photos, and get one of the
+  whole swan with the skyline behind it. In summer the lotus beds are in bloom.
+  Snacks are allowed on board; book ahead on weekends.
+for_kids:
+  short: Swan boat ride! Find each thing.
+  steps:
+    - Our swan boat
+    - The big fountain
+    - A duck or a bird
+    - The tall buildings far away
+    - A selfie in the swan!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours, reservation]
+tags: [boat, lake, playful, park, los-angeles]

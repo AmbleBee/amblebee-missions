@@ -1,0 +1,33 @@
+number: 12
+name: Audubon Park and Zoo
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Audubon Park (St. Charles Ave entrance)
+  area: Uptown, New Orleans
+  coords: [29.93460, -90.12260]  # APPROX: set at the St. Charles Ave entrance before publishing
+  website: https://audubonnatureinstitute.org
+short: Ride the streetcar to Audubon Park. Walk under the giant live oaks to the zoo.
+description: >
+  Take the St. Charles streetcar Uptown and walk into Audubon Park under huge
+  live oaks draped in Spanish moss. Loop the lagoon and look for the egrets
+  crowding Bird Island, then continue to the Audubon Zoo, with its Louisiana
+  swamp exhibit and white alligators. Each find the biggest oak and get a photo
+  of the two of you under it. The park is free; the zoo is ticketed.
+for_kids:
+  short: Park and zoo! Find each thing.
+  steps:
+    - A giant oak tree
+    - A white bird
+    - An alligator
+    - The streetcar
+    - A selfie under the oak!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [park, trees, zoo, animals, streetcar, new-orleans]

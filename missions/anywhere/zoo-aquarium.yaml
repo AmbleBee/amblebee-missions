@@ -4,9 +4,10 @@ mode: both
 who: [friends, family, kids]
 short: Visit a zoo or aquarium. Snap a photo of whatever animal you love most.
 description: >
-  Visit a zoo or aquarium, whichever you're in the mood for, and take your
-  time wandering. Whenever an animal catches your eye, take its picture.
-  Over a snack at the end, share which one was your favorite and why.
+  Visit a zoo or aquarium, whichever you're in the mood for, and take
+  your time wandering. Whenever an animal catches your eye, take its
+  picture. Over a snack at the end, share which one was your favorite
+  and why.
 for_kids:
   short: Animal hunt! Find each animal and take its picture.
   steps:

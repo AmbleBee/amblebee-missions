@@ -1,0 +1,29 @@
+number: 17
+name: Tillamook Creamery
+mode: both
+who: [friends, family, kids]
+place:
+  name: Tillamook Creamery
+  area: Tillamook
+  address: 4165 US-101, Tillamook, OR 97141
+  coords: [45.48350, -123.84480]  # APPROX: set at the entrance before publishing
+short: Watch the cheese get made, then get ice cream. Each try a flavor you'd never pick.
+description: >
+  Walk the self-guided viewing gallery above the cheese factory floor, then head
+  downstairs for ice cream. Each order one flavor you'd never normally choose and
+  trade bites.
+for_kids:
+  short: Cheese factory! Find each thing.
+  steps:
+    - A giant block of cheese
+    - A cow picture
+    - Your ice cream!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [food, ice-cream, coast, rainy-day]

@@ -4,9 +4,10 @@ mode: both
 who: [solo, friends, family]
 short: Hike to a waterfall you haven't seen. Pack a snack for the top.
 description: >
-  Pick a waterfall trail you haven't done. Pack water and a snack, take
-  your time on the way up, and have your snack once you reach the falls.
-  Check trail conditions before you go, especially after heavy rain.
+  Pick a waterfall trail you haven't done. Pack water and a snack,
+  take your time on the way up, and have your snack once you reach
+  the falls. Check trail conditions before you go, especially after
+  heavy rain.
 duration: half-day
 effort: moderate
 cost: free

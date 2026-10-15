@@ -1,0 +1,35 @@
+number: 10
+name: 1984 Arcade
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: 1984 Arcade
+  area: Downtown Springfield
+  address: 400 S Jefferson Ave, Springfield, MO 65806  # verify: corner of Jefferson and Walnut
+  coords: [37.20900, -93.28950]  # APPROX: set at the entrance before publishing
+  website: https://www.1984arcade.com
+short: Pay one cover and play classic 80s arcade games all night. Set a high score together.
+description: >
+  Step into an 80s time machine: dozens of original arcade cabinets, neon,
+  black lights and 80s music videos. One cover charge gets you unlimited play
+  on the video games (pinball takes quarters). Each pick the game you were best
+  at as a kid, go head to head on Pac-Man or Galaga, and try to get one of your
+  initials on the high-score board. Get a photo of the two of you mid-game in
+  the neon. Open Wednesday through Saturday evenings.
+for_kids:
+  short: Arcade night! Find each thing.
+  steps:
+    - Pac-Man
+    - A pinball machine
+    - Your favorite game
+    - The high-score board
+    - A selfie in the neon lights!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [arcade, retro, games, playful, rainy-day, springfield]

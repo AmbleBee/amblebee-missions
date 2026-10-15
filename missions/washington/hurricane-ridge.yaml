@@ -1,0 +1,34 @@
+number: 22
+name: Hurricane Ridge
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Hurricane Ridge parking area, Olympic National Park
+  area: 17 miles south of Port Angeles
+  coords: [47.96950, -123.49820]  # APPROX: set at the Hurricane Ridge parking lot before publishing
+  website: https://www.nps.gov/olym/planyourvisit/visiting-hurricane-ridge.htm
+short: Drive up to Hurricane Ridge for the Olympic Mountains. Spot a deer or marmot in the meadows.
+description: >
+  Drive the winding road up to Hurricane Ridge, a mile up in the Olympic
+  Mountains, and walk one of the short meadow trails for a wall of snowy peaks
+  on one side and the Strait of Juan de Fuca on the other. Keep an eye out for
+  deer and marmots. There's no lodge or indoor facilities anymore (it burned in
+  2023), so bring water, food and layers. In winter the road is usually only
+  open Friday through Sunday, weather permitting.
+for_kids:
+  short: Mountain hunt! Find each thing.
+  steps:
+    - A snowy mountain
+    - A deer
+    - A wildflower
+    - The ocean far away
+    - A selfie on the ridge!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [mountains, views, national-park, wildlife, olympic]

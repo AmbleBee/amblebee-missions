@@ -1,0 +1,34 @@
+number: 7
+name: Griffith Observatory
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Griffith Observatory
+  area: Griffith Park, Los Angeles
+  address: 2800 E Observatory Rd, Los Angeles, CA 90027
+  coords: [34.11840, -118.30040]  # APPROX: set at the front lawn before publishing
+  website: https://griffithobservatory.org
+short: Watch the sunset over LA from Griffith Observatory. Look through a real telescope after dark.
+description: >
+  Get to the observatory in the late afternoon and explore the exhibits (it's
+  free). Find a spot on the terrace for sunset over the city with the Hollywood
+  sign behind you, then stay as the lights come on. On clear evenings the
+  public telescopes are free to look through. Parking at the top fills fast,
+  so take the DASH bus or park lower down and walk up. Closed Mondays.
+for_kids:
+  short: Space explorer! Find each thing.
+  steps:
+    - The big domes
+    - The Hollywood sign
+    - Something from space
+    - The city lights
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, conditions]
+tags: [stars, views, sunset, science, los-angeles]

@@ -5,7 +5,7 @@ place:
   name: Pike Place Market
   area: Downtown Seattle
   address: 85 Pike St, Seattle, WA 98101
-  coords: [47.60970, -122.34220]  # APPROX
+  coords: [47.60970, -122.34220]  # APPROX: set at the market sign before publishing
 short: Build a picnic from Pike Place stalls. Eat it by the water.
 description: >
   Wander Pike Place Market and each pick two things for a shared picnic:

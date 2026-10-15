@@ -1,0 +1,34 @@
+number: 17
+name: Chihuly Garden and Glass
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Chihuly Garden and Glass
+  area: Seattle Center, Seattle
+  address: 305 Harrison St, Seattle, WA 98109
+  coords: [47.62060, -122.35060]  # APPROX: set at the entrance before publishing
+  website: https://www.chihulygardenandglass.com
+short: Walk through rooms of giant blown glass, then the glass garden under the Space Needle.
+description: >
+  Wander gallery after gallery of Dale Chihuly's huge, wildly colored glass
+  sculptures, then step into the Glasshouse and out to the garden, where glass
+  grows among the real plants with the Space Needle overhead. Each pick the piece
+  you'd want in your living room. Go near dusk if you can; the garden glows as
+  the light fades.
+for_kids:
+  short: Glass hunt! Find each thing.
+  steps:
+    - Something that looks like a flower
+    - A glass boat
+    - Your favorite color
+    - The Space Needle above the glass
+    - A selfie in the garden!
+duration: short
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours, tickets]
+tags: [art, glass, garden, seattle]

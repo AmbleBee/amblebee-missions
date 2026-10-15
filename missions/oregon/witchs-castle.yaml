@@ -1,0 +1,22 @@
+number: 8
+name: The Witch's Castle
+mode: both
+who: [solo, friends, family]
+place:
+  name: Lower Macleay Park trailhead (to the Witch's Castle)
+  area: Forest Park, Portland
+  coords: [45.53500, -122.71200]  # APPROX: set at the trailhead before publishing
+short: Walk Balch Creek up to the mossy stone ruin. Make up its spooky backstory.
+description: >
+  Follow the Lower Macleay Trail along Balch Creek into Forest Park until you
+  reach the moss-covered stone ruin locals call the Witch's Castle. Sit for a
+  minute and each invent the story of who lived there.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [conditions]
+tags: [hiking, forest, spooky, portland]

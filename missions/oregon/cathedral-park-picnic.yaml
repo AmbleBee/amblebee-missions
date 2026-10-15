@@ -1,0 +1,21 @@
+number: 10
+name: Cathedral Park Picnic
+mode: date
+place:
+  name: Cathedral Park
+  area: St. Johns, Portland
+  address: N Edison St & N Pittsburg Ave, Portland, OR 97203
+  coords: [45.58800, -122.76100]  # APPROX: set at the park entrance before publishing
+short: Picnic under the St. Johns Bridge arches. Stay until the bridge lights up.
+description: >
+  Pack a picnic and spread out on the lawn under the Gothic arches of the
+  St. Johns Bridge, right by the Willamette. Each bring one snack the other
+  doesn't know about. If you can, stay until dusk.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: evening
+travel: local
+tags: [picnic, bridge, river, portland]

@@ -1,0 +1,34 @@
+number: 31
+name: Pacific Science Center
+mode: both
+who: [friends, family, kids]
+place:
+  name: Pacific Science Center
+  area: Seattle Center, Seattle
+  address: 200 2nd Ave N, Seattle, WA 98109
+  coords: [47.61900, -122.35180]  # APPROX: set at the main entrance before publishing
+  website: https://pacificsciencecenter.org
+short: Explore Pacific Science Center. Walk through the butterfly house and catch a laser show.
+description: >
+  Spend a few hours with the hands-on science exhibits, the dinosaurs, and the
+  tropical butterfly house, where butterflies might land on you. Reserve a
+  planetarium or laser show (included, but they fill up), and each find the
+  exhibit that blew your mind. Photo under the white arches with the Space
+  Needle behind you.
+for_kids:
+  short: Science hunt! Find each thing.
+  steps:
+    - A butterfly
+    - A dinosaur
+    - Something that lights up
+    - An experiment you tried
+    - A selfie under the arches!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [science, museum, rainy-day, seattle]

@@ -4,9 +4,10 @@ mode: both
 who: [solo, friends, family, kids]
 short: Try geocaching nearby. Find a hidden cache or two with the free app.
 description: >
-  Download a geocaching app and look for a few caches near you. Follow the
-  clues to find them, sign the logbook, and if there's a trinket inside,
-  trade it for something small you brought. Finding even one counts.
+  Download a geocaching app and look for a few caches near you. Follow
+  the clues to find them, sign the logbook, and if there's a trinket
+  inside, trade it for something small you brought. Finding even one
+  counts.
 for_kids:
   short: Treasure hunt! Follow the map to a hidden box.
   steps:

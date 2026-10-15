@@ -1,0 +1,31 @@
+number: 13
+name: Venice Canals Walk
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Venice Canals Historic District
+  area: Venice, Los Angeles
+  coords: [33.98420, -118.46660]  # APPROX: set at a canal bridge (Dell Ave) before publishing
+short: Wander the Venice Canals over the little bridges. Each pick the house you'd live in.
+description: >
+  Leave the noise of the boardwalk behind and wander the quiet canals a few
+  blocks inland: arched footbridges, ducks, little rowboats and every style of
+  house right on the water. Each pick the house you'd move into and say why,
+  and find the best bridge for a photo of the two of you. Then walk back to
+  Venice Beach for the sunset. These are people's front yards, so keep it quiet.
+for_kids:
+  short: Canal walk! Find each thing.
+  steps:
+    - A little bridge
+    - A duck
+    - A boat
+    - The house you'd live in
+    - A selfie on a bridge!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: any
+travel: local
+tags: [walking, water, neighborhood, quirky, los-angeles]

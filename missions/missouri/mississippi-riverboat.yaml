@@ -1,0 +1,31 @@
+number: 3
+name: Mississippi Riverboat Cruise
+mode: both
+who: [friends, family, kids]
+place:
+  name: Riverboats at the Gateway Arch
+  area: Riverfront below the Arch, St. Louis
+  coords: [38.62550, -90.18300]  # APPROX: set at the boarding dock before publishing
+  website: https://www.gatewayarch.com/experience/riverboats/
+short: Cruise the Mississippi on a riverboat. Photo of the Arch from the water.
+description: >
+  Board a paddlewheel-style riverboat at the foot of the Arch and cruise the
+  Mississippi while the captain tells stories about the river. Get a photo of
+  the Arch from the water. For a date version, book an evening dinner cruise
+  and watch the skyline light up.
+for_kids:
+  short: Riverboat ride! Find each thing.
+  steps:
+    - The big riverboat
+    - The arch from the boat
+    - A barge on the river
+    - A selfie on the deck!
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: [spring, summer, fall]
+time_of_day: any
+travel: local
+check_ahead: [tickets, seasonal]
+tags: [river, boat, views, history]

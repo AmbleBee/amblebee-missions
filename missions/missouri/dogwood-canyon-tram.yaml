@@ -1,0 +1,34 @@
+number: 22
+name: Dogwood Canyon Wildlife Tram
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Dogwood Canyon Nature Park
+  area: Lampe, near Branson
+  address: 2038 W State Hwy 86, Lampe, MO 65681
+  coords: [36.51800, -93.45700]  # APPROX: set at the visitor center before publishing
+  website: https://dogwoodcanyon.org
+short: Ride the open-air tram through Dogwood Canyon into bison and elk country. Feed the giant trout.
+description: >
+  Take the two-hour narrated tram tour through a canyon of bluffs, waterfalls
+  and creek crossings, out into the pasture where the bison and elk roam. Stop
+  at the little 1800s-style chapel and toss food to the huge trout at the Glory
+  Hole. Each guess how many bison you'll see before you spot the first one. Park
+  admission is separate, and tours sell out often, so book ahead.
+for_kids:
+  short: Canyon safari! Find each thing.
+  steps:
+    - A bison
+    - An elk
+    - A waterfall
+    - A giant fish
+    - A selfie on the tram!
+duration: half-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, hours]
+tags: [wildlife, bison, waterfall, ozarks, branson]

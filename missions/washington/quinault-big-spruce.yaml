@@ -1,0 +1,30 @@
+number: 9
+name: Quinault Big Spruce Tree
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Big Spruce Trailhead (World's Largest Spruce Tree)
+  area: Lake Quinault, Olympic Peninsula
+  coords: [47.46560, -123.86160]  # APPROX: set at the trailhead before publishing
+short: Walk to the world's largest Sitka spruce. See how many of you it takes to hug it.
+description: >
+  Take the short trail off South Shore Road near Lake Quinault to a giant Sitka
+  spruce over a thousand years old. Stand at its base for a photo that shows how
+  tiny you are, and try a group hug around the trunk. Then explore the rainforest
+  trails around the lake.
+for_kids:
+  short: Giant tree hunt! Find each thing.
+  steps:
+    - The giant tree
+    - Moss on a branch
+    - A mushroom
+    - A selfie hugging the tree!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [forest, rainforest, trees, hiking]

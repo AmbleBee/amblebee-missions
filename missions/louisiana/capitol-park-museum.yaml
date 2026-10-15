@@ -1,0 +1,35 @@
+number: 5
+name: Capitol Park Museum and the State Capitol
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Capitol Park Museum
+  area: Downtown Baton Rouge
+  address: 660 N 4th St, Baton Rouge, LA 70802  # verify against louisianastatemuseum.org
+  coords: [30.45500, -91.18700]  # APPROX: set at the museum entrance before publishing
+  website: https://louisianastatemuseum.org/capitol-park-museum
+short: Tour Louisiana's story at the Capitol Park Museum. Then ride up the State Capitol tower.
+description: >
+  Spend a couple of hours with Louisiana's whole story in one building: Mardi
+  Gras, music legends, sugar cane, river life and the state's colorful
+  politics. Each pick the exhibit you'd tell a friend about. Then walk across
+  to the art deco State Capitol, the tallest state capitol in the country, and
+  ride up to the observation deck for a view over the Mississippi. The first
+  Sunday of the month is free at the museum.
+for_kids:
+  short: Louisiana hunt! Find each thing.
+  steps:
+    - A Mardi Gras costume
+    - A boat
+    - A musician
+    - The river from up high
+    - A selfie at the top!
+duration: half-day
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [history, museum, views, rainy-day, baton-rouge]

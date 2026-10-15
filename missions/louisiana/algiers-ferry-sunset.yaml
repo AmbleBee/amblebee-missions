@@ -1,0 +1,32 @@
+number: 15
+name: Algiers Ferry at Sunset
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Canal Street Ferry Terminal
+  area: Foot of Canal Street, New Orleans
+  coords: [29.94940, -90.06190]  # APPROX: set at the ferry terminal before publishing
+short: Take the $2 ferry to Algiers Point and walk the levee at sunset. Skyline across the river.
+description: >
+  Hop the little ferry at the foot of Canal Street for a five-minute ride
+  across the Mississippi to Algiers Point, a quiet old neighborhood of
+  shotgun houses. Climb up onto the levee, walk the river path, and watch the
+  sun go down behind the French Quarter skyline across the water. Get a photo of
+  the two of you with the city glowing behind you, then grab a drink at a
+  neighborhood bar before riding back. Check the last ferry time.
+for_kids:
+  short: Ferry ride! Find each thing.
+  steps:
+    - The ferry boat
+    - A big ship on the river
+    - The city across the water
+    - A selfie at sunset!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [river, ferry, sunset, views, walking, new-orleans]

@@ -1,0 +1,33 @@
+number: 13
+name: Classic's Yard Game Night
+mode: both
+who: [friends, family, kids]
+place:
+  name: Classic's Yard (behind Classic Rock Coffee)
+  area: West Sunset, Springfield
+  address: 1900 W Sunset St, Springfield, MO 65807  # verify ZIP
+  coords: [37.16260, -93.32010]  # APPROX: set at the entrance before publishing
+  website: https://www.classicsyard.com
+short: Play a game tournament at Classic's Yard. Fowling, pickleball, cornhole, winner takes all.
+description: >
+  Head to the indoor game hall behind Classic Rock Coffee and run your own
+  tournament: pickleball, fowling (bowling pins and a football), giant Connect
+  4 basketball, cornhole, ping-pong, darts and more. Play best of three in three
+  different games, keep score, and the overall winner picks dessert. Get a
+  photo of the champion.
+for_kids:
+  short: Game day! Find each thing.
+  steps:
+    - A game with a ball
+    - The giant Connect 4
+    - Your best throw
+    - A selfie with the winner!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours, reservation]
+tags: [games, sports, playful, rainy-day, springfield]

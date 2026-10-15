@@ -1,0 +1,28 @@
+number: 37
+name: Chess Night
+mode: both
+who: [solo, friends, family, kids]
+short: Play a best-of-three chess match. If one of you is new, the other teaches as you go.
+description: >
+  Set up a board, pour something good, and play a best-of-three chess match.
+  If one of you is new to chess, play the first game as a lesson with the moves
+  explained out loud, then play for real. Try a fast round with a timer to mix
+  it up. Loser picks the snack for the rematch. Take a photo of the two of you
+  over the board right before checkmate. No board? Look for a café or park with
+  chess tables.
+for_kids:
+  short: Chess night! Do each thing.
+  steps:
+    - Set up the board
+    - Move a horse (knight)
+    - Take a piece
+    - Say "check!"
+    - A selfie with the board!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+tags: [at-home, games, strategy, cozy, rainy-day]

@@ -1,0 +1,32 @@
+number: 28
+name: Washington Park Arboretum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Washington Park Arboretum (Graham Visitors Center)
+  area: Montlake / Madison Park, Seattle
+  address: 2300 Arboretum Dr E, Seattle, WA 98112
+  coords: [47.64000, -122.29500]  # APPROX: set at the visitors center before publishing
+short: Wander Azalea Way in the Arboretum. Find the tree with the best color of the season.
+description: >
+  Walk the arboretum's trails and grassy Azalea Way through trees from all over
+  the world. Spring brings blooming azaleas and cherries, fall brings fiery
+  maples. Each find the tree with the best color today and photograph it. Add
+  the Japanese Garden at the south end (it has its own small fee) for a quiet
+  pond and koi.
+for_kids:
+  short: Tree hunt! Find each thing.
+  steps:
+    - A tree with red leaves
+    - A giant pinecone
+    - A duck or a bird
+    - Your favorite tree
+    - A selfie on the path!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [garden, trees, seasonal, walking, seattle]

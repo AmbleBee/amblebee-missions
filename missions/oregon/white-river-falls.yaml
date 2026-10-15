@@ -1,0 +1,22 @@
+number: 25
+name: White River Falls
+mode: both
+who: [solo, friends, family]
+place:
+  name: White River Falls State Park
+  area: Near Tygh Valley
+  coords: [45.24300, -121.09600]  # APPROX: set at the parking lot before publishing
+short: See White River Falls, then walk down to the old powerhouse ruins.
+description: >
+  Look out over the falls from the top, then take the trail down past the old
+  hydro powerhouse ruins to the river below. A quiet, out-of-the-way spot east of
+  Mount Hood.
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [waterfall, history, hiking]

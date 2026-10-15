@@ -1,0 +1,23 @@
+number: 31
+name: Antiquing in Aurora
+mode: both
+who: [solo, friends, family]
+place:
+  name: Historic Aurora (Main Street antique shops)
+  area: Aurora
+  coords: [45.23040, -122.75530]  # APPROX: set on Main Street in the historic district before publishing
+short: Browse Aurora's antique shops. Each find the oddest treasure, then grab lunch.
+description: >
+  Spend a slow morning or afternoon wandering the antique shops in Aurora's
+  historic district. Each hunt for the strangest or most charming thing you can
+  find and show it off to the other. Buy something small only if you love it,
+  then sit down for a bite to eat in town.
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [hours]
+tags: [antiques, shopping, small-town, food]

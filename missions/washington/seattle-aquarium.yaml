@@ -1,0 +1,30 @@
+number: 14
+name: Seattle Aquarium
+mode: both
+who: [friends, family, kids]
+place:
+  name: Seattle Aquarium
+  area: Downtown Seattle waterfront
+  address: 1483 Alaskan Way, Seattle, WA 98101
+  coords: [47.60760, -122.34300]  # APPROX: set at the entrance before publishing
+short: Visit the Seattle Aquarium. Find the otters, and pick your favorite sea creature.
+description: >
+  Spend a rainy morning at the aquarium on the waterfront. Watch the sea otters,
+  look into the big underwater dome and the touch pools, and each pick your
+  favorite creature. Then walk the waterfront toward Pike Place.
+for_kids:
+  short: Sea creature hunt! Find each animal.
+  steps:
+    - A sea otter
+    - A big fish
+    - A sea star
+    - Your favorite animal!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [aquarium, animals, rainy-day, seattle]

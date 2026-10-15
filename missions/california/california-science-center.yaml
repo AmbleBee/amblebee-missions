@@ -1,0 +1,34 @@
+number: 16
+name: California Science Center and Endeavour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: California Science Center
+  area: Exposition Park, Los Angeles
+  address: 700 Exposition Park Dr, Los Angeles, CA 90037
+  coords: [34.01590, -118.28620]  # APPROX: set at the entrance before publishing
+  website: https://californiasciencecenter.org
+short: Stand under Space Shuttle Endeavour, upright and ready to launch. Then explore the science halls.
+description: >
+  See the real Space Shuttle Endeavour standing 20 stories tall in launch
+  position, with its orange fuel tank and rocket boosters attached. It's the
+  only complete shuttle stack on display anywhere. Then explore the free
+  science galleries and each find the exhibit that surprised you most. General
+  admission is free; the shuttle gallery uses timed reservations, so book ahead.
+for_kids:
+  short: Space hunt! Find each thing.
+  steps:
+    - The giant space shuttle
+    - The big orange tank
+    - A rocket or a plane
+    - An experiment you tried
+    - A selfie with the shuttle!
+duration: half-day
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, reservation]
+tags: [space, science, museum, rainy-day, los-angeles]

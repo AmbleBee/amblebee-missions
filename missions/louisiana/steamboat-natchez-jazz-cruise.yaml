@@ -1,0 +1,35 @@
+number: 8
+name: Steamboat Natchez Jazz Cruise
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Steamboat Natchez (Toulouse Street Wharf)
+  area: French Quarter riverfront, New Orleans
+  address: 400 Toulouse St, New Orleans, LA 70130
+  coords: [29.95520, -90.06190]  # APPROX: set at the boarding gangway before publishing
+  website: https://steamboatnatchez.com
+short: Cruise the Mississippi on a real steamboat with a live jazz band. Dinner at night or lunch by day.
+description: >
+  Board the Natchez, a real steam-powered paddlewheeler, for a cruise on the
+  Mississippi with a live jazz band on deck. For a date, book the evening dinner
+  cruise with a Creole buffet and watch the city lights slide by. In the
+  daytime, take the jazz cruise with lunch and peek into the steam engine room.
+  Listen for the calliope, and get a photo of the two of you at the rail with
+  the skyline behind you.
+for_kids:
+  short: Steamboat ride! Find each thing.
+  steps:
+    - The big red paddlewheel
+    - The jazz band
+    - The steam engine
+    - A barge on the river
+    - A selfie on the deck!
+duration: short
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: any
+travel: local
+check_ahead: [tickets]
+tags: [river, boat, jazz, food, new-orleans]

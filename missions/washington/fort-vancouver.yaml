@@ -1,0 +1,29 @@
+number: 16
+name: Fort Vancouver Walk
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Fort Vancouver National Historic Site
+  area: Vancouver, WA
+  coords: [45.62550, -122.65670]  # APPROX: set at the fort's entrance before publishing
+short: Walk the rebuilt fur-trade fort, Officers Row, and the land bridge to the river.
+description: >
+  Explore the reconstructed 1800s fur-trading fort, peek into the blacksmith shop
+  and trade store, then stroll the old houses of Officers Row. Finish by walking
+  the land bridge down toward the Columbia River.
+for_kids:
+  short: Fort explorer! Find each thing.
+  steps:
+    - The big fort wall
+    - The blacksmith's fire
+    - An old cannon
+    - A selfie at the river!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [history, walking, national-park, river]

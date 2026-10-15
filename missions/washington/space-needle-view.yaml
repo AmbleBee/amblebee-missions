@@ -6,7 +6,7 @@ place:
   name: Space Needle
   area: Seattle Center
   address: 400 Broad St, Seattle, WA 98109
-  coords: [47.62050, -122.34930]  # APPROX
+  coords: [47.62050, -122.34930]  # APPROX: set at the entrance before publishing
   website: https://www.spaceneedle.com/plan-your-visit
 short: Go up the Space Needle. Find your favorite thing in the view.
 description: >

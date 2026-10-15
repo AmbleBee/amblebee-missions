@@ -1,0 +1,22 @@
+number: 4
+name: Mount St. Helens
+mode: both
+who: [solo, friends, family]
+place:
+  name: Coldwater Lake Recreation Area
+  area: Spirit Lake Highway, Mount St. Helens
+  coords: [46.29000, -122.26800]  # APPROX: set at the parking lot before publishing
+short: Drive the Spirit Lake Highway to see Mount St. Helens. Picnic at Coldwater Lake.
+description: >
+  Drive up the Spirit Lake Highway toward the volcano, stopping at viewpoints
+  along the way. Picnic at Coldwater Lake, a lake the 1980 eruption created, with
+  the blast zone all around you.
+duration: all-day
+effort: easy
+cost: $
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [volcano, views, lake]

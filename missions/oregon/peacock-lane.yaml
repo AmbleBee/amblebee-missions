@@ -1,0 +1,30 @@
+number: 34
+name: Peacock Lane Christmas Lights
+mode: both
+who: [friends, family, kids]
+place:
+  name: Peacock Lane
+  area: Southeast Portland, between SE Belmont and SE Stark
+  coords: [45.51700, -122.61810]  # APPROX: set at the Belmont end of the street before publishing
+short: Walk Peacock Lane's Christmas lights. Pick your favorite house and get hot cocoa.
+description: >
+  In the second half of December, a whole block of Southeast Portland goes all
+  out with Christmas lights and the street fills with people walking it. Bundle
+  up, grab something warm, and each pick your favorite house. For your photo,
+  stand right under the brightest display; the camera needs the light.
+for_kids:
+  short: Light hunt! Find each thing.
+  steps:
+    - The brightest house
+    - A Santa
+    - A reindeer
+    - Your favorite house!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [winter]
+time_of_day: night
+travel: local
+check_ahead: [seasonal]
+tags: [christmas, lights, holiday, portland]

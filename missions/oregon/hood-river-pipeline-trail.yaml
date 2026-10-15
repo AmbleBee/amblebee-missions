@@ -1,0 +1,22 @@
+number: 28
+name: Hood River Pipeline Trail
+mode: both
+who: [solo, friends, family]
+place:
+  name: Powerdale trailhead (Hood River Pipeline Trail)
+  area: Hood River
+  coords: [45.70000, -121.51100]  # APPROX: set at the trailhead parking before publishing
+short: Walk the catwalk on top of the old pipeline along the Hood River.
+description: >
+  Start at the old Powerdale powerhouse and follow the trail upriver until it
+  turns into a narrow catwalk running on top of the old wooden pipeline. It ends
+  where a 2006 flood tore the pipe away. Not for dogs or bikes.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, river, history, gorge]

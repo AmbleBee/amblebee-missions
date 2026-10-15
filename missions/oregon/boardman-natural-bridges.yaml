@@ -1,0 +1,22 @@
+number: 4
+name: Samuel H. Boardman Coast
+mode: both
+who: [solo, friends, family]
+place:
+  name: Natural Bridges Viewpoint, Samuel H. Boardman State Scenic Corridor
+  area: Southern Oregon Coast, near Brookings
+  coords: [42.19000, -124.36600]  # APPROX: set at the viewpoint parking before publishing
+short: Walk out to Natural Bridges. Then hop to one more Boardman viewpoint.
+description: >
+  Start at the Natural Bridges viewpoint and take the short trail out to see the
+  sea arches. Then pick one more pullout along the corridor and see what you find.
+  Bring a jacket; the wind on this stretch of coast is no joke.
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [coast, views, hiking]

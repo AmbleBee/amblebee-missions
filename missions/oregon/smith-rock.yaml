@@ -1,0 +1,23 @@
+number: 5
+name: Smith Rock State Park
+mode: both
+who: [solo, friends, family]
+place:
+  name: Smith Rock State Park
+  area: Terrebonne
+  address: 10087 NE Crooked River Dr, Terrebonne, OR 97760
+  coords: [44.36650, -121.14070]  # APPROX: set at the day-use parking before publishing
+short: Walk down to the Crooked River and look up at the rock walls. Find a climber.
+description: >
+  Walk down into the canyon and follow the Crooked River below the cliffs. Try to
+  spot a climber on the walls, and if you're feeling strong, take on Misery Ridge
+  for the view of Monkey Face. Bring plenty of water; there's little shade.
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, desert, views]

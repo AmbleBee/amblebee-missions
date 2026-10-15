@@ -1,0 +1,31 @@
+number: 5
+name: Ferry to Bainbridge Island
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Seattle Ferry Terminal (Colman Dock, Pier 52)
+  area: Downtown Seattle waterfront
+  address: 801 Alaskan Way, Seattle, WA 98104
+  coords: [47.60250, -122.33850]  # APPROX: set at the terminal entrance before publishing
+short: Ride the ferry to Bainbridge. Photo of the Seattle skyline from the back deck.
+description: >
+  Walk on the ferry to Bainbridge Island and stand out on the deck as Seattle
+  shrinks behind you. On the island, wander the little town by the dock, grab a
+  coffee or an ice cream, and catch a ferry back, ideally around sunset for the
+  skyline lighting up.
+for_kids:
+  short: Big boat ride! Find each thing.
+  steps:
+    - The giant ferry
+    - The city from the boat
+    - A seagull
+    - A selfie on the deck!
+duration: half-day
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours]
+tags: [boat, views, island, seattle]

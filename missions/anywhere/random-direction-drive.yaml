@@ -4,10 +4,10 @@ mode: adventure
 who: [solo, friends, family]
 short: Flip a coin at each turn for 30 minutes. Explore wherever you land.
 description: >
-  Start driving and let a coin flip decide each turn for about 30 minutes,
-  heads for left and tails for right, only taking turns when it's safe and
-  legal. When time's up, park and explore wherever you ended up, even if
-  it's somewhere ordinary.
+  Start driving and let a coin flip decide each turn for about 30
+  minutes, heads for left and tails for right, only taking turns when
+  it's safe and legal. When time's up, park and explore wherever you
+  ended up, even if it's somewhere ordinary.
 duration: half-day
 effort: easy
 cost: $

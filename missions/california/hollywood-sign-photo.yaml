@@ -1,0 +1,31 @@
+number: 18
+name: Photograph the Hollywood Sign
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Lake Hollywood Park
+  area: Hollywood Hills, Los Angeles
+  address: 3160 Canyon Lake Dr, Los Angeles, CA 90068
+  coords: [34.12810, -118.32330]  # APPROX: set at the park lawn before publishing
+short: Get the best photo of the two of you with the Hollywood Sign. Lake Hollywood Park is closest.
+description: >
+  Head to Lake Hollywood Park, a grassy park right below the sign with one of
+  the closest legal views. Bring a blanket and a snack, then compete for the
+  best photo of the two of you with the sign behind you. The sign itself is
+  fenced off, so don't try to reach it. Parking is tight and this is a quiet
+  neighborhood, so be respectful. A clear day after rain gives the sharpest view.
+for_kids:
+  short: Famous sign! Find each thing.
+  steps:
+    - The big white letters
+    - A dog in the park
+    - The hills
+    - A selfie with the sign!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [landmark, views, photography, picnic, los-angeles]

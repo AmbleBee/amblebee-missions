@@ -1,0 +1,33 @@
+number: 27
+name: Seattle Central Library
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Seattle Public Library, Central Library
+  area: Downtown Seattle
+  address: 1000 4th Ave, Seattle, WA 98104
+  coords: [47.60670, -122.33250]  # APPROX: set at the 4th Ave entrance before publishing
+  website: https://www.spl.org
+short: Explore Seattle's glass-and-steel library. Ride the neon escalators and find the red floor.
+description: >
+  Explore one of the most striking buildings in the city: a tilted glass-and-
+  steel library with neon-yellow escalators, a blood-red fourth floor, and a
+  spiral of book stacks. Ride up to the top floor reading room for the view
+  through the diamond windows, then each pick a book the other should read. It's
+  free and great on a rainy day.
+for_kids:
+  short: Library hunt! Find each thing.
+  steps:
+    - The yellow escalators
+    - The all-red hallway
+    - A book you love
+    - A selfie up high!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [architecture, books, rainy-day, seattle]

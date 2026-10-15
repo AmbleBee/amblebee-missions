@@ -1,0 +1,18 @@
+number: 26
+name: Dress-Up Orchestra Night
+mode: date
+short: Dress up fancy and go hear a live orchestra or symphony. Dinner first.
+description: >
+  Find a symphony, orchestra or chamber concert near you, anything from a big
+  concert hall to a local community orchestra. Get properly dressed up, have
+  dinner or a drink first, and take a photo of the two of you looking sharp
+  before you go in. On the way home, each pick your favorite piece.
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [music, dress-up, fancy, culture]

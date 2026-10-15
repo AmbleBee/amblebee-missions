@@ -1,0 +1,30 @@
+number: 24
+name: Oregon Zoo
+mode: both
+who: [friends, family, kids]
+place:
+  name: Oregon Zoo
+  area: Washington Park, Portland
+  address: 4001 SW Canyon Rd, Portland, OR 97221
+  coords: [45.51000, -122.71600]  # APPROX: set at the entrance before publishing
+short: Visit the Oregon Zoo. Each find the animal most like you.
+description: >
+  Spend a day at the zoo and take your time at each exhibit. Each pick the
+  animal that's most like you, and the one that's most like the other person,
+  and explain why over a snack.
+for_kids:
+  short: Zoo hunt! Find each animal.
+  steps:
+    - An elephant
+    - Something with feathers
+    - An animal that is sleeping
+    - Your very favorite animal!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [animals, portland]

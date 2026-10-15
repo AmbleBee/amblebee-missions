@@ -1,0 +1,29 @@
+number: 11
+name: Idaho Falls River Walk
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Idaho Falls Greenbelt (by the falls)
+  area: Downtown Idaho Falls, Snake River
+  coords: [43.49500, -112.04200]  # APPROX: set at the falls viewpoint before publishing
+short: Walk the river path along the falls in Idaho Falls. Stay until the lights come on.
+description: >
+  Walk the paved Greenbelt along the Snake River right through downtown, beside
+  the wide, rushing falls the city is named after. Cross the bridges, find a
+  bench facing the water, and each pick your favorite spot on the loop. Stay
+  into the evening when the lights reflect off the river. Free and easy.
+for_kids:
+  short: River walk! Find each thing.
+  steps:
+    - The waterfall
+    - A bridge
+    - A duck or goose
+    - A selfie by the river!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+tags: [river, waterfall, walking, sunset, east-idaho]

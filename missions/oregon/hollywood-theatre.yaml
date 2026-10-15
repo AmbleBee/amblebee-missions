@@ -1,0 +1,22 @@
+number: 36
+name: Hollywood Theatre
+mode: date
+place:
+  name: Hollywood Theatre
+  area: Hollywood District, Portland
+  address: 4122 NE Sandy Blvd, Portland, OR 97212
+  coords: [45.53550, -122.62060]  # APPROX: set at the entrance before publishing
+short: See a film at the 1926 Hollywood Theatre. Pick something you'd never stream.
+description: >
+  Catch a movie at Portland's historic movie palace, which shows classics, cult
+  favorites and films on real film. Pick something neither of you would ever
+  choose at home. Take a photo under the marquee before you go in.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [movies, history, rainy-day, portland]

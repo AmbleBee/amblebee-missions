@@ -1,0 +1,26 @@
+number: 7
+name: Breakout KC Escape Room
+mode: both
+who: [friends, family]
+place:
+  name: Breakout KC (River Market)
+  area: River Market, Kansas City
+  address: 114 W 3rd St, Ste 102, Kansas City, MO 64105
+  coords: [39.10890, -94.58390]  # APPROX: set at the entrance before publishing
+  website: https://www.breakoutkc.com
+short: Crack codes and solve riddles to escape a themed room at Breakout KC in 60 minutes.
+description: >
+  Book a room at one of Kansas City's first escape rooms and work together to
+  find clues, crack codes and solve riddles before the hour runs out. Pick a
+  theme neither of you has tried, and take a photo before you go in and right
+  after, whether you made it out or not. Then celebrate (or regroup) over food
+  in the River Market. Book ahead; rooms run in timed slots.
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [reservation]
+tags: [puzzles, escape-room, teamwork, rainy-day, kansas-city]

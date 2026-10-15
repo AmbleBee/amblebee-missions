@@ -1,0 +1,32 @@
+number: 19
+name: Twin Peaks
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Twin Peaks (Christmas Tree Point)
+  area: Twin Peaks, San Francisco
+  coords: [37.75440, -122.44770]  # APPROX: set at the Christmas Tree Point lot before publishing
+short: Look out over all of San Francisco from Twin Peaks. Find three landmarks you can name.
+description: >
+  Drive or walk up to Twin Peaks, near the center of San Francisco, for a
+  360-degree view over the whole city and the bay. Each spot three landmarks
+  you can name (the Bay Bridge, Salesforce Tower, Alcatraz?) and get a photo of
+  the two of you with downtown behind you. Climb one of the peaks if you're up
+  for it. Bring a jacket; it's always windy and often foggy, so check that the
+  fog has cleared.
+for_kids:
+  short: City lookout! Find each thing.
+  steps:
+    - A big bridge
+    - The tallest building
+    - A boat on the water
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [conditions]
+tags: [views, city, sunset, san-francisco]

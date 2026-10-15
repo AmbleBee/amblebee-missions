@@ -1,0 +1,22 @@
+number: 26
+name: Devils Punchbowl
+mode: both
+who: [solo, friends, family]
+place:
+  name: Devils Punchbowl State Natural Area
+  area: Otter Rock
+  coords: [44.74600, -124.06400]  # APPROX: set at the parking lot before publishing
+short: Watch the waves churn in the Devils Punchbowl. Then find chowder nearby.
+description: >
+  Watch from the viewpoint as waves surge into the collapsed sea cave. At low
+  tide, look at the tide pools below. Then warm up with something hot in Otter
+  Rock or Depoe Bay.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [coast, waves, tide-pools]

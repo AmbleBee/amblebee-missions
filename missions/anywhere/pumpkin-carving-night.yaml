@@ -1,0 +1,28 @@
+number: 36
+name: Pumpkin Carving Night
+mode: both
+who: [friends, family, kids]
+short: Pick pumpkins, carve them side by side, and roast the seeds. Reveal them lit up in the dark.
+description: >
+  Pick out a pumpkin each, from a pumpkin patch if you can make an outing of it.
+  Spread newspaper on the table, put on spooky music, and carve them side by
+  side without showing each other your design until you're done. Rinse and
+  roast the seeds with salt while you clean up. Then set the pumpkins out, light
+  them up, turn off the lights for the big reveal, and take a photo of the two
+  of you with your glowing pumpkins.
+for_kids:
+  short: Pumpkin night! Do each thing.
+  steps:
+    - Pick your pumpkin
+    - Scoop out the goop
+    - Draw a face (grown-ups cut)
+    - Roasted seeds!
+    - A selfie with your glowing pumpkin!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: [fall]
+time_of_day: evening
+travel: local
+tags: [at-home, halloween, seasonal, crafts, food]

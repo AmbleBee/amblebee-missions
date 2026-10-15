@@ -1,0 +1,26 @@
+number: 19
+name: Skyline Trail at Mount Rainier
+mode: both
+who: [solo, friends]
+place:
+  name: Jackson Visitor Center, Paradise, Mount Rainier National Park
+  area: Paradise, Mount Rainier National Park
+  coords: [46.78590, -121.73520]  # APPROX: set at the Skyline trailhead by the visitor center before publishing
+  website: https://www.nps.gov/mora/planyourvisit/paradise.htm
+short: Hike the Skyline Trail loop to Panorama Point. Lunch with Mount Rainier right in front of you.
+description: >
+  A real day hike: the Skyline Trail loops about five and a half miles up from
+  Paradise through wildflower meadows to Panorama Point, with glaciers, marmots
+  and Mount Rainier filling the view, plus Mount Adams and Mount St. Helens on a
+  clear day. Eat lunch at the top, and get a photo with the mountain right
+  behind you. Snow can linger on the upper trail into July, so check conditions
+  and turn back if it's icy. Start early; Paradise parking fills fast.
+duration: half-day
+effort: hard
+cost: $$
+setting: outdoor
+season: [summer, fall]
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, seasonal, conditions]
+tags: [hiking, mountain, national-park, wildflowers, views]

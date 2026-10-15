@@ -1,0 +1,25 @@
+number: 12
+name: Alamo Drafthouse Movie Night
+mode: both
+who: [solo, friends]
+place:
+  name: Alamo Drafthouse Cinema Springfield
+  area: Springfield
+  coords: [37.14000, -93.29300]  # APPROX (rough guess): find the theater and set its coords before publishing
+  website: https://drafthouse.com/springfield
+short: Pick a special screening at the Alamo Drafthouse. Order dinner to your seat.
+description: >
+  Skip a regular showing and pick one of the Alamo's special screenings: a
+  classic you've never seen on the big screen, a sing-along or quote-along, or
+  a themed movie party. Order dinner and a milkshake to your seat, follow the
+  strict no-talking, no-phones rule, and debate the movie on the drive home.
+  Get a photo with the poster before you go in.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [movies, food, rainy-day, springfield]

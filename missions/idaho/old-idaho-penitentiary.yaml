@@ -1,0 +1,26 @@
+number: 4
+name: Old Idaho Penitentiary
+mode: both
+who: [solo, friends, family]
+place:
+  name: Old Idaho Penitentiary
+  area: East End, Boise
+  address: 2445 Old Penitentiary Rd, Boise, ID 83712
+  coords: [43.60200, -116.16300]  # APPROX: set at the entrance before publishing
+  website: https://history.idaho.gov/oldpen/
+short: Explore the cellhouses of the Old Idaho Penitentiary. Find solitary and the gallows.
+description: >
+  Wander the sandstone cellhouses of a prison that held inmates for over a
+  century, from the territorial days to 1973. Step into the cells, find the dark
+  solitary block, and read the stories of the people locked up here. Each pick
+  the strangest story you read. Get a photo framed by the old gate. Watch for
+  evening and spooky events in October.
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [history, prison, spooky, boise]

@@ -1,0 +1,24 @@
+number: 40
+name: Rowena Crest and the Rowena Loops
+mode: both
+who: [solo, friends, family]
+place:
+  name: Rowena Crest Viewpoint and Trailhead
+  area: Historic Columbia River Highway, between Mosier and The Dalles
+  coords: [45.68300, -121.30100]  # APPROX: set at the viewpoint parking before publishing
+short: Drive the twisty Rowena Loops up to Rowena Crest. Hike out for the Gorge view.
+description: >
+  Take the old Columbia River Highway from Mosier up to Rowena Crest, then
+  photograph the famous looping road from the viewpoint. From there, hike the
+  trail up Tom McCall Point for wildflowers in spring and a huge view over the
+  Gorge. The trail is closed November through February, there's no shade, and
+  dogs aren't allowed on the trails.
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [scenic-drive, hiking, wildflowers, gorge, views]

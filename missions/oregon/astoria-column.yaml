@@ -1,0 +1,23 @@
+number: 22
+name: Astoria Column
+mode: both
+who: [solo, friends, family]
+place:
+  name: Astoria Column
+  area: Astoria
+  address: 1 Coxcomb Dr, Astoria, OR 97103
+  coords: [46.18100, -123.81800]  # APPROX: set at the parking lot before publishing
+short: Climb the Astoria Column. Throw a balsa glider off the top.
+description: >
+  Climb the spiral stairs to the top of the painted column for a view over the
+  Columbia River and the coast. Buy a little balsa glider in the gift shop and
+  launch it from the top together.
+duration: short
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [views, history, coast]

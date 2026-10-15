@@ -1,0 +1,21 @@
+number: 39
+name: Willamette Valley Wine Tasting
+mode: date
+place:
+  name: Dundee Hills wine country
+  area: Dundee, Willamette Valley
+  coords: [45.27790, -123.01010]  # APPROX: pick a winery and use its coords before publishing
+short: Taste pinot noir in the Dundee Hills. Pick a bottle to open on an anniversary.
+description: >
+  Spend a day in the Dundee Hills, tasting at two or three wineries with views
+  over the valley. Each pick your favorite pour, then buy one bottle together to
+  save for a special day. Pick a designated driver or book a tour.
+duration: all-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [reservation, hours]
+tags: [wine, food, views, splurge]
