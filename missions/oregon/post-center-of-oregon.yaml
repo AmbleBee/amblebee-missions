@@ -1,0 +1,34 @@
+number: 53
+name: Post, the Center of Oregon
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Post General Store and Eatery
+  area: Post, Crook County, east of Prineville
+  coords: [44.17900, -120.48800]  # APPROX: set at the general store before publishing
+short: Stand in the middle of Oregon at tiny Post. Split a milkshake at the general store.
+description: >
+  Drive out to Post, a tiny ranch town on the Crooked River that claims to be
+  the geographic center of Oregon. The true center point is on private ranch
+  land just north of town, so celebrate at the Post General Store instead,
+  which doubles as the post office and the café. Pick from over a dozen
+  milkshake flavors, grab a "Center of Oregon" souvenir, and get a photo of
+  the two of you by the center sign. Make a loop of it through the Ochoco
+  country around Prineville.
+for_kids:
+  short: Center hunt! Find each thing.
+  steps:
+    - The Center of Oregon sign
+    - The little post office
+    - A milkshake
+    - A cow or horse
+    - A selfie in the middle of Oregon!
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [quirky, roadside, small-town, central-oregon]

@@ -1,0 +1,38 @@
+number: 58
+name: Klamath Basin Bald Eagles
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Bear Valley National Wildlife Refuge (fly-out viewing)
+  area: Near Worden, south of Klamath Falls
+  coords: [42.04000, -121.85000]  # APPROX: set at the fly-out viewing pullout before publishing
+  website: https://www.fws.gov/refuge/bear-valley  # verify
+short: Watch dozens of bald eagles fly out at dawn in the Klamath Basin. Bring binoculars.
+description: >
+  Every winter more than a thousand bald eagles come to the Klamath Basin, the
+  biggest gathering in the lower 48. Get to Bear Valley before sunrise and
+  watch as dozens of eagles lift off from their roost in the trees at once.
+  Then drive the auto tour routes on the nearby refuges, where eagles sit on
+  poles and in the fields, and see who spots the most. Stop at the refuge
+  headquarters for free maps. It's below freezing at dawn, so bring hot
+  drinks and dress warm.
+for_kids:
+  short: Eagle hunt! Find each thing.
+  steps:
+    - A bald eagle
+    - An eagle flying
+    - A big nest
+    - The sunrise
+    - A selfie with binoculars!
+gear:
+  - item: binoculars
+    rent: "no"
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: [winter]
+time_of_day: morning
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [birds, eagles, wildlife, winter, sunrise, southern-oregon]

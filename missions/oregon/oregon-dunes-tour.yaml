@@ -1,0 +1,37 @@
+number: 60
+name: Oregon Dunes Buggy Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Sandland Adventures
+  area: Hwy 101, just south of Florence
+  address: 85366 Hwy 101, Florence, OR 97439
+  coords: [43.94200, -124.11100]  # APPROX: set at the Sandland entrance before publishing
+  website: https://sandland.com
+short: Ride a dune buggy over the Oregon Dunes and down onto the beach. Try the sandrail to go faster.
+description: >
+  Ride across the Oregon Dunes, 40 miles of towering sand right beside the
+  Pacific. The giant buggy tour climbs and drops through about eight miles of
+  dunes, then rolls down onto the ocean beach. For more thrill, pick the
+  smaller, faster sandrail instead. Get a photo of the two of you at the top
+  of a dune with the ocean behind you, then race each other on the go-karts
+  or play mini golf afterward. Tours run rain or shine, so wear a hooded coat,
+  long pants and closed-toe shoes, and zip your phone away from the sand.
+  Reserve ahead; it's closed January and February.
+for_kids:
+  short: Dune ride! Find each thing.
+  steps:
+    - A giant sand hill
+    - The ocean
+    - Your footprints in the sand
+    - The dune buggy
+    - A sandy selfie!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [dunes, thrill, beach, coast, central-coast]

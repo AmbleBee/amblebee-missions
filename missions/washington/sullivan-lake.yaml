@@ -1,0 +1,36 @@
+number: 51
+name: Sullivan Lake, Colville National Forest
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Sullivan Lake (East Sullivan trailhead)
+  area: Colville National Forest, near Metaline Falls
+  coords: [48.84040, -117.28520]  # trailhead coords from WTA; confirm before publishing
+  website: https://www.wta.org/go-hiking/hikes/sullivan-lake
+short: Hike the shore of Sullivan Lake in the Colville forest. Look up for bighorn sheep.
+description: >
+  Drive up to the far northeast corner of the state, past Metaline Falls, to a
+  long, clear mountain lake ringed by forest. Hike the trail along the shore
+  as far as you like (the full trip is about 8 miles), and scan the steep
+  slopes of Hall Mountain for one of eastern Washington's biggest herds of
+  bighorn sheep. Find a beach to skip rocks, and get a photo of the two of you
+  with the lake behind you. The second half of October is best, when the
+  larches turn gold. It's remote, so fill up on gas and expect no cell
+  service.
+for_kids:
+  short: Lake hunt! Find each thing.
+  steps:
+    - A bighorn sheep
+    - A golden tree
+    - A flat skipping rock
+    - A boat on the lake
+    - A selfie by the water!
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [lake, hiking, wildlife, fall-colors, colville-forest, northeast-washington]

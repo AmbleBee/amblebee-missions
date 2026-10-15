@@ -1,0 +1,26 @@
+number: 45
+name: Dinner at Mizuna, Spokane
+mode: date
+place:
+  name: Mizuna Restaurant and Wine Bar
+  area: Downtown Spokane
+  address: 214 N Howard St, Spokane, WA 99201
+  coords: [47.65850, -117.42450]  # APPROX: set at the entrance before publishing
+  website: https://www.mizuna.com  # verify
+short: Have a slow dinner at Mizuna in downtown Spokane. Each pick a wine for the other.
+description: >
+  Settle in for dinner at Mizuna, a downtown Spokane favorite for seasonal
+  Northwest food made from local farms, in a cozy old brick building. Order
+  for each other one course, and each pick a glass of wine you think the other
+  will love from the long list. In summer, ask for a table on the hidden patio
+  in the alley. Afterward, walk a few blocks to Riverfront Park and the falls
+  lit up at night. Reserve ahead on weekends.
+duration: short
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [reservation]
+tags: [dinner, wine, romantic, food, spokane]

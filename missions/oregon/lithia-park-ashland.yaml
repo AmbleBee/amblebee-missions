@@ -1,0 +1,33 @@
+number: 55
+name: Lithia Park, Ashland
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Lithia Park (main entrance off the Plaza)
+  area: Downtown Ashland
+  coords: [42.19700, -122.71700]  # APPROX: set at the Plaza entrance before publishing
+  website: https://www.ashlandoregon.gov/Facilities/Facility/Details/Lithia-Park-22
+short: Wander Lithia Park along Ashland Creek. Dare each other to sip the Lithia water.
+description: >
+  Walk the creekside paths of Ashland's big 93-acre park, winding up a forested
+  canyon from the downtown Plaza past two duck ponds and a Japanese garden.
+  Find a bench by Ashland Creek and just listen for a while, and get a photo
+  of the two of you on one of the little bridges. On your way back through the
+  Plaza, dare each other to sip the famously funky-tasting mineral water from
+  the Lithia fountains. It's free, and fall colors here are lovely.
+for_kids:
+  short: Park hunt! Find each thing.
+  steps:
+    - A duck
+    - A little bridge
+    - The creek
+    - The Japanese garden
+    - A selfie on a bridge!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [park, creek, gardens, walking, fall-colors, southern-oregon]

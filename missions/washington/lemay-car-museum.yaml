@@ -1,0 +1,33 @@
+number: 44
+name: LeMay America's Car Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: LeMay America's Car Museum
+  area: Next to the Tacoma Dome
+  coords: [47.23700, -122.43000]  # APPROX: set at the entrance before publishing
+  website: https://americascarmuseum.org
+short: Walk four floors of classic cars at LeMay in Tacoma. Each pick your dream car.
+description: >
+  Spiral down through four floors of hundreds of cars, from Model Ts and
+  big-finned 1950s cruisers to race cars and wild one-offs. Each pick the car
+  you'd drive home if you could, and get a photo of the two of you next to it.
+  Try the racing simulators if you want to settle who's the better driver.
+  It's closed Tuesdays and Wednesdays, so check the hours before you go.
+for_kids:
+  short: Car hunt! Find each thing.
+  steps:
+    - A red car
+    - A really old car
+    - A race car
+    - A car with fins
+    - A selfie by your dream car!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [cars, museum, history, rainy-day, tacoma]

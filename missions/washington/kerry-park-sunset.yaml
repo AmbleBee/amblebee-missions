@@ -1,0 +1,32 @@
+number: 46
+name: Kerry Park Skyline Sunset
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Kerry Park
+  area: Queen Anne Hill, Seattle
+  coords: [47.62950, -122.36000]  # APPROX: set at the viewpoint before publishing
+short: Watch the Seattle skyline light up from Kerry Park. Space Needle in front, Rainier behind.
+description: >
+  Climb up to Queen Anne Hill for Seattle's most famous view: the Space Needle
+  right in front of you, downtown behind it, and on a clear day Mount Rainier
+  floating over everything. Bring a hot drink, find a spot on the wall, and
+  stay as the sun sets and the city lights come on. Get a photo of the two of
+  you with the Needle lit up behind you. It's free and tiny, so arrive a bit
+  before sunset for a good spot.
+for_kids:
+  short: City hunt! Find each thing.
+  steps:
+    - The Space Needle
+    - A big mountain
+    - A ferry boat
+    - The first city lights
+    - A selfie with the city!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+tags: [views, skyline, sunset, romantic, free, seattle]

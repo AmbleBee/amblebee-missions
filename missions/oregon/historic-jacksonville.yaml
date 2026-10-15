@@ -1,0 +1,34 @@
+number: 56
+name: Historic Jacksonville
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Downtown Jacksonville (California St)
+  area: Jacksonville, west of Medford
+  coords: [42.31400, -122.96700]  # APPROX: set on California St downtown before publishing
+  website: https://www.historicjacksonville.org  # verify
+short: Stroll the gold-rush streets of Jacksonville. In summer, picnic at a Britt concert on the hill.
+description: >
+  Walk the brick-and-wood main street of an 1850s gold-rush town, so well kept
+  that the whole place is a National Historic Landmark. Pop into the shops and
+  galleries, read the old building plaques, and each pick the building you'd
+  live in. Take a trolley tour if one's running, or hike a bit of the
+  Woodlands trails above town. In summer, pack a picnic blanket for a Britt
+  Festival concert on the hillside lawn; tickets sell out, so book ahead.
+for_kids:
+  short: Old town hunt! Find each thing.
+  steps:
+    - An old brick building
+    - A sign with a date on it
+    - The trolley
+    - A big old tree
+    - A selfie on Main Street!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [history, small-town, gold-rush, music, southern-oregon]

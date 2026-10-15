@@ -1,0 +1,34 @@
+number: 50
+name: Sol Duc Hot Springs
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Sol Duc Hot Springs Resort
+  area: Sol Duc Valley, Olympic National Park
+  coords: [47.96900, -123.86300]  # APPROX: set at the resort parking before publishing
+  website: https://www.nps.gov/olym
+short: Hike to Sol Duc Falls in the old-growth forest, then soak in the hot springs pools.
+description: >
+  Walk an easy mile through cathedral-like old-growth forest to Sol Duc Falls,
+  where the river splits and pours into a narrow mossy canyon, and get a photo
+  of the two of you on the bridge over the falls. Then soak in the mineral hot
+  springs pools at the resort just down the road, with the rainforest all
+  around you. The pools are seasonal, roughly spring through fall, and fill up
+  on weekends, so reserve a soak time ahead. You'll need a park entrance pass.
+for_kids:
+  short: Forest soak! Find each thing.
+  steps:
+    - The waterfall
+    - A giant mossy tree
+    - The little bridge
+    - The warm pool
+    - A selfie by the falls!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [hot-springs, waterfall, forest, national-park, relaxing, olympic-peninsula]

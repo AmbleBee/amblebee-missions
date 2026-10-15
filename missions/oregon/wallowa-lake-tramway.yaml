@@ -1,0 +1,36 @@
+number: 46
+name: Wallowa Lake Tramway
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Wallowa Lake Tramway (lower terminal)
+  area: South end of Wallowa Lake, near Joseph
+  address: 59919 Wallowa Lake Hwy, Joseph, OR 97846
+  coords: [45.27800, -117.21200]  # APPROX: set at the lower terminal parking before publishing
+  website: https://wallowalaketramway.com  # verify
+short: Ride the Wallowa Lake Tramway up Mount Howard. Lunch at the top, lake far below.
+description: >
+  Ride one of the steepest gondolas in North America nearly 3,700 feet up from
+  Wallowa Lake to the top of Mount Howard, over 8,000 feet high. Walk the two
+  miles of summit trails to the overlooks, where the Wallowa peaks, Hells
+  Canyon country and the lake all spread out below. Get a photo of the two of
+  you with the lake behind you, then eat lunch at the Summit Grill, Oregon's
+  highest restaurant. It runs roughly May through early October; bring a
+  jacket, since it's much colder at the top.
+for_kids:
+  short: Sky ride! Find each thing.
+  steps:
+    - The gondola car
+    - The lake way down below
+    - A snowy mountain
+    - A chipmunk
+    - A selfie at the top!
+duration: half-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal, conditions]
+tags: [gondola, mountains, views, lake, eastern-oregon, wallowas]

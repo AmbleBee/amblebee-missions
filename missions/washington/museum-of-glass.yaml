@@ -1,0 +1,36 @@
+number: 42
+name: Museum of Glass, Tacoma
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Museum of Glass
+  area: Thea Foss Waterway, downtown Tacoma
+  address: 1801 Dock St, Tacoma, WA 98402
+  coords: [47.24600, -122.43400]  # APPROX: set at the entrance before publishing
+  website: https://museumofglass.org
+short: Watch glassblowers work in the Tacoma Museum of Glass hot shop. Then cross the Bridge of Glass.
+description: >
+  Sit in the cone-shaped hot shop and watch artists blow and shape molten
+  glass in front of you, then wander the galleries of wild, colorful glass art.
+  Each pick the piece you'd take home. On the way out, walk across the Chihuly
+  Bridge of Glass, lined with glowing glass sculptures, and get a photo of the
+  two of you under the blue glass ceiling. The bridge is free anytime. The
+  museum is open Wednesday through Sunday, and it's free on Third Thursday
+  evenings.
+for_kids:
+  short: Glass hunt! Find each thing.
+  steps:
+    - Glowing hot glass
+    - A glass flower
+    - The big cone
+    - The glass bridge
+    - A selfie under the glass!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [art, glass, museum, rainy-day, tacoma]

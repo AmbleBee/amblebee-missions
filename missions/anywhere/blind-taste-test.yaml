@@ -1,0 +1,28 @@
+number: 39
+name: Blind Taste Test Night
+mode: both
+who: [friends, family, kids]
+short: Blindfold each other and taste-test chips, sodas or chocolate. Guess the brand, keep score.
+description: >
+  Pick a category, like potato chips, sodas, chocolate bars or salsas, and buy
+  three to five brands each, including at least one cheap store brand. Take
+  turns blindfolding each other and serving small tastes in a random order.
+  Guess which brand is which, rank your favorites, and keep score on a sheet of
+  paper. Reveal the answers at the end and find out whether the fancy one
+  actually wins. Get a photo of the blindfolded taster mid-bite.
+for_kids:
+  short: Taste test! Do each thing.
+  steps:
+    - Put on the blindfold
+    - Taste three snacks
+    - Guess your favorite
+    - Check the answers
+    - A silly blindfold selfie!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: evening
+travel: home
+tags: [food, games, playful, at-home, competitive]

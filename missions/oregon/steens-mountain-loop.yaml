@@ -1,0 +1,38 @@
+number: 49
+name: Steens Mountain Loop
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Steens Mountain Loop Road (north entrance)
+  area: Frenchglen, Harney County
+  coords: [42.82700, -118.91500]  # APPROX: set at the loop's start near Frenchglen before publishing
+  website: https://www.blm.gov/visit/steens-mountain-cmpa
+short: Drive the Steens Mountain Loop to the summit. Look a mile straight down onto the Alvord.
+description: >
+  Drive the highest road in Oregon, a 52-mile gravel loop climbing nearly to
+  the top of Steens Mountain. Stop at Kiger Gorge and the East Rim overlook,
+  where the mountain drops away a mile down to the Alvord Desert, and get a
+  photo of the two of you on the edge. Watch for wild horses, pronghorn and
+  bighorn sheep. The upper road only opens in summer and early fall, after the
+  snow melts. Fill up the tank in Burns or Frenchglen, bring plenty of water,
+  expect no cell service, and carry a paper map.
+for_kids:
+  short: Mountain drive! Find each thing.
+  steps:
+    - A wild horse or pronghorn
+    - A giant canyon
+    - Snow on the mountain
+    - The desert way down below
+    - A selfie on the edge!
+gear:
+  - item: high-clearance-vehicle
+    rent: "no"
+duration: all-day
+effort: moderate
+cost: free
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [scenic-drive, mountains, views, wildlife, high-desert, eastern-oregon]

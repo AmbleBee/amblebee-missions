@@ -1,0 +1,34 @@
+number: 60
+name: Snow Tubing at Snoqualmie Pass
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Summit Tubing Center, Summit at Snoqualmie
+  area: Snoqualmie Pass, I-90
+  coords: [47.42100, -121.41300]  # APPROX: set at the tubing center before publishing
+  website: https://summitatsnoqualmie.com/activities/snow-tubing
+short: Race each other down the snow tubing lanes at Snoqualmie Pass. The lift brings you back up.
+description: >
+  Grab a tube and fly down the groomed lanes at Snoqualmie Pass, no skiing
+  skills needed, while a lift carries you back to the top for another run.
+  Link your tubes and spin down together, then race side by side and keep
+  score. Get a photo of the two of you at the bottom covered in snow. Book a
+  timed session ahead, since weekends sell out, and check the pass on WSDOT
+  before you drive. Warm up with hot chocolate in the lodge after.
+for_kids:
+  short: Snow day! Find each thing.
+  steps:
+    - Your snow tube
+    - The tube lift
+    - A big snowflake
+    - Hot chocolate
+    - A snowy selfie!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [winter]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, conditions]
+tags: [snow, tubing, winter, playful, snoqualmie]

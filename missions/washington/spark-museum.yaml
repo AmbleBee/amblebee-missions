@@ -1,0 +1,36 @@
+number: 41
+name: SPARK Museum and the MegaZapper
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: SPARK Museum of Electrical Invention
+  area: Downtown Bellingham
+  address: 1312 Bay St, Bellingham, WA 98225
+  coords: [48.75200, -122.47900]  # APPROX: set at the entrance before publishing
+  website: https://www.sparkmuseum.org
+short: Watch the MegaZapper throw lightning at SPARK in Bellingham. Each pick the coolest old gadget.
+description: >
+  Wander through centuries of electrical inventions, from glowing early radios
+  to old telephones and odd machines, then catch the MegaZapper show, when a
+  giant Tesla coil throws real lightning bolts across the room. Each pick the
+  gadget you'd want in your house and get a photo of the two of you by the
+  big coil. The show runs on select days and often sells out, so buy tickets
+  ahead. It isn't recommended for kids under 5. Make a day of it with dinner
+  in downtown Bellingham.
+for_kids:
+  short: Spark hunt! Find each thing.
+  steps:
+    - An old radio
+    - An old telephone
+    - A light bulb
+    - Real lightning
+    - A selfie by the coil!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets]
+tags: [science, museum, inventions, rainy-day, bellingham]

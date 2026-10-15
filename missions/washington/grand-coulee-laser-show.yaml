@@ -1,0 +1,34 @@
+number: 54
+name: Grand Coulee Dam Laser Show
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Grand Coulee Dam Visitor Center
+  area: Grand Coulee / Coulee Dam
+  coords: [47.95600, -118.98100]  # APPROX: set at the visitor center before publishing
+  website: https://www.usbr.gov/pn/grandcoulee/visit/laser.html
+short: Watch the free laser show light up the face of Grand Coulee Dam on a summer night.
+description: >
+  Visit one of the biggest concrete dams on Earth, a wall of concrete almost a
+  mile long across the Columbia River. Tour the visitor center during the day,
+  then stay for "One River, Many Voices," a free laser show projected onto the
+  whole face of the dam after dark. Bring a blanket and snacks, get a spot on
+  the lawn early, and get a photo of the two of you with the dam lit up. The
+  show runs nightly from late May through September.
+for_kids:
+  short: Dam night! Find each thing.
+  steps:
+    - The giant dam
+    - Water pouring down
+    - A laser picture
+    - A star
+    - A selfie in the dark!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer]
+time_of_day: night
+travel: day-trip
+check_ahead: [seasonal]
+tags: [dam, laser-show, night, free, history, central-washington]

@@ -1,0 +1,33 @@
+number: 39
+name: Port Townsend and Fort Worden
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Fort Worden Historical State Park
+  area: Port Townsend
+  coords: [48.13500, -122.76500]  # APPROX: set at the main parking area before publishing
+  website: https://fortworden.org  # verify
+short: Explore Port Townsend's Victorian streets, then the old bunkers at Fort Worden. Bring a flashlight.
+description: >
+  Start in Port Townsend's Victorian downtown, with brick buildings, bookshops
+  and an ice cream cone by the water. Then head to Fort Worden, an old army
+  fort on the bluffs, and explore the dark concrete gun bunkers with a
+  flashlight. Walk out to Point Wilson Lighthouse on the beach and get a photo
+  of the two of you with the Olympic Mountains across the water. Each pick the
+  Victorian house you'd live in on the drive out.
+for_kids:
+  short: Fort hunt! Find each thing.
+  steps:
+    - A dark bunker
+    - The lighthouse
+    - A big ship on the water
+    - An old house with a tower
+    - A selfie at the fort!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [history, small-town, bunkers, lighthouse, beach, olympic-peninsula]

@@ -1,0 +1,34 @@
+number: 36
+name: Skagit Valley Tulip Fields
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Skagit Valley tulip fields (Roozengaarde and Tulip Town)
+  area: Farmland west of Mount Vernon
+  coords: [48.40600, -122.41200]  # APPROX: set at one farm's entrance before publishing
+  website: https://tulipfestival.org
+short: Walk the rainbow rows of the Skagit tulip fields in April. Get there early and wear boots.
+description: >
+  Every April the fields of the Skagit Valley turn into stripes of red,
+  yellow, pink and purple, with Mount Baker on the horizon. Walk the rows at
+  one of the big farms, each pick a favorite color, and get a photo of the two
+  of you in the middle of the flowers. Bloom timing changes with the weather,
+  so check the bloom map before you go. Go early on a weekday to beat the
+  traffic, and wear boots, since the fields get muddy.
+for_kids:
+  short: Flower hunt! Find each color.
+  steps:
+    - A red tulip
+    - A yellow tulip
+    - A purple tulip
+    - A windmill
+    - A selfie in the flowers!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring]
+time_of_day: morning
+travel: day-trip
+check_ahead: [seasonal, tickets]
+tags: [flowers, farms, spring, festival, skagit]

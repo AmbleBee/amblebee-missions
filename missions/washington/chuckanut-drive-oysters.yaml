@@ -1,0 +1,27 @@
+number: 37
+name: Chuckanut Drive and Oysters
+mode: date
+place:
+  name: Taylor Shellfish Samish Farm
+  area: Chuckanut Drive, Samish Bay
+  address: 2182 Chuckanut Dr, Bow, WA 98232
+  coords: [48.60600, -122.49500]  # APPROX: set at the farm store before publishing
+  website: https://taylorshellfishfarms.com/location/samish-farm-shellfish-market
+short: Drive Chuckanut's cliffside curves, then eat oysters fresh from Samish Bay at sunset.
+description: >
+  Drive Chuckanut Drive, a winding road carved into the cliffs above Samish
+  Bay, with the San Juan Islands floating out on the water. Stop at the pullouts
+  for the views, then pull in at the Taylor Shellfish farm right on the bay.
+  Get oysters and clams straight from the water and eat them at the picnic
+  tables by the shore as the sun goes down behind the islands. Take turns
+  shucking (carefully) and get a photo of the two of you with your oysters and
+  the sunset. Check the farm's hours before you go.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [hours]
+tags: [oysters, food, scenic-drive, sunset, romantic, bellingham]

@@ -1,0 +1,34 @@
+number: 47
+name: Joseph, Oregon's Bronze Town
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Downtown Joseph (Main Street)
+  area: Joseph, Wallowa Valley
+  coords: [45.35400, -117.22950]  # APPROX: set on Main St downtown before publishing
+  website: https://josephoregon.com
+short: Hunt the bronze statues on Main Street in Joseph. Tour the foundry that casts them.
+description: >
+  Walk Main Street in the little mountain town of Joseph, with the snowy
+  Wallowas right behind it and life-size bronze sculptures on nearly every
+  corner. Each pick a favorite statue and pose like it for a photo. To see how
+  they're made, take the Valley Bronze foundry tour; it has run Monday through
+  Thursday at 11 a.m., so call ahead. Finish with coffee or a slice of pie in
+  one of the galleries and cafés downtown.
+for_kids:
+  short: Statue hunt! Find each thing.
+  steps:
+    - A bronze animal
+    - A bronze person
+    - A snowy mountain
+    - Your favorite statue
+    - Copy a statue's pose!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [small-town, art, sculpture, walking, eastern-oregon, wallowas]

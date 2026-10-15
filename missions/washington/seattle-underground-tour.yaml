@@ -1,0 +1,36 @@
+number: 47
+name: Seattle Underground Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Bill Speidel's Underground Tour
+  area: Pioneer Square, Seattle
+  address: 614 1st Ave, Seattle, WA 98104
+  coords: [47.60200, -122.33400]  # APPROX: set at the ticket counter before publishing
+  website: https://www.undergroundtour.com
+short: Explore the buried streets under Pioneer Square on the Seattle Underground Tour.
+description: >
+  Walk the buried sidewalks and old storefronts hidden under Pioneer Square,
+  left behind when the city rebuilt its streets a story higher after the Great
+  Fire of 1889. A guide leads the 75-minute walk and tells the strange, funny
+  and slightly scandalous stories of early Seattle. Each pick the weirdest
+  thing you learned. Look up for the purple glass skylights in the sidewalk
+  overhead, and get a photo of the two of you in the old underground
+  street. Buy tickets ahead on weekends.
+for_kids:
+  short: Underground hunt! Find each thing.
+  steps:
+    - An old door underground
+    - Purple glass in the ceiling
+    - An old sign
+    - A dark tunnel
+    - A selfie underground!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [tickets]
+tags: [history, underground, tour, quirky, rainy-day, seattle]

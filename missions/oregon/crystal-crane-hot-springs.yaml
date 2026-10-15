@@ -1,0 +1,33 @@
+number: 51
+name: Crystal Crane Hot Springs
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Crystal Crane Hot Springs
+  area: Hwy 78 near Crane, southeast of Burns
+  coords: [43.44000, -118.64000]  # APPROX: set at the entrance before publishing
+  website: https://cranehotsprings.com  # verify
+short: Soak in the big hot pond at Crystal Crane under a huge high-desert sky.
+description: >
+  Soak in a big natural hot spring pond, around 101 degrees, out in the open
+  high desert with nothing but sagebrush and sky around you. Go at sunset or
+  on a cold night, when the steam rises and the stars come out. For more
+  privacy, book one of the private indoor tubs fed by the same water. Bring
+  towels and water, and book ahead on weekends.
+for_kids:
+  short: Hot pond day! Find each thing.
+  steps:
+    - Steam on the water
+    - A bird
+    - The wide open desert
+    - The sunset
+    - A selfie in the pond!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [hours, reservation]
+tags: [hot-springs, relaxing, stargazing, high-desert, eastern-oregon]

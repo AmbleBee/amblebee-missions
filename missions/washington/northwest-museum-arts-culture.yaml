@@ -1,0 +1,37 @@
+number: 49
+name: Northwest Museum of Arts and Culture
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Northwest Museum of Arts and Culture (the MAC)
+  area: Browne's Addition, Spokane
+  address: 2316 W 1st Ave, Spokane, WA 99201
+  coords: [47.65500, -117.45000]  # APPROX: set at the entrance before publishing
+  website: https://www.northwestmuseum.org
+short: Explore the MAC in Spokane, then tour the 1898 Campbell House mansion next door.
+description: >
+  Explore the region's big museum of art, history and Indigenous culture,
+  with rotating art shows and one of the country's great collections of
+  Plateau tribal beadwork and baskets. Then walk next door into the Campbell
+  House, an 1898 mansion from Spokane's mining-boom days, and wander the
+  rooms. Each pick the room you'd claim as yours. Afterward, stroll the old
+  mansions of Browne's Addition and get a photo of the two of you on one of
+  the grand porches. Open Tuesday through Sunday; the Campbell House has
+  shorter afternoon hours.
+for_kids:
+  short: Museum hunt! Find each thing.
+  steps:
+    - A beaded bag
+    - A painting you like
+    - The old mansion
+    - A really old toy
+    - A selfie on the porch!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [museum, art, history, mansion, rainy-day, spokane]

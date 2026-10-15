@@ -1,0 +1,38 @@
+number: 50
+name: Alvord Desert
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Alvord Desert playa (Frog Springs access)
+  area: Below Steens Mountain, north of Fields
+  coords: [42.50000, -118.53000]  # APPROX: set at the Frog Springs access lot before publishing
+short: Walk out onto the empty Alvord playa under Steens Mountain. Stay for the stars.
+description: >
+  Walk (or carefully drive) out onto the Alvord Desert, a dry lakebed so flat
+  and empty it feels like another planet, with Steens Mountain towering over
+  it. Spell something out together in footprints, take the classic photo of
+  the two of you tiny on the cracked white ground, and stay after sunset for
+  some of the darkest skies in Oregon. Use the free Frog Springs access; it's
+  best July through November, when the playa is dry. If there's any water or
+  mud on it, stay off, since getting stuck out there is very expensive. Grab a
+  milkshake at Fields Station on the way.
+for_kids:
+  short: Desert hunt! Find each thing.
+  steps:
+    - Cracked ground
+    - The big mountain
+    - Your footprints
+    - The first star
+    - A selfie on the desert!
+gear:
+  - item: high-clearance-vehicle
+    rent: "no"
+duration: all-day
+effort: easy
+cost: free
+setting: outdoor
+season: [summer, fall]
+time_of_day: evening
+travel: day-trip
+check_ahead: [conditions]
+tags: [desert, stargazing, remote, views, high-desert, eastern-oregon]

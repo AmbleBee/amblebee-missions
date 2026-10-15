@@ -1,0 +1,27 @@
+number: 48
+name: Smith Tower Observatory Bar
+mode: both
+who: [solo, friends]
+place:
+  name: Smith Tower
+  area: Pioneer Square, Seattle
+  address: 506 2nd Ave, Seattle, WA 98104
+  coords: [47.60180, -122.33170]  # APPROX: set at the entrance before publishing
+  website: https://www.smithtower.com
+short: Ride the old brass elevator up Smith Tower for a cocktail on the 35th-floor observation deck.
+description: >
+  Ride a hand-operated brass elevator up Seattle's oldest skyscraper to the
+  35th-floor Observatory, a Prohibition-style bar wrapped in an open-air deck.
+  Order a cocktail each, walk the deck all the way around for views of the
+  ferries, the stadiums and the Space Needle, and get a photo of the two of
+  you against the city at dusk. You'll need an admission ticket, and the bar
+  is first come, first served, so go on a weeknight for a quieter visit.
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [cocktails, views, history, romantic, nightlife, seattle]

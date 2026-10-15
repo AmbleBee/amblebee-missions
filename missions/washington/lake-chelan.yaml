@@ -1,0 +1,23 @@
+number: 52
+name: Lake Chelan Wine and Water
+mode: date
+place:
+  name: Lake Chelan (downtown Chelan Riverwalk)
+  area: Chelan, south end of Lake Chelan
+  coords: [47.84000, -120.01700]  # APPROX: set at the Riverwalk Park before publishing
+short: Taste wine above Lake Chelan, then walk the Riverwalk at sunset.
+description: >
+  Spend a day at a 50-mile-long glacier lake in the sunny side of the
+  Cascades. Visit a couple of the wineries on the hills above the water, each
+  pick a favorite glass, and take a bottle down to the shore. In summer, rent a
+  boat or paddleboard and swim in the clear water. End with a walk along the
+  Riverwalk in downtown Chelan as the sun sets, and get a photo of the two of
+  you by the lake. Plan a designated driver or book a wine tour.
+duration: all-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [wine, lake, sunset, romantic, central-washington]

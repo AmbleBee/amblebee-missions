@@ -1,0 +1,35 @@
+number: 35
+name: Whale Watching at Lime Kiln
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Lime Kiln Point State Park
+  area: West side of San Juan Island
+  coords: [48.51600, -123.15200]  # APPROX: set at the park parking lot before publishing
+  website: https://parks.wa.gov  # verify: link the Lime Kiln Point park page
+short: Watch for orcas from the rocks at Lime Kiln on San Juan Island. Bring a picnic and be patient.
+description: >
+  Take the ferry from Anacortes to San Juan Island and drive across to Lime
+  Kiln Point, one of the best places in the world to see orcas from shore.
+  Find a spot on the rocks below the little white lighthouse, spread out a
+  picnic, and take turns on whale watch. Each guess what you'll spot first:
+  orca, porpoise, seal or eagle. Summer gives you the best odds, but whales
+  are never guaranteed, so enjoy the sunset either way and get a photo of the
+  two of you by the lighthouse. Parking takes a Discover Pass.
+for_kids:
+  short: Whale watch! Find each thing.
+  steps:
+    - The lighthouse
+    - A boat on the water
+    - A seal or porpoise
+    - A whale fin!
+    - A selfie on the rocks!
+duration: all-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: evening
+travel: day-trip
+check_ahead: [conditions]
+tags: [whales, wildlife, islands, sunset, lighthouse, ferry]

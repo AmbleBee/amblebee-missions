@@ -1,0 +1,34 @@
+number: 56
+name: Maryhill Stonehenge and Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Maryhill Stonehenge Memorial
+  area: Columbia River Gorge, near Goldendale
+  coords: [45.69300, -120.80600]  # APPROX: set at the Stonehenge parking before publishing
+  website: https://www.maryhillmuseum.org
+short: Stand inside a full-size Stonehenge over the Columbia Gorge. Then explore the Maryhill museum.
+description: >
+  Walk into a full-size concrete copy of Stonehenge, built as a World War I
+  memorial on a windy bluff high above the Columbia River. Stand in the center
+  and get a photo of the two of you framed by the giant stones. Then drive
+  down to the Maryhill Museum of Art, a castle-like mansion in the middle of
+  nowhere, full of Rodin sculptures, chess sets and a royal collection from
+  Romania. Stonehenge is free; the museum is seasonal, roughly spring to fall.
+for_kids:
+  short: Stone circle! Find each thing.
+  steps:
+    - The giant stones
+    - The center of the circle
+    - The big river
+    - A statue in the museum
+    - A selfie in Stonehenge!
+duration: half-day
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal]
+tags: [quirky, roadside, art, museum, views, columbia-gorge]

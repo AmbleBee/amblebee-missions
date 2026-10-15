@@ -1,0 +1,34 @@
+number: 40
+name: Artist Point at Mount Baker
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Artist Point
+  area: End of the Mount Baker Highway (SR 542)
+  coords: [48.84600, -121.69300]  # APPROX: set at the Artist Point parking lot before publishing
+short: Drive to Artist Point between Mount Baker and Mount Shuksan. Walk out for the alpine views.
+description: >
+  Drive to the very end of the Mount Baker Highway, where the road climbs
+  above the trees to Artist Point, with Mount Baker on one side and jagged
+  Mount Shuksan on the other. Walk the short Artist Ridge trail, or hike out
+  toward Table Mountain if you want more. Find Picture Lake on the way back,
+  where Shuksan reflects in the water, and get the classic photo of the two of
+  you there. The last part of the road only opens from about midsummer to the
+  first snow; check WSDOT before you go. Parking takes a forest pass.
+for_kids:
+  short: Mountain hunt! Find each thing.
+  steps:
+    - A snowy mountain
+    - A mountain in a lake
+    - A patch of snow
+    - A marmot or chipmunk
+    - A selfie on the trail!
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [mountains, views, hiking, alpine, north-cascades]

@@ -1,0 +1,34 @@
+number: 57
+name: Spokane Falls SkyRide
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Numerica SkyRide, Riverfront Park
+  area: Downtown Spokane
+  coords: [47.66100, -117.42600]  # APPROX: set at the SkyRide station before publishing
+  website: https://my.spokanecity.org/riverfrontspokane/attractions/skyride/
+short: Ride the SkyRide gondola down over the roaring Spokane Falls. Spring has the most water.
+description: >
+  Ride a little gondola down into the gorge right over Spokane Falls, dropping
+  about 200 feet and crossing the river in front of the thundering water.
+  Spring, when the snowmelt pours over the falls, is the most dramatic. Then
+  walk Riverfront Park: find the giant Red Wagon slide, the old clock tower
+  and the big garbage-eating goat sculpture, and get a photo of the two of you
+  with the falls behind you. The ride can close in high wind.
+for_kids:
+  short: Falls hunt! Find each thing.
+  steps:
+    - The waterfall
+    - The gondola
+    - The giant red wagon
+    - The goat that eats trash
+    - A selfie over the falls!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, conditions]
+tags: [waterfall, gondola, park, city, spokane]

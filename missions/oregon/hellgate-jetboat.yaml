@@ -1,0 +1,35 @@
+number: 57
+name: Hellgate Jet Boat on the Rogue
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Hellgate Jetboat Excursions dock
+  area: Rogue River, downtown Grants Pass
+  coords: [42.43300, -123.32700]  # APPROX: set at the boat dock before publishing
+  website: https://www.hellgate.com
+short: Blast down the Rogue River on a Hellgate jet boat. Hold on for the 360-degree spins.
+description: >
+  Climb aboard a jet boat in Grants Pass and roar down the Rogue River into
+  Hellgate Canyon, with whitewater, spins and splashes along the way. Watch
+  the banks for eagles, osprey and deer, and get a photo of the two of you
+  with the canyon walls behind you (if your hair isn't soaked). For a longer
+  trip, pick a dinner or brunch run to the OK Corral, a ranch you can only
+  reach by boat. Trips run in the warm months; book ahead and expect to get
+  wet.
+for_kids:
+  short: Jet boat ride! Find each thing.
+  steps:
+    - A big splash
+    - A bird by the river
+    - The canyon walls
+    - A boat spin
+    - A soggy selfie!
+duration: half-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [boat, river, thrill, wildlife, southern-oregon]

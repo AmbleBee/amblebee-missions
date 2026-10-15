@@ -1,0 +1,35 @@
+number: 59
+name: Cape Disappointment
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Cape Disappointment State Park (Lewis and Clark Interpretive Center)
+  area: Ilwaco, mouth of the Columbia River
+  coords: [46.27600, -124.05100]  # APPROX: set at the interpretive center parking before publishing
+  website: https://parks.wa.gov  # verify: link the Cape Disappointment park page
+short: Watch storm waves crash at Cape Disappointment, where Lewis and Clark reached the Pacific.
+description: >
+  Stand on the cliffs where the Columbia River meets the Pacific, one of the
+  most dangerous river mouths in the world. Visit the interpretive center
+  where Lewis and Clark's journey ended, walk the trail to the Cape
+  Disappointment Lighthouse, and drive up to North Head Lighthouse for the
+  view down the long beach. Come in winter to watch the storm waves crash
+  over the jetty. Get a photo of the two of you by a lighthouse, then grab
+  fish and chips in Ilwaco. Parking takes a Discover Pass.
+for_kids:
+  short: Lighthouse hunt! Find each thing.
+  steps:
+    - A lighthouse
+    - A giant wave
+    - A ship
+    - A pelican or seagull
+    - A selfie at the ocean!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, conditions]
+tags: [lighthouse, ocean, history, storms, coast, southwest-washington]

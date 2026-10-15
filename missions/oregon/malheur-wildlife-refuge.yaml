@@ -1,0 +1,36 @@
+number: 52
+name: Malheur National Wildlife Refuge
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Malheur National Wildlife Refuge Headquarters
+  area: Sodhouse Lane, south of Burns
+  address: 36391 Sodhouse Ln, Princeton, OR 97721
+  coords: [43.26500, -118.84300]  # APPROX: set at the headquarters parking before publishing
+  website: https://www.fws.gov/refuge/malheur/visit-us
+short: Spot birds at Malheur Refuge. Each keep a count and see who finds more species.
+description: >
+  Visit one of the great bird stops of the West, where marshes in the middle
+  of the high desert draw huge flocks of cranes, swans, pelicans and
+  songbirds. Start at the headquarters, look at the bird museum to learn what
+  to watch for, and check the board of recent sightings. Then drive part of
+  the gravel auto tour route. Each keep your own count and see who spots more
+  kinds of birds. Spring migration is the best time. The visitor center is
+  closed October through February, but the museum and grounds stay open.
+for_kids:
+  short: Bird hunt! Find each thing.
+  steps:
+    - A big white bird
+    - A duck
+    - A bird flying
+    - A bird nest
+    - A selfie with binoculars!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [hours, conditions]
+tags: [birds, wildlife, nature, high-desert, eastern-oregon]

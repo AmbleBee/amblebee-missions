@@ -1,0 +1,36 @@
+number: 48
+name: Oregon Trail Interpretive Center
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: National Historic Oregon Trail Interpretive Center at Flagstaff Hill
+  area: Flagstaff Hill, east of Baker City
+  address: 22267 Hwy 86, Baker City, OR 97814
+  coords: [44.81300, -117.72700]  # APPROX: set at the center's parking lot before publishing
+  website: https://www.blm.gov/learn/interpretive-centers/national-historic-oregon-trail-interpretive-center
+short: Follow the Oregon Trail at Flagstaff Hill. Walk down to real wagon ruts from 1840s pioneers.
+description: >
+  Step into the pioneers' story at a hilltop museum overlooking the actual
+  route of the Oregon Trail: full-size wagons, diaries from the journey, and
+  the choices families had to make along the way. Then walk the trails down
+  the hill to real wagon ruts still cut into the sagebrush. Each decide what
+  you'd have packed in your one wagon, and get a photo of the two of you by
+  the ruts with the Blue Mountains behind you. Watch for living-history days
+  at the wagon encampment. It charges a small fee and takes federal passes.
+for_kids:
+  short: Pioneer hunt! Find each thing.
+  steps:
+    - A covered wagon
+    - Real wagon tracks
+    - An ox or horse in a picture
+    - A pioneer's tool
+    - A selfie on the trail!
+duration: half-day
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [history, oregon-trail, museum, walking, eastern-oregon]

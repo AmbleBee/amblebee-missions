@@ -1,0 +1,35 @@
+number: 59
+name: Wildlife Safari
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Wildlife Safari
+  area: Winston, south of Roseburg (off I-5)
+  address: 1790 Safari Rd, Winston, OR 97496
+  coords: [43.12100, -123.41200]  # APPROX: set at the entrance before publishing
+  website: https://wildlifesafari.net
+short: Drive through Wildlife Safari as giraffes and rhinos wander past. Each keep an animal count.
+description: >
+  Drive your own car slowly through 600 acres of open land where giraffes,
+  rhinos, bears, lions and herds of grazers roam right up to your windows.
+  It takes about an hour and a half. Each keep count of the animals you spot
+  and see who wins, then visit the free Safari Village for the cheetahs, a
+  big part of the park's work. Windows and tops stay up, so no convertibles,
+  motorcycles or pets in the drive.
+for_kids:
+  short: Safari! Find each animal.
+  steps:
+    - A giraffe
+    - A rhino
+    - A bear
+    - A cheetah
+    - A safari selfie!
+duration: half-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [animals, wildlife, drive-thru, safari, southern-oregon]

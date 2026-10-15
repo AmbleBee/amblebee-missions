@@ -1,0 +1,35 @@
+number: 58
+name: Steptoe Butte Sunrise
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Steptoe Butte State Park (summit)
+  area: The Palouse, north of Colfax
+  coords: [47.03300, -117.29700]  # APPROX: set at the summit parking before publishing
+  website: https://parks.wa.gov  # verify: link the Steptoe Butte park page
+short: Drive up Steptoe Butte at sunrise and watch the light roll across the Palouse hills.
+description: >
+  Drive the road that spirals to the top of Steptoe Butte, an island of old
+  rock rising over the rolling farm hills of the Palouse. Get there before
+  sunrise and watch the first light roll across miles of wheat fields, the
+  patterns of green or gold changing with every minute. Bring coffee and a
+  blanket, it's windy up top, and get a photo of the two of you with the
+  hills glowing below. Late spring is greenest and late summer is golden.
+  Parking takes a Discover Pass.
+for_kids:
+  short: Hilltop hunt! Find each thing.
+  steps:
+    - The sunrise
+    - A barn
+    - A tractor
+    - A hawk in the sky
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [sunrise, views, farms, photography, palouse, eastern-washington]

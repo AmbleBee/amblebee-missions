@@ -1,0 +1,34 @@
+number: 43
+name: Conboy Lake Wildlife Refuge
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Conboy Lake National Wildlife Refuge (Willard Springs Trail)
+  area: Glenwood, south of Mount Adams
+  coords: [45.95800, -121.33900]  # APPROX: set at the refuge headquarters trailhead before publishing
+  website: https://www.fws.gov/refuge/conboy-lake
+short: Walk the Willard Springs Trail at Conboy Lake. Listen for sandhill cranes under Mount Adams.
+description: >
+  Walk an easy 3.5-mile loop through meadows, marsh and ponderosa pines in a
+  quiet valley right under Mount Adams. Stop at the observation platform for
+  the best view of the mountain, and listen for the rattling calls of sandhill
+  cranes, which nest here in spring and summer. Watch for bald eagles and
+  hawks too, and each keep count of the birds you spot. Get a photo of the two
+  of you on the platform with Mount Adams behind you. It's free, and fall
+  brings golden aspens and larches. Pair it with huckleberry pie in Trout Lake.
+for_kids:
+  short: Crane hunt! Find each thing.
+  steps:
+    - A tall crane
+    - The big mountain
+    - A pond
+    - A hawk or eagle
+    - A selfie on the platform!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: morning
+travel: day-trip
+tags: [birds, wildlife, hiking, mountains, mount-adams, south-cascades]

@@ -1,0 +1,34 @@
+number: 53
+name: Ohme Gardens
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Ohme Gardens
+  area: Bluff above Wenatchee
+  coords: [47.45700, -120.32600]  # APPROX: set at the entrance before publishing
+  website: https://ohmegardens.org  # verify
+short: Wander the alpine gardens of Ohme, built on a desert bluff above Wenatchee.
+description: >
+  Explore an alpine garden that a family carved out of a bare desert bluff by
+  hand over decades: stone paths, evergreens, waterfalls and little ponds,
+  all perched high above the Columbia River and the orchards. Follow the paths
+  up to the lookout for the view over the valley, find the wishing well, and
+  get a photo of the two of you on one of the rock stairways. Open from
+  mid-April through October.
+for_kids:
+  short: Garden hunt! Find each thing.
+  steps:
+    - A little waterfall
+    - A stone path
+    - The big river
+    - A pond
+    - A selfie at the lookout!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal]
+tags: [gardens, views, calm, central-washington, wenatchee]
