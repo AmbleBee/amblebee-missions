@@ -74,3 +74,4 @@ Check your changes with `python tools/check_missions.py` (also part of the test 
 | `check_ahead` | What to check before going: `hours`, `tickets`, `reservation`, `seasonal`, `conditions` (weather / trail / sky). Never store actual hours (they go stale); use `place.website`. [none] |
 | `routine` | `true` for repeatable routines [`false`] |
 | `tags` | Free-form list [none] |
+| `credit` | Name of the person who suggested the mission, shown small under the title as "Suggested by …". Only for missions from contributors who asked to be credited; leave it blank or leave the line out otherwise (nothing shows; older missions without the line need no changes). A name only: no links or email addresses, 40 characters max. [none] |

@@ -30,3 +30,4 @@ time_of_day: any
 travel: local
 # check_ahead: [hours]
 tags: []
+credit:              # leave blank, or the name of whoever suggested it ("Suggested by Sam R.")

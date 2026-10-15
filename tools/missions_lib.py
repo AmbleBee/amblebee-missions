@@ -32,7 +32,7 @@ LIST_ALLOWED = {
     "check_ahead": {"hours", "tickets", "reservation", "seasonal", "conditions"},
     "season": {"spring", "summer", "fall", "winter"},
 }
-KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear"}
+KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit"}
 GEAR = {
     # Water
     "kayak", "canoe", "paddleboard", "life-jackets", "wetsuit", "river-tube", "fishing-gear",
@@ -47,6 +47,7 @@ GEAR = {
 }
 RENT = {"on-site", "nearby", "no"}
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
+CREDIT_MAX = 40  # shown as "Suggested by …" under the mission title
 SHORT_MAX = 100
 
 
@@ -144,6 +145,14 @@ def check_catalog(root):
                 if not (isinstance(c, list) and len(c) == 2 and all(isinstance(v, (int, float)) for v in c)
                         and -90 <= c[0] <= 90 and -180 <= c[1] <= 180):
                     problems.append(f"{where}: coords should be [latitude, longitude], e.g. [45.52266, -122.67306]")
+        cr = m.get("credit")
+        if cr not in (None, ""):  # missing or blank credit is fine: nothing shows on the ticket
+            if not isinstance(cr, str) or not cr.strip():
+                problems.append(f"{where}: credit should be the contributor's name as text, or leave it blank")
+            elif len(cr) > CREDIT_MAX:
+                problems.append(f"{where}: credit is {len(cr)} characters; keep it to {CREDIT_MAX}")
+            elif "://" in cr or "@" in cr:
+                problems.append(f"{where}: credit should be a name only, no links or email addresses")
         for g in m.get("gear") or []:
             if not isinstance(g, dict) or g.get("item") not in GEAR:
                 problems.append(f"{where}: gear item {g.get('item') if isinstance(g, dict) else g!r} isn't in the gear list (SCHEMA.md)")

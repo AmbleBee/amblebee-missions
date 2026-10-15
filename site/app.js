@@ -202,6 +202,7 @@ function ticket(m, { titleId } = {}) {
       h("span", { class: "lbl" }, "Mission"), h("span", { class: "num" }, m.number || "?")),
     h("div", { class: "body" },
       h("h3", { id: titleId || null }, m.name),
+      String(m.credit || "").trim() ? h("p", { class: "credit" }, "Suggested by ", String(m.credit).trim()) : null,
       h("p", { class: "short" }, m.short),
       m.description ? h("p", { class: "desc" }, m.description) : null,
       h("ul", { class: "tags", "aria-label": "Details" }, tags),
