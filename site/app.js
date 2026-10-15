@@ -3,7 +3,7 @@
 "use strict";
 
 // ---- settings you might edit -----------------------------------------------------------------
-const FORM_URL = "";   // paste the Google Form link here when it's ready; until then the button explains
+const FORM_URL = "https://forms.gle/V8UZRwmDrLwzQpuM6";   // paste the Google Form link here when it's ready; until then the button explains
 const REPO_URL = "https://github.com/AmbleBee/amblebee-missions";
 
 // ---- labels ---------------------------------------------------------------------------------
