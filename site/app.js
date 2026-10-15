@@ -67,6 +67,7 @@ const S = {
   zip: null,
   zips: null,   // ZIP -> [lat, lon], downloaded whole the first time someone sets a ZIP
   browse: null, // which pack "Every mission" shows ("all", "near", or a pack id)
+  q: "",        // search box text ("" = not searching)
 };
 function readPref(k) { try { return localStorage.getItem("amble." + k); } catch (e) { return null; } }
 function writePref(k, v) { try { localStorage.setItem("amble." + k, v); } catch (e) { /* private mode: fine */ } }
@@ -260,6 +261,30 @@ function openDialog(m) {
 }
 
 // ---- browse --------------------------------------------------------------------------------------
+// search: every word must appear somewhere in the mission; matches in the name rank highest
+const fold = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[-_/]/g, " ");
+function searchText(m) {
+  if (m._hay) return m._hay;
+  const pack = S.packById[m.pack] || {};
+  const pl = m.place || {};
+  const parts = [m.name, m.short, m.description, (m.tags || []).join(" "), pl.name, pl.area, pl.address,
+    pack.name, pack.region, m.credit, m.id, (m.gear || []).map((g) => g.item).join(" "),
+    m.for_kids && m.for_kids.short, (m.season === "any" ? [] : m.season || []).join(" "),
+    L.mode[m.mode], L.setting && L.setting[m.setting], L.time && L.time[m.time_of_day]];
+  m._name = fold(m.name);
+  m._tags = (m.tags || []).map(fold);
+  return (m._hay = fold(parts.filter(Boolean).join(" ")));
+}
+function searchScore(m, words) {
+  const hay = searchText(m);
+  let score = 0;
+  for (const w of words) {
+    if (!hay.includes(w)) return 0;
+    score += m._name.includes(w) ? 5 : m._tags.some((t) => t.includes(w)) ? 3 : 1;
+  }
+  return score;
+}
+const searchWords = () => fold(S.q).split(/\s+/).filter((w) => w.length > 0);
 function renderBrowse() {
   const f = readFilters();
   const matches = S.missions.filter((m) => passes(m, f));
@@ -283,11 +308,15 @@ function renderBrowse() {
   renderBrowsePick(matches);
   const wrap = $("#packs");
   wrap.replaceChildren();
+  const words = searchWords();
+  const searching = words.length > 0;
+  $("#search-hint").hidden = !searching;
+  $(".pack-field").hidden = searching;
   const card = (m) => {
     const d = distM(m);
     const pack = S.packById[m.pack];
     return h("button", { type: "button", class: "card", onclick: () => openDialog(m) },
-      h("span", { class: "no" }, S.browse === "near" && pack ? `${pack.name} · Mission ${m.number}`
+      h("span", { class: "no" }, (S.browse === "near" || searching) && pack ? `${pack.name} · Mission ${m.number}`
         : `Mission ${m.number}${m.place && m.place.area ? " · " + m.place.area : ""}`),
       h("h4", {}, m.name),
       h("p", { class: "s" }, m.short),
@@ -297,6 +326,19 @@ function renderBrowse() {
         h("span", {}, L.duration[m.duration] || m.duration),
         h("span", {}, L.cost[m.cost] || m.cost)));
   };
+  if (searching) {
+    const found = matches.map((m) => [searchScore(m, words), m]).filter(([sc]) => sc > 0)
+      .sort((a, b) => b[0] - a[0] || (S.here ? (distM(a[1]) ?? 1e12) - (distM(b[1]) ?? 1e12) : 0)
+        || a[1].name.localeCompare(b[1].name))
+      .map(([, m]) => m);
+    $("#browse-count").textContent = `${found.length} ${found.length === 1 ? "mission matches" : "missions match"} "${S.q.trim()}"`;
+    if (found.length) wrap.append(h("section", { class: "pack", "aria-label": "Search results" },
+      h("div", { class: "cards" }, found.map(card))));
+    else wrap.append(h("p", { class: "none" },
+      matches.length < S.missions.length ? `Nothing matches "${S.q.trim()}" with your filters on. Try clearing a filter or a different word.`
+        : `Nothing matches "${S.q.trim()}". Try a different word, like a town, a place or an activity.`));
+    return;
+  }
   if (S.browse === "near" && S.here) {
     const near = matches.filter((m) => distM(m) != null).sort((x, y) => distM(x) - distM(y)).slice(0, NEAR_MAX);
     if (near.length) wrap.append(h("section", { class: "pack", "aria-label": "Closest to your ZIP" },
@@ -444,6 +486,18 @@ async function start() {
   $("#roll-btn").addEventListener("click", roll);
   $("#zip-form").addEventListener("submit", setZip);
   $("#browse-pack").addEventListener("change", (e) => { S.browse = e.target.value; renderBrowse(); });
+  let searchTimer = null;
+  const sInput = $("#search-input");
+  sInput.addEventListener("input", () => {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(() => { S.q = sInput.value; renderBrowse(); }, 120);
+  });
+  sInput.addEventListener("keydown", (e) => { if (e.key === "Escape") { sInput.value = ""; S.q = ""; renderBrowse(); } });
+  $("#nav-search").addEventListener("click", (e) => {
+    e.preventDefault();
+    $("#browse").scrollIntoView({ behavior: "smooth" });
+    setTimeout(() => sInput.focus({ preventScroll: true }), 300);
+  });
   document.querySelectorAll(".units button").forEach((b) => b.addEventListener("click", () => {
     S.unit = b.dataset.unit; writePref("unit", S.unit); renderWithin(); refresh(false); if (S.current) show(S.current);
   }));

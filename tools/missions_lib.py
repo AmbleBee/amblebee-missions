@@ -153,6 +153,9 @@ def check_catalog(root):
                 problems.append(f"{where}: credit is {len(cr)} characters; keep it to {CREDIT_MAX}")
             elif "://" in cr or "@" in cr:
                 problems.append(f"{where}: credit should be a name only, no links or email addresses")
+            elif cr.strip()[:1] in "(\"'" or cr.strip().lower().startswith("suggested by"):
+                problems.append(f"{where}: credit should be just the name, like `credit: Max W.` "
+                                "(the site adds \"Suggested by\" itself; no brackets or quotes)")
         for g in m.get("gear") or []:
             if not isinstance(g, dict) or g.get("item") not in GEAR:
                 problems.append(f"{where}: gear item {g.get('item') if isinstance(g, dict) else g!r} isn't in the gear list (SCHEMA.md)")

@@ -34,6 +34,7 @@
   <nav aria-label="Sections">
     <a href="#about">About</a>
     <a href="#browse">Every mission</a>
+    <a href="#browse" id="nav-search">Search</a>
     <a href="#share" class="nav-share">Know a great spot?</a>
   </nav>
 </header>
@@ -182,8 +183,15 @@
     <p class="hand" id="browse-count"></p>
   </div>
   <div class="browse-pick">
-    <label for="browse-pack">Show missions from</label>
-    <select id="browse-pack"></select>
+    <div class="search-field" role="search">
+      <label for="search-input">Search missions</label>
+      <input type="search" id="search-input" placeholder="Try waterfall, Spokane, oysters, rainy day…" autocomplete="off" enterkeyhint="search" aria-describedby="search-hint">
+    </div>
+    <div class="pack-field">
+      <label for="browse-pack">Show missions from</label>
+      <select id="browse-pack"></select>
+    </div>
+    <p class="hint" id="search-hint" hidden>Searching every pack. Your filters still apply.</p>
   </div>
   <div id="packs"></div>
 </section>

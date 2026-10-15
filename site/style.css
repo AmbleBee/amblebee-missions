@@ -245,6 +245,16 @@ details.extra li { margin: 2px 0; }
   padding: 14px 18px; border-radius: 20px; background: var(--linen); box-shadow: 0 2px 0 var(--line);
 }
 .browse-pick label { font-weight: 800; color: var(--walnut); }
+.browse-pick .search-field, .browse-pick .pack-field { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.browse-pick .search-field { flex: 1 1 22rem; }
+.browse-pick .search-field input {
+  flex: 1 1 14rem; min-width: 0; min-height: 44px; padding: 8px 14px; border-radius: 14px;
+  border: 2px solid var(--line); background: var(--paper, #fff); font: inherit; font-weight: 700; color: var(--walnut);
+}
+.browse-pick .search-field input::placeholder { color: var(--walnut-soft); font-weight: 600; }
+.browse-pick .search-field input:focus-visible { outline: 3px solid var(--honey, #d9a441); outline-offset: 2px; }
+.browse-pick .hint { flex-basis: 100%; margin: 0; }
+.browse-pick [hidden] { display: none !important; }
 .browse-pick select { min-width: 16rem; }
 .packs-legend button {
   appearance: none; border: 0; background: none; padding: 0; cursor: pointer; font: inherit; color: inherit;

@@ -21,4 +21,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 tags: [views, history, coast]
-credit: ("Suggested By Max.W")     # leave blank, or the name of whoever suggested it ("Suggested by Sam R.")
+credit: Max W.
