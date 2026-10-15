@@ -1,0 +1,27 @@
+number: 14
+name: The Morgan Library and Museum
+mode: both
+who: [solo, friends]
+place:
+  name: The Morgan Library and Museum
+  area: Madison Ave at 36th St, Murray Hill
+  address: 225 Madison Ave, New York, NY 10016
+  coords: [40.74920, -73.98140]  # APPROX: set at the entrance before publishing
+  website: https://www.themorgan.org
+short: Explore J.P. Morgan's private library, three floors of books under a painted ceiling.
+description: >
+  Step into J.P. Morgan's private library, three stories of rare books behind
+  carved walnut, with hidden staircases and a painted ceiling overhead. Look
+  for a Gutenberg Bible and original handwritten manuscripts, then see what's
+  in the special exhibitions. Each pick the book you'd steal if you could, and
+  get a photo of the two of you in the East Room. It's closed Mondays. Free on
+  Friday evenings from 5 to 8, but reserve those tickets a week ahead.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [library, history, books, architecture, rainy-day, nyc]

@@ -1,0 +1,35 @@
+number: 15
+name: SPYSCAPE
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: SPYSCAPE
+  area: Eighth Ave at W 55th St, Midtown
+  address: 928 8th Ave, New York, NY 10019
+  coords: [40.76550, -73.98340]  # APPROX: set at the entrance before publishing
+  website: https://spyscape.com
+short: Test your spy skills at SPYSCAPE. Beat the laser maze, then compare your secret spy profiles.
+description: >
+  Go undercover at a spy museum that tests you as you go: crack codes, spot
+  liars, and wriggle through a laser maze without tripping a beam. At the end
+  each of you gets a spy profile that says which role you're best at, so
+  compare them and argue over who'd make the better agent. Get a photo of the
+  two of you in the laser room. Plan on about two hours. It's open late on
+  weekends; buy timed tickets ahead.
+for_kids:
+  short: Spy mission! Find each thing.
+  steps:
+    - A secret code
+    - A laser beam
+    - A spy gadget
+    - Your spy name
+    - A spy selfie!
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [tickets]
+tags: [spies, interactive, games, playful, rainy-day, nyc]

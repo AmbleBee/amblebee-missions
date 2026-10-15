@@ -1,0 +1,27 @@
+number: 5
+name: The Met Cloisters
+mode: both
+who: [solo, friends, family]
+place:
+  name: The Met Cloisters
+  area: Fort Tryon Park, northern Manhattan
+  address: 99 Margaret Corbin Dr, New York, NY 10040  # verify
+  coords: [40.86490, -73.93190]  # APPROX: set at the entrance before publishing
+  website: https://www.metmuseum.org/visit/visit-the-cloisters
+short: Step into medieval Europe at the Met Cloisters. Find the unicorn tapestries.
+description: >
+  Ride up to the top of Manhattan to a museum built from pieces of real
+  medieval monasteries, set high above the Hudson. Walk the cloister gardens,
+  find the famous Unicorn Tapestries, and each pick the strangest creature you
+  can spot in the art. Get a photo of the two of you in one of the arched
+  walkways. Pair it with the Fort Tryon Park mission next door. New York State
+  residents can pay what they wish; check the hours before you go.
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, art, history, gardens, medieval, nyc]

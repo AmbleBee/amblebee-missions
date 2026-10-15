@@ -1,0 +1,35 @@
+number: 18
+name: Smorgasburg Food Market
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Smorgasburg Williamsburg, Marsha P. Johnson State Park
+  area: Williamsburg waterfront, Brooklyn
+  coords: [40.72150, -73.96130]  # APPROX: set at the park entrance on Kent Ave before publishing
+  website: https://www.smorgasburg.com
+short: Graze Smorgasburg's food stalls on the Brooklyn waterfront. Each pick one dish to share.
+description: >
+  Wander dozens of food stalls on the Williamsburg waterfront, with the
+  Manhattan skyline right across the river. Each pick one dish for the two of
+  you to split, then a third you choose together, and crown a winner. Find a
+  spot on the grass to eat, and get a photo of the two of you with your food
+  and the skyline. It runs Saturdays in Williamsburg, Sundays in Prospect
+  Park and Fridays at the World Trade Center, from April through late
+  October. Go hungry and early; it's mostly cashless.
+for_kids:
+  short: Food hunt! Find each thing.
+  steps:
+    - Something sweet
+    - Something you've never tried
+    - A food truck or stall sign
+    - The big city across the river
+    - A selfie with your snack!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [seasonal]
+tags: [food, market, outdoor, skyline, brooklyn, nyc]

@@ -1,0 +1,35 @@
+number: 13
+name: Hayden Planetarium Space Show
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Hayden Planetarium, Rose Center for Earth and Space
+  area: W 81st St at Central Park West, Upper West Side
+  coords: [40.78160, -73.97330]  # APPROX: set at the Rose Center entrance before publishing
+  website: https://www.amnh.org
+short: Lean back under the dome for the Hayden Planetarium space show. Then walk the cosmic pathway.
+description: >
+  Get timed tickets for the space show and lean back under the giant dome as
+  it flies you out through the universe. Afterward, walk the spiral Cosmic
+  Pathway, where each step covers millions of years, and find the spot that
+  marks all of human history. Get a photo of the two of you with the glowing
+  sphere of the Rose Center behind you. The show needs a separate timed
+  ticket, so book ahead. It's in the same museum as the gem halls, so you can
+  do both in one day.
+for_kids:
+  short: Space hunt! Find each thing.
+  steps:
+    - The giant ball
+    - A planet
+    - A meteorite
+    - The starry dome
+    - A selfie in space!
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [tickets]
+tags: [space, planetarium, science, museum, rainy-day, nyc]

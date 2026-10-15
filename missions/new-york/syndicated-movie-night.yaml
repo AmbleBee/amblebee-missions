@@ -1,0 +1,26 @@
+number: 6
+name: Movie Night at Syndicated
+mode: both
+who: [solo, friends]
+place:
+  name: Syndicated Bar Theater Kitchen
+  area: Bushwick, Brooklyn
+  address: 40 Bogart St, Brooklyn, NY 11206
+  coords: [40.70510, -73.93330]  # APPROX: set at the entrance before publishing
+  website: https://syndicatedbk.com  # verify
+short: Watch a cult classic at Syndicated in Bushwick, with dinner and drinks in your seat.
+description: >
+  Catch an old favorite or a cult classic in a cozy little theater behind a
+  Bushwick bar and restaurant, where you eat and drink while the movie plays.
+  Tickets are cheap, so put the money toward burgers and a cocktail each. Pick
+  the movie together from the week's lineup, then trade your favorite lines
+  over drinks at the bar afterward. Shows sell out, so buy tickets ahead.
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [movies, dinner, drinks, brooklyn, rainy-day, nyc]

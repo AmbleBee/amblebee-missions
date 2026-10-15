@@ -1,0 +1,32 @@
+number: 3
+name: Walk the Brooklyn Bridge
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Brooklyn Bridge walkway (Brooklyn entrance)
+  area: DUMBO, Brooklyn
+  coords: [40.69960, -73.99030]  # APPROX: set at the Brooklyn-side pedestrian entrance before publishing
+short: Walk the Brooklyn Bridge from Brooklyn to Manhattan, skyline in front of you the whole way.
+description: >
+  Start on the Brooklyn side so the Manhattan skyline is ahead of you the whole
+  walk. Stop under the stone towers for a photo of the two of you, look back
+  for the Statue of Liberty off to the south, and take your time; it's about a
+  mile across. Go at sunrise or early morning, before the crowds pack the
+  walkway, and stay out of the bike lane. Grab a coffee or bagel in DUMBO
+  before you start. It's free.
+for_kids:
+  short: Bridge walk! Find each thing.
+  steps:
+    - A stone tower
+    - A boat on the river
+    - The Statue of Liberty
+    - A tall skyscraper
+    - A selfie on the bridge!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: local
+tags: [walking, bridge, views, skyline, free, nyc]

@@ -1,0 +1,34 @@
+number: 12
+name: Halls of Gems and Minerals
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Allison and Roberto Mignone Halls of Gems and Minerals, American Museum of Natural History
+  area: Central Park West at 79th St, Upper West Side
+  coords: [40.78130, -73.97400]  # APPROX: set at the museum entrance before publishing
+  website: https://www.amnh.org
+short: Find the giant amethyst geode in the Halls of Gems and Minerals. Each pick a gem you'd want.
+description: >
+  Walk through the museum's glittering gem and mineral halls, past huge
+  crystals, glowing minerals and a geode taller than you that you can walk
+  right up to. Each pick the gem you'd want if you could take one home, and get
+  a photo of the two of you by the giant amethyst geode. The halls come with
+  general admission; go on a weekday morning to beat the crowds, and stay for
+  the dinosaurs and the blue whale if you have time.
+for_kids:
+  short: Gem hunt! Find each thing.
+  steps:
+    - A purple crystal
+    - A gem that glows
+    - A giant geode
+    - A rock bigger than you
+    - A selfie with a gem!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [museum, gems, science, rainy-day, nyc]

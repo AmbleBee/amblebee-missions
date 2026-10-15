@@ -1,0 +1,26 @@
+number: 11
+name: Comedy Cellar Show
+mode: both
+who: [friends]
+place:
+  name: Comedy Cellar
+  area: MacDougal St, Greenwich Village
+  address: 117 MacDougal St, New York, NY 10012
+  coords: [40.73020, -74.00060]  # APPROX: set at the entrance before publishing
+  website: https://www.comedycellar.com
+short: Catch a late show at the Comedy Cellar. Big-name comics drop in unannounced.
+description: >
+  Squeeze into the tiny basement club in the Village where famous comics
+  regularly drop in unannounced to work on new material. Reserve ahead, show
+  up early, and expect a cover plus a two-drink minimum. Phones go away for the
+  whole show. Afterward, each pick your favorite joke and try to retell it over
+  a slice of pizza on MacDougal. The comedy is very adult.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: night
+travel: local
+check_ahead: [reservation]
+tags: [comedy, nightlife, drinks, village, nyc]

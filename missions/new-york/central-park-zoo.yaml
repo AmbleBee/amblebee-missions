@@ -1,0 +1,34 @@
+number: 2
+name: Central Park Zoo
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Central Park Zoo
+  area: Central Park at E 64th St and Fifth Ave
+  coords: [40.76780, -73.97180]  # APPROX: set at the entrance before publishing
+  website: https://centralparkzoo.com
+short: Visit the snow leopards, penguins and sea lions at the Central Park Zoo. Catch a sea lion feeding.
+description: >
+  Walk through a small zoo tucked right into Central Park: sea lions in the
+  center pool, penguins and puffins in the polar building, snow leopards, red
+  pandas and a steamy rainforest. Check the day's schedule for a sea lion
+  feeding and get there early for a spot at the rail. Each pick your favorite
+  animal and get a photo with it. On your way out, wait for the Delacorte
+  Clock to play on the hour.
+for_kids:
+  short: Zoo hunt! Find each animal.
+  steps:
+    - A sea lion
+    - A penguin
+    - A snow leopard
+    - A red panda
+    - A selfie by the clock!
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [animals, zoo, central-park, nyc]

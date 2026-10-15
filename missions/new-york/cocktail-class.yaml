@@ -1,0 +1,25 @@
+number: 9
+name: Cocktail Making Class
+mode: both
+who: [friends]
+place:
+  name: Liquid Lab NYC
+  area: Manhattan (classes meet at partner venues)
+  coords: [40.74480, -73.98570]  # APPROX: 79 Madison Ave is a mailing address; set at the class venue before publishing
+  website: https://liquidlabnyc.com  # verify
+short: Learn to shake real cocktails in a mixology class. Then make each other a signature drink.
+description: >
+  Take a hands-on mixology class where a bartender teaches you to shake, stir
+  and balance classic cocktails, then lets you loose to invent your own. Make a
+  signature drink for each other and name it after something only the two of
+  you would get. Get a photo toasting with your creations. It's 21 and up, and
+  classes book up, so reserve ahead and plan a ride home.
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [reservation]
+tags: [cocktails, class, drinks, learn-something, nyc]

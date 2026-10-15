@@ -1,0 +1,35 @@
+number: 8
+name: Brooklyn Botanic Garden
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Brooklyn Botanic Garden
+  area: Prospect Heights, Brooklyn
+  address: 990 Washington Ave, Brooklyn, NY 11225
+  coords: [40.66940, -73.96240]  # APPROX: set at the Washington Ave entrance before publishing
+  website: https://www.bbg.org
+short: Wander the Brooklyn Botanic Garden. Find the koi in the Japanese pond garden.
+description: >
+  Spend a slow afternoon wandering 52 acres of gardens: the Japanese Hill and
+  Pond Garden with its red torii gate and koi, the rose garden, and the
+  greenhouses full of desert and tropical plants. Each pick your favorite spot
+  and take the other there. Come in spring for the cherry blossoms, the
+  garden's busiest and prettiest time. Weekdays from December to February are
+  pay what you wish; it's closed most Mondays.
+for_kids:
+  short: Garden hunt! Find each thing.
+  steps:
+    - A koi fish
+    - The red gate
+    - A cactus
+    - A rose
+    - A selfie in the garden!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, seasonal]
+tags: [gardens, flowers, calm, brooklyn, nyc]

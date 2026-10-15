@@ -1,0 +1,34 @@
+number: 17
+name: Fort Tryon Park
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Fort Tryon Park (Heather Garden)
+  area: Washington Heights, northern Manhattan
+  coords: [40.85950, -73.93300]  # APPROX: set at Margaret Corbin Circle before publishing
+  website: https://www.forttryonparktrust.org
+short: Walk the Heather Garden in Fort Tryon Park. Then find the Hudson view from Linden Terrace.
+description: >
+  Take the A train to 190th St and ride the elevator straight up into the
+  park. Wander the Heather Garden, which has something in bloom almost every
+  season, then climb to Linden Terrace, one of the highest points in
+  Manhattan, for a wide view over the Hudson to the Palisades cliffs. Find a
+  bench and get a photo of the two of you with the river behind you. Fall
+  leaves here are some of the best in the city. It's free, and the Cloisters
+  are right at the north end if you want to make a day of it.
+for_kids:
+  short: Park hunt! Find each thing.
+  steps:
+    - A flower garden
+    - A stone wall
+    - The big river
+    - A squirrel
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [park, gardens, views, fall-colors, free, nyc]

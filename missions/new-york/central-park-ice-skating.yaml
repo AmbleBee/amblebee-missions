@@ -1,0 +1,34 @@
+number: 4
+name: Ice Skating in Central Park
+mode: both
+who: [friends, family, kids]
+place:
+  name: Wollman Rink
+  area: Central Park, near E 62nd St
+  coords: [40.76780, -73.97450]  # APPROX: set at the rink entrance before publishing
+  website: https://www.wollmanskatingrink.com  # verify
+short: Skate at Wollman Rink with the skyline over the trees. Hold hands for one full lap.
+description: >
+  Lace up at Wollman Rink in the south end of Central Park, with the hotels of
+  Central Park South lit up over the trees. Hold hands for at least one full
+  lap, no matter who wobbles, and get a photo of the two of you on the ice with
+  the skyline behind you. Go on a weeknight or early on a weekday for a less
+  crowded rink. Skating runs in the cold months, roughly late fall through
+  winter; check this season's dates and book a time slot ahead.
+for_kids:
+  short: Skating fun! Find each thing.
+  steps:
+    - Your skates
+    - A tall building
+    - A full lap around
+    - Hot chocolate
+    - A selfie on the ice!
+duration: short
+effort: moderate
+cost: $$
+setting: outdoor
+season: [fall, winter]
+time_of_day: evening
+travel: local
+check_ahead: [tickets, seasonal]
+tags: [ice-skating, winter, romantic, central-park, nyc]

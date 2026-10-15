@@ -1,0 +1,34 @@
+number: 7
+name: Staten Island Ferry
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Whitehall Ferry Terminal
+  area: South Ferry, Lower Manhattan
+  address: 4 Whitehall St, New York, NY 10004
+  coords: [40.70130, -74.01300]  # APPROX: set at the terminal entrance before publishing
+  website: https://www.siferry.com
+short: Ride the free Staten Island Ferry past the Statue of Liberty. Grab the right side going out.
+description: >
+  Ride the big orange ferry across New York Harbor for free. Going out to
+  Staten Island, stand on the right (starboard) side for the closest view of
+  the Statue of Liberty, then watch the Manhattan skyline shrink behind you.
+  Ride back at sunset for the best light, and get a photo of the two of you at
+  the rail with the city behind you. It's about 25 minutes each way; you have
+  to get off at St. George and walk around to board again.
+for_kids:
+  short: Ferry ride! Find each thing.
+  steps:
+    - The orange ferry
+    - The Statue of Liberty
+    - A tugboat
+    - A seagull
+    - A selfie at the rail!
+duration: short
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: evening
+travel: local
+tags: [boat, views, skyline, statue-of-liberty, free, nyc]
