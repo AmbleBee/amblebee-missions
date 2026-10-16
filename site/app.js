@@ -54,6 +54,7 @@ const ICON = {   // fixed artwork only (never mission data)
   map: '<path d="M9 4L3 6v14l6-2 6 2 6-2V4l-6 2z"/><path d="M9 4v14M15 6v14"/>',
   link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
   share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
+  mail: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/>',
   dice: '<rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
 };
 const packIcon = (p) => ICON[p && p.icon] || ICON.compass;
@@ -217,7 +218,7 @@ function ticket(m, { titleId } = {}) {
 function actions(m, { withRoll } = {}) {
   const shareBtn = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, shareBtn) }, svg(ICON.share, 20), "Share this mission");
   return h("div", { class: "ticket-actions" },
-    withRoll ? h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.dice, 22), "Roll again") : null,
+    withRoll ? h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.mail, 22), "Open another") : null,
     shareBtn);
 }
 async function shareMission(m, btn) {
@@ -234,13 +235,79 @@ async function shareMission(m, btn) {
 
 // ---- home teaser + the reveal view ---------------------------------------------------------------
 const revealing = () => document.body.classList.contains("revealing");
+// ---- the sealed letter: flips over, the flap lifts, the mission card slides out ------------------
+const REDUCED = () => window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+const BEE = '<path d="M6 21 h14" stroke="#7A5A42" stroke-width="2" stroke-linecap="round"/><path d="M8 21 C8 15 9 11 13 7 C17 11 18 15 18 21z" fill="#D8A65A"/><path d="M9.5 17 h7 M9 19 h8 M10.5 14.5 h5" stroke="#B5853F" stroke-width="1.3" stroke-linecap="round"/><path d="M11.5 21 v-2 a1.5 1.5 0 0 1 3 0 v2z" fill="#5A3E2B"/><ellipse cx="20" cy="6" rx="2.6" ry="1.8" fill="#FFFDF8" stroke="#7A5A42" stroke-width=".9" transform="rotate(-25 20 6)"/><ellipse cx="21.3" cy="9" rx="3.4" ry="2.5" fill="#E8B54A"/><path d="M20.6 6.8 v4.4 M22.4 7 v4" stroke="#5A3E2B" stroke-width="1"/><circle cx="24.4" cy="8.7" r="1.5" fill="#5A3E2B"/>';
+function envelope({ title, sub, from, to, button, onOpen, card }) {
+  const stamp = h("span", { class: "env-stamp", "aria-hidden": "true" });
+  stamp.innerHTML = `<svg viewBox="0 0 28 26" width="46" height="43">${BEE}</svg><b>AmbleBee</b>`;
+  const mark = h("span", { class: "env-postmark", "aria-hidden": "true" }, h("span", {}, "Hive"), h("span", {}, "Post"));
+  const front = h("div", { class: "env-face env-front" }, stamp, mark,
+    h("p", { class: "env-addr" }, h("span", {}, `To: ${to || "you"}`), h("span", {}, `From: ${from || "AmbleBee"}`)),
+    h("p", { class: "hand env-title" }, title),
+    sub ? h("p", { class: "env-sub" }, sub) : null,
+    button ? h("button", { type: "button", class: "btn primary env-open", onclick: (e) => { e.stopPropagation(); onOpen(); } }, button) : null);
+  const inner = h("div", { class: "env-card" },
+    card ? h("span", { class: "env-card-no" }, card.label) : null,
+    card ? h("span", { class: "env-card-name" }, card.name) : null,
+    card && card.short ? h("span", { class: "env-card-short" }, card.short) : null);
+  const back = h("div", { class: "env-face env-back", "aria-hidden": "true" },
+    inner, h("div", { class: "env-pocket" }), h("div", { class: "env-flap" }, h("span", { class: "env-seal" })));
+  return h("div", { class: "env" }, h("div", { class: "env-body" }, front, back));
+}
+const cardInfo = (m) => { const pack = S.packById[m.pack] || {}; return { label: `Mission ${m.number || "?"} · ${pack.name || ""}`, name: m.name, short: m.short }; };
+// play the open animation, then call done(). A tap during the animation skips to the end.
+function playOpen(env, done) {
+  if (env.dataset.playing) return;
+  env.dataset.playing = "1";
+  let finished = false;
+  const timers = [];
+  const finish = () => { if (finished) return; finished = true; timers.forEach(clearTimeout); env.removeEventListener("click", finish); done(); };
+  if (REDUCED()) { env.classList.add("fade"); timers.push(setTimeout(finish, 180)); return; }
+  env.addEventListener("click", finish);
+  env.classList.add("flip");
+  timers.push(setTimeout(() => env.classList.add("flap"), 520));
+  timers.push(setTimeout(() => env.classList.add("card-out"), 860));
+  timers.push(setTimeout(finish, 1500));
+}
+function pickMission() {
+  const p = pool();
+  if (!p.length) return null;
+  const choices = p.length > 1 && S.current ? p.filter((m) => m.full_id !== S.current.full_id) : p;
+  return choices[Math.floor(Math.random() * choices.length)];
+}
 function renderTeaser() {
   const n = pool().length;
-  $("#ticket-slot").replaceChildren(h("div", { class: "sealed" },
-    h("span", { class: "sealed-icon" }, svg(ICON.dice, 44)),
-    h("p", { class: "hand" }, n ? "Your next mission is sealed inside." : "Nothing matches, yet."),
-    h("p", {}, n ? `${n} ${n === 1 ? "mission fits" : "missions fit"} what you picked. Roll to open one.` : "Try clearing a filter or two."),
-    n ? h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.dice, 22), "Roll a mission") : null));
+  const f = readFilters();
+  const to = f.mode === "date" ? "the two of you" : f.mode === "adventure" ? "whoever's coming" : "you";
+  if (!n) {
+    $("#ticket-slot").replaceChildren(envelope({ title: "Nothing matches, yet.", sub: "Try clearing a filter or two.", to }));
+    return;
+  }
+  const env = envelope({ title: "Your next mission is sealed inside.", to,
+    sub: `${n} ${n === 1 ? "mission fits" : "missions fit"} what you picked.`,
+    button: "Open", onOpen: () => openFromHome() });
+  $("#ticket-slot").replaceChildren(env);
+}
+function openFromHome() {
+  const env = $("#ticket-slot .env");
+  const m = pickMission();
+  if (!env || !m) return;
+  const card = env.querySelector(".env-card");
+  const info = cardInfo(m);
+  card.replaceChildren(h("span", { class: "env-card-no" }, info.label), h("span", { class: "env-card-name" }, info.name),
+    h("span", { class: "env-card-short" }, info.short || ""));
+  const r = env.getBoundingClientRect();
+  const offscreen = r.top < 0 || r.bottom > window.innerHeight;
+  if (offscreen && !REDUCED()) env.scrollIntoView({ behavior: "smooth", block: "center" });
+  setTimeout(() => playOpen(env, () => goReveal(m)), offscreen && !REDUCED() ? 380 : 0);
+}
+function goReveal(m, { replace = false } = {}) {
+  S.rolledId = m.full_id;
+  const url = `#mission=${encodeURIComponent(m.full_id)}`;
+  if (replace || revealing()) history.replaceState(history.state, "", url);
+  else history.pushState({ amble: "reveal" }, "", url);
+  showReveal(m, { from: "roll" });
 }
 function rollSummary() {
   const f = readFilters();
@@ -252,23 +319,35 @@ function rollSummary() {
   parts.push(`picked from ${p} ${p === 1 ? "mission" : "missions"}`);
   return parts.join(" · ");
 }
-function showReveal(m, { from = "roll" } = {}) {
+function showReveal(m, { from = "roll", sealed = false, animate = false } = {}) {
   S.current = m; S.revealFrom = from;
   document.body.classList.add("revealing");
   $("#reveal").hidden = false;
   const linked = from === "link";
   $("#reveal-kicker").textContent = linked ? "A mission, shared with you" : "Your mission";
-  $("#reveal-summary").textContent = linked ? "Someone sent you this one. Roll your own any time." : rollSummary();
+  $("#reveal-summary").textContent = linked ? "Someone sent you this one. Open your own any time." : rollSummary();
+  $("#reveal-summary").hidden = sealed;
+  window.scrollTo({ top: 0 });
+  const slot = $("#reveal-slot");
+  if (sealed || animate) {
+    $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true;
+    const env = envelope({ title: sealed ? "Someone sent you a mission." : "Your next mission is sealed inside.",
+      to: "you", from: sealed ? "a friend" : "AmbleBee", card: cardInfo(m),
+      button: sealed ? "Open" : null, onOpen: () => playOpen(env, () => showReveal(m, { from })) });
+    env.classList.add("in-reveal");
+    slot.replaceChildren(env);
+    if (animate) setTimeout(() => playOpen(env, () => showReveal(m, { from })), REDUCED() ? 0 : 260);
+    return;
+  }
   const t = ticket(m, { titleId: "reveal-title" });
   t.classList.add("pop");
-  $("#reveal-slot").replaceChildren(t);
+  slot.replaceChildren(t);
   const shareBtn = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, shareBtn) }, svg(ICON.share, 20), "Share this mission");
   $("#reveal-actions").replaceChildren(
-    h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.dice, 22), linked ? "Roll your own" : "Roll again"),
+    h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.mail, 22), linked ? "Open your own" : "Open another"),
     shareBtn,
     h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"));
   $("#reveal-adjust").hidden = linked;
-  window.scrollTo({ top: 0 });
   const title = $("#reveal-title"); if (title) { title.tabIndex = -1; title.focus({ preventScroll: true }); }
 }
 function showHome() {
@@ -287,7 +366,14 @@ function startOver({ filters = false } = {}) {
 }
 function route() {
   const m = fromHash();
-  if (m) { if (!revealing() || m !== S.current) showReveal(m, { from: S.rolledId === m.full_id ? "roll" : "link" }); return; }
+  if (m) {
+    if (!revealing() || m !== S.current) {
+      const from = S.rolledId === m.full_id ? "roll" : "link";
+      showReveal(m, { from, sealed: from === "link" && !S.booted });
+    }
+    S.booted = true; return;
+  }
+  S.booted = true;
   if (revealing() || !$("#ticket-slot").firstChild) showHome();
   const after = S.afterHome; S.afterHome = null;
   if (after === "filters") {
@@ -297,15 +383,12 @@ function route() {
   }
 }
 function roll() {
-  const p = pool();
-  if (!p.length) { startOver(); return; }
-  const choices = p.length > 1 && S.current ? p.filter((m) => m.full_id !== S.current.full_id) : p;
-  const m = choices[Math.floor(Math.random() * choices.length)];
+  if (!revealing()) { if (!pool().length) { startOver(); return; } openFromHome(); return; }
+  const m = pickMission();
+  if (!m) { startOver(); return; }
   S.rolledId = m.full_id;
-  const url = `#mission=${encodeURIComponent(m.full_id)}`;
-  if (revealing()) history.replaceState(history.state, "", url);
-  else history.pushState({ amble: "reveal" }, "", url);
-  showReveal(m, { from: "roll" });
+  history.replaceState(history.state, "", `#mission=${encodeURIComponent(m.full_id)}`);
+  showReveal(m, { from: "roll", animate: true });
 }
 function openDialog(m) {
   const body = $("#dialog-body");
@@ -347,10 +430,10 @@ function renderBrowse() {
   const mc = $("#match-count");
   const word = (k) => (k === 1 ? "mission" : "missions");
   mc.className = "match" + (n === total ? "" : " filtered") + (n === 0 ? " zero" : "");
-  mc.textContent = n === total ? `${total} missions to roll from`
+  mc.textContent = n === total ? `${total} missions to pick from`
     : n === 0 ? "No missions fit these filters. Try clearing one."
     : n === 1 ? "Only 1 mission fits these filters"
-    : `Rolling from ${n} ${word(n)} that fit these filters`;
+    : `Picking from ${n} ${word(n)} that fit these filters`;
   const fm = $("#filters-match");
   fm.replaceChildren(n === 0 ? "No missions fit. Try clearing one."
     : h("span", {}, h("b", {}, String(n)), ` ${word(n)} ${n === total ? "(everything)" : "with these filters"}`));
