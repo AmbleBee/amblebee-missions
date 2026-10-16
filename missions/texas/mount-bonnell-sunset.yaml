@@ -1,0 +1,33 @@
+number: 6
+name: Mount Bonnell Sunset
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Mount Bonnell (Covert Park)
+  area: West Austin, above Lake Austin
+  coords: [30.32100, -97.77300]  # APPROX: set at the parking area before publishing
+short: Climb the stairs up Mount Bonnell for sunset over Lake Austin and the Hill Country.
+description: >
+  Climb the hundred-or-so stone steps up Mount Bonnell, one of the highest
+  points in Austin, and find a spot on the limestone ledges. Below you, Lake
+  Austin winds between the hills, with big homes and the Pennybacker Bridge in
+  the distance. Bring a picnic, watch the sun go down over the Hill Country,
+  and get a photo of the two of you on the overlook. It's free but tiny, so
+  arrive early for parking, and use a flashlight on the stairs after dark.
+for_kids:
+  short: Hilltop hunt! Find each thing.
+  steps:
+    - The stone stairs
+    - The river below
+    - A boat
+    - The sunset
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+tags: [sunset, views, hiking, free, austin]
+credit:

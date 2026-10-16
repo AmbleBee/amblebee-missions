@@ -1,0 +1,35 @@
+number: 46
+name: Apple Hill Orchards
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Apple Hill (Camino area farms)
+  area: Camino, east of Placerville
+  coords: [38.74000, -120.67000]  # APPROX: set at one farm's entrance before publishing
+  website: https://applehill.com  # verify
+short: Pick apples and split a warm apple pastry at Apple Hill's farms in the fall.
+description: >
+  Spend a fall morning driving between the family farms of Apple Hill in the
+  Sierra foothills. Pick your own apples, watch cider being pressed, and split
+  a warm apple fritter, cider donut or slice of apple pie. Each pick the farm
+  stand treat you'd come back for, and get a photo of the two of you in the
+  orchard rows. Go early on a weekday, since fall weekends bring big traffic.
+  Most farms are busiest from September through November.
+for_kids:
+  short: Apple hunt! Find each thing.
+  steps:
+    - A red apple
+    - A green apple
+    - An apple tree
+    - A pumpkin
+    - A selfie in the orchard!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [fall]
+time_of_day: morning
+travel: day-trip
+check_ahead: [seasonal, hours]
+tags: [apples, farms, fall, food, gold-country]
+credit:

@@ -1,0 +1,28 @@
+number: 41
+name: Lightner Museum
+mode: both
+who: [solo, friends, family]
+place:
+  name: Lightner Museum
+  area: Downtown St. Augustine
+  coords: [29.89200, -81.31500]  # APPROX: set at the entrance before publishing
+  website: https://lightnermuseum.org
+short: Explore the Lightner Museum, a Gilded Age hotel with an old indoor pool turned café.
+description: >
+  Wander the old Alcazar Hotel, a grand 1888 Gilded Age resort built by Henry
+  Flagler, now a museum full of glittering cut glass, music machines,
+  Victorian treasures and oddities. Look down from the balcony into what was
+  once the world's largest indoor swimming pool, now a café, and imagine the
+  parties. Check the schedule for a music-machine demonstration. Each pick the
+  strangest object. Get a photo of the two of you in the courtyard. Then walk
+  across the street to the Flagler College building.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [history, museum, gilded-age, rainy-day, st-augustine]
+credit:

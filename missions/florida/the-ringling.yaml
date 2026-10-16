@@ -1,0 +1,35 @@
+number: 37
+name: The Ringling, Sarasota
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The John and Mable Ringling Museum of Art
+  area: Sarasota
+  coords: [27.38200, -82.56100]  # APPROX: set at the visitor pavilion before publishing
+  website: https://www.ringling.org
+short: Explore circus king John Ringling's art museum, his Venetian mansion and the circus museum.
+description: >
+  Spend a day at the estate of circus king John Ringling on Sarasota Bay.
+  See his huge art museum full of giant Baroque paintings around a courtyard of
+  statues, tour Ca' d'Zan, his Venetian Gothic mansion on the water, and visit
+  the Circus Museum with a giant miniature model of an entire circus. Walk the
+  rose garden and the banyan trees. Each pick your favorite part of the circus.
+  Get a photo of the two of you on the mansion's waterfront terrace.
+for_kids:
+  short: Circus hunt! Find each thing.
+  steps:
+    - A tiny circus
+    - A clown
+    - A big statue
+    - A giant banyan tree
+    - A selfie at the mansion!
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [art, museum, circus, mansion, gulf-coast]
+credit:

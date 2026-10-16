@@ -1,0 +1,35 @@
+number: 5
+name: Coral Castle
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Coral Castle Museum
+  area: Homestead, south of Miami
+  coords: [25.50000, -80.44400]  # APPROX: set at the entrance before publishing
+  website: https://coralcastle.com
+short: Puzzle over Coral Castle, carved alone by one man from tons of coral rock. How did he do it?
+description: >
+  Visit a mysterious garden of giant stone sculptures, a moon fountain, a
+  heart-shaped table and a nine-ton swinging gate, all carved out of coral
+  rock by one small man working alone and mostly at night in the early 1900s.
+  Nobody is sure exactly how he moved such huge stones. Listen to the
+  story, and each come up with your own theory. Get a photo of the two of you
+  at the giant heart-shaped table, which he made for the girl who left him.
+for_kids:
+  short: Stone castle! Find each thing.
+  steps:
+    - A giant stone gate
+    - A heart-shaped table
+    - A stone moon
+    - A stone chair
+    - A selfie at the castle!
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [quirky, mystery, roadside, history, south-florida]
+credit:

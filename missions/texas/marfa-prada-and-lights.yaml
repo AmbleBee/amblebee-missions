@@ -1,0 +1,34 @@
+number: 42
+name: Prada Marfa and the Marfa Lights
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Marfa Lights Viewing Area, US 90
+  area: East of Marfa
+  coords: [30.27160, -103.89300]  # APPROX: set at the viewing area before publishing
+short: Pose at Prada Marfa in the desert, then watch for the mysterious Marfa Lights after dark.
+description: >
+  Start in the afternoon at Prada Marfa, a fake luxury store sitting alone on
+  the side of the highway outside Valentine, an art installation in the middle
+  of nowhere. Get the classic photo of the two of you in front of it. Then
+  drive back toward Marfa for dinner and head to the Marfa Lights Viewing Area
+  after dark. Look east across the desert for the mysterious glowing lights
+  that people have reported for over a century. Each decide what you think
+  they are. Bring layers and patience.
+for_kids:
+  short: Mystery night! Find each thing.
+  steps:
+    - The fake store
+    - A cactus
+    - The sunset
+    - A mystery light!
+    - A selfie in the desert!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: night
+travel: day-trip
+tags: [art, quirky, mystery, night, desert, marfa]
+credit:

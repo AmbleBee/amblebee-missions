@@ -1,0 +1,26 @@
+number: 57
+name: Apalachicola Oysters
+mode: date
+place:
+  name: Downtown Apalachicola waterfront
+  area: Apalachicola, Forgotten Coast
+  coords: [29.72500, -84.98300]  # APPROX: set on the downtown waterfront before publishing
+short: Slurp Gulf oysters in old Apalachicola, then walk the waterfront at sunset.
+description: >
+  Spend an afternoon and evening in Apalachicola, a sleepy old cotton and
+  oyster port on Florida's Forgotten Coast. Walk the historic downtown with
+  its brick buildings and shrimp boats, then order a dozen Gulf oysters,
+  raw and baked, at a waterfront oyster bar. Each try one topping you've never
+  had, and rate them. The bay's famous wild oysters came back in 2026 after a
+  five-year closure, but only in a short, limited season (roughly October to
+  February), so ask whether they're wild or farmed. Walk the riverfront at
+  sunset and get a photo of the two of you with the shrimp boats.
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [oysters, seafood, small-town, romantic, panhandle]
+credit:

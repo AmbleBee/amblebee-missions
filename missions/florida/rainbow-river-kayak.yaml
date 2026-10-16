@@ -1,0 +1,41 @@
+number: 47
+name: Kayak the Rainbow River
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Rainbow Springs State Park
+  area: Dunnellon
+  coords: [29.10200, -82.43700]  # APPROX: set at the kayak rental before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/rainbow-springs-state-park
+short: Paddle the impossibly clear Rainbow River in the morning. Count the turtles below you.
+description: >
+  Paddle up and down the Rainbow River, one of the clearest rivers in Florida,
+  so clear it looks like your kayak is floating on air. Look down at the
+  eelgrass, turtles, schools of fish and bubbling springs on the bottom, and
+  watch for otters and herons. Paddle up to the headspring, then visit the
+  park's old waterfalls and gardens from its days as a 1930s attraction. Get a
+  photo of the two of you in the boat over the clear water. Go early on
+  weekends.
+for_kids:
+  short: Clear river! Find each thing.
+  steps:
+    - Clear water
+    - A turtle
+    - A school of fish
+    - Bubbles from a spring
+    - A selfie in the kayak!
+gear:
+  - item: kayak
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [kayak, springs, river, wildlife, north-florida]
+credit:

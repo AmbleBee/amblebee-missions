@@ -1,0 +1,36 @@
+number: 49
+name: Santa Cruz Beach Boardwalk
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Santa Cruz Beach Boardwalk
+  area: Main Beach, Santa Cruz
+  coords: [36.96400, -122.01800]  # APPROX: set at the main entrance before publishing
+  website: https://beachboardwalk.com
+short: Ride the 1924 Giant Dipper at the Santa Cruz Beach Boardwalk, then grab a caramel apple.
+description: >
+  Spend a day at California's classic seaside amusement park, right on the
+  sand. Ride the Giant Dipper, a wooden roller coaster from 1924, and the
+  century-old Looff carousel, where you can still try to grab the brass ring.
+  Win each other a prize at the games, share a caramel apple or salt water
+  taffy, and walk out on the wharf to see the sea lions under it. Get a photo
+  of the two of you on the beach with the coaster behind you. Rides run daily
+  in summer and mostly on weekends the rest of the year.
+for_kids:
+  short: Boardwalk fun! Find each thing.
+  steps:
+    - The wooden roller coaster
+    - The carousel
+    - A sea lion
+    - A sweet treat
+    - A selfie on the beach!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal]
+tags: [amusement-park, beach, rides, playful, santa-cruz]
+credit:

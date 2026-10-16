@@ -1,0 +1,36 @@
+number: 33
+name: Meow Wolf Grapevine
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Meow Wolf Grapevine, The Real Unreal
+  area: Grapevine Mills, between Dallas and Fort Worth
+  coords: [32.96900, -97.04200]  # APPROX: set at the entrance before publishing
+  website: https://meowwolf.com/visit/grapevine
+short: Explore Meow Wolf's The Real Unreal in Grapevine. Open every door and find the secret rooms.
+description: >
+  Step into The Real Unreal, a giant, immersive art world where a normal-
+  looking house opens into glowing rooms, hidden passages and surreal
+  landscapes. Open every door, climb into the fridge, and follow the clues of
+  a mystery story hidden around the rooms, or just wander and get lost
+  together. Each find the strangest room and show it to the other. Get a
+  photo of the two of you in the most colorful room. Buy timed tickets
+  ahead; plan on two hours.
+for_kids:
+  short: Secret room hunt! Find each thing.
+  steps:
+    - A secret door
+    - A glowing room
+    - A room inside a fridge
+    - A strange creature
+    - A colorful selfie!
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: any
+travel: day-trip
+check_ahead: [tickets]
+tags: [immersive-art, interactive, playful, rainy-day, dallas-fort-worth]
+credit:

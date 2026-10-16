@@ -1,0 +1,22 @@
+number: 41
+name: Sushi Night, Something New
+mode: both
+who: [solo, friends, family]
+short: Go out for sushi and each order a roll or dish you've never tried. Rate everything out of 10.
+description: >
+  Find a sushi spot, ideally one neither of you has been to, and make a rule:
+  each of you has to order at least one roll or dish you've never had before.
+  Try something new like uni, eel, a hand roll or a chef's special. Share
+  everything, and give each piece a score out of 10. Keep the scores on a
+  napkin or in your phone. At the end, crown the best and worst bites of the
+  night, and get a photo of the two of you with the winning plate. Not a raw
+  fish fan? Cooked rolls, tempura and veggie rolls count too.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+tags: [food, sushi, try-something-new, dinner, rating]
+credit:

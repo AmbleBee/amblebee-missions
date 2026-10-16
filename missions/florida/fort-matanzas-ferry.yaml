@@ -1,0 +1,35 @@
+number: 42
+name: Ferry to Fort Matanzas
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Fort Matanzas National Monument Visitor Center
+  area: Rattlesnake Island, south of St. Augustine
+  coords: [29.71500, -81.23900]  # APPROX: set at the visitor center dock before publishing
+  website: https://www.nps.gov/foma
+short: Take the free little ferry to Fort Matanzas, a tiny Spanish watchtower fort on the river.
+description: >
+  Ride a small, free park ferry across the Matanzas River to a tiny Spanish
+  fort from 1742 that guarded the back door to St. Augustine. A ranger gives
+  a short talk about the soldiers who lived here, then climb the ladder to the
+  top for the view of the inlet and marshes. Watch for dolphins and pelicans
+  on the ride. Get a photo of the two of you at the fort. The ferry is first
+  come, first served and runs Thursday through Monday only.
+for_kids:
+  short: Fort trip! Find each thing.
+  steps:
+    - The little ferry
+    - The tiny fort
+    - A cannon
+    - A dolphin
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, conditions]
+tags: [history, fort, boat, free, national-monument, st-augustine]
+credit:

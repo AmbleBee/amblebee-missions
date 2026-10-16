@@ -1,0 +1,40 @@
+number: 55
+name: Kayak with Sea Otters in Morro Bay
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Morro Bay Embarcadero (kayak rentals)
+  area: Morro Bay
+  coords: [35.37000, -120.85600]  # APPROX: set at a rental dock before publishing
+short: Paddle Morro Bay in the calm morning and watch sea otters float by under Morro Rock.
+description: >
+  Rent a double kayak on the Embarcadero and paddle out onto the calm bay in
+  the morning, before the afternoon wind picks up. Glide toward the giant
+  dome of Morro Rock and watch for sea otters floating on their backs and
+  cracking shells on their bellies, plus seals, pelicans and herons. Give the
+  otters plenty of room, at least five kayak lengths, and never paddle toward
+  them. Get a photo of the two of you on the water with Morro Rock behind you.
+  Check the tides and book a rental ahead in summer.
+for_kids:
+  short: Otter hunt! Find each thing.
+  steps:
+    - A sea otter
+    - The giant rock
+    - A pelican
+    - A seal
+    - A selfie in the kayak!
+gear:
+  - item: kayak
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: short
+effort: moderate
+cost: $$
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [kayak, otters, wildlife, water, central-coast]
+credit:

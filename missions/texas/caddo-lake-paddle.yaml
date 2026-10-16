@@ -1,0 +1,41 @@
+number: 57
+name: Paddle Caddo Lake
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Caddo Lake State Park
+  area: Karnack, on the Louisiana border
+  coords: [32.68200, -94.17800]  # APPROX: set at the park's boat launch before publishing
+  website: https://tpwd.texas.gov/state-parks/caddo-lake
+short: Paddle through the cypress swamp of Caddo Lake, draped in Spanish moss, in the misty morning.
+description: >
+  Rent a canoe and paddle out early into Caddo Lake, a maze of bayous and
+  sloughs filled with giant cypress trees dripping with Spanish moss. Follow
+  the marked paddling trails through the quiet water, watching for herons,
+  turtles, and maybe an alligator sunning on a log (keep your distance). Turn
+  off your voices for a minute and just float. Get a photo of the two of you
+  in the canoe under the moss. Bring a map, since it's easy to get turned
+  around, or take a guided boat tour instead.
+for_kids:
+  short: Swamp hunt! Find each thing.
+  steps:
+    - A giant tree in the water
+    - Hanging moss
+    - A turtle
+    - A heron
+    - A selfie in the canoe!
+gear:
+  - item: canoe
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [paddling, swamp, cypress, wildlife, east-texas]
+credit:

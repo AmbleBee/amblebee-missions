@@ -1,0 +1,34 @@
+number: 60
+name: Nacogdoches, the Oldest Town in Texas
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Downtown Nacogdoches
+  area: Nacogdoches, East Texas
+  coords: [31.60400, -94.65500]  # APPROX: set at the downtown square before publishing
+short: Walk the brick streets of Nacogdoches, which claims to be the oldest town in Texas.
+description: >
+  Spend a day in Nacogdoches, which calls itself the oldest town in Texas, with
+  brick streets, a historic downtown square full of shops and cafés, and old
+  stories of nine flags flown over the town. Walk the brick streets, visit
+  the reconstructed Old Stone Fort on the university campus, and stroll the
+  big azalea gardens (at their best in early spring). Each pick the old
+  building you'd move into. Get a photo of the two of you on the brick
+  street downtown.
+for_kids:
+  short: Old town hunt! Find each thing.
+  steps:
+    - A brick street
+    - The old stone fort
+    - A flower garden
+    - An old sign
+    - A selfie downtown!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [history, small-town, gardens, walking, east-texas]
+credit:

@@ -1,0 +1,34 @@
+number: 35
+name: Magnolia Silos, Waco
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Magnolia Market at the Silos
+  area: Downtown Waco
+  coords: [31.55200, -97.12900]  # APPROX: set at the Silos entrance before publishing
+short: Wander Magnolia's Silos in Waco, grab a cupcake, and play on the big green lawn.
+description: >
+  Spend a morning at the Silos, a pair of old cotton-seed silos in downtown
+  Waco turned into a market, bakery, garden and big green lawn. Split a
+  cupcake from the bakery, browse the shops, grab lunch from the food trucks,
+  and play a game of lawn games on the turf. Each pick one thing you'd put in
+  your dream house. Get a photo of the two of you in front of the silos. Free
+  to visit; go early to beat the weekend crowds.
+for_kids:
+  short: Silo hunt! Find each thing.
+  steps:
+    - The tall silos
+    - A cupcake
+    - A food truck
+    - A game on the grass
+    - A selfie by the silos!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [hours]
+tags: [shopping, bakery, food-trucks, waco]
+credit:

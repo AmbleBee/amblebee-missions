@@ -1,0 +1,35 @@
+number: 48
+name: TEXAS Outdoor Musical
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Pioneer Amphitheatre, Palo Duro Canyon
+  area: Palo Duro Canyon State Park
+  coords: [34.99300, -101.68800]  # APPROX: set at the amphitheatre before publishing
+  website: https://texas-show.com
+short: Watch the TEXAS musical under the stars, with the canyon wall lit up as the backdrop.
+description: >
+  Watch TEXAS, an outdoor musical about Panhandle pioneers, performed in an
+  amphitheater right inside Palo Duro Canyon, with a 600-foot canyon wall as
+  the backdrop. There's singing, dancing, horses galloping across the stage,
+  a thunderstorm, and fireworks lighting up the cliffs. Come early for the
+  barbecue dinner before the show. Get a photo of the two of you with the lit
+  canyon wall behind you. It runs only in summer; buy tickets ahead.
+for_kids:
+  short: Canyon show! Find each thing.
+  steps:
+    - A horse on the stage
+    - The lit-up canyon wall
+    - A cowboy hat
+    - Fireworks
+    - A selfie at the show!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [summer]
+time_of_day: night
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [theater, music, canyon, night, panhandle]
+credit:

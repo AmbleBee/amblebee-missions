@@ -1,0 +1,35 @@
+number: 56
+name: Mono Lake Tufa at Sunset
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: South Tufa Area, Mono Lake
+  area: Near Lee Vining, Eastern Sierra
+  coords: [37.93900, -119.02700]  # APPROX: set at the South Tufa parking before publishing
+short: Walk among the strange tufa towers of Mono Lake at sunset as they glow orange.
+description: >
+  Walk the short trail at South Tufa, where knobby limestone towers rise out
+  of an ancient, salty lake older than almost any in North America. Come for
+  sunset, when the towers glow orange and pink and their reflections fill the
+  still water. Look closely at the shore for tiny brine shrimp and swarms of
+  alkali flies, and taste a drop of the lake water (it's saltier than the
+  ocean). Get a photo of the two of you between the towers. There's a small
+  day-use fee at South Tufa.
+for_kids:
+  short: Tufa hunt! Find each thing.
+  steps:
+    - A tall rock tower
+    - A tiny shrimp
+    - A bird on the lake
+    - The sunset
+    - A selfie with the towers!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [conditions]
+tags: [sunset, lake, geology, photography, eastern-sierra]
+credit:

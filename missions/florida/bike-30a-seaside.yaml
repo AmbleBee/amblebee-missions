@@ -1,0 +1,36 @@
+number: 54
+name: Bike 30A and Seaside
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Seaside town center
+  area: Scenic Highway 30A, Walton County
+  coords: [30.32100, -86.14000]  # APPROX: set at the Seaside town center before publishing
+short: Bike the path along 30A through pastel beach towns, and grab lunch at Seaside's Airstream row.
+description: >
+  Rent beach cruisers and ride the paved path along Scenic Highway 30A, past
+  pastel beach towns, coastal dune lakes and pine forests. Stop in Seaside,
+  the little town where The Truman Show was filmed, for lunch from the row of
+  vintage Airstream food trailers. Ride on to Grayton Beach, swim in the
+  emerald Gulf, and look for the rare coastal dune lakes. Get a photo of the
+  two of you on your bikes in Seaside's town square.
+for_kids:
+  short: Bike ride! Find each thing.
+  steps:
+    - A pastel house
+    - A silver food trailer
+    - A sand dune
+    - The green ocean
+    - A selfie on your bikes!
+gear:
+  - item: bikes
+    rent: nearby
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [biking, beach-towns, food, panhandle]
+credit:

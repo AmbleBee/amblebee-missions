@@ -1,0 +1,34 @@
+number: 56
+name: South Padre Sunset Dolphin Cruise
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: South Padre Island bay-side tour docks
+  area: Laguna Madre, South Padre Island
+  coords: [26.11000, -97.16900]  # APPROX: set at a tour dock before publishing
+short: Take a sunset dolphin-watching cruise on South Padre's calm Laguna Madre.
+description: >
+  Board a sunset cruise on the calm Laguna Madre, on the bay side of South
+  Padre Island, where wild bottlenose dolphins often swim right up to the boat.
+  Watch them surface and ride the wake, and count how many you see. As the sun
+  goes down over the bay and the causeway lights come on, get a photo of the two
+  of you at the rail. Several companies run cruises from the bay-side docks;
+  book ahead and bring a light jacket.
+for_kids:
+  short: Dolphin hunt! Find each thing.
+  steps:
+    - A dolphin fin
+    - A dolphin jumping
+    - A pelican
+    - The sunset
+    - A selfie on the boat!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [reservation]
+tags: [dolphins, boat, sunset, romantic, south-padre]
+credit:

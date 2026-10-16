@@ -1,0 +1,35 @@
+number: 51
+name: Sea Turtle Inc., South Padre
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Sea Turtle Inc.
+  area: South Padre Island
+  coords: [26.12700, -97.17100]  # APPROX: set at the entrance before publishing
+  website: https://seaturtleinc.org
+short: Meet rescued sea turtles at Sea Turtle Inc. on South Padre Island, then walk the beach.
+description: >
+  Visit a sea turtle rescue and rehab center on South Padre Island, where
+  injured sea turtles are nursed back to health and released, and some
+  permanent residents live in big tanks. Watch a feeding or a talk, learn each
+  turtle's name and rescue story, and each pick your favorite. Then walk to
+  the beach and look for shells. Get a photo of the two of you with the
+  turtle tanks behind you. Admission supports the rescue work.
+for_kids:
+  short: Turtle hunt! Find each thing.
+  steps:
+    - A big sea turtle
+    - A turtle eating
+    - A baby turtle picture
+    - A seashell on the beach
+    - A selfie with a turtle!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [turtles, wildlife, rescue, beach, south-padre]
+credit:

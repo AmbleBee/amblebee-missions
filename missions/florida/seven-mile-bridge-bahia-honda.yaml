@@ -1,0 +1,37 @@
+number: 8
+name: Seven Mile Bridge to Bahia Honda
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Bahia Honda State Park
+  area: Big Pine Key, Lower Keys
+  coords: [24.65600, -81.27700]  # APPROX: set at the park entrance before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/bahia-honda-state-park
+short: Drive the Seven Mile Bridge over turquoise water, then swim at Bahia Honda's beach.
+description: >
+  Drive the Seven Mile Bridge, which seems to float over miles of open
+  turquoise water in the middle of the Keys, with the old bridge running
+  alongside. Then stop at Bahia Honda State Park, with some of the best
+  beaches in the Keys: soft sand, clear water and a broken section of the old
+  railroad bridge. Walk out to the overlook on the old bridge for the view,
+  swim in the calm water, and get a photo of the two of you with the bridge
+  behind you. Check what's open, since some areas are still being rebuilt
+  after past storms.
+for_kids:
+  short: Keys hunt! Find each thing.
+  steps:
+    - The long bridge
+    - Blue-green water
+    - A pelican
+    - A seashell
+    - A selfie on the beach!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [scenic-drive, beach, bridge, swimming, florida-keys]
+credit:

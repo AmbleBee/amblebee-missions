@@ -1,0 +1,35 @@
+number: 13
+name: Everglades Airboat Ride
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Airboat operators along the Tamiami Trail
+  area: Everglades, west of Miami
+  coords: [25.76000, -80.55000]  # APPROX: set at your chosen operator's dock before publishing
+short: Skim across the Everglades sawgrass on a roaring airboat and look for alligators.
+description: >
+  Climb aboard an airboat and skim across the shallow sawgrass marsh of the
+  Everglades, the giant fan roaring behind you. The captain slows down in the
+  quiet spots to point out alligators, turtles and birds, then speeds up
+  again for the thrill. Ear protection is provided. Get a photo of the two
+  of you on the airboat with the grass stretching out behind you. Several
+  family-run operators are along the Tamiami Trail; pick one with good
+  reviews and smaller boats if you can.
+for_kids:
+  short: Airboat ride! Find each thing.
+  steps:
+    - The big fan
+    - An alligator
+    - Tall grass
+    - A bird flying
+    - A windy selfie!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation]
+tags: [airboat, everglades, alligators, thrill, south-florida]
+credit:

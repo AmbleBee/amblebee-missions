@@ -232,32 +232,86 @@ async function shareMission(m, btn) {
   }
 }
 
-function show(m, { scroll } = {}) {
-  S.current = m;
-  const slot = $("#ticket-slot");
-  slot.replaceChildren();
-  if (!m) {
-    slot.append(h("div", { class: "empty" }, h("p", { class: "hand" }, "Nothing matches, yet."),
-      "Try clearing a filter or two."));
-    return;
-  }
-  const t = ticket(m);
-  t.classList.add("pop");
-  slot.append(t, actions(m, { withRoll: true }));
-  history.replaceState(null, "", `#mission=${encodeURIComponent(m.full_id)}`);
-  if (scroll) slot.scrollIntoView({ behavior: "smooth", block: "nearest" });
+// ---- home teaser + the reveal view ---------------------------------------------------------------
+const revealing = () => document.body.classList.contains("revealing");
+function renderTeaser() {
+  const n = pool().length;
+  $("#ticket-slot").replaceChildren(h("div", { class: "sealed" },
+    h("span", { class: "sealed-icon" }, svg(ICON.dice, 44)),
+    h("p", { class: "hand" }, n ? "Your next mission is sealed inside." : "Nothing matches, yet."),
+    h("p", {}, n ? `${n} ${n === 1 ? "mission fits" : "missions fit"} what you picked. Roll to open one.` : "Try clearing a filter or two."),
+    n ? h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.dice, 22), "Roll a mission") : null));
 }
-function roll(e) {
+function rollSummary() {
+  const f = readFilters();
+  const parts = [f.mode === "date" ? "A date" : f.mode === "adventure" ? "An adventure" : "Anything",
+    f.pack === "all" ? "Every pack" : (S.packById[f.pack] || {}).name || f.pack];
+  const n = activeFilters(f);
+  if (n) parts.push(`${n} ${n === 1 ? "filter" : "filters"}`);
+  const p = pool().length;
+  parts.push(`picked from ${p} ${p === 1 ? "mission" : "missions"}`);
+  return parts.join(" · ");
+}
+function showReveal(m, { from = "roll" } = {}) {
+  S.current = m; S.revealFrom = from;
+  document.body.classList.add("revealing");
+  $("#reveal").hidden = false;
+  const linked = from === "link";
+  $("#reveal-kicker").textContent = linked ? "A mission, shared with you" : "Your mission";
+  $("#reveal-summary").textContent = linked ? "Someone sent you this one. Roll your own any time." : rollSummary();
+  const t = ticket(m, { titleId: "reveal-title" });
+  t.classList.add("pop");
+  $("#reveal-slot").replaceChildren(t);
+  const shareBtn = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, shareBtn) }, svg(ICON.share, 20), "Share this mission");
+  $("#reveal-actions").replaceChildren(
+    h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.dice, 22), linked ? "Roll your own" : "Roll again"),
+    shareBtn,
+    h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"));
+  $("#reveal-adjust").hidden = linked;
+  window.scrollTo({ top: 0 });
+  const title = $("#reveal-title"); if (title) { title.tabIndex = -1; title.focus({ preventScroll: true }); }
+}
+function showHome() {
+  document.body.classList.remove("revealing");
+  $("#reveal").hidden = true;
+  S.current = null;
+  renderTeaser();
+}
+// Back from the reveal goes home. A reveal opened from the home page pushes one history entry;
+// re-rolls replace it, so Back always lands on the home page.
+function startOver({ filters = false } = {}) {
+  S.afterHome = filters ? "filters" : null;
+  if (history.state && history.state.amble === "reveal") { history.back(); return; }
+  history.replaceState(null, "", location.pathname + location.search);
+  route();
+}
+function route() {
+  const m = fromHash();
+  if (m) { if (!revealing() || m !== S.current) showReveal(m, { from: S.rolledId === m.full_id ? "roll" : "link" }); return; }
+  if (revealing() || !$("#ticket-slot").firstChild) showHome();
+  const after = S.afterHome; S.afterHome = null;
+  if (after === "filters") {
+    $("#filters").hidden = true; $("#filters-toggle").click();
+  } else if (after === "top") {
+    window.scrollTo({ top: 0 });
+  }
+}
+function roll() {
   const p = pool();
-  if (!p.length) return show(null);
+  if (!p.length) { startOver(); return; }
   const choices = p.length > 1 && S.current ? p.filter((m) => m.full_id !== S.current.full_id) : p;
-  show(choices[Math.floor(Math.random() * choices.length)], { scroll: !!e && window.innerWidth < 860 });
+  const m = choices[Math.floor(Math.random() * choices.length)];
+  S.rolledId = m.full_id;
+  const url = `#mission=${encodeURIComponent(m.full_id)}`;
+  if (revealing()) history.replaceState(history.state, "", url);
+  else history.pushState({ amble: "reveal" }, "", url);
+  showReveal(m, { from: "roll" });
 }
 function openDialog(m) {
   const body = $("#dialog-body");
   body.replaceChildren(ticket(m, { titleId: "dialog-title" }), actions(m));
   const d = $("#mission-dialog");
-  if (typeof d.showModal === "function") d.showModal(); else show(m, { scroll: true });
+  if (typeof d.showModal === "function") d.showModal(); else { S.rolledId = null; history.pushState({ amble: "reveal" }, "", `#mission=${encodeURIComponent(m.full_id)}`); showReveal(m, { from: "link" }); }
 }
 
 // ---- browse --------------------------------------------------------------------------------------
@@ -432,23 +486,24 @@ async function setZip(e) {
   status.replaceChildren(h("span", { class: "zip-set" }, `Distances from ${zip}`),
     ", as the bee flies. Check the drive in your map app.",
     h("button", { type: "button", class: "linkish zip-clear", onclick: clearZip }, "Clear"));
-  renderWithin(); refresh(false);
-  if (S.current) show(S.current);
+  renderWithin(); refresh();
+  rerenderReveal();
 }
 function clearZip() {
   S.here = null; S.zip = null; $("#zip-input").value = "";
   if (S.browse === "near") S.browse = null;
   $("#within-select").value = "";
   $("#zip-status").textContent = "Home, or wherever the trip starts. Your ZIP is looked up in this browser tab and never sent anywhere.";
-  renderWithin(); refresh(false);
-  if (S.current) show(S.current);
+  renderWithin(); refresh();
+  rerenderReveal();
 }
 
 // ---- wiring --------------------------------------------------------------------------------------
-function refresh(reroll) {
+function refresh() {
   renderBrowse();
-  if (reroll && S.current && !passes(S.current, readFilters())) roll();
+  if (!revealing()) renderTeaser();
 }
+const rerenderReveal = () => { if (revealing() && S.current) showReveal(S.current, { from: S.revealFrom }); };
 function fromHash() {
   const m = /mission=([^&]+)/.exec(location.hash);
   return m ? S.missions.find((x) => x.full_id === decodeURIComponent(m[1])) : null;
@@ -482,8 +537,8 @@ async function start() {
   $("#repo-link").href = REPO_URL;
 
   document.querySelectorAll('input[name="mode"], #filters input[type="checkbox"], #pack-select, #within-select')
-    .forEach((el) => el.addEventListener("change", () => refresh(true)));
-  $("#roll-btn").addEventListener("click", roll);
+    .forEach((el) => el.addEventListener("change", () => refresh()));
+  $("#roll-btn").addEventListener("click", () => roll());
   $("#zip-form").addEventListener("submit", setZip);
   $("#browse-pack").addEventListener("change", (e) => { S.browse = e.target.value; renderBrowse(); });
   let searchTimer = null;
@@ -499,7 +554,7 @@ async function start() {
     setTimeout(() => sInput.focus({ preventScroll: true }), 300);
   });
   document.querySelectorAll(".units button").forEach((b) => b.addEventListener("click", () => {
-    S.unit = b.dataset.unit; writePref("unit", S.unit); renderWithin(); refresh(false); if (S.current) show(S.current);
+    S.unit = b.dataset.unit; writePref("unit", S.unit); renderWithin(); refresh(); rerenderReveal();
   }));
   const toggle = $("#filters-toggle");
   const setPanel = (open) => {
@@ -518,14 +573,25 @@ async function start() {
   });
   $("#filters-reset").addEventListener("click", () => {
     document.querySelectorAll("#filters input").forEach((i) => { i.checked = false; });
-    $("#within-select").value = ""; refresh(true);
+    $("#within-select").value = ""; refresh();
   });
   $("#mission-dialog").addEventListener("click", (e) => { if (e.target.id === "mission-dialog") e.target.close(); });
-  window.addEventListener("hashchange", () => { const m = fromHash(); if (m && m !== S.current) show(m); });
+  window.addEventListener("popstate", route);
+  window.addEventListener("hashchange", route);
+  $("#reveal-adjust").addEventListener("click", () => startOver({ filters: true }));
+  // nav links: from the reveal view, go home first, then jump to the section
+  document.querySelectorAll(".top nav a").forEach((a) => a.addEventListener("click", (e) => {
+    if (!revealing()) return;
+    e.preventDefault();
+    const id = (a.getAttribute("href") || "").replace("#", "");
+    startOver();
+    setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: "smooth" });
+      if (a.id === "nav-search") $("#search-input").focus({ preventScroll: true }); }, 60);
+  }));
 
   renderWithin();
   renderBrowse();
-  const linked = fromHash();
-  if (linked) show(linked); else roll();
+  renderTeaser();
+  route();
 }
 start();

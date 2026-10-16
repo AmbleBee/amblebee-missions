@@ -1,0 +1,35 @@
+number: 53
+name: USS Lexington, Corpus Christi
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: USS Lexington Museum on the Bay
+  area: North Beach, Corpus Christi
+  coords: [27.81500, -97.38900]  # APPROX: set at the ship's entrance before publishing
+  website: https://usslexington.com
+short: Explore the WWII aircraft carrier USS Lexington, from the flight deck to the engine room.
+description: >
+  Climb aboard the USS Lexington, a World War II aircraft carrier nicknamed "the
+  Blue Ghost," now a museum on Corpus Christi Bay. Walk the flight deck past
+  dozens of real planes, climb up to the bridge, and squeeze through the
+  narrow passages down to the engine room and crew bunks. Each pick the job
+  you'd want on the ship. Get a photo of the two of you on the flight deck with
+  the bay behind you. Plan on half a day; there's a lot of ship.
+for_kids:
+  short: Ship hunt! Find each thing.
+  steps:
+    - A real airplane
+    - A captain's chair
+    - A sailor's bunk
+    - A big anchor
+    - A selfie on the deck!
+duration: half-day
+effort: moderate
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [ship, history, military, museum, corpus-christi]
+credit:

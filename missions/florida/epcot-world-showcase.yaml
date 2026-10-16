@@ -1,0 +1,35 @@
+number: 23
+name: Eat Around the World at EPCOT
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: EPCOT World Showcase
+  area: Walt Disney World, Lake Buena Vista
+  coords: [28.37470, -81.54940]  # APPROX: set at the World Showcase entrance before publishing
+  website: https://disneyworld.disney.go.com/destinations/epcot/
+short: Walk around EPCOT's World Showcase and try one snack in every country. Stay for the fireworks.
+description: >
+  Walk the loop of World Showcase at EPCOT, eleven pavilions built to look
+  like countries around the world. Make it a mission: share one small snack
+  or drink in every country, like a pretzel in Germany, a crêpe in France and
+  a churro in Mexico, and rate each one. Then grab a spot by the lagoon for
+  the nighttime fireworks show. Get a photo of the two of you in front of your
+  favorite country. Park tickets are expensive; buy ahead and check park hours.
+for_kids:
+  short: World tour! Find each thing.
+  steps:
+    - A tall pagoda
+    - A tiny Eiffel Tower
+    - A treat from another country
+    - The big silver ball
+    - A selfie with fireworks!
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: night
+travel: local
+check_ahead: [tickets, hours]
+tags: [theme-park, food, fireworks, travel, orlando]
+credit:

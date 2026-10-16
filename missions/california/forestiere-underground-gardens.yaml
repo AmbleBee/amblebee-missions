@@ -1,0 +1,37 @@
+number: 34
+name: Forestiere Underground Gardens
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Forestiere Underground Gardens
+  area: West Shaw Ave, Fresno
+  address: 5021 W Shaw Ave, Fresno, CA 93722
+  coords: [36.80800, -119.88100]  # APPROX: set at the entrance before publishing
+  website: https://undergroundgardens.com
+short: Tour a hand-dug underground home in Fresno, with fruit trees growing up through skylights.
+description: >
+  Walk through the tunnels, rooms and courtyards that one man, Baldassare
+  Forestiere, dug by hand under Fresno over 40 years to escape the summer
+  heat. Fruit trees grow down in the pits and reach up through openings to
+  the sunlight, some of them over a hundred years old. Take the one-hour
+  guided tour, and each pick the room you'd want as your bedroom. Get a photo
+  of the two of you under one of the skylights. Tours are seasonal and book
+  up, so reserve ahead and arrive early.
+for_kids:
+  short: Underground hunt! Find each thing.
+  steps:
+    - A tunnel
+    - A tree underground
+    - A hole to the sky
+    - A secret room
+    - A selfie underground!
+duration: short
+effort: easy
+cost: $
+setting: either
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [quirky, underground, history, gardens, central-valley]
+credit:

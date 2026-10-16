@@ -1,0 +1,35 @@
+number: 44
+name: St. Augustine Alligator Farm
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: St. Augustine Alligator Farm Zoological Park
+  area: Anastasia Island, St. Augustine
+  coords: [29.88200, -81.28900]  # APPROX: set at the entrance before publishing
+  website: https://www.alligatorfarm.com
+short: See every crocodilian species on Earth at the St. Augustine Alligator Farm. Find Maximo.
+description: >
+  Visit one of Florida's oldest attractions, open since 1893 and home to every
+  living species of crocodile, alligator and caiman. Find the giant saltwater
+  crocodile, see the rare white gators, and watch a feeding show. In spring,
+  walk the boardwalk over the rookery, where wild herons, egrets and roseate
+  spoonbills nest right above the alligators. Each pick your favorite. Get a
+  photo of the two of you on the boardwalk over the gators.
+for_kids:
+  short: Croc hunt! Find each thing.
+  steps:
+    - A giant crocodile
+    - A white alligator
+    - A bird's nest
+    - A gator eating
+    - A selfie on the boardwalk!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [alligators, crocodiles, birds, zoo, st-augustine]
+credit:

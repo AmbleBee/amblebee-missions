@@ -1,0 +1,34 @@
+number: 50
+name: The Big Texan 72-oz Steak Challenge
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Big Texan Steak Ranch
+  area: Route 66, Amarillo
+  coords: [35.19300, -101.75500]  # APPROX: set at the entrance before publishing
+  website: https://www.bigtexan.com
+short: Eat at The Big Texan in Amarillo and watch (or try!) the famous 72-ounce steak challenge.
+description: >
+  Have dinner at The Big Texan, a giant yellow cowboy-themed steakhouse on
+  Route 66, famous for its challenge: finish a 72-ounce steak dinner in an
+  hour and it's free. Watch the challengers eat on a stage in the middle of the
+  dining room (it's also streamed online), and decide together whether either of
+  you would try it. Order a normal steak and split dessert, then get a photo of
+  the two of you with the giant cowboy statue out front.
+for_kids:
+  short: Cowboy dinner! Find each thing.
+  steps:
+    - The giant cowboy
+    - The big steak challenge
+    - A cowboy hat
+    - A big dessert
+    - A selfie with the cowboy!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [food, steak, quirky, route-66, panhandle]
+credit:

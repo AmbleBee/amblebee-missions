@@ -1,0 +1,33 @@
+number: 19
+name: Japanese Tea Garden
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Japanese Tea Garden, Brackenridge Park
+  area: Brackenridge Park, San Antonio
+  coords: [29.46100, -98.47800]  # APPROX: set at the entrance before publishing
+short: Wander the stone paths and koi ponds of San Antonio's Japanese Tea Garden, built in an old quarry.
+description: >
+  Explore a lush garden built inside an old limestone quarry, with stone
+  bridges, a 60-foot waterfall, shady paths and ponds full of giant koi. Walk
+  down into the sunken garden, cross the bridges, and each pick your favorite
+  quiet spot. Look up at the old quarry walls and the pagoda pavilion. Get a
+  photo of the two of you on one of the stone bridges. It's free, and the
+  café makes a nice stop for lunch.
+for_kids:
+  short: Garden hunt! Find each thing.
+  steps:
+    - A big koi fish
+    - The waterfall
+    - A stone bridge
+    - A turtle
+    - A selfie on the bridge!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [gardens, waterfall, koi, calm, free, san-antonio]
+credit:

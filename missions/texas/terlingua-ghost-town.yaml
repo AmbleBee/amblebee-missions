@@ -1,0 +1,35 @@
+number: 40
+name: Terlingua Ghost Town
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Terlingua Ghost Town (Starlight Theatre)
+  area: Terlingua, outside Big Bend National Park
+  coords: [29.32100, -103.61500]  # APPROX: set at the Starlight Theatre before publishing
+short: Watch sunset over the Chisos from the porch in Terlingua's ghost town, then eat at the Starlight.
+description: >
+  Explore the old quicksilver mining ghost town of Terlingua, full of
+  crumbling stone ruins, a hillside cemetery decorated with offerings, and a
+  few quirky shops. As the sun goes down, join everyone on the long porch of
+  the old Trading Company to watch the Chisos Mountains turn red and purple.
+  Then eat dinner at the Starlight Theatre, a restaurant in the old movie
+  house, often with live music. Get a photo of the two of you on the porch at
+  sunset. Remember that Big Bend's own roads and trails have closures right
+  now.
+for_kids:
+  short: Ghost town hunt! Find each thing.
+  steps:
+    - A stone ruin
+    - The old cemetery
+    - The mountains at sunset
+    - A dog on the porch
+    - A selfie in the ghost town!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [ghost-town, history, sunset, quirky, big-bend]
+credit:

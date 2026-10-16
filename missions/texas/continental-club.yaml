@@ -1,0 +1,29 @@
+number: 5
+name: Live Music at the Continental Club
+mode: both
+who: [solo, friends]
+place:
+  name: The Continental Club
+  area: South Congress, Austin
+  address: 1315 S Congress Ave, Austin, TX 78704
+  coords: [30.25000, -97.74900]  # APPROX: set at the entrance before publishing
+  website: https://continentalclub.com
+short: Dance to live honky-tonk, rockabilly or soul at Austin's legendary Continental Club.
+description: >
+  Spend a night in the Live Music Capital of the World at the Continental
+  Club, a tiny, red-lit South Congress bar that's been booking live bands since
+  1955. Check the calendar for a band you like, from honky-tonk and rockabilly
+  to soul and swing, get there early, and get out on the little dance floor.
+  Before the show, walk South Congress for dinner and the "I love you so much"
+  mural, and get a photo of the two of you in front of it. Cover is usually
+  cheap; it's 21 and up most nights.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: night
+travel: local
+check_ahead: [tickets]
+tags: [music, nightlife, dancing, romantic, austin]
+credit:

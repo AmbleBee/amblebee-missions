@@ -1,0 +1,34 @@
+number: 20
+name: Swan Boats on Lake Eola
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Lake Eola Park
+  area: Downtown Orlando
+  coords: [28.54350, -81.37300]  # APPROX: set at the swan boat rental before publishing
+short: Pedal a swan boat around Lake Eola in downtown Orlando as the fountain lights up at night.
+description: >
+  Rent a swan-shaped pedal boat on Lake Eola in downtown Orlando and pedal
+  around the lake, past real swans and the city skyline. Stay into the
+  evening, when the big Linton E. Allen Memorial Fountain in the middle of the
+  lake lights up in changing colors. Walk the loop around the lake afterward,
+  and grab dinner in the Thornton Park neighborhood nearby. Get a photo of
+  the two of you in the swan boat with the fountain glowing behind you.
+for_kids:
+  short: Swan ride! Find each thing.
+  steps:
+    - A real swan
+    - The swan boat
+    - The big fountain
+    - A tall building
+    - A selfie in the swan boat!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [boats, park, night, romantic, orlando]
+credit:

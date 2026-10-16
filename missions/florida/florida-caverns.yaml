@@ -1,0 +1,36 @@
+number: 56
+name: Florida Caverns Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Florida Caverns State Park
+  area: Marianna
+  coords: [30.81500, -85.23100]  # APPROX: set at the visitor center before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/florida-caverns-state-park
+short: Tour Florida's only public dry cave at Florida Caverns, full of stalactites and flowstone.
+description: >
+  Take a guided ranger tour through Florida's only cave open to the public for
+  walking tours, under the Panhandle hills. Duck through narrow passages
+  into rooms full of stalactites, stalagmites, soda straws and flowstone
+  formations. Each find a formation that looks like something and name it.
+  Get a photo of the two of you in one of the big rooms. Tours run daily but
+  sell out on weekends, so arrive early or reserve online. It's cool and
+  damp inside, so bring a light jacket.
+for_kids:
+  short: Cave hunt! Find each thing.
+  steps:
+    - A pointy rock on the ceiling
+    - A rock that looks like an animal
+    - A drip of water
+    - A tiny tunnel
+    - A selfie in the cave!
+duration: short
+effort: moderate
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [cave, underground, state-park, tour, panhandle]
+credit:

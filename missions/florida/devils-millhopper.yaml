@@ -1,0 +1,36 @@
+number: 50
+name: Devil's Millhopper Sinkhole
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Devil's Millhopper Geological State Park
+  area: Gainesville
+  coords: [29.70700, -82.39400]  # APPROX: set at the park entrance before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/devils-millhopper-geological-state-park
+short: Walk down 132 steps into Devil's Millhopper, a giant sinkhole full of a hidden rainforest.
+description: >
+  Walk down a wooden staircase 120 feet into a giant bowl-shaped sinkhole,
+  where little waterfalls trickle down the walls and the air turns cool and
+  damp. The bottom feels like a miniature rainforest, with ferns and plants
+  you'd expect in the mountains, and fossil shark teeth have been found in the
+  walls. Count the steps together on the way down. Get a photo of the two of
+  you at the bottom looking up. It's a short visit, perfect with a day in
+  Gainesville.
+for_kids:
+  short: Sinkhole hunt! Find each thing.
+  steps:
+    - Count the stairs
+    - A little waterfall
+    - A big fern
+    - A frog or lizard
+    - A selfie at the bottom!
+duration: short
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [geology, sinkhole, hiking, state-park, north-florida]
+credit:

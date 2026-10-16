@@ -1,0 +1,36 @@
+number: 52
+name: Hearst Castle Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Hearst Castle Visitor Center
+  area: San Simeon, Central Coast
+  coords: [35.68500, -121.16600]  # APPROX: set at the visitor center before publishing
+  website: https://hearstcastle.org
+short: Tour William Randolph Hearst's hilltop castle in San Simeon. Find the Neptune Pool.
+description: >
+  Ride the bus up the hill to the over-the-top estate newspaper tycoon William
+  Randolph Hearst built above the coast, packed with art and treasures from
+  around the world. On the Grand Rooms tour, walk through the giant dining
+  hall and theater, then see the blue-and-gold-tiled indoor Roman Pool and the
+  famous outdoor Neptune Pool. Each pick the room you'd move into. Get a photo
+  of the two of you by the Neptune Pool. Reserve tour tickets ahead. Afterward,
+  stop at the elephant seal viewing point just up Highway 1.
+for_kids:
+  short: Castle hunt! Find each thing.
+  steps:
+    - A giant pool
+    - A statue
+    - A huge dining table
+    - A zebra on the hill
+    - A selfie at the castle!
+duration: half-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [history, castle, architecture, tour, central-coast]
+credit:

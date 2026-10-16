@@ -1,0 +1,35 @@
+number: 18
+name: Morikami Japanese Gardens
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Morikami Museum and Japanese Gardens
+  area: Delray Beach
+  coords: [26.42500, -80.18400]  # APPROX: set at the entrance before publishing
+  website: https://morikami.org
+short: Walk the quiet paths of the Morikami Japanese Gardens in Delray Beach. Feed the koi.
+description: >
+  Walk a mile of winding paths through six Japanese garden styles around a
+  big lake, with stone lanterns, waterfalls, bamboo groves and a bonsai
+  collection. Stop at the rock garden and sit quietly for a few minutes
+  together. Feed the giant koi, then visit the museum about the Japanese
+  farming colony that once lived here. Have lunch at the café overlooking the
+  lake. Get a photo of the two of you on one of the bridges. Closed Mondays.
+for_kids:
+  short: Garden hunt! Find each thing.
+  steps:
+    - A big koi fish
+    - A stone lantern
+    - A tiny bonsai tree
+    - A waterfall
+    - A selfie on a bridge!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [gardens, japanese, calm, museum, palm-beach]
+credit:

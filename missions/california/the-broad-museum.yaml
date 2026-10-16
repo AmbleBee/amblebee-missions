@@ -1,0 +1,36 @@
+number: 60
+name: The Broad
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Broad
+  area: Grand Avenue, Downtown Los Angeles
+  coords: [34.05450, -118.25050]  # APPROX: set at the entrance before publishing
+  website: https://www.thebroad.org
+short: Explore The Broad's free contemporary art in downtown LA, from giant balloon dogs to mirror rooms.
+description: >
+  Walk through one of LA's most fun art museums, free to enter, full of
+  contemporary art you can't stop looking at: giant shiny balloon sculptures,
+  a huge table and chairs that make you feel tiny, and bright pop art. Each
+  pick the piece you'd steal if you could. Reserve free timed tickets ahead.
+  If you can, also book the Infinity Mirror Room, where you stand in a
+  glittering room of endless lights for a minute. Then walk across the street
+  to see the silver curves of Walt Disney Concert Hall. Closed Mondays.
+for_kids:
+  short: Art hunt! Find each thing.
+  steps:
+    - A shiny balloon animal
+    - A giant chair
+    - A really bright painting
+    - The silver building outside
+    - A selfie with art!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, hours]
+tags: [art, museum, free, rainy-day, los-angeles]
+credit:

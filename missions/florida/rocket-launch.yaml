@@ -1,0 +1,35 @@
+number: 27
+name: Watch a Rocket Launch
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Space View Park
+  area: Titusville, across the Indian River from the launch pads
+  coords: [28.61400, -80.80700]  # APPROX: set at the park before publishing
+short: Watch a real rocket launch light up the sky from Titusville. Feel the rumble a minute later.
+description: >
+  Check the Space Coast launch schedule, then pick a launch and claim a spot
+  along the Indian River in Titusville, across the water from the launch pads.
+  Bring chairs, snacks and a radio or a livestream to hear the countdown.
+  When it lifts off, watch the bright flame climb, then wait for the rumble to
+  roll across the water a moment later. Night launches are the most dramatic.
+  Get a photo of the two of you with the rocket trail in the sky. Launches
+  slip often, so have a backup plan.
+for_kids:
+  short: Rocket launch! Find each thing.
+  steps:
+    - The countdown
+    - The rocket going up
+    - The bright fire
+    - The smoke trail
+    - A selfie with the rocket!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: night
+travel: day-trip
+check_ahead: [conditions]
+tags: [space, rockets, night, free, space-coast]
+credit:

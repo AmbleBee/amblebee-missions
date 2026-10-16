@@ -1,0 +1,34 @@
+number: 36
+name: Honeymoon Island
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Honeymoon Island State Park
+  area: Dunedin
+  coords: [28.07000, -82.82900]  # APPROX: set at the park entrance before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/honeymoon-island-state-park
+short: Walk the beach and osprey trail on Honeymoon Island in the morning. Look for nesting ospreys.
+description: >
+  Spend a morning on Honeymoon Island, a barrier island with miles of
+  undeveloped beach on the Gulf. Walk the Osprey Trail through virgin slash
+  pines, where ospreys and bald eagles nest, then hunt for shells on the
+  quiet north beach. If you have time, take the ferry to Caladesi Island, often
+  ranked one of the best beaches in America. Get a photo of the two of you on
+  the beach with the Gulf behind you. Check for nesting-season trail closures.
+for_kids:
+  short: Island hunt! Find each thing.
+  steps:
+    - An osprey nest
+    - A seashell
+    - A tall pine tree
+    - A crab
+    - A selfie on the beach!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+tags: [beach, birds, hiking, state-park, tampa-bay]
+credit:

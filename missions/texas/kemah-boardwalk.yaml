@@ -1,0 +1,34 @@
+number: 23
+name: Kemah Boardwalk
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Kemah Boardwalk
+  area: Kemah, Galveston Bay
+  coords: [29.54500, -95.02000]  # APPROX: set at the boardwalk entrance before publishing
+short: Ride the Ferris wheel over Galveston Bay at Kemah Boardwalk, then eat seafood by the water.
+description: >
+  Spend an evening on the Kemah Boardwalk, a waterfront strip of rides,
+  games and seafood restaurants on Galveston Bay. Ride the Ferris wheel at
+  sunset for the view over the bay and the boats coming in, try a ride or two,
+  and win each other a prize. Have seafood for dinner looking out at the
+  water, and get a photo of the two of you with the boardwalk lit up behind
+  you. Walking the boardwalk is free; rides and games cost extra.
+for_kids:
+  short: Boardwalk fun! Find each thing.
+  steps:
+    - The Ferris wheel
+    - A boat
+    - A seagull
+    - A prize
+    - A selfie on the boardwalk!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [hours]
+tags: [boardwalk, rides, seafood, bay, houston-area]
+credit:

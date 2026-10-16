@@ -1,0 +1,34 @@
+number: 9
+name: Mallory Square Sunset Celebration
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Mallory Square
+  area: Old Town, Key West
+  coords: [24.56000, -81.80700]  # APPROX: set at the Mallory Square dock before publishing
+short: Watch street performers and the sunset at Key West's nightly Mallory Square celebration.
+description: >
+  Join the nightly Sunset Celebration at Mallory Square in Key West, where the
+  whole waterfront gathers to watch the sun drop into the Gulf. Street
+  performers juggle fire, tightrope walkers and trained cats put on shows,
+  and food carts sell conch fritters and key lime pie on a stick. Find a spot
+  at the edge of the dock, and when the sun touches the water, cheer with
+  everyone. Get a photo of the two of you with the sunset behind you. Come an
+  hour early to see the performers.
+for_kids:
+  short: Sunset party! Find each thing.
+  steps:
+    - A juggler
+    - A sailboat
+    - Key lime pie
+    - The sun touching the water
+    - A sunset selfie!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [sunset, street-performers, waterfront, romantic, key-west]
+credit:

@@ -1,0 +1,40 @@
+number: 24
+name: Kayak Wekiwa Springs
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Wekiwa Springs State Park
+  area: Apopka, north of Orlando
+  coords: [28.71200, -81.46000]  # APPROX: set at the canoe rental before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/wekiwa-springs-state-park
+short: Paddle the clear Wekiwa River from the spring through quiet wild Florida.
+description: >
+  Rent a canoe or kayak at the spring and paddle down the Wekiwa River, a
+  clear, spring-fed river winding through cypress swamps and palm hammocks.
+  Watch for turtles stacked on logs, wading birds, otters and alligators
+  sunning on the banks. Then swim in the cool, 72-degree spring basin. Get a
+  photo of the two of you in the boat. The park often fills up on weekends,
+  so arrive right when it opens.
+for_kids:
+  short: River hunt! Find each thing.
+  steps:
+    - Clear blue water
+    - A turtle on a log
+    - A white bird
+    - An alligator (far away!)
+    - A selfie in the boat!
+gear:
+  - item: kayak
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [kayak, springs, river, swimming, wildlife, central-florida]
+credit:

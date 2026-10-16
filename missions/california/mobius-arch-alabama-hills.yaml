@@ -1,0 +1,35 @@
+number: 57
+name: Mobius Arch at Sunrise
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Mobius Arch Trailhead, Alabama Hills
+  area: Movie Road, near Lone Pine
+  coords: [36.60900, -118.12500]  # APPROX: set at the trailhead parking before publishing
+short: Hike to Mobius Arch at sunrise and frame Mount Whitney through the rock window.
+description: >
+  Drive Movie Road into the Alabama Hills, a maze of rounded orange boulders
+  where hundreds of Western movies were filmed, and hike the short loop to
+  Mobius Arch before sunrise. Watch the first light hit the peaks of the
+  Sierra, turning Mount Whitney, the tallest mountain in the lower 48, bright
+  pink, then line it up through the arch. Get a photo of the two of you beside
+  the arch with Whitney behind it. Bring coffee and layers. Afterward, grab
+  breakfast in Lone Pine and stop at the Museum of Western Film History.
+for_kids:
+  short: Rock hunt! Find each thing.
+  steps:
+    - A rock with a hole
+    - The tallest mountain
+    - A round boulder
+    - A lizard
+    - A selfie at the arch!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [sunrise, rocks, arch, hiking, movies, eastern-sierra]
+credit:

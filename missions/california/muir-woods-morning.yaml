@@ -1,0 +1,36 @@
+number: 47
+name: Muir Woods Before the Crowds
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Muir Woods National Monument (main entrance)
+  area: Mill Valley, Marin County
+  coords: [37.89200, -122.57200]  # APPROX: set at the main entrance before publishing
+  website: https://www.nps.gov/muwo
+short: Walk the redwoods of Muir Woods first thing in the morning, while the forest is still quiet.
+description: >
+  Book the earliest parking reservation and walk into an old-growth redwood
+  forest just a few miles from the Golden Gate Bridge, while it's still misty
+  and quiet. Follow the boardwalk along Redwood Creek through Cathedral Grove,
+  where visitors are asked to stay silent, and listen to the forest together.
+  Get a photo of the two of you looking up at the tallest trees. Driving in
+  needs a parking reservation (it sells out), and there's an entrance fee;
+  hikers and rideshare don't need one.
+for_kids:
+  short: Redwood hunt! Find each thing.
+  steps:
+    - A giant redwood
+    - A tree you can stand inside
+    - The creek
+    - A banana slug
+    - A selfie in the forest!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation]
+tags: [redwoods, forest, walking, national-monument, bay-area]
+credit:

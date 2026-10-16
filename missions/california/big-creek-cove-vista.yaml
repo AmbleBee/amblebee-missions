@@ -1,0 +1,36 @@
+number: 29
+name: Big Creek Cove Vista Point
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Big Creek Cove Vista Point, Highway 1
+  area: Southern Big Sur, between Esalen and Lucia
+  coords: [36.07100, -121.60100]  # APPROX: set at the vista point pullout before publishing
+short: Stop at Big Creek Cove on Highway 1. Frame the arched bridge and watch for whales.
+description: >
+  Pull over at one of Big Sur's best viewpoints, where the graceful concrete
+  arch of Big Creek Bridge spans a cove of turquoise water and the mountains
+  drop straight into the sea. Find the spot where the bridge, the cove and
+  the coastline all fit in one frame, and get a photo of the two of you with
+  it behind you. Then take your time and scan the water: sea otters float in
+  the kelp, and gray whales pass by in winter and spring. Bring a jacket, since
+  it's windy. This stretch of Highway 1 sometimes closes after storms, so
+  check Caltrans QuickMap before you drive.
+for_kids:
+  short: Ocean lookout! Find each thing.
+  steps:
+    - The big arch bridge
+    - Blue-green water
+    - A sea otter or seal
+    - A whale spout
+    - A selfie by the ocean!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: any
+travel: day-trip
+check_ahead: [conditions]
+tags: [views, ocean, bridge, whales, scenic-drive, big-sur]
+credit:

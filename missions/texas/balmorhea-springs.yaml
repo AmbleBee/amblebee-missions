@@ -1,0 +1,35 @@
+number: 44
+name: Balmorhea Springs Pool
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Balmorhea State Park
+  area: Toyahvale, West Texas
+  coords: [30.94400, -103.78600]  # APPROX: set at the pool entrance before publishing
+  website: https://tpwd.texas.gov/state-parks/balmorhea
+short: Swim with little fish in Balmorhea's giant spring-fed desert pool.
+description: >
+  Swim in a huge, crystal-clear pool fed by a desert spring, deep in the
+  middle with a bottom of rocks and swaying plants. Put on goggles and swim
+  with the little native fish and turtles, and watch the springs bubble up
+  from the bottom. It's a surprising oasis in the West Texas desert, cool even
+  on hot days. Get a photo of the two of you by the blue water. Day passes
+  sell out in summer and on weekends, so buy them ahead.
+for_kids:
+  short: Spring swim! Find each thing.
+  steps:
+    - Blue clear water
+    - A little fish
+    - A turtle
+    - Bubbles coming up
+    - A selfie by the pool!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [swimming, springs, desert, state-park, west-texas]
+credit:

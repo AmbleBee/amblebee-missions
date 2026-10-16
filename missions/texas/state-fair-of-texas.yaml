@@ -1,0 +1,35 @@
+number: 34
+name: State Fair of Texas
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Fair Park
+  area: East Dallas
+  coords: [32.77900, -96.75900]  # APPROX: set at the main gate before publishing
+  website: https://bigtex.com
+short: Say howdy to Big Tex at the State Fair of Texas, then split the weirdest fried food you can find.
+description: >
+  Go to the biggest state fair in the country, held every fall at Fair Park's
+  art deco grounds. Say howdy to Big Tex, the 55-foot talking cowboy, ride the
+  Texas Star Ferris wheel, and hunt down the strangest fried food of the year
+  (they invent new ones every season) to split. Rate each one out of 10.
+  Get a photo of the two of you with Big Tex. The fair runs from late
+  September through mid-October; buy tickets ahead.
+for_kids:
+  short: Fair hunt! Find each thing.
+  steps:
+    - Big Tex the giant cowboy
+    - The giant Ferris wheel
+    - A fried treat
+    - A farm animal
+    - A selfie with Big Tex!
+duration: all-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: [fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [fair, food, rides, fall, festival, dallas]
+credit:

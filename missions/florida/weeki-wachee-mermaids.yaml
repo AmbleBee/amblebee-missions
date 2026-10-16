@@ -1,0 +1,35 @@
+number: 32
+name: Weeki Wachee Mermaid Show
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Weeki Wachee Springs State Park
+  area: Spring Hill, north of Tampa
+  coords: [28.51700, -82.57300]  # APPROX: set at the entrance before publishing
+  website: https://weekiwachee.com
+short: Watch real live mermaids perform underwater at Weeki Wachee's spring, a show since 1947.
+description: >
+  Sit in an underwater theater set into a deep, clear spring and watch the
+  famous Weeki Wachee mermaids perform, a show running since 1947. Watch them
+  swim, dance and even drink soda underwater while breathing from hidden
+  air hoses. Afterward, take the riverboat cruise to look for manatees, or
+  swim at the spring's beach in summer. Get a photo of the two of you in front
+  of the mermaid theater. Check the show times when you arrive.
+for_kids:
+  short: Mermaid show! Find each thing.
+  steps:
+    - A real mermaid
+    - Bubbles in the water
+    - A fish
+    - A manatee or turtle
+    - A selfie with the mermaids!
+duration: half-day
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [mermaids, springs, classic-florida, quirky, gulf-coast]
+credit:

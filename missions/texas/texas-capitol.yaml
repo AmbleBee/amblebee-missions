@@ -1,0 +1,36 @@
+number: 3
+name: Texas State Capitol
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Texas State Capitol
+  area: Downtown Austin
+  coords: [30.27470, -97.74040]  # APPROX: set at the south entrance before publishing
+  website: https://tspb.texas.gov/prop/tc/tc/capitol.html
+short: Tour the Texas Capitol, taller than the U.S. Capitol. Look straight up into the dome.
+description: >
+  Walk into the pink granite Texas Capitol, built to be taller than the one
+  in Washington. Stand in the center of the rotunda, look straight up at the
+  star in the dome, and whisper across the rotunda to hear the echo. Take a
+  free guided tour or wander on your own through the House and Senate
+  chambers and the underground extension with its skylights. Get a photo of
+  the two of you on the south steps with Congress Avenue behind you. It's
+  free; bring ID for security.
+for_kids:
+  short: Capitol hunt! Find each thing.
+  steps:
+    - The star in the dome
+    - A big painting
+    - A Texas flag
+    - The pink stone outside
+    - A selfie on the steps!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [history, government, architecture, free, rainy-day, austin]
+credit:

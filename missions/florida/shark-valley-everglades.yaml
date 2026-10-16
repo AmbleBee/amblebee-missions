@@ -1,0 +1,39 @@
+number: 12
+name: Shark Valley, Everglades
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Shark Valley Visitor Center
+  area: Everglades National Park, Tamiami Trail
+  coords: [25.75700, -80.76600]  # APPROX: set at the visitor center before publishing
+  website: https://www.nps.gov/ever
+short: Bike or ride the tram 15 miles through the Everglades. Count the alligators you pass.
+description: >
+  Ride the 15-mile loop road through the "river of grass" at Shark Valley,
+  on a narrated tram or on rented bikes. Pass alligators sunning a few feet
+  from the path, plus turtles, wading birds and maybe an otter. Climb the
+  tall observation tower at the halfway point for a view over the endless
+  sawgrass. Each keep a gator count, and get a photo of the two of you on the
+  tower. Go in the dry season (winter and spring) for the most wildlife and
+  fewer bugs. Keep at least 15 feet from the gators.
+for_kids:
+  short: Gator hunt! Find each thing.
+  steps:
+    - An alligator
+    - A baby alligator
+    - A big white bird
+    - A turtle
+    - A selfie on the tower!
+gear:
+  - item: bikes
+    rent: on-site
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, conditions]
+tags: [everglades, alligators, wildlife, biking, national-park]
+credit:

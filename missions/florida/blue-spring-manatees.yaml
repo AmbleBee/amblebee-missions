@@ -1,0 +1,36 @@
+number: 25
+name: Manatees at Blue Spring
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Blue Spring State Park
+  area: Orange City, north of Orlando
+  coords: [28.94700, -81.34000]  # APPROX: set at the spring run boardwalk before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/blue-spring-state-park
+short: Watch hundreds of manatees in the clear water of Blue Spring on a cold winter morning.
+description: >
+  On a cold winter morning, hundreds of West Indian manatees crowd into the
+  72-degree water of Blue Spring to stay warm. Walk the boardwalk along the
+  spring run and look down into the clear water to watch them float, nap and
+  surface to breathe, sometimes with calves. Each count as many as you can,
+  and compare with the park's daily count. Get a photo of the two of you
+  on the boardwalk. Manatee season runs mid-November to March, when swimming
+  is closed. Day-use reservations are now needed, so book ahead.
+for_kids:
+  short: Manatee hunt! Find each thing.
+  steps:
+    - A big manatee
+    - A baby manatee
+    - A manatee nose coming up
+    - A fish
+    - A selfie on the boardwalk!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [winter]
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [manatees, wildlife, springs, winter, central-florida]
+credit:

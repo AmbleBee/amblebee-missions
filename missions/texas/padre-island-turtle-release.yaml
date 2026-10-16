@@ -1,0 +1,36 @@
+number: 52
+name: Sea Turtle Hatchling Release
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Malaquite Visitor Center, Padre Island National Seashore
+  area: Padre Island National Seashore, south of Corpus Christi
+  coords: [27.42900, -97.30200]  # APPROX: set at the visitor center before publishing
+  website: https://www.nps.gov/pais
+short: Watch baby Kemp's ridley sea turtles crawl to the Gulf at a public release on Padre Island.
+description: >
+  In summer, Padre Island National Seashore holds public releases of baby
+  Kemp's ridley sea turtles, the most endangered sea turtle in the world, in
+  the early morning on the beach. Get there before sunrise when a release is
+  announced, stand behind the line, and watch the tiny hatchlings scramble
+  across the sand and into the waves. Cheer for the stragglers, and get a
+  photo of the two of you with the sunrise over the Gulf. Releases are only
+  announced a day or so ahead, so follow the park's hatchling hotline or page.
+for_kids:
+  short: Turtle release! Find each thing.
+  steps:
+    - A baby turtle
+    - The waves
+    - The sunrise
+    - A seashell
+    - A selfie on the beach!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [summer]
+time_of_day: morning
+travel: day-trip
+check_ahead: [seasonal]
+tags: [turtles, wildlife, sunrise, beach, national-seashore, gulf-coast]
+credit:

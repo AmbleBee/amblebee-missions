@@ -1,0 +1,33 @@
+number: 45
+name: El Paso's Scenic Drive at Night
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Murchison Rogers Park, Scenic Drive
+  area: Franklin Mountains, El Paso
+  coords: [31.77900, -106.48800]  # APPROX: set at the Murchison Park overlook before publishing
+short: Watch two countries light up from El Paso's Scenic Drive. Find where Texas ends and Mexico begins.
+description: >
+  Drive up Scenic Drive on the side of the Franklin Mountains and stop at the
+  overlook at Murchison Park after sunset. Below you, the lights of El Paso
+  and Ciudad Juárez spread out together across the desert, two cities in two
+  countries. Try to find the line of the Rio Grande and the border between
+  them, and spot the big star on the mountain above. Get a photo of the two of
+  you with the city lights behind you. It's free.
+for_kids:
+  short: City lights! Find each thing.
+  steps:
+    - Two countries of lights
+    - The big lit star
+    - A plane in the sky
+    - The mountain
+    - A selfie with the lights!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: night
+travel: day-trip
+tags: [views, night, city-lights, free, el-paso]
+credit:

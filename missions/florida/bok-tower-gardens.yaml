@@ -1,0 +1,35 @@
+number: 21
+name: Bok Tower Gardens
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Bok Tower Gardens
+  area: Lake Wales
+  coords: [27.93500, -81.57600]  # APPROX: set at the visitor center before publishing
+  website: https://boktowergardens.org
+short: Hear the bells ring from Bok Tower, a pink marble tower on one of Florida's highest hills.
+description: >
+  Walk through shady gardens up to a pink-and-gray marble tower that rises
+  205 feet above one of the highest points in the Florida peninsula. Find a
+  spot on the lawn by the reflecting pool with the swans, and listen to the
+  live carillon concert, when bells in the tower play music across the
+  gardens. Each find your favorite carving on the tower. Get a photo of the
+  two of you with the tower reflected in the pool behind you.
+for_kids:
+  short: Tower hunt! Find each thing.
+  steps:
+    - The tall tower
+    - A swan
+    - Ringing bells
+    - A fish in the pool
+    - A selfie by the tower!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [gardens, music, architecture, calm, central-florida]
+credit:

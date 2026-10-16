@@ -1,0 +1,36 @@
+number: 37
+name: Zabriskie Point Sunrise, Death Valley
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Zabriskie Point
+  area: Death Valley National Park, near Furnace Creek
+  coords: [36.42000, -116.81000]  # APPROX: set at the Zabriskie Point parking before publishing
+  website: https://www.nps.gov/deva
+short: Watch sunrise light up the golden badlands at Zabriskie Point. Then stand at Badwater Basin.
+description: >
+  Get to Zabriskie Point before dawn and walk up to the overlook as the first
+  light turns the folded, golden badlands pink and orange, with the Panamint
+  Mountains glowing across the valley. Bring coffee and a blanket, since desert
+  mornings are cold. Afterward, drive down to Badwater Basin, the lowest
+  point in North America, and walk out onto the white salt flats. Get a photo
+  of the two of you at the sea-level sign high on the cliff above. Go from
+  fall to spring; summer heat here is dangerous.
+for_kids:
+  short: Desert hunt! Find each thing.
+  steps:
+    - The sunrise
+    - Wavy colorful hills
+    - White salt ground
+    - The sea level sign
+    - A selfie in the desert!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: [fall, winter, spring]
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [sunrise, desert, national-park, views, death-valley]
+credit:

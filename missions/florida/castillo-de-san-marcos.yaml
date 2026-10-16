@@ -1,0 +1,35 @@
+number: 39
+name: Castillo de San Marcos
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Castillo de San Marcos National Monument
+  area: St. Augustine
+  coords: [29.89800, -81.31100]  # APPROX: set at the entrance before publishing
+  website: https://www.nps.gov/casa
+short: Explore St. Augustine's 1600s Spanish stone fort and watch a cannon firing demo.
+description: >
+  Walk into the oldest masonry fort in the continental U.S., built by the
+  Spanish in the late 1600s out of coquina, a stone made of tiny shells that
+  absorbed cannonballs instead of shattering. Explore the dark rooms, climb up
+  to the gun deck overlooking Matanzas Bay, and watch a cannon-firing
+  demonstration if one is scheduled. Each find the spot you'd guard. Get a
+  photo of the two of you by a cannon on the wall.
+for_kids:
+  short: Fort hunt! Find each thing.
+  steps:
+    - A big cannon
+    - A wall made of shells
+    - A tower on the corner
+    - A soldier in costume
+    - A selfie at the fort!
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [history, fort, national-monument, st-augustine]
+credit:

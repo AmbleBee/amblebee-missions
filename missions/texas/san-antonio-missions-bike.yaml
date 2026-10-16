@@ -1,0 +1,37 @@
+number: 17
+name: Bike the Missions Trail
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: San Antonio Missions National Historical Park (Mission San José)
+  area: South San Antonio
+  coords: [29.36200, -98.48000]  # APPROX: set at the Mission San José visitor center before publishing
+  website: https://www.nps.gov/saan
+short: Bike the river trail between San Antonio's old Spanish missions in the cool morning.
+description: >
+  Rent bikes and ride the Mission Reach trail along the San Antonio River,
+  linking four old Spanish missions from the 1700s that are still active
+  churches. Start early to beat the heat, and stop at Mission San José, the
+  "Queen of the Missions," to explore the stone walls and the carved rose
+  window. Each pick your favorite mission. Get a photo of the two of you at
+  the rose window. The missions and trail are free.
+for_kids:
+  short: Mission ride! Find each thing.
+  steps:
+    - An old stone church
+    - A bell tower
+    - The river
+    - A carved window
+    - A selfie on your bike!
+gear:
+  - item: bikes
+    rent: nearby
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+tags: [biking, history, missions, national-park, san-antonio]
+credit:

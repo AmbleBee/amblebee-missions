@@ -1,0 +1,27 @@
+number: 43
+name: Horseback on the Beach, Amelia Island
+mode: both
+who: [solo, friends, family]
+place:
+  name: Amelia Island State Park
+  area: Amelia Island, north of Jacksonville
+  coords: [30.51500, -81.44000]  # APPROX: set at the horseback ride meeting point before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/amelia-island-state-park
+short: Ride horses along the beach at Amelia Island, one of the few places in Florida you can.
+description: >
+  Ride horseback on the beach at Amelia Island State Park, one of the few
+  places in Florida where you can. Follow a guide on a gentle trail ride
+  through maritime forest and out onto the sand, then walk the horses along
+  the edge of the surf. No experience needed. Watch for dolphins in the inlet
+  and shorebirds on the sand. Get a photo of the two of you on horseback with
+  the ocean behind you. Book ahead, and check age and weight limits.
+duration: short
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation]
+tags: [horseback, beach, romantic, northeast-florida]
+credit:

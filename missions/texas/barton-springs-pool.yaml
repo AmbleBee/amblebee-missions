@@ -1,0 +1,36 @@
+number: 2
+name: Barton Springs Pool
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Barton Springs Pool, Zilker Park
+  area: Zilker Park, Austin
+  coords: [30.26400, -97.77100]  # APPROX: set at the main entrance before publishing
+  website: https://www.austintexas.gov/department/barton-springs-pool
+short: Take a morning swim in Barton Springs, a spring-fed pool that stays about 68 degrees all year.
+description: >
+  Jump into a three-acre natural pool fed by underground springs, where the
+  water stays around 68 degrees all year, crystal clear over a rocky bottom.
+  Go first thing in the morning, when it's calm and the locals are doing laps,
+  and dare each other to jump in without wading. Watch for the tiny Barton
+  Springs salamander signs, then dry off on the grassy hill. Get a photo of the
+  two of you by the water. It's cheap, but it closes now and then for cleaning
+  or floods, so check before you go.
+for_kids:
+  short: Spring swim! Find each thing.
+  steps:
+    - The clear water
+    - A fish
+    - The diving board
+    - The grassy hill
+    - A selfie by the pool!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: local
+check_ahead: [hours, conditions]
+tags: [swimming, springs, park, austin]
+credit:

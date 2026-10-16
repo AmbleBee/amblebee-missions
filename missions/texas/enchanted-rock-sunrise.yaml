@@ -1,0 +1,36 @@
+number: 9
+name: Enchanted Rock Sunrise
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Enchanted Rock State Natural Area
+  area: North of Fredericksburg
+  coords: [30.49600, -98.81900]  # APPROX: set at the Summit Trail parking before publishing
+  website: https://tpwd.texas.gov/state-parks/enchanted-rock
+short: Climb the giant pink granite dome of Enchanted Rock for sunrise over the Hill Country.
+description: >
+  Get to the park as it opens and climb the Summit Trail up a huge pink
+  granite dome rising over the Hill Country. It's a steep climb but short, about
+  a mile. At the top, watch the sun come up over the hills and find the
+  little pools on the rock. On cool nights the rock is said to make creaking
+  "groaning" sounds as it changes temperature. Get a photo of the two of you
+  on the summit. Reservations are required on weekends and holidays, and the
+  park fills up most days, so book ahead.
+for_kids:
+  short: Big rock climb! Find each thing.
+  steps:
+    - The giant pink rock
+    - The sunrise
+    - A pool on the rock
+    - A lizard
+    - A selfie on top!
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [sunrise, hiking, granite, state-park, hill-country]
+credit:

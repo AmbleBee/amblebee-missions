@@ -1,0 +1,36 @@
+number: 48
+name: Glass-Bottom Boat at Silver Springs
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Silver Springs State Park
+  area: Ocala
+  coords: [29.21500, -82.05300]  # APPROX: set at the glass-bottom boat dock before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/silver-springs-state-park
+short: Ride the famous glass-bottom boats over the giant springs at Silver Springs.
+description: >
+  Take a ride on the glass-bottom boats at Silver Springs, offered here since
+  the 1870s, and look straight down through the floor into the deep, clear
+  springs: giant fish, turtles, ancient fossils and the bubbling spring vents.
+  Watch for wild rhesus monkeys along the riverbanks, descendants of monkeys
+  released here in the 1930s. Each spot something at the bottom to show the
+  other. Get a photo of the two of you on the boat. Check the boat schedule
+  when you arrive.
+for_kids:
+  short: Glass boat! Find each thing.
+  steps:
+    - The glass floor
+    - A big fish
+    - A turtle
+    - A monkey in a tree
+    - A selfie on the boat!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [springs, boat, classic-florida, wildlife, central-florida]
+credit:

@@ -1,0 +1,28 @@
+number: 11
+name: Dancing at Gruene Hall
+mode: both
+who: [solo, friends, family]
+place:
+  name: Gruene Hall
+  area: Gruene, New Braunfels
+  coords: [29.73800, -98.10500]  # APPROX: set at the entrance before publishing
+  website: https://gruenehall.com
+short: Two-step at Gruene Hall, Texas's oldest dance hall, under the wooden rafters.
+description: >
+  Go dancing at Gruene Hall, a wooden dance hall built in 1878 that's still
+  open every day, with live country music under the old rafters and screen
+  windows. Don't know how to two-step? Watch the regulars for a song, then
+  get out there and figure it out together. Grab a cold drink, walk the little
+  town of Gruene before the show, and get a photo of the two of you on the
+  dance floor. Check the calendar for the band, and buy tickets ahead for big
+  names.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: night
+travel: day-trip
+check_ahead: [tickets]
+tags: [dancing, music, honky-tonk, history, romantic, hill-country]
+credit:

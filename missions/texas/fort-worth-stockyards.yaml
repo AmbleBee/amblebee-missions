@@ -1,0 +1,35 @@
+number: 27
+name: Fort Worth Stockyards Cattle Drive
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Fort Worth Stockyards National Historic District
+  area: Exchange Ave, Fort Worth
+  coords: [32.78900, -97.34900]  # APPROX: set on Exchange Ave before publishing
+  website: https://www.fortworthstockyards.org
+short: Watch real longhorns drive down the street at the Fort Worth Stockyards. Buy a cowboy hat.
+description: >
+  Walk the brick streets and old cattle pens of the Fort Worth Stockyards,
+  where cowboys still drive a herd of Texas longhorns right down Exchange
+  Avenue twice a day. Find a spot along the street for the cattle drive,
+  then explore the Western shops, try on cowboy hats, and get lost in the
+  Cowtown cattle pen maze. Get a photo of the two of you with a longhorn
+  behind you. The cattle drive is free; check the times.
+for_kids:
+  short: Cowboy hunt! Find each thing.
+  steps:
+    - A longhorn steer
+    - A cowboy on a horse
+    - A cowboy hat
+    - A big belt buckle
+    - A selfie with a longhorn!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [cowboys, longhorns, history, free, fort-worth]
+credit:

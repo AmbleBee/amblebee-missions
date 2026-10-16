@@ -1,0 +1,27 @@
+number: 29
+name: The Sixth Floor Museum
+mode: both
+who: [solo, friends, family]
+place:
+  name: The Sixth Floor Museum at Dealey Plaza
+  area: West End, Dallas
+  coords: [32.77980, -96.80840]  # APPROX: set at the entrance before publishing
+  website: https://www.jfk.org
+short: Learn about President Kennedy's life and the 1963 assassination at the Sixth Floor Museum.
+description: >
+  Visit the old Texas School Book Depository, where the Sixth Floor Museum
+  tells the story of President John F. Kennedy's life, his 1963 assassination
+  in Dallas, and the investigation that followed. The audio guide walks you
+  past the corner window overlooking Dealey Plaza. Afterward, walk the plaza
+  and the grassy knoll, and talk about what you each learned that surprised
+  you. Buy timed tickets ahead. It's a serious, moving visit.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [history, museum, rainy-day, dallas]
+credit:

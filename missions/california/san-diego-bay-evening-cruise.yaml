@@ -1,0 +1,35 @@
+number: 59
+name: San Diego Bay Evening Cruise
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Harbor cruise docks, North Harbor Drive
+  area: Downtown San Diego waterfront
+  coords: [32.71600, -117.17300]  # APPROX: set at the cruise dock before publishing
+short: Cruise San Diego Bay at dusk as the city skyline and the Coronado Bridge light up.
+description: >
+  Board an evening harbor cruise or a dinner cruise from the downtown
+  waterfront and glide around San Diego Bay as the sun sets. Pass the giant
+  Navy ships, the USS Midway and the sweeping Coronado Bridge, and watch for
+  sea lions lounging on the buoys. Then watch the skyline light up across the
+  water, and get a photo of the two of you at the rail with the city lights
+  behind you. Several companies run cruises; book ahead for dinner cruises
+  and bring a jacket, since it's chilly on the water at night.
+for_kids:
+  short: Harbor hunt! Find each thing.
+  steps:
+    - A big Navy ship
+    - The tall bridge
+    - A sea lion
+    - The city lights
+    - A selfie on the boat!
+duration: short
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [tickets]
+tags: [boat, cruise, skyline, night, romantic, san-diego]
+credit:

@@ -1,0 +1,36 @@
+number: 11
+name: Ferry to Dry Tortugas
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Key West Ferry Terminal (Yankee Freedom)
+  area: Key West
+  coords: [24.56000, -81.79900]  # APPROX: set at the ferry terminal before publishing
+  website: https://www.drytortugas.com
+short: Take the early ferry 70 miles out to Fort Jefferson in Dry Tortugas National Park.
+description: >
+  Catch the early-morning ferry from Key West, 70 miles out across open water
+  to the Dry Tortugas, a cluster of tiny islands and one of the most remote
+  national parks in the country. Explore Fort Jefferson, a giant brick fort
+  from the 1800s rising out of the turquoise water, then snorkel right off
+  the beach along the moat wall to see coral, fish and maybe a nurse shark.
+  Get a photo of the two of you on top of the fort walls. The ferry includes
+  breakfast, lunch and snorkel gear; book weeks ahead.
+for_kids:
+  short: Fort hunt! Find each thing.
+  steps:
+    - The giant brick fort
+    - A cannon
+    - A fish while snorkeling
+    - A seabird
+    - A selfie on the fort!
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [national-park, fort, snorkeling, boat, history, florida-keys]
+credit:

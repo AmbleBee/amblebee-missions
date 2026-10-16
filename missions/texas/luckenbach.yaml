@@ -1,0 +1,36 @@
+number: 14
+name: Luckenbach, Texas
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Luckenbach General Store and Dance Hall
+  area: Luckenbach, near Fredericksburg
+  coords: [30.18000, -98.75300]  # APPROX: set at the general store before publishing
+  website: https://luckenbachtexas.com
+short: Hang out in tiny Luckenbach, where everybody's somebody. Catch a pickers' circle.
+description: >
+  Visit Luckenbach, a town so small it's basically a general store, a dance
+  hall and a few shady oak trees, made famous by the country song. Grab a cold
+  drink from the store (which is also the post office) and sit in on a
+  pickers' circle, where local musicians play acoustic songs under the trees.
+  Each pick your favorite song of the afternoon. Get a photo of the two of you
+  at the old general store. Weekends usually have live music; check the
+  schedule.
+for_kids:
+  short: Tiny town hunt! Find each thing.
+  steps:
+    - The old store
+    - A guitar
+    - A chicken
+    - A big oak tree
+    - A selfie in Luckenbach!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [music, small-town, quirky, history, hill-country]
+credit:

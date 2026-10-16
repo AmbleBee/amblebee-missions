@@ -1,0 +1,34 @@
+number: 52
+name: Pensacola Beach
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Casino Beach, Pensacola Beach
+  area: Santa Rosa Island
+  coords: [30.33300, -87.14200]  # APPROX: set at the Casino Beach parking before publishing
+short: Swim in the emerald water and sugar-white sand of Pensacola Beach. Find the giant beach ball tower.
+description: >
+  Spend a day on Pensacola Beach's sugar-white quartz sand, with clear emerald
+  water on the Gulf side. Swim, build a sandcastle, and find the giant painted
+  beach ball water tower. Walk the long fishing pier to see dolphins and
+  rays, then drive out into the protected dunes of Gulf Islands National
+  Seashore for an emptier stretch. Get a photo of the two of you on the white
+  sand. Watch the beach warning flags.
+for_kids:
+  short: Beach day! Find each thing.
+  steps:
+    - White sand
+    - Green water
+    - The giant beach ball
+    - A dolphin
+    - A selfie on the pier!
+duration: all-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [beach, swimming, pier, panhandle]
+credit:

@@ -1,0 +1,33 @@
+number: 32
+name: Klyde Warren Park Food Trucks
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Klyde Warren Park
+  area: Downtown Dallas, over the Woodall Rodgers Freeway
+  coords: [32.78930, -96.80160]  # APPROX: set at the park's food truck row before publishing
+short: Picnic on Klyde Warren Park, a green park built on top of a Dallas freeway. Pick a food truck each.
+description: >
+  Spend an afternoon at a city park built right on top of a sunken freeway in
+  downtown Dallas. Each pick a different food truck from the row along the
+  edge, then trade bites on the lawn. Play a giant game of chess or ping-pong,
+  watch the splash fountains, and wander over to the Dallas Museum of Art
+  next door, which is free. Get a photo of the two of you on the lawn with
+  the skyline behind you. Free to visit.
+for_kids:
+  short: Park hunt! Find each thing.
+  steps:
+    - A food truck
+    - The splash fountain
+    - A giant game
+    - A tall building
+    - A selfie on the grass!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [park, food-trucks, picnic, free, dallas]
+credit:

@@ -1,0 +1,28 @@
+number: 31
+name: Ybor City Night
+mode: date
+place:
+  name: Columbia Restaurant, Ybor City
+  area: Ybor City, Tampa
+  address: 2117 E 7th Ave, Tampa, FL 33605
+  coords: [27.96000, -82.43800]  # APPROX: set at the restaurant entrance before publishing
+  website: https://www.columbiarestaurant.com
+short: Watch cigars rolled by hand in Ybor City, then dinner and flamenco at Florida's oldest restaurant.
+description: >
+  Spend an evening in Ybor City, Tampa's historic Cuban, Spanish and Italian
+  neighborhood, once the cigar capital of the world. Watch cigars being
+  rolled by hand in a shop on 7th Avenue, and look for the wild chickens that
+  roam the streets. Then have dinner at the Columbia Restaurant, the oldest
+  restaurant in Florida, opened in 1905, with its tiled courtyards and a
+  flamenco show on many nights. Order the 1905 salad and share it. Get a
+  photo of the two of you in the tiled dining room. Reserve ahead.
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [reservation]
+tags: [dinner, history, flamenco, romantic, tampa]
+credit:

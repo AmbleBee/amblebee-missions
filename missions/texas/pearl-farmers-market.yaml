@@ -1,0 +1,34 @@
+number: 18
+name: Pearl Farmers Market
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Pearl
+  area: North of downtown San Antonio, on the River Walk
+  coords: [29.44200, -98.48000]  # APPROX: set at Pearl Park before publishing
+short: Wander the weekend farmers market at the Pearl, an old brewery turned food hub.
+description: >
+  Spend a weekend morning at the Pearl, an old 1880s brewery complex on the
+  San Antonio River turned into shops, restaurants and a big farmers market.
+  Stroll the stalls, each buy one thing the other has never tried, and get
+  coffee and pastries for a breakfast by the river. Walk a stretch of the
+  quieter northern River Walk after. Get a photo of the two of you in front of
+  the old brewhouse tower. The market runs Saturday and Sunday mornings.
+for_kids:
+  short: Market hunt! Find each thing.
+  steps:
+    - A big pile of fruit
+    - Something you never tried
+    - Flowers for sale
+    - The old brewery tower
+    - A selfie at the market!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [hours]
+tags: [farmers-market, food, breakfast, san-antonio]
+credit:

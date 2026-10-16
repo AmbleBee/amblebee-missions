@@ -1,0 +1,35 @@
+number: 2
+name: Wynwood Walls Street Art
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Wynwood Walls
+  area: Wynwood, Miami
+  coords: [25.80100, -80.19900]  # APPROX: set at the Wynwood Walls entrance before publishing
+short: Wander Miami's Wynwood Walls and the blocks of giant murals around it. Find your favorite wall.
+description: >
+  Explore Wynwood, a neighborhood of old warehouses covered from top to bottom
+  in huge, colorful murals by artists from around the world. Start at the
+  Wynwood Walls, an outdoor gallery with a ticketed entry, then wander the
+  surrounding streets for free, where new murals go up all the time. Each
+  pick your favorite wall, and get a photo of the two of you in front of it.
+  Grab Cuban coffee or ice cream along the way. Go in the morning to beat the
+  heat and the crowds.
+for_kids:
+  short: Mural hunt! Find each thing.
+  steps:
+    - A giant face
+    - An animal painting
+    - Your favorite color
+    - Some words on a wall
+    - A selfie with a mural!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [art, street-art, murals, walking, miami]
+credit:

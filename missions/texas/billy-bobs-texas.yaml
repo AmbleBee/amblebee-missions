@@ -1,0 +1,27 @@
+number: 28
+name: Billy Bob's Texas
+mode: both
+who: [solo, friends]
+place:
+  name: Billy Bob's Texas
+  area: Fort Worth Stockyards
+  coords: [32.79000, -97.35000]  # APPROX: set at the entrance before publishing
+  website: https://billybobstexas.com
+short: Two-step and watch live bull riding at Billy Bob's, the world's largest honky-tonk.
+description: >
+  Spend a night at Billy Bob's Texas, a giant honky-tonk in an old cattle
+  barn with a big dance floor, dozens of bar stations and a live country
+  concert stage. Watch live bull riding in the indoor arena on weekend nights,
+  then take a two-step lesson if they're offering one and get out on the dance
+  floor together. Get a photo of the two of you in front of the giant stage.
+  Check the concert calendar; ages and cover vary by night.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: night
+travel: day-trip
+check_ahead: [tickets]
+tags: [honky-tonk, dancing, music, rodeo, nightlife, fort-worth]
+credit:

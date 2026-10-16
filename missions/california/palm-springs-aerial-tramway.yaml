@@ -1,0 +1,36 @@
+number: 36
+name: Palm Springs Aerial Tramway
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Palm Springs Aerial Tramway, Valley Station
+  area: Chino Canyon, Palm Springs
+  coords: [33.83700, -116.61400]  # APPROX: set at the Valley Station parking before publishing
+  website: https://pstramway.com
+short: Ride the rotating Palm Springs tram from the desert floor up into pine forest.
+description: >
+  Ride the world's largest rotating tram car, which spins slowly as it climbs
+  more than 8,500 feet up the cliffs of Chino Canyon, from palm trees to pine
+  forest in about ten minutes. At the top it's often 30 to 40 degrees cooler,
+  and in winter there can be snow. Walk the trails at Mountain Station, find
+  a viewpoint over the whole Coachella Valley, and get a photo of the two of
+  you with the desert far below. Bring a jacket. The tram closes for a few
+  weeks each fall for maintenance.
+for_kids:
+  short: Sky ride! Find each thing.
+  steps:
+    - The spinning tram
+    - The desert far below
+    - A pine tree
+    - Snow or a pinecone
+    - A selfie at the top!
+duration: half-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets]
+tags: [tram, mountains, views, desert, palm-springs]
+credit:

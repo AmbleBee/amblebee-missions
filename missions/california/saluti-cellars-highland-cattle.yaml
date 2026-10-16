@@ -1,0 +1,29 @@
+number: 30
+name: Wine Tasting with Highland Cattle
+mode: both
+who: [friends]
+place:
+  name: Saluti Cellars
+  area: Somerset, El Dorado County (Sierra foothills)
+  address: 7505 Grizzly Flat Rd, Somerset, CA 95684
+  coords: [38.60000, -120.62000]  # APPROX: set at the tasting room before publishing
+  # website: add the winery's own site (none found yet; # verify)
+short: Taste wine in the Sierra foothills, then go meet the shaggy Highland cattle on the ranch.
+description: >
+  Spend an afternoon at a small family winery in the Sierra foothills, where
+  a guided tasting comes with a vineyard tour and a visit to the ranch's herd
+  of shaggy, long-horned Highland cattle. Taste your way through the flight
+  and each pick a favorite bottle, then head out to the pasture to meet the
+  cows up close. Get a photo of the two of you with the fluffiest one. Tastings
+  are by appointment and have run on weekends only, so book ahead. It's 21 and
+  up for the wine; they've also offered a cattle-only visit for families.
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, hours]
+tags: [wine, animals, farm, cows, sierra-foothills]
+credit:

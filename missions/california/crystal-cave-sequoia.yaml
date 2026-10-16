@@ -1,0 +1,36 @@
+number: 35
+name: Crystal Cave Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Crystal Cave parking area
+  area: Sequoia National Park
+  coords: [36.58700, -118.82600]  # APPROX: set at the cave parking area before publishing
+  website: https://www.nps.gov/seki/planyourvisit/crystal-cave.htm
+short: Walk down to Crystal Cave in Sequoia and tour a glittering marble cave. Book tickets ahead.
+description: >
+  Hike a steep half mile down through the forest to a giant spider-web gate,
+  then follow a guide into a cool marble cave full of polished walls,
+  stalactites and shimmering formations. On the 50-minute tour, each find the
+  strangest shape you can and name it. Bring a jacket, since it's chilly
+  inside year-round. Tickets are sold online only, at least a day and a half
+  ahead (none at the cave), and tours run only from late spring through
+  early fall.
+for_kids:
+  short: Cave hunt! Find each thing.
+  steps:
+    - The spider web gate
+    - A pointy rock on the ceiling
+    - Shiny sparkly walls
+    - Dripping water
+    - A selfie in the cave!
+duration: half-day
+effort: moderate
+cost: $$
+setting: indoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [cave, underground, national-park, tour, sequoia]
+credit:

@@ -1,0 +1,33 @@
+number: 59
+name: Cedar Key
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Dock Street, Cedar Key
+  area: Cedar Key, Nature Coast
+  coords: [29.13800, -83.03500]  # APPROX: set on Dock Street before publishing
+short: Wander Cedar Key, an old fishing village on stilts over the Gulf. Try the clam chowder.
+description: >
+  Visit Cedar Key, a tiny island fishing village that feels like old Florida,
+  with weathered buildings on stilts over the water, no chain stores and
+  colorful bikes and golf carts everywhere. Walk Dock Street, eat clam
+  chowder and local farm-raised clams overlooking the Gulf, and browse the
+  art galleries. Watch the pelicans on the pilings, and stay to see the sky
+  change over the little islands. Get a photo of the two of you on the dock.
+for_kids:
+  short: Village hunt! Find each thing.
+  steps:
+    - A house on stilts
+    - A pelican
+    - A fishing boat
+    - A bowl of chowder
+    - A selfie on the dock!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [small-town, seafood, old-florida, nature-coast]
+credit:

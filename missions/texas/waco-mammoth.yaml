@@ -1,0 +1,35 @@
+number: 37
+name: Waco Mammoth National Monument
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Waco Mammoth National Monument
+  area: North Waco
+  coords: [31.60600, -97.17500]  # APPROX: set at the welcome center before publishing
+  website: https://www.nps.gov/waco
+short: See Columbian mammoth fossils right where they died at Waco Mammoth National Monument.
+description: >
+  Walk into a covered dig shelter where the fossils of a herd of Columbian
+  mammoths still lie in the ground right where they were found, along with a
+  camel and other Ice Age animals. On the guided tour, hear the mystery of
+  how the herd died together, and each guess what happened before the guide
+  explains. Get a photo of the two of you by the giant bones. It's a small
+  site with a modest entrance fee.
+for_kids:
+  short: Mammoth hunt! Find each thing.
+  steps:
+    - A giant bone
+    - A mammoth tusk
+    - A tooth
+    - The dig pit
+    - A selfie with the mammoths!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [fossils, mammoths, history, national-monument, waco]
+credit:

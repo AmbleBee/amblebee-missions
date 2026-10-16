@@ -1,0 +1,34 @@
+number: 26
+name: Bolivar Ferry at Sunset
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Galveston-Port Bolivar Ferry (Galveston landing)
+  area: Ferry Road, Galveston
+  coords: [29.34200, -94.77000]  # APPROX: set at the ferry landing before publishing
+short: Ride the free Bolivar ferry across Galveston Bay at sunset and watch for dolphins.
+description: >
+  Drive onto the free state ferry between Galveston Island and the Bolivar
+  Peninsula, then get out and stand at the rail for the 20-minute crossing.
+  Watch for bottlenose dolphins playing in the ferry's wake, giant ships
+  heading into Houston, pelicans and gulls. Time it for sunset, ride over to
+  Bolivar for a beach walk or a bite, and ride back as the sky goes pink. Get
+  a photo of the two of you at the rail. It's free, but lines can be long on
+  summer weekends.
+for_kids:
+  short: Ferry ride! Find each thing.
+  steps:
+    - A dolphin
+    - A giant ship
+    - A pelican
+    - The sunset
+    - A selfie on the ferry!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [ferry, dolphins, sunset, bay, free, galveston]
+credit:

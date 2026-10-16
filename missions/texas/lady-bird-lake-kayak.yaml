@@ -1,0 +1,40 @@
+number: 4
+name: Kayak Lady Bird Lake
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Lady Bird Lake rentals near Zilker Park
+  area: Lady Bird Lake, Austin
+  coords: [30.26700, -97.76900]  # APPROX: set at a rental dock before publishing
+short: Paddle Lady Bird Lake in the morning with the Austin skyline right in front of you.
+description: >
+  Rent a double kayak or paddleboards and head out onto Lady Bird Lake, the
+  calm river lake that runs right through downtown Austin. Go early, before
+  the heat and the crowds, and paddle toward the skyline, past turtles sunning
+  on logs and herons in the shallows. Paddle under the bridges, and get a photo
+  of the two of you on the water with the towers behind you. Swimming isn't
+  allowed in the lake, so stay in the boat. Rentals are along the shore near
+  Zilker Park.
+for_kids:
+  short: Paddle hunt! Find each thing.
+  steps:
+    - A turtle on a log
+    - A tall building
+    - A bridge
+    - A bird by the water
+    - A selfie in the kayak!
+gear:
+  - item: kayak
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: short
+effort: moderate
+cost: $$
+setting: outdoor
+season: any
+time_of_day: morning
+travel: local
+check_ahead: [conditions]
+tags: [kayak, water, skyline, austin]
+credit:

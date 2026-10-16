@@ -1,0 +1,36 @@
+number: 47
+name: Palo Duro Canyon
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Palo Duro Canyon State Park
+  area: Canyon, south of Amarillo
+  coords: [34.98400, -101.70200]  # APPROX: set at the park entrance before publishing
+  website: https://tpwd.texas.gov/state-parks/palo-duro-canyon
+short: Hike to the Lighthouse rock in Palo Duro, the second-largest canyon in the country.
+description: >
+  Drive down into Palo Duro Canyon, a huge red-and-orange canyon cut into the
+  flat Panhandle plains, the second largest in the country. Hike the
+  Lighthouse Trail, about six miles round trip and mostly flat, to the
+  Lighthouse, a giant tower of red rock. Climb up to its base and get a photo
+  of the two of you with the canyon walls behind you. Start early and carry
+  plenty of water, since summer afternoons get dangerously hot. Watch for
+  wild turkeys and mule deer.
+for_kids:
+  short: Canyon hunt! Find each thing.
+  steps:
+    - Red canyon walls
+    - The lighthouse rock
+    - A wild turkey or deer
+    - A cactus
+    - A selfie in the canyon!
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [canyon, hiking, state-park, panhandle]
+credit:

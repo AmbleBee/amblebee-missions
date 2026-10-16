@@ -1,0 +1,36 @@
+number: 16
+name: The Alamo
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Alamo
+  area: Alamo Plaza, downtown San Antonio
+  coords: [29.42600, -98.48610]  # APPROX: set at the church entrance before publishing
+  website: https://www.thealamo.org
+short: Step inside the Alamo church and learn the story of the 1836 battle.
+description: >
+  Visit the Alamo, the old Spanish mission where defenders held out for 13 days
+  in 1836 during the Texas Revolution. Step inside the church, walk the Long
+  Barrack and the gardens, and see real artifacts from the battle in the
+  Collections Center exhibit. Each pick one person from the story you want to
+  learn more about. Get a photo of the two of you in front of the famous
+  church front. Entry to the church is free, but you need a free timed
+  ticket. The area is under big construction, so check what's open.
+for_kids:
+  short: History hunt! Find each thing.
+  steps:
+    - The old church
+    - A cannon
+    - An old flag
+    - A big tree
+    - A selfie at the Alamo!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, hours]
+tags: [history, museum, mission, free, san-antonio]
+credit:

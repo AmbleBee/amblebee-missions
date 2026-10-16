@@ -1,0 +1,36 @@
+number: 20
+name: Space Center Houston
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Space Center Houston
+  area: Clear Lake, next to NASA Johnson Space Center
+  coords: [29.55200, -95.09800]  # APPROX: set at the entrance before publishing
+  website: https://spacecenter.org
+short: Ride the tram to NASA's Mission Control and stand under a giant Saturn V rocket.
+description: >
+  Visit the home of NASA's astronaut program. Take the tram tour onto the
+  Johnson Space Center campus to see the historic Apollo Mission Control and
+  walk the length of a real Saturn V moon rocket lying on its side, one of
+  only three left. Back at the center, touch a moon rock, walk through the
+  shuttle replica on top of its carrier jet, and each pick the mission you'd
+  sign up for. Get a photo of the two of you under the rocket engines. Book
+  tickets ahead; tram tour times fill up.
+for_kids:
+  short: Space hunt! Find each thing.
+  steps:
+    - A real rocket
+    - A space suit
+    - A moon rock
+    - The space shuttle
+    - A selfie with a rocket!
+duration: half-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [space, nasa, museum, science, rainy-day, houston]
+credit:

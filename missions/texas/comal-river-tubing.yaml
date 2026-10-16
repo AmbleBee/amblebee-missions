@@ -1,0 +1,37 @@
+number: 12
+name: Tubing the Comal River
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Comal River tube outfitters
+  area: New Braunfels
+  coords: [29.70600, -98.12200]  # APPROX: set at an outfitter or Prince Solms Park before publishing
+short: Float the cool, clear Comal River on tubes in New Braunfels, and ride the Tube Chute.
+description: >
+  Rent tubes and float the Comal River, a short, spring-fed river that stays
+  cool and clear even in the Texas summer. Link your tubes together, drift
+  under the oak trees, and ride the Tube Chute, a fast concrete slide around
+  the old dam. Get a photo of the two of you floating. Wear water shoes and
+  sunscreen, and keep in mind that New Braunfels doesn't allow disposable
+  containers on its rivers. Outfitters run shuttles back to the start.
+for_kids:
+  short: River float! Find each thing.
+  steps:
+    - Your tube
+    - A fish in the water
+    - The water slide
+    - A big tree
+    - A selfie on the river!
+gear:
+  - item: river-tube
+    rent: on-site
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [summer]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions, seasonal]
+tags: [tubing, river, swimming, summer, hill-country]
+credit:

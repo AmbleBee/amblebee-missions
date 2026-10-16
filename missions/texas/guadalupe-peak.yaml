@@ -1,0 +1,28 @@
+number: 43
+name: Guadalupe Peak, Top of Texas
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Pine Springs Trailhead, Guadalupe Mountains National Park
+  area: Guadalupe Mountains National Park
+  coords: [31.89400, -104.82100]  # APPROX: set at the Pine Springs trailhead before publishing
+  website: https://www.nps.gov/gumo
+short: Hike to the top of Guadalupe Peak, the highest point in Texas. Start at dawn.
+description: >
+  Start at dawn and hike about 8.5 miles round trip, climbing 3,000 feet up
+  switchbacks to the summit of Guadalupe Peak, the highest point in Texas at
+  8,751 feet. Near the top, cross a little bridge and climb the last rocky
+  stretch to the shiny steel pyramid marking the summit. Sign the summit
+  register together, and get a photo of the two of you next to the pyramid
+  with the desert far below. It's strenuous: bring plenty of water, start
+  early, and turn back if strong winds or storms roll in.
+duration: all-day
+effort: hard
+cost: $
+setting: outdoor
+season: [fall, winter, spring]
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, summit, mountains, national-park, west-texas]
+credit:

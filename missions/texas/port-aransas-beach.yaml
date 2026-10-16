@@ -1,0 +1,33 @@
+number: 55
+name: Port Aransas Beach Day
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Port Aransas beach (near Horace Caldwell Pier)
+  area: Port Aransas, Mustang Island
+  coords: [27.82700, -97.05600]  # APPROX: set at the pier before publishing
+short: Ride the little ferry to Port Aransas for a lazy beach day and a walk on the fishing pier.
+description: >
+  Take the short free ferry over to Port Aransas, a laid-back fishing town on
+  Mustang Island. Spend the day on the wide sandy beach, walk out on the long
+  fishing pier to watch the anglers and pelicans, and look for dolphins in the
+  ship channel. Build the biggest sandcastle you can together, then grab
+  seafood in town. Get a photo of the two of you on the pier. You can drive on
+  parts of the beach with a beach parking permit.
+for_kids:
+  short: Beach day! Find each thing.
+  steps:
+    - A seashell
+    - A pelican
+    - A dolphin
+    - A sandcastle
+    - A selfie on the pier!
+duration: all-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+tags: [beach, pier, dolphins, ferry, gulf-coast]
+credit:

@@ -1,0 +1,34 @@
+number: 3
+name: Little Havana and Calle Ocho
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Domino Park (Máximo Gómez Park), Calle Ocho
+  area: Little Havana, Miami
+  coords: [25.76550, -80.21900]  # APPROX: set at Domino Park before publishing
+short: Sip a cafecito on Calle Ocho, watch the domino games, and try a fresh guava pastry.
+description: >
+  Walk Calle Ocho, the heart of Miami's Cuban community. Stop at a ventanita
+  (walk-up coffee window) for a tiny, sweet cafecito, then watch the older
+  regulars slap down tiles at Domino Park. Try a guava pastelito and a Cuban
+  sandwich, watch cigars being rolled by hand, and look for the colorful
+  rooster statues along the street. In the evening, music spills out of the
+  bars and people dance. Get a photo of the two of you under one of the
+  painted roosters.
+for_kids:
+  short: Calle Ocho hunt! Find each thing.
+  steps:
+    - A rooster statue
+    - A domino game
+    - A sweet pastry
+    - A colorful mural
+    - A selfie on Calle Ocho!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [food, culture, coffee, cuban, miami]
+credit:

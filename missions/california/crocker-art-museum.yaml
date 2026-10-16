@@ -1,0 +1,38 @@
+number: 31
+name: Crocker Art Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Crocker Art Museum
+  area: Downtown Sacramento, near Old Sacramento
+  address: 216 O St, Sacramento, CA 95814
+  coords: [38.57700, -121.50700]  # APPROX: set at the entrance before publishing
+  website: https://crockerart.org
+short: Explore the Crocker in Sacramento. Each pick the painting you'd hang above your couch.
+description: >
+  Wander one of the oldest art museums in the West, where a grand 1870s
+  Victorian mansion and gallery connect to a bright modern wing. See
+  California landscapes and Gold Rush-era paintings, wild contemporary art
+  and ceramics, and the ornate ballroom of the original house. Each pick the
+  piece you'd hang above your couch and explain why, and get a photo of the
+  two of you on the historic staircase. Go on a Thursday, when it stays open
+  until 9, and walk over to Old Sacramento for dinner after. Closed Mondays and
+  Tuesdays.
+for_kids:
+  short: Art hunt! Find each thing.
+  steps:
+    - A painting of mountains
+    - A sculpture
+    - An old fancy room
+    - Your favorite color
+    - A selfie with your favorite art!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: any
+travel: day-trip
+check_ahead: [hours]
+tags: [art, museum, history, rainy-day, sacramento]
+credit:

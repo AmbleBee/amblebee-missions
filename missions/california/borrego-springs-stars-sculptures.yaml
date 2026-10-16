@@ -1,0 +1,35 @@
+number: 39
+name: Borrego Springs Sculptures and Stars
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Borrego Springs (Christmas Circle)
+  area: Anza-Borrego Desert, San Diego County
+  coords: [33.25600, -116.37500]  # APPROX: set at Christmas Circle before publishing
+short: Find the giant metal dragon in the Borrego desert at sunset, then stay for a dark sky full of stars.
+description: >
+  Drive the desert roads around Borrego Springs to find more than 100 giant
+  metal sculptures standing out in the sand: dinosaurs, horses, a
+  mammoth and a 350-foot serpent that crosses the road. Find the serpent as
+  the light fades. Then stay after dark, since Borrego Springs is an official
+  International Dark Sky Community, with some of the darkest skies in
+  Southern California. Lie back on a blanket and count shooting stars. Go in
+  the cooler months, avoid the full moon, and bring layers and water.
+for_kids:
+  short: Desert night! Find each thing.
+  steps:
+    - A metal dinosaur
+    - The giant serpent
+    - The sunset
+    - The Milky Way
+    - A selfie with a statue!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: [fall, winter, spring]
+time_of_day: night
+travel: day-trip
+check_ahead: [conditions]
+tags: [stars, dark-sky, art, desert, night, anza-borrego]
+credit:

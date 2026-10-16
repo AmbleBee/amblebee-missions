@@ -1,0 +1,36 @@
+number: 26
+name: Kennedy Space Center
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Kennedy Space Center Visitor Complex
+  area: Merritt Island, Space Coast
+  coords: [28.52400, -80.68300]  # APPROX: set at the entrance before publishing
+  website: https://www.kennedyspacecenter.com
+short: Stand under the real Space Shuttle Atlantis and a Saturn V rocket at Kennedy Space Center.
+description: >
+  Spend the day where America launches into space. See the real Space Shuttle
+  Atlantis, tilted as if it's in orbit, walk under a giant Saturn V moon
+  rocket, and take the bus tour out past the launch pads and the huge Vehicle
+  Assembly Building. Try the shuttle launch simulator together and each pick
+  the mission you'd sign up for. Get a photo of the two of you in front of
+  Atlantis. Buy tickets ahead, and check the launch schedule; you might catch
+  a real one.
+for_kids:
+  short: Space hunt! Find each thing.
+  steps:
+    - The space shuttle
+    - A giant rocket
+    - A space suit
+    - A launch pad
+    - A selfie with a rocket!
+duration: all-day
+effort: moderate
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [space, nasa, rockets, museum, space-coast]
+credit:

@@ -1,0 +1,36 @@
+number: 59
+name: Texas State Railroad Steam Train
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Texas State Railroad (Palestine depot)
+  area: Palestine, East Texas
+  coords: [31.79300, -95.72900]  # APPROX: set at the Palestine depot before publishing
+  website: https://texasstaterailroad.net
+short: Ride a vintage train through the Piney Woods on the Texas State Railroad.
+description: >
+  Ride a historic train through 25 miles of East Texas Piney Woods between
+  Palestine and Rusk, on a line that's been running for over a century. Sit
+  in a vintage coach or the open-air car, crossing creeks and trestles through
+  the forest, and wave at the train coming the other way. Have lunch at the
+  depot at the far end before riding back. Get a photo of the two of you in
+  front of the engine. The schedule changes by season, with special holiday
+  trains; book ahead.
+for_kids:
+  short: Train ride! Find each thing.
+  steps:
+    - The big engine
+    - A train whistle
+    - A bridge over a creek
+    - A pine tree
+    - A selfie with the train!
+duration: half-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [trains, history, forest, scenic, east-texas]
+credit:

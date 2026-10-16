@@ -1,0 +1,38 @@
+number: 54
+name: Whooping Crane Boat Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Fulton Harbor (crane tour boats)
+  area: Rockport-Fulton
+  coords: [28.06100, -97.03600]  # APPROX: set at the tour dock before publishing
+short: Take a winter boat tour from Rockport to see endangered whooping cranes in the marsh.
+description: >
+  In winter, the last natural flock of endangered whooping cranes, the tallest
+  bird in North America, spends the season in the marshes of the Aransas
+  National Wildlife Refuge. Take a morning boat tour from Rockport-Fulton out
+  into the bay to see the white cranes up close, along with roseate spoonbills,
+  pelicans, herons and dolphins. Keep a list of every bird you spot together.
+  Get a photo of the two of you on the boat with the marsh behind you. Tours
+  run roughly November through March; book ahead and bring binoculars.
+for_kids:
+  short: Crane hunt! Find each thing.
+  steps:
+    - A tall white crane
+    - A pink bird
+    - A pelican
+    - A dolphin
+    - A selfie on the boat!
+gear:
+  - item: binoculars
+    rent: "no"
+duration: half-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: [winter]
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [birds, wildlife, boat, winter, gulf-coast]
+credit:

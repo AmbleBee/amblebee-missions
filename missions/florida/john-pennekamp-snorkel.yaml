@@ -1,0 +1,36 @@
+number: 7
+name: Snorkel at John Pennekamp
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: John Pennekamp Coral Reef State Park
+  area: Key Largo
+  coords: [25.12500, -80.40700]  # APPROX: set at the park's dive shop before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/john-pennekamp-coral-reef-state-park
+short: Snorkel the living coral reef off Key Largo at John Pennekamp, the first undersea park in the U.S.
+description: >
+  Take a morning snorkel boat from John Pennekamp, the first undersea park in
+  the country, out to the coral reef off Key Largo. Float over brain coral
+  and sea fans while parrotfish, angelfish and maybe a sea turtle swim
+  below. Each keep a count of the different fish you see. On a deeper trip,
+  you can see the bronze Christ of the Abyss statue underwater. Get a photo
+  of the two of you on the boat in your snorkel gear. Book the boat ahead;
+  trips depend on wind and waves.
+for_kids:
+  short: Reef hunt! Find each thing.
+  steps:
+    - A bright blue fish
+    - Coral
+    - A sea fan
+    - A turtle or ray
+    - A selfie in snorkel gear!
+duration: half-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [snorkeling, reef, fish, ocean, florida-keys]
+credit:

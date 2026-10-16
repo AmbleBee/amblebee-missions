@@ -1,0 +1,36 @@
+number: 22
+name: Buffalo Bayou Cistern
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Buffalo Bayou Park Cistern
+  area: Buffalo Bayou Park, Houston
+  coords: [29.76200, -95.37700]  # APPROX: set at the cistern entrance before publishing
+  website: https://buffalobayou.org/visit/destination/the-cistern/
+short: Tour Houston's echoing underground Cistern, a forest of 221 columns under Buffalo Bayou Park.
+description: >
+  Walk down into an old underground drinking-water reservoir from 1926, a
+  dark, echoing room the size of one and a half football fields, held up by
+  221 tall concrete columns that reflect in a few inches of water. On the
+  guided tour, listen to the guide demonstrate the echo, which lasts for
+  seconds, and catch any art installation that's being shown inside. Then
+  walk the Buffalo Bayou trails with the skyline behind you, and get a photo
+  of the two of you there. Book tour tickets ahead.
+for_kids:
+  short: Cistern hunt! Find each thing.
+  steps:
+    - A tall column
+    - A reflection in the water
+    - A long echo
+    - The city skyline
+    - A selfie by the bayou!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [underground, history, architecture, tour, rainy-day, houston]
+credit:

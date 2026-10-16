@@ -1,0 +1,35 @@
+number: 38
+name: Salvation Mountain
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Salvation Mountain
+  area: Near Niland, east of the Salton Sea
+  coords: [33.25400, -115.47300]  # APPROX: set at the parking area before publishing
+short: See Salvation Mountain, a hill painted in rainbow colors in the middle of the desert.
+description: >
+  Drive out past the Salton Sea to a hillside that one man covered over decades
+  in adobe, straw and thousands of gallons of donated paint: rainbow stripes,
+  flowers, a waterfall and giant painted words. Follow the yellow brick path
+  (stay on it to protect the paint), explore the painted rooms built from
+  hay bales, tree branches and old cars, and get a photo of the two of you in
+  front of the colors. It's free, but bring a can of latex paint or a small
+  donation to help keep it going. Go in the cooler months and bring water.
+for_kids:
+  short: Rainbow hunt! Find each thing.
+  steps:
+    - A big red heart
+    - A painted flower
+    - The yellow path
+    - A painted car
+    - A selfie with the rainbow!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [fall, winter, spring]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [art, quirky, roadside, desert, colorful, salton-sea]
+credit:

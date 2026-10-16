@@ -1,0 +1,41 @@
+number: 17
+name: Paddle Biscayne National Park
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Dante Fascell Visitor Center, Convoy Point
+  area: Biscayne National Park, Homestead
+  coords: [25.46300, -80.33500]  # APPROX: set at the visitor center before publishing
+  website: https://www.nps.gov/bisc
+short: Paddle the clear, shallow water of Biscayne National Park through the mangroves in the morning.
+description: >
+  Ninety-five percent of Biscayne National Park is water, so paddle it. Rent
+  a canoe or kayak at Convoy Point in the calm morning and paddle the
+  shoreline along the mangroves, looking down into the clear, shallow water
+  for fish, sea stars and maybe a manatee. Watch the pelicans dive, and stop
+  for a snack on the water with the Miami skyline far in the distance. Get a
+  photo of the two of you in the boat. Check the wind before going, and ask
+  about the park's island boat trips too.
+for_kids:
+  short: Bay hunt! Find each thing.
+  steps:
+    - Mangrove roots
+    - A fish
+    - A pelican diving
+    - A sea star
+    - A selfie in the boat!
+gear:
+  - item: kayak
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions, hours]
+tags: [kayak, national-park, mangroves, water, south-florida]
+credit:

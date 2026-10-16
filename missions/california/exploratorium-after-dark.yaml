@@ -1,0 +1,28 @@
+number: 48
+name: Exploratorium After Dark
+mode: both
+who: [solo, friends]
+place:
+  name: Exploratorium, Pier 15
+  area: The Embarcadero, San Francisco
+  coords: [37.80100, -122.39700]  # APPROX: set at the entrance before publishing
+  website: https://www.exploratorium.edu
+short: Play with hundreds of science exhibits at the Exploratorium's adults-only After Dark night.
+description: >
+  Go to the Exploratorium's After Dark night, when the hands-on science museum
+  on the Embarcadero is just for adults (18 and up), with a bar and special
+  themed programs. Play with hundreds of exhibits: optical illusions, giant
+  bubbles, a pitch-black crawl-through Tactile Dome (book that separately),
+  and machines that make your voice weird. Each find the exhibit that blows
+  your mind and show it to the other. Get a photo of the two of you in one of
+  the illusions. Check the schedule and buy tickets ahead.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: night
+travel: day-trip
+check_ahead: [tickets]
+tags: [science, museum, nightlife, interactive, san-francisco]
+credit:

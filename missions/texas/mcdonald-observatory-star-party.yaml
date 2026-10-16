@@ -1,0 +1,36 @@
+number: 41
+name: McDonald Observatory Star Party
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: McDonald Observatory Visitors Center
+  area: Davis Mountains, near Fort Davis
+  coords: [30.67100, -104.02300]  # APPROX: set at the visitors center before publishing
+  website: https://mcdonaldobservatory.org
+short: Look through big telescopes under some of the darkest skies in America at a McDonald star party.
+description: >
+  Drive up into the Davis Mountains for a star party at McDonald Observatory,
+  under some of the darkest skies in the country. Sit in the outdoor amphitheater
+  while a guide points out constellations with a laser, then line up at the
+  big telescopes to see planets, star clusters and galaxies. Each pick the most
+  amazing thing you saw. It gets cold up here at night, even in summer, so
+  bring warm layers. Star parties run on set nights; buy tickets ahead, since
+  they sell out.
+for_kids:
+  short: Star party! Find each thing.
+  steps:
+    - A big telescope
+    - The Milky Way
+    - A planet
+    - A shooting star
+    - A selfie under the stars!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: night
+travel: day-trip
+check_ahead: [tickets, conditions]
+tags: [stars, astronomy, telescope, dark-sky, west-texas]
+credit:

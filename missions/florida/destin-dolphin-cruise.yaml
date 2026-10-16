@@ -1,0 +1,34 @@
+number: 53
+name: Destin Sunset Dolphin Cruise
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Destin Harbor Boardwalk
+  area: Destin
+  coords: [30.39300, -86.51000]  # APPROX: set at the boardwalk docks before publishing
+short: Take a sunset dolphin cruise out of Destin Harbor and count the dolphins around the boat.
+description: >
+  Board a sunset cruise from the Destin Harbor Boardwalk and head out past
+  Crab Island into the emerald water of Choctawhatchee Bay and the Gulf,
+  where wild bottlenose dolphins often play in the boat's wake. Count the
+  dolphins together, then watch the sun go down over the water. Walk the
+  boardwalk for seafood when you get back. Get a photo of the two of you at the
+  rail at sunset. Several companies run cruises; book ahead in summer.
+for_kids:
+  short: Dolphin hunt! Find each thing.
+  steps:
+    - A dolphin fin
+    - A dolphin jump
+    - Green water
+    - The sunset
+    - A selfie on the boat!
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [reservation]
+tags: [dolphins, boat, sunset, panhandle]
+credit:

@@ -1,0 +1,28 @@
+number: 21
+name: Rothko Chapel and the Menil
+mode: both
+who: [solo, friends, family]
+place:
+  name: Rothko Chapel
+  area: Montrose, Houston (Menil campus)
+  coords: [29.73800, -95.39600]  # APPROX: set at the chapel entrance before publishing
+  website: https://www.rothkochapel.org
+short: Sit quietly in the Rothko Chapel, then wander the free Menil Collection next door.
+description: >
+  Visit two of Houston's calmest places. Start at the Rothko Chapel, an
+  eight-sided room with 14 huge, dark paintings by Mark Rothko, made for
+  sitting in silence. Sit together for five minutes without talking, then
+  share what you felt. Walk over to the Menil Collection, a free museum
+  in a leafy neighborhood with everything from ancient art to surrealist
+  paintings, and each pick the piece you'd take home. Get a photo of the two
+  of you under the big oak trees on the lawn. Both are free.
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [art, museum, calm, free, rainy-day, houston]
+credit:

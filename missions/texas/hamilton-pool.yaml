@@ -1,0 +1,36 @@
+number: 7
+name: Hamilton Pool Preserve
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Hamilton Pool Preserve
+  area: Dripping Springs, west of Austin
+  coords: [30.34200, -98.12700]  # APPROX: set at the parking lot before publishing
+  website: https://parks.traviscountytx.gov/find-a-park/hamilton-pool
+short: Hike down to Hamilton Pool, a jade-green grotto under a waterfall and a collapsed limestone dome.
+description: >
+  Walk a short, steep trail down into a canyon to a jade-green pool under a
+  huge collapsed limestone dome, with a waterfall spilling off the edge.
+  Walk behind the falls under the overhang, and if swimming is open that day,
+  take a dip from the little beach. Get a photo of the two of you under the
+  overhang with the waterfall behind you. A reservation is required every
+  day, in a morning or afternoon time slot, and swimming depends on water
+  quality and falling-rock danger. Bring cash for the entry fee.
+for_kids:
+  short: Grotto hunt! Find each thing.
+  steps:
+    - The waterfall
+    - Green water
+    - A big rock ceiling
+    - A turtle or fish
+    - A selfie by the falls!
+duration: half-day
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [swimming-hole, waterfall, hiking, grotto, hill-country]
+credit:

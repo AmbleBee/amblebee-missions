@@ -1,0 +1,35 @@
+number: 31
+name: Reunion Tower at Night
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Reunion Tower GeO-Deck
+  area: Downtown Dallas
+  coords: [32.77550, -96.80890]  # APPROX: set at the entrance before publishing
+  website: https://reuniontower.com
+short: Ride up Reunion Tower after dark and see the Dallas lights from 470 feet up.
+description: >
+  Ride the glass elevator up Reunion Tower, the glowing ball on the Dallas
+  skyline, to the GeO-Deck about 470 feet up. Go after sunset, when the city
+  lights spread out in every direction, and walk the whole way around the
+  deck, inside and out. Use the touchscreens to zoom in on landmarks, and
+  each try to find where you came from. Get a photo of the two of you with
+  the skyline behind you. Buy tickets ahead for sunset.
+for_kids:
+  short: Tower hunt! Find each thing.
+  steps:
+    - The glass elevator
+    - The city lights
+    - A highway full of cars
+    - A tall building
+    - A selfie at the top!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: night
+travel: day-trip
+check_ahead: [tickets]
+tags: [views, skyline, night, observation-deck, dallas]
+credit:

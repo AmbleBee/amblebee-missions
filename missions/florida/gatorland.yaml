@@ -1,0 +1,36 @@
+number: 19
+name: Gatorland
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Gatorland
+  area: South Orlando
+  coords: [28.35500, -81.40400]  # APPROX: set at the entrance before publishing
+  website: https://www.gatorland.com
+short: Walk over a swamp full of thousands of alligators at Gatorland, the original Orlando attraction.
+description: >
+  Walk through the giant gator's-mouth entrance into Gatorland, a classic
+  Florida attraction since 1949. Cross the boardwalk over a breeding marsh
+  filled with hundreds of alligators, watch the Gator Jumparoo show where
+  gators leap for food, and see rare white alligators. Brave souls can hold a
+  baby gator or ride the zip line over the swamp. Each pick your favorite
+  gator and give it a name. Get a photo of the two of you in the giant gator
+  mouth at the entrance.
+for_kids:
+  short: Gator hunt! Find each thing.
+  steps:
+    - A giant alligator
+    - A white alligator
+    - A gator jumping
+    - A baby gator
+    - A selfie in the gator mouth!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [alligators, animals, classic-florida, orlando]
+credit:

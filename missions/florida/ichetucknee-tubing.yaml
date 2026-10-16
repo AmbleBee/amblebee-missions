@@ -1,0 +1,41 @@
+number: 45
+name: Tubing the Ichetucknee
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Ichetucknee Springs State Park (south entrance)
+  area: Fort White, North Florida
+  coords: [29.94700, -82.78200]  # APPROX: set at the south entrance (Dampier's Landing) before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/ichetucknee-springs-state-park
+short: Float down the crystal-clear Ichetucknee River on a tube through untouched forest.
+description: >
+  Rent tubes and float the Ichetucknee River, fed by springs so clear you can
+  watch the fish and swaying eelgrass below you. Drift lazily under cypress
+  trees and look for turtles, otters and wading birds. Link up and float
+  together, then ride the tram back. The water stays about 72 degrees, so it's
+  refreshing in summer. Get a photo of the two of you floating. No food,
+  disposable bottles or alcohol on the river. Arrive early in summer, since
+  the park fills up.
+for_kids:
+  short: River float! Find each thing.
+  steps:
+    - Your tube
+    - A fish
+    - A turtle
+    - Clear water
+    - A selfie on the river!
+gear:
+  - item: river-tube
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [tubing, springs, river, swimming, north-florida]
+credit:

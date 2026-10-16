@@ -1,0 +1,35 @@
+number: 10
+name: Hemingway Home and the Six-Toed Cats
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Ernest Hemingway Home and Museum
+  area: Whitehead St, Key West
+  coords: [24.55100, -81.80100]  # APPROX: set at the entrance before publishing
+  website: https://www.hemingwayhome.com
+short: Tour Hemingway's Key West home and meet the six-toed cats that still live there.
+description: >
+  Tour the Spanish Colonial house where Ernest Hemingway lived and wrote in the
+  1930s, with his writing studio, his giant pool (the first in Key West) and
+  his treasures from around the world. Meet the dozens of cats that roam the
+  house and garden, many with six toes, descended from Hemingway's own cat.
+  Each count the toes on as many cats as you can. Get a photo of the two of
+  you with a cat on the porch. Bring cash in case.
+for_kids:
+  short: Cat hunt! Find each thing.
+  steps:
+    - A cat with six toes
+    - A sleeping cat
+    - The big pool
+    - An old typewriter
+    - A selfie with a cat!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [history, museum, cats, writers, key-west]
+credit:

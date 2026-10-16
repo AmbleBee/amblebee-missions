@@ -1,0 +1,34 @@
+number: 24
+name: Galveston's Strand and Pleasure Pier
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Galveston Island Historic Pleasure Pier
+  area: Seawall Blvd, Galveston
+  coords: [29.28500, -94.78800]  # APPROX: set at the pier entrance before publishing
+short: Explore Galveston's Victorian Strand, then ride the rides on the Pleasure Pier over the Gulf.
+description: >
+  Start in Galveston's Strand district, rows of Victorian iron-front buildings
+  full of candy shops and antiques. Watch saltwater taffy being pulled, then
+  head to the Seawall and walk out on the Pleasure Pier, an amusement park
+  built over the Gulf of Mexico. Ride the roller coaster that swoops out over
+  the water, then walk the beach. Get a photo of the two of you on the pier
+  with the waves below. The pier runs fewer days in the off-season.
+for_kids:
+  short: Island fun! Find each thing.
+  steps:
+    - The pier over the water
+    - A roller coaster
+    - Saltwater taffy
+    - A seashell
+    - A selfie by the Gulf!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal]
+tags: [beach, pier, rides, history, galveston]
+credit:

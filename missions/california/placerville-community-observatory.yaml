@@ -1,0 +1,38 @@
+number: 32
+name: Placerville Community Observatory
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Community Observatory, Folsom Lake College El Dorado Center
+  area: Placerville, El Dorado County
+  address: 6699 Campus Dr, Placerville, CA 95667
+  coords: [38.71200, -120.84600]  # APPROX: set at the observatory before publishing
+  website: https://nightsky.jpl.nasa.gov  # verify: link the Community Observatory's own site
+short: Look through big telescopes at a free public night at the Placerville Community Observatory.
+description: >
+  Catch one of the free public viewing nights at a hilltop observatory in the
+  Sierra foothills, where volunteer astronomers point big telescopes at
+  whatever's up that night: the rings of Saturn, craters on the Moon, star
+  clusters and distant galaxies. Take turns at each eyepiece, ask the
+  volunteers anything, and each pick the most amazing thing you saw. Dress
+  warm, since it gets cold after dark, and check the schedule, as viewing
+  nights depend on the calendar and clear skies. Entry is free; the college
+  charges a small parking fee.
+for_kids:
+  short: Space night! Find each thing.
+  steps:
+    - A big telescope
+    - The Moon up close
+    - A planet
+    - A twinkling star
+    - A selfie under the stars!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: night
+travel: day-trip
+check_ahead: [hours, conditions]
+tags: [stars, astronomy, telescope, night, free, sierra-foothills]
+credit:

@@ -1,0 +1,36 @@
+number: 29
+name: The Dalí Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Dalí Museum
+  area: Downtown St. Petersburg
+  coords: [27.76600, -82.63100]  # APPROX: set at the entrance before publishing
+  website: https://thedali.org
+short: Find the melting clocks and hidden images in Salvador Dalí's paintings in St. Pete.
+description: >
+  Explore one of the largest collections of Salvador Dalí's surreal art, in a
+  building with a giant glass bubble bursting out of its concrete walls. Look
+  for melting clocks, long-legged elephants and hidden images in the huge
+  masterworks, and each find a painting with something hidden in it to show
+  the other. Climb the spiral staircase, try the virtual-reality Dalí
+  experience, and walk the garden. Get a photo of the two of you with the
+  giant Dalí mustache sculpture. Buy timed tickets ahead.
+for_kids:
+  short: Weird art hunt! Find each thing.
+  steps:
+    - A melting clock
+    - An elephant with long legs
+    - A giant mustache
+    - The spiral stairs
+    - A silly selfie!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [art, museum, surreal, rainy-day, tampa-bay]
+credit:

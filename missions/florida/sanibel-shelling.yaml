@@ -1,0 +1,36 @@
+number: 15
+name: Shelling on Sanibel
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Bowman's Beach, Sanibel Island
+  area: Sanibel Island
+  coords: [26.46000, -82.16100]  # APPROX: set at the Bowman's Beach parking before publishing
+short: Do the Sanibel Stoop at sunrise. See who can find the best shell on Bowman's Beach.
+description: >
+  Get to the beach at low tide in the early morning, when Sanibel's famous
+  shells wash up in piles along the shoreline. Do the "Sanibel Stoop" and
+  hunt for whelks, conchs, scallops and maybe a rare junonia. Give each
+  other ten minutes, then compare finds and crown the best shell. Leave any
+  shell with a living creature inside. Then drive the Wildlife Drive at the
+  Ding Darling refuge for roseate spoonbills. Get a photo of the two of you
+  with your best shells. The island has mostly recovered from recent
+  hurricanes.
+for_kids:
+  short: Shell hunt! Find each thing.
+  steps:
+    - A spiral shell
+    - A shell with stripes
+    - A tiny shell
+    - A pink bird
+    - A selfie with your shells!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [beach, shells, wildlife, sunrise, southwest-florida]
+credit:

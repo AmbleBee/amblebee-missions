@@ -1,0 +1,38 @@
+number: 33
+name: Swim with Manatees in Crystal River
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Kings Bay and Three Sisters Springs
+  area: Crystal River
+  coords: [28.88800, -82.58900]  # APPROX: set at your tour operator's dock before publishing
+short: Float quietly next to wild manatees on a winter morning swim in Crystal River.
+description: >
+  Crystal River is the only place in the U.S. where you can legally swim with
+  wild manatees. On a winter morning, take a guided tour, slip into the water
+  in a wetsuit, and float quietly as the gentle giants drift by in the clear
+  springs. Follow the "passive observation" rules: no chasing, touching or
+  diving down. Get a photo of the two of you in your wetsuits on the boat.
+  Rules are strict and may tighten, so book with a licensed operator. The
+  best manatee season runs roughly November through March.
+for_kids:
+  short: Manatee swim! Find each thing.
+  steps:
+    - A manatee face
+    - A manatee tail
+    - A fish
+    - Clear blue water
+    - A selfie in your wetsuit!
+gear:
+  - item: wetsuit
+    rent: on-site
+duration: half-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [winter]
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [manatees, swimming, wildlife, springs, gulf-coast]
+credit:

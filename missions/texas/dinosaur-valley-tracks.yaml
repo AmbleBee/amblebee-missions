@@ -1,0 +1,36 @@
+number: 38
+name: Dinosaur Tracks at Dinosaur Valley
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Dinosaur Valley State Park
+  area: Glen Rose
+  coords: [32.24700, -97.81300]  # APPROX: set at the main track site before publishing
+  website: https://tpwd.texas.gov/state-parks/dinosaur-valley
+short: Step into real dinosaur footprints in the riverbed at Dinosaur Valley State Park.
+description: >
+  Walk down into the Paluxy River, where real dinosaur tracks are pressed into
+  the limestone riverbed: three-toed meat-eater prints and the giant round
+  footprints of long-necked sauropods. When the water is low, step right into
+  the tracks and follow a trail of them across the river. Each find the
+  biggest footprint and measure it with your own foot. Get a photo of the two
+  of you standing in a dinosaur track. The tracks can be underwater after rain,
+  so check the river conditions.
+for_kids:
+  short: Dino hunt! Find each thing.
+  steps:
+    - A three-toed footprint
+    - A giant round footprint
+    - The river
+    - A dinosaur statue
+    - A selfie in a dino track!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [dinosaurs, fossils, river, state-park, central-texas]
+credit:

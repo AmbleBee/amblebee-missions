@@ -1,0 +1,34 @@
+number: 58
+name: Tyler Rose Garden
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Tyler Municipal Rose Garden
+  area: Tyler, East Texas
+  coords: [32.34300, -95.32200]  # APPROX: set at the rose garden entrance before publishing
+short: Wander 14 acres of roses at the Tyler Rose Garden. Each pick a favorite and find its name.
+description: >
+  Walk through the biggest public rose garden in the country, in Tyler, the
+  Rose Capital of America, with tens of thousands of rosebushes in hundreds
+  of varieties. Each find your favorite rose and look up its name on the
+  little sign, then smell as many as you can. Find the gazebo and the
+  reflection pond, and get a photo of the two of you surrounded by roses. It's
+  free; blooms peak in late spring and again in fall, and the Texas Rose
+  Festival is each October.
+for_kids:
+  short: Rose hunt! Find each color.
+  steps:
+    - A red rose
+    - A yellow rose
+    - A pink rose
+    - The gazebo
+    - A selfie in the roses!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+tags: [gardens, roses, flowers, free, east-texas]
+credit:

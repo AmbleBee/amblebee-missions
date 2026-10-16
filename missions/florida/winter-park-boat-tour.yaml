@@ -1,0 +1,35 @@
+number: 22
+name: Winter Park Scenic Boat Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Winter Park Scenic Boat Tour dock
+  area: E Morse Blvd, Winter Park
+  coords: [28.59700, -81.34500]  # APPROX: set at the dock before publishing
+  website: https://www.scenicboattours.com
+short: Cruise the lakes and narrow canals of Winter Park, then stroll Park Avenue.
+description: >
+  Take an hour-long pontoon boat tour through three lakes in Winter Park,
+  connected by narrow, overgrown canals, past grand old lakefront mansions,
+  Rollins College and huge cypress trees. Watch for herons, turtles and maybe
+  an alligator. Afterward, walk Park Avenue's shops and cafés, and get a photo
+  of the two of you on the boat in one of the canals. The tour has run for
+  over 80 years.
+for_kids:
+  short: Lake tour! Find each thing.
+  steps:
+    - A big house on the lake
+    - A narrow canal
+    - A turtle
+    - A bird by the water
+    - A selfie on the boat!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [boat, lakes, mansions, orlando-area]
+credit:

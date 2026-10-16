@@ -1,0 +1,36 @@
+number: 33
+name: General Sherman and Moro Rock
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: General Sherman Tree, Main Trail parking
+  area: Giant Forest, Sequoia National Park
+  coords: [36.58450, -118.75100]  # APPROX: set at the Main Trail parking before publishing
+  website: https://www.nps.gov/seki
+short: Stand under General Sherman, the biggest tree on Earth, then climb Moro Rock for the view.
+description: >
+  Start early and walk the paved path down to General Sherman, the largest
+  living tree on Earth by volume, before the crowds arrive. Stand at its base,
+  look straight up, and get a photo of the two of you looking tiny against
+  the trunk. Then drive or shuttle over to Moro Rock and climb the 350-plus
+  carved stone steps to the top of the granite dome for a huge view over the
+  Great Western Divide. Each guess how old Sherman is before you read the sign.
+  There's a park entrance fee, and roads can close in winter snow.
+for_kids:
+  short: Giant tree hunt! Find each thing.
+  steps:
+    - The biggest tree
+    - A pinecone
+    - A squirrel
+    - The top of the big rock
+    - A selfie with a giant tree!
+duration: half-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions, seasonal]
+tags: [trees, sequoias, hiking, views, national-park, sequoia]
+credit:

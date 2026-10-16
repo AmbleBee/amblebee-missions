@@ -1,0 +1,34 @@
+number: 8
+name: Lockhart BBQ Crawl
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Downtown Lockhart
+  area: Lockhart, south of Austin
+  coords: [29.88500, -97.67000]  # APPROX: set at the courthouse square before publishing
+short: Eat your way through Lockhart, the barbecue capital of Texas. Crown the best brisket.
+description: >
+  Drive to Lockhart, the official barbecue capital of Texas, and visit two or
+  three of its legendary smokehouses in one afternoon. Order a little brisket
+  and sausage at each, eaten old-school on butcher paper, and score each one
+  out of 10. Walk off the meat around the old courthouse square, then crown a
+  brisket champion. Get a photo of the two of you with your tray at the
+  winner. Go hungry, go early, and expect lines and sellouts by afternoon.
+for_kids:
+  short: BBQ hunt! Find each thing.
+  steps:
+    - A big smoker
+    - Butcher paper
+    - A sausage
+    - The old courthouse
+    - A selfie with your food!
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [bbq, food, small-town, food-crawl, central-texas]
+credit:

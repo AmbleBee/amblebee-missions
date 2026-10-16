@@ -1,0 +1,34 @@
+number: 35
+name: Tampa Riverwalk
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Tampa Riverwalk (Curtis Hixon Park)
+  area: Downtown Tampa
+  coords: [27.94900, -82.46200]  # APPROX: set at Curtis Hixon Park before publishing
+short: Walk or bike the Tampa Riverwalk past the silver minarets of the old Tampa Bay Hotel.
+description: >
+  Walk or rent bikes for the 2.6-mile Tampa Riverwalk along the Hillsborough
+  River through downtown. Pass parks, museums and waterfront restaurants, and
+  look across the river at the silver minarets of the old 1891 Tampa Bay
+  Hotel, now a university. Stop at Armature Works, an old trolley barn turned
+  food hall, and each pick a different counter for lunch. Get a photo of the
+  two of you with the minarets behind you. Come at night to see the bridges
+  lit up.
+for_kids:
+  short: River walk! Find each thing.
+  steps:
+    - Silver domes
+    - A boat on the river
+    - A pelican
+    - A lit-up bridge
+    - A selfie by the river!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+tags: [walking, river, food-hall, city, free, tampa]
+credit:

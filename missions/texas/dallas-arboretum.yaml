@@ -1,0 +1,35 @@
+number: 30
+name: Dallas Arboretum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Dallas Arboretum and Botanical Garden
+  area: White Rock Lake, Dallas
+  coords: [32.82300, -96.71600]  # APPROX: set at the main entrance before publishing
+  website: https://www.dallasarboretum.org
+short: Wander the Dallas Arboretum on White Rock Lake. Find the giant pumpkin village in fall.
+description: >
+  Spend a day in 66 acres of gardens on the shore of White Rock Lake, with
+  fountains, terraces and seasonal displays. Spring brings huge fields of
+  tulips, and fall brings Autumn at the Arboretum, with a village of
+  pumpkin houses built from thousands of pumpkins and gourds. Each pick
+  your favorite garden, find a bench overlooking the lake, and get a photo of
+  the two of you in the flowers. Buy tickets ahead on busy weekends.
+for_kids:
+  short: Garden hunt! Find each thing.
+  steps:
+    - A fountain
+    - A pumpkin or tulip
+    - A frog statue
+    - The lake
+    - A selfie in the flowers!
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [gardens, flowers, lake, dallas]
+credit:

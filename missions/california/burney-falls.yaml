@@ -1,0 +1,36 @@
+number: 40
+name: Burney Falls
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: McArthur-Burney Falls Memorial State Park
+  area: Near Burney, Shasta County
+  coords: [41.01200, -121.65100]  # APPROX: set at the falls overlook parking before publishing
+  website: https://www.parks.ca.gov  # verify: link the McArthur-Burney Falls park page
+short: Walk down to Burney Falls, where water pours straight out of the cliff in hundreds of streams.
+description: >
+  Walk down the trail to the base of Burney Falls, a 129-foot curtain of water
+  where much of the flow seeps straight out of the mossy rock wall in hundreds
+  of little streams. Feel the mist, then loop around the trail along the creek
+  and back up the other side. Get a photo of the two of you with the whole
+  falls behind you. The flow stays strong all year, since it's fed by
+  underground springs. The falls loop reopened in 2025 after a long rebuild.
+  There's a state park day-use fee.
+for_kids:
+  short: Waterfall hunt! Find each thing.
+  steps:
+    - The big waterfall
+    - Water coming out of rocks
+    - Mist on your face
+    - A fish or a duck
+    - A selfie by the falls!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [waterfall, hiking, state-park, far-north]
+credit:

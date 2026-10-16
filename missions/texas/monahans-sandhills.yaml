@@ -1,0 +1,38 @@
+number: 46
+name: Monahans Sandhills Sand Sledding
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Monahans Sandhills State Park
+  area: Monahans, West Texas
+  coords: [31.62000, -102.81000]  # APPROX: set at the park headquarters before publishing
+  website: https://tpwd.texas.gov/state-parks/monahans-sandhills
+short: Race each other down the white sand dunes on sand disks at Monahans Sandhills.
+description: >
+  Walk out into a sea of pale wind-sculpted sand dunes rising up to 70 feet in
+  the middle of West Texas. Rent sand disks at the park headquarters, climb
+  a big dune, and race each other to the bottom. Take turns for the best
+  form, and keep score. Look for animal tracks in the sand in the morning, and
+  get a photo of the two of you on top of the highest dune you climb. Go in
+  the cooler months or early in the day, since the sand gets very hot.
+for_kids:
+  short: Dune day! Find each thing.
+  steps:
+    - A giant sand hill
+    - Your sand sled
+    - Animal tracks
+    - A fast slide down
+    - A sandy selfie!
+gear:
+  - item: sled
+    rent: on-site
+duration: short
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [dunes, sledding, playful, state-park, west-texas]
+credit:

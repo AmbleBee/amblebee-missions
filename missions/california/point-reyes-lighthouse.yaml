@@ -1,0 +1,36 @@
+number: 51
+name: Point Reyes Lighthouse and Elephant Seals
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Point Reyes Lighthouse parking
+  area: Point Reyes National Seashore
+  coords: [37.99600, -123.01800]  # APPROX: set at the lighthouse parking before publishing
+  website: https://www.nps.gov/pore
+short: Walk down to the windswept Point Reyes Lighthouse, then watch elephant seals at Chimney Rock.
+description: >
+  Drive out to the far tip of Point Reyes, one of the windiest, foggiest
+  places on the Pacific coast, and walk down the long staircase to the old
+  lighthouse perched on the cliffs. Then stop at the Elephant Seal Overlook
+  near Chimney Rock to watch the huge seals on the beach below; in winter,
+  you'll see bulls fighting and newborn pups. Watch for whales passing
+  offshore too, and get a photo of the two of you on the windy cliff. Bring
+  binoculars and layers. The lighthouse stairs keep limited hours.
+for_kids:
+  short: Coast hunt! Find each thing.
+  steps:
+    - The lighthouse
+    - A giant seal
+    - A baby seal
+    - A whale spout
+    - A windy selfie!
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal, conditions]
+tags: [lighthouse, seals, wildlife, ocean, national-seashore, bay-area]
+credit:

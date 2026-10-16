@@ -1,0 +1,36 @@
+number: 60
+name: Sea Turtle Walk at Juno Beach
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Loggerhead Marinelife Center
+  area: Juno Beach
+  coords: [26.88600, -80.05600]  # APPROX: set at the center before publishing
+  website: https://marinelife.org/program/guided-turtle-walk/
+short: Join a night turtle walk on Juno Beach and watch a giant loggerhead lay her eggs.
+description: >
+  On a summer night, join a guided turtle walk from the Loggerhead Marinelife
+  Center, on one of the busiest sea turtle nesting beaches in the world.
+  Learn about sea turtles inside, then wait for scouts to find a nesting
+  mother on the dark beach. Walk out quietly with your group and watch a
+  giant loggerhead dig her nest and lay her eggs by red light. No flashlights
+  or flash photos are allowed, so just take it in together. Walks run in June
+  and July; registration opens May 1 and fills fast.
+for_kids:
+  short: Turtle night! Find each thing.
+  steps:
+    - A giant sea turtle
+    - A turtle nest
+    - The dark ocean
+    - The stars
+    - Remember it (no photos!)
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [summer]
+time_of_day: night
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [sea-turtles, wildlife, night, beach, palm-beach]
+credit:

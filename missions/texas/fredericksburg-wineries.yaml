@@ -1,0 +1,26 @@
+number: 10
+name: Fredericksburg Wineries
+mode: date
+place:
+  name: Downtown Fredericksburg (Main Street)
+  area: Fredericksburg, Hill Country
+  coords: [30.27500, -98.87200]  # APPROX: set on Main Street before publishing
+short: Taste your way through Fredericksburg's Hill Country wineries, then stroll Main Street.
+description: >
+  Spend a day in the German-settled town of Fredericksburg, the center of Texas
+  Hill Country wine. Visit two or three wineries along Highway 290, and at
+  each one pick a glass for the other person to try. Then walk Main Street's
+  old limestone buildings, grab a peach treat in summer, and finish with
+  dinner at a German beer garden. Get a photo of the two of you in the
+  vineyard rows. Book tastings ahead on weekends, and plan a driver or book a
+  wine shuttle.
+duration: all-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation]
+tags: [wine, small-town, romantic, food, hill-country]
+credit:

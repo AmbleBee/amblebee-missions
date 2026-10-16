@@ -1,0 +1,33 @@
+number: 45
+name: Old Sacramento and Tower Bridge at Night
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Old Sacramento Waterfront
+  area: Downtown Sacramento
+  coords: [38.58000, -121.50800]  # APPROX: set at the waterfront boardwalk before publishing
+short: Stroll Old Sacramento after dark, then walk across the glowing gold Tower Bridge.
+description: >
+  Spend an evening in Old Sacramento's gold-rush streets, with wooden
+  sidewalks, gas-lamp-style lights and old brick saloons. Have dinner on the
+  riverfront, then walk the boardwalk to the golden Tower Bridge, all lit up
+  over the Sacramento River, and stroll across it. Get a photo of the two of
+  you with the glowing bridge behind you. Grab ice cream or saltwater taffy on
+  the way back. Weekend nights are the liveliest.
+for_kids:
+  short: Night walk! Find each thing.
+  steps:
+    - The gold bridge
+    - A wooden sidewalk
+    - An old-time sign
+    - A boat on the river
+    - A selfie with the bridge!
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [night, bridge, history, dinner, sacramento]
+credit:

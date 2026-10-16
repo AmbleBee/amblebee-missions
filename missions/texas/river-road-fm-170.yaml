@@ -1,0 +1,35 @@
+number: 39
+name: The River Road along the Rio Grande
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: FM 170 River Road (starting at Lajitas)
+  area: Big Bend Ranch State Park, Lajitas to Presidio
+  coords: [29.26200, -103.77600]  # APPROX: set at the Lajitas end before publishing
+short: Drive the River Road along the Rio Grande through Big Bend Ranch in the morning light.
+description: >
+  Drive El Camino del Rio, one of the most dramatic roads in Texas, winding
+  along the Rio Grande between Lajitas and Presidio, with Mexico just across
+  the river. In the morning light, the road climbs and dips through canyons
+  and over a steep grade called the Big Hill. Stop at the pullouts, walk down
+  to the river at a picnic area, and get a photo of the two of you with the
+  canyon behind you. Fill up the tank first, carry water, and expect no cell
+  service. Pair it with the Terlingua ghost town mission.
+for_kids:
+  short: River drive! Find each thing.
+  steps:
+    - The Rio Grande
+    - A tall canyon wall
+    - A cactus
+    - A roadrunner
+    - A selfie by the river!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: [fall, winter, spring]
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [scenic-drive, river, canyon, desert, big-bend]
+credit:

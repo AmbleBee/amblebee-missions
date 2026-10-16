@@ -1,0 +1,35 @@
+number: 58
+name: Wakulla Springs River Boat Tour
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Edward Ball Wakulla Springs State Park
+  area: South of Tallahassee
+  coords: [30.23500, -84.30300]  # APPROX: set at the boat dock before publishing
+  website: https://www.floridastateparks.org/parks-and-trails/edward-ball-wakulla-springs-state-park
+short: Ride the river boat at Wakulla Springs past alligators and anhingas in the morning mist.
+description: >
+  Take the ranger-led river boat tour at one of the largest and deepest
+  freshwater springs in the world, cruising two miles down the Wakulla River
+  under moss-draped cypress trees. Count the alligators, manatees, turtles and
+  birds like anhingas and purple gallinules. Old Tarzan movies were filmed here.
+  Then have lunch in the 1937 Spanish-style lodge, and swim in the spring in
+  summer. Get a photo of the two of you on the boat. Tours are by reservation.
+for_kids:
+  short: River tour! Find each thing.
+  steps:
+    - An alligator
+    - A manatee
+    - A bird drying its wings
+    - A turtle
+    - A selfie on the boat!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [springs, boat, wildlife, state-park, big-bend-coast]
+credit:

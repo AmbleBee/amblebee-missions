@@ -1,0 +1,35 @@
+number: 16
+name: Edison and Ford Winter Estates
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Edison and Ford Winter Estates
+  area: McGregor Blvd, Fort Myers
+  coords: [26.63500, -81.87800]  # APPROX: set at the entrance before publishing
+  website: https://www.edisonfordwinterestates.org
+short: Tour Thomas Edison's and Henry Ford's side-by-side winter homes and Edison's lab in Fort Myers.
+description: >
+  Explore the riverfront winter homes of Thomas Edison and his friend Henry
+  Ford, side by side in Fort Myers. Walk through Edison's lab, still full
+  of his bottles and equipment, the museum of his inventions, and the
+  gardens with a giant banyan tree that Edison planted. Each pick the
+  invention you couldn't live without. Get a photo of the two of you under
+  the enormous banyan tree. Buy tickets ahead in winter.
+for_kids:
+  short: Invention hunt! Find each thing.
+  steps:
+    - An old light bulb
+    - An old car
+    - A giant banyan tree
+    - An old record player
+    - A selfie under the big tree!
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets]
+tags: [history, inventions, gardens, museum, southwest-florida]
+credit:

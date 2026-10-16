@@ -1,0 +1,34 @@
+number: 43
+name: Sundial Bridge at Night
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Sundial Bridge, Turtle Bay
+  area: Sacramento River, Redding
+  coords: [40.59300, -122.37700]  # APPROX: set at the bridge's south end before publishing
+short: Walk across Redding's glowing glass Sundial Bridge at night, with the river rushing below.
+description: >
+  Walk out onto the Sundial Bridge, a white pedestrian bridge with a glass
+  deck and a giant leaning tower that works as a huge sundial. Come at dusk,
+  when the glass deck glows from underneath and the tower lights up over the
+  Sacramento River. Stand in the middle and look down through the glowing
+  deck, then walk the river trail a little way for the best photo of the two
+  of you with the whole bridge lit up behind you. It's free and open all
+  night.
+for_kids:
+  short: Bridge hunt! Find each thing.
+  steps:
+    - The tall white tower
+    - The glowing floor
+    - The river
+    - A duck
+    - A selfie on the bridge!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [bridge, night, river, architecture, free, redding]
+credit:

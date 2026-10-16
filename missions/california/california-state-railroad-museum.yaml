@@ -1,0 +1,37 @@
+number: 44
+name: California State Railroad Museum
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: California State Railroad Museum
+  area: Old Sacramento
+  address: 111 I St, Sacramento, CA 95814
+  coords: [38.58500, -121.50500]  # APPROX: set at the entrance before publishing
+  website: https://www.californiarailroad.museum
+short: Climb aboard giant locomotives at the California State Railroad Museum in Old Sacramento.
+description: >
+  Walk among huge restored steam locomotives and passenger cars, then climb
+  aboard a few, including a rocking sleeper car that feels like it's moving
+  through the night. Learn how the railroad was built over the Sierra, and
+  each pick the train you'd want to ride across the country. Get a photo of
+  the two of you in front of the biggest engine. Check the schedule for
+  excursion train rides along the river. Then walk the wooden sidewalks of Old
+  Sacramento for saltwater taffy.
+for_kids:
+  short: Train hunt! Find each thing.
+  steps:
+    - A giant black engine
+    - A big wheel
+    - A train you can climb in
+    - A bed on a train
+    - A selfie with a train!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [trains, museum, history, rainy-day, sacramento]
+credit:
