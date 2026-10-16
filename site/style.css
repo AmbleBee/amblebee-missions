@@ -431,12 +431,12 @@ body.revealing main > :not(#reveal) { display: none !important; }
 .env-seal { position: absolute; left: 50%; bottom: 6%; width: 46px; height: 46px; margin-left: -23px; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #E8B54A, #B5853F); box-shadow: 0 2px 0 rgba(90, 62, 43, .3); }
 .env.flap .env-flap { transform: rotateX(180deg); z-index: 0; }
 .env-card {
-  position: absolute; left: 7%; right: 7%; top: 7%; bottom: 9%; z-index: 1; border-radius: 12px; background: var(--paper);
-  box-shadow: inset 0 0 0 2px var(--line), 0 6px 14px rgba(90, 62, 43, .15); border-top: 10px solid var(--sage-deep);
-  display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: 6px; padding: 18px 16px; text-align: center;
+  position: absolute; left: 6%; right: 6%; top: 6%; bottom: 8%; z-index: 1; border-radius: 14px; overflow: hidden;
   transition: transform .6s cubic-bezier(.2, .8, .2, 1);
 }
-.env.card-out .env-card { transform: translateY(-58%); z-index: 4; }
+.env-ticket { transform-origin: 0 0; pointer-events: none; }
+.env-ticket .ticket { filter: none; }
+.env.card-out .env-card { transform: translateY(-62%); z-index: 4; box-shadow: 0 10px 22px rgba(90, 62, 43, .22); }
 .env-card-no { font-weight: 800; font-size: .85rem; color: var(--sage-deep); text-transform: uppercase; letter-spacing: .6px; }
 .env-card-name { font-family: var(--display); font-weight: 600; font-size: clamp(1.1rem, 2.6vw, 1.5rem); color: var(--ink); line-height: 1.1; }
 .env.fade { animation: envfade .18s ease-out forwards; }
@@ -455,3 +455,5 @@ body.revealing main > :not(#reveal) { display: none !important; }
   .top nav { flex-wrap: wrap; justify-content: flex-start; row-gap: 6px; }
   .env-card-short { font-size: .85rem; }
 }
+.reveal-head, #reveal-actions, #reveal-adjust { transition: opacity .3s ease .25s; }
+.grow-wait { opacity: 0; transition: none !important; }

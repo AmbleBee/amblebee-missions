@@ -247,15 +247,24 @@ function envelope({ title, sub, from, to, button, onOpen, card }) {
     h("p", { class: "hand env-title" }, title),
     sub ? h("p", { class: "env-sub" }, sub) : null,
     button ? h("button", { type: "button", class: "btn primary env-open", onclick: (e) => { e.stopPropagation(); onOpen(); } }, button) : null);
-  const inner = h("div", { class: "env-card" },
-    card ? h("span", { class: "env-card-no" }, card.label) : null,
-    card ? h("span", { class: "env-card-name" }, card.name) : null,
-    card && card.short ? h("span", { class: "env-card-short" }, card.short) : null);
+  const inner = h("div", { class: "env-card" }, card ? miniTicket(card) : null);
   const back = h("div", { class: "env-face env-back", "aria-hidden": "true" },
     inner, h("div", { class: "env-pocket" }), h("div", { class: "env-flap" }, h("span", { class: "env-seal" })));
   return h("div", { class: "env" }, h("div", { class: "env-body" }, front, back));
 }
-const cardInfo = (m) => { const pack = S.packById[m.pack] || {}; return { label: `Mission ${m.number || "?"} · ${pack.name || ""}`, name: m.name, short: m.short }; };
+// The real ticket, laid out at its final width and shrunk to fit inside the envelope,
+// so the card that slides out is the same ticket that then grows to full size.
+const ticketWidth = () => Math.min(860, document.documentElement.clientWidth - (window.innerWidth <= 560 ? 32 : 40));
+function miniTicket(m) {
+  const w = h("div", { class: "env-ticket" }, ticket(m));
+  w.style.width = `${ticketWidth()}px`;
+  w.inert = true;
+  return w;
+}
+function fitMini(env) {
+  const card = env.querySelector(".env-card"), mini = card && card.firstChild;
+  if (mini) mini.style.transform = `scale(${card.clientWidth / ticketWidth()})`;
+}
 // play the open animation, then call done(). A tap during the animation skips to the end.
 function playOpen(env, done) {
   if (env.dataset.playing) return;
@@ -294,20 +303,19 @@ function openFromHome() {
   const m = pickMission();
   if (!env || !m) return;
   const card = env.querySelector(".env-card");
-  const info = cardInfo(m);
-  card.replaceChildren(h("span", { class: "env-card-no" }, info.label), h("span", { class: "env-card-name" }, info.name),
-    h("span", { class: "env-card-short" }, info.short || ""));
+  card.replaceChildren(miniTicket(m));
+  fitMini(env);
   const r = env.getBoundingClientRect();
   const offscreen = r.top < 0 || r.bottom > window.innerHeight;
   if (offscreen && !REDUCED()) env.scrollIntoView({ behavior: "smooth", block: "center" });
-  setTimeout(() => playOpen(env, () => goReveal(m)), offscreen && !REDUCED() ? 380 : 0);
+  setTimeout(() => playOpen(env, () => goReveal(m, { growFrom: card.getBoundingClientRect() })), offscreen && !REDUCED() ? 380 : 0);
 }
-function goReveal(m, { replace = false } = {}) {
+function goReveal(m, { replace = false, growFrom = null } = {}) {
   S.rolledId = m.full_id;
   const url = `#mission=${encodeURIComponent(m.full_id)}`;
   if (replace || revealing()) history.replaceState(history.state, "", url);
   else history.pushState({ amble: "reveal" }, "", url);
-  showReveal(m, { from: "roll" });
+  showReveal(m, { from: "roll", growFrom });
 }
 function rollSummary() {
   const f = readFilters();
@@ -319,7 +327,7 @@ function rollSummary() {
   parts.push(`picked from ${p} ${p === 1 ? "mission" : "missions"}`);
   return parts.join(" · ");
 }
-function showReveal(m, { from = "roll", sealed = false, animate = false } = {}) {
+function showReveal(m, { from = "roll", sealed = false, animate = false, growFrom = null } = {}) {
   S.current = m; S.revealFrom = from;
   document.body.classList.add("revealing");
   $("#reveal").hidden = false;
@@ -332,15 +340,16 @@ function showReveal(m, { from = "roll", sealed = false, animate = false } = {}) 
   if (sealed || animate) {
     $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true;
     const env = envelope({ title: sealed ? "Someone sent you a mission." : "Your next mission is sealed inside.",
-      to: "you", from: sealed ? "a friend" : "AmbleBee", card: cardInfo(m),
-      button: sealed ? "Open" : null, onOpen: () => playOpen(env, () => showReveal(m, { from })) });
+      to: "you", from: sealed ? "a friend" : "AmbleBee", card: m,
+      button: sealed ? "Open" : null, onOpen: () => open() });
+    const open = () => playOpen(env, () => showReveal(m, { from, growFrom: env.querySelector(".env-card").getBoundingClientRect() }));
     env.classList.add("in-reveal");
     slot.replaceChildren(env);
-    if (animate) setTimeout(() => playOpen(env, () => showReveal(m, { from })), REDUCED() ? 0 : 260);
+    fitMini(env);
+    if (animate) setTimeout(open, REDUCED() ? 0 : 260);
     return;
   }
   const t = ticket(m, { titleId: "reveal-title" });
-  t.classList.add("pop");
   slot.replaceChildren(t);
   const shareBtn = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, shareBtn) }, svg(ICON.share, 20), "Share this mission");
   $("#reveal-actions").replaceChildren(
@@ -348,7 +357,30 @@ function showReveal(m, { from = "roll", sealed = false, animate = false } = {}) 
     shareBtn,
     h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"));
   $("#reveal-adjust").hidden = linked;
+  if (growFrom && growFrom.width && !REDUCED()) growTicket(t, growFrom); else t.classList.add("pop");
   const title = $("#reveal-title"); if (title) { title.tabIndex = -1; title.focus({ preventScroll: true }); }
+}
+// FLIP: start the full ticket at the envelope card's spot and size, then let it grow into place.
+function growTicket(t, from) {
+  const to = t.getBoundingClientRect();
+  if (!to.width) { t.classList.add("pop"); return; }
+  const s = from.width / to.width;
+  const cut = Math.max(0, to.height - from.height / s);
+  const rest = [$("#reveal-actions"), $("#reveal-adjust"), $(".reveal-head")];
+  rest.forEach((e) => e && e.classList.add("grow-wait"));
+  t.style.transformOrigin = "0 0";
+  t.style.transform = `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${s})`;
+  t.style.clipPath = `inset(0 0 ${cut}px 0 round 24px)`;
+  t.getBoundingClientRect();
+  requestAnimationFrame(() => {
+    t.style.transition = "transform .6s cubic-bezier(.2,.8,.2,1), clip-path .6s cubic-bezier(.2,.8,.2,1)";
+    t.style.transform = "";
+    t.style.clipPath = "inset(0 0 0 0 round 24px)";
+    setTimeout(() => {
+      t.style.transition = ""; t.style.clipPath = ""; t.style.transformOrigin = "";
+      rest.forEach((e) => e && e.classList.remove("grow-wait"));
+    }, 640);
+  });
 }
 function showHome() {
   document.body.classList.remove("revealing");
