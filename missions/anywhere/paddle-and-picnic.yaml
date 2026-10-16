@@ -1,0 +1,36 @@
+number: 44
+name: Paddle and Picnic
+mode: both
+who: [friends, family, kids]
+short: Rent paddleboards, drift along the water, then pull up on shore for a picnic dinner.
+description: >
+  Find a calm lake, bay or slow river with paddleboard rentals and pack a
+  picnic dinner. Rent boards, paddle out together, and drift for a while,
+  watching for fish, turtles or birds. Then pull up on a quiet beach or bank,
+  spread out the blanket, and eat with your feet in the sand. Get a photo of
+  the two of you on your boards, and another at the picnic. New to it? Start
+  on your knees, and pick a calm, low-wind day. Wear life jackets, and check
+  the weather and water conditions first.
+for_kids:
+  short: Paddle day! Do each thing.
+  steps:
+    - Stand up on a board (or sit!)
+    - Find a fish or a bird
+    - Paddle to the picnic spot
+    - Eat your picnic
+    - A selfie on the board!
+gear:
+  - item: paddleboard
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: short
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer]
+time_of_day: any
+travel: local
+check_ahead: [seasonal, conditions]
+tags: [paddleboard, picnic, water, outdoors]
+credit: Angie C.

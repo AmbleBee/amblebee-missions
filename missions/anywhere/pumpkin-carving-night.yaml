@@ -1,28 +1,32 @@
 number: 36
-name: Pumpkin Carving Night
+name: Pumpkin Patch to Pumpkin Night
 mode: both
 who: [friends, family, kids]
-short: Pick pumpkins, carve them side by side, and roast the seeds. Reveal them lit up in the dark.
+short: Hit a pumpkin patch and corn maze, find the coolest pumpkin, then carve or paint it at home.
 description: >
-  Pick out a pumpkin each, from a pumpkin patch if you can make an outing of it.
-  Spread newspaper on the table, put on spooky music, and carve them side by
-  side without showing each other your design until you're done. Rinse and
-  roast the seeds with salt while you clean up. Then set the pumpkins out, light
-  them up, turn off the lights for the big reveal, and take a photo of the two
-  of you with your glowing pumpkins.
+  Make a whole fall day of it. Pick a pumpkin patch with a corn maze, grab a
+  warm drink (apple cider, tea or hot cocoa) and a treat, and get lost in the
+  maze together. Then hunt for the coolest pumpkin you can find, one each.
+  Take "pumpkin head" photos holding them in front of your faces, plus one
+  with a scarecrow. At home, carve or paint your pumpkins side by side
+  without showing each other until you're done, and roast the seeds. Turn off
+  the lights for the big reveal and get a photo of the two of you with your
+  glowing pumpkins. Check the patch's hours, tickets and parking first.
 for_kids:
-  short: Pumpkin night! Do each thing.
+  short: Pumpkin day! Do each thing.
   steps:
-    - Pick your pumpkin
-    - Scoop out the goop
-    - Draw a face (grown-ups cut)
-    - Roasted seeds!
+    - Find your way through the corn maze
+    - Pick the coolest pumpkin
+    - A pumpkin head photo!
+    - Carve or paint it (grown-ups cut)
     - A selfie with your glowing pumpkin!
-duration: short
-effort: easy
-cost: $
-setting: indoor
+duration: half-day
+effort: moderate
+cost: $$
+setting: either
 season: [fall]
-time_of_day: evening
-travel: local
-tags: [at-home, halloween, seasonal, crafts, food]
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, tickets, seasonal]
+tags: [pumpkins, corn-maze, halloween, seasonal, crafts, fall]
+credit: Kali W.

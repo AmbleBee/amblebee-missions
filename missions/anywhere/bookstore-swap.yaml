@@ -1,11 +1,14 @@
 number: 2
-name: Bookstore Swap
+name: Books and Coffee Swap
 mode: date
-short: Pick a book for each other, under $10. Swap over a drink.
+short: Pick a book (under $10) and a coffee order for each other. Swap them at the café.
 description: >
-  Head to a used or local bookstore. Split up and each pick a book
-  you think the other would love, keeping it a secret, under $10.
-  Swap them over coffee or a drink afterward and explain your pick.
+  Head to a used or local bookstore with a café nearby, or one with a café
+  inside. Split up and each secretly pick a book under $10 you think the other
+  would love. Then, without asking, order the other person's coffee, tea or
+  snack: something you think they'd like, or something they'd never pick
+  themselves. Sit down, swap the books and the drinks, and explain your picks.
+  Get a photo of the two of you with your books and mugs.
 duration: short
 effort: easy
 cost: $
@@ -14,4 +17,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
-tags: [books, gifts, rainy-day]
+tags: [books, coffee, gifts, rainy-day]
+credit: Jennifer F.

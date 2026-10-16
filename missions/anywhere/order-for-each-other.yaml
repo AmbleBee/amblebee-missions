@@ -1,0 +1,31 @@
+number: 43
+name: Order for Each Other
+mode: both
+who: [solo, friends, family, kids]
+short: At a favorite local spot, order something for the other person they'd never pick themselves.
+description: >
+  Head to one of your local haunts, like a favorite café, bakery, taco stand or
+  little shop, and make one rule: each of you picks something for the other
+  person to try, food, a drink or a small item, that they would never order
+  for themselves. Keep your choices secret until they arrive. Taste, react
+  honestly, and explain why you picked what you did. Rate each pick out of 10,
+  and get a photo of the two of you holding the surprise picks. Bring a
+  friend or the kids and everyone picks for someone else.
+for_kids:
+  short: Surprise pick! Do each thing.
+  steps:
+    - Pick something for your grown-up
+    - Guess what they picked for you
+    - Try your surprise
+    - Give it a thumbs up or down
+    - A selfie with your treat!
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours]
+tags: [food, surprise, local, try-something-new]
+credit: Nikki D.
