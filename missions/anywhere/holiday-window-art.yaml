@@ -1,0 +1,31 @@
+number: 45
+name: Holiday Window Art
+mode: both
+who: [friends, family, kids]
+short: Get chalk window markers and each decorate a window for the next holiday. Rate each other out of 10.
+description: >
+  Pick up a pack of liquid chalk window markers and choose whatever holiday is
+  coming up next. Each of you claims a window, or half of a big one, and draws
+  your best holiday scene: pumpkins, snowflakes, hearts, fireworks, whatever
+  fits. (Test a small corner first; liquid chalk can stain frosted glass,
+  window tint film and old painted frames.) No peeking until you're both done.
+  Then do the big reveal and rate each other's work out of 10, with one thing
+  you loved about it. Take a photo of each window, and one of the two of you
+  posing with your art and your scores. Leave it up through the holiday and
+  wipe it off with a damp cloth after.
+for_kids:
+  short: Window art! Do each thing.
+  steps:
+    - Pick a holiday
+    - Draw on your window
+    - Show your drawing
+    - Give a score out of 10
+    - A selfie with your art!
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: any
+travel: home
+tags: [art, holiday, at-home, playful, creative, competitive]
