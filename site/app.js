@@ -77,6 +77,7 @@ const ICON = {   // fixed artwork only (never mission data)
   link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
   share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
   mail: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/>',
+  download: '<path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/>',
   dice: '<rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
 };
 const packIcon = (p) => ICON[p && p.icon] || ICON.compass;
@@ -240,12 +241,12 @@ function ticket(m, { titleId } = {}) {
 function actions(m, { withRoll } = {}) {
   return h("div", { class: "ticket-actions" },
     withRoll ? h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.mail, 22), "Open another") : null,
-    shareButtons(m));
+    shareButtons(m), saveButton(m));
 }
 // two ways to share: a plain link, or a sealed "gift" link with names and a hidden note
 // sharing always starts at the card, so people see the note option; "Share without a note" is at the bottom of it
 function shareButtons(m) {
-  return [h("button", { type: "button", class: "btn", onclick: () => openGiftForm(m) }, svg(ICON.share, 20), "Share this mission")];
+  return [h("button", { type: "button", class: "btn", onclick: () => openGiftForm(m, { fresh: true }) }, svg(ICON.share, 20), "Share this mission")];
 }
 // link box + Copy / Share… / Preview, used for both kinds of link
 function linkPanel(url) {
@@ -348,13 +349,18 @@ function giftNote(g) {
 }
 
 // "Send with a note": you write right on the card, pick who it's for, then seal it
-function openGiftForm(m) {
+function openGiftForm(m, opts = {}) {
   const d = $("#gift-dialog"), body = $("#gift-body");
   const pack = S.packById[m.pack] || { name: m.pack };
-  const draft = S.giftDraft && S.giftDraft.m === m.full_id ? S.giftDraft : null;
+  // "Write back": the names swap, the theme carries over, and the reply is about the same mission
+  if (opts.fresh) S.replyTo = null;
+  if (opts.reply) S.replyTo = opts.reply;
+  const reply = S.replyTo && S.replyTo.m === m.full_id ? S.replyTo : null;
+  let draft = S.giftDraft && S.giftDraft.m === m.full_id ? S.giftDraft : null;
+  if (reply && (!draft || draft.t !== reply.f)) draft = { m: m.full_id, t: reply.f, f: reply.t, n: "", th: reply.th, s: null };
   let theme = themeOf(draft ? draft.th : readPref("giftTheme"));
   const lastSign = {};   // remembers the sign-off picked for each theme while you flip between them
-  if (draft) lastSign[theme] = draft.s;
+  if (draft && draft.s) lastSign[theme] = draft.s;
 
   // the editable card: every field is written in place, in the card's handwriting
   const ruler = document.createElement("canvas").getContext("2d");
@@ -407,8 +413,8 @@ function openGiftForm(m) {
   const err = h("p", { class: "gift-err", role: "alert" });
 
   const form = h("form", { class: "gift-form", novalidate: true },
-    h("p", { class: "hand gift-kicker" }, "Send it sealed"),
-    h("h2", { id: "gift-title" }, "Write them a card"),
+    h("p", { class: "hand gift-kicker" }, reply ? "Send one back" : "Send it sealed"),
+    h("h2", { id: "gift-title" }, reply ? `Write back to ${reply.f}` : "Write them a card"),
     h("p", { class: "gift-mission" }, svg(packIcon(pack), 18), h("span", {}, h("b", {}, m.name), ` · ${pack.name}`)),
     h("p", { class: "gift-label" }, "Who's it for?"),
     chips,
@@ -492,6 +498,254 @@ function sealGift(m, g, url) {
   ];
   let at = 0;
   for (const [wait, fn] of steps) { at += wait; setTimeout(fn, at); }
+}
+
+// ---- save a mission as an image (for the camera roll) ----------------------------------------------
+// Drawn on a canvas right here in the browser: nothing is uploaded. Text is drawn as text, never parsed.
+function saveButton(m, gift) {
+  const b = h("button", { type: "button", class: "btn", onclick: () => saveMissionImage(m, gift, b) }, svg(ICON.download, 20), "Save as image");
+  return b;
+}
+const IMG = { w: 1080, pad: 64, minH: 1350, maxH: 2400 };
+const IMGC = {   // always the light palette, so saved images look the same everywhere
+  oat: "#EFE7D8", paper: "#FFFDF8", linen: "#FAF5EC", line: "#E4D9C6", lineStrong: "#D9CDB6", sand: "#F1E5D2",
+  sage: "#A3B18A", sageDeep: "#5F7550", sageTint: "#E3EAD6", sageInk: "#3F5235", honey: "#D8A65A", honeyTint: "#F6E6C6",
+  walnut: "#5A3E2B", walnutSoft: "#7A5A42", ink: "#4A3323",
+};
+const IMGT = {   // note-card colours per theme: frame, dashed border, names
+  partner: { frame: "#F6DDD6", dash: "#E2A699", accent: "#A9544A" },
+  friend: { frame: "#E3EAD6", dash: "#A3B18A", accent: "#5F7550" },
+  family: { frame: "#F6E6C6", dash: "#D8A65A", accent: "#946628" },
+};
+const IMGF = {
+  display: (w, px) => `${w} ${px}px "Fraunces Variable", "Fraunces", Georgia, serif`,
+  body: (w, px) => `${w} ${px}px "Nunito Variable", "Nunito", "Segoe UI", system-ui, sans-serif`,
+  hand: (px) => `700 ${px}px "Caveat", "Segoe Print", "Bradley Hand", cursive`,
+};
+function svgImage(markup, { size = 24, stroke = IMGC.walnut, viewBox = "0 0 24 24", fill = "none" } = {}) {
+  const src = `<svg xmlns="http://www.w3.org/2000/svg" width="${size}" height="${size}" viewBox="${viewBox}" fill="${fill}" stroke="${stroke}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${markup}</svg>`;
+  return new Promise((res) => { const i = new Image(); i.onload = () => res(i); i.onerror = () => res(null); i.src = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(src); });
+}
+function rrect(ctx, x, y, w, hh, r) {
+  ctx.beginPath(); ctx.moveTo(x + r, y); ctx.arcTo(x + w, y, x + w, y + hh, r); ctx.arcTo(x + w, y + hh, x, y + hh, r);
+  ctx.arcTo(x, y + hh, x, y, r); ctx.arcTo(x, y, x + w, y, r); ctx.closePath();
+}
+// split text into lines that fit `width`; the last allowed line gets an ellipsis if it runs over
+function wrapLines(ctx, text, width, maxLines = 99) {
+  const out = [];
+  for (const para of String(text || "").split("\n")) {
+    const words = para.split(/\s+/).filter(Boolean);
+    let line = "";
+    for (const w of words) {
+      const test = line ? `${line} ${w}` : w;
+      if (ctx.measureText(test).width <= width || !line) line = test; else { out.push(line); line = w; }
+    }
+    out.push(line);
+  }
+  if (out.length > maxLines) {
+    const keep = out.slice(0, maxLines);
+    let last = keep[maxLines - 1];
+    while (last && ctx.measureText(last + "…").width > width) last = last.replace(/\s*\S+$/, "");
+    keep[maxLines - 1] = (last || "") + "…";
+    return keep;
+  }
+  return out;
+}
+async function drawMission(m, gift) {
+  const pack = S.packById[m.pack] || { name: m.pack };
+  const c = coordsOf(m);
+  const [packImg, pinImg, clockImg, beeImg] = await Promise.all([
+    svgImage(packIcon(pack), { size: 64, stroke: "#FFFDF8" }),
+    svgImage(ICON.pin, { size: 40, stroke: IMGC.sageDeep }),
+    svgImage(ICON.clock, { size: 36, stroke: IMGC.walnutSoft }),
+    svgImage(BEE, { size: 84, viewBox: "0 0 28 26", stroke: "none", fill: "none" }),
+  ]);
+  const canvas = document.createElement("canvas");
+  const ctx = canvas.getContext("2d");
+  const W = IMG.w, P = IMG.pad, cardX = P, cardW = W - P * 2, inX = cardX + 52, inW = cardW - 104;
+
+  // one pass to measure, one pass to draw
+  const paint = (draw) => {
+    let y = P;
+    // header: hive + name
+    if (draw && beeImg) ctx.drawImage(beeImg, P - 4, y - 6, 84, 78);
+    if (draw) { ctx.font = IMGF.display(600, 44); ctx.fillStyle = IMGC.ink; ctx.textBaseline = "middle"; ctx.fillText("AmbleBee", P + 92, y + 36);
+      const wA = ctx.measureText("AmbleBee ").width; ctx.fillStyle = IMGC.sageDeep; ctx.fillText("Missions", P + 92 + wA, y + 36); }
+    y += 72 + 34;
+
+    // optional note from a gift, as a little card
+    if (gift && gift.n) {
+      ctx.font = IMGF.hand(44);
+      const noteLines = wrapLines(ctx, gift.n, cardW - 120, 6);
+      const signLine = gift.s !== "none" ? (SIGNOFF[gift.s] || "") : "";
+      const nh = 40 + (gift.t ? 52 : 0) + noteLines.length * 52 + (signLine ? 52 : 0) + 52 + 14;
+      const tc = IMGT[themeOf(gift.th)];
+      if (draw) {
+        ctx.save(); ctx.translate(W / 2, y + nh / 2); ctx.rotate(-1.2 * Math.PI / 180); ctx.translate(-W / 2, -(y + nh / 2));
+        ctx.shadowColor = "rgba(90,62,43,.18)"; ctx.shadowBlur = 24; ctx.shadowOffsetY = 10;
+        rrect(ctx, cardX + 20, y, cardW - 40, nh, 14); ctx.fillStyle = tc.frame; ctx.fill();
+        ctx.shadowColor = "transparent";
+        rrect(ctx, cardX + 30, y + 10, cardW - 60, nh - 20, 8); ctx.fillStyle = IMGC.paper; ctx.fill();
+        ctx.setLineDash([8, 7]); ctx.strokeStyle = tc.dash; ctx.lineWidth = 2; ctx.stroke(); ctx.setLineDash([]);
+        let ny = y + 40;
+        ctx.textBaseline = "alphabetic"; ctx.font = IMGF.hand(44);
+        if (gift.t) { ctx.fillStyle = tc.accent; ctx.fillText(`${gift.t},`, cardX + 60, ny + 38); ny += 52; }
+        ctx.fillStyle = IMGC.ink;
+        for (const l of noteLines) { ctx.fillText(l, cardX + 60, ny + 38); ny += 52; }
+        ctx.textAlign = "right";
+        if (signLine) { ctx.fillStyle = IMGC.walnutSoft; ctx.fillText(signLine, cardX + cardW - 90, ny + 38); ny += 52; }
+        ctx.fillStyle = tc.accent; ctx.fillText(gift.f || "a friend", cardX + cardW - 70, ny + 38);
+        ctx.textAlign = "left";
+        ctx.restore();
+      }
+      y += nh + 36;
+    }
+
+    // the ticket
+    const cardTop = y;
+    const stubH = 128;
+    y += stubH;
+    y += 48;
+    ctx.font = IMGF.display(600, 68);
+    const titleLines = wrapLines(ctx, m.name, inW, 3);
+    if (draw) { ctx.fillStyle = IMGC.ink; ctx.textBaseline = "alphabetic"; titleLines.forEach((l, i) => ctx.fillText(l, inX, y + 58 + i * 78)); }
+    y += titleLines.length * 78 + 18;
+    ctx.font = IMGF.body(800, 36);
+    const shortLines = wrapLines(ctx, m.short, inW, 4);
+    if (draw) { ctx.fillStyle = IMGC.walnut; shortLines.forEach((l, i) => ctx.fillText(l, inX, y + 36 + i * 50)); }
+    y += shortLines.length * 50 + 30;
+
+    // tags
+    const tags = [L.mode[m.mode] || m.mode, L.duration[m.duration] || m.duration, L.effort[m.effort] || m.effort,
+      L.cost[m.cost] || m.cost, L.setting[m.setting] || m.setting,
+      m.season && m.season !== "any" ? cap(list(m.season)) : null].filter(Boolean);
+    ctx.font = IMGF.body(800, 28);
+    let tx = inX, ty = y;
+    tags.forEach((t, i) => {
+      const tw = ctx.measureText(t).width + 40;
+      if (tx + tw > inX + inW) { tx = inX; ty += 60; }
+      if (draw) { rrect(ctx, tx, ty, tw, 48, 24); ctx.fillStyle = i === 0 ? IMGC.sageTint : IMGC.sand; ctx.fill();
+        ctx.fillStyle = i === 0 ? IMGC.sageInk : IMGC.walnut; ctx.textBaseline = "middle"; ctx.fillText(t, tx + 20, ty + 25); }
+      tx += tw + 12;
+    });
+    y = ty + 48 + 34;
+
+    // where: place, address, coordinates
+    if (m.place) {
+      const pl = m.place;
+      const boxTop = y;
+      let by = y + 34;
+      ctx.font = IMGF.body(900, 34);
+      const nameLines = wrapLines(ctx, [pl.name, pl.area].filter(Boolean).join(", "), inW - 110, 3);
+      if (draw) { ctx.textBaseline = "alphabetic"; ctx.fillStyle = IMGC.ink; nameLines.forEach((l, i) => ctx.fillText(l, inX + 86, by + 30 + i * 44)); }
+      by += nameLines.length * 44 + 6;
+      if (pl.address) {
+        ctx.font = IMGF.body(700, 30);
+        const addr = wrapLines(ctx, pl.address, inW - 110, 3);
+        if (draw) { ctx.fillStyle = IMGC.walnut; addr.forEach((l, i) => ctx.fillText(l, inX + 86, by + 28 + i * 40)); }
+        by += addr.length * 40 + 6;
+      }
+      if (c) {
+        ctx.font = IMGF.body(800, 30);
+        if (draw) { ctx.fillStyle = IMGC.sageDeep; ctx.fillText(`${c[0].toFixed(5)}, ${c[1].toFixed(5)}`, inX + 86, by + 30); }
+        by += 46;
+      }
+      by += 22;
+      if (draw) {
+        rrect(ctx, inX - 6, boxTop, inW + 12, by - boxTop, 24); ctx.fillStyle = IMGC.linen; ctx.fill();
+        if (pinImg) ctx.drawImage(pinImg, inX + 24, boxTop + 30, 40, 40);
+        // redraw text above the box fill
+        let ry = boxTop + 34;
+        ctx.font = IMGF.body(900, 34); ctx.fillStyle = IMGC.ink; ctx.textBaseline = "alphabetic";
+        nameLines.forEach((l, i) => ctx.fillText(l, inX + 86, ry + 30 + i * 44)); ry += nameLines.length * 44 + 6;
+        if (pl.address) { ctx.font = IMGF.body(700, 30); ctx.fillStyle = IMGC.walnut;
+          const addr = wrapLines(ctx, pl.address, inW - 110, 3); addr.forEach((l, i) => ctx.fillText(l, inX + 86, ry + 28 + i * 40)); ry += addr.length * 40 + 6; }
+        if (c) { ctx.font = IMGF.body(800, 30); ctx.fillStyle = IMGC.sageDeep; ctx.fillText(`${c[0].toFixed(5)}, ${c[1].toFixed(5)}`, inX + 86, ry + 30); }
+      }
+      y = by + 28;
+    }
+
+    // check before you go
+    if (m.check_ahead && m.check_ahead.length) {
+      ctx.font = IMGF.body(800, 30);
+      const lines = wrapLines(ctx, `Check before you go: ${list(m.check_ahead.map((k) => L.check[k] || k))}`, inW - 56, 3);
+      if (draw) { if (clockImg) ctx.drawImage(clockImg, inX, y + 2, 36, 36); ctx.fillStyle = IMGC.walnutSoft; ctx.textBaseline = "alphabetic";
+        lines.forEach((l, i) => ctx.fillText(l, inX + 54, y + 30 + i * 42)); }
+      y += lines.length * 42 + 24;
+    }
+
+    // footer inside the ticket
+    y += 12;
+    if (draw) {
+      ctx.setLineDash([6, 8]); ctx.strokeStyle = IMGC.lineStrong; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.moveTo(inX, y); ctx.lineTo(inX + inW, y); ctx.stroke(); ctx.setLineDash([]);
+      ctx.font = IMGF.body(700, 28); ctx.fillStyle = IMGC.walnutSoft; ctx.textBaseline = "alphabetic";
+      ctx.fillText(`Mission ${m.number || "?"} of ${packTotal(m)} in ${pack.name}`, inX, y + 50);
+    }
+    y += 80;
+    const cardBottom = y;
+
+    if (draw) {   // card + stub, painted under everything above by drawing them first (see below)
+      paint.card = { top: cardTop, bottom: cardBottom, stubH };
+    }
+    y += 34;
+    if (draw) { ctx.font = IMGF.body(800, 30); ctx.fillStyle = IMGC.sageDeep; ctx.textAlign = "center"; ctx.textBaseline = "alphabetic";
+      ctx.fillText("amblebee.com", W / 2, y + 20); ctx.textAlign = "left"; }
+    y += 20 + P;
+    return { y, cardTop, cardBottom, stubH };
+  };
+
+  const size = paint(false);
+  const H = Math.max(IMG.minH, Math.min(IMG.maxH, Math.ceil(size.y)));
+  const dpr = 1;
+  canvas.width = W * dpr; canvas.height = H * dpr;
+  // background
+  ctx.fillStyle = IMGC.oat; ctx.fillRect(0, 0, W, H);
+  // the ticket card and its stub go down first, so the content paints on top
+  const extra = Math.max(0, (H - size.y) / 2);   // center short missions vertically
+  ctx.save(); ctx.translate(0, extra);
+  ctx.save(); ctx.shadowColor = "rgba(90,62,43,.16)"; ctx.shadowBlur = 30; ctx.shadowOffsetY = 12;
+  rrect(ctx, cardX, size.cardTop, cardW, size.cardBottom - size.cardTop, 36); ctx.fillStyle = IMGC.paper; ctx.fill(); ctx.restore();
+  ctx.save(); rrect(ctx, cardX, size.cardTop, cardW, size.cardBottom - size.cardTop, 36); ctx.clip();
+  ctx.fillStyle = IMGC.sageDeep; ctx.fillRect(cardX, size.cardTop, cardW, size.stubH); ctx.restore();
+  ctx.setLineDash([10, 9]); ctx.strokeStyle = IMGC.lineStrong; ctx.lineWidth = 4;
+  ctx.beginPath(); ctx.moveTo(cardX, size.cardTop + size.stubH + 2); ctx.lineTo(cardX + cardW, size.cardTop + size.stubH + 2); ctx.stroke(); ctx.setLineDash([]);
+  if (packImg) ctx.drawImage(packImg, inX - 6, size.cardTop + 32, 64, 64);
+  ctx.fillStyle = "#FFFDF8"; ctx.textBaseline = "middle";
+  ctx.font = IMGF.body(800, 28); ctx.fillText("MISSION", inX + 76, size.cardTop + size.stubH / 2);
+  const mw = ctx.measureText("MISSION ").width;
+  ctx.font = IMGF.display(600, 60); ctx.fillText(String(m.number || "?"), inX + 76 + mw + 6, size.cardTop + size.stubH / 2 + 2);
+  ctx.font = IMGF.body(800, 28); ctx.textAlign = "right"; ctx.fillText(pack.name || "", inX + inW, size.cardTop + size.stubH / 2); ctx.textAlign = "left";
+  paint(true);
+  ctx.restore();
+  return canvas;
+}
+async function saveMissionImage(m, gift, btn) {
+  const label = btn.lastChild, before = label.textContent;
+  label.textContent = "Drawing…";
+  try {
+    if (document.fonts && document.fonts.load) {
+      await Promise.all([document.fonts.load(IMGF.display(600, 68)), document.fonts.load(IMGF.body(800, 36)), document.fonts.load(IMGF.hand(44))]).catch(() => {});
+    }
+    const canvas = await drawMission(m, gift && gift.n ? gift : null);
+    const blob = await new Promise((res) => canvas.toBlob(res, "image/png"));
+    const name = `amblebee-${String(m.id || m.full_id || "mission").replace(/[^a-z0-9-]+/gi, "-")}.png`;
+    const file = new File([blob], name, { type: "image/png" });
+    // phones: the share sheet has "Save Image" (camera roll). Computers: a normal download.
+    const touch = window.matchMedia && matchMedia("(pointer: coarse)").matches;
+    if (touch && navigator.canShare && navigator.canShare({ files: [file] })) {
+      try { await navigator.share({ files: [file], title: m.name }); label.textContent = before; return; }
+      catch (e) { if (e && e.name === "AbortError") { label.textContent = before; return; } }
+    }
+    const a = h("a", { href: URL.createObjectURL(blob), download: name });
+    document.body.append(a); a.click(); a.remove();
+    setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+    label.textContent = "Saved";
+    setTimeout(() => { label.textContent = before; }, 2200);
+  } catch (e) {
+    label.textContent = "Couldn't save, try again";
+    setTimeout(() => { label.textContent = before; }, 2600);
+  }
 }
 
 // ---- home teaser + the reveal view ---------------------------------------------------------------
@@ -616,9 +870,12 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   }
   const t = ticket(m, { titleId: "reveal-title" });
   slot.replaceChildren(...(gift && gift.n ? [giftNote(gift), t] : [t]));
+  const replyTo = gift && gift.f ? gift : null;
   $("#reveal-actions").replaceChildren(
-    h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.mail, 22), linked ? "Open your own" : "Open another"),
+    replyTo ? h("button", { type: "button", class: "btn primary", onclick: () => openGiftForm(m, { reply: replyTo }) }, svg(ICON.mail, 22), `Write back to ${replyTo.f}`) : null,
+    h("button", { type: "button", class: replyTo ? "btn" : "btn primary", onclick: roll }, replyTo ? null : svg(ICON.mail, 22), linked ? "Open your own" : "Open another"),
     ...shareButtons(m),
+    saveButton(m, gift),
     h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"));
   $("#reveal-adjust").hidden = linked;
   if (growFrom && growFrom.width && !REDUCED()) growTicket(t, growFrom); else t.classList.add("pop");
