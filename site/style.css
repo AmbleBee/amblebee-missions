@@ -458,7 +458,7 @@ body.revealing main > :not(#reveal) { display: none !important; }
 .reveal-head, #reveal-actions, #reveal-adjust { transition: opacity .3s ease .25s; }
 .grow-wait { opacity: 0; transition: none !important; }
 
-/* ---- gift links: the "Send with a note" form ---- */
+/* ---- gift links: the "Send with a note" dialog ---- */
 #gift-dialog { width: min(540px, calc(100vw - 24px)); }
 #gift-dialog form.gift-form { display: block; margin: 0; }   /* undo the generic "dialog form" rule */
 .gift-sheet {
@@ -468,68 +468,115 @@ body.revealing main > :not(#reveal) { display: none !important; }
 .gift-sheet h2 { font-size: 1.6rem; margin: 0 0 10px; }
 .gift-kicker { font-size: 1.4rem; }
 .gift-mission {
-  display: flex; align-items: center; gap: 8px; margin: 0 0 4px; padding: 8px 12px; border-radius: 12px;
+  display: flex; align-items: center; gap: 8px; margin: 0; padding: 8px 12px; border-radius: 12px;
   background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; font-size: .95rem;
 }
 .gift-mission svg { flex-shrink: 0; }
-.gift-names { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
-.gift-field label { display: block; margin: 14px 0 6px; font-weight: 800; color: var(--ink); }
-.gift-field input, .gift-field textarea, .gift-link {
-  width: 100%; min-height: 48px; padding: 10px 14px; border: 0; border-radius: 14px;
-  background: var(--linen); color: var(--ink); box-shadow: inset 0 0 0 2px var(--line-strong);
-  font: 700 1rem var(--body);
-}
-.gift-field textarea { display: block; min-height: 112px; resize: vertical; font: 700 1.3rem/1.35 var(--hand); }
-.gift-field input::placeholder, .gift-field textarea::placeholder { color: var(--walnut-soft); font-weight: 600; opacity: .8; }
-.gift-field textarea::placeholder { font: 600 1rem/1.4 var(--body); }
-.gift-field input:focus-visible, .gift-field textarea:focus-visible, .gift-link:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
-.gift-count { display: block; margin-top: 4px; text-align: right; font-size: .82rem; font-weight: 700; color: var(--walnut-soft); }
+.gift-label { margin: 16px 0 8px; font-weight: 800; color: var(--ink); }
+.gift-desk { margin-top: 14px; padding: 48px 14px 10px; border-radius: 18px; background: var(--linen); box-shadow: inset 0 0 0 2px var(--line); }
+.gift-count { display: block; min-height: 1.2em; margin-top: 8px; text-align: right; font-size: .82rem; font-weight: 700; color: var(--walnut-soft); }
 .gift-count.near { color: #B5853F; }
 .gift-err { margin: 12px 0 0; color: #A4482F; font-weight: 800; }
 .gift-err:empty { display: none; }
 .gift-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 18px; }
 .gift-actions.small { margin-top: 6px; }
-.gift-lede { margin: 0; }
-.gift-link { margin-top: 16px; font-size: .88rem; text-overflow: ellipsis; }
+.gift-lede { margin: 14px 0 0; }
+.gift-link {
+  width: 100%; min-height: 48px; margin-top: 14px; padding: 10px 14px; border: 0; border-radius: 14px;
+  background: var(--linen); color: var(--ink); box-shadow: inset 0 0 0 2px var(--line-strong);
+  font: 700 .88rem var(--body); text-overflow: ellipsis;
+}
+.gift-link:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
 @media (prefers-color-scheme: dark) { .gift-err { color: #E59A7F; } }
 @media (max-width: 560px) {
-  .gift-sheet { padding: 20px 18px; }
-  .gift-names { grid-template-columns: 1fr; }
+  .gift-sheet { padding: 20px 16px; }
+  .gift-desk { padding: 46px 8px 8px; }
   .gift-actions .btn { flex: 1 1 100%; }
 }
 
-/* ---- gift links: the little florist-style card the note is written on ---- */
+/* ---- gift links: the little florist-style card (themes: partner, friend, family) ---- */
 .gift-note {
+  --gn-frame: var(--honey-tint); --gn-ring: var(--honey); --gn-dash: var(--sage);
+  --gn-line: rgba(163, 177, 138, .38); --gn-accent: var(--sage-deep);
   position: relative; z-index: 3; width: min(320px, 86%); margin: 52px auto -16px; padding: 7px;
-  background: var(--honey-tint); border-radius: 10px;
-  box-shadow: inset 0 0 0 2px var(--honey), 0 12px 20px rgba(90, 62, 43, .2);
+  background: var(--gn-frame); border-radius: 10px;
+  box-shadow: inset 0 0 0 2px var(--gn-ring), 0 12px 20px rgba(90, 62, 43, .2);
   transform: rotate(-2.2deg);
   animation: notein .55s cubic-bezier(.2, .8, .2, 1) .55s both;
+  transition: background-color .3s ease, box-shadow .3s ease;
+}
+.gift-note.theme-partner { --gn-frame: #F6DDD6; --gn-ring: #D98C7E; --gn-dash: #E2A699; --gn-line: rgba(217, 140, 126, .3); --gn-accent: #A9544A; }
+.gift-note.theme-friend { --gn-frame: var(--sage-tint); --gn-ring: var(--sage); --gn-dash: var(--sage); --gn-line: rgba(163, 177, 138, .42); --gn-accent: var(--sage-deep); }
+.gift-note.theme-family { --gn-frame: var(--honey-tint); --gn-ring: var(--honey); --gn-dash: #D8A65A; --gn-line: rgba(216, 166, 90, .36); --gn-accent: #946628; }
+@media (prefers-color-scheme: dark) {
+  .gift-note.theme-partner { --gn-frame: #4A302B; --gn-ring: #C98476; --gn-dash: #A8695D; --gn-accent: #EBA99B; }
+  .gift-note.theme-family { --gn-accent: #E7BE78; }
 }
 .gift-card-inner {
-  position: relative; padding: 16px 22px 12px 24px; border-radius: 6px; border: 1.5px dashed var(--sage);
+  position: relative; padding: 16px 22px 12px 24px; border-radius: 6px; border: 1.5px dashed var(--gn-dash);
   background-color: var(--paper);
-  background-image: repeating-linear-gradient(to bottom, transparent 0 29px, rgba(163, 177, 138, .38) 29px 30px);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 29px, var(--gn-line) 29px 30px);
   background-position: 0 16px; background-origin: content-box; background-clip: padding-box;
 }
 .gift-note::before {   /* the punched hole */
   content: ""; position: absolute; z-index: 2; left: 15px; top: 15px; width: 11px; height: 11px; border-radius: 50%;
-  background: var(--oat); box-shadow: inset 0 0 0 2px var(--honey), inset 0 2px 2px rgba(90, 62, 43, .25);
+  background: var(--oat); box-shadow: inset 0 0 0 2px var(--gn-ring), inset 0 2px 2px rgba(90, 62, 43, .25);
 }
 .gift-twine {
   position: absolute; z-index: 3; left: 2px; top: -40px; width: 64px; height: 62px; pointer-events: none;
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 62'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M18.5 60 C8 40 22 26 12 3 M18.5 60 C26 40 44 34 56 8' stroke='%23B5853F' stroke-width='2.4'/%3E%3Cpath d='M18.5 60 C8 40 22 26 12 3 M18.5 60 C26 40 44 34 56 8' stroke='%23F6E6C6' stroke-width='1' stroke-dasharray='2 4'/%3E%3C/g%3E%3C/svg%3E") no-repeat;
 }
 .gift-bee { position: absolute; right: 8px; top: 6px; transform: rotate(8deg); opacity: .95; }
-.gift-to, .gift-body, .gift-from { margin: 0; font: 700 1.3rem/30px var(--hand); }
-.gift-to { color: var(--sage-deep); padding-right: 30px; }
+.gift-to, .gift-body, .gift-sign, .gift-from { margin: 0; font: 700 1.3rem/30px var(--hand); }
+.gift-to { color: var(--gn-accent); padding-right: 30px; }
 .gift-body { color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; }
-.gift-from { color: var(--walnut-soft); text-align: right; }
+.gift-sign { color: var(--walnut-soft); text-align: right; padding-right: 1.2em; }
+.gift-from { color: var(--gn-accent); text-align: right; }
 @keyframes notein {
   from { opacity: 0; transform: translateY(16px) rotate(-7deg) scale(.92); }
   to { opacity: 1; transform: rotate(-2.2deg); }
 }
+
+/* writing on the card itself */
+.gift-note.editing { width: min(400px, 100%); margin: 0 auto; transform: none; animation: none; }
+.gift-note.editing :is(input, textarea, select) {
+  appearance: none; -webkit-appearance: none; margin: 0; padding: 0 2px; border: 0; border-radius: 4px;
+  background: transparent; font: inherit; color: inherit; height: 30px; min-width: 4ch; max-width: 100%;
+}
+.gift-note.editing :is(input, textarea)::placeholder { color: var(--walnut-soft); opacity: .55; }
+.gift-note.editing :is(input, textarea, select):hover { background: rgba(216, 166, 90, .12); }
+.gift-note.editing :is(input, textarea, select):focus-visible { outline: 2px dashed var(--gn-ring); outline-offset: 2px; background: rgba(216, 166, 90, .1); }
+.gift-note.editing .gift-to { display: flex; align-items: baseline; padding-right: 36px; }
+.gift-note.editing .gc-note {
+  display: block; width: 100%; min-height: 90px; height: 90px; resize: none; overflow: hidden;
+  font: 700 1.3rem/30px var(--hand); color: var(--ink); white-space: pre-wrap;
+}
+.gift-note.editing .gc-note::placeholder { font-size: 1.12rem; }
+.gift-note.editing .gc-sign {
+  min-height: 0; width: auto; box-shadow: none; border-radius: 4px; line-height: 30px;
+  cursor: pointer; padding: 0 20px 0 4px; text-align: right; color: var(--walnut-soft);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237A5A42' stroke-width='2.6' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E") no-repeat right 2px center / 14px;
+}
+.gift-note.editing .gc-sign option { font: 600 1rem var(--body); color: #4A3323; }
+.gift-note.editing .gift-sign.is-none .gc-sign { opacity: .5; }
+.gift-note.editing .gift-sign { padding-right: 0; }
+.gift-note.editing .gc-from { text-align: right; color: var(--gn-accent); }
+
+/* sealing: the card slides into the envelope, the flap closes, it flips to the addressed front */
+.seal-stage { padding-top: 170px; transition: padding-top .5s ease; }
+.gift-seal.sealed-up .seal-stage { padding-top: 6px; }
+.seal-stage .env { max-width: 440px; }
+.env.still, .env.still * { transition: none !important; }
+.env.sealing .env-card { transition: transform .65s cubic-bezier(.4, 0, .2, 1), z-index 0s .5s; }
+.env.sealing .env-flap { transition: transform .4s ease-in, z-index 0s 0s; }
+.env-note { display: flex; justify-content: center; padding-top: 4px; transform-origin: top center; }
+.env-note .gift-note { flex-shrink: 0; width: 300px; margin: 0; animation: none; transform: rotate(-2deg); }
+.env-note .gift-twine { display: none; }
+.gift-done[hidden] { display: none; }
+.gift-done { animation: pop .35s ease-out; }
 @media (max-width: 560px) {
   .gift-note { width: min(300px, 92%); margin: 46px auto -12px; }
-  .gift-to, .gift-body, .gift-from { font-size: 1.22rem; }
+  .gift-note.editing { width: 100%; margin: 0; }
+  .gift-to, .gift-body, .gift-sign, .gift-from, .gift-note.editing .gc-note { font-size: 1.22rem; }
+  .gift-card-inner { padding: 14px 16px 10px 20px; }
 }

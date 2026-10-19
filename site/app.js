@@ -19,6 +19,26 @@ const L = {
 };
 const NAME_MAX = 30;    // "From" and "To" on a gift link
 const NOTE_MAX = 400;   // the hidden note
+// how the note card is signed. Links store only the short key, so a link can't put anything else here.
+const SIGNOFF = {
+  xo: "xo,", love: "Love,", luv: "Love you,", yours: "Yours,", miss: "Miss you,",
+  fun: "Have fun!", cheers: "Cheers,", bud: "Your adventure buddy,", see: "See you there!",
+  wl: "With love,", always: "Love always,", hugs: "Hugs,", best: "Best wishes,",
+  none: "(no sign-off)",
+};
+// card themes: each has its own look and its own sign-offs (the first is the default)
+const THEMES = {
+  partner: { label: "Partner", icon: "heart", signs: ["xo", "love", "luv", "yours", "miss", "none"] },
+  friend: { label: "Friend", icon: "daisy", signs: ["fun", "cheers", "bud", "see", "xo", "none"] },
+  family: { label: "Family", icon: "hive", signs: ["love", "wl", "always", "hugs", "best", "none"] },
+};
+const CARD_ART = {   // fixed artwork for the corner of each card
+  heart: '<svg viewBox="0 0 28 26" width="34" height="32"><path d="M9 21 C4 17 2 14 2 10.5 A4.5 4.5 0 0 1 9 7 A4.5 4.5 0 0 1 16 10.5 C16 14 14 17 9 21z" fill="#D98C7E"/><ellipse cx="20" cy="6" rx="2.6" ry="1.8" fill="#FFFDF8" stroke="#7A5A42" stroke-width=".9" transform="rotate(-25 20 6)"/><ellipse cx="21.3" cy="9" rx="3.4" ry="2.5" fill="#E8B54A"/><path d="M20.6 6.8 v4.4 M22.4 7 v4" stroke="#5A3E2B" stroke-width="1"/><circle cx="24.4" cy="8.7" r="1.5" fill="#5A3E2B"/><path d="M15 15 q3 -1 4 -4" fill="none" stroke="#7A5A42" stroke-width=".8" stroke-dasharray="1 1.6"/></svg>',
+  daisy: '<svg viewBox="0 0 28 26" width="34" height="32"><g transform="translate(9 15)"><g fill="#FFFDF8" stroke="#A3B18A" stroke-width=".9"><ellipse cx="0" cy="-5" rx="2.4" ry="3.6"/><ellipse cx="0" cy="5" rx="2.4" ry="3.6"/><ellipse cx="-5" cy="0" rx="3.6" ry="2.4"/><ellipse cx="5" cy="0" rx="3.6" ry="2.4"/><ellipse cx="-3.6" cy="-3.6" rx="2.2" ry="3.2" transform="rotate(-45 -3.6 -3.6)"/><ellipse cx="3.6" cy="3.6" rx="2.2" ry="3.2" transform="rotate(-45 3.6 3.6)"/><ellipse cx="3.6" cy="-3.6" rx="2.2" ry="3.2" transform="rotate(45 3.6 -3.6)"/><ellipse cx="-3.6" cy="3.6" rx="2.2" ry="3.2" transform="rotate(45 -3.6 3.6)"/></g><circle r="2.6" fill="#E8B54A"/></g><ellipse cx="20" cy="4.6" rx="2.6" ry="1.8" fill="#FFFDF8" stroke="#7A5A42" stroke-width=".9" transform="rotate(-25 20 4.6)"/><ellipse cx="21.3" cy="7.6" rx="3.4" ry="2.5" fill="#E8B54A"/><path d="M20.6 5.4 v4.4 M22.4 5.6 v4" stroke="#5A3E2B" stroke-width="1"/><circle cx="24.4" cy="7.3" r="1.5" fill="#5A3E2B"/></svg>',
+  hive: null,   // the AmbleBee hive + bee (BEE), filled in where it's used
+};
+const themeOf = (k) => (THEMES[k] ? k : "partner");
+const signFor = (theme, s) => (THEMES[theme].signs.includes(s) ? s : THEMES[theme].signs[0]);
 const NEAR_MAX = 24;
 const WITHIN = { mi: [5, 15, 30, 60, 100], km: [10, 25, 50, 100, 150] };
 const M_PER = { mi: 1609.344, km: 1000 };
@@ -283,49 +303,98 @@ function clip(v, max, keepLines) {
 }
 function cleanGift(g) {
   if (!g || typeof g !== "object") return null;
-  const out = { m: clip(g.m, 160), f: clip(g.f, NAME_MAX), t: clip(g.t, NAME_MAX), n: clip(g.n, NOTE_MAX, true).replace(/\n{3,}/g, "\n\n") };
+  const th = themeOf(g.th);
+  const out = { m: clip(g.m, 160), f: clip(g.f, NAME_MAX), t: clip(g.t, NAME_MAX),
+    n: clip(g.n, NOTE_MAX, true).replace(/\n{3,}/g, "\n\n"), th, s: SIGNOFF[g.s] ? g.s : THEMES[th].signs[0] };
   return out.m ? out : null;
 }
 const giftCode = () => { const g = /(?:^#|&)gift=([A-Za-z0-9_-]+)/.exec(location.hash); return g ? g[1] : null; };
 const giftUrl = (code) => `${location.origin}${location.pathname}#gift=${code}`;
-
-// the little card the note is written on (shown only after the envelope is opened)
-function giftNote(g) {
-  const bee = h("span", { class: "gift-bee", "aria-hidden": "true" });
-  bee.innerHTML = `<svg viewBox="0 0 28 26" width="34" height="32">${BEE}</svg>`;
-  return h("aside", { class: "gift-note", "aria-label": `A note from ${g.f || "a friend"}` },
-    h("span", { class: "gift-twine", "aria-hidden": "true" }),
-    h("div", { class: "gift-card-inner" },
-      bee,
-      g.t ? h("p", { class: "gift-to" }, `${g.t},`) : null,
-      h("p", { class: "gift-body" }, g.n),
-      h("p", { class: "gift-from" }, `xo, ${g.f || "a friend"}`)));
+function cardArt(theme) {
+  const el = h("span", { class: "gift-bee", "aria-hidden": "true" });
+  const icon = THEMES[theme].icon;
+  el.innerHTML = CARD_ART[icon] || `<svg viewBox="0 0 28 26" width="34" height="32">${BEE}</svg>`;
+  return el;
 }
 
-// the "Send with a note" form, then the sealed link to copy
+// the little florist-style card the note is written on (shown only after the envelope is opened)
+function giftNote(g) {
+  return h("aside", { class: `gift-note theme-${themeOf(g.th)}`, "aria-label": `A note from ${g.f || "a friend"}` },
+    h("span", { class: "gift-twine", "aria-hidden": "true" }),
+    h("div", { class: "gift-card-inner" },
+      cardArt(themeOf(g.th)),
+      g.t ? h("p", { class: "gift-to" }, `${g.t},`) : null,
+      g.n ? h("p", { class: "gift-body" }, g.n) : null,
+      g.s !== "none" ? h("p", { class: "gift-sign" }, SIGNOFF[g.s] || "xo,") : null,
+      h("p", { class: "gift-from" }, g.f || "a friend")));
+}
+
+// "Send with a note": you write right on the card, pick who it's for, then seal it
 function openGiftForm(m) {
   const d = $("#gift-dialog"), body = $("#gift-body");
   const pack = S.packById[m.pack] || { name: m.pack };
-  const field = (id, label, input, extra) => h("div", { class: "gift-field" }, h("label", { for: id }, label), input, extra || null);
-  const from = h("input", { id: "gift-from", maxlength: NAME_MAX, required: true, autocomplete: "given-name", placeholder: "Your name" });
-  const to = h("input", { id: "gift-to", maxlength: NAME_MAX, required: true, autocomplete: "off", placeholder: "Their name" });
-  const note = h("textarea", { id: "gift-note", maxlength: NOTE_MAX, rows: 4, placeholder: "Optional. It stays tucked in the envelope until they open it." });
+  const draft = S.giftDraft && S.giftDraft.m === m.full_id ? S.giftDraft : null;
+  let theme = themeOf(draft ? draft.th : readPref("giftTheme"));
+  const lastSign = {};   // remembers the sign-off picked for each theme while you flip between them
+  if (draft) lastSign[theme] = draft.s;
+
+  // the editable card: every field is written in place, in the card's handwriting
+  const ruler = document.createElement("canvas").getContext("2d");
+  const fit = (el, ph) => {   // size a name field to its text, so the comma sits right after the name
+    const cs = getComputedStyle(el);
+    ruler.font = `${cs.fontWeight} ${cs.fontSize} ${cs.fontFamily}`;
+    el.style.width = `${Math.ceil(ruler.measureText(el.value || ph).width) + 5}px`;
+  };
+  const to = h("input", { class: "gc-to", maxlength: NAME_MAX, autocomplete: "off", placeholder: "Their name", "aria-label": "To (their name)" });
+  const from = h("input", { class: "gc-from", maxlength: NAME_MAX, autocomplete: "given-name", placeholder: "Your name", "aria-label": "From (your name)" });
+  const note = h("textarea", { class: "gc-note", maxlength: NOTE_MAX, rows: 3, placeholder: "Write a little note… (optional, it stays hidden until they open the envelope)", "aria-label": "A little note" });
+  const sign = h("select", { class: "gc-sign", "aria-label": "Sign-off" });
+  to.value = draft ? draft.t : "";
+  from.value = draft ? draft.f : (readPref("giftFrom") || "");
+  note.value = draft ? draft.n : "";
+  const grow = () => { note.style.height = "auto"; note.style.height = `${Math.max(90, note.scrollHeight)}px`; };
+  [to, from].forEach((el) => el.addEventListener("input", () => fit(el, el.placeholder)));
+
+  const art = h("span", { class: "gc-art" });
+  const card = h("div", { class: "gift-note editing" },
+    h("span", { class: "gift-twine", "aria-hidden": "true" }),
+    h("div", { class: "gift-card-inner" }, art,
+      h("p", { class: "gift-to" }, to, h("span", { "aria-hidden": "true" }, ",")),
+      note,
+      h("p", { class: "gift-sign" }, sign),
+      h("p", { class: "gift-from" }, from)));
+
+  const fillSigns = () => {
+    const keep = signFor(theme, lastSign[theme] || (theme === themeOf(readPref("giftTheme")) ? readPref("giftSign") : null));
+    sign.replaceChildren(...THEMES[theme].signs.map((k) => h("option", { value: k }, SIGNOFF[k])));
+    sign.value = keep;
+    sign.closest(".gift-sign").classList.toggle("is-none", keep === "none");
+  };
+  sign.addEventListener("change", () => { lastSign[theme] = sign.value; sign.closest(".gift-sign").classList.toggle("is-none", sign.value === "none"); });
+  const setTheme = (k) => {
+    theme = k;
+    card.className = `gift-note editing theme-${k}`;
+    art.replaceChildren(cardArt(k));
+    fillSigns();
+  };
+
+  const chips = h("div", { class: "chips gift-themes", role: "radiogroup", "aria-label": "Who's it for?" },
+    Object.entries(THEMES).map(([k, t]) => h("label", {},
+      h("input", { type: "radio", name: "gift-theme", value: k, checked: k === theme, onchange: () => setTheme(k) }),
+      h("span", {}, t.label))));
+
   const count = h("span", { class: "gift-count" });
-  const updateCount = () => { const n = Array.from(note.value).length; count.textContent = `${n} / ${NOTE_MAX}`; count.classList.toggle("near", n > NOTE_MAX - 40); };
-  note.addEventListener("input", updateCount);
-  from.value = S.giftDraft && S.giftDraft.m === m.full_id ? S.giftDraft.f : (readPref("giftFrom") || "");
-  if (S.giftDraft && S.giftDraft.m === m.full_id) { to.value = S.giftDraft.t; note.value = S.giftDraft.n; }
-  updateCount();
+  const updateCount = () => { const n = Array.from(note.value).length; count.textContent = n ? `${n} / ${NOTE_MAX}` : ""; count.classList.toggle("near", n > NOTE_MAX - 40); };
+  note.addEventListener("input", () => { updateCount(); grow(); });
   const err = h("p", { class: "gift-err", role: "alert" });
 
   const form = h("form", { class: "gift-form", novalidate: true },
     h("p", { class: "hand gift-kicker" }, "Send it sealed"),
-    h("h2", { id: "gift-title" }, "Send with a note"),
+    h("h2", { id: "gift-title" }, "Write them a card"),
     h("p", { class: "gift-mission" }, svg(packIcon(pack), 18), h("span", {}, h("b", {}, m.name), ` · ${pack.name}`)),
-    h("div", { class: "gift-names" },
-      field("gift-from", "From", from),
-      field("gift-to", "To", to)),
-    field("gift-note", "A little note", note, count),
+    h("p", { class: "gift-label" }, "Who's it for?"),
+    chips,
+    h("div", { class: "gift-desk" }, card, count),
     err,
     h("div", { class: "gift-actions" },
       h("button", { type: "submit", class: "btn primary" }, svg(ICON.mail, 20), "Seal it"),
@@ -333,20 +402,34 @@ function openGiftForm(m) {
 
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
-    const g = cleanGift({ m: m.full_id, f: from.value, t: to.value, n: note.value });
-    if (!g.f || !g.t) { err.textContent = !g.f ? "Add your name so they know who it's from." : "Add their name for the envelope."; (!g.f ? from : to).focus(); return; }
+    const g = cleanGift({ m: m.full_id, f: from.value, t: to.value, n: note.value, th: theme, s: sign.value });
+    if (!g.t || !g.f) {
+      err.textContent = !g.t ? "Who's it for? Write their name at the top of the card." : "Sign your name at the bottom so they know who it's from.";
+      (!g.t ? to : from).focus(); return;
+    }
     err.textContent = "";
-    writePref("giftFrom", g.f);
+    writePref("giftFrom", g.f); writePref("giftTheme", g.th); writePref("giftSign", g.s);
     S.giftDraft = g;
-    showGiftLink(m, g, giftUrl(await packGift(g)));
+    sealGift(m, g, giftUrl(await packGift(g)));
   });
 
+  setTheme(theme);
+  updateCount();
   body.replaceChildren(form);
   if (!d.open) d.showModal();
-  (from.value ? to : from).focus();
+  grow();
+  [to, from].forEach((el) => fit(el, el.placeholder));
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => [to, from].forEach((el) => fit(el, el.placeholder)));
+  (to.value ? (from.value ? note : from) : to).focus();
 }
-function showGiftLink(m, g, url) {
+
+// the card slides into the envelope, the flap closes, it flips to the addressed front, then the link
+function sealGift(m, g, url) {
   const d = $("#gift-dialog"), body = $("#gift-body");
+  const env = envelope({ title: `Sealed for ${g.t}.`, sub: g.n ? "Your note is tucked inside." : null, to: g.t, from: g.f });
+  env.classList.add("sealing", "flip", "flap", "card-out", "still");
+  env.querySelector(".env-card").replaceChildren(h("div", { class: "env-note" }, giftNote(g)));
+
   const box = h("input", { class: "gift-link", readonly: true, "aria-label": "Your gift link", value: url, onfocus: (e) => e.target.select() });
   const copy = h("button", { type: "button", class: "btn primary" }, svg(ICON.link, 20), "Copy link");
   copy.addEventListener("click", async () => {
@@ -357,19 +440,37 @@ function showGiftLink(m, g, url) {
   if (share) share.addEventListener("click", async () => {
     try { await navigator.share({ title: "An AmbleBee mission", text: "You've got mail from AmbleBee. Open the envelope:", url }); } catch (e) { /* closed the sheet */ }
   });
-  body.replaceChildren(h("div", { class: "gift-done" },
-    h("p", { class: "hand gift-kicker" }, "Sealed and stamped"),
-    h("h2", { id: "gift-title" }, `Ready for ${g.t}`),
+  const done = h("div", { class: "gift-done", hidden: true },
     h("p", { class: "gift-lede" }, g.n
-      ? "Send this link however you like. Your names are on the envelope, and the note stays tucked inside until they open it."
-      : "Send this link however you like. Your names are on the envelope, and the mission stays a surprise until they open it."),
+      ? `Send ${g.t} this link however you like. Your names are on the envelope; the note and the mission stay inside until they open it.`
+      : `Send ${g.t} this link however you like. Your names are on the envelope; the mission stays a surprise until they open it.`),
     box,
     h("div", { class: "gift-actions" }, copy, share,
       h("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, "Preview")),
     h("div", { class: "gift-actions small" },
-      h("button", { type: "button", class: "linkish", onclick: () => openGiftForm(m) }, "Edit the note"),
-      h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Done"))));
-  copy.focus();
+      h("button", { type: "button", class: "linkish", onclick: () => openGiftForm(m) }, "Edit the card"),
+      h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Done")));
+  const kicker = h("p", { class: "hand gift-kicker" }, "Sealing it up…");
+  const stage = h("div", { class: "gift-seal" }, kicker, h("h2", { id: "gift-title", class: "sr" }, `Sealed for ${g.t}`), h("div", { class: "seal-stage" }, env), done);
+  body.replaceChildren(stage);
+  body.scrollTop = 0;
+
+  const finish = () => {
+    env.classList.remove("still", "card-out", "flap", "flip");
+    stage.classList.add("sealed-up");
+    kicker.textContent = "Sealed and stamped";
+    done.hidden = false;
+    copy.focus();
+  };
+  if (REDUCED()) { finish(); return; }
+  const fitCard = () => { const c = env.querySelector(".env-card"), n = c.querySelector(".gift-note"); if (n) c.firstChild.style.transform = `scale(${Math.min(1, (c.clientWidth - 16) / n.offsetWidth)})`; };
+  fitCard();
+  env.getBoundingClientRect();
+  env.classList.remove("still");
+  setTimeout(() => env.classList.remove("card-out"), 350);
+  setTimeout(() => env.classList.remove("flap"), 1050);
+  setTimeout(() => { env.classList.remove("flip"); stage.classList.add("sealed-up"); }, 1500);
+  setTimeout(finish, 2100);
 }
 
 // ---- home teaser + the reveal view ---------------------------------------------------------------
