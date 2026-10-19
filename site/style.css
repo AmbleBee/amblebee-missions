@@ -598,3 +598,15 @@ body.revealing main > :not(#reveal) { display: none !important; }
   .gift-to, .gift-body, .gift-sign, .gift-from, .gift-note.editing .gc-note { font-size: 1.22rem; }
   .gift-card-inner { padding: 14px 16px 10px 20px; }
 }
+
+/* ---- arriving from a shared or gift link: show only an envelope-shaped placeholder until the letter is ready ---- */
+html.arriving main > :not(#reveal), html.arriving .foot, html.arriving .reveal-head,
+html.arriving #reveal-actions, html.arriving #reveal-adjust { display: none !important; }
+html.arriving #reveal { display: block; }
+html.arriving #reveal-slot:empty::before {
+  content: ""; display: block; width: 100%; max-width: 560px; aspect-ratio: 1.5 / 1; margin: 70px auto 0;
+  border-radius: 16px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line), 0 14px 22px rgba(90, 62, 43, .16);
+  animation: arrivepulse 1.4s ease-in-out infinite alternate;
+}
+@keyframes arrivepulse { from { opacity: .55; } to { opacity: .9; } }
+@media (max-width: 560px) { html.arriving #reveal-slot:empty::before { aspect-ratio: 1.15 / 1; margin-top: 60px; } }

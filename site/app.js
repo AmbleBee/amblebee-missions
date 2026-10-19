@@ -909,6 +909,7 @@ async function start() {
     data = await r.json();
   } catch (e) {
     $("#ticket-slot").replaceChildren(h("div", { class: "empty" }, h("p", { class: "hand" }, "The missions didn't load."), "Try refreshing the page."));
+    document.documentElement.classList.remove("arriving");
     return;
   }
   S.catalog = data;
@@ -985,6 +986,7 @@ async function start() {
   renderWithin();
   renderBrowse();
   renderTeaser();
-  route();
+  await route();
+  document.documentElement.classList.remove("arriving");   // the letter (or home page) is ready; see index.html
 }
 start();

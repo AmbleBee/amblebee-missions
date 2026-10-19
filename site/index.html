@@ -9,6 +9,16 @@
 <meta property="og:title" content="AmbleBee Missions">
 <meta property="og:description" content="Date and adventure ideas to get you out the door together.">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
+<script>
+  /* Opening a shared or gift link: hide the home page before it's drawn, so the letter shows first.
+     app.js removes this once the letter is ready (or after a few seconds, just in case). */
+  (function () {
+    if (!/(?:^#|&)(gift|mission)=/.test(location.hash)) return;
+    var d = document.documentElement;
+    d.classList.add("arriving");
+    setTimeout(function () { d.classList.remove("arriving"); }, 6000);
+  })();
+</script>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
