@@ -731,16 +731,17 @@ async function saveMissionImage(m, gift, btn) {
     const blob = await new Promise((res) => canvas.toBlob(res, "image/png"));
     const name = `amblebee-${String(m.id || m.full_id || "mission").replace(/[^a-z0-9-]+/gi, "-")}.png`;
     const file = new File([blob], name, { type: "image/png" });
-    // phones: the share sheet has "Save Image" (camera roll). Computers: a normal download.
-    const touch = window.matchMedia && matchMedia("(pointer: coarse)").matches;
-    if (touch && navigator.canShare && navigator.canShare({ files: [file] })) {
+    // iPhone/iPad: the share sheet has "Save Image", which puts it in Photos.
+    // Android and computers: a normal download (on Android, Google Photos shows it under Library > Download).
+    const ios = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    if (ios && navigator.canShare && navigator.canShare({ files: [file] })) {
       try { await navigator.share({ files: [file], title: m.name }); label.textContent = before; return; }
       catch (e) { if (e && e.name === "AbortError") { label.textContent = before; return; } }
     }
     const a = h("a", { href: URL.createObjectURL(blob), download: name });
     document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(a.href), 4000);
-    label.textContent = "Saved";
+    label.textContent = "Saved to Downloads";
     setTimeout(() => { label.textContent = before; }, 2200);
   } catch (e) {
     label.textContent = "Couldn't save, try again";
