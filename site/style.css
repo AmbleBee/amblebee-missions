@@ -457,3 +457,79 @@ body.revealing main > :not(#reveal) { display: none !important; }
 }
 .reveal-head, #reveal-actions, #reveal-adjust { transition: opacity .3s ease .25s; }
 .grow-wait { opacity: 0; transition: none !important; }
+
+/* ---- gift links: the "Send with a note" form ---- */
+#gift-dialog { width: min(540px, calc(100vw - 24px)); }
+#gift-dialog form.gift-form { display: block; margin: 0; }   /* undo the generic "dialog form" rule */
+.gift-sheet {
+  background: var(--paper); color: var(--walnut); border-radius: 24px; padding: 24px 26px 22px;
+  box-shadow: inset 0 0 0 2px var(--line), var(--shadow); max-height: calc(100vh - 40px); overflow: auto;
+}
+.gift-sheet h2 { font-size: 1.6rem; margin: 0 0 10px; }
+.gift-kicker { font-size: 1.4rem; }
+.gift-mission {
+  display: flex; align-items: center; gap: 8px; margin: 0 0 4px; padding: 8px 12px; border-radius: 12px;
+  background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; font-size: .95rem;
+}
+.gift-mission svg { flex-shrink: 0; }
+.gift-names { display: grid; grid-template-columns: 1fr 1fr; gap: 0 12px; }
+.gift-field label { display: block; margin: 14px 0 6px; font-weight: 800; color: var(--ink); }
+.gift-field input, .gift-field textarea, .gift-link {
+  width: 100%; min-height: 48px; padding: 10px 14px; border: 0; border-radius: 14px;
+  background: var(--linen); color: var(--ink); box-shadow: inset 0 0 0 2px var(--line-strong);
+  font: 700 1rem var(--body);
+}
+.gift-field textarea { display: block; min-height: 112px; resize: vertical; font: 700 1.3rem/1.35 var(--hand); }
+.gift-field input::placeholder, .gift-field textarea::placeholder { color: var(--walnut-soft); font-weight: 600; opacity: .8; }
+.gift-field textarea::placeholder { font: 600 1rem/1.4 var(--body); }
+.gift-field input:focus-visible, .gift-field textarea:focus-visible, .gift-link:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+.gift-count { display: block; margin-top: 4px; text-align: right; font-size: .82rem; font-weight: 700; color: var(--walnut-soft); }
+.gift-count.near { color: #B5853F; }
+.gift-err { margin: 12px 0 0; color: #A4482F; font-weight: 800; }
+.gift-err:empty { display: none; }
+.gift-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 18px; }
+.gift-actions.small { margin-top: 6px; }
+.gift-lede { margin: 0; }
+.gift-link { margin-top: 16px; font-size: .88rem; text-overflow: ellipsis; }
+@media (prefers-color-scheme: dark) { .gift-err { color: #E59A7F; } }
+@media (max-width: 560px) {
+  .gift-sheet { padding: 20px 18px; }
+  .gift-names { grid-template-columns: 1fr; }
+  .gift-actions .btn { flex: 1 1 100%; }
+}
+
+/* ---- gift links: the little florist-style card the note is written on ---- */
+.gift-note {
+  position: relative; z-index: 3; width: min(320px, 86%); margin: 52px auto -16px; padding: 7px;
+  background: var(--honey-tint); border-radius: 10px;
+  box-shadow: inset 0 0 0 2px var(--honey), 0 12px 20px rgba(90, 62, 43, .2);
+  transform: rotate(-2.2deg);
+  animation: notein .55s cubic-bezier(.2, .8, .2, 1) .55s both;
+}
+.gift-card-inner {
+  position: relative; padding: 16px 22px 12px 24px; border-radius: 6px; border: 1.5px dashed var(--sage);
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(to bottom, transparent 0 29px, rgba(163, 177, 138, .38) 29px 30px);
+  background-position: 0 16px; background-origin: content-box; background-clip: padding-box;
+}
+.gift-note::before {   /* the punched hole */
+  content: ""; position: absolute; z-index: 2; left: 15px; top: 15px; width: 11px; height: 11px; border-radius: 50%;
+  background: var(--oat); box-shadow: inset 0 0 0 2px var(--honey), inset 0 2px 2px rgba(90, 62, 43, .25);
+}
+.gift-twine {
+  position: absolute; z-index: 3; left: 2px; top: -40px; width: 64px; height: 62px; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 62'%3E%3Cg fill='none' stroke-linecap='round'%3E%3Cpath d='M18.5 60 C8 40 22 26 12 3 M18.5 60 C26 40 44 34 56 8' stroke='%23B5853F' stroke-width='2.4'/%3E%3Cpath d='M18.5 60 C8 40 22 26 12 3 M18.5 60 C26 40 44 34 56 8' stroke='%23F6E6C6' stroke-width='1' stroke-dasharray='2 4'/%3E%3C/g%3E%3C/svg%3E") no-repeat;
+}
+.gift-bee { position: absolute; right: 8px; top: 6px; transform: rotate(8deg); opacity: .95; }
+.gift-to, .gift-body, .gift-from { margin: 0; font: 700 1.3rem/30px var(--hand); }
+.gift-to { color: var(--sage-deep); padding-right: 30px; }
+.gift-body { color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; }
+.gift-from { color: var(--walnut-soft); text-align: right; }
+@keyframes notein {
+  from { opacity: 0; transform: translateY(16px) rotate(-7deg) scale(.92); }
+  to { opacity: 1; transform: rotate(-2.2deg); }
+}
+@media (max-width: 560px) {
+  .gift-note { width: min(300px, 92%); margin: 46px auto -12px; }
+  .gift-to, .gift-body, .gift-from { font-size: 1.22rem; }
+}

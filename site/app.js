@@ -17,6 +17,8 @@ const L = {
   check: { hours: "opening hours", tickets: "tickets", reservation: "a reservation", seasonal: "if it's open this season", conditions: "weather and trail conditions" },
   who: { solo: "just you", friends: "friends", family: "family", kids: "kids" },
 };
+const NAME_MAX = 30;    // "From" and "To" on a gift link
+const NOTE_MAX = 400;   // the hidden note
 const NEAR_MAX = 24;
 const WITHIN = { mi: [5, 15, 30, 60, 100], km: [10, 25, 50, 100, 150] };
 const M_PER = { mi: 1609.344, km: 1000 };
@@ -216,10 +218,15 @@ function ticket(m, { titleId } = {}) {
 }
 
 function actions(m, { withRoll } = {}) {
-  const shareBtn = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, shareBtn) }, svg(ICON.share, 20), "Share this mission");
   return h("div", { class: "ticket-actions" },
     withRoll ? h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.mail, 22), "Open another") : null,
-    shareBtn);
+    shareButtons(m));
+}
+// two ways to share: a plain link, or a sealed "gift" link with names and a hidden note
+function shareButtons(m) {
+  const plain = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, plain) }, svg(ICON.share, 20), "Share link");
+  const gift = h("button", { type: "button", class: "btn", onclick: () => openGiftForm(m) }, svg(ICON.mail, 20), "Send with a note");
+  return [plain, gift];
 }
 async function shareMission(m, btn) {
   const url = `${location.origin}${location.pathname}#mission=${encodeURIComponent(m.full_id)}`;
@@ -231,6 +238,138 @@ async function shareMission(m, btn) {
     if (e && e.name === "AbortError") return;
     prompt("Copy this link:", url);
   }
+}
+
+// ---- gift links ----------------------------------------------------------------------------------
+// A gift link carries the mission, both names and the note in the part after "#", packed and encoded:
+//   amblebee.com/#gift=1hY5BDoIwEEX3nKLp...
+// Browsers never send the "#" part to a server, so GitHub and link-preview bots never see it, and the
+// names and note aren't readable in the link. It is hidden, not encrypted: anyone who knows how could
+// decode it. The note is only ever shown as plain text (never as HTML), because anyone can craft a link.
+const b64url = {
+  enc(bytes) { let s = ""; for (const b of bytes) s += String.fromCharCode(b); return btoa(s).replace(/\+/g, "-").replace(/\//g, "_").replace(/=+$/, ""); },
+  dec(str) { let s = str.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; return Uint8Array.from(atob(s), (c) => c.charCodeAt(0)); },
+};
+async function squash(bytes, Stream) {
+  const out = new Blob([bytes]).stream().pipeThrough(new Stream("deflate-raw"));
+  return new Uint8Array(await new Response(out).arrayBuffer());
+}
+// format: one version character, then base64url. "1" = deflate-raw compressed JSON, "0" = plain JSON bytes.
+async function packGift(g) {
+  const raw = new TextEncoder().encode(JSON.stringify(g));
+  let best = "0" + b64url.enc(raw);
+  if (typeof CompressionStream === "function") {
+    try { const z = "1" + b64url.enc(await squash(raw, CompressionStream)); if (z.length <= best.length) best = z; } catch (e) { /* plain is fine */ }
+  }
+  return best;
+}
+async function unpackGift(code) {
+  try {
+    const body = b64url.dec(code.slice(1));
+    let bytes;
+    if (code[0] === "1") {
+      if (typeof DecompressionStream !== "function") return null;
+      bytes = await squash(body, DecompressionStream);
+    } else if (code[0] === "0") bytes = body;
+    else return null;
+    return cleanGift(JSON.parse(new TextDecoder().decode(bytes)));
+  } catch (e) { return null; }
+}
+// trim to limits (counting emoji as one character) and drop control characters, whatever the link says
+function clip(v, max, keepLines) {
+  if (typeof v !== "string") return "";
+  const bad = keepLines ? /[\u0000-\u0009\u000B-\u001F\u007F]/g : /[\u0000-\u001F\u007F]/g;
+  return Array.from(v.replace(/\r\n?/g, "\n").replace(bad, "").trim()).slice(0, max).join("").trim();
+}
+function cleanGift(g) {
+  if (!g || typeof g !== "object") return null;
+  const out = { m: clip(g.m, 160), f: clip(g.f, NAME_MAX), t: clip(g.t, NAME_MAX), n: clip(g.n, NOTE_MAX, true).replace(/\n{3,}/g, "\n\n") };
+  return out.m ? out : null;
+}
+const giftCode = () => { const g = /(?:^#|&)gift=([A-Za-z0-9_-]+)/.exec(location.hash); return g ? g[1] : null; };
+const giftUrl = (code) => `${location.origin}${location.pathname}#gift=${code}`;
+
+// the little card the note is written on (shown only after the envelope is opened)
+function giftNote(g) {
+  const bee = h("span", { class: "gift-bee", "aria-hidden": "true" });
+  bee.innerHTML = `<svg viewBox="0 0 28 26" width="34" height="32">${BEE}</svg>`;
+  return h("aside", { class: "gift-note", "aria-label": `A note from ${g.f || "a friend"}` },
+    h("span", { class: "gift-twine", "aria-hidden": "true" }),
+    h("div", { class: "gift-card-inner" },
+      bee,
+      g.t ? h("p", { class: "gift-to" }, `${g.t},`) : null,
+      h("p", { class: "gift-body" }, g.n),
+      h("p", { class: "gift-from" }, `xo, ${g.f || "a friend"}`)));
+}
+
+// the "Send with a note" form, then the sealed link to copy
+function openGiftForm(m) {
+  const d = $("#gift-dialog"), body = $("#gift-body");
+  const pack = S.packById[m.pack] || { name: m.pack };
+  const field = (id, label, input, extra) => h("div", { class: "gift-field" }, h("label", { for: id }, label), input, extra || null);
+  const from = h("input", { id: "gift-from", maxlength: NAME_MAX, required: true, autocomplete: "given-name", placeholder: "Your name" });
+  const to = h("input", { id: "gift-to", maxlength: NAME_MAX, required: true, autocomplete: "off", placeholder: "Their name" });
+  const note = h("textarea", { id: "gift-note", maxlength: NOTE_MAX, rows: 4, placeholder: "Optional. It stays tucked in the envelope until they open it." });
+  const count = h("span", { class: "gift-count" });
+  const updateCount = () => { const n = Array.from(note.value).length; count.textContent = `${n} / ${NOTE_MAX}`; count.classList.toggle("near", n > NOTE_MAX - 40); };
+  note.addEventListener("input", updateCount);
+  from.value = S.giftDraft && S.giftDraft.m === m.full_id ? S.giftDraft.f : (readPref("giftFrom") || "");
+  if (S.giftDraft && S.giftDraft.m === m.full_id) { to.value = S.giftDraft.t; note.value = S.giftDraft.n; }
+  updateCount();
+  const err = h("p", { class: "gift-err", role: "alert" });
+
+  const form = h("form", { class: "gift-form", novalidate: true },
+    h("p", { class: "hand gift-kicker" }, "Send it sealed"),
+    h("h2", { id: "gift-title" }, "Send with a note"),
+    h("p", { class: "gift-mission" }, svg(packIcon(pack), 18), h("span", {}, h("b", {}, m.name), ` · ${pack.name}`)),
+    h("div", { class: "gift-names" },
+      field("gift-from", "From", from),
+      field("gift-to", "To", to)),
+    field("gift-note", "A little note", note, count),
+    err,
+    h("div", { class: "gift-actions" },
+      h("button", { type: "submit", class: "btn primary" }, svg(ICON.mail, 20), "Seal it"),
+      h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Cancel")));
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const g = cleanGift({ m: m.full_id, f: from.value, t: to.value, n: note.value });
+    if (!g.f || !g.t) { err.textContent = !g.f ? "Add your name so they know who it's from." : "Add their name for the envelope."; (!g.f ? from : to).focus(); return; }
+    err.textContent = "";
+    writePref("giftFrom", g.f);
+    S.giftDraft = g;
+    showGiftLink(m, g, giftUrl(await packGift(g)));
+  });
+
+  body.replaceChildren(form);
+  if (!d.open) d.showModal();
+  (from.value ? to : from).focus();
+}
+function showGiftLink(m, g, url) {
+  const d = $("#gift-dialog"), body = $("#gift-body");
+  const box = h("input", { class: "gift-link", readonly: true, "aria-label": "Your gift link", value: url, onfocus: (e) => e.target.select() });
+  const copy = h("button", { type: "button", class: "btn primary" }, svg(ICON.link, 20), "Copy link");
+  copy.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(url); copy.lastChild.textContent = "Copied!"; }
+    catch (e) { box.focus(); box.select(); copy.lastChild.textContent = "Press copy on your keyboard"; }
+  });
+  const share = navigator.share ? h("button", { type: "button", class: "btn" }, svg(ICON.share, 20), "Share…") : null;
+  if (share) share.addEventListener("click", async () => {
+    try { await navigator.share({ title: "An AmbleBee mission", text: "You've got mail from AmbleBee. Open the envelope:", url }); } catch (e) { /* closed the sheet */ }
+  });
+  body.replaceChildren(h("div", { class: "gift-done" },
+    h("p", { class: "hand gift-kicker" }, "Sealed and stamped"),
+    h("h2", { id: "gift-title" }, `Ready for ${g.t}`),
+    h("p", { class: "gift-lede" }, g.n
+      ? "Send this link however you like. Your names are on the envelope, and the note stays tucked inside until they open it."
+      : "Send this link however you like. Your names are on the envelope, and the mission stays a surprise until they open it."),
+    box,
+    h("div", { class: "gift-actions" }, copy, share,
+      h("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, "Preview")),
+    h("div", { class: "gift-actions small" },
+      h("button", { type: "button", class: "linkish", onclick: () => openGiftForm(m) }, "Edit the note"),
+      h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Done"))));
+  copy.focus();
 }
 
 // ---- home teaser + the reveal view ---------------------------------------------------------------
@@ -331,16 +470,20 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   S.current = m; S.revealFrom = from;
   document.body.classList.add("revealing");
   $("#reveal").hidden = false;
-  const linked = from === "link";
-  $("#reveal-kicker").textContent = linked ? "A mission, shared with you" : "Your mission";
-  $("#reveal-summary").textContent = linked ? "Someone sent you this one. Open your own any time." : rollSummary();
+  const gift = from === "gift" ? S.gift : null;
+  const linked = from === "link" || !!gift;
+  $("#reveal-kicker").textContent = gift ? `A mission from ${gift.f || "a friend"}` : linked ? "A mission, shared with you" : "Your mission";
+  $("#reveal-summary").textContent = gift ? `Sealed just for ${gift.t || "you"}. Open your own any time.`
+    : linked ? "Someone sent you this one. Open your own any time." : rollSummary();
   $("#reveal-summary").hidden = sealed;
   window.scrollTo({ top: 0 });
   const slot = $("#reveal-slot");
   if (sealed || animate) {
     $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true;
-    const env = envelope({ title: sealed ? "Someone sent you a mission." : "Your next mission is sealed inside.",
-      to: "you", from: sealed ? "a friend" : "AmbleBee", card: m,
+    const env = envelope({
+      title: gift ? `${gift.f || "Someone"} sent you a mission.` : sealed ? "Someone sent you a mission." : "Your next mission is sealed inside.",
+      sub: gift && gift.n ? "There's a note tucked inside." : null,
+      to: gift ? gift.t || "you" : "you", from: gift ? gift.f || "a friend" : sealed ? "a friend" : "AmbleBee", card: m,
       button: sealed ? "Open" : null, onOpen: () => open() });
     const open = () => playOpen(env, () => showReveal(m, { from, growFrom: env.querySelector(".env-card").getBoundingClientRect() }));
     env.classList.add("in-reveal");
@@ -350,11 +493,10 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
     return;
   }
   const t = ticket(m, { titleId: "reveal-title" });
-  slot.replaceChildren(t);
-  const shareBtn = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, shareBtn) }, svg(ICON.share, 20), "Share this mission");
+  slot.replaceChildren(...(gift && gift.n ? [giftNote(gift), t] : [t]));
   $("#reveal-actions").replaceChildren(
     h("button", { type: "button", class: "btn primary", onclick: roll }, svg(ICON.mail, 22), linked ? "Open your own" : "Open another"),
-    shareBtn,
+    ...shareButtons(m),
     h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"));
   $("#reveal-adjust").hidden = linked;
   if (growFrom && growFrom.width && !REDUCED()) growTicket(t, growFrom); else t.classList.add("pop");
@@ -396,7 +538,28 @@ function startOver({ filters = false } = {}) {
   history.replaceState(null, "", location.pathname + location.search);
   route();
 }
-function route() {
+async function route() {
+  // gift links: decode (async), show the sealed envelope once per link, then the ticket + note
+  const code = giftCode();
+  if (code !== S.giftKey) { S.giftKey = code; S.giftP = code ? unpackGift(code) : Promise.resolve(null); }
+  const gift = await S.giftP;
+  if (code !== giftCode()) return;   // the link changed while we were decoding
+  S.gift = gift;
+  if (code) {
+    const gm = gift && S.missions.find((x) => x.full_id === gift.m);
+    if (gm) {
+      if (S.shownGift !== code) { S.shownGift = code; showReveal(gm, { from: "gift", sealed: true }); }
+    } else if (S.shownGift !== code) {
+      S.shownGift = code;
+      showHome();
+      $("#ticket-slot").replaceChildren(envelope({ title: "This letter got lost in the mail.",
+        sub: gift ? "That mission isn't in the catalog anymore. Open one of your own?" : "The link may have been cut off when it was copied. Ask them to send it again, or open your own.",
+        to: "you", button: "Open your own",
+        onOpen: () => { history.replaceState(null, "", location.pathname + location.search); S.shownGift = null; S.giftKey = null; S.giftP = Promise.resolve(null); openFromHome(); } }));
+    }
+    S.booted = true; return;
+  }
+  S.shownGift = null;
   const m = fromHash();
   if (m) {
     if (!revealing() || m !== S.current) {
@@ -691,6 +854,7 @@ async function start() {
     $("#within-select").value = ""; refresh();
   });
   $("#mission-dialog").addEventListener("click", (e) => { if (e.target.id === "mission-dialog") e.target.close(); });
+  $("#gift-dialog").addEventListener("click", (e) => { if (e.target.id === "gift-dialog") e.target.close(); });
   window.addEventListener("popstate", route);
   window.addEventListener("hashchange", route);
   $("#reveal-adjust").addEventListener("click", () => startOver({ filters: true }));
