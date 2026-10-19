@@ -427,8 +427,11 @@ function openGiftForm(m) {
 function sealGift(m, g, url) {
   const d = $("#gift-dialog"), body = $("#gift-body");
   const env = envelope({ title: `Sealed for ${g.t}.`, sub: g.n ? "Your note is tucked inside." : null, to: g.t, from: g.f });
-  env.classList.add("sealing", "flip", "flap", "card-out", "still");
-  env.querySelector(".env-card").replaceChildren(h("div", { class: "env-note" }, giftNote(g)));
+  // same envelope as the one they'll open: the mission ticket goes in first, then the note card on top
+  env.classList.add("sealing", "flip", "flap", "card-out", "note-out", "card-hidden", "note-hidden", "unstamped", "still");
+  env.querySelector(".env-card").replaceChildren(miniTicket(m));
+  const noteCard = h("div", { class: "env-notecard", "aria-hidden": "true" }, giftNote(g));
+  env.querySelector(".env-card").after(noteCard);
 
   const box = h("input", { class: "gift-link", readonly: true, "aria-label": "Your gift link", value: url, onfocus: (e) => e.target.select() });
   const copy = h("button", { type: "button", class: "btn primary" }, svg(ICON.link, 20), "Copy link");
@@ -456,21 +459,31 @@ function sealGift(m, g, url) {
   body.scrollTop = 0;
 
   const finish = () => {
-    env.classList.remove("still", "card-out", "flap", "flip");
+    env.classList.remove("still", "card-out", "note-out", "card-hidden", "note-hidden", "unstamped", "flap", "flip");
     stage.classList.add("sealed-up");
     kicker.textContent = "Sealed and stamped";
     done.hidden = false;
     copy.focus();
   };
   if (REDUCED()) { finish(); return; }
-  const fitCard = () => { const c = env.querySelector(".env-card"), n = c.querySelector(".gift-note"); if (n) c.firstChild.style.transform = `scale(${Math.min(1, (c.clientWidth - 16) / n.offsetWidth)})`; };
-  fitCard();
+  fitMini(env);
+  noteCard.style.setProperty("--ns", String(Math.min(1, (env.clientWidth * 0.62) / 300)));
   env.getBoundingClientRect();
   env.classList.remove("still");
-  setTimeout(() => env.classList.remove("card-out"), 350);
-  setTimeout(() => env.classList.remove("flap"), 1050);
-  setTimeout(() => { env.classList.remove("flip"); stage.classList.add("sealed-up"); }, 1500);
-  setTimeout(finish, 2100);
+  // each piece fades in, holds for a beat so you can see it's the right one, then slides in
+  const PAUSE = 220;
+  const steps = [
+    [60, () => env.classList.remove("card-hidden")],                  // the mission ticket fades in
+    [280 + PAUSE, () => env.classList.remove("card-out")],            // …and slides into the envelope
+    [600, () => env.classList.remove("note-hidden")],                 // the note card fades in
+    [280 + PAUSE, () => env.classList.remove("note-out")],            // …and slides in on top
+    [560, () => env.classList.remove("flap")],                        // the flap folds shut
+    [420, () => { env.classList.remove("unstamped"); env.classList.add("stamped"); }],   // the wax seal is pressed
+    [560, () => { env.classList.remove("flip"); stage.classList.add("sealed-up"); }],    // flips over to the addressed front
+    [560, finish],
+  ];
+  let at = 0;
+  for (const [wait, fn] of steps) { at += wait; setTimeout(fn, at); }
 }
 
 // ---- home teaser + the reveal view ---------------------------------------------------------------
