@@ -243,21 +243,39 @@ function actions(m, { withRoll } = {}) {
     shareButtons(m));
 }
 // two ways to share: a plain link, or a sealed "gift" link with names and a hidden note
+// sharing always starts at the card, so people see the note option; "Share without a note" is at the bottom of it
 function shareButtons(m) {
-  const plain = h("button", { type: "button", class: "btn", onclick: () => shareMission(m, plain) }, svg(ICON.share, 20), "Share link");
-  const gift = h("button", { type: "button", class: "btn", onclick: () => openGiftForm(m) }, svg(ICON.mail, 20), "Send with a note");
-  return [plain, gift];
+  return [h("button", { type: "button", class: "btn", onclick: () => openGiftForm(m) }, svg(ICON.share, 20), "Share this mission")];
 }
-async function shareMission(m, btn) {
-  const url = `${location.origin}${location.pathname}#mission=${encodeURIComponent(m.full_id)}`;
-  try {
-    if (navigator.share) { await navigator.share({ title: m.name, text: m.short, url }); return; }
-    await navigator.clipboard.writeText(url);
-    btn.lastChild.textContent = "Link copied";
-  } catch (e) {
-    if (e && e.name === "AbortError") return;
-    prompt("Copy this link:", url);
-  }
+// link box + Copy / Share… / Preview, used for both kinds of link
+function linkPanel(url) {
+  const box = h("input", { class: "gift-link", readonly: true, "aria-label": "Your link", value: url, onfocus: (e) => e.target.select() });
+  const copy = h("button", { type: "button", class: "btn primary" }, svg(ICON.link, 20), "Copy link");
+  copy.addEventListener("click", async () => {
+    try { await navigator.clipboard.writeText(url); copy.lastChild.textContent = "Copied!"; }
+    catch (e) { box.focus(); box.select(); copy.lastChild.textContent = "Press copy on your keyboard"; }
+  });
+  const share = navigator.share ? h("button", { type: "button", class: "btn" }, svg(ICON.share, 20), "Share…") : null;
+  if (share) share.addEventListener("click", async () => {
+    try { await navigator.share({ title: "An AmbleBee mission", text: "You've got mail from AmbleBee. Open the envelope:", url }); } catch (e) { /* closed the sheet */ }
+  });
+  return { box, copy, row: h("div", { class: "gift-actions" }, copy, share,
+    h("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, "Preview")) };
+}
+// no names, no note: still a sealed envelope (from "a friend") with the mission inside, and the link stays unreadable
+async function sharePlain(m) {
+  const d = $("#gift-dialog"), body = $("#gift-body");
+  const url = giftUrl(await packGift(cleanGift({ m: m.full_id })));
+  const p = linkPanel(url);
+  body.replaceChildren(h("div", { class: "gift-done" },
+    h("p", { class: "hand gift-kicker" }, "Just the mission"),
+    h("h2", { id: "gift-title" }, "Here's your link"),
+    h("p", { class: "gift-lede" }, "No names and no note. They'll get a sealed envelope from \u201ca friend\u201d with this mission inside."),
+    p.box, p.row,
+    h("div", { class: "gift-actions small" },
+      h("button", { type: "button", class: "linkish", onclick: () => openGiftForm(m) }, "Add a card after all"),
+      h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Done"))));
+  p.copy.focus();
 }
 
 // ---- gift links ----------------------------------------------------------------------------------
@@ -398,6 +416,7 @@ function openGiftForm(m) {
     err,
     h("div", { class: "gift-actions" },
       h("button", { type: "submit", class: "btn primary" }, svg(ICON.mail, 20), "Seal it"),
+      h("button", { type: "button", class: "btn", onclick: () => sharePlain(m) }, "Share without a note"),
       h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Cancel")));
 
   form.addEventListener("submit", async (e) => {
@@ -433,23 +452,12 @@ function sealGift(m, g, url) {
   const noteCard = h("div", { class: "env-notecard", "aria-hidden": "true" }, giftNote(g));
   env.querySelector(".env-card").after(noteCard);
 
-  const box = h("input", { class: "gift-link", readonly: true, "aria-label": "Your gift link", value: url, onfocus: (e) => e.target.select() });
-  const copy = h("button", { type: "button", class: "btn primary" }, svg(ICON.link, 20), "Copy link");
-  copy.addEventListener("click", async () => {
-    try { await navigator.clipboard.writeText(url); copy.lastChild.textContent = "Copied!"; }
-    catch (e) { box.focus(); box.select(); copy.lastChild.textContent = "Press copy on your keyboard"; }
-  });
-  const share = navigator.share ? h("button", { type: "button", class: "btn" }, svg(ICON.share, 20), "Share…") : null;
-  if (share) share.addEventListener("click", async () => {
-    try { await navigator.share({ title: "An AmbleBee mission", text: "You've got mail from AmbleBee. Open the envelope:", url }); } catch (e) { /* closed the sheet */ }
-  });
+  const { box, copy, row } = linkPanel(url);
   const done = h("div", { class: "gift-done", hidden: true },
     h("p", { class: "gift-lede" }, g.n
       ? `Send ${g.t} this link however you like. Your names are on the envelope; the note and the mission stay inside until they open it.`
       : `Send ${g.t} this link however you like. Your names are on the envelope; the mission stays a surprise until they open it.`),
-    box,
-    h("div", { class: "gift-actions" }, copy, share,
-      h("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, "Preview")),
+    box, row,
     h("div", { class: "gift-actions small" },
       h("button", { type: "button", class: "linkish", onclick: () => openGiftForm(m) }, "Edit the card"),
       h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Done")));
