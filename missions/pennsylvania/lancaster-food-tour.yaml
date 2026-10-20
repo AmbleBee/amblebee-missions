@@ -1,0 +1,31 @@
+number: 9
+name: Lancaster Food Tour
+mode: both
+who: [friends, family]
+place:
+  name: Lancaster Central Market
+  area: Penn Square, Lancaster
+  address: 23 N Market St, Lancaster, PA 17603
+  coords: [40.03860, -76.30610]  # APPROX: set at the market entrance before publishing
+  website: https://centralmarketlancaster.com
+short: Eat your way through Lancaster, starting at the oldest farmers' market in the country.
+description: >
+  Start at Central Market, America's oldest farmers' market building, where
+  farmers have sold food since the 1730s. Each buy one thing the other has never
+  tried (whoopie pies, soft pretzels, chow-chow, shoofly pie) and share it all,
+  then keep tasting your way through downtown. The market is only open a few
+  mornings a week. Want a guide? Walking food tours run from downtown too.
+steps:
+  - The market's front doors
+  - Your first bite
+  - The strangest thing you tried
+  - Your favorite bite of the day
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [hours]
+tags: [food, market, pennsylvania-dutch, sweets, walking]

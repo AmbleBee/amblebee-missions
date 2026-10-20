@@ -1,0 +1,34 @@
+number: 7
+name: Phipps Conservatory
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Phipps Conservatory and Botanical Gardens
+  area: Schenley Park, Pittsburgh
+  address: 1 Schenley Park, Pittsburgh, PA 15213
+  coords: [40.43895, -79.94771]  # APPROX: set at the main entrance before publishing
+  website: https://www.phipps.conservatory.org
+short: Wander a Victorian glasshouse full of flowers. Find the glass art hidden among the plants.
+description: >
+  Walk through the rooms of a big Victorian glass conservatory: a palm court, a
+  fern room, orchids, a desert room and a tropical forest, with Chihuly glass
+  sculptures tucked among the plants. The seasonal flower shows change every few
+  months, and in winter there's a model garden railroad. A warm escape on a cold
+  Pittsburgh day.
+for_kids:
+  short: Glasshouse hunt! Find each thing.
+  steps:
+    - A giant palm tree
+    - A cactus
+    - A glass sculpture
+    - A flower taller than you
+    - A selfie in the jungle!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [gardens, flowers, greenhouse, glass-art, rainy-day]

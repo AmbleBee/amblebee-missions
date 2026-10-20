@@ -1,0 +1,30 @@
+number: 3
+name: Wander German Village
+mode: both
+who: [solo, friends]
+place:
+  name: German Village
+  area: German Village, Columbus
+  address: 588 S 3rd St, Columbus, OH 43215
+  coords: [39.94970, -82.99580]  # APPROX: set at the German Village visitor center (Meeting Haus) before publishing
+  website: https://germanvillage.com
+short: Walk the brick streets of German Village. Get lost in the 32-room bookstore.
+description: >
+  A neighborhood of tiny brick cottages, brick sidewalks and hidden gardens,
+  built by German immigrants in the 1800s. Wander the side streets, stop in
+  The Book Loft (a maze of more than thirty rooms of books) and pick a book for
+  each other, then rest in Schiller Park. Find a German bakery or a beer hall
+  for a snack on the way back.
+steps:
+  - The prettiest brick street
+  - The book they picked for you
+  - Schiller Park
+  - Your snack
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [walking, history, bookstore, neighborhood, columbus]

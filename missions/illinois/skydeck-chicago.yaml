@@ -1,0 +1,32 @@
+number: 5
+name: Step Out on the Skydeck
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Skydeck Chicago, Willis Tower
+  area: The Loop, Chicago
+  address: 233 S Wacker Dr, Chicago, IL 60606
+  coords: [41.87890, -87.63590]  # APPROX: set at the Skydeck entrance on Jackson Blvd before publishing
+  website: https://theskydeck.com
+short: Step out into a glass box 103 floors up. Look straight down if you dare.
+description: >
+  Ride to the 103rd floor of Willis Tower and step into The Ledge, glass boxes
+  that stick out from the side of the building with nothing under your feet but
+  air. On a clear day you can see across the lake to other states. Go near
+  sunset to watch the city lights come on. Buy timed tickets ahead.
+for_kids:
+  short: Sky high! Find each thing.
+  steps:
+    - The tiny cars way down below
+    - The lake
+    - Your feet on the glass floor
+    - A selfie in the sky!
+duration: short
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets, conditions]
+tags: [views, skyscraper, sunset, thrill, chicago]

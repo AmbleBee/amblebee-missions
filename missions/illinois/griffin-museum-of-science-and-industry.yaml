@@ -1,0 +1,34 @@
+number: 3
+name: Griffin Museum of Science and Industry
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Griffin Museum of Science and Industry
+  area: Hyde Park, Chicago
+  address: 5700 S DuSable Lake Shore Dr, Chicago, IL 60637
+  coords: [41.79060, -87.58310]  # APPROX: set at the main entrance before publishing
+  website: https://www.msichicago.org
+short: Walk through a real WWII submarine and a working coal mine under one roof.
+description: >
+  A giant museum full of things you can climb into: a captured World War II
+  U-boat, a coal mine you ride down into, a Boeing 727, a model railroad that
+  fills a room, and a tornado you can stand next to. Each pick the one exhibit
+  you'd want to take home. Some exhibits need an extra timed ticket, and
+  Illinois residents get free days.
+for_kids:
+  short: Science hunt! Find each thing.
+  steps:
+    - A real submarine
+    - A train
+    - An airplane
+    - Something that spins
+    - A selfie with your favorite thing!
+duration: half-day
+effort: moderate
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [museum, science, trains, rainy-day, chicago]

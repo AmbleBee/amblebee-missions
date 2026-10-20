@@ -1,0 +1,30 @@
+number: 4
+name: Stan Hywet Hall and Gardens
+mode: both
+who: [solo, friends, family]
+place:
+  name: Stan Hywet Hall and Gardens
+  area: Akron
+  address: 714 N Portage Path, Akron, OH 44303
+  coords: [41.11860, -81.54860]  # APPROX: set at the visitor entrance before publishing
+  website: https://www.stanhywet.org
+short: Tour a 65-room Tudor mansion, then pick your favorite garden room outside.
+description: >
+  The country estate built by Goodyear's founder: a 65-room Tudor-style manor
+  full of carved wood, hidden nooks and grand halls, surrounded by formal
+  gardens, a long birch allée and an English garden. Each pick the room you'd
+  live in. It's open from spring through fall, and in December the house is
+  decorated for Deck the Hall nights.
+steps:
+  - The room you'd live in
+  - The room they'd live in
+  - Your favorite garden
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: [spring, summer, fall, winter]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets, seasonal]
+tags: [mansion, gardens, history, holiday-lights]

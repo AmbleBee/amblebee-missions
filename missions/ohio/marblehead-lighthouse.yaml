@@ -1,0 +1,33 @@
+number: 2
+name: Lakeside Picnic at Marblehead Lighthouse
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Marblehead Lighthouse State Park
+  area: Marblehead
+  address: 110 Lighthouse Dr, Marblehead, OH 43440
+  coords: [41.53630, -82.71160]  # APPROX: set at the park lot before publishing
+  website: https://marbleheadlighthouseohio.org
+short: Picnic on the rocks by Marblehead Lighthouse, then climb the tower in summer.
+description: >
+  The oldest lighthouse still working on the Great Lakes stands on a rocky
+  point over Lake Erie. Bring a picnic, find a flat rock by the water, and
+  watch the boats. In summer you can climb the tower for a few dollars, and
+  the keeper's house museum next door is free. Stay for sunset if you can.
+for_kids:
+  short: Lighthouse hunt! Find each thing.
+  steps:
+    - The lighthouse
+    - A boat on the lake
+    - A smooth rock
+    - Your picnic
+    - A selfie with the lighthouse!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: any
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [lighthouse, lake-erie, picnic, sunset, free]

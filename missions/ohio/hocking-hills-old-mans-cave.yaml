@@ -1,0 +1,34 @@
+number: 1
+name: Hocking Hills and Old Man's Cave
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Hocking Hills State Park, Old Man's Cave
+  area: Logan
+  address: 19852 OH-664, Logan, OH 43138
+  coords: [39.43520, -82.54010]  # APPROX: set at the Old Man's Cave visitor center lot before publishing
+  website: https://ohiodnr.gov/go-and-do/plan-a-visit/find-a-property/hocking-hills-state-park
+short: Hike the gorge at Old Man's Cave, past two waterfalls and the Devil's Bathtub.
+description: >
+  Follow the one-way loop down into a mossy sandstone gorge: Upper Falls, a
+  stone tunnel, the Sphinx Head rock, the swirling pool called the Devil's
+  Bathtub, Lower Falls, and the huge recess cave a hermit once lived in. It's
+  about a mile and a half with lots of stairs. Wear shoes with grip; the rock
+  is slick when wet, and there's no swimming. Fall color here is beautiful.
+for_kids:
+  short: Gorge hunt! Find each thing.
+  steps:
+    - A waterfall
+    - A big cave
+    - A rock that looks like a face
+    - A stone bridge
+    - A selfie by the falls!
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, waterfalls, caves, fall-color, free]

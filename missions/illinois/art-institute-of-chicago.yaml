@@ -1,0 +1,30 @@
+number: 1
+name: Art Institute of Chicago
+mode: both
+who: [solo, friends, family]
+place:
+  name: Art Institute of Chicago
+  area: The Loop, Chicago
+  address: 111 S Michigan Ave, Chicago, IL 60603
+  coords: [41.87960, -87.62370]  # APPROX: set at the Michigan Ave entrance (the lions) before publishing
+  website: https://www.artic.edu
+short: Say hi to the lions out front, then each find a painting the other has to see.
+description: >
+  One of the great art museums of the world, guarded by two bronze lions on
+  Michigan Avenue. Inside are Seurat's dotted Sunday afternoon, Hopper's
+  Nighthawks, American Gothic and the tiny Thorne Miniature Rooms. Split up for
+  twenty minutes, each find one piece the other has to see, then trade tours.
+  Illinois residents get free days; check the museum's site.
+steps:
+  - The lions out front
+  - The painting you picked
+  - The painting they picked
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [art, museum, rainy-day, chicago]

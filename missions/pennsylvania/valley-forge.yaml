@@ -1,0 +1,33 @@
+number: 5
+name: Walk Around Valley Forge
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Valley Forge National Historical Park
+  area: King of Prussia
+  address: 1400 N Outer Line Dr, King of Prussia, PA 19406
+  coords: [40.09650, -75.42200]  # APPROX: set at the visitor center parking lot before publishing
+  website: https://www.nps.gov/vafo
+short: Walk where Washington's army spent the winter. Find the log huts and the arch.
+description: >
+  Valley Forge is where the Continental Army camped through the hard winter of
+  1777-78. Start with the free film at the visitor center, then walk or bike the
+  loop trail past rebuilt log huts, cannons, the National Memorial Arch and
+  Washington's stone headquarters. The park is free and open every day, and the
+  rolling fields are beautiful for a long walk in any season.
+for_kids:
+  short: Soldier camp hunt! Find each thing.
+  steps:
+    - A little log cabin
+    - A cannon
+    - A big stone arch
+    - A selfie like a soldier!
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [conditions]
+tags: [history, revolutionary-war, walking, biking, free]

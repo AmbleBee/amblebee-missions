@@ -1,0 +1,30 @@
+number: 6
+name: Philadelphia Museum of Art
+mode: both
+who: [solo, friends, family]
+place:
+  name: Philadelphia Museum of Art
+  area: Fairmount, Philadelphia
+  address: 2600 Benjamin Franklin Pkwy, Philadelphia, PA 19130
+  coords: [39.96560, -75.18100]  # APPROX: set at the top of the east steps before publishing
+  website: https://philamuseum.org
+short: Run up the Rocky steps, then find a painting each that you'd hang at home.
+description: >
+  Race (or stroll) up the famous steps, throw your arms up at the top, and look
+  back at the city skyline. Inside, wander one of the biggest art museums in the
+  country, from armor and a whole Japanese teahouse to Van Gogh's sunflowers.
+  Each pick one piece you'd hang at home and show it to the other. Check the
+  museum's site for discounted evening hours.
+steps:
+  - Victory pose at the top of the steps
+  - The skyline from the top
+  - The painting you'd hang at home
+duration: half-day
+effort: moderate
+cost: $$
+setting: either
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours, tickets]
+tags: [art, museum, rocky-steps, views, rainy-day]

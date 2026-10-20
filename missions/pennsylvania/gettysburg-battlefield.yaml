@@ -1,0 +1,31 @@
+number: 1
+name: Travel Back in Time at Gettysburg
+mode: both
+who: [solo, friends, family]
+place:
+  name: Gettysburg National Military Park Museum and Visitor Center
+  area: Gettysburg
+  address: 1195 Baltimore Pike, Gettysburg, PA 17325
+  coords: [39.81370, -77.22750]  # APPROX: set at the visitor center parking lot before publishing
+  website: https://www.nps.gov/gett
+short: Drive the Gettysburg battlefield. Stop wherever the view or a story pulls you in.
+description: >
+  Start at the visitor center, where the museum, film and the huge 360-degree
+  Cyclorama painting set the scene, then follow the self-guided auto tour across
+  the battlefield. The fields, monuments and overlooks are free to visit; the
+  museum takes a ticket. Take turns picking where to pull over, and read each
+  other one plaque out loud.
+steps:
+  - The Cyclorama painting
+  - A monument that catches your eye
+  - The view from a high overlook
+  - The two of you on the battlefield
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets]
+tags: [history, civil-war, monuments, views, road-trip]

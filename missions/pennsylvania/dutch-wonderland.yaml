@@ -1,0 +1,33 @@
+number: 8
+name: Rides at Dutch Wonderland
+mode: adventure
+who: [family, kids]
+place:
+  name: Dutch Wonderland
+  area: Lancaster
+  address: 2249 Lincoln Hwy E, Lancaster, PA 17602
+  coords: [40.04300, -76.23870]  # APPROX: set at the park entrance (the castle) before publishing
+  website: https://www.dutchwonderland.com
+short: Ride everything you can at Dutch Wonderland, the castle park made for little kids.
+description: >
+  A classic family amusement park behind a storybook castle, built for younger
+  kids: gentle coasters, a log flume, a monorail and a summer water park. Pick a
+  ride each and take turns choosing. It's seasonal, from spring through the
+  winter light show in December, with Halloween events in the fall. Buy tickets
+  online ahead.
+for_kids:
+  short: Ride every ride you can!
+  steps:
+    - The castle
+    - Your favorite ride
+    - Your grown-up on a ride
+    - A selfie with a big smile!
+duration: all-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, hours, seasonal]
+tags: [amusement-park, rides, kids, holiday-lights]

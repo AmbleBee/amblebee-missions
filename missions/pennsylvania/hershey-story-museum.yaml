@@ -1,0 +1,33 @@
+number: 4
+name: The Hershey Story
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: The Hershey Story, The Museum on Chocolate Avenue
+  area: Hershey
+  address: 63 W Chocolate Ave, Hershey, PA 17033
+  coords: [40.28560, -76.65380]  # APPROX: set at the museum entrance before publishing
+  website: https://hersheystory.org
+short: Learn how Hershey made chocolate for everyone, then taste chocolate from around the world.
+description: >
+  Walk through Milton Hershey's story, from failed candy shops to the
+  chocolate town he built, then head to the tasting bar for warm drinking
+  chocolate from around the world. Book a hands-on Chocolate Lab class if you
+  want to make your own. Afterward, walk Chocolate Avenue and find the
+  Kiss-shaped streetlights.
+for_kids:
+  short: Chocolate town hunt! Find each thing.
+  steps:
+    - Something shaped like a chocolate Kiss
+    - A really old candy wrapper
+    - Your favorite chocolate
+    - A selfie with chocolate!
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets]
+tags: [chocolate, museum, food, sweets, rainy-day]

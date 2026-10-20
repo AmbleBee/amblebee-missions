@@ -1,0 +1,33 @@
+number: 7
+name: Cuyahoga Valley Scenic Railroad
+mode: both
+who: [solo, friends, family, kids]
+place:
+  name: Cuyahoga Valley Scenic Railroad, Rockside Station
+  area: Independence
+  address: 7900 Old Rockside Rd, Independence, OH 44131
+  coords: [41.39940, -81.63280]  # APPROX: set at Rockside Station before publishing
+  website: https://www.cvsr.org
+short: Ride a vintage train through Cuyahoga Valley National Park. Watch for herons.
+description: >
+  Ride a vintage train through the woods and wetlands of Cuyahoga Valley
+  National Park, along the river and the old canal towpath. Sit by the window
+  and watch for herons, beavers and waterfalls. Feeling active? Bike or hike
+  part of the towpath and catch the train back. Fall color rides sell out, so
+  book ahead.
+for_kids:
+  short: Train ride! Find each thing.
+  steps:
+    - The train
+    - A bird by the water
+    - A bridge
+    - A selfie on the train!
+duration: half-day
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [tickets, seasonal]
+tags: [train, national-park, fall-color, scenic]

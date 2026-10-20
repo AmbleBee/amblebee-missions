@@ -1,0 +1,26 @@
+number: 5
+name: Columbus Park of Roses
+mode: both
+who: [solo, friends, family]
+place:
+  name: Columbus Park of Roses, Whetstone Park
+  area: Clintonville, Columbus
+  address: 3901 N High St, Columbus, OH 43214
+  coords: [40.04290, -83.02210]  # APPROX: set at the Hollenback Rd lot (the real entrance) before publishing
+  website: https://parkofroses.org
+short: Walk through thousands of roses. Each find the one that smells best.
+description: >
+  One of the biggest public rose gardens in the country, free and open every
+  day. Wander the paths, smell your way through the beds, and each pick the
+  rose with the best scent. June is peak bloom. Note: the garden entrance is on
+  Hollenback Road inside Whetstone Park, not on High Street, so map apps can
+  get it wrong.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: any
+travel: local
+check_ahead: [seasonal]
+tags: [gardens, flowers, roses, romantic, free, columbus]

@@ -1,0 +1,27 @@
+number: 3
+name: Stroll Through Longwood Gardens
+mode: both
+who: [solo, friends, family]
+place:
+  name: Longwood Gardens
+  area: Kennett Square
+  address: 1001 Longwood Rd, Kennett Square, PA 19348
+  coords: [39.87120, -75.67470]  # APPROX: set at the visitor center entrance before publishing
+  website: https://longwoodgardens.org
+short: Get lost together in Longwood's gardens and glasshouses. Find the fountains.
+description: >
+  Longwood is one of the grandest gardens in the country: acres of flower
+  gardens and woodland walks, a huge glass conservatory, treehouses, and
+  fountain gardens that put on shows on some evenings. Each pick a favorite
+  spot and take the other there. At the holidays the whole place is lit up for
+  A Longwood Christmas. Buy timed tickets ahead; it's closed some days of the
+  week.
+duration: half-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: any
+travel: day-trip
+check_ahead: [tickets, hours, seasonal]
+tags: [gardens, flowers, fountains, romantic, holiday-lights]

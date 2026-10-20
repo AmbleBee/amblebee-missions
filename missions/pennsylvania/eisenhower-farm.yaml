@@ -1,0 +1,27 @@
+number: 2
+name: Visit Ike's Farm
+mode: both
+who: [solo, friends, family]
+place:
+  name: Eisenhower National Historic Site
+  area: Gettysburg
+  address: 250 Eisenhower Farm Rd, Gettysburg, PA 17325
+  coords: [39.79430, -77.26290]  # APPROX: set at the visitor parking lot before publishing
+  website: https://www.nps.gov/eise
+short: Tour President Eisenhower's farmhouse, then walk the fields where he hosted world leaders.
+description: >
+  Just past the Gettysburg battlefield is the farm where Dwight and Mamie
+  Eisenhower retired, and where Ike welcomed world leaders onto the back porch.
+  Drive straight to the site and check in for a ranger-led tour of the house,
+  still furnished the way they left it, then wander the barns and fields. Home
+  tours run from late spring through fall, plus a few weekends in December;
+  the grounds are open year-round.
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal]
+tags: [history, presidents, farm, ranger-tour]

@@ -1,0 +1,30 @@
+number: 6
+name: Cleveland Museum of Art
+mode: both
+who: [solo, friends, family]
+place:
+  name: Cleveland Museum of Art
+  area: University Circle, Cleveland
+  address: 11150 East Blvd, Cleveland, OH 44106
+  coords: [41.50890, -81.61190]  # APPROX: set at the south entrance before publishing
+  website: https://www.clevelandart.org
+short: Wander a world-class art museum that's always free. Find the knights in armor.
+description: >
+  One of the best art museums in the country, and general admission is always
+  free. Walk from Egyptian mummies and a hall of knights in armor to Monet
+  and Picasso, then rest in the huge glass atrium. Each find a piece that
+  reminds you of the other. Afterward, walk the lagoon and Wade Park outside.
+  Closed Mondays.
+steps:
+  - A knight in armor
+  - A piece that reminds you of them
+  - The glass atrium
+duration: half-day
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [art, museum, free, rainy-day, cleveland]
