@@ -12,8 +12,9 @@
 #   summary: one or two sentences                        (optional)
 #   items:   a list of bullet points                     (optional)
 #
-# Order doesn't matter: done entries are sorted newest first by date, and the
-# doing / next / later ones keep the order you write them in.
+# Order doesn't matter much. The page reads like time flowing downward:
+#   later (top) -> next -> doing -> "You are here" -> done, newest to oldest (bottom).
+# Done entries sort themselves by date; within later / next / doing, file order is kept.
 # Text can use **bold**, `code` and [links](https://example.com).
 # Tip: if a line starts with a quote mark, or has a ': ' in the middle, wrap the whole line in
 # single quotes:  - 'She said: "go"'   The build will tell you if you forget.

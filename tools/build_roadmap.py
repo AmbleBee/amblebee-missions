@@ -82,7 +82,8 @@ def build(path):
     if problems:
         raise SystemExit("Not building the roadmap, fix these in roadmap.yaml first:\n  - " + "\n  - ".join(problems))
     upcoming = [e for e in clean if e["status"] != "done"]
-    upcoming.sort(key=lambda e: STATUSES.index(e["status"]))  # stable: keeps file order within a status
+    # time runs one way down the page: someday at the top, then next, then doing (right above "today")
+    upcoming.sort(key=lambda e: ("later", "next", "doing").index(e["status"]))  # stable: file order within a status
     done = sorted((e for e in clean if e["status"] == "done"), key=lambda e: e["date"], reverse=True)
     return {"upcoming": upcoming, "done": done,
             "generated_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}

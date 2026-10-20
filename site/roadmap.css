@@ -155,7 +155,11 @@
 .st-doing .rm-card { box-shadow: inset 0 0 0 2.5px var(--honey), 0 2px 0 var(--line), 0 10px 22px rgba(90, 62, 43, .10); }
 .st-later .rm-card { background: var(--linen); box-shadow: inset 0 0 0 2px var(--line-strong); }
 .st-later .rm-card::after { background: var(--linen); }
-.st-later h3 { color: var(--walnut); }
+.st-later h3 { color: var(--walnut); font-size: 1.2rem; }
+.st-later .rm-card { padding: 12px 18px 12px; }
+.st-later .rm-sum { font-size: .93rem; color: var(--walnut-soft); }
+.st-later .stop-node .hex { width: 30px; height: 34px; }
+.stop.st-later { margin-bottom: 20px; }
 
 /* the newest batch sits right on the trail, a little bigger, taped on */
 .stop.side-center { grid-template-columns: minmax(0, 1fr); justify-items: center; row-gap: 12px; }
