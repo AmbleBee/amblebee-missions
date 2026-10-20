@@ -115,6 +115,7 @@
     if (meta) meta.textContent = done.length + " things done · " + up.length + " on the way";
 
     reveal();
+    bee();
   }
 
   /* Cards drift in as the bee reaches them. */
@@ -130,6 +131,85 @@
       });
     }, { rootMargin: "0px 0px -8% 0px" });
     stops.forEach(function (s) { io.observe(s); });
+  }
+
+
+  /* The bee parks on a stop. Once the reading line (40% down the screen) passes halfway to the
+     next stop, she flies there in a little arc. She faces the way you're scrolling. */
+  function bee() {
+    var trail = document.getElementById("trail");
+    var pos = trail.querySelector(".bee-pos");
+    var face = trail.querySelector(".bee-face");
+    if (!pos || !face) return;
+    var still = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    var BEE_H = 58, LINE = 0.4;
+    var spots = [], at = -1, y = 0, flight = null, lastScroll = window.scrollY, ticking = false;
+
+    function measure() {
+      var top = trail.getBoundingClientRect().top;
+      spots = [20];   // the top of the trail, before the first stop
+      trail.querySelectorAll(".stop-node .hex, .rm-here, .rm-start .hex").forEach(function (el) {
+        var r = el.classList.contains("rm-here")
+          ? { top: el.getBoundingClientRect().top, height: 16 }   // the "you are here" dot
+          : el.getBoundingClientRect();
+        spots.push(r.top - top + r.height / 2);
+      });
+      spots.sort(function (a, b) { return a - b; });
+    }
+
+    function place(newY) { y = newY; pos.style.transform = "translateY(" + (y - BEE_H / 2) + "px)"; }
+
+    function currentY() {   // where she is right now, even mid-flight
+      var m = getComputedStyle(pos).transform;
+      if (!m || m === "none") return y;
+      var v = m.match(/-?[\d.]+/g);
+      return v ? parseFloat(v[v.length === 6 ? 5 : 13]) + BEE_H / 2 : y;
+    }
+
+    function flyTo(i, instant) {
+      if (i === at) return;
+      at = i;
+      var to = spots[i];
+      if (instant || still || !pos.animate) { if (flight) flight.cancel(); place(to); return; }
+      var from = currentY();
+      if (flight) flight.cancel();
+      var side = from < to ? 26 : -26;   // swing out to one side, like she's following the curve
+      var mid = (from + to) / 2;
+      var dist = Math.abs(to - from);
+      place(to);
+      flight = pos.animate([
+        { transform: "translate(0px," + (from - BEE_H / 2) + "px)" },
+        { transform: "translate(" + side + "px," + (mid - BEE_H / 2) + "px)", offset: 0.5 },
+        { transform: "translate(0px," + (to - BEE_H / 2) + "px)" }
+      ], { duration: Math.min(900, 380 + dist * 0.6), easing: "cubic-bezier(.45,.05,.35,1)" });
+      flight.onfinish = function () { flight = null; };
+    }
+
+    function nearest() {   // nearest stop to the reading line = "past halfway" rule
+      var line = innerHeight * LINE - trail.getBoundingClientRect().top;
+      var best = 0;
+      for (var i = 1; i < spots.length; i++) {
+        if (Math.abs(spots[i] - line) < Math.abs(spots[best] - line)) best = i;
+      }
+      return best;
+    }
+
+    function onScroll() {
+      ticking = false;
+      var now = window.scrollY, dy = now - lastScroll;
+      if (Math.abs(dy) > 2) { face.classList.toggle("down", dy > 0); lastScroll = now; }
+      flyTo(nearest());
+    }
+
+    function relayout() { measure(); var i = nearest(); at = -1; flyTo(i, true); }
+
+    relayout();
+    addEventListener("scroll", function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(onScroll); }
+    }, { passive: true });
+    addEventListener("resize", relayout);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(relayout);
+    addEventListener("load", relayout);
   }
 
   function fail() {
