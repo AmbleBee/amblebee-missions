@@ -20,11 +20,33 @@
 # single quotes:  - 'She said: "go"'   The build will tell you if you forget.
 
 # ---------- Coming up ----------
+# (shown top to bottom as: later, then next, then doing)
 
-- title: Report a problem button
-  status: doing
-  tag: website
-  summary: A button on every mission that opens a short form with the mission already filled in, so closed places and broken links get fixed fast.
+- title: Our gear
+  status: later
+  tag: hive
+  summary: Tell the Hive what gear you have, can borrow or can rent, and it only hands you missions you can actually do.
+
+- title: Our own plans
+  status: later
+  tag: hive
+  summary: Birthdays, anniversaries and trips get their own photo logs on the Hive, right next to the missions.
+
+- title: Kids' scavenger hunts
+  status: later
+  tag: missions
+  summary: Photo hunts for little ones, like "find something blue" or "find an animal", one step at a time.
+
+- title: The first real AmbleBee
+  status: later
+  tag: camera
+  when: After the breadboards
+  summary: Everything on one custom circuit board, in a 3D-printed body with an e-ink screen that shows your mission.
+
+- title: Photo review on the Hive
+  status: next
+  tag: hive
+  summary: Dock the camera, flip through the photos, and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own.
 
 - title: Filter tags
   status: next
@@ -36,18 +58,28 @@
   tag: missions
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
-- title: The Hive's "Our gear" page
-  status: later
-  tag: hive
-  summary: Tell the Hive what gear you have, borrow or can rent, and it only hands you missions you can actually do.
+- title: Community polls
+  status: doing
+  tag: website
+  summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
-- title: First real AmbleBee camera
-  status: later
-  tag: camera
-  when: After the breadboards
-  summary: Breadboards today, one custom circuit board tomorrow.
+- title: Filling every state to 60 missions
+  status: doing
+  tag: missions
+  summary: California, Florida, Oregon, Texas and Washington are full. Idaho, Louisiana, Missouri and New York are still growing.
+
+- title: Report a problem button
+  status: doing
+  tag: website
+  summary: A button on every mission that opens a short form with the mission already filled in, so closed places and broken links get fixed fast.
 
 # ---------- Done ----------
+
+- title: The bee trail
+  status: done
+  date: 2026-10-19
+  tag: website
+  summary: This page! What's new on AmbleBee and what's coming next, all in one place.
 
 - title: Share with a note
   status: done
@@ -59,6 +91,12 @@
     - Write a note to go with it, or skip it at the bottom of the form
     - The person you send it to can reply, and download the mission as an image
     - Shared links open faster
+
+- title: Texas and Florida join the trail
+  status: done
+  date: 2026-10-16
+  tag: missions
+  summary: Two new packs with 60 missions each, and California filled out to 60.
 
 - title: Envelope reveal
   status: done
@@ -74,7 +112,7 @@
   tag: missions
   summary: 194 missions across 7 Amble packs, and a search box to find them.
   items:
-    - New York, Oregon, Washington and Anywhere missions
+    - New York, Idaho and California packs
     - Missions can credit where the idea came from
     - The Know a great spot? form is live
 
@@ -84,6 +122,13 @@
   tag: website
   summary: The missions website, published straight from GitHub.
   items:
+    - First packs, Amble Anywhere, Oregon, Washington, Missouri and Louisiana
     - Open a mission, filter it, share it
     - ZIP code lookup for "within N miles" (never leaves your browser)
     - Self-hosted fonts, no trackers
+
+- title: AmbleBee + Hive gets its name
+  status: done
+  date: 2026-10-12
+  tag: camera
+  summary: The camera became AmbleBee and the frame she docks into became the Hive, with a scrapbook look of oat paper, sage and honey.
