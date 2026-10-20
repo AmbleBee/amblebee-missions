@@ -1,0 +1,24 @@
+number: 1
+name: Mystic Pizza and the Drawbridge
+mode: date
+place:
+  name: Mystic Pizza
+  area: Downtown Mystic
+  address: 56 W Main St, Mystic, CT 06355
+  website: https://www.mysticpizza.com/restaurants.html
+short: Share a slice at Mystic Pizza, then watch the old drawbridge lift for a boat.
+description: >
+  Grab a pie at the pizza place that gave a movie its name, then walk to the Mystic River
+  Bascule Bridge right down the street. The 1920s drawbridge still lifts for passing
+  boats, so linger by the water until it goes up and take a photo of the two of you with
+  it.
+duration: short
+effort: easy
+cost: $$
+setting: either
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [food, pizza, movie, waterfront]
+credit:

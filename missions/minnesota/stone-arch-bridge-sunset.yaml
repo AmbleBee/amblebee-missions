@@ -1,0 +1,24 @@
+number: 1
+name: Sunset on the Stone Arch Bridge
+mode: date
+place:
+  name: Stone Arch Bridge
+  area: St. Anthony Falls, Minneapolis
+  address: 1 Portland Ave, Minneapolis, MN 55401
+  coords: [44.98100, -93.25390]  # APPROX coords: middle of the bridge
+  website: https://www.nps.gov/miss/planyourvisit/stonarch.htm
+short: Walk the old stone railroad bridge over the Mississippi at sunset and watch the falls.
+description: >
+  The 1880s Stone Arch Bridge is now a walking and biking bridge across the Mississippi,
+  with the best view of St. Anthony Falls and the old flour mills. Walk across at sunset
+  as the city lights come on, then wander the Mill Ruins Park paths below.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [conditions]
+tags: [bridge, river, sunset, free]
+credit:

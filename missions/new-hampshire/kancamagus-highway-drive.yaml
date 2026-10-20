@@ -1,0 +1,25 @@
+number: 1
+name: Drive the Kancamagus Highway
+mode: date
+place:
+  name: Kancamagus Highway (NH-112)
+  area: Lincoln to Conway, White Mountains
+  address: 200 Kancamagus Hwy, North Woodstock, NH 03262
+  website: https://www.visitwhitemountains.com/the-kancamagus-highway
+short: Drive the Kancamagus through the White Mountains. Stop at a waterfall and a big overlook.
+description: >
+  The Kancamagus runs about 34 miles through the White Mountains with no gas stations or
+  shops, just forest, rivers and overlooks. Start at the White Mountains Visitors Center
+  in Lincoln, then stop at a waterfall like Sabbaday Falls and the high overlooks near
+  Kancamagus Pass. Best in fall color. Parking at the stops needs a forest recreation
+  pass.
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [scenic-drive, fall-color, waterfalls, mountains]
+credit:

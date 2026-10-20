@@ -1,0 +1,23 @@
+number: 1
+name: Ben & Jerry's and the Flavor Graveyard
+mode: date
+place:
+  name: Ben & Jerry's Factory
+  area: Waterbury
+  address: 1281 Waterbury-Stowe Rd, Waterbury, VT 05676
+  website: https://www.benjerry.com
+short: Tour the Ben & Jerry's factory, taste the flavor of the day, then visit the Flavor Graveyard.
+description: >
+  Take the short factory tour in Waterbury, which ends with a sample of whatever's being
+  made that day. Then walk up the hill to the Flavor Graveyard, where retired flavors get
+  real headstones. Each of you picks the dead flavor you'd bring back.
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours]
+tags: [ice-cream, tour, silly]
+credit:

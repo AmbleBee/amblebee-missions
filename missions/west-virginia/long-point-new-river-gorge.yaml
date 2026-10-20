@@ -1,0 +1,23 @@
+number: 1
+name: Long Point and the New River Gorge Bridge
+mode: date
+place:
+  name: Long Point Trail
+  area: Newton Rd, Fayetteville
+  coords: [38.05260, -81.08600]  # APPROX coords: Newton Rd trailhead
+  website: https://www.nps.gov/places/long-point-trail.htm
+short: Hike to Long Point for the best view of the New River Gorge Bridge. Pack a picnic.
+description: >
+  An easy-going three mile round trip through the woods ends on a rock point with a huge
+  view of the New River Gorge Bridge spanning the canyon. Pack a picnic and stay for the
+  late afternoon light. The edges are unfenced, so keep back from the drop.
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hike, bridge, views, national-park]
+credit:

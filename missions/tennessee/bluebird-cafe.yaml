@@ -1,0 +1,23 @@
+number: 1
+name: Songwriters at the Bluebird Cafe
+mode: date
+place:
+  name: The Bluebird Cafe
+  area: Green Hills, Nashville
+  address: 4104 Hillsboro Pike, Nashville, TN 37215
+  website: https://bluebirdcafe.com
+short: Hear songwriters play the hits they wrote, up close, at Nashville's tiny Bluebird Cafe.
+description: >
+  The Bluebird is a tiny strip-mall room where songwriters sit in a circle and trade
+  songs, often ones that became big country hits. It only holds about 90 people, so it's
+  quiet and close. Reservations go fast online, so book as soon as the shows are released.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [reservation]
+tags: [music, songwriters, listening-room]
+credit:

@@ -1,0 +1,23 @@
+number: 1
+name: Bike Around Mackinac Island
+mode: date
+place:
+  name: Mackinac Island
+  area: Ferry from Mackinaw City or St. Ignace
+  address: Main St, Mackinac Island, MI 49757
+  website: https://www.mackinacisland.org
+short: Ferry to car-free Mackinac Island, bike the 8-mile shore loop and share some fudge.
+description: >
+  Cars aren't allowed on Mackinac Island, so you'll hear horses and bike bells instead of
+  traffic. Rent bikes (or a tandem) by the ferry dock and ride the flat 8-mile road around
+  the island's shore, then grab a slab of fudge on Main Street for the boat back.
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, tickets]
+tags: [biking, island, ferry, fudge]
+credit:

@@ -1,0 +1,23 @@
+number: 1
+name: Sail Annapolis on a Schooner
+mode: date
+place:
+  name: Schooner Woodwind
+  area: Annapolis waterfront
+  address: 80 Compromise St, Annapolis, MD 21401
+  website: https://www.schoonerwoodwind.com
+short: Sail out of Annapolis on a wooden schooner. Help raise the sails if they let you.
+description: >
+  Take a two-hour sail on the Chesapeake Bay aboard a classic wooden schooner from the
+  Annapolis waterfront; evening sails catch the sunset over the water. The crew often lets
+  passengers help raise the sails or take a turn at the wheel. Runs spring through fall.
+duration: short
+effort: easy
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: evening
+travel: day-trip
+check_ahead: [tickets, conditions]
+tags: [sailing, boat, sunset, bay]
+credit:

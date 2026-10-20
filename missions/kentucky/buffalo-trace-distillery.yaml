@@ -1,0 +1,23 @@
+number: 1
+name: Tour Buffalo Trace Distillery
+mode: date
+place:
+  name: Buffalo Trace Distillery
+  area: Frankfort
+  address: 113 Great Buffalo Trace, Frankfort, KY 40601
+  website: https://www.buffalotracedistillery.com
+short: Take a free distillery tour and tasting. Each pick a favorite and buy a bottle to share.
+description: >
+  Buffalo Trace offers free guided tours of one of the oldest distilleries in the country,
+  with a tasting at the end for anyone 21 and up. Tours book up, so reserve online. Each
+  of you picks a favorite pour, then walk the grounds along the Kentucky River.
+duration: short
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation]
+tags: [bourbon, tour, tasting, "21+"]
+credit:

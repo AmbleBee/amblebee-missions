@@ -97,6 +97,12 @@ def check_catalog(root):
         if key not in info:
             problems.append(f"catalog.yaml: missing '{key}'")
 
+    # a pack folder without pack.yaml still loads, but shows its bare folder name ("Montana", not "Amble Montana")
+    for folder in sorted(p for p in root.iterdir() if p.is_dir() and not p.name.startswith((".", "_"))):
+        if folder.name != "general" and not (folder / "pack.yaml").exists():
+            problems.append(f"{folder.name}/: no pack.yaml, so this pack would show as \"{folder.name.title()}\" "
+                            f"instead of \"Amble {folder.name.replace('-', ' ').title()}\". Copy pack.yaml from another pack folder and edit it.")
+
     seen_ids, seen_numbers = {}, {}
     for m in missions:
         where = Path(m["file"]).relative_to(root)

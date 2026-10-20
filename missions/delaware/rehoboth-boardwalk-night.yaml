@@ -1,0 +1,23 @@
+number: 1
+name: Rehoboth Boardwalk Night
+mode: date
+place:
+  name: Rehoboth Beach Boardwalk
+  area: Rehoboth Ave and the boardwalk
+  address: Rehoboth Ave & Boardwalk, Rehoboth Beach, DE 19971
+  coords: [38.71660, -75.07600]
+  website: https://www.beach-fun.com
+short: Fries, taffy and the boardwalk after dark. Win each other something at the arcade.
+description: >
+  Walk the mile-long Rehoboth boardwalk in the evening with a bucket of boardwalk fries
+  and a bag of saltwater taffy. In summer the old-school rides and arcades are open; try
+  to win each other a prize. End with your shoes off on the sand.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: evening
+travel: day-trip
+tags: [beach, boardwalk, arcade, sweets]
+credit:

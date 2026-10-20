@@ -1,0 +1,23 @@
+number: 1
+name: Ride the Boston Swan Boats
+mode: date
+place:
+  name: Swan Boats of Boston
+  area: Boston Public Garden
+  address: 4 Charles St, Boston, MA 02116
+  website: https://swanboats.com
+short: Ride a pedal-powered swan boat around the Public Garden lagoon, then cross the tiny bridge.
+description: >
+  Boston's swan boats have floated around the Public Garden lagoon since the 1870s. Take
+  the short ride, then walk the little suspension bridge over the lagoon and find the Make
+  Way for Ducklings statues. The boats run spring through late summer.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer]
+time_of_day: daytime
+travel: local
+check_ahead: [seasonal]
+tags: [boat, garden, classic, city]
+credit:

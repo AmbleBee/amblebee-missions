@@ -1,0 +1,22 @@
+number: 1
+name: The Bridges of Madison County
+mode: date
+place:
+  name: Roseman Covered Bridge
+  area: Near Winterset
+  coords: [41.29279, -94.14975]
+  website: https://www.madisoncounty.com
+short: Find the red covered bridge from the movie. Leave a little note inside like they did.
+description: >
+  The Roseman Covered Bridge from The Bridges of Madison County still stands on a quiet
+  country road outside Winterset. Walk through it together, take the classic photo at the
+  entrance, and tuck a little note for each other somewhere only you two would find.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+tags: [movie, covered-bridge, countryside, free]
+credit:

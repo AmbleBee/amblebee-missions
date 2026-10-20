@@ -1,0 +1,23 @@
+number: 1
+name: Sunset Beach in Cape May
+mode: date
+place:
+  name: Sunset Beach
+  area: Cape May Point
+  address: 502 Sunset Blvd, Cape May, NJ 08204
+  website: https://www.sunsetbeachnj.com
+short: Hunt for Cape May diamonds on the beach, then watch the sun set over the bay.
+description: >
+  At New Jersey's southern tip you can watch the sun set over the water. Hunt the beach
+  for little polished quartz pebbles called Cape May diamonds, spot the wreck of a
+  concrete ship just offshore, and stay for sunset. On summer evenings there's a short
+  flag-lowering ceremony for veterans.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [beach, sunset, treasure-hunt, free]
+credit:

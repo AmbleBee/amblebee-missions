@@ -1,0 +1,24 @@
+number: 1
+name: Swings at Charleston's Waterfront Park
+mode: date
+place:
+  name: Waterfront Park
+  area: Downtown Charleston
+  address: 1 Vendue Range, Charleston, SC 29401
+  coords: [32.77810, -79.92530]
+  website: https://www.charleston-sc.gov
+short: Walk past Rainbow Row to the Pineapple Fountain, then share a pier swing at dusk.
+description: >
+  Walk down East Bay Street past the pastel houses of Rainbow Row, then into Waterfront
+  Park. Dip your fingers in the Pineapple Fountain, Charleston's symbol of welcome, and
+  end on the long pier where shaded porch swings face the harbor. Stay until the lights
+  come on.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+tags: [waterfront, swings, walk, free]
+credit:

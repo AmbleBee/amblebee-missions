@@ -1,0 +1,23 @@
+number: 1
+name: Skyline Drive Sunset at The Point Overlook
+mode: date
+place:
+  name: The Point Overlook
+  area: Skyline Drive mile 55.5, Shenandoah National Park
+  coords: [38.50000, -78.45000]  # APPROX coords: set at the overlook before publishing
+  website: https://www.nps.gov/shen/
+short: Drive Skyline Drive at golden hour, then watch the sunset from a rocky ledge at The Point.
+description: >
+  Drive the high road along the Blue Ridge in Shenandoah National Park and stop at The
+  Point Overlook near mile 55.5. Step through the gap in the stone wall to a rock ledge a
+  minute away and watch the sun drop over the valley. Watch for deer on the drive back.
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [conditions]
+tags: [scenic-drive, sunset, national-park, views]
+credit:

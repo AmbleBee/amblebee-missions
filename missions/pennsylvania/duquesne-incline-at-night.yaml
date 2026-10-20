@@ -1,0 +1,24 @@
+number: 1
+name: Duquesne Incline at Night
+mode: date
+place:
+  name: Duquesne Incline
+  area: Mount Washington, Pittsburgh
+  address: 1197 W Carson St, Pittsburgh, PA 15219
+  website: https://www.duquesneincline.org
+short: Ride the 1870s incline up Mount Washington at night and see Pittsburgh light up below.
+description: >
+  Ride the old wooden incline car up the side of Mount Washington after dark. At the top,
+  the overlook shows downtown Pittsburgh lit up where the three rivers meet, one of the
+  best city views in the country. Walk along Grandview Avenue to the other overlooks
+  before riding back down.
+duration: short
+effort: easy
+cost: $
+setting: either
+season: any
+time_of_day: night
+travel: local
+check_ahead: [hours]
+tags: [views, city-lights, historic, incline]
+credit:

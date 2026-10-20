@@ -1,0 +1,24 @@
+number: 1
+name: Tram Up to Dinner at Seven Glaciers
+mode: date
+place:
+  name: Alyeska Resort Aerial Tram and Seven Glaciers
+  area: Girdwood
+  address: 1000 Arlberg Ave, Girdwood, AK 99587
+  website: https://www.alyeskaresort.com
+short: Ride the tram up Mount Alyeska for dinner 2,300 feet up, looking out at the glaciers.
+description: >
+  Ride the aerial tram up Mount Alyeska above Girdwood, then sit down for dinner at Seven
+  Glaciers, where the windows look out over hanging glaciers and Turnagain Arm. Go in
+  summer for evening light that lasts past dinner, or in winter for snow on everything.
+  Dinner needs a reservation, and the tram closes for a few weeks in spring and late fall.
+duration: half-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [reservation, seasonal]
+tags: [dinner, tram, glaciers, views]
+credit:

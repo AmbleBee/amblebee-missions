@@ -1,0 +1,24 @@
+number: 1
+name: Ride the Sandia Peak Tram at Sunset
+mode: date
+place:
+  name: Sandia Peak Tramway
+  area: Northeast Albuquerque
+  address: 30 Tramway Rd NE, Albuquerque, NM 87122
+  website: https://sandiapeak.com
+short: Ride the tram 2.7 miles up the Sandias and watch the sunset turn the mountain pink.
+description: >
+  One of the longest aerial trams in the Americas carries you 2.7 miles up to over 10,000
+  feet. Ride up before sunset, watch the light spread across the desert from the top, and
+  catch the mountains glowing pink, which is how the Sandias ("watermelon") got their
+  name. Bring a jacket.
+duration: short
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, tickets, conditions]
+tags: [views, sunset, tram, mountains]
+credit:

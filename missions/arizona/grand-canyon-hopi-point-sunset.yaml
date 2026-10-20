@@ -1,0 +1,25 @@
+number: 1
+name: Sunset at Hopi Point, Grand Canyon
+mode: date
+place:
+  name: Hopi Point
+  area: Hermit Road, Grand Canyon South Rim
+  coords: [36.07170, -112.15400]  # APPROX coords: Hopi Point overlook
+  website: https://www.nps.gov/grca/planyourvisit/hermit-road.htm
+short: Ride the shuttle to Hopi Point and watch the sun set over the Grand Canyon.
+description: >
+  Hopi Point sticks out into the canyon, so you can watch the light change on miles of
+  cliffs and catch glimpses of the Colorado River far below. From March through November,
+  ride the free Red Route shuttle from the Hermit Road Transfer Station (Hermit Road is
+  closed to cars); in winter you can drive yourself. Get there early to claim a spot on
+  the rim, and bring a jacket.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [conditions]
+tags: [sunset, national-park, views, canyon]
+credit:

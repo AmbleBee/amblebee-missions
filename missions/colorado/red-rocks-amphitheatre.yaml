@@ -1,0 +1,24 @@
+number: 1
+name: Red Rocks Amphitheatre
+mode: date
+place:
+  name: Red Rocks Park & Amphitheatre
+  area: Morrison
+  address: 18300 W Alameda Pkwy, Morrison, CO 80465
+  website: https://www.redrocksonline.com
+short: Climb the Red Rocks bleachers at golden hour, or catch a show between the red walls.
+description: >
+  On days without a show the park and amphitheatre are free to walk around. Climb to the
+  top row as the sun drops and the rocks glow, then walk the Trading Post Trail. If you
+  can, come back for a concert under the stars, one of the most famous stages in the
+  world.
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: drive
+check_ahead: [hours, tickets]
+tags: [music, views, sunset]
+credit:

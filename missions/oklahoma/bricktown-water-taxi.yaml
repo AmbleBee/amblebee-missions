@@ -1,0 +1,24 @@
+number: 1
+name: Bricktown Water Taxi
+mode: date
+place:
+  name: Bricktown Water Taxi
+  area: Bricktown, Oklahoma City
+  address: 111 S Mickey Mantle Dr, Oklahoma City, OK 73104
+  website: https://www.bricktownwatertaxi.com
+short: Float the Bricktown Canal on a water taxi, then pick a spot on the canal for dinner.
+description: >
+  Ride the Bricktown Water Taxi along the mile-long canal through Oklahoma City's old
+  warehouse district while the guide tells stories about the neighborhood. Afterward, walk
+  the canal and pick a patio for dinner by the water. Runs most of the year, with shorter
+  hours off-season.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [boat, canal, dinner, city]
+credit:

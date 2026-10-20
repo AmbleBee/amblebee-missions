@@ -1,0 +1,24 @@
+number: 1
+name: Sunset at Delicate Arch
+mode: date
+place:
+  name: Delicate Arch Trail
+  area: Wolfe Ranch trailhead, Arches National Park
+  coords: [38.73560, -109.52070]  # APPROX coords: Wolfe Ranch parking
+  website: https://www.nps.gov/arch/
+short: Hike up the slickrock to Delicate Arch for sunset. Bring headlamps for the walk back.
+description: >
+  Hike about three miles round trip up open slickrock to Utah's most famous arch and watch
+  it glow orange at sunset. There's no shade and it climbs steadily, so bring water. Pack
+  headlamps for the walk back in the dark. Check before you go whether the park needs a
+  timed-entry reservation that season.
+duration: half-day
+effort: hard
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [hike, sunset, arch, national-park]
+credit:

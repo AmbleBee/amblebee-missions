@@ -1,0 +1,23 @@
+number: 1
+name: Keeper of the Plains at Dusk
+mode: date
+place:
+  name: The Keeper of the Plains
+  area: Where the Big and Little Arkansas rivers meet
+  address: 650 N Seneca St, Wichita, KS 67203
+  website: https://www.visitwichita.com
+short: Walk the river at dusk and watch the fire pots light up around the Keeper of the Plains.
+description: >
+  The giant steel Keeper of the Plains stands on a rock point where two rivers meet in
+  Wichita. At dusk, fire pots around its base are lit for a few minutes most nights. Walk
+  the river bridges, then sit by the water and watch the flames come up.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [river, fire, art, free]
+credit:

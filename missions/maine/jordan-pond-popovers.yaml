@@ -1,0 +1,23 @@
+number: 1
+name: Popovers at Jordan Pond
+mode: date
+place:
+  name: Jordan Pond House
+  area: Acadia National Park
+  address: 2928 Park Loop Rd, Seal Harbor, ME 04675
+  website: https://jordanpondhouse.com
+short: Walk the shore of Jordan Pond, then split warm popovers with jam on the lawn.
+description: >
+  Walk the easy path along Jordan Pond with the two rounded Bubbles mountains at the far
+  end, then sit on the lawn for warm popovers with butter and strawberry jam, a tradition
+  here since the 1800s. Open spring through mid-fall; Acadia charges a park entrance fee.
+duration: half-day
+effort: easy
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, seasonal]
+tags: [national-park, lake, food, walk]
+credit:

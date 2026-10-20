@@ -1,0 +1,24 @@
+number: 1
+name: Mount Rushmore Evening Lighting
+mode: date
+place:
+  name: Mount Rushmore National Memorial
+  area: Keystone
+  address: 13000 SD-244, Keystone, SD 57751
+  website: https://www.nps.gov/moru/
+short: Watch Mount Rushmore light up at dusk at the evening ceremony in the amphitheater.
+description: >
+  On summer evenings, rangers hold a short program in the amphitheater below the carving,
+  then the faces are lit up against the dark sky. Walk the Avenue of Flags before it
+  starts and find a seat together. The memorial is lit every night, but the ceremony runs
+  late May through September.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: evening
+travel: day-trip
+check_ahead: [seasonal]
+tags: [national-memorial, night, history]
+credit:

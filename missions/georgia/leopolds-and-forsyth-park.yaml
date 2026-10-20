@@ -1,0 +1,22 @@
+number: 1
+name: Leopold's and Forsyth Park
+mode: date
+place:
+  name: Leopold's Ice Cream
+  area: Broughton St, Savannah
+  address: 212 E Broughton St, Savannah, GA 31401
+  website: https://www.leopoldsicecream.com
+short: Get a scoop at Leopold's, then stroll the squares to the Forsyth Park fountain.
+description: >
+  Leopold's has been scooping in Savannah for over a century. Take your cones south
+  through the oak-shaded squares to the big white fountain in Forsyth Park, then find a
+  bench under the Spanish moss and trade a bite of each other's flavor.
+duration: short
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+tags: [ice-cream, walk, historic, squares]
+credit:

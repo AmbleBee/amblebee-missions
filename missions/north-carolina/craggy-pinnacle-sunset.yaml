@@ -1,0 +1,24 @@
+number: 1
+name: Sunset on Craggy Pinnacle
+mode: date
+place:
+  name: Craggy Pinnacle Trail
+  area: Blue Ridge Parkway milepost 364, near Asheville
+  coords: [35.70440, -82.37340]  # APPROX coords: Craggy Pinnacle trailhead
+  website: https://www.nps.gov/blri/planyourvisit/craggy-gardens.htm
+short: Hike 20 minutes through rhododendron tunnels to a 360° Blue Ridge sunset.
+description: >
+  A short climb from the Blue Ridge Parkway takes you through tunnels of rhododendron to
+  the top of Craggy Pinnacle, with mountains rolling away in every direction. Bring a
+  blanket and something warm to drink for sunset. Parkway sections close in winter; in
+  June the rhododendrons bloom.
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: evening
+travel: drive
+check_ahead: [conditions, seasonal]
+tags: [hike, sunset, views, blue-ridge]
+credit:

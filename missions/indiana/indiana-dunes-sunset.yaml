@@ -1,0 +1,24 @@
+number: 1
+name: Sunset on the Indiana Dunes
+mode: date
+place:
+  name: Indiana Dunes State Park
+  area: Chesterton
+  address: 1600 N 25 E, Chesterton, IN 46304
+  coords: [41.66200, -87.06000]  # APPROX coords: beach by the pavilion
+  website: https://www.in.gov/dnr/state-parks/parks-lakes/indiana-dunes-state-park/
+short: Climb a dune, then watch the sun set over Lake Michigan from the beach.
+description: >
+  Climb one of the big dunes for a look at the lake, then head down to the beach for
+  sunset; on a clear evening you can see the Chicago skyline across the water. The Dunes
+  Pavilion by the beach has food and a rooftop for a drink after.
+duration: short
+effort: moderate
+cost: $
+setting: outdoor
+season: any
+time_of_day: evening
+travel: drive
+check_ahead: [hours]
+tags: [beach, sunset, dunes, lake]
+credit:

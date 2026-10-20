@@ -1,0 +1,25 @@
+number: 1
+name: Sunrise Above the Clouds on Haleakalā
+mode: date
+place:
+  name: Haleakalā National Park summit
+  area: Maui
+  address: Haleakalā Hwy, Kula, HI 96790
+  coords: [20.71480, -156.25020]
+  website: https://www.nps.gov/hale/
+short: Watch the sun come up over the clouds from the top of Haleakalā. Bring a blanket.
+description: >
+  Drive up the volcano in the dark and watch the sun rise over a sea of clouds from 10,000
+  feet. It is freezing at the top, even in summer, so bring a blanket to share and
+  something hot in a thermos. Sunrise needs a vehicle reservation booked ahead on
+  Recreation.gov.
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: morning
+travel: day-trip
+check_ahead: [reservation, conditions]
+tags: [sunrise, volcano, views, national-park]
+credit:

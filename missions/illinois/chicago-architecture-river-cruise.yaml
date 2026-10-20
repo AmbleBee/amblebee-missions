@@ -1,0 +1,23 @@
+number: 1
+name: Chicago Architecture River Cruise
+mode: date
+place:
+  name: Chicago Architecture Center River Cruise
+  area: Chicago Riverwalk
+  address: 112 E Wacker Dr, Chicago, IL 60601
+  website: https://www.architecture.org
+short: Float through downtown Chicago on the river. Each pick the building you'd live in.
+description: >
+  Ride down the Chicago River between the skyscrapers while a guide tells the stories
+  behind them. Each of you quietly picks the building you'd live in and reveals it at the
+  end. The cruises run spring through fall and need a ticket.
+duration: short
+effort: easy
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: any
+travel: local
+check_ahead: [tickets]
+tags: [boat, architecture, city]
+credit:

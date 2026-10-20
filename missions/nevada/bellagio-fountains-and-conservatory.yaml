@@ -1,0 +1,23 @@
+number: 1
+name: Bellagio Fountains and Conservatory
+mode: date
+place:
+  name: Bellagio
+  area: Las Vegas Strip
+  address: 3600 S Las Vegas Blvd, Las Vegas, NV 89109
+  website: https://bellagio.mgmresorts.com
+short: Wander the Bellagio's flower conservatory, then watch the fountains dance to music.
+description: >
+  Two of the best things on the Strip are free. Walk through the Bellagio Conservatory,
+  where the giant flower displays change with the seasons, then head out front to the lake
+  and watch the fountains shoot up in time with the music. Stay for two shows; they're
+  different songs.
+duration: short
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: night
+travel: local
+tags: [free, fountains, flowers, city-lights]
+credit:

@@ -1,0 +1,23 @@
+number: 1
+name: Pitchfork Fondue and the Medora Musical
+mode: date
+place:
+  name: Burning Hills Amphitheatre
+  area: Medora
+  website: https://medora.com
+short: Eat steak cooked on a pitchfork, then watch the Medora Musical in the Badlands.
+description: >
+  In summer, Medora cooks steaks on pitchforks over a fire on a bluff above the Badlands,
+  then serves dinner with a view. Walk down to the outdoor amphitheatre for the Medora
+  Musical, a song-and-dance Western show with the Badlands as the backdrop. Runs June to
+  early September.
+duration: half-day
+effort: easy
+cost: $$$
+setting: outdoor
+season: [summer]
+time_of_day: evening
+travel: day-trip
+check_ahead: [tickets, seasonal]
+tags: [show, dinner, badlands, western]
+credit:

@@ -1,0 +1,22 @@
+number: 1
+name: Sunset on the Natchez Bluff
+mode: date
+place:
+  name: Natchez Bluff
+  area: Downtown Natchez, above Natchez Under-the-Hill
+  coords: [31.55980, -91.40680]  # APPROX coords: bluff park on Broadway St
+  website: https://www.visitnatchez.org
+short: Watch the sun set over the Mississippi from the bluff, then walk down Under-the-Hill.
+description: >
+  Natchez sits high on a bluff over the Mississippi River. Find a bench along the bluff at
+  sunset and watch the river and the bridge to Louisiana go gold, then walk down Silver
+  Street to Natchez Under-the-Hill, the old riverboat landing, for dinner by the water.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: day-trip
+tags: [river, sunset, historic, free]
+credit:

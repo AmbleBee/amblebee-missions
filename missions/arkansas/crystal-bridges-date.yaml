@@ -1,0 +1,23 @@
+number: 1
+name: Crystal Bridges After a Trail Walk
+mode: date
+place:
+  name: Crystal Bridges Museum of American Art
+  area: Bentonville
+  address: 600 Museum Way, Bentonville, AR 72712
+  website: https://crystalbridges.org
+short: Walk the woods trails, then wander the free galleries. Each pick a favorite painting.
+description: >
+  Crystal Bridges sits in a wooded ravine with ponds running under the galleries. Start on
+  the trails, then head inside; the main collection is free to see. Split up for ten
+  minutes, each pick the one painting you'd take home, then show each other why.
+duration: half-day
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [art, museum, trails, free]
+credit:

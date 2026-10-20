@@ -1,0 +1,24 @@
+number: 1
+name: Door County Fish Boil
+mode: date
+place:
+  name: White Gull Inn
+  area: Fish Creek
+  address: 4225 Main St, Fish Creek, WI 54212
+  website: https://www.whitegullinn.com
+short: Watch the boil master make the pot boil over in a burst of flame, then share the dinner.
+description: >
+  A Door County fish boil is dinner and a show: whitefish and potatoes boil in a big
+  kettle over an open fire, and at the end the boil master throws on kerosene so the pot
+  boils over in a whoosh of flame. Then everyone eats, with cherry pie after. The White
+  Gull Inn holds them year-round; reserve ahead.
+duration: short
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: evening
+travel: day-trip
+check_ahead: [reservation]
+tags: [dinner, tradition, fire, pie]
+credit:

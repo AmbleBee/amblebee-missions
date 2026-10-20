@@ -1,0 +1,23 @@
+number: 1
+name: Stand in Two States at Once
+mode: date
+place:
+  name: Bob Kerrey Pedestrian Bridge
+  area: Riverfront, Omaha
+  coords: [41.26620, -95.92270]  # APPROX coords: Omaha end of the bridge
+  website: https://www.nps.gov/places/bob-kerrey-pedestrian-bridge.htm
+short: Walk the footbridge over the Missouri River and kiss with one foot in Nebraska and one in Iowa.
+description: >
+  The Bob Kerrey Pedestrian Bridge crosses the Missouri River from Omaha to Council
+  Bluffs, and the state line runs across the middle. Walk out, find the line, and take a
+  photo with each of you in a different state. It's open around the clock and pretty after
+  dark.
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: evening
+travel: local
+tags: [bridge, river, state-line, free]
+credit:
