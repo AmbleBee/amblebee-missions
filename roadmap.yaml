@@ -43,6 +43,11 @@
   when: After the breadboards
   summary: Everything on one custom circuit board, in a 3D-printed body with an e-ink screen that shows your mission.
 
+- title: State icons on the Hive and AmbleBee
+  status: later
+  tag: hive
+  summary: The same icon pack the website uses, turned into crisp pictures for the Hive's screen and the AmbleBee's black-and-white e-ink.
+
 - title: Simulated photo review on the Hive
   status: next
   tag: hive
@@ -66,9 +71,28 @@
 - title: New Missions For Every State
   status: doing
   tag: missions
-  summary: Finding the best date and adventure spots in every state, from our own research and ideas people send in.
+  summary: 49 of 50 states now have a pack. Wyoming is next, then filling every state out with more dates and adventures, from our own research and ideas people send in.
 
 # ---------- Done ----------
+
+- title: A date in almost every state
+  status: done
+  date: 2026-10-20
+  tag: missions
+  summary: 37 new state packs, each starting with a real date spot, plus a new date in Illinois, Ohio and Pennsylvania.
+  items:
+    - Dinner up a mountain tram in Alaska, sunset at the Grand Canyon, songwriters at Nashville's Bluebird Cafe
+    - Popovers at Jordan Pond, a fish boil in Door County, standing in two states at once in Omaha
+    - Every place has an address or map pin and a website, and seasonal ones say when to go
+
+- title: An icon for every state
+  status: done
+  date: 2026-10-20
+  tag: website
+  summary: Every pack has its own little icon now, from Michigan's mitten to New Mexico's Zia sun, all from one shared icon pack.
+  items:
+    - Shared links show an envelope picture with the hive wax seal in chat apps
+    - Behind the scenes, the build checks every pack has its pack.yaml and a real icon
 
 - title: Report a problem
   status: done

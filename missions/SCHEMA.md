@@ -42,7 +42,7 @@ Check your changes with `python tools/check_missions.py` (also part of the test 
 | `name` | Pack name ("Portland") |
 | `region` | Where it applies ("Portland, OR") |
 | `description` | One or two sentences |
-| `icon` | One-word icon name (bridge, needle, evergreen, wave, tent…) |
+| `icon` | Name of an icon in `icons/packs/`, without `.svg` (`evergreen`, `needle`, `covered-bridge`…). To add one, see `icons/README.md`. |
 
 ## Mission files
 

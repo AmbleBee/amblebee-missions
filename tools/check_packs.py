@@ -29,6 +29,8 @@ def main():
         raise SystemExit(f"No folder at {root}")
     folders = sorted(p for p in root.iterdir() if p.is_dir() and not p.name.startswith((".", "_")) and p.name != "general")
 
+    icon_dir = root.parent / "icons" / "packs"
+    icon_names = {p.stem for p in icon_dir.glob("*.svg")} if icon_dir.is_dir() else None
     missing, incomplete = [], []
     for f in folders:
         count = sum(1 for m in f.glob("*.yaml") if m.name != "pack.yaml" and not m.name.startswith("_"))
@@ -45,8 +47,14 @@ def main():
             incomplete.append((f.name, ["should be 'key: value' lines"]))
             continue
         gaps = [k for k in FIELDS if not str(data.get(k) or "").strip()]
+        found = []
         if gaps:
-            incomplete.append((f.name, [f"missing {', '.join(gaps)}"]))
+            found.append(f"missing {', '.join(gaps)}")
+        icon = str(data.get("icon") or "").strip()
+        if icon and icon_names is not None and icon not in icon_names:
+            found.append(f"icon '{icon}' isn't in icons/packs/")
+        if found:
+            incomplete.append((f.name, found))
 
     if missing:
         print(f"Missing pack.yaml ({len(missing)}):")

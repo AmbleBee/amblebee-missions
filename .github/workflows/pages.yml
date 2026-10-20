@@ -28,6 +28,8 @@ jobs:
         run: python tools/check_missions.py
       - name: Check roadmap
         run: python tools/build_roadmap.py
+      - name: Check icons
+        run: python tools/build_icons.py
       - uses: actions/setup-node@v4
         with:
           node-version: "20"
@@ -40,6 +42,7 @@ jobs:
           cp -r site _site
           python tools/build_catalog.py --out _site/catalog.json
           python tools/build_roadmap.py --out _site/roadmap.json
+          python tools/build_icons.py --out _site/icons.json
       - name: Build ZIP lookup
         continue-on-error: true   # without it, only the ZIP box stops working
         run: python tools/build_zips.py --out _site/zips.json

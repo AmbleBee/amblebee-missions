@@ -97,6 +97,19 @@ def check_catalog(root):
         if key not in info:
             problems.append(f"catalog.yaml: missing '{key}'")
 
+    # pack icons must be in the icon pack (icons/packs/<name>.svg next to missions/), when this catalog has one
+    icon_dir = root.parent / "icons" / "packs"
+    if icon_dir.is_dir():
+        have = {f.stem for f in icon_dir.glob("*.svg")}
+        for pid, p in packs.items():
+            if pid == "general":
+                continue
+            icon = str(p.get("icon") or "").strip()
+            if not icon:
+                problems.append(f"{pid}/pack.yaml: needs an icon (a file name from icons/packs/, without .svg)")
+            elif icon not in have:
+                problems.append(f"{pid}/pack.yaml: icon '{icon}' isn't in icons/packs/ (add icons/packs/{icon}.svg, or pick one that's there)")
+
     # a pack folder without pack.yaml still loads, but shows its bare folder name ("Montana", not "Amble Montana")
     for folder in sorted(p for p in root.iterdir() if p.is_dir() and not p.name.startswith((".", "_"))):
         if folder.name != "general" and not (folder / "pack.yaml").exists():

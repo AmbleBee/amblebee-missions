@@ -67,13 +67,8 @@ function svg(markup, size = 22) {
   t.innerHTML = `<svg aria-hidden="true" width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${markup}</svg>`;
   return t.content.firstChild;
 }
-const ICON = {   // fixed artwork only (never mission data)
+const ICON = {   // interface artwork only (never mission data). Pack icons come from icons/packs/ via icons.json
   compass: '<circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5z"/>',
-  evergreen: '<path d="M12 3l5 7h-3l4 6H6l4-6H7z"/><path d="M12 16v5"/>',
-  needle: '<path d="M12 2v6M9 8h6l-1 3h-4zM10.5 11l-1.5 10M13.5 11l1.5 10M8 21h8"/>',
-  arch: '<path d="M4 21C4 9 8 4 12 4s8 5 8 17"/><path d="M7.5 21c0-9 2-13 4.5-13s4.5 4 4.5 13"/>',
-  fleur: '<path d="M12 3c-2 3-2 6 0 9 2-3 2-6 0-9zM12 12c-3-1-6 0-7 3 3 1 5 0 7-3zM12 12c3-1 6 0 7 3-3 1-5 0-7-3zM9 16h6M12 12v9"/>',
-  bridge: '<path d="M2 18h20M4 18v-5M20 18v-5M2 13c4-5 16-5 20 0M8 18v-6M16 18v-6M12 18v-7"/>',
   pin: '<path d="M12 21s-7-6.5-7-12a7 7 0 0 1 14 0c0 5.5-7 12-7 12z"/><circle cx="12" cy="9" r="2.5"/>',
   clock: '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/>',
   bag: '<path d="M5 8h14l-1 12H6zM9 8V6a3 3 0 0 1 6 0v2"/>',
@@ -84,7 +79,8 @@ const ICON = {   // fixed artwork only (never mission data)
   download: '<path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/>',
   dice: '<rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
 };
-const packIcon = (p) => ICON[p && p.icon] || ICON.compass;
+// pack icons: icons.json is built from icons/packs/*.svg by tools/build_icons.py (checked to be plain shapes)
+const packIcon = (p) => (S.icons && p && Object.prototype.hasOwnProperty.call(S.icons, p.icon) && S.icons[p.icon]) || ICON.compass;
 
 // ---- state ---------------------------------------------------------------------------------------
 const S = {
@@ -1183,6 +1179,8 @@ function fromHash() {
 
 async function start() {
   let data;
+  // the icon pack loads alongside the catalog; if it fails, every pack just shows the compass
+  const iconsP = fetch("icons.json", { cache: "no-cache" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   try {
     const r = await fetch("catalog.json", { cache: "no-cache" });
     if (!r.ok) throw new Error(r.status);
@@ -1193,6 +1191,7 @@ async function start() {
     return;
   }
   S.catalog = data;
+  S.icons = ((await iconsP) || {}).packs || {};
   S.missions = data.missions || [];
   const order = (p) => (p.id === "anywhere" ? "0" : p.id === "general" ? "2" : "1") + (p.name || p.id);
   S.packs = (data.packs || []).filter((p) => p.count).sort((a, b) => order(a).localeCompare(order(b)));
