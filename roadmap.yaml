@@ -43,7 +43,7 @@
   when: After the breadboards
   summary: Everything on one custom circuit board, in a 3D-printed body with an e-ink screen that shows your mission.
 
-- title: Photo review on the Hive
+- title: Simulated photo review on the Hive
   status: next
   tag: hive
   summary: Dock the camera, flip through the photos, and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own.
@@ -63,10 +63,10 @@
   tag: website
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
-- title: Filling every state to 60 missions
+- title: New Missions For Every State
   status: doing
   tag: missions
-  summary: California, Florida, Oregon, Texas and Washington are full. Idaho, Louisiana, Missouri and New York are still growing.
+  summary: Finding the best date and adventure spots in every state, from our own research and ideas people send in.
 
 - title: Report a problem button
   status: doing
