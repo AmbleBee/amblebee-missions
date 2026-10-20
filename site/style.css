@@ -205,6 +205,9 @@ details.extra li { margin: 2px 0; }
   display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; font-weight: 600; font-size: .92rem; color: var(--walnut-soft);
 }
 .source b { color: var(--ink); }
+.report { margin: .55rem 0 0; font-size: .88rem; font-weight: 600; color: var(--walnut-soft); }
+.report a { font-weight: 800; color: var(--walnut-soft); text-underline-offset: 3px; }
+.report a:hover { color: var(--ink); }
 .source code {
   margin-left: auto; font: 700 .82rem var(--body); background: var(--sand); color: var(--walnut);
   border-radius: 8px; padding: 3px 9px;

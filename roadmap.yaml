@@ -68,12 +68,19 @@
   tag: missions
   summary: Finding the best date and adventure spots in every state, from our own research and ideas people send in.
 
-- title: Report a problem button
-  status: doing
-  tag: website
-  summary: A button on every mission that opens a short form with the mission already filled in, so closed places and broken links get fixed fast.
-
 # ---------- Done ----------
+
+- title: Report a problem
+  status: done
+  date: 2026-10-19
+  tag: website
+  summary: Every mission now has a "Report a problem" link that opens a short form with the mission already filled in, so closed places and broken links get fixed fast.
+
+- title: Pennsylvania, Illinois and Ohio join the trail
+  status: done
+  date: 2026-10-19
+  tag: missions
+  summary: Three new packs, from Gettysburg and Hershey to the Bean in Chicago and the waterfalls of Hocking Hills.
 
 - title: The bee trail
   status: done
