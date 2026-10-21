@@ -1037,9 +1037,12 @@ function renderBrowse() {
   const fc = $("#filters-count");
   fc.hidden = !active; fc.textContent = String(active);
   fc.setAttribute("aria-label", `${active} on`);
-  $("#browse-count").textContent = n === total ? `${total} missions, ${S.packs.length} packs` : `${n} match your filters`;
+  // "Every mission" is for looking, so it ignores the opener's picks (who's it for, pick from, More filters).
+  // Only the ZIP carries over, to show distances and offer "Closest to"; it never hides anything here.
+  const everything = S.missions;
+  $("#browse-count").textContent = `${total} missions, ${S.packs.length} packs`;
 
-  renderBrowsePick(matches);
+  renderBrowsePick(everything);
   const wrap = $("#packs");
   wrap.replaceChildren();
   const words = searchWords();
@@ -1061,7 +1064,7 @@ function renderBrowse() {
         h("span", {}, L.cost[m.cost] || m.cost)));
   };
   if (searching) {
-    const found = matches.map((m) => [searchScore(m, words), m]).filter(([sc]) => sc > 0)
+    const found = everything.map((m) => [searchScore(m, words), m]).filter(([sc]) => sc > 0)
       .sort((a, b) => b[0] - a[0] || (S.here ? (distM(a[1]) ?? 1e12) - (distM(b[1]) ?? 1e12) : 0)
         || a[1].name.localeCompare(b[1].name))
       .map(([, m]) => m);
@@ -1069,12 +1072,11 @@ function renderBrowse() {
     if (found.length) wrap.append(h("section", { class: "pack", "aria-label": "Search results" },
       h("div", { class: "cards" }, found.map(card))));
     else wrap.append(h("p", { class: "none" },
-      matches.length < S.missions.length ? `Nothing matches "${S.q.trim()}" with your filters on. Try clearing a filter or a different word.`
-        : `Nothing matches "${S.q.trim()}". Try a different word, like a town, a place or an activity.`));
+      `Nothing matches "${S.q.trim()}". Try a different word, like a town, a place or an activity.`));
     return;
   }
   if (S.browse === "near" && S.here) {
-    const near = matches.filter((m) => distM(m) != null).sort((x, y) => distM(x) - distM(y)).slice(0, NEAR_MAX);
+    const near = everything.filter((m) => distM(m) != null).sort((x, y) => distM(x) - distM(y)).slice(0, NEAR_MAX);
     if (near.length) wrap.append(h("section", { class: "pack", "aria-label": "Closest to your ZIP" },
       h("div", { class: "pack-head" },
         h("span", { class: "badge" }, svg(ICON.pin, 26)),
@@ -1084,7 +1086,7 @@ function renderBrowse() {
   } else {
     for (const p of S.packs) {
       if (S.browse !== "all" && S.browse !== p.id) continue;
-      const ms = matches.filter((m) => m.pack === p.id);
+      const ms = everything.filter((m) => m.pack === p.id);
       if (!ms.length) continue;
       if (S.here) ms.sort((x, y) => (distM(x) ?? 0) - (distM(y) ?? 0) || x.number - y.number);
       wrap.append(h("section", { class: "pack", "aria-label": p.name },
@@ -1094,9 +1096,7 @@ function renderBrowse() {
         h("div", { class: "cards" }, ms.map(card))));
     }
   }
-  if (!wrap.children.length) wrap.append(h("p", { class: "none" },
-    matches.length ? "Nothing in this pack fits your filters. Try another pack, or clear a filter or two."
-      : "No missions match those filters. Try clearing one or two."));
+  if (!wrap.children.length) wrap.append(h("p", { class: "none" }, "No missions in this pack yet."));
 }
 function renderBrowsePick(matches) {
   const sel = $("#browse-pack");
