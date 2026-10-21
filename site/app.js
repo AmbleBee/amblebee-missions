@@ -151,7 +151,7 @@ function passes(m, f) {
 }
 function activeFilters(f) {
   return f.who.length + f.duration.length + f.effort.length + f.cost.length + f.setting.length
-    + (f.inSeason ? 1 : 0) + (f.goNow ? 1 : 0) + (f.within != null ? 1 : 0);
+    + (f.inSeason ? 1 : 0) + (f.goNow ? 1 : 0);
 }
 const pool = () => { const f = readFilters(); return S.missions.filter((m) => passes(m, f)); };
 
@@ -844,14 +844,17 @@ function goReveal(m, { replace = false, growFrom = null } = {}) {
   showReveal(m, { from: "roll", growFrom });
 }
 function rollSummary() {
+  // e.g. "Picked for you from 46 missions in Amble Anywhere", "A date, picked from 31 missions within 30 mi of 97201"
   const f = readFilters();
-  const parts = [f.mode === "date" ? "A date" : f.mode === "adventure" ? "An adventure" : "Anything",
-    f.pack === "all" ? "Every pack" : (S.packById[f.pack] || {}).name || f.pack];
-  const n = activeFilters(f);
-  if (n) parts.push(`${n} ${n === 1 ? "filter" : "filters"}`);
   const p = pool().length;
-  parts.push(`picked from ${p} ${p === 1 ? "mission" : "missions"}`);
-  return parts.join(" · ");
+  const lead = f.mode === "date" ? "A date, picked" : f.mode === "adventure" ? "An adventure, picked" : "Picked for you";
+  let line = `${lead} from ${p} ${p === 1 ? "mission" : "missions"}`;
+  if (f.pack !== "all") line += ` in ${(S.packById[f.pack] || {}).name || f.pack}`;
+  if (S.here && f.within != null) line += ` within ${f.within} ${S.unit} of ${S.zip}`;
+  else if (S.here) line += ` near ${S.zip}`;
+  const n = activeFilters(f);
+  if (n) line += ` with ${n} ${n === 1 ? "filter" : "filters"}`;
+  return line;
 }
 function showReveal(m, { from = "roll", sealed = false, animate = false, growFrom = null } = {}) {
   S.current = m; S.revealFrom = from;
@@ -882,12 +885,13 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   const t = ticket(m, { titleId: "reveal-title" });
   slot.replaceChildren(...(gift && gift.n ? [giftNote(gift), t] : [t]));
   const replyTo = gift && gift.f ? gift : null;
-  $("#reveal-actions").replaceChildren(
+  $("#reveal-actions").replaceChildren(...[   // replaceChildren would print a null as the word "null", so drop it
     replyTo ? h("button", { type: "button", class: "btn primary", onclick: () => openGiftForm(m, { reply: replyTo }) }, svg(ICON.mail, 22), `Write back to ${replyTo.f}`) : null,
     h("button", { type: "button", class: replyTo ? "btn" : "btn primary", onclick: roll }, replyTo ? null : svg(ICON.mail, 22), linked ? "Open your own" : "Open another"),
     ...shareButtons(m),
     saveButton(m, gift),
-    h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"));
+    h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"),
+  ].filter(Boolean));
   $("#reveal-adjust").hidden = linked;
   if (growFrom && growFrom.width && !REDUCED()) growTicket(t, growFrom); else t.classList.add("pop");
   const title = $("#reveal-title"); if (title) { title.tabIndex = -1; title.focus({ preventScroll: true }); }
@@ -922,8 +926,8 @@ function showHome() {
 }
 // Back from the reveal goes home. A reveal opened from the home page pushes one history entry;
 // re-rolls replace it, so Back always lands on the home page.
-function startOver({ filters = false } = {}) {
-  S.afterHome = filters ? "filters" : null;
+function startOver({ filters = false, then = null } = {}) {
+  S.afterHome = filters ? "filters" : then;   // then: {id, search} = scroll to a section once home is showing
   if (history.state && history.state.amble === "reveal") { history.back(); return; }
   history.replaceState(null, "", location.pathname + location.search);
   route();
@@ -965,6 +969,12 @@ async function route() {
     $("#filters").hidden = true; $("#filters-toggle").click();
   } else if (after === "top") {
     window.scrollTo({ top: 0 });
+  } else if (after && after.id) {
+    const el = document.getElementById(after.id);
+    requestAnimationFrame(() => {
+      if (el) el.scrollIntoView({ behavior: REDUCED() ? "auto" : "smooth" });
+      if (after.search) $("#search-input").focus({ preventScroll: true });
+    });
   }
 }
 function roll() {
@@ -1015,7 +1025,9 @@ function renderBrowse() {
   const mc = $("#match-count");
   const word = (k) => (k === 1 ? "mission" : "missions");
   mc.className = "match" + (n === total ? "" : " filtered") + (n === 0 ? " zero" : "");
-  mc.textContent = n === total ? `${total} missions to pick from`
+  const narrowed = active > 0 || f.within != null;   // pack or "Who's it for?" alone aren't "filters"
+  mc.textContent = !narrowed && n ? `${n} ${word(n)} to pick from`
+    : !active && n && S.here ? `${n} ${word(n)} to pick from, within ${f.within} ${S.unit} of ${S.zip}`
     : n === 0 ? "No missions fit these filters. Try clearing one."
     : n === 1 ? "Only 1 mission fits these filters"
     : `Picking from ${n} ${word(n)} that fit these filters`;
@@ -1150,18 +1162,23 @@ async function setZip(e) {
   if (!c) { status.textContent = `Couldn't find ${zip}. Double-check the number? (US ZIP codes only for now.)`; return; }
   const first = !S.here;
   S.here = { lat: c[0], lon: c[1] }; S.zip = zip;
+  if (first && $("#pack-select").value === "anywhere") { $("#pack-select").value = "all"; S.packWidened = true; }
+  renderWithin();
+  if (first && !$("#within-select").value) $("#within-select").value = String(WITHIN[S.unit][2]);
   if (first && (S.browse === "anywhere" || S.browse === "all" || !S.browse)) S.browse = "near";
-  status.replaceChildren(h("span", { class: "zip-set" }, `Distances from ${zip}`),
-    ", as the bee flies. Check the drive in your map app.",
+  status.replaceChildren(h("span", { class: "zip-set" }, `Near ${zip}`),
+    ": places close by plus missions you can do anywhere. Distances are as the bee flies.",
     h("button", { type: "button", class: "linkish zip-clear", onclick: clearZip }, "Clear"));
   renderWithin(); refresh();
   rerenderReveal();
 }
 function clearZip() {
   S.here = null; S.zip = null; $("#zip-input").value = "";
+  if (S.packWidened && $("#pack-select").value === "all") $("#pack-select").value = "anywhere";
+  S.packWidened = false;
   if (S.browse === "near") S.browse = null;
   $("#within-select").value = "";
-  $("#zip-status").textContent = "Home, or wherever the trip starts. Your ZIP is looked up in this browser tab and never sent anywhere.";
+  $("#zip-status").textContent = "Add a ZIP to see places close by, plus missions you can do anywhere. It never leaves this browser tab.";
   renderWithin(); refresh();
   rerenderReveal();
 }
@@ -1199,6 +1216,7 @@ async function start() {
 
   const sel = $("#pack-select");
   S.packs.forEach((p) => sel.append(h("option", { value: p.id }, p.name)));
+  if (S.packById.anywhere) sel.value = "anywhere";
   renderLegend();
   const src = data.source || {};
   $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} missions · updated ${src.updated || "recently"}`;
@@ -1210,6 +1228,7 @@ async function start() {
 
   document.querySelectorAll('input[name="mode"], #filters input[type="checkbox"], #pack-select, #within-select')
     .forEach((el) => el.addEventListener("change", () => refresh()));
+  $("#pack-select").addEventListener("change", () => { S.packWidened = false; });
   $("#roll-btn").addEventListener("click", () => roll());
   $("#zip-form").addEventListener("submit", setZip);
   $("#browse-pack").addEventListener("change", (e) => { S.browse = e.target.value; renderBrowse(); });
@@ -1245,7 +1264,7 @@ async function start() {
   });
   $("#filters-reset").addEventListener("click", () => {
     document.querySelectorAll("#filters input").forEach((i) => { i.checked = false; });
-    $("#within-select").value = ""; refresh();
+    refresh();
   });
   $("#mission-dialog").addEventListener("click", (e) => { if (e.target.id === "mission-dialog") e.target.close(); });
   $("#gift-dialog").addEventListener("click", (e) => { if (e.target.id === "gift-dialog") e.target.close(); });
@@ -1253,13 +1272,11 @@ async function start() {
   window.addEventListener("hashchange", route);
   $("#reveal-adjust").addEventListener("click", () => startOver({ filters: true }));
   // nav links: from the reveal view, go home first, then jump to the section
-  document.querySelectorAll(".top nav a").forEach((a) => a.addEventListener("click", (e) => {
+  document.querySelectorAll('.top a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
     if (!revealing()) return;
     e.preventDefault();
     const id = (a.getAttribute("href") || "").replace("#", "");
-    startOver();
-    setTimeout(() => { const el = document.getElementById(id); if (el) el.scrollIntoView({ behavior: "smooth" });
-      if (a.id === "nav-search") $("#search-input").focus({ preventScroll: true }); }, 60);
+    startOver({ then: { id, search: a.id === "nav-search" } });   // scrolls once the home page is back
   }));
 
   renderWithin();

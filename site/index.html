@@ -50,6 +50,7 @@
     </svg>
     <span>AmbleBee <em>Missions</em></span>
   </a>
+  <a href="#share" class="top-share">Add a spot</a>
   <nav aria-label="Sections">
     <a href="#about">About</a>
     <a href="#browse">Every mission</a>
@@ -80,19 +81,39 @@
   <ul class="packs-legend" id="pack-legend" aria-label="Mission packs"></ul>
 </section>
 
-<div class="divider" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
+<div class="divider div-about" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
 
 <section class="roll" aria-labelledby="roll-title">
   <div class="roll-intro">
     <h1 id="roll-title">Where to next?</h1>
     <p class="hand">A little nudge to get out the door together.</p>
-    <p class="lede">Open a date or an adventure. Go do it, take a few photos, and come home with a story. Missions are invitations, never tasks you can fail.</p>
+    <p class="lede">Open a date or an adventure. Go do it, take a few photos, and come home with a story.</p>
+    <p class="about-teaser">AmbleBee is a little camera that hands you missions, and they're all here for anyone to open. <a href="#about">What is AmbleBee?</a></p>
 
     <fieldset class="modes">
       <legend>Who's it for?</legend>
       <label><input type="radio" name="mode" value="any" checked><span>Anything</span></label>
       <label><input type="radio" name="mode" value="date"><span>A date</span></label>
       <label><input type="radio" name="mode" value="adventure"><span>An adventure</span></label>
+    </fieldset>
+
+    <fieldset class="near near-pick">
+      <legend>Near you</legend>
+      <div class="near-row">
+        <form class="zip-form" id="zip-form" autocomplete="on">
+          <label class="sr" for="zip-input">ZIP code</label>
+          <input id="zip-input" name="postal-code" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="ZIP code" required>
+          <button type="submit" class="btn small">Set</button>
+        </form>
+        <label class="within"><span>Within</span>
+          <select id="within-select" disabled><option value="">any distance</option></select>
+        </label>
+        <div class="units" role="group" aria-label="Units">
+          <button type="button" data-unit="mi" aria-pressed="true">mi</button>
+          <button type="button" data-unit="km" aria-pressed="false">km</button>
+        </div>
+      </div>
+      <p class="hint" id="zip-status">Add a ZIP to see places close by, plus missions you can do anywhere. It never leaves this browser tab.</p>
     </fieldset>
 
     <div class="roll-row">
@@ -169,24 +190,6 @@
       </div>
       <p class="hint">"Go right now" skips anything that needs tickets or a reservation.</p>
     </fieldset>
-    <fieldset class="near">
-      <legend>Starting from</legend>
-      <div class="near-row">
-        <form class="zip-form" id="zip-form" autocomplete="on">
-          <label class="sr" for="zip-input">ZIP code</label>
-          <input id="zip-input" name="postal-code" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="ZIP code" required>
-          <button type="submit" class="btn small">Set</button>
-        </form>
-        <label class="within"><span>Within</span>
-          <select id="within-select" disabled><option value="">any distance</option></select>
-        </label>
-        <div class="units" role="group" aria-label="Units">
-          <button type="button" data-unit="mi" aria-pressed="true">mi</button>
-          <button type="button" data-unit="km" aria-pressed="false">km</button>
-        </div>
-      </div>
-      <p class="hint" id="zip-status">Home, or wherever the trip starts. Your ZIP is looked up in this browser tab and never sent anywhere.</p>
-    </fieldset>
   </div>
   <div class="filters-bar">
     <p class="fmatch" id="filters-match" aria-live="polite"></p>
@@ -195,15 +198,6 @@
   </div>
 </section>
 
-<section id="share" class="share" aria-labelledby="share-title">
-  <h2 id="share-title">Know a great spot?</h2>
-  <p>Share a date spot or adventure and it might end up in a pack. It takes about five minutes, and every one gets read.</p>
-  <div class="share-row">
-    <a class="btn primary" id="form-link" href="https://forms.gle/YOUR-FORM-ID" target="_blank" rel="noopener">Share a mission</a>
-    <a class="btn" id="repo-link" href="https://github.com/AmbleBee/amblebee-missions">Or send a pull request</a>
-  </div>
-  <p class="hint" id="form-note"></p>
-</section>
 
 <div class="divider big" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
 
@@ -224,6 +218,18 @@
     <p class="hint" id="search-hint" hidden>Searching every pack. Your filters still apply.</p>
   </div>
   <div id="packs"></div>
+</section>
+
+<div class="divider big div-share" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
+
+<section id="share" class="share" aria-labelledby="share-title">
+  <h2 id="share-title">Know a great spot?</h2>
+  <p>Share a date spot or adventure and it might end up in a pack. It takes about five minutes, and every one gets read.</p>
+  <div class="share-row">
+    <a class="btn primary" id="form-link" href="https://forms.gle/YOUR-FORM-ID" target="_blank" rel="noopener">Share a mission</a>
+    <a class="btn" id="repo-link" href="https://github.com/AmbleBee/amblebee-missions">Or send a pull request</a>
+  </div>
+  <p class="hint" id="form-note"></p>
 </section>
 
 

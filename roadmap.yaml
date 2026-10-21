@@ -75,6 +75,17 @@
 
 # ---------- Done ----------
 
+- title: Easier to start, especially on phones
+  status: done
+  date: 2026-10-21
+  tag: website
+  summary: Phones now open straight to "Where to next?", and missions start close to home.
+  items:
+    - Picks start from Amble Anywhere, so your first mission is one you can do wherever you are
+    - '"Near you" sits right under "Who''s it for?": add a ZIP to see nearby places plus do-anywhere ideas'
+    - A friendlier line on each mission, like "Picked for you from 98 missions within 30 mi of 97201"
+    - A tidier phone header, and "Know a great spot?" gets its own spot at the end of the page
+
 - title: A date in almost every state
   status: done
   date: 2026-10-20

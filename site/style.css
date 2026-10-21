@@ -622,3 +622,60 @@ html.arriving #reveal-slot:empty::before {
 }
 @keyframes arrivepulse { from { opacity: .55; } to { opacity: .9; } }
 @media (max-width: 560px) { html.arriving #reveal-slot:empty::before { aspect-ratio: 1.15 / 1; margin-top: 60px; } }
+
+/* ---- opener: "Near you" sits right under "Who's it for?" ---- */
+.near-pick { margin: 0 0 18px; border: 0; padding: 0; }
+.near-pick legend { font-size: .95rem; }
+.near-pick .near-row { gap: 10px; }
+.near-pick .zip-form input { width: 7.5rem; }
+.near-pick .hint { max-width: 34rem; }
+.about-teaser { display: none; }
+.top-share { display: none; }
+
+/* ---- "Know a great spot?" now sits at the end, after Every mission, with its own bee trail ---- */
+.divider.div-share { margin-top: 56px; }
+#share { margin-bottom: 40px; }
+
+/* ---- phones: open a mission first, the "What is AmbleBee?" story further down ---- */
+@media (max-width: 860px) {
+  main { display: flex; flex-direction: column; }
+  main > #reveal { order: 0; }
+  main > .roll { order: 1; }
+  main > #filters { order: 2; }
+  main > .divider.big:not(.div-share) { order: 3; }
+  main > #browse { order: 4; }
+  main > .div-about { order: 5; margin: 48px 0 26px; }
+  main > #about { order: 6; }
+  main > .div-share { order: 7; }
+  main > #share { order: 8; }
+  .about-teaser { display: block; margin: -.6rem 0 1.3rem; max-width: 34rem; font-size: .95rem; color: var(--walnut-soft); }
+  .about-teaser a { font-weight: 800; white-space: nowrap; }
+}
+
+/* ---- phone header: logo + "Add a spot" on one row, the four links on the next ---- */
+@media (max-width: 560px) {
+  .top { row-gap: 6px; }
+  .top-share {
+    display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 20px; white-space: nowrap;
+    font-weight: 800; font-size: .9rem; color: var(--ink); text-decoration: none;
+    background: var(--honey-tint); box-shadow: inset 0 0 0 2px var(--honey);
+  }
+  .top nav a.nav-share { display: none; }
+  .top nav { width: 100%; flex-wrap: nowrap; justify-content: space-between; }
+  .brand span { font-size: 1.35rem; }
+  .brand svg { width: 44px; height: 38px; }
+  .near-pick .near-row { flex-wrap: wrap; }
+  .near-pick .zip-form { flex: 1 1 100%; }
+  .near-pick .zip-form input { flex: 1; width: auto; }
+}
+/* Near you: keep ZIP + Set on one line, and the distance + mi/km together */
+.near-pick .zip-form { min-width: 0; }
+.near-pick .zip-form input { min-width: 0; }
+.near-pick .within select { min-width: 0; width: 7.5rem; }
+.near-pick .near-row > .within, .near-pick .near-row > .units { flex: 0 0 auto; }
+.roll-intro { min-width: 0; }
+@media (max-width: 560px) {
+  .near-pick .zip-form { display: flex; flex: 1 1 100%; }
+  .near-pick .zip-form input { flex: 1 1 auto; width: 0; }
+  .near-pick .within select { width: 7rem; }
+}
