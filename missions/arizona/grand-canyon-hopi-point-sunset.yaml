@@ -1,10 +1,11 @@
+# Updated 2026-10-21
 number: 1
 name: Sunset at Hopi Point, Grand Canyon
 mode: date
 place:
   name: Hopi Point
   area: Hermit Road, Grand Canyon South Rim
-  coords: [36.07170, -112.15400]  # APPROX coords: Hopi Point overlook
+  coords: [36.07441, -112.15502]
   website: https://www.nps.gov/grca/planyourvisit/hermit-road.htm
 short: Ride the shuttle to Hopi Point and watch the sun set over the Grand Canyon.
 description: >

@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Mystic Pizza and the Drawbridge
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Mystic Pizza
   area: Downtown Mystic
   address: 56 W Main St, Mystic, CT 06355
+  coords: [41.35455, -71.97166]
   website: https://www.mysticpizza.com/restaurants.html
 short: Share a slice at Mystic Pizza, then watch the old drawbridge lift for a boat.
 description: >

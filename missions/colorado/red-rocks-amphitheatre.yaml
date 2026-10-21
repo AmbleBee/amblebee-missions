@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Red Rocks Amphitheatre
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Red Rocks Park & Amphitheatre
   area: Morrison
   address: 18300 W Alameda Pkwy, Morrison, CO 80465
+  coords: [39.66621, -105.20734]
   website: https://www.redrocksonline.com
 short: Climb the Red Rocks bleachers at golden hour, or catch a show between the red walls.
 description: >

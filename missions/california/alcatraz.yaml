@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 26
 name: Alcatraz Island
 mode: both
@@ -5,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Alcatraz Landing, Pier 33
   area: Embarcadero, San Francisco
-  address: Pier 33, The Embarcadero, San Francisco, CA 94111  # verify against the ferry operator's site
-  coords: [37.80700, -122.40500]  # APPROX: set at the Pier 33 ferry entrance before publishing
+  address: Pier 33, The Embarcadero, San Francisco, CA 94111
+  coords: [37.80646, -122.40457]
   website: https://www.nps.gov/alca/planyourvisit/index.htm
 short: Take the ferry to Alcatraz. Tour the cellhouse and find the cell from the famous escape.
 description: >

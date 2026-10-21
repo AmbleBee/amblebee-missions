@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Leopold's and Forsyth Park
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Leopold's Ice Cream
   area: Broughton St, Savannah
   address: 212 E Broughton St, Savannah, GA 31401
+  coords: [32.078370, -81.089339]
   website: https://www.leopoldsicecream.com
 short: Get a scoop at Leopold's, then stroll the squares to the Forsyth Park fountain.
 description: >

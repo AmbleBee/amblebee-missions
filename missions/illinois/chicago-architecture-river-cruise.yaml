@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Chicago Architecture River Cruise
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Chicago Architecture Center River Cruise
   area: Chicago Riverwalk
   address: 112 E Wacker Dr, Chicago, IL 60601
+  coords: [41.88724, -87.62369]
   website: https://www.architecture.org
 short: Float through downtown Chicago on the river. Each pick the building you'd live in.
 description: >

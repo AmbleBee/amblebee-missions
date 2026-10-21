@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Sunset Under Vulcan
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Vulcan Park and Museum
   area: Red Mountain, Birmingham
   address: 1701 Valley View Dr, Birmingham, AL 35209
+  coords: [33.49118, -86.79531]
   website: https://visitvulcan.com
 short: Climb up to the giant iron Vulcan statue and watch the sun set over Birmingham.
 description: >

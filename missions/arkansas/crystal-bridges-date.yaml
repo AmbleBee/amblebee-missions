@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Crystal Bridges After a Trail Walk
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Crystal Bridges Museum of American Art
   area: Bentonville
   address: 600 Museum Way, Bentonville, AR 72712
+  coords: [36.38180, -94.20269]
   website: https://crystalbridges.org
 short: Walk the woods trails, then wander the free galleries. Each pick a favorite painting.
 description: >
