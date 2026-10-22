@@ -6,7 +6,7 @@ place:
   name: Alyeska Resort Aerial Tram and Seven Glaciers
   area: Girdwood
   address: 1000 Arlberg Ave, Girdwood, AK 99587
-  coords: [60.97056, -149.09720]  # APPROX: set at the ferry terminal before publishing
+  coords: [60.97055, -149.09694]
   website: https://www.alyeskaresort.com
 short: Ride the tram up Mount Alyeska for dinner 2,300 feet up, looking out at the glaciers.
 description: >
