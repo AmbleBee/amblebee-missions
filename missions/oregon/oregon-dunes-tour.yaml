@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 60
 name: Oregon Dunes Buggy Tour
 mode: both
@@ -6,7 +7,7 @@ place:
   name: Sandland Adventures
   area: Hwy 101, just south of Florence
   address: 85366 Hwy 101, Florence, OR 97439
-  coords: [43.94200, -124.11100]  # APPROX: set at the Sandland entrance before publishing
+  coords: [43.95364, -124.10483]
   website: https://sandland.com
 short: Ride a dune buggy over the Oregon Dunes and down onto the beach. Try the sandrail to go faster.
 description: >

@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 12
 name: Balboa Park Free Garden Crawl
 mode: both
@@ -5,8 +6,9 @@ who: [solo, friends, family, kids]
 place:
   name: Botanical Building and Lily Pond, Balboa Park
   area: El Prado, Balboa Park, San Diego
-  address: 1549 El Prado, San Diego, CA 92101  # verify against the city's Balboa Park page
-  coords: [32.73190, -117.14940]  # APPROX: set at the lily pond before publishing
+  website: https://balboaparkbotanical.org
+  address: 1550 El Prado, San Diego, CA 92101
+  coords: [32.73222, -117.14924]
 short: Crawl Balboa Park's free gardens. Each crown your favorite one.
 description: >
   Start at the Botanical Building, the big 1915 wooden lath house reflected in

@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 44
 name: California State Railroad Museum
 mode: both
@@ -6,7 +7,7 @@ place:
   name: California State Railroad Museum
   area: Old Sacramento
   address: 111 I St, Sacramento, CA 95814
-  coords: [38.58500, -121.50500]  # APPROX: set at the entrance before publishing
+  coords: [38.58452, -121.50448]
   website: https://www.californiarailroad.museum
 short: Climb aboard giant locomotives at the California State Railroad Museum in Old Sacramento.
 description: >

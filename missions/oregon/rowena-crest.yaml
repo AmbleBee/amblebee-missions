@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 40
 name: Rowena Crest and the Rowena Loops
 mode: both
@@ -5,7 +6,9 @@ who: [solo, friends, family]
 place:
   name: Rowena Crest Viewpoint and Trailhead
   area: Historic Columbia River Highway, between Mosier and The Dalles
-  coords: [45.68300, -121.30100]  # APPROX: set at the viewpoint parking before publishing
+  address: 6500 Historic Columbia River Hwy, Mosier, OR 97040
+  coords: [45.68273 -121.29978]
+  website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=221
 short: Drive the twisty Rowena Loops up to Rowena Crest. Hike out for the Gorge view.
 description: >
   Take the old Columbia River Highway from Mosier up to Rowena Crest, then

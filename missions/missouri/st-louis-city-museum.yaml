@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 1
 name: City Museum
 mode: both
@@ -6,7 +7,7 @@ place:
   name: City Museum
   area: Downtown West, St. Louis
   address: 750 N 16th St, St. Louis, MO 63103
-  coords: [38.63360, -90.20060]  # APPROX: set at the entrance before publishing
+  coords: [38.63387, -90.20094]
   website: https://www.citymuseum.org
 short: Crawl the caves, ride the 10-story slide, climb MonstroCity. Grown-ups play too.
 description: >

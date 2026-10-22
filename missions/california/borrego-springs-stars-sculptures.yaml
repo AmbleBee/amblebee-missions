@@ -1,11 +1,12 @@
+# Updated 2026-10-22
 number: 39
 name: Borrego Springs Sculptures and Stars
 mode: both
 who: [solo, friends, family, kids]
 place:
   name: Borrego Springs (Christmas Circle)
-  area: Anza-Borrego Desert, San Diego County
-  coords: [33.25600, -116.37500]  # APPROX: set at Christmas Circle before publishing
+  area: Christmas Circle Community Park, Borrego Springs, CA 92004
+  coords: [33.25655, -116.37441]
 short: Find the giant metal dragon in the Borrego desert at sunset, then stay for a dark sky full of stars.
 description: >
   Drive the desert roads around Borrego Springs to find more than 100 giant

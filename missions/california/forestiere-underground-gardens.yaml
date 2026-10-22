@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 34
 name: Forestiere Underground Gardens
 mode: both
@@ -6,7 +7,7 @@ place:
   name: Forestiere Underground Gardens
   area: West Shaw Ave, Fresno
   address: 5021 W Shaw Ave, Fresno, CA 93722
-  coords: [36.80800, -119.88100]  # APPROX: set at the entrance before publishing
+  coords: [36.80769, -119.88195]
   website: https://undergroundgardens.com
 short: Tour a hand-dug underground home in Fresno, with fruit trees growing up through skylights.
 description: >
@@ -33,5 +34,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal]
+discounts: [military, student, senior]
 tags: [quirky, underground, history, gardens, central-valley]
 credit:

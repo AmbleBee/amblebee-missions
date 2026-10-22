@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 31
 name: Crocker Art Museum
 mode: both
@@ -6,7 +7,7 @@ place:
   name: Crocker Art Museum
   area: Downtown Sacramento, near Old Sacramento
   address: 216 O St, Sacramento, CA 95814
-  coords: [38.57700, -121.50700]  # APPROX: set at the entrance before publishing
+  coords: [38.57718, -121.50647]
   website: https://crockerart.org
 short: Explore the Crocker in Sacramento. Each pick the painting you'd hang above your couch.
 description: >
@@ -34,5 +35,6 @@ season: any
 time_of_day: any
 travel: day-trip
 check_ahead: [hours]
+discounts: [military, student, senior]
 tags: [art, museum, history, rainy-day, sacramento]
 credit:

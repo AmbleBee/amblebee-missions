@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 14
 name: Ancient Bristlecone Pine Forest
 mode: both
@@ -5,7 +6,8 @@ who: [solo, friends, family]
 place:
   name: Schulman Grove Visitor Center, Ancient Bristlecone Pine Forest
   area: White Mountains, east of Bishop and Big Pine
-  coords: [37.38550, -118.17860]  # APPROX: set at the visitor center parking before publishing
+  address: Ancient Bristlecone Pine Forest Visitor Center, White Mountain Rd, Bishop, CA 93514
+  coords: [37.38566, -118.17866]
   website: https://www.fs.usda.gov/r05/inyo/recreation/schulman-grove
 short: Hike among the oldest trees on Earth. Photograph the most ancient one you can find.
 description: >
@@ -14,7 +16,7 @@ description: >
   that passes the world's oldest known tree, which is kept unmarked on
   purpose. Each hunt for the most ancient-looking tree you can find and
   photograph it, then compare and guess its age. You're above 10,000 feet:
-  take it slow, bring water and layers, and stay on the trail.
+  take it slow, bring water and layers, and stay on the trail. There is no cell phone service.
 duration: all-day
 effort: moderate
 cost: $

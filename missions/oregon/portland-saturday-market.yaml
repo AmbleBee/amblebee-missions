@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 45
 name: Portland Saturday Market
 mode: both
@@ -5,8 +6,9 @@ who: [solo, friends, family]
 place:
   name: Portland Saturday Market
   area: Waterfront Park, under the Burnside Bridge, Portland
-  address: 2 SW Naito Pkwy, Portland, OR 97204  # verify against the market's site
-  coords: [45.52280, -122.67030]  # APPROX: set at the market entrance before publishing
+  address: 2 SW Naito Parkway Portland, OR 97204
+  coords: [45.52244, -122.66983]
+  website: https://www.portlandsaturdaymarket.com
 short: Browse Saturday Market. Each pick a handmade gift for the other, under $20.
 description: >
   Wander the stalls of Portland's big open-air craft market, open on weekends
