@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 46
 name: Apple Hill Orchards
 mode: both
@@ -5,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Apple Hill (Camino area farms)
   area: Camino, east of Placerville
-  coords: [38.74000, -120.67000]  # APPROX: set at one farm's entrance before publishing
+  coords: [38.73010, -120.73010]  # APPROX: set at one farm's entrance before publishing
   website: https://applehill.com  # verify
 short: Pick apples and split a warm apple pastry at Apple Hill's farms in the fall.
 description: >
