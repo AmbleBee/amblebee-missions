@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 2
 name: Powell's Book Swap
 mode: date
@@ -5,7 +6,8 @@ place:
   name: Powell's City of Books
   area: Pearl District, Portland
   address: 1005 W Burnside St, Portland, OR 97209
-  coords: [45.52310, -122.68130]  # APPROX: set at the entrance before publishing
+  coords: [45.52307, -122.68126]
+  website: https://www.powells.com/bookstore/powells-city-of-books
 short: Split up in Powell's. Each pick the other a book under $10.
 description: >
   Grab a store map at the entrance, split up, and each pick a book for the

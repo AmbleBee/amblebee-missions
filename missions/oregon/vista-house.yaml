@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 41
 name: Vista House at Crown Point
 mode: both
@@ -6,7 +7,7 @@ place:
   name: Vista House at Crown Point
   area: Columbia River Gorge, near Corbett
   address: 40700 E Historic Columbia River Hwy, Corbett, OR 97019
-  coords: [45.53970, -122.24410]  # APPROX: set at the parking lot before publishing
+  coords: [45.53990, -122.24470]
   website: https://oregonstateparks.org/park_150.php
 short: Stop at Vista House high above the Gorge. Hold onto your hat in the wind.
 description: >

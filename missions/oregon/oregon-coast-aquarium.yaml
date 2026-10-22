@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 43
 name: Oregon Coast Aquarium
 mode: both
@@ -6,7 +7,8 @@ place:
   name: Oregon Coast Aquarium
   area: Newport
   address: 2820 SE Ferry Slip Rd, Newport, OR 97365
-  coords: [44.61770, -124.04730]  # APPROX: set at the entrance before publishing
+  coords: [44.61702, -124.04761]
+  website: https://aquarium.org
 short: Walk under the sharks at the Oregon Coast Aquarium. Each pick a favorite creature.
 description: >
   Spend a rainy coast day at the aquarium: sea otters, tide pools, and the
@@ -28,4 +30,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
+discounts: [birthday, military, local]
 tags: [aquarium, animals, coast, rainy-day]

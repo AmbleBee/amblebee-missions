@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 18
 name: Petersen Rock Garden
 mode: both
@@ -6,7 +7,8 @@ place:
   name: Petersen Rock Garden and Museum
   area: Near Redmond
   address: 7930 SW 77th St, Redmond, OR 97756
-  coords: [44.19600, -121.24700]  # APPROX: set at the entrance before publishing
+  coords: [44.20330, -121.26235]
+  website: https://www.petersenrockgarden.org
 short: Explore the tiny stone castles and bridges. Find the strangest little building.
 description: >
   Wander this odd, wonderful folk-art garden of miniature castles, bridges and

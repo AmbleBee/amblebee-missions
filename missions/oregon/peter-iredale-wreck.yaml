@@ -1,3 +1,4 @@
+# Updated 2026-10-22
 number: 13
 name: Wreck of the Peter Iredale
 mode: both
@@ -5,7 +6,9 @@ who: [solo, friends, family]
 place:
   name: Peter Iredale shipwreck, Fort Stevens State Park
   area: Hammond, near Astoria
-  coords: [46.17900, -123.98100]  # APPROX: set at the beach parking before publishing
+  address: Peter Iredale Rd, Hammond, OR 97121
+  coords: [46.17829, -123.97839]
+  website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=129
 short: Find the old shipwreck on the beach. Get a photo framed by its rusted bones.
 description: >
   Walk out to the rusted skeleton of the Peter Iredale, a sailing ship that ran
