@@ -65,13 +65,14 @@ Check your changes with `python tools/check_missions.py` (also part of the test 
 | `who` | List of who else can come: `solo`, `friends`, `family`, `kids`. Date-only missions leave it out. [none] |
 | `for_kids` | Required when `who` includes `kids`. `short`: one simple sentence; `steps`: simple photo prompts, one per camera screen |
 | `steps` | Prompts for a guided mission, one camera screen each [none] |
-| `place` | For place-specific missions: `name`, `area`, `address`, optional `coords: [lat, lon]` (trailheads, viewpoints), optional `website`, optional `links` (up to 3 extra buttons: a list of `label` + `url`, labels 25 characters max, e.g. `- label: Bike rentals` / `url: https://...`). Map links are never stored; the Hive builds them from the address or coords. |
+| `place` | **Required in every state pack** (Amble Oregon, Amble Texas...), **left out in Amble Anywhere**; the checker enforces both. Fields: `name`, `area`, `address`, `coords: [lat, lon]` (required in state packs: the entrance, dock or trailhead, 5 decimals; used for Near you and distances), optional `website`, optional `links` (up to 3 extra buttons: a list of `label` + `url`, labels 25 characters max, e.g. `- label: Bike rentals` / `url: https://...`). Map links are never stored; the Hive builds them from the address or coords. |
 | `cost` | `free`, `$` (under $20 for two), `$$` ($20-60), `$$$` (over $60) [`$`] |
 | `setting` | `indoor`, `outdoor`, `either` [`either`] |
 | `season` | `any` or a list of `spring`, `summer`, `fall`, `winter` [`any`] |
 | `time_of_day` | `any`, `morning`, `daytime`, `evening`, `night` [`any`] |
 | `travel` | `home`, `local`, `drive`, `day-trip` [`local`] |
 | `check_ahead` | What to check before going: `hours`, `tickets`, `reservation`, `seasonal`, `conditions` (weather / trail / sky). Never store actual hours (they go stale); use `place.website`. [none] |
+| `discounts` | Groups the place gives discounts to: `senior`, `military` (incl. veterans), `first-responder`, `healthcare`, `educator`, `student`, `government`, `local` (residents), `birthday`. Shown under "Check before you go" as "Ask about discounts: …" and searchable. Only list ones the place advertises; never store amounts (they change). [none] |
 | `discounts` | Groups the place gives discounts to: `senior`, `military` (incl. veterans), `first-responder`, `healthcare`, `educator`, `student`, `government`, `local` (residents), `birthday`. Shown under "Check before you go" as "Ask about discounts: …" and searchable. Only list ones the place advertises; never store amounts (they change). [none] |
 | `routine` | `true` for repeatable routines [`false`] |
 | `tags` | Free-form list [none] |

@@ -158,6 +158,19 @@ def check_catalog(root):
                 problems.append(f"{where}: who includes kids, so it needs for_kids with a short and steps")
         if "steps" in m and not (isinstance(m["steps"], list) and m["steps"]):
             problems.append(f"{where}: steps should be a list of prompts")
+        # Amble Anywhere missions work wherever you are, so no place; every other Amble pack (the
+        # state packs) is about a real spot, so it needs a place with coords (Near you and distances use them)
+        pack_name = str(packs.get(m["pack"], {}).get("name") or "")
+        if m["pack"] == "anywhere":
+            if m.get("place"):
+                problems.append(f"{where}: Amble Anywhere missions work anywhere, so leave out place "
+                                f"(or move the mission to its state's pack)")
+        elif pack_name.startswith("Amble "):
+            if not m.get("place"):
+                problems.append(f"{where}: missions in {pack_name} need a place with a name and coords")
+            elif not (m["place"] or {}).get("coords"):
+                problems.append(f"{where}: place has no coords, so it won't show under Near you or get a distance. "
+                                f"Add coords: [latitude, longitude] (the entrance, dock or trailhead, 5 decimals)")
         if "place" in m:
             place = m["place"] or {}
             if "name" not in place:
