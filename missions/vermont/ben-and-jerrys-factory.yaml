@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Ben & Jerry's and the Flavor Graveyard
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Ben & Jerry's Factory
   area: Waterbury
   address: 1281 Waterbury-Stowe Rd, Waterbury, VT 05676
+  coords: [44.35287, -72.73935]
   website: https://www.benjerry.com
 short: Tour the Ben & Jerry's factory, taste the flavor of the day, then visit the Flavor Graveyard.
 description: >

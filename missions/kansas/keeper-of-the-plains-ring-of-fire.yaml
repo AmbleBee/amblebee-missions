@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Keeper of the Plains at Dusk
 mode: date
@@ -5,6 +6,7 @@ place:
   name: The Keeper of the Plains
   area: Where the Big and Little Arkansas rivers meet
   address: 650 N Seneca St, Wichita, KS 67203
+  coords: [37.69126, -97.34960]
   website: https://www.visitwichita.com
 short: Walk the river at dusk and watch the fire pots light up around the Keeper of the Plains.
 description: >

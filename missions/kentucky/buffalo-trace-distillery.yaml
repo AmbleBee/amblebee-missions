@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Tour Buffalo Trace Distillery
 mode: date
@@ -6,6 +7,7 @@ place:
   area: Frankfort
   address: 113 Great Buffalo Trace, Frankfort, KY 40601
   website: https://www.buffalotracedistillery.com
+  coords: [36.21657, -84.87022]
 short: Take a free distillery tour and tasting. Each pick a favorite and buy a bottle to share.
 description: >
   Buffalo Trace offers free guided tours of one of the oldest distilleries in the country,

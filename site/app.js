@@ -18,8 +18,12 @@ const L = {
   cost: { free: "Free", "$": "Under $20", "$$": "$20-60", "$$$": "Over $60" },
   setting: { indoor: "Indoors", outdoor: "Outdoors", either: "Indoors or out" },
   time: { morning: "Best in the morning", daytime: "Daytime", evening: "Best in the evening", night: "At night" },
-  check: { hours: "opening hours", tickets: "tickets", reservation: "a reservation", seasonal: "if it's open this season", conditions: "weather and trail conditions" },
+  check: { hours: "opening hours", tickets: "tickets", reservation: "a reservation", seasonal: "whether it's open this season", conditions: "weather and trail conditions" },
   who: { solo: "just you", friends: "friends", family: "family", kids: "kids" },
+  // discounts a place offers, shown as "Ask about discounts: …" (never promised: prices change)
+  discount: { senior: "seniors", military: "military and veterans", "first-responder": "first responders",
+    healthcare: "healthcare workers", educator: "teachers and educators", student: "students",
+    government: "government employees", local: "local residents", birthday: "birthdays" },
 };
 const NAME_MAX = 30;    // "From" and "To" on a gift link
 const NOTE_MAX = 400;   // the hidden note
@@ -43,6 +47,26 @@ const CARD_ART = {   // fixed artwork for the corner of each card
 };
 const themeOf = (k) => (THEMES[k] ? k : "partner");
 const signFor = (theme, s) => (THEMES[theme].signs.includes(s) ? s : THEMES[theme].signs[0]);
+// "Check before you go: …" — a fixed order with the season check last, and a comma before the final "and"
+// when the list is long or an item already has an "and" in it ("weather and trail conditions").
+const CHECK_ORDER = ["hours", "tickets", "reservation", "conditions", "seasonal"];
+function checkText(m) {
+  const keys = [...new Set(m.check_ahead || [])].sort((a, b) => {
+    const i = (k) => (CHECK_ORDER.includes(k) ? CHECK_ORDER.indexOf(k) : 99);
+    return i(a) - i(b);
+  });
+  return joinList(keys.map((k) => L.check[k] || k));
+}
+function joinList(parts) {
+  if (parts.length < 2) return parts.join("");
+  const comma = parts.length > 2 || parts.some((t) => / and /.test(t));
+  return parts.slice(0, -1).join(", ") + (comma ? ", and " : " and ") + parts[parts.length - 1];
+}
+const DISCOUNT_ORDER = ["senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"];
+function discountText(m) {
+  const keys = [...new Set(m.discounts || [])].sort((a, b) => DISCOUNT_ORDER.indexOf(a) - DISCOUNT_ORDER.indexOf(b));
+  return joinList(keys.map((k) => L.discount[k] || k));
+}
 const NEAR_MAX = 24;
 const WITHIN = { mi: [5, 15, 30, 60, 100], km: [10, 25, 50, 100, 150] };
 const M_PER = { mi: 1609.344, km: 1000 };
@@ -76,6 +100,7 @@ const ICON = {   // interface artwork only (never mission data). Pack icons come
   link: '<path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1"/><path d="M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1"/>',
   share: '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
   mail: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/>',
+  tag: '<path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.6 1.6 0 0 1 0 2.2l-6.6 6.6a1.6 1.6 0 0 1-2.2 0z"/><circle cx="8" cy="8" r="1.5"/>',
   download: '<path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/>',
   dice: '<rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
 };
@@ -180,7 +205,10 @@ function ticket(m, { titleId } = {}) {
     notes.push(h("p", {}, svg(ICON.compass, 18), `Good with ${list(m.who.map((w) => L.who[w] || w))}`));
   }
   if (m.check_ahead && m.check_ahead.length) {
-    notes.push(h("p", {}, svg(ICON.clock, 18), `Check before you go: ${list(m.check_ahead.map((c) => L.check[c] || c))}`));
+    notes.push(h("p", {}, svg(ICON.clock, 18), `Check before you go: ${checkText(m)}`));
+  }
+  if (m.discounts && m.discounts.length) {
+    notes.push(h("p", {}, svg(ICON.tag, 18), `Ask about discounts: ${discountText(m)}`));
   }
   if (m.gear && m.gear.length) {
     const bring = m.gear.filter((g) => !g.rent || g.rent === "no").map((g) => pretty(g.item));
@@ -204,6 +232,11 @@ function ticket(m, { titleId } = {}) {
     }
     const site = safeUrl(m.place.website);
     if (site) links.push(h("a", { href: site, target: "_blank", rel: "noopener" }, svg(ICON.link, 18), "Website"));
+    // optional extra links (place.links: [{label, url}]), e.g. a bike rental next to the island's own site
+    for (const l of (Array.isArray(m.place.links) ? m.place.links : []).slice(0, 3)) {
+      const url = safeUrl(l && l.url), label = l && String(l.label || "").trim();
+      if (url && label) links.push(h("a", { href: url, target: "_blank", rel: "noopener" }, svg(ICON.link, 18), label));
+    }
     place = h("div", { class: "place" },
       h("span", {}, svg(ICON.pin, 18), " ", h("b", {}, m.place.name || ""), m.place.area ? `, ${m.place.area}` : ""),
       m.place.address ? h("span", {}, m.place.address) : null,
@@ -564,11 +597,12 @@ function wrapLines(ctx, text, width, maxLines = 99) {
 async function drawMission(m, gift) {
   const pack = S.packById[m.pack] || { name: m.pack };
   const c = coordsOf(m);
-  const [packImg, pinImg, clockImg, beeImg] = await Promise.all([
+  const [packImg, pinImg, clockImg, beeImg, tagImg] = await Promise.all([
     svgImage(packIcon(pack), { size: 64, stroke: "#FFFDF8" }),
     svgImage(ICON.pin, { size: 40, stroke: IMGC.sageDeep }),
     svgImage(ICON.clock, { size: 36, stroke: IMGC.walnutSoft }),
     svgImage(BEE, { size: 84, viewBox: "0 0 28 26", stroke: "none", fill: "none" }),
+    svgImage(ICON.tag, { size: 36, stroke: IMGC.walnutSoft }),
   ]);
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
@@ -678,8 +712,15 @@ async function drawMission(m, gift) {
     // check before you go
     if (m.check_ahead && m.check_ahead.length) {
       ctx.font = IMGF.body(800, 30);
-      const lines = wrapLines(ctx, `Check before you go: ${list(m.check_ahead.map((k) => L.check[k] || k))}`, inW - 56, 3);
+      const lines = wrapLines(ctx, `Check before you go: ${checkText(m)}`, inW - 56, 3);
       if (draw) { if (clockImg) ctx.drawImage(clockImg, inX, y + 2, 36, 36); ctx.fillStyle = IMGC.walnutSoft; ctx.textBaseline = "alphabetic";
+        lines.forEach((l, i) => ctx.fillText(l, inX + 54, y + 30 + i * 42)); }
+      y += lines.length * 42 + 24;
+    }
+    if (m.discounts && m.discounts.length) {
+      ctx.font = IMGF.body(800, 30);
+      const lines = wrapLines(ctx, `Ask about discounts: ${discountText(m)}`, inW - 56, 3);
+      if (draw) { if (tagImg) ctx.drawImage(tagImg, inX, y + 2, 36, 36); ctx.fillStyle = IMGC.walnutSoft; ctx.textBaseline = "alphabetic";
         lines.forEach((l, i) => ctx.fillText(l, inX + 54, y + 30 + i * 42)); }
       y += lines.length * 42 + 24;
     }
@@ -1002,7 +1043,10 @@ function searchText(m) {
   const parts = [m.name, m.short, m.description, (m.tags || []).join(" "), pl.name, pl.area, pl.address,
     pack.name, pack.region, m.credit, m.id, (m.gear || []).map((g) => g.item).join(" "),
     m.for_kids && m.for_kids.short, (m.season === "any" ? [] : m.season || []).join(" "),
-    L.mode[m.mode], L.setting && L.setting[m.setting], L.time && L.time[m.time_of_day]];
+    L.mode[m.mode], L.setting && L.setting[m.setting], L.time && L.time[m.time_of_day],
+    (m.discounts || []).length ? "discount discounts deal " + m.discounts.map((d) => `${d} ${L.discount[d] || ""}`).join(" ")
+      + (m.discounts.includes("military") ? " veteran veterans" : "") + (m.discounts.includes("educator") ? " teacher" : "")
+      + (m.discounts.includes("senior") ? " senior citizen" : "") : ""];
   m._name = fold(m.name);
   m._tags = (m.tags || []).map(fold);
   return (m._hay = fold(parts.filter(Boolean).join(" ")));

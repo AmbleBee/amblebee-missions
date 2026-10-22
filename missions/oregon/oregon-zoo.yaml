@@ -7,6 +7,7 @@ place:
   area: Washington Park, Portland
   address: 4001 SW Canyon Rd, Portland, OR 97221
   coords: [45.51000, -122.71600]  # APPROX: set at the entrance before publishing
+  website: https://www.oregonzoo.org
 short: Visit the Oregon Zoo. Each find the animal most like you.
 description: >
   Spend a day at the zoo and take your time at each exhibit. Each pick the
@@ -27,4 +28,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+discounts: [military]
 tags: [animals, portland]

@@ -1,33 +1,58 @@
-# Copy this file into general/ or a pack folder, name it after the mission
-# (lowercase-with-dashes.yaml), then delete the lines you don't need.
-# Field reference: SCHEMA.md. Check with: python tools/check_missions.py
-number: 99
+# Mission template. Copy this file into a pack folder (missions/oregon/, missions/anywhere/ ...),
+# name it after the mission (lowercase-with-dashes.yaml, permanent), then delete the lines you don't need.
+# Field reference: SCHEMA.md.   Check before pushing:
+#   python tools/check_missions.py    (every rule)
+#   python tools/check_numbers.py     (shows the next free number in each pack)
+
+number: 99                     # next free number in this pack; permanent, never reused
 name: Mission Name
-mode: date
-# who: [solo, friends, family, kids]
+mode: date                     # date | adventure | both
+# who: [solo, friends, family, kids]     # who else can come; leave out for date-only missions
+
+# place: required in every state pack (Amble Oregon...), left out in Amble Anywhere
 # place:
 #   name: Place Name
 #   area: Neighborhood, City
 #   address: 123 Example St, City, ST 00000
-#   website: https://example.com
+#   coords: [45.12345, -122.12345]       # lat, lon, 5 decimals: the entrance, dock or trailhead
+#   website: https://example.com         # the main link, shown as "Website"
+#   links:                               # optional, up to 3 extra buttons
+#     - label: Bike rentals              # button text, 25 characters max
+#       url: https://example.com/rentals
+
 short: One line for the camera screen, under 100 characters.
 description: >
   A few sentences describing the mission for the Hive's mission card.
-# steps:
+
+# steps:                       # photo prompts, one camera screen each
 #   - First photo prompt
 #   - Second photo prompt
-# for_kids:
+
+# for_kids:                    # required when who includes kids
 #   short: Simple sentence for kids!
 #   steps:
 #     - Something red
 #     - A selfie with your grown-up!
-duration: short
-effort: easy
-cost: $
-setting: either
-season: any
-time_of_day: any
-travel: local
-# check_ahead: [hours]
+
+# gear:                        # only gear the mission really needs
+#   - item: bikes
+#     rent: on-site            # on-site | nearby | "no" (bring your own; keep the quotes)
+#   Gear list:
+#     water:   kayak, canoe, paddleboard, life-jackets, wetsuit, river-tube, fishing-gear
+#     camping: tent, sleeping-bags, camp-stove, hammock
+#     snow:    snowshoes, skis, snowboard, sled, traction-spikes
+#     other:   bikes, roller-skates, grill, telescope, binoculars, climbing-gear, headlamps,
+#              golf-clubs, disc-golf-discs, tennis-rackets, kite, high-clearance-vehicle
+
+duration: short                # short (1-3 hrs) | half-day | all-day
+effort: easy                   # easy | moderate | hard
+cost: $                        # free | $ (under $20 for two) | $$ ($20-60) | $$$ (over $60)
+setting: either                # indoor | outdoor | either
+season: any                    # any, or a list: [spring, summer, fall, winter]
+time_of_day: any               # any | morning | daytime | evening | night
+travel: local                  # home | local | drive | day-trip
+# check_ahead: [hours]         # any of: hours, tickets, reservation, seasonal, conditions
+# discounts: [senior, military]  # discounts the place offers (card says "Ask about discounts"); any of:
+#   senior, military, first-responder, healthcare, educator, student, government, local, birthday
 tags: []
-credit:              # leave blank, or the name of whoever suggested it ("Suggested by Sam R.")
+credit:                        # leave blank, or the name of whoever suggested it ("Suggested by Sam R.")

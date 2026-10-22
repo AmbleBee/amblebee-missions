@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Stargazing at the Cincinnati Observatory
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Cincinnati Observatory
   area: Mount Lookout, Cincinnati
   address: 3489 Observatory Pl, Cincinnati, OH 45208
+  coords: [39.13893, -84.42258]
   website: https://www.cincinnatiobservatory.org
 short: Look through a 180-year-old telescope at the planets on an observatory date night.
 description: >

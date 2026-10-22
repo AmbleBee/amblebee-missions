@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Drive the Kancamagus Highway
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Kancamagus Highway (NH-112)
   area: Lincoln to Conway, White Mountains
   address: 200 Kancamagus Hwy, North Woodstock, NH 03262
+  coords: [44.03565, -71.67718]
   website: https://www.visitwhitemountains.com/the-kancamagus-highway
 short: Drive the Kancamagus through the White Mountains. Stop at a waterfall and a big overlook.
 description: >

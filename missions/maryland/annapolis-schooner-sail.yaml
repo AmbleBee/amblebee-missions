@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Sail Annapolis on a Schooner
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Schooner Woodwind
   area: Annapolis waterfront
   address: 80 Compromise St, Annapolis, MD 21401
+  coords: [38.97572, -76.48603]
   website: https://www.schoonerwoodwind.com
 short: Sail out of Annapolis on a wooden schooner. Help raise the sails if they let you.
 description: >

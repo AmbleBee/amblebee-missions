@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Soak at Chico Hot Springs
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Chico Hot Springs Resort
   area: Paradise Valley, near Pray
   address: 163 Chico Rd, Pray, MT 59065
+  coords: [45.33890, -110.69190]
   website: https://www.chicohotsprings.com
 short: Soak in the hot springs pool under the mountains, then have dinner in the old lodge.
 description: >

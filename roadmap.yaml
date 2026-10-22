@@ -68,12 +68,12 @@
   tag: website
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
-- title: New Missions For Every State
-  status: doing
-  tag: missions
-  summary: 49 of 50 states now have a pack. Wyoming is next, then filling every state out with more dates and adventures, from our own research and ideas people send in.
-
 # ---------- Done ----------
+- title: New Missions For Every State
+  status: done
+  date: 2026-10-21
+  tag: missions
+  summary: all 50 states now have at least one mission! More missions being added every day!
 
 - title: Easier to start, especially on phones
   status: done

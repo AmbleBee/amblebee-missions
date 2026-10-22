@@ -1,9 +1,12 @@
+# Updated 2026-10-21
 number: 1
 name: Pitchfork Fondue and the Medora Musical
 mode: date
 place:
   name: Burning Hills Amphitheatre
   area: Medora
+  address: 3422 Chateau Rd, Medora, ND 58645
+  coords: [46.91540, -103.54506]
   website: https://medora.com
 short: Eat steak cooked on a pitchfork, then watch the Medora Musical in the Badlands.
 description: >

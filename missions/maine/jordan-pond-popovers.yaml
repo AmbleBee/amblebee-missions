@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Popovers at Jordan Pond
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Jordan Pond House
   area: Acadia National Park
   address: 2928 Park Loop Rd, Seal Harbor, ME 04675
+  coords: [44.32034, -68.25348]
   website: https://jordanpondhouse.com
 short: Walk the shore of Jordan Pond, then split warm popovers with jam on the lawn.
 description: >

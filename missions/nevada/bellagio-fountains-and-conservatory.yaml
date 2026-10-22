@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Bellagio Fountains and Conservatory
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Bellagio
   area: Las Vegas Strip
   address: 3600 S Las Vegas Blvd, Las Vegas, NV 89109
+  coords: [36.11268, -15.17360]
   website: https://bellagio.mgmresorts.com
 short: Wander the Bellagio's flower conservatory, then watch the fountains dance to music.
 description: >

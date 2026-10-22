@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Sunset Beach in Cape May
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Sunset Beach
   area: Cape May Point
   address: 502 Sunset Blvd, Cape May, NJ 08204
+  coords: [38.94438, -74.96984]
   website: https://www.sunsetbeachnj.com
 short: Hunt for Cape May diamonds on the beach, then watch the sun set over the bay.
 description: >

@@ -31,6 +31,7 @@ LIST_ALLOWED = {
     "who": {"solo", "friends", "family", "kids"},
     "check_ahead": {"hours", "tickets", "reservation", "seasonal", "conditions"},
     "season": {"spring", "summer", "fall", "winter"},
+    "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
 KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit"}
 GEAR = {
@@ -46,6 +47,8 @@ GEAR = {
     "golf-clubs", "disc-golf-discs", "tennis-rackets", "kite", "high-clearance-vehicle",
 }
 RENT = {"on-site", "nearby", "no"}
+PLACE_KEYS = {"name", "area", "address", "coords", "website", "links"}
+LINKS_MAX, LINK_LABEL_MAX = 3, 25  # extra place links: short labels so the buttons fit on a phone
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 CREDIT_MAX = 40  # shown as "Suggested by …" under the mission title
 SHORT_MAX = 100
@@ -164,6 +167,30 @@ def check_catalog(root):
                 if not (isinstance(c, list) and len(c) == 2 and all(isinstance(v, (int, float)) for v in c)
                         and -90 <= c[0] <= 90 and -180 <= c[1] <= 180):
                     problems.append(f"{where}: coords should be [latitude, longitude], e.g. [45.52266, -122.67306]")
+            for k in sorted(set(place) - PLACE_KEYS):
+                hint = {"link": "links", "url": "website", "site": "website", "web": "website", "coord": "coords"}.get(k)
+                problems.append(f"{where}: place has '{k}', which isn't a place field" + (f" (did you mean '{hint}'?)" if hint else ""))
+            w = place.get("website")
+            if w not in (None, "") and not (isinstance(w, str) and w.startswith(("https://", "http://"))):
+                problems.append(f"{where}: place website should start with https://")
+            if "links" in place:
+                links = place["links"]
+                if not isinstance(links, list) or not links:
+                    problems.append(f"{where}: place links should be a list, each with a label and a url")
+                else:
+                    if len(links) > LINKS_MAX:
+                        problems.append(f"{where}: place has {len(links)} links; keep it to {LINKS_MAX} extras")
+                    for i, l in enumerate(links, 1):
+                        if not isinstance(l, dict) or set(l) - {"label", "url"}:
+                            problems.append(f"{where}: place link {i} should have just a label and a url")
+                            continue
+                        label, url = str(l.get("label") or "").strip(), l.get("url")
+                        if not label:
+                            problems.append(f"{where}: place link {i} needs a label (the button text, like \"Bike rentals\")")
+                        elif len(label) > LINK_LABEL_MAX:
+                            problems.append(f"{where}: place link {i} label is {len(label)} characters; keep it to {LINK_LABEL_MAX}")
+                        if not (isinstance(url, str) and url.startswith(("https://", "http://"))):
+                            problems.append(f"{where}: place link {i} url should start with https://")
         cr = m.get("credit")
         if cr not in (None, ""):  # missing or blank credit is fine: nothing shows on the ticket
             if not isinstance(cr, str) or not cr.strip():

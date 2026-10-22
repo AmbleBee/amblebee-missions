@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Ride the Sandia Peak Tram at Sunset
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Sandia Peak Tramway
   area: Northeast Albuquerque
   address: 30 Tramway Rd NE, Albuquerque, NM 87122
+  coords: [35.19069, -106.47965]
   website: https://sandiapeak.com
 short: Ride the tram 2.7 miles up the Sandias and watch the sunset turn the mountain pink.
 description: >

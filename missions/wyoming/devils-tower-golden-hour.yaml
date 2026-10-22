@@ -1,0 +1,26 @@
+# Updated 2026-10-21
+number: 1
+name: Golden Hour Around Devils Tower
+mode: date
+place:
+  name: Devils Tower National Monument
+  area: Tower Trail, by the visitor center
+  coords: [44.49025, -104.72023]
+  website: https://www.nps.gov/deto/
+short: Walk the loop around Devils Tower at golden hour, then stay for the stars.
+description: >
+  Walk the paved 1.3-mile Tower Trail around the base of Devils Tower as the evening
+  light turns the columns gold. The start is short and steep, then it's an easy loop
+  through the pines. The Tower is a sacred place for many tribes, so if you see prayer
+  cloths tied to the trees, leave them be. Stay after dark: it's a long way from city
+  lights.
+duration: short
+effort: easy
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: evening
+travel: day-trip
+check_ahead: [conditions]
+tags: [sunset, stars, national-monument, walk]
+credit:

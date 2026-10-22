@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Mount Rushmore Evening Lighting
 mode: date
@@ -5,6 +6,7 @@ place:
   name: Mount Rushmore National Memorial
   area: Keystone
   address: 13000 SD-244, Keystone, SD 57751
+  coords: [43.87627, -103.45478]
   website: https://www.nps.gov/moru/
 short: Watch Mount Rushmore light up at dusk at the evening ceremony in the amphitheater.
 description: >

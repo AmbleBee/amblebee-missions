@@ -1,3 +1,4 @@
+# Updated 2026-10-21
 number: 1
 name: Songwriters at the Bluebird Cafe
 mode: date
@@ -5,6 +6,7 @@ place:
   name: The Bluebird Cafe
   area: Green Hills, Nashville
   address: 4104 Hillsboro Pike, Nashville, TN 37215
+  coords: [36.10216, -86.81696]
   website: https://bluebirdcafe.com
 short: Hear songwriters play the hits they wrote, up close, at Nashville's tiny Bluebird Cafe.
 description: >
