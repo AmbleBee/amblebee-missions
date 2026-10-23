@@ -1,3 +1,4 @@
+# Updated 2026-10-23
 number: 42
 name: McMenamins Edgefield
 mode: date
@@ -5,7 +6,8 @@ place:
   name: McMenamins Edgefield
   area: Troutdale
   address: 2126 SW Halsey St, Troutdale, OR 97060
-  coords: [45.53930, -122.40240]  # APPROX: set at the main entrance before publishing
+  coords: [45.53738, -122.40682]
+  website: https://www.mcmenamins.com/edgefield
 short: Spend a cozy day at Edgefield. Find every hidden little bar on the grounds.
 description: >
   Wander the old poor farm turned hotel: painted hallways, gardens, a winery and

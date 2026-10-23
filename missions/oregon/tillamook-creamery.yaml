@@ -1,3 +1,4 @@
+# Updated 2026-10-23
 number: 17
 name: Tillamook Creamery
 mode: both
@@ -6,7 +7,8 @@ place:
   name: Tillamook Creamery
   area: Tillamook
   address: 4165 US-101, Tillamook, OR 97141
-  coords: [45.48350, -123.84480]  # APPROX: set at the entrance before publishing
+  coords: [45.48377, -123.84417]
+  website: https://www.tillamook.com/visit-us/creamery#plan
 short: Watch the cheese get made, then get ice cream. Each try a flavor you'd never pick.
 description: >
   Walk the self-guided viewing gallery above the cheese factory floor, then head

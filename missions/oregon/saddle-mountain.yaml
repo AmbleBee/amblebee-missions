@@ -1,3 +1,4 @@
+# Updated 2026-10-23
 number: 37
 name: Saddle Mountain
 mode: both
@@ -5,7 +6,11 @@ who: [solo, friends]
 place:
   name: Saddle Mountain State Natural Area trailhead
   area: Northern Coast Range, near Seaside
-  coords: [45.96250, -123.68900]  # APPROX: set at the trailhead before publishing
+  coords: [45.96288, -123.68985]
+  website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=140
+  links:
+    - label: alltrails
+      url: https://www.alltrails.com/trail/us/oregon/saddle-mountain
 short: Climb Saddle Mountain to the summit. On a clear day you can see the ocean.
 description: >
   A steep climb through forest and up open rocky slopes to one of the best views
