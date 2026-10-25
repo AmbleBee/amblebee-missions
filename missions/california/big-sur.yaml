@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 23
 name: "Big Sur: Bixby Bridge to McWay Falls"
 mode: both
@@ -5,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Bixby Bridge north viewpoint, Highway 1
   area: Big Sur coast, south of Carmel
-  coords: [36.37200, -121.90200]  # APPROX: set at the north-side pullout before publishing
+  address: 39020 Coast Rd, Monterey, CA 93940
+  coords: [36.37265, -121.90318]
 short: Drive Highway 1 through Big Sur. Photograph Bixby Bridge, then the waterfall onto the beach.
 description: >
   Drive south from Carmel on Highway 1 and pull over at Bixby Bridge for the

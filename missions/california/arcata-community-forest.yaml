@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 20
 name: Arcata Community Forest Redwoods
 mode: both
@@ -5,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Redwood Park (Arcata Community Forest trailhead)
   area: East Arcata
-  coords: [40.87400, -124.07300]  # APPROX: set at the Redwood Park parking lot before publishing
+  coords: [40.86906, -124.07266]
+  website: https://www.cityofarcata.org/197/Trail-Maps
 short: Hike into the redwoods from Arcata's Redwood Park. Find the biggest stump and stand inside it.
 description: >
   Start at Redwood Park on the east edge of Arcata and walk into the town's

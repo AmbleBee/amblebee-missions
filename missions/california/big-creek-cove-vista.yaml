@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 29
 name: Big Creek Cove Vista Point
 mode: both
@@ -5,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Big Creek Cove Vista Point, Highway 1
   area: Southern Big Sur, between Esalen and Lucia
-  coords: [36.07100, -121.60100]  # APPROX: set at the vista point pullout before publishing
+  address: 59601-59627 Cabrillo Hwy, Big Sur, CA 93920
+  coords: [36.06157, -121.59145]
 short: Stop at Big Creek Cove on Highway 1. Frame the arched bridge and watch for whales.
 description: >
   Pull over at one of Big Sur's best viewpoints, where the graceful concrete

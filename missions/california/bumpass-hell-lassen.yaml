@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 41
 name: Bumpass Hell, Lassen Volcanic
 mode: both
@@ -5,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Bumpass Hell Trailhead
   area: Lassen Volcanic National Park
-  coords: [40.45800, -121.50500]  # APPROX: set at the trailhead parking before publishing
+  coords: [40.46601, -121.51419]
   website: https://www.nps.gov/lavo
 short: Walk the boardwalk over bubbling mud pots and steaming vents at Bumpass Hell in Lassen.
 description: >
@@ -15,7 +16,9 @@ description: >
   orange and turquoise. It smells strongly of sulfur. Each pick the weirdest
   bubbling spot, and get a photo of the two of you with the steam behind you.
   Stay on the boardwalk; the ground can be thin and scalding. The trail is
-  snowed in much of the year and usually opens in mid-summer.
+  snowed in much of the year and usually opens in mid-summer. (Cell service is
+  limited and unreliable download maps before visiting. Many visitors feel symptoms of altitude sickness
+  take it slow. The park ranges from 5,600 to 10,400 feet above sea level.)
 for_kids:
   short: Volcano hunt! Find each thing.
   steps:
