@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 32
 name: Placerville Community Observatory
 mode: both
@@ -6,8 +7,8 @@ place:
   name: Community Observatory, Folsom Lake College El Dorado Center
   area: Placerville, El Dorado County
   address: 6699 Campus Dr, Placerville, CA 95667
-  coords: [38.71200, -120.84600]  # APPROX: set at the observatory before publishing
-  website: https://nightsky.jpl.nasa.gov  # verify: link the Community Observatory's own site
+  coords: [38.72661, -120.86810]
+  website: https://www.communityobservatory.com
 short: Look through big telescopes at a free public night at the Placerville Community Observatory.
 description: >
   Catch one of the free public viewing nights at a hilltop observatory in the

@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 11
 name: La Jolla Cove Sea Lions
 mode: both
@@ -5,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: La Jolla Cove
   area: La Jolla, San Diego
-  address: 1100 Coast Blvd, La Jolla, CA 92037  # verify against the city's park page
-  coords: [32.85030, -117.27170]  # APPROX: set at the cove overlook before publishing
+  address: 1160 Coast Blvd, La Jolla, CA 92037
+  coords: [32.85023, -117.27136]
 short: Watch the sea lions at La Jolla Cove from the boardwalk. Count them and find a pup.
 description: >
   Walk the coastal path above La Jolla Cove and watch the sea lions sprawled on

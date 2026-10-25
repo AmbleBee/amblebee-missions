@@ -6,7 +6,7 @@ place:
   name: California Science Center
   area: Exposition Park, Los Angeles
   address: 700 Exposition Park Dr, Los Angeles, CA 90037
-  coords: [34.01590, -118.28620]  # APPROX: set at the entrance before publishing
+  coords: [34.01520, -118.28518]
   website: https://californiasciencecenter.org
 short: Stand under Space Shuttle Endeavour, upright and ready to launch. Then explore the science halls.
 description: >
@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
+discounts: [senior, student]
 tags: [space, science, museum, rainy-day, los-angeles]
