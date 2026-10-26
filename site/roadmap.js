@@ -47,6 +47,21 @@
     return '<span class="hex s-' + status + '" aria-hidden="true">' + check + "</span>";
   }
 
+  /* progress: 140/415 in roadmap.yaml -> a bar with the count and a 0-100% label (the build does the math) */
+  function progressBar(e) {
+    var p = e.progress;
+    if (!p || e.status === "done") return "";
+    var pct = Math.max(0, Math.min(100, +p.percent || 0));
+    var count = p.done.toLocaleString() + " / " + p.total.toLocaleString() + (p.label ? " " + p.label : "");
+    return (
+      '<div class="rm-progress" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="' + pct + '"' +
+        ' aria-label="' + esc(e.title + ": " + count) + '">' +
+        '<div class="rm-bar"><span style="width:' + pct + '%"></span></div>' +
+        '<p class="rm-prog-label"><span>' + esc(count) + "</span><b>" + pct + "%</b></p>" +
+      "</div>"
+    );
+  }
+
   function card(e, opts) {
     var when = e.date ? shortDate(e.date) : (e.when || "");
     var tag = e.tag ? '<span class="rm-tag t-' + esc(e.tag.replace(/[^a-z0-9-]/g, "")) + '">' + esc(e.tag) + "</span>" : "";
@@ -57,11 +72,13 @@
       '<div class="rm-card">' +
         (opts.latest ? '<p class="rm-latest hand">Latest</p>' : "") +
         '<p class="rm-meta">' +
-          '<span class="rm-status s-' + e.status + '">' + STATUS[e.status] + "</span>" + tag +
+          // a bar says more than "Buzzing on it", so it takes the pill's place on entries that have one
+          (e.progress && e.status === "doing" ? "" : '<span class="rm-status s-' + e.status + '">' + STATUS[e.status] + "</span>") + tag +
           (when ? '<span class="rm-when-inline">' + esc(when) + "</span>" : "") +
         "</p>" +
         "<h3>" + md(e.title) + "</h3>" +
         (e.summary ? '<p class="rm-sum">' + md(e.summary) + "</p>" : "") +
+        progressBar(e) +
         items +
       "</div>"
     );

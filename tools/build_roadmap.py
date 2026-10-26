@@ -17,8 +17,10 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 STATUSES = ("doing", "next", "later", "done")
-KEYS = {"title", "status", "date", "when", "tag", "summary", "items"}
+KEYS = {"title", "status", "date", "when", "tag", "summary", "items", "progress"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
+# progress: 140/415  or  140/415 places pinned  (done / total, then an optional label)
+PROGRESS_RE = re.compile(r"^\s*(\d+)\s*/\s*(\d+)\s*(.*?)\s*$")
 
 
 def as_date(value):
@@ -57,6 +59,22 @@ def check(entries):
                 problems.append(f"{name}: date must look like 2026-10-19 (got '{e['date']}')")
         elif status == "done":
             problems.append(f"{name}: done entries need a date, like 'date: 2026-10-19'")
+        progress = None
+        if e.get("progress") not in (None, ""):
+            m = PROGRESS_RE.match(str(e["progress"]))
+            if not m:
+                problems.append(f"{name}: progress should look like 140/415 (done/total), "
+                                f"optionally followed by a label like 140/415 places pinned (got '{e['progress']}')")
+            else:
+                done_n, total_n, label = int(m.group(1)), int(m.group(2)), m.group(3)
+                if total_n == 0:
+                    problems.append(f"{name}: progress total can't be 0 (got '{e['progress']}')")
+                elif done_n > total_n:
+                    problems.append(f"{name}: progress has more done than the total ({done_n}/{total_n})")
+                else:
+                    # rounded down, so it never says 100% until the last one is done
+                    progress = {"done": done_n, "total": total_n, "percent": done_n * 100 // total_n,
+                                "label": label or None}
         items = e.get("items") or []
         if not isinstance(items, list) or not all(isinstance(x, (str, int, float)) for x in items):
             problems.append(f"{name}: items should be a list of '- text' lines")
@@ -69,6 +87,7 @@ def check(entries):
             "tag": str(e["tag"]).strip().lower() if e.get("tag") else None,
             "summary": str(e["summary"]).strip() if e.get("summary") else None,
             "items": [str(x).strip() for x in items],
+            "progress": progress,
         })
     return problems, clean
 

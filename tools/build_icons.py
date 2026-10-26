@@ -3,7 +3,7 @@
     python tools/build_icons.py                         # just check icons/
     python tools/build_icons.py --out _site/icons.json
 
-icons.json looks like {"packs": {"mountain": "<path d=.../>", ...}}: the inside of each SVG,
+icons.json looks like {"packs": {"mountain": "<path d=.../>", ...}, "site": {...}}: the inside of each SVG,
 ready to drop into the site's <svg> wrapper (which sets the 24x24 box, stroke and colour).
 Only plain shapes are allowed, so nothing in an icon file can run code on the website.
 """
@@ -15,13 +15,14 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
-SETS = ("packs",)  # add "gear", "ui" when those folders exist
+SETS = ("packs", "site")  # add "gear" when that folder exists
 NS = "{http://www.w3.org/2000/svg}"
 TAGS = {"path", "circle", "ellipse", "rect", "line", "polyline", "polygon", "g"}
 ATTRS = {"d", "cx", "cy", "r", "rx", "ry", "x", "y", "width", "height", "x1", "y1", "x2", "y2", "points",
          "transform", "fill", "stroke", "stroke-width", "stroke-linecap", "stroke-linejoin", "opacity",
          "fill-opacity", "stroke-opacity", "stroke-dasharray"}
 COLOR_OK = {"none", "currentColor"}
+SKIP = {"metadata", "title", "desc"}  # editor/provenance info: never drawn, so it's left out instead of failing
 NAME_RE = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
 SAFE_VALUE = re.compile(r"^[\w\s.,#%()\-+]*$")
 
@@ -54,7 +55,7 @@ def inner(el):
         attrs = "".join(f' {k}="{v}"' for k, v in e.attrib.items())
         kids = "".join(one(c) for c in e)
         return f"<{tag(e)}{attrs}/>" if not kids else f"<{tag(e)}{attrs}>{kids}</{tag(e)}>"
-    return "".join(one(c) for c in el)
+    return "".join(one(c) for c in el if tag(c) not in SKIP)
 
 
 def load(root=ROOT / "icons"):
@@ -79,9 +80,10 @@ def load(root=ROOT / "icons"):
                 continue
             if svg.get("viewBox") != "0 0 24 24":
                 problems.append(f'{where}: needs viewBox="0 0 24 24"')
-            if not len(svg):
+            shapes = [c for c in svg if tag(c) not in SKIP]
+            if not shapes:
                 problems.append(f"{where}: is empty")
-            for child in svg:
+            for child in shapes:
                 check_el(child, where, problems)
             out[s][f.stem] = inner(svg)
     return out, problems

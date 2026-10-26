@@ -119,6 +119,8 @@ const ICON = {   // interface artwork only (never mission data). Pack icons come
   dice: '<rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
 };
 // pack icons: icons.json is built from icons/packs/*.svg by tools/build_icons.py (checked to be plain shapes)
+// the website's own markers come from icons/site/ (also via icons.json); the fallbacks keep cards working without it
+const siteIcon = (name, fallback) => (S.siteIcons && Object.prototype.hasOwnProperty.call(S.siteIcons, name) && S.siteIcons[name]) || fallback;
 const packIcon = (p) => (S.icons && p && Object.prototype.hasOwnProperty.call(S.icons, p.icon) && S.icons[p.icon]) || ICON.compass;
 
 // ---- state ---------------------------------------------------------------------------------------
@@ -1129,9 +1131,21 @@ function renderBrowse() {
   const card = (m) => {
     const d = distM(m);
     const pack = S.packById[m.pack];
+    // little circles on the top right: a kids' version, and discounts the place offers
+    const flags = [];
+    if ((m.who || []).includes("kids") && m.for_kids) {
+      flags.push(h("span", { class: "flag kids", title: "Has a kids' version", role: "img", "aria-label": "Has a kids' version" },
+        svg(siteIcon("kid", ICON.compass), 15)));
+    }
+    if (m.discounts && m.discounts.length) {
+      flags.push(h("span", { class: "flag deal", title: "Ask about discounts", role: "img", "aria-label": "Ask about discounts" },
+        svg(siteIcon("discount", ICON.tag), 15)));
+    }
     return h("button", { type: "button", class: "card", onclick: () => openDialog(m) },
-      h("span", { class: "no" }, (S.browse === "near" || searching) && pack ? `${pack.name} · Mission ${m.number}`
-        : `Mission ${m.number}${m.place && m.place.area ? " · " + m.place.area : ""}`),
+      h("span", { class: "card-top" },
+        h("span", { class: "no" }, (S.browse === "near" || searching) && pack ? `${pack.name} · Mission ${m.number}`
+          : `Mission ${m.number}${m.place && m.place.area ? " · " + m.place.area : ""}`),
+        flags.length ? h("span", { class: "flags" }, flags) : null),
       h("h4", {}, m.name),
       h("p", { class: "s" }, m.short),
       h("span", { class: "meta" },
@@ -1285,7 +1299,9 @@ async function start() {
     return;
   }
   S.catalog = data;
-  S.icons = ((await iconsP) || {}).packs || {};
+  const iconSets = (await iconsP) || {};
+  S.icons = iconSets.packs || {};
+  S.siteIcons = iconSets.site || {};
   S.missions = data.missions || [];
   const order = (p) => (p.id === "anywhere" ? "0" : p.id === "general" ? "2" : "1") + (p.name || p.id);
   S.packs = (data.packs || []).filter((p) => p.count).sort((a, b) => order(a).localeCompare(order(b)));

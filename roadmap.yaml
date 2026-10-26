@@ -11,6 +11,8 @@
 #   tag:     website | missions | camera | hive | ...    (optional, any word; these four get their own colour)
 #   summary: one or two sentences                        (optional)
 #   items:   a list of bullet points                     (optional)
+#   progress: 140/415                                    (optional, not for done: shows a bar with "140 / 415" and 33%;
+#             add a label after it if you like: 140/415 places pinned. Bump the first number as you go.)
 #
 # Order doesn't matter much. The page reads like time flowing downward:
 #   later (top) -> next -> doing -> "You are here" -> done, newest to oldest (bottom).
@@ -59,7 +61,8 @@
   summary: Swap 231 one-off tags for a fixed set of about 20 you can filter by, like views, food, rainy-day and animals.
 
 - title: Exact map pins for every place
-  status: next
+  status: doing
+  progress: 65/415
   tag: missions
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
@@ -69,6 +72,21 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Progress bars on the bee trail
+  status: done
+  date: 2026-10-26
+  tag: website
+  summary: Big jobs on the trail now show how far along they are, with a honey progress bar, a count like 140 / 415 and a percentage.
+
+- title: Kids and discounts at a glance
+  status: done
+  date: 2026-10-26
+  tag: website
+  summary: Mission cards in search and browse now show little circle badges, so you can spot the good ones without opening them.
+  items:
+    - A kid badge when a mission has a kids' version
+    - A -% badge when the place offers discounts
+
 - title: Heads-up notes on missions
   status: done
   date: 2026-10-26
