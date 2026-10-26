@@ -35,7 +35,7 @@ LIST_ALLOWED = {
     "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
 KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit",
-                                                              "caution", "caution_until"}
+                                                              "caution", "caution_until", "draft"}
 GEAR = {
     # Water
     "kayak", "canoe", "paddleboard", "life-jackets", "wetsuit", "river-tube", "fishing-gear",
@@ -113,9 +113,11 @@ def load_catalog(root):
             if d:
                 m["caution_until"] = d.isoformat()
             missions.append(m)
+    # drafts (draft: true) stay in the repo but are left out of the site, so they don't count
     for pid, p in packs.items():
-        p["count"] = sum(1 for m in missions if m["pack"] == pid)
-    if not packs["general"]["count"]:
+        p["count"] = sum(1 for m in missions if m["pack"] == pid and not m.get("draft"))
+        p["drafts"] = sum(1 for m in missions if m["pack"] == pid and m.get("draft"))
+    if not packs["general"]["count"] and not packs["general"]["drafts"]:
         del packs["general"]  # only listed when a source actually has unpacked missions
     return info, packs, missions
 
@@ -249,6 +251,8 @@ def check_catalog(root):
             elif cr.strip()[:1] in "(\"'" or cr.strip().lower().startswith("suggested by"):
                 problems.append(f"{where}: credit should be just the name, like `credit: Max W.` "
                                 "(the site adds \"Suggested by\" itself; no brackets or quotes)")
+        if "draft" in m and not isinstance(m["draft"], bool):
+            problems.append(f"{where}: draft should be true or false (or leave the line out)")
         # caution: one short warning shown in a yellow box on the website ticket (never on the camera)
         ca = m.get("caution")
         if "caution" in m and ca not in (None, ""):

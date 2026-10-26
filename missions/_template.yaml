@@ -4,6 +4,7 @@
 #   python tools/check_missions.py    (every rule)
 #   python tools/check_numbers.py     (shows the next free number in each pack)
 
+draft: true                    # hidden from the site until you've checked the pin and address; delete this line to publish
 number: 99                     # next free number in this pack; permanent, never reused
 name: Mission Name
 mode: date                     # date | adventure | both

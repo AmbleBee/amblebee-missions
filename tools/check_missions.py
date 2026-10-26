@@ -18,9 +18,11 @@ if problems:
         print("  -", p)
     sys.exit(1)
 info, packs, missions = load_catalog(folder)
-print(f"OK: {info['name']} ({info['source_id']}), {len(missions)} missions")
+drafts = sum(1 for m in missions if m.get("draft"))
+print(f"OK: {info['name']} ({info['source_id']}), {len(missions) - drafts} missions on the site"
+      + (f", {drafts} drafts hidden until verified" if drafts else ""))
 for pid, p in packs.items():
-    print(f"  {p.get('name', pid)}: {p['count']}")
+    print(f"  {p.get('name', pid)}: {p['count']}" + (f" (+{p['drafts']} drafts)" if p.get("drafts") else ""))
 # reminders only (never a failure): cautions past their caution_until date are already hidden on the site
 old = expired_cautions(missions)
 if old:

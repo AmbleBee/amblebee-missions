@@ -75,6 +75,15 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Missions Moved to Draft Pending Verification
+  status: done
+  date: 2026-10-26
+  tag: missions
+  summary: 346 missions moved to draft pending verification. They'll come back one at a time as their map pins and addresses get checked, so every place on the site is one we trust.
+  items:
+    - The 133 missions that are already verified stay live, including every Amble Anywhere idea
+    - New missions now start as drafts until they're checked
+
 - title: Heads-Ups, Badges and a Tidier Trail
   status: done
   date: 2026-10-26

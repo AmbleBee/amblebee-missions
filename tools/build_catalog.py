@@ -25,8 +25,11 @@ def build(folder):
     if problems:
         raise SystemExit("Not building, fix these first:\n  - " + "\n  - ".join(problems))
     info, packs, missions = load_catalog(folder)
-    out_missions = [{k: v for k, v in m.items() if k not in PRIVATE_KEYS}
-                    for m in sorted(missions, key=lambda m: (m["pack"] != "general", m["pack"], m["number"]))]
+    # draft missions (draft: true) are left out until they're verified
+    out_missions = [{k: v for k, v in m.items() if k not in PRIVATE_KEYS and k != "draft"}
+                    for m in sorted(missions, key=lambda m: (m["pack"] != "general", m["pack"], m["number"]))
+                    if not m.get("draft")]
+    packs = {pid: {k: v for k, v in p.items() if k != "drafts"} for pid, p in packs.items() if p["count"]}
     body = {
         "schema_version": info["schema_version"],
         "source": {k: info.get(k) for k in ("name", "source_id", "author", "updated")},
