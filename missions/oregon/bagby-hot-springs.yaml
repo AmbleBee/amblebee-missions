@@ -1,3 +1,4 @@
+# Updated: 2026-10-26
 number: 44
 name: Bagby Hot Springs
 mode: both
@@ -11,8 +12,7 @@ description: >
   Walk about a mile and a half through old-growth forest to the historic
   bathhouse, where hot spring water runs into wooden soaking tubs. Bring cash
   for the small fee, expect a wait on weekends, and pack out everything you
-  bring. There's no cell service. Closed in winter once the road is snowed in,
-  and sometimes for wildfires, so check first.
+  bring.
 duration: half-day
 effort: easy
 cost: $
@@ -21,5 +21,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
-caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
+caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
+          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 tags: [hot-springs, forest, relaxing, hiking]

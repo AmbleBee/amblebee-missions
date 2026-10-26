@@ -1,3 +1,4 @@
+# Updated 2026-10-26
 number: 39
 name: The River Road along the Rio Grande
 mode: both
@@ -31,5 +32,7 @@ season: [fall, winter, spring]
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
+          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 tags: [scenic-drive, river, canyon, desert, big-bend]
 credit:

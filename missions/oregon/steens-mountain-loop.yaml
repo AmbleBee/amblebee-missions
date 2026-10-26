@@ -1,3 +1,4 @@
+# Updated 2026-10-26
 number: 49
 name: Steens Mountain Loop
 mode: both
@@ -35,4 +36,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
+          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 tags: [scenic-drive, mountains, views, wildlife, high-desert, eastern-oregon]

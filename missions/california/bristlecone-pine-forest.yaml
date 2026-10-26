@@ -1,4 +1,4 @@
-# Updated 2026-10-22
+# Updated 2026-10-26
 number: 14
 name: Ancient Bristlecone Pine Forest
 mode: both
@@ -16,7 +16,7 @@ description: >
   that passes the world's oldest known tree, which is kept unmarked on
   purpose. Each hunt for the most ancient-looking tree you can find and
   photograph it, then compare and guess its age. You're above 10,000 feet:
-  take it slow, bring water and layers, and stay on the trail. There is no cell phone service.
+  take it slow, bring water and layers, and stay on the trail.
 duration: all-day
 effort: moderate
 cost: $
@@ -25,4 +25,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
+          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 tags: [hiking, trees, mountains, photography, high-altitude]
