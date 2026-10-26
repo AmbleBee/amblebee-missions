@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 52
 name: Hearst Castle Tour
 mode: both
@@ -5,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Hearst Castle Visitor Center
   area: San Simeon, Central Coast
-  coords: [35.68500, -121.16600]  # APPROX: set at the visitor center before publishing
+  coords: [35.65046, -121.18637]
   website: https://hearstcastle.org
 short: Tour William Randolph Hearst's hilltop castle in San Simeon. Find the Neptune Pool.
 description: >

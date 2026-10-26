@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 28
 name: Sunset at the Hotel del Coronado
 mode: date
@@ -5,7 +6,7 @@ place:
   name: Hotel del Coronado
   area: Coronado, San Diego
   address: 1500 Orange Ave, Coronado, CA 92118
-  coords: [32.68060, -117.17890]  # APPROX: set at the main entrance before publishing
+  coords: [32.68047, -117.17755]
   website: https://www.hoteldel.com
 short: Walk the beach at the Hotel del Coronado at sunset, then toast with a drink at the Del.
 description: >

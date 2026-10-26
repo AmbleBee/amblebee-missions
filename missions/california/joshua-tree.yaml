@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 24
 name: Joshua Tree Boulders and Stars
 mode: both
@@ -5,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Hidden Valley Picnic Area, Joshua Tree National Park
   area: Park Boulevard, Joshua Tree National Park
-  coords: [34.01200, -116.16800]  # APPROX: set at the Hidden Valley parking lot before publishing
+  coords: [34.01082, -116.16818]
   website: https://www.nps.gov/jotr/planyourvisit/fees.htm
 short: Explore Joshua Tree's boulders and Skull Rock in the afternoon. Stay after dark for the stars.
 description: >

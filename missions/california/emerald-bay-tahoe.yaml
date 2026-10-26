@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 25
 name: Emerald Bay and Vikingsholm
 mode: both
@@ -5,7 +6,7 @@ who: [solo, friends, family]
 place:
   name: Vikingsholm parking lot, Emerald Bay State Park
   area: Highway 89, Lake Tahoe west shore
-  coords: [38.95400, -120.11000]  # APPROX: set at the Vikingsholm lot off Highway 89 before publishing
+  coords: [38.95425, -120.11054]
   website: https://www.sierrastateparks.org/vikingsholm
 short: Look down on Emerald Bay and its little island, then hike down to the lakeside Viking castle.
 description: >

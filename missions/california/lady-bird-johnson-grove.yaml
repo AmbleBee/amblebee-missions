@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 22
 name: Old-Growth Redwoods at Lady Bird Johnson Grove
 mode: both
@@ -5,8 +6,11 @@ who: [solo, friends, family, kids]
 place:
   name: Lady Bird Johnson Grove trailhead, Redwood National and State Parks
   area: Bald Hills Road, near Orick
-  coords: [41.30320, -124.01780]  # APPROX: set at the trailhead parking before publishing
+  coords: [41.30348, -124.01833]
   website: https://www.nps.gov/places/lbjtrailhead.htm
+  links:
+    - label: alltrails
+      url: https://www.alltrails.com/trail/us/california/lady-bird-grove-trail
 short: Walk among old-growth redwoods hundreds of feet tall. Lie on the ground and look straight up.
 description: >
   Drive three miles up Bald Hills Road and walk the easy loop through a grove of

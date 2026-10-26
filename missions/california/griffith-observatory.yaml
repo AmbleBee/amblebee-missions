@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 7
 name: Griffith Observatory
 mode: both
@@ -6,7 +7,7 @@ place:
   name: Griffith Observatory
   area: Griffith Park, Los Angeles
   address: 2800 E Observatory Rd, Los Angeles, CA 90027
-  coords: [34.11840, -118.30040]  # APPROX: set at the front lawn before publishing
+  coords: [34.11849, -118.30038]
   website: https://griffithobservatory.org
 short: Watch the sunset over LA from Griffith Observatory. Look through a real telescope after dark.
 description: >

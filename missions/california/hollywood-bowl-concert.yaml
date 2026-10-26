@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 58
 name: Concert at the Hollywood Bowl
 mode: both
@@ -5,7 +6,7 @@ who: [solo, friends, family]
 place:
   name: Hollywood Bowl
   area: Cahuenga Pass, Hollywood
-  coords: [34.11200, -118.33900]  # APPROX: set at the main entrance before publishing
+  coords: [34.11313, -118.33861]
   website: https://www.hollywoodbowl.com
 short: Picnic under the stars at a Hollywood Bowl concert. Pack wine, cheese and a blanket.
 description: >

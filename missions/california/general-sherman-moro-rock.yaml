@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 33
 name: General Sherman and Moro Rock
 mode: both
@@ -5,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: General Sherman Tree, Main Trail parking
   area: Giant Forest, Sequoia National Park
-  coords: [36.58450, -118.75100]  # APPROX: set at the Main Trail parking before publishing
-  website: https://www.nps.gov/seki
+  coords: [36.58464, -118.74982]
+  website: https://www.nps.gov/seki/index.htm
 short: Stand under General Sherman, the biggest tree on Earth, then climb Moro Rock for the view.
 description: >
   Start early and walk the paved path down to General Sherman, the largest

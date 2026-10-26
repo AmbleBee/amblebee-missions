@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 4
 name: "Golden Gate Park: Tower and Bison"
 mode: both
@@ -6,7 +7,7 @@ place:
   name: de Young Museum (Hamon Observation Tower)
   area: Golden Gate Park, San Francisco
   address: 50 Hagiwara Tea Garden Dr, San Francisco, CA 94118
-  coords: [37.77150, -122.46870]  # APPROX: set at the museum entrance before publishing
+  coords: [37.77135, -122.46812]
   website: https://www.famsf.org/visit/de-young
 short: Ride up the free de Young tower, then wander Golden Gate Park west to find the bison.
 description: >
@@ -32,4 +33,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+discounts: [senior, student]
 tags: [park, views, animals, walking, san-francisco]

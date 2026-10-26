@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 5
 name: The Huntington Gardens
 mode: both
@@ -6,7 +7,7 @@ place:
   name: The Huntington Library, Art Museum, and Botanical Gardens
   area: San Marino, near Pasadena
   address: 1151 Oxford Rd, San Marino, CA 91108
-  coords: [34.12910, -118.11440]  # APPROX: set at the visitor entrance before publishing
+  coords: [34.12901, -118.11358]
   website: https://www.huntington.org/plan-your-visit
 short: Each pick a garden at the Huntington and lead the other through it. Desert, Japanese, Chinese?
 description: >
@@ -32,4 +33,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+discounts: [senior, military, student]
 tags: [garden, art, calm, splurge, los-angeles]

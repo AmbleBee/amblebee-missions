@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 17
 name: Knott's Berry Farm
 mode: both
@@ -6,7 +7,7 @@ place:
   name: Knott's Berry Farm
   area: Buena Park
   address: 8039 Beach Blvd, Buena Park, CA 90620
-  coords: [33.84430, -117.99890]  # APPROX: set at the main entrance before publishing
+  coords: [33.84421, -117.00041]
   website: https://www.knotts.com
 short: Ride GhostRider at Knott's, explore the old ghost town, and split a boysenberry pie.
 description: >

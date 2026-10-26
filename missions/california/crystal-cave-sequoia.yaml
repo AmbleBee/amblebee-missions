@@ -1,3 +1,4 @@
+# Updated 2026-10-25
 number: 35
 name: Crystal Cave Tour
 mode: both
@@ -5,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Crystal Cave parking area
   area: Sequoia National Park
-  coords: [36.58700, -118.82600]  # APPROX: set at the cave parking area before publishing
+  coords: [36.58513, -118.82709]
   website: https://www.nps.gov/seki/planyourvisit/crystal-cave.htm
 short: Walk down to Crystal Cave in Sequoia and tour a glittering marble cave. Book tickets ahead.
 description: >
