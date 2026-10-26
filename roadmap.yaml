@@ -75,38 +75,16 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
-- title: A tidier bee trail
+- title: Heads-ups, badges and a tidier trail
   status: done
   date: 2026-10-26
   tag: website
-  summary: The trail stays easy to scroll as it grows.
+  summary: Missions now warn you about things worth knowing before you go, and the trail got easier to read.
   items:
-    - Someday ideas share one compact block at the top of the trail
-    - The newest 20 finished things keep their cards; older ones fold into "Earlier on the trail", grouped by month
-    - Up next and Buzzing on it always keep their full cards
-
-- title: Progress bars on the bee trail
-  status: done
-  date: 2026-10-26
-  tag: website
-  summary: Big jobs on the trail now show how far along they are, with a honey progress bar, a count like 140 / 415 and a percentage.
-
-- title: Kids and discounts at a glance
-  status: done
-  date: 2026-10-26
-  tag: website
-  summary: Mission cards in search and browse now show little circle badges, so you can spot the good ones without opening them.
-  items:
-    - A kid badge when a mission has a kids' version
-    - A -% badge when the place offers discounts
-
-- title: Heads-up notes on missions
-  status: done
-  date: 2026-10-26
-  tag: website
-  summary: Some missions now carry a yellow heads-up box for things worth knowing before you head out, like no cell service or a trail closed for repairs.
-  items:
-    - Heads-ups also show on saved mission images, so they come with you even without signal
+    - A yellow heads-up box on missions for things like no cell service or a trail closed for repairs, also on saved mission images
+    - Kid and -% badges on mission cards, so kids' versions and discounts stand out at a glance
+    - Progress bars on the bee trail for big jobs, like pinning every place
+    - Someday ideas share one compact block, and older finished work folds into "Earlier on the trail"
     - Spot something we should warn people about? Use "Report a problem" on any mission
 
 - title: New Missions For Every State
@@ -145,34 +123,24 @@
     - Shared links show an envelope picture with the hive wax seal in chat apps
     - Behind the scenes, the build checks every pack has its pack.yaml and a real icon
 
-- title: Report a problem
-  status: done
-  date: 2026-10-19
-  tag: website
-  summary: Every mission now has a "Report a problem" link that opens a short form with the mission already filled in, so closed places and broken links get fixed fast.
-
 - title: Pennsylvania, Illinois and Ohio join the trail
   status: done
   date: 2026-10-19
   tag: missions
   summary: Three new packs, from Gettysburg and Hershey to the Bean in Chicago and the waterfalls of Hocking Hills.
 
-- title: The bee trail
+- title: Share with a note, and the bee trail
   status: done
   date: 2026-10-19
   tag: website
-  summary: This page! What's new on AmbleBee and what's coming next, all in one place.
-
-- title: Share with a note
-  status: done
-  date: 2026-10-19
-  tag: website
-  summary: Send a mission to someone as a sealed letter.
+  summary: Send a mission to someone as a sealed letter, plus a quick way to report problems and this very page.
   items:
     - Letters now get a wax stamp, and a little pause while they "send"
     - Write a note to go with it, or skip it at the bottom of the form
     - The person you send it to can reply, and download the mission as an image
     - Shared links open faster
+    - Every mission has a "Report a problem" link that opens a short form with the mission already filled in, so closed places and broken links get fixed fast
+    - 'The bee trail: what''s new on AmbleBee and what''s coming next, all in one place'
 
 - title: Texas and Florida join the trail
   status: done
