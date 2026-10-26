@@ -16,6 +16,9 @@
 #
 # Order doesn't matter much. The page reads like time flowing downward:
 #   later (top) -> next -> doing -> "You are here" -> done, newest to oldest (bottom).
+# "later" entries share one compact "Someday, maybe" block at the top; next and doing always get cards.
+# The newest 20 done entries get cards; older ones fold into "Earlier on the trail" at the bottom
+# (change the 20 with TRAIL_DONE at the top of site/roadmap.js).
 # Done entries sort themselves by date; within later / next / doing, file order is kept.
 # Text can use **bold**, `code` and [links](https://example.com).
 # Tip: if a line starts with a quote mark, or has a ': ' in the middle, wrap the whole line in
@@ -72,6 +75,16 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: A tidier bee trail
+  status: done
+  date: 2026-10-26
+  tag: website
+  summary: The trail stays easy to scroll as it grows.
+  items:
+    - Someday ideas share one compact block at the top of the trail
+    - The newest 20 finished things keep their cards; older ones fold into "Earlier on the trail", grouped by month
+    - Up next and Buzzing on it always keep their full cards
+
 - title: Progress bars on the bee trail
   status: done
   date: 2026-10-26

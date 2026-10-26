@@ -98,6 +98,58 @@
 .rm-start { flex-direction: column; align-items: center; gap: 8px; margin: 10px 0 0; padding-bottom: 6px; }
 .rm-start .hand { font-size: 1.45rem; color: var(--walnut-soft); background: var(--oat); padding: 0 10px; }
 
+/* ---- compact blocks: "Someday, maybe" at the top, "Earlier on the trail" at the bottom ---- */
+.rm-block {
+  position: relative; z-index: 2; max-width: 680px; margin: 0 auto 34px; padding: 16px 22px 18px;
+  border-radius: 22px; background: var(--linen); box-shadow: inset 0 0 0 2px var(--line-strong), 0 2px 0 var(--line);
+}
+.rm-someday h2 { margin: 0 0 10px; font-size: 1.8rem; line-height: 1.1; color: var(--walnut-soft); text-align: center; }
+.rm-someday ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.rm-someday li { display: flex; gap: 12px; align-items: flex-start; }
+.rm-someday li .hex { width: 20px; height: 23px; margin-top: 3px; }
+.rm-someday li .hex::before { inset: 2.5px; }
+.rm-sd-title { margin: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 4px 8px; }
+.rm-sd-title b { font: 600 1.08rem/1.25 var(--display); font-variation-settings: "SOFT" 100; color: var(--ink); }
+.rm-sd-title .rm-tag { padding: 1px 8px; font-size: .78rem; }
+.rm-sd-when { font: 700 1.15rem/1 var(--hand); color: var(--walnut-soft); }
+.rm-sd-sum { margin: 2px 0 0; font-size: .93rem; line-height: 1.45; color: var(--walnut-soft); }
+
+.rm-earlier { margin: 6px auto 34px; padding: 0; }
+.rm-earlier > summary {
+  cursor: pointer; list-style: none; min-height: 56px; padding: 10px 22px; display: flex; flex-wrap: wrap;
+  align-items: center; justify-content: center; gap: 2px 12px; border-radius: 22px;
+}
+.rm-earlier > summary::-webkit-details-marker { display: none; }
+.rm-earlier > summary .hand { font-size: 1.7rem; color: var(--walnut-soft); }
+.rm-earlier > summary .hand::before { content: "+ "; color: var(--sage-deep); }
+.rm-earlier[open] > summary .hand::before { content: "– "; }
+.rm-ecount { font: 800 .82rem var(--body); letter-spacing: .4px; text-transform: uppercase; color: var(--walnut-soft); }
+.rm-elist { padding: 0 22px 18px; }
+.rm-eg {
+  margin: 14px 0 6px; padding-bottom: 4px; border-bottom: 2px dashed var(--line);
+  font: 800 .82rem var(--body); letter-spacing: .4px; text-transform: uppercase; color: var(--walnut-soft);
+}
+.rm-elist > ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 2px; }
+.rm-elist details > summary, .rm-eline {
+  margin: 0; min-height: 40px; display: flex; align-items: center; gap: 12px; padding: 4px 6px; border-radius: 10px;
+  font-weight: 700; color: var(--ink); list-style: none;
+}
+.rm-elist details > summary { cursor: pointer; }
+.rm-elist details > summary::-webkit-details-marker { display: none; }
+.rm-elist details > summary:hover { background: var(--sand); }
+.rm-elist details > summary::after { content: "+"; margin-left: auto; font: 700 1.2rem var(--display); color: var(--sage-deep); }
+.rm-elist details[open] > summary::after { content: "–"; }
+.rm-elist time { flex: 0 0 auto; min-width: 58px; white-space: nowrap; font: 700 1.25rem/1 var(--hand); color: var(--walnut-soft); }
+.rm-eb { padding: 0 6px 10px 76px; }
+.rm-eb .rm-sum { margin: 0; font-size: .95rem; }
+.rm-eb ul { list-style: none; margin: .4rem 0 0; padding: 0; display: grid; gap: 3px; }
+.rm-eb li { position: relative; padding-left: 20px; font-size: .93rem; color: var(--walnut-soft); }
+.rm-eb li::before {
+  content: ""; position: absolute; left: 2px; top: .42em; width: 9px; height: 10.5px; background: var(--honey);
+  clip-path: polygon(50% 0, 100% 25%, 100% 75%, 50% 100%, 0 75%, 0 25%);
+}
+.rm-eb code { font: 700 .85em var(--body); background: var(--sand); border-radius: 6px; padding: 1px 6px; }
+
 /* ---- a stop on the trail ---- */
 .stop {
   position: relative; z-index: 2; display: grid; grid-template-columns: minmax(0, 1fr) 84px minmax(0, 1fr);
@@ -218,5 +270,11 @@
   .rm-start { padding-top: 6px; min-height: 48px; justify-content: center; }
   .side-left:not(.in) .rm-card, .side-right:not(.in) .rm-card { translate: 16px 0; }
   .rm-latest { right: 12px; }
+  .rm-block { margin-left: 56px; }
+  .rm-someday { padding: 14px 16px 16px; }
+  .rm-someday h2 { text-align: left; }
+  .rm-earlier > summary { justify-content: flex-start; padding: 10px 16px; }
+  .rm-elist { padding: 0 14px 14px; }
+  .rm-eb { padding-left: 6px; }
   .rm-key { gap: 8px 14px; }
 }

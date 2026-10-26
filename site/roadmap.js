@@ -3,6 +3,10 @@
 (function () {
   "use strict";
 
+  // ---- setting you might edit ----
+  // How many done entries get full cards on the trail. Older ones fold into "Earlier on the trail".
+  var TRAIL_DONE = 20;
+
   var STATUS = {
     doing: "Buzzing on it",
     next: "Up next",
@@ -96,6 +100,54 @@
     );
   }
 
+  /* Someday ideas: one compact block at the top instead of full cards */
+  function somedayBlock(list) {
+    return (
+      '<section class="rm-block rm-someday" aria-labelledby="rm-someday-h">' +
+        '<h2 id="rm-someday-h" class="hand">Someday, maybe</h2>' +
+        "<ul>" + list.map(function (e) {
+          var tag = e.tag ? ' <span class="rm-tag t-' + esc(e.tag.replace(/[^a-z0-9-]/g, "")) + '">' + esc(e.tag) + "</span>" : "";
+          return (
+            "<li>" + hex("later") +
+              "<div><p class=\"rm-sd-title\"><b>" + md(e.title) + "</b>" + tag +
+                (e.when ? ' <span class="rm-sd-when">' + esc(e.when) + "</span>" : "") + "</p>" +
+                (e.summary ? '<p class="rm-sd-sum">' + md(e.summary) + "</p>" : "") +
+              "</div>" +
+            "</li>"
+          );
+        }).join("") + "</ul>" +
+      "</section>"
+    );
+  }
+
+  /* Older done entries: a folded list grouped by month; each line opens to its summary */
+  function earlierBlock(list) {
+    var out = [], month = null;
+    list.forEach(function (e) {
+      var mk = monthKey(e.date);
+      if (mk !== month) {
+        if (month !== null) out.push("</ul>");
+        out.push('<h3 class="rm-eg">' + monthLabel(e.date) + "</h3><ul>");
+        month = mk;
+      }
+      var p = parts(e.date);
+      var head = '<time datetime="' + e.date + '">' + MONTHS[p.m] + " " + p.d + "</time><span>" + md(e.title) + "</span>";
+      var body = (e.summary ? '<p class="rm-sum">' + md(e.summary) + "</p>" : "") +
+        (e.items && e.items.length ? "<ul>" + e.items.map(function (x) { return "<li>" + md(x) + "</li>"; }).join("") + "</ul>" : "");
+      out.push(body
+        ? '<li><details><summary>' + head + "</summary><div class=\"rm-eb\">" + body + "</div></details></li>"
+        : '<li><p class="rm-eline">' + head + "</p></li>");
+    });
+    if (month !== null) out.push("</ul>");
+    return (
+      '<details class="rm-block rm-earlier">' +
+        '<summary><span class="hand">Earlier on the trail</span><span class="rm-ecount">' + list.length +
+          (list.length === 1 ? " more thing done" : " more things done") + "</span></summary>" +
+        '<div class="rm-elist">' + out.join("") + "</div>" +
+      "</details>"
+    );
+  }
+
   function sign(text, cls, id) {
     return '<h2 class="rm-sign ' + (cls || "") + '"' + (id ? ' id="' + id + '"' : "") + "><span>" + text + "</span></h2>";
   }
@@ -103,10 +155,16 @@
   function render(data) {
     var html = [], n = 0;
     var up = data.upcoming || [], done = data.done || [];
+    // Someday goes in its own block; Up next and Buzzing on it always stay on the trail
+    var someday = up.filter(function (e) { return e.status === "later"; });
+    var active = up.filter(function (e) { return e.status !== "later"; });
+    // the newest TRAIL_DONE done entries get cards; the rest fold into "Earlier on the trail"
+    var recent = done.slice(0, TRAIL_DONE), older = done.slice(TRAIL_DONE);
 
-    if (up.length) {
+    if (someday.length) html.push(somedayBlock(someday));
+    if (active.length) {
       html.push(sign("Coming up", "", "coming-up"));
-      up.forEach(function (e) { html.push(stop(e, n++ % 2 ? "right" : "left")); });
+      active.forEach(function (e) { html.push(stop(e, n++ % 2 ? "right" : "left")); });
     }
 
     html.push('<div class="rm-here"><span class="hand">You are here</span><span class="rm-here-date">' + todayLabel() + "</span></div>");
@@ -114,19 +172,24 @@
     if (done.length) {
       html.push(sign("Where we've been", "", "done"));
       var month = null;
-      done.forEach(function (e, i) {
+      recent.forEach(function (e, i) {
         var mk = monthKey(e.date);
         if (i > 0 && mk !== month) html.push('<p class="rm-month"><span>' + monthLabel(e.date) + "</span></p>");
         month = mk;
         html.push(stop(e, i === 0 ? "center" : (n++ % 2 ? "right" : "left"), { latest: i === 0 }));
       });
+      if (older.length) html.push(earlierBlock(older));
     }
 
     html.push('<div class="rm-start"><span class="hex s-done" aria-hidden="true"></span><span class="hand">The hive. It all started here.</span></div>');
 
     var trail = document.getElementById("trail");
-    trail.querySelectorAll(".rm-loading, .stop, .rm-sign, .rm-here, .rm-month, .rm-start").forEach(function (el) { el.remove(); });
+    trail.querySelectorAll(".rm-loading, .stop, .rm-sign, .rm-here, .rm-month, .rm-start, .rm-block").forEach(function (el) { el.remove(); });
     trail.insertAdjacentHTML("beforeend", html.join(""));
+    // opening or closing the folded list moves everything below it, so the bee re-measures her stops
+    trail.querySelectorAll("details").forEach(function (d) {
+      d.addEventListener("toggle", function () { window.dispatchEvent(new Event("resize")); });
+    });
 
     var meta = document.getElementById("rm-meta");
     if (meta) meta.textContent = done.length + " things done · " + up.length + " on the way";
