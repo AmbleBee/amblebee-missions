@@ -62,6 +62,19 @@ function joinList(parts) {
   const comma = parts.length > 2 || parts.some((t) => / and /.test(t));
   return parts.slice(0, -1).join(", ") + (comma ? ", and " : " and ") + parts[parts.length - 1];
 }
+// "caution" (one short warning, website only) shows until the end of its caution_until day, if it has one.
+// Dates are compared as YYYY-MM-DD text in the visitor's own time zone.
+function cautionText(m) {
+  const text = typeof m.caution === "string" ? m.caution.trim() : "";
+  if (!text) return null;
+  const until = typeof m.caution_until === "string" && /^\d{4}-\d{2}-\d{2}$/.test(m.caution_until) ? m.caution_until : null;
+  if (until) {
+    const d = new Date();
+    const today = `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+    if (today > until) return null;
+  }
+  return text;
+}
 const DISCOUNT_ORDER = ["senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"];
 function discountText(m) {
   const keys = [...new Set(m.discounts || [])].sort((a, b) => DISCOUNT_ORDER.indexOf(a) - DISCOUNT_ORDER.indexOf(b));
@@ -102,6 +115,7 @@ const ICON = {   // interface artwork only (never mission data). Pack icons come
   mail: '<rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/>',
   tag: '<path d="M3.5 12.2V4.5a1 1 0 0 1 1-1h7.7l8.3 8.3a1.6 1.6 0 0 1 0 2.2l-6.6 6.6a1.6 1.6 0 0 1-2.2 0z"/><circle cx="8" cy="8" r="1.5"/>',
   download: '<path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/>',
+  caution: '<path d="M10.3 4.3L2.7 17.5a2 2 0 0 0 1.7 3h15.2a2 2 0 0 0 1.7-3L13.7 4.3a2 2 0 0 0-3.4 0z"/><path d="M12 9.5v4"/><path d="M12 17h.01"/>',
   dice: '<rect x="3.5" y="3.5" width="17" height="17" rx="4"/><circle cx="8.5" cy="8.5" r="1.2" fill="currentColor"/><circle cx="15.5" cy="15.5" r="1.2" fill="currentColor"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/>',
 };
 // pack icons: icons.json is built from icons/packs/*.svg by tools/build_icons.py (checked to be plain shapes)
@@ -221,6 +235,9 @@ function ticket(m, { titleId } = {}) {
     notes.push(h("p", {}, svg(ICON.bag, 18), bits.join("; ")));
   }
 
+  const warn = cautionText(m);
+  const caution = warn ? h("div", { class: "caution", role: "note", "aria-label": "Caution" }, svg(ICON.caution, 20), h("p", {}, warn)) : null;
+
   let place = null;
   const c = coordsOf(m);
   if (m.place) {
@@ -265,7 +282,7 @@ function ticket(m, { titleId } = {}) {
       m.description ? h("p", { class: "desc" }, m.description) : null,
       h("ul", { class: "tags", "aria-label": "Details" }, tags),
       notes.length ? h("div", { class: "notes" }, notes) : null,
-      place, extras,
+      caution, place, extras,
       h("p", { class: "source" }, svg(packIcon(pack), 18),
         h("span", {}, "Mission ", h("b", {}, `${m.number || "?"} of ${packTotal(m)}`), " in ", h("b", {}, pack.name)),
         h("code", {}, m.full_id)),
@@ -552,7 +569,7 @@ function saveButton(m, gift) {
 const IMG = { w: 1080, pad: 64, minH: 1350, maxH: 2400 };
 const IMGC = {   // always the light palette, so saved images look the same everywhere
   oat: "#EFE7D8", paper: "#FFFDF8", linen: "#FAF5EC", line: "#E4D9C6", lineStrong: "#D9CDB6", sand: "#F1E5D2",
-  sage: "#A3B18A", sageDeep: "#5F7550", sageTint: "#E3EAD6", sageInk: "#3F5235", honey: "#D8A65A", honeyTint: "#F6E6C6",
+  sage: "#A3B18A", sageDeep: "#5F7550", sageTint: "#E3EAD6", sageInk: "#3F5235", honey: "#D8A65A", honeyTint: "#F6E6C6", honeyDeep: "#946628",
   walnut: "#5A3E2B", walnutSoft: "#7A5A42", ink: "#4A3323",
 };
 const IMGT = {   // note-card colours per theme: frame, dashed border, names
@@ -597,12 +614,14 @@ function wrapLines(ctx, text, width, maxLines = 99) {
 async function drawMission(m, gift) {
   const pack = S.packById[m.pack] || { name: m.pack };
   const c = coordsOf(m);
-  const [packImg, pinImg, clockImg, beeImg, tagImg] = await Promise.all([
+  const warn = cautionText(m);
+  const [packImg, pinImg, clockImg, beeImg, tagImg, cautionImg] = await Promise.all([
     svgImage(packIcon(pack), { size: 64, stroke: "#FFFDF8" }),
     svgImage(ICON.pin, { size: 40, stroke: IMGC.sageDeep }),
     svgImage(ICON.clock, { size: 36, stroke: IMGC.walnutSoft }),
     svgImage(BEE, { size: 84, viewBox: "0 0 28 26", stroke: "none", fill: "none" }),
     svgImage(ICON.tag, { size: 36, stroke: IMGC.walnutSoft }),
+    warn ? svgImage(ICON.caution, { size: 38, stroke: IMGC.honeyDeep }) : null,
   ]);
   const canvas = document.createElement("canvas");
   const ctx = canvas.getContext("2d");
@@ -723,6 +742,20 @@ async function drawMission(m, gift) {
       if (draw) { if (tagImg) ctx.drawImage(tagImg, inX, y + 2, 36, 36); ctx.fillStyle = IMGC.walnutSoft; ctx.textBaseline = "alphabetic";
         lines.forEach((l, i) => ctx.fillText(l, inX + 54, y + 30 + i * 42)); }
       y += lines.length * 42 + 24;
+    }
+    // caution: a honey box with a warning sign
+    if (warn) {
+      ctx.font = IMGF.body(800, 30);
+      const lines = wrapLines(ctx, warn, inW - 96, 6);
+      const boxH = lines.length * 42 + 40;
+      if (draw) {
+        rrect(ctx, inX - 6, y, inW + 12, boxH, 22); ctx.fillStyle = IMGC.honeyTint; ctx.fill();
+        ctx.lineWidth = 3; ctx.strokeStyle = IMGC.honey; ctx.stroke();
+        if (cautionImg) ctx.drawImage(cautionImg, inX + 16, y + 20, 38, 38);
+        ctx.fillStyle = IMGC.ink; ctx.textBaseline = "alphabetic";
+        lines.forEach((l, i) => ctx.fillText(l, inX + 70, y + 50 + i * 42));
+      }
+      y += boxH + 24;
     }
 
     // footer inside the ticket

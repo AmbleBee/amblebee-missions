@@ -84,6 +84,19 @@
   ],
   "done": [
     {
+      "title": "Heads-up notes on missions",
+      "status": "done",
+      "date": "2026-10-26",
+      "when": null,
+      "tag": "website",
+      "summary": "Some missions now carry a yellow heads-up box for things worth knowing before you head out, like no cell service or a trail closed for repairs.",
+      "items": [
+        "Temporary notes, like closures and maintenance, disappear on their own once they're over",
+        "Heads-ups also show on saved mission images, so they come with you even without signal",
+        "Spot something we should warn people about? Use \"Report a problem\" on any mission"
+      ]
+    },
+    {
       "title": "New Missions For Every State",
       "status": "done",
       "date": "2026-10-21",
@@ -229,5 +242,5 @@
       "items": []
     }
   ],
-  "generated_at": "2026-10-22T00:34:24Z"
+  "generated_at": "2026-10-26T15:01:44Z"
 }

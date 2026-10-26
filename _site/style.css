@@ -15,6 +15,7 @@
   --ink: #4A3323;
   --honey: #D8A65A;
   --honey-tint: #F6E6C6;
+  --honey-deep: #946628;
   --sand: #F1E5D2;
   --tape: rgba(163, 177, 138, .62);
   --tape-honey: rgba(216, 166, 90, .55);
@@ -27,7 +28,7 @@
   :root {
     --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
     --sage: #8FA078; --sage-deep: #7E9268; --sage-shadow: #5F7550; --sage-tint: #33402B; --sage-ink: #D3E0C3;
-    --walnut: #E9DCCB; --walnut-soft: #C9B79A; --ink: #F3E9DC; --honey: #E0B66E; --honey-tint: #4A3B22;
+    --walnut: #E9DCCB; --walnut-soft: #C9B79A; --ink: #F3E9DC; --honey: #E0B66E; --honey-tint: #4A3B22; --honey-deep: #E8C27E;
     --sand: #3A3027; --shadow: 0 10px 22px rgba(0, 0, 0, .35);
   }
 }
@@ -177,6 +178,13 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .notes { margin: 1rem 0 0; display: grid; gap: 6px; }
 .notes p { margin: 0; display: flex; gap: 8px; align-items: flex-start; font-weight: 700; font-size: .95rem; color: var(--walnut); }
 .notes svg { flex-shrink: 0; margin-top: 3px; }
+/* caution (website only): one short warning in a honey box, between the notes and the place */
+.caution {
+  margin: 1rem 0 0; padding: 10px 14px; border-radius: 16px; display: flex; gap: 10px; align-items: flex-start;
+  background: var(--honey-tint); box-shadow: inset 0 0 0 2px var(--honey);
+}
+.caution svg { flex-shrink: 0; margin-top: 1px; color: var(--honey-deep); }
+.caution p { margin: 0; font-weight: 800; font-size: .95rem; line-height: 1.4; color: var(--ink); }
 .place {
   margin: 1rem 0 0; padding: 14px 16px; border-radius: 16px; background: var(--linen);
   display: grid; gap: 4px;

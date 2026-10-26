@@ -21,4 +21,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 tags: [hot-springs, forest, relaxing, hiking]

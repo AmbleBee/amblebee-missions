@@ -8,6 +8,7 @@ Catalog layout (see missions/SCHEMA.md):
     missions/<pack>/<id>.yaml       one mission per file; file name = id, folder = pack
 Files starting with "_" (like _template.yaml) are ignored.
 """
+import datetime
 import random
 import re
 from pathlib import Path
@@ -33,7 +34,8 @@ LIST_ALLOWED = {
     "season": {"spring", "summer", "fall", "winter"},
     "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
-KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit"}
+KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit",
+                                                              "caution", "caution_until"}
 GEAR = {
     # Water
     "kayak", "canoe", "paddleboard", "life-jackets", "wetsuit", "river-tube", "fishing-gear",
@@ -52,6 +54,33 @@ LINKS_MAX, LINK_LABEL_MAX = 3, 25  # extra place links: short labels so the butt
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 CREDIT_MAX = 40  # shown as "Suggested by …" under the mission title
 SHORT_MAX = 100
+CAUTION_MAX = 200  # the yellow box on the website ticket; about 3 lines on a phone, so shorter is better
+
+
+def caution_until_date(v):
+    """caution_until as a date, or None if it's missing or not a real YYYY-MM-DD date."""
+    if isinstance(v, datetime.datetime):
+        return v.date()
+    if isinstance(v, datetime.date):
+        return v
+    if isinstance(v, str) and re.fullmatch(r"\d{4}-\d{2}-\d{2}", v.strip()):
+        try:
+            return datetime.date.fromisoformat(v.strip())
+        except ValueError:
+            return None
+    return None
+
+
+def expired_cautions(missions, today=None):
+    """Missions whose caution has passed its caution_until date (the website already hides these;
+    this is a reminder to delete the two lines). Never an error, so a date passing can't break a build."""
+    today = today or datetime.date.today()
+    out = []
+    for m in missions:
+        d = caution_until_date(m.get("caution_until"))
+        if m.get("caution") and d and d < today:
+            out.append((m, d))
+    return out
 
 
 def _read(path):
@@ -76,8 +105,13 @@ def load_catalog(root):
                 m = _read(f)
             except yaml.YAMLError as e:
                 raise ValueError(f"{f}: not valid YAML ({e})") from e
+            except ValueError as e:  # e.g. an impossible date like caution_until: 2026-13-40
+                raise ValueError(f"{f}: has a value that isn't valid ({e}); dates are YYYY-MM-DD") from e
             m = {**DEFAULTS, **m, "id": f.stem, "pack": folder.name, "file": str(f)}
             m["full_id"] = f"{source}/{f.stem}"
+            d = caution_until_date(m.get("caution_until"))
+            if d:
+                m["caution_until"] = d.isoformat()
             missions.append(m)
     for pid, p in packs.items():
         p["count"] = sum(1 for m in missions if m["pack"] == pid)
@@ -215,6 +249,19 @@ def check_catalog(root):
             elif cr.strip()[:1] in "(\"'" or cr.strip().lower().startswith("suggested by"):
                 problems.append(f"{where}: credit should be just the name, like `credit: Max W.` "
                                 "(the site adds \"Suggested by\" itself; no brackets or quotes)")
+        # caution: one short warning shown in a yellow box on the website ticket (never on the camera)
+        ca = m.get("caution")
+        if "caution" in m and ca not in (None, ""):
+            if not isinstance(ca, str) or not ca.strip():
+                problems.append(f"{where}: caution should be one sentence of text")
+            elif len(ca.strip()) > CAUTION_MAX:
+                problems.append(f"{where}: caution is {len(ca.strip())} characters; keep it to {CAUTION_MAX} "
+                                f"(it sits in a small box on the ticket, about 3 lines on a phone)")
+        if "caution_until" in m and m["caution_until"] not in (None, ""):
+            if not (isinstance(ca, str) and ca.strip()):
+                problems.append(f"{where}: caution_until is set but there's no caution for it to end")
+            if not caution_until_date(m["caution_until"]):
+                problems.append(f"{where}: caution_until should be a date like 2026-12-01 (YYYY-MM-DD)")
         for g in m.get("gear") or []:
             if not isinstance(g, dict) or g.get("item") not in GEAR:
                 problems.append(f"{where}: gear item {g.get('item') if isinstance(g, dict) else g!r} isn't in the gear list (SCHEMA.md)")

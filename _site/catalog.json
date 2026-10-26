@@ -4,7 +4,7 @@
     "name": "Amblebee Missions",
     "source_id": "amblebee",
     "author": "amblebee",
-    "updated": "2026-10-20"
+    "updated": "2026-10-22"
   },
   "packs": [
     {
@@ -476,8 +476,8 @@
         "area": "Girdwood",
         "address": "1000 Arlberg Ave, Girdwood, AK 99587",
         "coords": [
-          60.97056,
-          -149.0972
+          60.97055,
+          -149.09694
         ],
         "website": "https://www.alyeskaresort.com"
       },
@@ -488,6 +488,10 @@
       "check_ahead": [
         "reservation",
         "seasonal"
+      ],
+      "discounts": [
+        "local",
+        "military"
       ],
       "credit": null,
       "id": "alyeska-tram-seven-glaciers",
@@ -2668,10 +2672,11 @@
       "place": {
         "name": "Botanical Building and Lily Pond, Balboa Park",
         "area": "El Prado, Balboa Park, San Diego",
-        "address": "1549 El Prado, San Diego, CA 92101",
+        "website": "https://balboaparkbotanical.org",
+        "address": "1550 El Prado, San Diego, CA 92101",
         "coords": [
-          32.7319,
-          -117.1494
+          32.73222,
+          -117.14924
         ]
       },
       "short": "Crawl Balboa Park's free gardens. Each crown your favorite one.",
@@ -2773,14 +2778,15 @@
       "place": {
         "name": "Schulman Grove Visitor Center, Ancient Bristlecone Pine Forest",
         "area": "White Mountains, east of Bishop and Big Pine",
+        "address": "Ancient Bristlecone Pine Forest Visitor Center, White Mountain Rd, Bishop, CA 93514",
         "coords": [
-          37.3855,
-          -118.1786
+          37.38566,
+          -118.17866
         ],
         "website": "https://www.fs.usda.gov/r05/inyo/recreation/schulman-grove"
       },
       "short": "Hike among the oldest trees on Earth. Photograph the most ancient one you can find.",
-      "description": "Drive up into the White Mountains to a forest of twisted bristlecone pines, some more than 4,000 years old. Walk the Methuselah Trail, a 4.5-mile loop that passes the world's oldest known tree, which is kept unmarked on purpose. Each hunt for the most ancient-looking tree you can find and photograph it, then compare and guess its age. You're above 10,000 feet: take it slow, bring water and layers, and stay on the trail.\n",
+      "description": "Drive up into the White Mountains to a forest of twisted bristlecone pines, some more than 4,000 years old. Walk the Methuselah Trail, a 4.5-mile loop that passes the world's oldest known tree, which is kept unmarked on purpose. Each hunt for the most ancient-looking tree you can find and photograph it, then compare and guess its age. You're above 10,000 feet: take it slow, bring water and layers, and stay on the trail. There is no cell phone service.\n",
       "duration": "all-day",
       "effort": "moderate",
       "check_ahead": [
@@ -2982,8 +2988,8 @@
         "area": "Hollywood Hills, Los Angeles",
         "address": "3160 Canyon Lake Dr, Los Angeles, CA 90068",
         "coords": [
-          34.1281,
-          -118.3233
+          34.12725,
+          -118.326
         ]
       },
       "short": "Get the best photo of the two of you with the Hollywood Sign. Lake Hollywood Park is closest.",
@@ -3611,8 +3617,8 @@
         "area": "Downtown Sacramento, near Old Sacramento",
         "address": "216 O St, Sacramento, CA 95814",
         "coords": [
-          38.577,
-          -121.507
+          38.57718,
+          -121.50647
         ],
         "website": "https://crockerart.org"
       },
@@ -3632,6 +3638,11 @@
       "effort": "easy",
       "check_ahead": [
         "hours"
+      ],
+      "discounts": [
+        "military",
+        "student",
+        "senior"
       ],
       "credit": null,
       "id": "crocker-art-museum",
@@ -3783,8 +3794,8 @@
         "area": "West Shaw Ave, Fresno",
         "address": "5021 W Shaw Ave, Fresno, CA 93722",
         "coords": [
-          36.808,
-          -119.881
+          36.80769,
+          -119.88195
         ],
         "website": "https://undergroundgardens.com"
       },
@@ -3805,6 +3816,11 @@
       "check_ahead": [
         "reservation",
         "seasonal"
+      ],
+      "discounts": [
+        "military",
+        "student",
+        "senior"
       ],
       "credit": null,
       "id": "forestiere-underground-gardens",
@@ -4071,10 +4087,10 @@
       ],
       "place": {
         "name": "Borrego Springs (Christmas Circle)",
-        "area": "Anza-Borrego Desert, San Diego County",
+        "area": "Christmas Circle Community Park, Borrego Springs, CA 92004",
         "coords": [
-          33.256,
-          -116.375
+          33.25655,
+          -116.37441
         ]
       },
       "short": "Find the giant metal dragon in the Borrego desert at sunset, then stay for a dark sky full of stars.",
@@ -4350,8 +4366,8 @@
         "area": "Old Sacramento",
         "address": "111 I St, Sacramento, CA 95814",
         "coords": [
-          38.585,
-          -121.505
+          38.58452,
+          -121.50448
         ],
         "website": "https://www.californiarailroad.museum"
       },
@@ -10362,6 +10378,10 @@
         "hours",
         "tickets"
       ],
+      "discounts": [
+        "military",
+        "senior"
+      ],
       "id": "audubon-park-and-zoo",
       "pack": "louisiana",
       "full_id": "amblebee/audubon-park-and-zoo"
@@ -10791,8 +10811,8 @@
         "area": "Downtown West, St. Louis",
         "address": "750 N 16th St, St. Louis, MO 63103",
         "coords": [
-          38.6336,
-          -90.2006
+          38.63387,
+          -90.20094
         ],
         "website": "https://www.citymuseum.org"
       },
@@ -11718,10 +11738,16 @@
         "name": "Taum Sauk Mountain State Park (summit trailhead)",
         "area": "St. Francois Mountains, near Ironton",
         "coords": [
-          37.572,
-          -90.728
+          37.57276,
+          -90.72828
         ],
-        "website": "https://mostateparks.com/park/taum-sauk-mountain-state-park"
+        "website": "https://mostateparks.com/park/taum-sauk-mountain-state-park",
+        "links": [
+          {
+            "label": "alltrails",
+            "url": "https://www.alltrails.com/trail/us/missouri/taum-sauk-missouris-highpoint-trail"
+          }
+        ]
       },
       "short": "Stand on Missouri's highest point, then hike the loop down to the state's tallest waterfall.",
       "description": "Walk the short paved path to the top of Taum Sauk Mountain, at 1,772 feet the highest point in Missouri, for a summit photo. Then take the three-mile loop down across open rocky glades to Mina Sauk Falls, which tumbles in steps down the mountainside. The falls run best after rain and can be a trickle in dry spells. The trail is rocky and steep in places; wear real shoes and bring water.\n",
@@ -13620,9 +13646,10 @@
         "area": "Pearl District, Portland",
         "address": "1005 W Burnside St, Portland, OR 97209",
         "coords": [
-          45.5231,
-          -122.6813
-        ]
+          45.52307,
+          -122.68126
+        ],
+        "website": "https://www.powells.com/bookstore/powells-city-of-books"
       },
       "short": "Split up in Powell's. Each pick the other a book under $10.",
       "description": "Grab a store map at the entrance, split up, and each pick a book for the other from a room you'd never usually go into, under $10. Meet at the coffee shop and swap.\n",
@@ -14090,10 +14117,12 @@
       "place": {
         "name": "Peter Iredale shipwreck, Fort Stevens State Park",
         "area": "Hammond, near Astoria",
+        "address": "Peter Iredale Rd, Hammond, OR 97121",
         "coords": [
-          46.179,
-          -123.981
-        ]
+          46.17829,
+          -123.97839
+        ],
+        "website": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=129"
       },
       "short": "Find the old shipwreck on the beach. Get a photo framed by its rusted bones.",
       "description": "Walk out to the rusted skeleton of the Peter Iredale, a sailing ship that ran aground here in 1906. Go at low tide to walk right up to it, and find the angle that makes the best photo of the two of you.\n",
@@ -14221,9 +14250,10 @@
         "area": "Gold Hill",
         "address": "4303 Sardine Creek L Fork Rd, Gold Hill, OR 97525",
         "coords": [
-          42.493,
-          -123.085
-        ]
+          42.49332,
+          -123.0846
+        ],
+        "website": "https://www.facebook.com/oregonvortex"
       },
       "short": "Visit the Oregon Vortex. Swap places on the board and see who \"shrinks.\"",
       "description": "Take the tour of this classic roadside mystery spot, where the guides show you how people seem to grow and shrink. Swap places on the level board and take a photo of each of you. Decide afterward whether you believe it.\n",
@@ -14264,9 +14294,10 @@
         "area": "Tillamook",
         "address": "4165 US-101, Tillamook, OR 97141",
         "coords": [
-          45.4835,
-          -123.8448
-        ]
+          45.48377,
+          -123.84417
+        ],
+        "website": "https://www.tillamook.com/visit-us/creamery#plan"
       },
       "short": "Watch the cheese get made, then get ice cream. Each try a flavor you'd never pick.",
       "description": "Walk the self-guided viewing gallery above the cheese factory floor, then head downstairs for ice cream. Each order one flavor you'd never normally choose and trade bites.\n",
@@ -14316,9 +14347,10 @@
         "area": "Near Redmond",
         "address": "7930 SW 77th St, Redmond, OR 97756",
         "coords": [
-          44.196,
-          -121.247
-        ]
+          44.2033,
+          -121.26235
+        ],
+        "website": "https://www.petersenrockgarden.org"
       },
       "short": "Explore the tiny stone castles and bridges. Find the strangest little building.",
       "description": "Wander this odd, wonderful folk-art garden of miniature castles, bridges and towers built from rocks by one farmer starting in the 1930s. Each find your favorite tiny building and take a photo of it.\n",
@@ -14399,12 +14431,13 @@
         "area": "Hillsboro",
         "address": "26385 NW Groveland Dr, Hillsboro, OR 97124",
         "coords": [
-          45.5527,
-          -122.9416
-        ]
+          45.5742,
+          -122.94792
+        ],
+        "website": "https://www.ricenorthwestmuseum.org"
       },
       "short": "Tour the rock museum. Each pick the crystal you'd keep if you could.",
-      "description": "Explore the crystals, meteorites, fossils and the glowing fluorescent mineral room. Each pick the one specimen you'd take home if you were allowed, and photograph it.\n",
+      "description": "Explore the crystals, meteorites, fossils and the glowing fluorescent mineral room. Each pick the one specimen you'd take home if you were allowed, and photograph it. (The grounds and nature trails are free for anyone to explore)\n",
       "for_kids": {
         "short": "Rock hunt! Find each treasure.",
         "steps": [
@@ -14419,6 +14452,13 @@
       "check_ahead": [
         "hours",
         "tickets"
+      ],
+      "discounts": [
+        "military",
+        "senior",
+        "educator",
+        "first-responder",
+        "student"
       ],
       "id": "rice-rock-museum",
       "pack": "oregon",
@@ -15096,8 +15136,15 @@
         "name": "Saddle Mountain State Natural Area trailhead",
         "area": "Northern Coast Range, near Seaside",
         "coords": [
-          45.9625,
-          -123.689
+          45.96288,
+          -123.68985
+        ],
+        "website": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=140",
+        "links": [
+          {
+            "label": "alltrails",
+            "url": "https://www.alltrails.com/trail/us/oregon/saddle-mountain"
+          }
         ]
       },
       "short": "Climb Saddle Mountain to the summit. On a clear day you can see the ocean.",
@@ -15137,9 +15184,10 @@
         "area": "Central Eastside, Portland",
         "address": "1945 SE Water Ave, Portland, OR 97214",
         "coords": [
-          45.5084,
-          -122.6655
-        ]
+          45.50863,
+          -122.66563
+        ],
+        "website": "https://omsi.edu"
       },
       "short": "Spend the day at OMSI. Each find the experiment that blows your mind.",
       "description": "Explore the hands-on science halls, and add the submarine tour, planetarium or big-screen theater if you like. Each find the one exhibit that surprised you most and show it to the other. Great for a rainy day.\n",
@@ -15158,6 +15206,10 @@
       "check_ahead": [
         "hours",
         "tickets"
+      ],
+      "discounts": [
+        "military",
+        "senior"
       ],
       "id": "omsi",
       "pack": "oregon",
@@ -15228,10 +15280,12 @@
       "place": {
         "name": "Rowena Crest Viewpoint and Trailhead",
         "area": "Historic Columbia River Highway, between Mosier and The Dalles",
+        "address": "6500 Historic Columbia River Hwy, Mosier, OR 97040",
         "coords": [
-          45.683,
-          -121.301
-        ]
+          45.68273,
+          -121.29978
+        ],
+        "website": "https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=221"
       },
       "short": "Drive the twisty Rowena Loops up to Rowena Crest. Hike out for the Gorge view.",
       "description": "Take the old Columbia River Highway from Mosier up to Rowena Crest, then photograph the famous looping road from the viewpoint. From there, hike the trail up Tom McCall Point for wildflowers in spring and a huge view over the Gorge. The trail is closed November through February, there's no shade, and dogs aren't allowed on the trails.\n",
@@ -15271,8 +15325,8 @@
         "area": "Columbia River Gorge, near Corbett",
         "address": "40700 E Historic Columbia River Hwy, Corbett, OR 97019",
         "coords": [
-          45.5397,
-          -122.2441
+          45.5399,
+          -122.2447
         ],
         "website": "https://oregonstateparks.org/park_150.php"
       },
@@ -15309,9 +15363,10 @@
         "area": "Troutdale",
         "address": "2126 SW Halsey St, Troutdale, OR 97060",
         "coords": [
-          45.5393,
-          -122.4024
-        ]
+          45.53738,
+          -122.40682
+        ],
+        "website": "https://www.mcmenamins.com/edgefield"
       },
       "short": "Spend a cozy day at Edgefield. Find every hidden little bar on the grounds.",
       "description": "Wander the old poor farm turned hotel: painted hallways, gardens, a winery and little bars tucked into odd corners. Add the soaking pool or the movie theater if you like. Try to find every hidden bar on the property, and pick your favorite for one last drink.\n",
@@ -15351,9 +15406,10 @@
         "area": "Newport",
         "address": "2820 SE Ferry Slip Rd, Newport, OR 97365",
         "coords": [
-          44.6177,
-          -124.0473
-        ]
+          44.61702,
+          -124.04761
+        ],
+        "website": "https://aquarium.org"
       },
       "short": "Walk under the sharks at the Oregon Coast Aquarium. Each pick a favorite creature.",
       "description": "Spend a rainy coast day at the aquarium: sea otters, tide pools, and the tunnels where sharks and rays swim over your head. Each pick your favorite creature, then walk Newport's bayfront to hear the sea lions bark.\n",
@@ -15372,6 +15428,11 @@
       "check_ahead": [
         "hours",
         "tickets"
+      ],
+      "discounts": [
+        "birthday",
+        "military",
+        "local"
       ],
       "id": "oregon-coast-aquarium",
       "pack": "oregon",
@@ -15417,6 +15478,7 @@
         "seasonal",
         "conditions"
       ],
+      "caution": "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. Download offline maps before visiting and do not rely on cellular service for navigation or emergencies.",
       "id": "bagby-hot-springs",
       "pack": "oregon",
       "full_id": "amblebee/bagby-hot-springs"
@@ -15450,11 +15512,12 @@
       "place": {
         "name": "Portland Saturday Market",
         "area": "Waterfront Park, under the Burnside Bridge, Portland",
-        "address": "2 SW Naito Pkwy, Portland, OR 97204",
+        "address": "2 SW Naito Parkway Portland, OR 97204",
         "coords": [
-          45.5228,
-          -122.6703
-        ]
+          45.52244,
+          -122.66983
+        ],
+        "website": "https://www.portlandsaturdaymarket.com"
       },
       "short": "Browse Saturday Market. Each pick a handmade gift for the other, under $20.",
       "description": "Wander the stalls of Portland's big open-air craft market, open on weekends despite its name. Split up for a few minutes and each find one handmade thing under $20 for the other, then meet back up, swap, and grab lunch from the food carts.\n",
@@ -15501,10 +15564,10 @@
         "area": "South end of Wallowa Lake, near Joseph",
         "address": "59919 Wallowa Lake Hwy, Joseph, OR 97846",
         "coords": [
-          45.278,
-          -117.212
+          45.27726,
+          -117.20717
         ],
-        "website": "https://wallowalaketramway.com"
+        "website": "https://wallowalaketram.com"
       },
       "short": "Ride the Wallowa Lake Tramway up Mount Howard. Lunch at the top, lake far below.",
       "description": "Ride one of the steepest gondolas in North America nearly 3,700 feet up from Wallowa Lake to the top of Mount Howard, over 8,000 feet high. Walk the two miles of summit trails to the overlooks, where the Wallowa peaks, Hells Canyon country and the lake all spread out below. Get a photo of the two of you with the lake behind you, then eat lunch at the Summit Grill, Oregon's highest restaurant. It runs roughly May through early October; bring a jacket, since it's much colder at the top.\n",
@@ -15523,7 +15586,13 @@
       "check_ahead": [
         "hours",
         "seasonal",
-        "conditions"
+        "conditions",
+        "tickets"
+      ],
+      "discounts": [
+        "senior",
+        "military",
+        "student"
       ],
       "id": "wallowa-lake-tramway",
       "pack": "oregon",
@@ -15898,12 +15967,18 @@
         "name": "Post General Store and Eatery",
         "area": "Post, Crook County, east of Prineville",
         "coords": [
-          44.179,
-          -120.488
+          44.15709,
+          -120.49093
+        ],
+        "links": [
+          {
+            "label": "Geographic Center",
+            "url": "https://maps.app.goo.gl/HFUv6eXmYCzagFaG9"
+          }
         ]
       },
       "short": "Stand in the middle of Oregon at tiny Post. Split a milkshake at the general store.",
-      "description": "Drive out to Post, a tiny ranch town on the Crooked River that claims to be the geographic center of Oregon. The true center point is on private ranch land just north of town, so celebrate at the Post General Store instead, which doubles as the post office and the café. Pick from over a dozen milkshake flavors, grab a \"Center of Oregon\" souvenir, and get a photo of the two of you by the center sign. Make a loop of it through the Ochoco country around Prineville.\n",
+      "description": "Drive out to Post, a tiny ranch town on the Crooked River that claims to be the geographic center of Oregon. The true center point is on private ranch land just north of town, so celebrate at the Post General Store instead, which doubles as the post office and the café. Pick from over a dozen milkshake flavors, grab a \"Center of Oregon\" souvenir, and get a photo of the two of you by the center sign. Make a loop of it through the Ochoco country around Prineville. (The geographical center locator is on private property,  Please call to schedule access by visiting the link. Phone number is in the photo on google maps)\n",
       "for_kids": {
         "short": "Center hunt! Find each thing.",
         "steps": [
@@ -16288,8 +16363,8 @@
         "area": "Hwy 101, just south of Florence",
         "address": "85366 Hwy 101, Florence, OR 97439",
         "coords": [
-          43.942,
-          -124.111
+          43.95364,
+          -124.10483
         ],
         "website": "https://sandland.com"
       },
@@ -23388,6 +23463,6 @@
       "full_id": "amblebee/devils-tower-golden-hour"
     }
   ],
-  "content_hash": "b0baadfdb722db239e686102f4a79cf10e53ac22e38b487e2f107115d1b58c08",
-  "generated_at": "2026-10-22T00:34:24Z"
+  "content_hash": "3dcdf7f6516e5a2b2594a0d6bb764a93867829cd428532c9cdaa43c0c90e08d2",
+  "generated_at": "2026-10-26T15:01:44Z"
 }

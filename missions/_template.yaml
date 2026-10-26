@@ -54,5 +54,10 @@ travel: local                  # home | local | drive | day-trip
 # check_ahead: [hours]         # any of: hours, tickets, reservation, seasonal, conditions
 # discounts: [senior, military]  # discounts the place offers (card says "Ask about discounts"); any of:
 #   senior, military, first-responder, healthcare, educator, student, government, local, birthday
+# caution: "This location has no cell service."  # website only (never the camera); one short sentence
+#                              # in quotes (so a colon inside it is fine),
+#                              # aim for under 120 characters (200 max). Shows in a yellow box on the ticket.
+# caution_until: 2026-12-01    # optional: hide the caution after this date (YYYY-MM-DD). Use it for anything
+#                              # temporary (closures, maintenance, construction); leave it out for lasting facts.
 tags: []
 credit:                        # leave blank, or the name of whoever suggested it ("Suggested by Sam R.")
