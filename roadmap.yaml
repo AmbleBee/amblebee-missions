@@ -27,55 +27,55 @@
 # ---------- Coming up ----------
 # (shown top to bottom as: later, then next, then doing)
 
-- title: Our gear
+- title: Our Gear
   status: later
   tag: hive
   summary: Tell the Hive what gear you have, can borrow or can rent, and it only hands you missions you can actually do.
 
-- title: Our own plans
+- title: Our Own Plans
   status: later
   tag: hive
   summary: Birthdays, anniversaries and trips get their own photo logs on the Hive, right next to the missions.
 
-- title: Kids' scavenger hunts
+- title: Kids' Scavenger Hunts
   status: later
   tag: missions
   summary: Photo hunts for little ones, like "find something blue" or "find an animal", one step at a time.
 
-- title: The first real AmbleBee
+- title: The First Real AmbleBee
   status: later
   tag: camera
   when: After the breadboards
   summary: Everything on one custom circuit board, in a 3D-printed body with an e-ink screen that shows your mission.
 
-- title: State icons on the Hive and AmbleBee
+- title: State Icons on the Hive and AmbleBee
   status: later
   tag: hive
   summary: The same icon pack the website uses, turned into crisp pictures for the Hive's screen and the AmbleBee's black-and-white e-ink.
 
-- title: Simulated photo review on the Hive
+- title: Simulated Photo Review on the Hive
   status: next
   tag: hive
   summary: Dock the camera, flip through the photos, and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own.
 
-- title: Filter tags
+- title: Filter Tags
   status: next
   tag: missions
   summary: Swap 231 one-off tags for a fixed set of about 20 you can filter by, like views, food, rainy-day and animals.
 
-- title: Exact map pins for every place
+- title: Exact Map Pins for Every Place
   status: doing
   progress: 65/415
   tag: missions
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
-- title: Community polls
+- title: Community Polls
   status: doing
   tag: website
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
-- title: Heads-ups, badges and a tidier trail
+- title: Heads-Ups, Badges and a Tidier Trail
   status: done
   date: 2026-10-26
   tag: website
@@ -87,13 +87,13 @@
     - Someday ideas share one compact block, and older finished work folds into "Earlier on the trail"
     - Spot something we should warn people about? Use "Report a problem" on any mission
 
-- title: New Missions For Every State
+- title: New Missions for Every State
   status: done
   date: 2026-10-21
   tag: missions
-  summary: all 50 states now have at least one mission! More missions being added every day!
+  summary: All 50 states now have at least one mission! More missions being added every day!
 
-- title: Easier to start, especially on phones
+- title: Easier to Start, Especially on Phones
   status: done
   date: 2026-10-21
   tag: website
@@ -104,7 +104,7 @@
     - A friendlier line on each mission, like "Picked for you from 98 missions within 30 mi of 97201"
     - A tidier phone header, and "Know a great spot?" gets its own spot at the end of the page
 
-- title: A date in almost every state
+- title: A Date in Almost Every State
   status: done
   date: 2026-10-20
   tag: missions
@@ -114,7 +114,7 @@
     - Popovers at Jordan Pond, a fish boil in Door County, standing in two states at once in Omaha
     - Every place has an address or map pin and a website, and seasonal ones say when to go
 
-- title: An icon for every state
+- title: An Icon for Every State
   status: done
   date: 2026-10-20
   tag: website
@@ -123,13 +123,13 @@
     - Shared links show an envelope picture with the hive wax seal in chat apps
     - Behind the scenes, the build checks every pack has its pack.yaml and a real icon
 
-- title: Pennsylvania, Illinois and Ohio join the trail
+- title: Pennsylvania, Illinois and Ohio Join the Trail
   status: done
   date: 2026-10-19
   tag: missions
   summary: Three new packs, from Gettysburg and Hershey to the Bean in Chicago and the waterfalls of Hocking Hills.
 
-- title: Share with a note, and the bee trail
+- title: Share With a Note, and the Bee Trail
   status: done
   date: 2026-10-19
   tag: website
@@ -142,13 +142,13 @@
     - Every mission has a "Report a problem" link that opens a short form with the mission already filled in, so closed places and broken links get fixed fast
     - 'The bee trail: what''s new on AmbleBee and what''s coming next, all in one place'
 
-- title: Texas and Florida join the trail
+- title: Texas and Florida Join the Trail
   status: done
   date: 2026-10-16
   tag: missions
   summary: Two new packs with 60 missions each, and California filled out to 60.
 
-- title: Envelope reveal
+- title: Envelope Reveal
   status: done
   date: 2026-10-16
   tag: website
@@ -156,7 +156,7 @@
   items:
     - New missions added, with credit to the people who shared them
 
-- title: Search and the master mission pack
+- title: Search and the Master Mission Pack
   status: done
   date: 2026-10-15
   tag: missions
@@ -166,7 +166,7 @@
     - Missions can credit where the idea came from
     - The Know a great spot? form is live
 
-- title: amblebee.com goes live
+- title: amblebee.com Goes Live
   status: done
   date: 2026-10-14
   tag: website
@@ -177,7 +177,7 @@
     - ZIP code lookup for "within N miles" (never leaves your browser)
     - Self-hosted fonts, no trackers
 
-- title: AmbleBee + Hive gets its name
+- title: AmbleBee + Hive Gets Its Name
   status: done
   date: 2026-10-12
   tag: camera
