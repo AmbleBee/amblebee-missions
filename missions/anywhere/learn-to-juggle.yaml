@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 70
+name: Learn to Juggle in an Afternoon
+mode: both
+who: [solo, friends, family, kids]
+short: Make three beanbags and teach yourselves to juggle. Goal is ten catches in a row.
+description: >
+  Use three beanbags, or make some by filling balloons with rice and wrapping
+  each in a second cut balloon. Stand over a bed or table so drops don't roll
+  away. Start with one ball tossed hand to hand at eye height, then two (throw
+  the second when the first peaks, and throw it, don't hand it across), then
+  all three. Work in short bursts and cheer every new record. Once someone
+  hits ten catches in a row, try passing between two people. Film your first
+  clean run in slow motion.
+steps:
+  - Your three homemade balls
+  - One ball, the warm-up
+  - The three-ball blur
+  - The big drop pile-up
+  - Celebrating ten catches
+for_kids:
+  short: Learn to juggle! Toss, catch, and try again.
+  steps:
+    - Your juggling balls
+    - One ball in the air
+    - Two balls in the air
+    - Your best catch
+    - A selfie with your grown-up!
+duration: short
+effort: moderate
+cost: free
+setting: indoor
+season: any
+time_of_day: any
+travel: home
+tags: [juggling, new-skill, challenge, rainy-day, home]
+credit:

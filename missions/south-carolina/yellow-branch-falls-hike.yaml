@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Yellow Branch Falls
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Yellow Branch Picnic Area trailhead
+  area: Sumter National Forest, near Walhalla
+  address: SC-28, Walhalla, SC 29691  # verify: picnic area entrance 6.8 mi west of Walhalla
+  coords: [34.79887, -83.12773]  # APPROX: from SC Trails listing; set at the trailhead before publishing
+  website: https://www.fs.usda.gov/r08/francismarionsumter/recreation/yellow-branch-falls
+short: Hike the forest trail down to a 50-foot falls spilling over rock ledges. Photo at the base.
+description: >
+  Start at the Yellow Branch Picnic Area west of Walhalla and follow the
+  nature trail to the falls trail, an out-and-back of about three miles
+  through rhododendron and hardwood forest. The first stretch is easy, then the
+  trail drops more steeply along deep ravines and crosses a few creeks on
+  rocks and roots before you reach the falls, a wide veil of water sliding
+  down stacked rock ledges. Take your photo from the base of the falls, but
+  stay off the rocks around it. Go after a good rain; in a dry spell it can
+  shrink to a trickle.
+steps:
+  - A creek crossing on the way
+  - The full falls from the base
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [conditions]
+tags: [hiking, waterfall, forest, solo, walhalla, oconee]
+credit:

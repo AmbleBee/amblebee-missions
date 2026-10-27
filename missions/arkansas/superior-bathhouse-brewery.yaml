@@ -1,0 +1,29 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Beer Brewed with Hot Spring Water
+mode: adventure
+who: [friends]
+place:
+  name: Superior Bathhouse Brewery
+  area: Bathhouse Row, Hot Springs
+  address: 329 Central Ave, Hot Springs, AR 71901
+  coords: [34.51520, -93.05330]  # APPROX: set at the entrance before publishing
+  website: https://superiorbathhouse.com
+short: Split a flight in an old bathhouse turned brewery. Toast with the hot spring water!
+description: >
+  Superior Bathhouse Brewery sits inside a century-old bathhouse on Bathhouse Row, right in
+  Hot Springs National Park, and brews its beer with the town's thermal spring water. Grab a
+  table with your crew, order a flight to share, and have everyone vote for a favorite and a
+  least favorite. Then walk down the row to one of the public thermal-water fountains and
+  taste the spring water straight, still warm. Get a group photo raising your glasses in
+  front of the old bathhouse windows. Drinkers need to be 21 with ID.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours]
+tags: [brewery, beer, historic, national-park, hot-springs]
+credit:

@@ -1,0 +1,30 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Laugh Night at Vermont Comedy Club
+mode: adventure
+who: [friends]
+place:
+  name: Vermont Comedy Club
+  area: Downtown Burlington
+  address: 101 Main St, Burlington, VT 05401
+  coords: [44.47590, -73.21390]  # APPROX: set at the entrance before publishing
+  website: https://www.vermontcomedyclub.com
+short: Grab a cabaret table with your crew and catch a standup show downtown. Loudest laugher buys snacks.
+description: >
+  Round up your friends for a show at the Vermont Comedy Club, the locally owned
+  standup, improv and sketch club at the corner of Main and Pine. Get there early to hang
+  out in the lounge, then grab a cabaret table in the 140-seat showroom with food and
+  drinks from the bar. Pick a touring headliner or a local improv night, and agree that whoever laughs loudest buys the next round of snacks. Snap a
+  group photo in the lounge before the show. Book tickets on the club's own site,
+  arrive on time (more than 30 minutes late and you won't be let in), and check
+  each show's age note: most are all ages but 18+ recommended.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [comedy, standup, improv, nightlife, rainy-day, downtown, burlington]
+credit:

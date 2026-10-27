@@ -1,0 +1,44 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Ferry to Gillette Castle
+mode: adventure
+who: [family, kids]
+place:
+  name: Gillette Castle State Park
+  area: East Haddam, Connecticut River
+  address: 67 River Rd, East Haddam, CT 06423
+  coords: [41.42300, -72.42700]  # APPROX: set at the entrance before publishing
+  website: https://ctparks.com/parks/Gillette-Castle-State-Park
+  links:
+    - label: Chester-Hadlyme Ferry
+      url: https://portal.ct.gov/DOT/Traveler/ferries/Chester-Hadlyme-Ferry
+short: Ride the little river ferry to a stone castle, then walk through a dark old train tunnel.
+description: >
+  Drive onto the tiny Chester-Hadlyme car ferry for a short ride across the
+  Connecticut River, with the stone castle watching from the cliff above.
+  Explore the grounds of the actor who played Sherlock Holmes, peek over the
+  stone walls at the river, and add a self-guided tour of the castle's quirky
+  rooms if it's open (late May through Columbus Day, plus a holiday program). Then walk the Train Trail along the old route
+  of his toy-sized railroad and through a 75-foot tunnel that gets very dark
+  in the middle, so bring a flashlight. Get a photo of the family at the
+  tunnel mouth. Castle tours are limited and seasonal,
+  so book ahead, and check that the ferry is running (it runs April through
+  November and sometimes stops for repairs).
+for_kids:
+  short: Ride a ferry to a real castle!
+  steps:
+    - The castle from the ferry
+    - A stone tower
+    - The dark tunnel
+    - The big river from up high
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, tickets, seasonal]
+tags: [castle, ferry, trails, tunnel, history, kids, east-haddam]
+credit:

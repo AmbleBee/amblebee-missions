@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Carlsbad Caverns Big Room
+mode: adventure
+who: [friends]
+place:
+  name: Carlsbad Caverns National Park Visitor Center
+  area: Carlsbad Caverns National Park, near Carlsbad
+  address: 727 Carlsbad Caverns Hwy, Carlsbad, NM 88220
+  coords: [32.17530, -104.44370]  # APPROX: set at the entrance before publishing
+  website: https://www.nps.gov/cave/
+short: Drop 750 feet underground and loop the Big Room. Find the weirdest rock in the cave.
+description: >
+  Take the elevator down 750 feet (or walk in through the Natural Entrance if
+  your crew wants the steep switchbacks) and follow the paved loop around the
+  Big Room, one of the largest cave chambers in North America. Lights are low
+  and voices carry, so keep it to whispers and let everyone pick a favorite
+  formation: the Bottomless Pit, the Doll's Theater, the giant stalagmites.
+  Get a group photo with the Rock of Ages behind you. A timed-entry reservation
+  is required, and the cave stays cool all year, so bring a light jacket.
+steps:
+  - The biggest stalagmite you can find
+  - A formation that looks like an animal
+  - The crew in front of the Rock of Ages
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, reservation]
+discounts: [senior, military]
+tags: [cave, national-park, underground, geology, rainy-day, carlsbad]
+credit:

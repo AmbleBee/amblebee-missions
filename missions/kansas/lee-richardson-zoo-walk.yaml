@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Walk the Lee Richardson Zoo
+mode: adventure
+who: [family, kids]
+place:
+  name: Lee Richardson Zoo
+  area: Finnup Park, Garden City
+  address: 312 E Finnup Dr, Garden City, KS 67846
+  coords: [37.95540, -100.87370]  # APPROX: set at the pedestrian entrance before publishing
+  website: https://www.leerichardsonzoo.org
+short: Walk a big prairie-town zoo for free. Spot the giraffes, cats and bears.
+description: >
+  Garden City's zoo is a real surprise out on the High Plains: dozens of acres of
+  animals from giraffes and big cats to bears and prairie critters, and walking
+  in is free. Park, grab a map at the gate, and let the kids pick the route,
+  with a picnic in Finnup Park next door when legs get tired. Get a photo of the
+  family with the tallest animal you can find. You can also pay to drive the
+  loop road instead, but on foot is the way to see everything up close.
+for_kids:
+  short: Zoo walk! Find these animals.
+  steps:
+    - A giraffe
+    - A big cat
+    - A bird with bright colors
+    - The animal you'd take home
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, conditions]
+tags: [zoo, animals, free, picnic, kids, garden-city]
+credit:

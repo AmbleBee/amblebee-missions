@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 66
+name: Wild Blackberry Forage
+mode: both
+who: [friends, family, kids]
+short: Pick wild blackberries in late summer, race to fill a cup, then bake something with them.
+description: >
+  In late summer, look for bramble patches along trails, park edges, and
+  bike paths, and check that picking is allowed there first. Only pick fruit
+  you are 100% sure is blackberry: the thorny canes and the bumpy, shiny
+  black berries are easy to know, and if you are not sure, skip it. Stay
+  away from busy roads, ditches, and anywhere that might be sprayed, pick
+  above dog height, and leave plenty for the birds. Wear long sleeves, race
+  to fill a cup, and rinse everything at home. Then bake a crumble or flip
+  some blackberry pancakes, and get a photo of everyone's purple fingers.
+steps:
+  - The bramble patch
+  - A perfect ripe berry
+  - The full containers
+  - Purple fingers
+  - The finished bake
+for_kids:
+  short: Pick blackberries with your grown-up!
+  steps:
+    - Your empty cup
+    - A big black berry (ask first!)
+    - Your full cup
+    - Purple fingers
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [summer]
+time_of_day: daytime
+travel: local
+check_ahead: [seasonal]
+tags: [foraging, berries, nature, baking, summer, outdoors]
+credit:

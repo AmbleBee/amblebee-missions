@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 10
+name: Clifton Gorge Rim and River Loop
+mode: adventure
+who: [solo, friends]
+place:
+  name: Clifton Gorge State Nature Preserve
+  area: Near Yellow Springs, Greene County
+  address: 2331 State Route 343, Yellow Springs, OH 45387  # verify: preserve parking lot
+  coords: [39.79620, -83.82580]  # APPROX: set at the trailhead before publishing
+  website: https://ohiodnr.gov/go-and-do/plan-a-visit/find-a-property/clifton-gorge-state-nature-preserve
+short: Walk the rim of a dolomite gorge, then drop down to the rapids. Find Steamboat Rock.
+description: >
+  Start at the preserve lot and follow the Narrows Trail to look down into the
+  tightest, deepest part of the gorge, where the Little Miami River squeezes
+  between mossy dolomite cliffs. Then take the Rim Trail along the top and the
+  Gorge Trail back down by the water, with stairs, roots and rocky sections along
+  the way. Look for Steamboat Rock, a house-sized block that broke off the cliff,
+  and the spot called Darnell's Leap, named for a frontier escape. Get a photo of
+  the river rushing through the narrows from the overlook. Stay on the marked
+  trails (it's a protected preserve, and pets aren't allowed), then finish with a
+  stop in Yellow Springs.
+steps:
+  - The narrows from above
+  - Steamboat Rock
+  - Rapids at river level
+  - Moss and ferns on the cliff
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [conditions]
+tags: [hiking, gorge, river, nature-preserve, waterfalls, yellow-springs]
+credit:

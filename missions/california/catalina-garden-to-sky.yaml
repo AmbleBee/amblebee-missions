@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 62
+name: Catalina Island, Garden to Sky
+mode: both
+who: [friends]
+place:
+  name: Wrigley Memorial & Botanic Garden (Garden to Sky trailhead)
+  area: Avalon Canyon, Avalon, Catalina Island
+  address: 1400 Avalon Canyon Rd, Avalon, CA 90704
+  coords: [33.32900, -118.34200]  # APPROX: set at the trailhead before publishing
+  website: https://www.catalinaconservancy.org/recreation/wrigley-memorial-and-botanic-garden/  # garden tickets; free hiking permit on catalinaconservancy.org
+  links:
+    - label: Ferry to Avalon
+      url: https://www.catalinaexpress.com
+short: Ferry to Catalina, walk up the canyon and climb to the ridge over Avalon Bay. Kiss at the top.
+description: >
+  Catch a morning boat to Avalon on Catalina Island and walk up Avalon Canyon
+  to the Wrigley Memorial and Botanic Garden. Wander the cactus and island
+  plants, climb up to the memorial's observation deck, then take the Garden to Sky trail up to
+  the ridge for a sweeping view over Avalon Bay, the round Casino building and
+  the mainland. Keep an eye out for the little island fox. Get a photo of the
+  two of you on the ridge with the harbor far below. Walk back down for a
+  late lunch on the waterfront before the boat home. Book the ferry ahead, buy garden
+  tickets, and register for the free hiking permit before you go.
+steps:
+  - The view from the ferry deck as the island gets closer
+  - The two of you on top of the memorial
+  - Avalon Bay from the ridge
+  - Lunch on the waterfront
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, reservation, conditions]
+discounts: [senior, student, military]
+tags: [island, ferry, hiking, garden, ocean-views, catalina, avalon, los-angeles]
+credit:

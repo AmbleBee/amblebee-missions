@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Golden Spike Tower
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Golden Spike Tower and Visitor Center
+  area: North Platte
+  address: 1249 N Homestead Rd, North Platte, NE 69101
+  coords: [41.14410, -100.83100]  # APPROX: from Visit North Platte / Roadtrippers pins; set at the entrance before publishing
+  website: https://www.goldenspiketower.com
+short: Ride up the tower over the world's largest rail yard. Count the trains in one hour.
+description: >
+  Head up the Golden Spike Tower outside North Platte and look down on Union
+  Pacific's Bailey Yard, the biggest train yard in the world, where cars get
+  pushed over a hump and roll onto dozens of sorting tracks. The top floor is
+  enclosed, with 360-degree views and retired railroaders often on hand to
+  explain what you're seeing; step down to the open-air deck below to hear the engines
+  rumble. Pick a train and follow it with your eyes as long as you can, and count
+  how many come and go while you're there. Get a photo of the yard stretching to
+  the horizon. Bring binoculars if you have them.
+steps:
+  - The yard stretching to the horizon
+  - A car rolling over the hump
+  - The longest train you see
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [senior, military]
+tags: [trains, railroad, views, tower, solo, rainy-day, north-platte]
+credit:

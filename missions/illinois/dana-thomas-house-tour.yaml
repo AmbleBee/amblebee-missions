@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 10
+name: Inside Frank Lloyd Wright's Dana-Thomas House
+mode: both
+who: [solo, friends]
+place:
+  name: Dana-Thomas House State Historic Site
+  area: Downtown Springfield
+  address: 301 E Lawrence Ave, Springfield, IL 62703
+  coords: [39.79466, -89.64838]  # APPROX: set at the entrance before publishing
+  website: https://www.dana-thomas.org
+  links:
+    - label: State historic site
+      url: https://dnrhistoric.illinois.gov/experience/sites/central/dana-thomas-house.html
+short: Tour Frank Lloyd Wright's prairie house and count the art-glass windows. Find your favorite.
+description: >
+  Book a guided tour of the Dana-Thomas House, a prairie-style home Frank Lloyd
+  Wright designed for a Springfield socialite, still holding more than 100 pieces
+  of his custom furniture and over 250 works of original art glass. The guide walks you
+  through the hidden entry, the two-story dining room and the old party gallery
+  in about an hour. Pick one window you'd steal if you could and take a photo of
+  it from the sidewalk afterward, since photos are allowed only outside the
+  house. The tour is free with donations welcome; reserve a spot ahead, and
+  expect lots of stairs and narrow halls.
+steps:
+  - The front of the house from across the street
+  - Your favorite art-glass window, from outside
+  - A Wright detail on the outside you'd put on your own home
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, reservation]
+tags: [architecture, frank-lloyd-wright, history, house-tour, springfield]
+credit:

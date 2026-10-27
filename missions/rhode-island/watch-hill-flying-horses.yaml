@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Flying Horses and Napatree Point
+mode: adventure
+who: [family, kids]
+place:
+  name: Flying Horse Carousel
+  area: Watch Hill, Westerly
+  address: 151 Bay St, Westerly, RI 02891
+  coords: [41.31110, -71.85810]  # APPROX: set at the entrance before publishing
+  website: https://merrygoroundbeach.com
+short: Grab the brass ring on Watch Hill's 1800s flying-horse carousel, then walk Napatree Point.
+description: >
+  The Flying Horse Carousel in Watch Hill has been spinning since the 1800s,
+  and its hand-carved horses hang from chains, so they swing out and "fly" as
+  it turns. It's for kids only (ages 2 to 12, under 100 lb), so grown-ups cheer from
+  the rail while riders on the outside horses reach for the rings and try to
+  catch the brass one for a free ride. Afterward, walk out onto Napatree Point,
+  a sandy strip of beach and dunes with ocean on one side and a calm bay on
+  the other; stay on the marked paths and off the roped-off nesting areas. Get
+  a photo of your rider flying past on their horse. Summer parking in Watch
+  Hill fills up early, so go in the morning.
+for_kids:
+  short: Ride a flying horse and look for the brass ring!
+  steps:
+    - Your favorite horse
+    - You riding the carousel
+    - A seashell on the beach
+    - A bird by the water
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [summer]
+time_of_day: morning
+travel: local
+check_ahead: [hours, seasonal]
+tags: [carousel, beach, history, kids, walking, watch-hill, westerly]
+credit:

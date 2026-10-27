@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Bread and Puppet Barn
+mode: adventure
+who: [solo]
+place:
+  name: Bread and Puppet Museum
+  area: Glover, Northeast Kingdom
+  address: 753 Heights Rd, Glover, VT 05839
+  coords: [44.69050, -72.21830]  # APPROX: set at the barn entrance before publishing
+  website: https://breadandpuppet.org/museum
+short: Climb into an old barn packed with giant puppets. Find the one staring right back at you.
+description: >
+  Drive up to Glover in the Northeast Kingdom and wander the Bread and Puppet
+  Museum, a creaky old dairy barn crammed floor to rafters with puppets, masks
+  and paintings from sixty years of the theater's shows. Take your time on
+  your own: the biggest figures loom on the second floor, and there's more
+  out in the woodshed and the Cheap Art bus across the road. Get a photo of
+  yourself dwarfed by the tallest puppet you can find. The barn is unheated,
+  so dress for the weather in the cold months, and leave the suggested
+  donation at the door.
+steps:
+  - The barn from the road
+  - The tallest puppet upstairs
+  - A face that seems to watch you
+  - Yourself next to a giant
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [hours]
+tags: [museum, puppets, art, quirky, barn, northeast-kingdom, glover]
+credit:

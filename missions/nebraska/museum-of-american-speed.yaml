@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Hot Rods at the Museum of American Speed
+mode: both
+who: [friends, solo]
+place:
+  name: Speedway Motors Museum of American Speed
+  area: Lincoln
+  address: 599 Oakcreek Dr, Lincoln, NE 68528
+  coords: [40.83800, -96.74600]  # APPROX: set at the entrance before publishing
+  website: https://www.museumofamericanspeed.org
+short: Roam a giant collection of hot rods, race cars and wild engines in Lincoln. Each pick a dream car.
+description: >
+  Wander a huge collection of American speed: hundreds of racing engines,
+  hot rods, customs, Indy cars, dirt-track racers and land speed machines,
+  plus walls of vintage parts, pedal cars and toys. Split up, then meet back
+  and each show the crew the one car you'd drive home. Get a photo of the
+  group lined up in front of the wildest engine you can find. Days are limited
+  in the off-season, so check the schedule first, and ask whether a guided
+  tour is running that day.
+steps:
+  - The car you'd drive home
+  - The wildest engine in the building
+  - Your crew in front of a race car
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [senior, student, military]
+tags: [cars, hot-rods, racing, engines, museum, rainy-day, lincoln]
+credit:

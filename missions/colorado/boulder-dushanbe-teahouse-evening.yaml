@@ -1,0 +1,33 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Evening Tea at the Dushanbe Teahouse
+mode: date
+place:
+  name: Boulder Dushanbe Teahouse
+  area: Central Park, Boulder
+  address: 1770 13th St, Boulder, CO 80302
+  coords: [40.01560, -105.27670]  # APPROX: set at the entrance before publishing
+  website: https://www.boulderteahouse.com
+short: Share a pot of tea under a hand-carved painted ceiling. Each pick a tea for the other.
+description: >
+  Spend an evening inside Boulder's Dushanbe Teahouse, a building sent as a
+  gift from Boulder's sister city in Tajikistan, with a hand-carved, painted
+  ceiling and columns and a little fountain in the middle of the room. Order
+  for each other from the long tea list, then share a couple of small plates
+  or a dessert. Take your time and look up at the details between sips. Get a
+  photo of the two of you with the teapot and the ceiling above you.
+  Reserve a table ahead, and check for private-event closures before you go.
+steps:
+  - The painted ceiling right above your table
+  - The tea you picked for each other
+  - The two of you with the teapot
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, reservation]
+tags: [tea, dinner, architecture, cozy, rainy-day, boulder]
+credit:

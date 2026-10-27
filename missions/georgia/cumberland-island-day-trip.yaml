@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Wild Horses of Cumberland Island
+mode: both
+who: [friends]
+place:
+  name: Cumberland Island ferry (Mainland Visitor Center dock)
+  area: St. Marys
+  address: 113 St Marys St W, St. Marys, GA 31558
+  coords: [30.71960, -81.54860]  # APPROX: set at the dock before publishing
+  website: https://www.nps.gov/cuis/index.htm
+  links:
+    - label: Ferry tickets
+      url: https://www.cumberlandislandferry.com
+short: Ferry to a wild island. Find the mansion ruins, the wild horses and an empty beach.
+description: >
+  Take the morning ferry from St. Marys to Cumberland Island, a national seashore with no
+  stores, no cars for visitors and wild horses grazing under the live oaks. Walk the shaded
+  path to the Dungeness mansion ruins, then cut across the dunes to miles of empty beach and
+  walk the sand together. It adds up to several miles on foot, so pack a lunch, water, bug
+  spray and sunscreen, since there's nowhere to buy anything once you're there. Get a photo of
+  the two of you in front of the Dungeness ruins (with a horse in the frame if you're lucky),
+  and keep well back from the horses. Book the ferry ahead and don't miss the last boat back.
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [reservation, tickets, conditions]
+discounts: [senior, military]
+tags: [island, wild-horses, beach, ruins, ferry, national-seashore, st-marys]
+credit:

@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 55
+name: Track an Animal
+mode: both
+who: [solo, family, kids]
+short: The morning after rain, find animal tracks in the mud, follow them, and figure out who left them.
+description: >
+  Go out the morning after rain or a light snow to soft ground: a creek bank,
+  a muddy trail edge, or a sandy beach. When you spot a clear print, lay a coin
+  next to it for scale and photograph it from low down while the light is
+  still slanting. Follow the trail a little way to see whether it walked,
+  hopped, or bounded, and look for other clues like chewed pine cones, burrows,
+  or scat. Back home, try to name your animal with a tracks chart or the
+  iNaturalist app.
+for_kids:
+  short: Be a track detective!
+  steps:
+    - A muddy spot
+    - An animal footprint
+    - More prints in a row
+    - Another animal clue
+    - A selfie with your grown-up!
+steps:
+  - A print with a coin for scale
+  - The trail of prints
+  - Another clue nearby
+  - Your best guess at the animal
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: local
+check_ahead: [conditions]
+tags: [nature, wildlife, explore, detective, free]
+credit:

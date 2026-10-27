@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 61
+name: Movie Night at the Blue Mouse
+mode: date
+place:
+  name: Blue Mouse Theatre
+  area: Proctor District, Tacoma
+  address: 2611 N Proctor St, Tacoma, WA 98407
+  coords: [47.27160, -122.51370]  # APPROX: set at the entrance before publishing
+  website: https://www.bluemousetheatre.com
+short: Catch a movie at Tacoma's century-old Blue Mouse. Share popcorn, then a photo under the marquee.
+description: >
+  See an evening show at the Blue Mouse, a little 1920s neighborhood theater
+  in Tacoma's Proctor District that bills itself as the oldest continuously
+  operating theater in Washington. Pick whatever's playing, or watch the
+  calendar for its special nights like silent films with live accompaniment
+  or a late-night Rocky Horror. Split a big popcorn and settle into the
+  small, old-fashioned auditorium. Get a photo of the two of you under the lit-up marquee after
+  the show. Afterward, stroll the few blocks of Proctor shops before heading
+  home.
+steps:
+  - The marquee with tonight's movie
+  - Your shared popcorn
+  - The two of you under the marquee after the show
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [movies, historic-theater, cinema, popcorn, rainy-day, proctor, tacoma]
+credit:

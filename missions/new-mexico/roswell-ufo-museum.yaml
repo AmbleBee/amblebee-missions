@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Roswell UFO Museum
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: International UFO Museum and Research Center
+  area: Downtown Roswell
+  address: 114 N Main St, Roswell, NM 88203
+  coords: [33.39355, -104.52280]  # APPROX: set at the entrance before publishing
+  website: https://www.roswellufomuseum.com
+short: Investigate the 1947 Roswell crash at the UFO museum. Decide for yourself. Snap an alien.
+description: >
+  Spend an hour or two inside an old downtown movie theater turned UFO museum,
+  reading the timeline, newspaper clippings and witness statements about the
+  1947 Roswell Incident. Wander past the crop-circle and abduction exhibits,
+  then make up your mind: weather balloon or something else? Get a photo with
+  the alien-and-spaceship display that's the museum's star. Afterward, walk
+  Main Street to spot the alien-shaped streetlights and storefront aliens.
+steps:
+  - The 1947 newspaper headline
+  - The best piece of evidence you found
+  - You with the alien display
+  - An alien streetlight on Main Street
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [senior, military, first-responder]
+tags: [museum, ufo, quirky, roadside, rainy-day, roswell]
+credit:

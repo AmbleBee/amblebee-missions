@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 21
+name: A Day at Storm King
+mode: date
+place:
+  name: Storm King Art Center
+  area: New Windsor, Hudson Valley
+  address: 20 Old Pleasant Hill Rd, New Windsor, NY 12553  # parking lot address from the official site
+  coords: [41.42580, -74.05960]  # APPROX: set at the parking lot entrance before publishing
+  website: https://stormking.org
+short: Spend the day wandering giant sculptures in the Hudson Valley hills. Find your favorite.
+description: >
+  Drive up to Storm King, a 500-acre outdoor museum where huge sculptures sit in
+  open meadows, on hilltops and along tree lines with mountains behind them. Walk
+  or rent bikes on-site and cover as much as you can, from Andy Goldsworthy's stone
+  wall snaking through the trees to the giant steel pieces on the hills. Pack a
+  picnic or grab lunch at the outdoor cafe, then each pick a favorite piece and
+  make the case for it. Get a photo of the two of you dwarfed by the biggest
+  sculpture you can find. Buy tickets ahead, since pre-purchased tickets are the
+  only way to guarantee entry and parking, especially on fall weekends.
+steps:
+  - Your first sculpture of the day
+  - The two of you next to something enormous
+  - The stone wall disappearing into the trees
+  - Each of your favorite pieces
+  - The view from the top of the hill
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets, seasonal]
+discounts: [senior, student, military]
+gear:
+  - item: bikes
+    rent: on-site
+tags: [art, sculpture, hudson-valley, biking, picnic, fall-colors, new-windsor]
+credit:

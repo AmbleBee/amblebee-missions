@@ -1,0 +1,43 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 76
+name: Sleep Out Under the Sky
+mode: both
+who: [solo, family, kids]
+short: Sleep outside with no tent. Watch the sky all night and make coffee at sunrise.
+description: >
+  After dinner, head to a legal spot, like a campground walk-in site, a
+  friend's land with permission, or your own backyard (the best pick with
+  kids). Lay a sleeping bag on a pad with no tent so the sky is your ceiling,
+  and bring a warm hat, a rain layer and more warm layers than you think you
+  need. Check the forecast and skip it if storms are coming, tell someone
+  where you'll be, and pack a headlamp, water and breakfast. Watch the stars
+  come out, sleep when you can, and wake up for the sunrise. Get a photo of
+  your bed laid out at dusk.
+steps:
+  - Your bed laid out at dusk
+  - The sky after dark
+  - Your face in the sleeping bag at dawn
+  - Sunrise with a hot drink
+for_kids:
+  short: Sleep outside under the stars tonight!
+  steps:
+    - Your sleeping bag
+    - The first star
+    - The morning sky
+    - Breakfast outside
+    - A selfie with your grown-up!
+gear:
+  - item: sleeping-bags
+    rent: "no"
+  - item: headlamps
+    rent: "no"
+duration: all-day
+effort: hard
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: night
+travel: local
+check_ahead: [conditions]
+tags: [camping, overnight, stars, sunrise, microadventure]
+credit:

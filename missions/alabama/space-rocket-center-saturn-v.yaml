@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Under the Saturn V in Huntsville
+mode: both
+who: [friends]
+place:
+  name: U.S. Space & Rocket Center
+  area: Cummings Research Park, Huntsville
+  address: One Tranquility Base, Huntsville, AL 35805
+  coords: [34.71100, -86.65440]  # APPROX: set at the entrance before publishing
+  website: https://www.rocketcenter.com
+short: Walk the length of a real Saturn V, then ride the G-Force simulator together. Hold hands at liftoff.
+description: >
+  Spend an afternoon at Huntsville's space museum, where a real Saturn V moon
+  rocket hangs over your heads for the full length of its hall. Walk from the
+  engines to the capsule end, then head out to Rocket Park and the shuttle
+  stack. Brave the G-Force Accelerator and Moon Shot rides together, and add a
+  planetarium show to sit back in the dark for a while. Get a photo of the two
+  of you beneath the huge F-1 engines. It's a big campus with a lot of
+  walking, so wear comfortable shoes.
+steps:
+  - The two of you under the F-1 engines
+  - Your faces right after the G-Force ride
+  - The rockets in Rocket Park against the sky
+duration: half-day
+effort: easy
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+discounts: [senior, military]
+tags: [space, museum, rockets, simulators, nerdy, huntsville]
+credit:

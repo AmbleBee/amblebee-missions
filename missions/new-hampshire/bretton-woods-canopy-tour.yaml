@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Zip the Treetops at Bretton Woods
+mode: date
+place:
+  name: Bretton Woods Canopy Tour (Base Lodge Guest Services)
+  area: Bretton Woods, White Mountains
+  address: 99 Ski Area Rd, Bretton Woods, NH 03575
+  coords: [44.25820, -71.44180]  # APPROX: set at the base lodge entrance before publishing
+  website: https://www.brettonwoods.com/experiences/canopy-tour/
+short: Gondola up, then zipline, rappel and cross sky bridges down the mountain. Warm up by a fire after.
+description: >
+  Ride the gondola up the mountain, then work your way back down with a guide
+  through nine ziplines, two sky bridges and three rappels, with Mount
+  Washington across the valley. You'll do short hikes between lines and brake
+  with a gloved hand, so wear sturdy closed-toe shoes. Get a photo of your
+  partner launching off the longest line. Afterward, warm up with a drink by
+  the fire at the grand old hotel across the road. Reservations are required,
+  the season and days change through the year, and riders must be 12 or
+  older and between 90 and 250 pounds.
+steps:
+  - The view from the gondola
+  - Your partner mid-zip
+  - The two of you on a sky bridge
+  - Drinks by the fire
+duration: half-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, seasonal, conditions]
+tags: [zipline, canopy-tour, gondola, mountains, thrill, date, bretton-woods, white-mountains]
+credit:

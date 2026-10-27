@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 63
+name: Creek Boat Regatta
+mode: both
+who: [friends, family, kids]
+short: Build boats from bark, sticks, and leaves, then race them down a creek.
+description: >
+  Find a small creek with a footbridge or a slow, shallow stretch. Everyone
+  builds a boat from what's lying around (bark, sticks, a leaf for a sail) or
+  from corks and twigs tied with string, and gives it a name. Line up and
+  race them downstream, play Poohsticks off the bridge, then team up to build
+  a little dam and see if you can make a pool. Stay in ankle-deep water, wear
+  shoes that can get wet, and skip it when the water is high or fast. Get a
+  photo of the launch with every boat on the line.
+steps:
+  - Every boat on the starting line
+  - The launch
+  - A boat stuck on a rock
+  - The winner crossing the line
+  - The finished dam
+for_kids:
+  short: Make a tiny boat and race it down the creek!
+  steps:
+    - Your boat
+    - Your boat in the water
+    - The race!
+    - A stick from the bridge
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [conditions]
+tags: [creek, nature, build, water, free, outdoors]
+credit:

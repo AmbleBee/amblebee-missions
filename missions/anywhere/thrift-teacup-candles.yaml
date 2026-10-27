@@ -1,0 +1,30 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 47
+name: Thrift Teacup Candles
+mode: both
+who: [solo, friends]
+short: Thrift a weird teacup for each other, then pour a candle into it and light it tonight.
+description: >
+  Start at a thrift store, where each of you hunts down a teacup or mug for the
+  other (or the strangest one you can find for yourself if you're solo). Pick up soy wax flakes and pre-tabbed wicks
+  at a craft store on the way home. Melt the wax in a double boiler or in short
+  microwave bursts, add a few drops of scent if you like, then stand each wick in its cup with two
+  chopsticks or a clothespin and pour. Save a little wax for a top-up pour once
+  it shrinks, let everything set for a few hours, then trim the wicks short
+  and light them side by side with the lights down.
+steps:
+  - The teacup you picked out
+  - The big reveal at the register
+  - Pouring the wax
+  - Wicks propped up and setting
+  - The candles lit with the lights down
+duration: half-day
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours]
+tags: [crafts, thrifting, make-something, cozy, at-home]
+credit:

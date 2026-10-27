@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Chimney Rock, Then a Catoctin Tasting
+mode: date
+place:
+  name: Catoctin Mountain Park Visitor Center
+  area: Catoctin Mountains, Thurmont
+  address: 14707 Park Central Rd, Thurmont, MD 21788
+  coords: [39.63330, -77.44990]  # APPROX: set at the trailhead before publishing
+  website: https://www.nps.gov/cato
+  links:
+    - label: Catoctin Breeze Vineyard
+      url: https://www.catoctinbreeze.com
+short: Scramble up to Wolf Rock and Chimney Rock, then toast the view at a mountain winery.
+description: >
+  From the Catoctin Mountain Park visitor center, hike the loop up to Wolf Rock,
+  a jumble of giant boulders split by deep cracks, and over to Chimney Rock,
+  where a rock outcrop looks out over the valley. It's about four miles with
+  some steep, rocky stretches, the steepest climbing in the park. Get a photo of
+  the two of you sitting on the edge at Chimney Rock. Then drive about ten
+  minutes to Catoctin Breeze Vineyard
+  for a tasting on the stone patio or in the upstairs lounge; book a table ahead.
+  The vineyard is 21 and up (no children) and closed some weekdays.
+steps:
+  - The two of you in a crack in Wolf Rock
+  - Sitting together at Chimney Rock
+  - A toast at the vineyard
+duration: half-day
+effort: moderate
+cost: $$$
+setting: either
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, reservation, conditions]
+tags: [hiking, views, wine, vineyard, romantic, catoctin, thurmont]
+credit:

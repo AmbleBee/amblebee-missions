@@ -1,0 +1,30 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 69
+name: Living-Room House Concert
+mode: both
+who: [friends, family]
+short: Bring a real musician into your living room and host a house concert for friends.
+description: >
+  Find an acoustic singer-songwriter, local or on tour (many list house
+  concerts on their websites), and book a date weeks ahead. Agree up front on
+  a guaranteed fee or a suggested door donation, and say so plainly in the
+  invitations. Invite 15 to 30 people, make it potluck, and set chairs,
+  couches and floor pillows close together with no stage. Give the artist two
+  short sets with a break to mingle, and put a basket by the door. Get a photo
+  of the whole crowd with the musician after the last song.
+steps:
+  - The room set up before guests arrive
+  - The room filling up
+  - The musician mid-song, up close
+  - The potluck table at the break
+  - Everyone together after the encore
+duration: half-day
+effort: hard
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: home
+check_ahead: [reservation]
+tags: [live-music, hosting, party, splurge, home]
+credit:

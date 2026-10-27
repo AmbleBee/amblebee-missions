@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Mendenhall Glacier and Nugget Falls
+mode: adventure
+who: [family, kids]
+place:
+  name: Mendenhall Glacier Visitor Center
+  area: Mendenhall Valley, Juneau
+  address: 8510 Mendenhall Loop Rd, Juneau, AK 99801
+  coords: [58.41680, -134.54550]  # APPROX: set at the entrance before publishing
+  website: https://www.fs.usda.gov/r10/tongass/offices/mendenhall-glacier-visitor-center
+short: Walk the flat trail to a roaring waterfall beside a real glacier. Spot the blue ice!
+description: >
+  Start at the visitor center for the big-window view of Mendenhall Glacier across the lake,
+  then walk the mostly flat Nugget Falls Trail out to the waterfall that crashes down right
+  beside the ice. On the way back, stroll the Steep Creek boardwalk and look for spawning
+  salmon, beavers and, in late summer, black bears fishing (stay on the boardwalk and follow
+  ranger directions). Get a family photo on the gravel beach with the waterfall and glacier
+  behind you. Visitors 16 and up need a small day pass for the visitor center area; kids are
+  free and the Nugget Falls Trail itself needs no pass.
+for_kids:
+  short: Find the glacier and the giant waterfall!
+  steps:
+    - The blue glacier ice
+    - The big waterfall
+    - A fish in the creek
+    - A cool rock on the beach
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [hours, conditions]
+discounts: [senior, military]
+tags: [glacier, waterfall, wildlife, salmon, easy-hike, juneau]
+credit:

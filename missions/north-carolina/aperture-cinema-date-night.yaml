@@ -1,0 +1,28 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Art House Movie Night at a/perture
+mode: date
+place:
+  name: a/perture cinema
+  area: Downtown Winston-Salem
+  address: 311 W 4th St, Winston-Salem, NC 27101
+  coords: [36.09850, -80.24650]  # APPROX: set at the entrance before publishing
+  website: https://aperturecinema.com
+short: Pick a film you've never heard of at a/perture. Grab popcorn, then debate it.
+description: >
+  Head downtown to a/perture, a small nonprofit art house cinema showing indie,
+  foreign and documentary films. Choose something neither of you knows much about,
+  grab popcorn and a drink from the concession stand, and settle in. Afterward,
+  walk Fourth Street and each give the movie a score out of ten, then defend your
+  number. Get a photo of the two of you with your tickets outside the theater.
+  Showtimes change weekly, so check the schedule and buy tickets ahead for popular films.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, tickets]
+tags: [movies, cinema, indie-film, wine, cozy, rainy-day, winston-salem]
+credit:

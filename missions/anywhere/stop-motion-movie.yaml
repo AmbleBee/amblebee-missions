@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 68
+name: Stop-Motion Movie
+mode: both
+who: [friends, family, kids]
+short: Make a tiny stop-motion movie with toys, then throw a premiere with popcorn.
+description: >
+  Pick a small story (the toast escapes, the dinosaur has a bad day) and build
+  a tabletop set with a cereal-box backdrop and a desk lamp. Prop your phone
+  on a stack of books so it never moves, open a free stop-motion app, and nudge
+  your characters a tiny bit between every shot. Shooting straight down on a
+  flat scene is the easiest start, and LEGO or clay works great. Add a title
+  card, then dim the lights, make popcorn and hold a premiere on the biggest
+  screen you have. Get a behind-the-scenes photo of the set with the crew.
+steps:
+  - The set, ready for filming
+  - Hands moving a character
+  - The crew behind the camera
+  - The title card
+  - The premiere audience
+for_kids:
+  short: Make your toys move in your very own movie!
+  steps:
+    - Your star toy
+    - The movie set
+    - You moving your toy
+    - Popcorn for the show
+    - A selfie with your grown-up!
+duration: half-day
+effort: moderate
+cost: free
+setting: indoor
+season: any
+time_of_day: any
+travel: home
+tags: [movie-making, creative, toys, rainy-day, home]
+credit:

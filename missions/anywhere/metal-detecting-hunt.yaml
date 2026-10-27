@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 73
+name: Metal Detecting Hunt
+mode: both
+who: [solo, friends, family, kids]
+short: Borrow or rent a metal detector and hunt for lost treasure. Junk jar versus treasure jar!
+description: >
+  Borrow, rent or buy a beginner metal detector and bring a hand trowel and a
+  pouch. Hunt only where digging is allowed: a friend's yard or field with the
+  owner's permission is easiest, and many parks and beaches need a permit or
+  ban digging, so check the local rules first. Sweep slowly and low, dig small
+  neat holes, fill every one back in, and carry out all the trash you find.
+  Kids can hold the detector and sift, but keep hands out of the holes, since
+  broken glass is common. Most beeps are nails and pull tabs, so keep a junk
+  jar and a treasure jar and give points for the oldest find. Get a photo of
+  your first real find in your palm.
+steps:
+  - The detector, ready to sweep
+  - Digging at the beep
+  - Your first find in your palm
+  - The junk jar
+  - The treasure jar
+for_kids:
+  short: Treasure hunt with a beeping machine!
+  steps:
+    - The treasure machine
+    - The spot where it beeped
+    - Something shiny you found
+    - The treasure jar
+    - A selfie with your grown-up!
+duration: short
+effort: moderate
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+tags: [treasure-hunt, metal-detecting, explore, outdoors]
+credit:

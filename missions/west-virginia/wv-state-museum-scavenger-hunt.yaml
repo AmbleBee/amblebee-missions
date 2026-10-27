@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: State Museum Scavenger Hunt
+mode: adventure
+who: [family, kids]
+place:
+  name: West Virginia State Museum (Culture Center)
+  area: State Capitol Complex, Charleston
+  address: 1900 Kanawha Blvd E, Charleston, WV 25305
+  coords: [38.33650, -81.61270]  # APPROX: set at the entrance before publishing
+  website: https://wvstatemuseumed.wv.gov
+short: Walk through West Virginia history from the ancient coal forest to today. Hunt down every clue!
+description: >
+  Head to the lower level of the Culture Center at the State Capitol in Charleston
+  for the free West Virginia State Museum. One long show path takes you from the
+  ancient coal forest of prehistory to the present day, with 26 little Discovery
+  Rooms branching off it, plus lights, sounds and interactive spots along the way.
+  Ask at the front desk for the QR code to the digital scavenger hunt, and let the
+  kids lead the way from room to room. Get a photo of the family in the room the
+  kids liked best. It's lightly lit and kept cool to protect the artifacts, so
+  bring a sweater.
+for_kids:
+  short: Time-travel through West Virginia!
+  steps:
+    - The ancient coal forest
+    - The oldest thing you can find
+    - A room with a sound or light surprise
+    - Your favorite room
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, history, free, kids, scavenger-hunt, rainy-day, charleston]
+credit:

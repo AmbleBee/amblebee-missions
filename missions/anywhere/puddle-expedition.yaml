@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 64
+name: Puddle Expedition
+mode: adventure
+who: [family, kids]
+short: Wait for a real rainy day, suit up, and jump in every puddle you can find.
+description: >
+  Pick a properly rainy day and suit up in rain boots and rain gear, or old
+  clothes you don't mind soaking. Walk a loop around the neighborhood and
+  jump in every puddle, keep a tally, and crown the biggest splash. Race leaf
+  boats down the gutter and look for rain-day finds: worms, snails, and
+  streams that only exist today. Set out dry clothes by the door and hot
+  chocolate before you leave, so coming home is part of the fun. Use burst
+  mode to catch a jump in mid-air.
+steps:
+  - Suited up at the door
+  - The mid-air jump
+  - The biggest splash
+  - A rain-day creature
+  - Muddy boots lined up at home
+for_kids:
+  short: Jump in every puddle you find!
+  steps:
+    - Your rain boots
+    - A big puddle
+    - Your biggest splash!
+    - A worm or snail
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [fall, winter, spring]
+time_of_day: daytime
+travel: home
+check_ahead: [conditions]
+tags: [rainy-day, rain, nature, walk, free, outdoors]
+credit:

@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Jacks River Falls via Beech Bottom
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Beech Bottom Trailhead (to Jacks River Falls)
+  area: Cohutta Wilderness, north of Chatsworth (trailhead just over the Tennessee line)
+  coords: [34.99055, -84.58755]  # APPROX: set at the trailhead before publishing (from atlantatrails.com)
+  website: https://www.fs.usda.gov/r08/chattahoochee-oconee/recreation/conasauga-ranger-district-0  # Conasauga RD manages the Cohutta; no dedicated Jacks River page found
+short: Hike nine wilderness miles to a roaring waterfall in the Cohutta. Lunch on the big rocks.
+description: >
+  Drive the gravel forest roads to the Beech Bottom trailhead, which sits just
+  over the line in Tennessee, and hike south into Georgia's Cohutta Wilderness,
+  fording a few creeks and passing the flat old Beech Bottom area before you
+  reach the Jacks River. Follow it
+  to Jacks River Falls, where the water pours over wide rock ledges into a
+  deep green pool. Eat lunch on the dry rocks well back from the edge, then
+  hike the same way out for about nine gently rolling miles
+  total; the falls are in Georgia. Get a photo of the crew
+  with the falls behind you. The rocks are slick and the current is strong, so
+  stay off the falls and out of the water above them; skip it after heavy
+  rain, bring a paper map, and don't count on cell service.
+steps:
+  - The trailhead sign at the start
+  - A creek crossing
+  - The crew with the falls behind you
+duration: all-day
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, waterfall, wilderness, cohutta, chatsworth, north-georgia]
+credit:

@@ -1,0 +1,33 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Tumamoc Hill Walk
+mode: adventure
+who: [solo, friends]
+place:
+  name: Tumamoc Hill (Desert Laboratory) entrance
+  area: West side, Tucson
+  address: Tumamoc Hill Rd at W Anklam Rd, Tucson, AZ 85745
+  coords: [32.22370, -111.00180]  # APPROX: set at the trailhead before publishing
+  website: https://desertlaboratory.arizona.edu/tumamoc-hill/walk-hill
+short: Power-walk the paved road up Tumamoc Hill with the locals. Photo of Tucson from the top.
+description: >
+  Tumamoc Hill is a desert research preserve where all of Tucson seems to walk the steady,
+  paved climb before work. It is about a mile and a half up with a few steep stretches, so
+  set your own pace and say good morning to everyone passing. Up top, catch your breath
+  at the overlook among the saguaros and look out over downtown, the university and the Santa Catalinas.
+  Get a photo of the city spread out below you from the overlook. Stay on the pavement and inside the overlook cables,
+  park on Anklam Rd (not the hospital lots), leave dogs and bikes at home, and go early in the warm months.
+steps:
+  - A saguaro along the road
+  - The steepest stretch, looking back down
+  - Tucson from the top
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: local
+check_ahead: [conditions]
+tags: [hiking, walking, desert, saguaro, views, sunrise, tucson]
+credit:

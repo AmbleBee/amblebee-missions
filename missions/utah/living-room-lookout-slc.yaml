@@ -1,0 +1,31 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Take a Seat in the Living Room
+mode: adventure
+who: [solo, friends]
+place:
+  name: Living Room Trailhead
+  area: Foothills above the Natural History Museum, Salt Lake City
+  address: 383 Colorow Rd, Salt Lake City, UT
+  coords: [40.76265, -111.82446]  # Visit Utah, Colorow Road north access
+  website: https://www.visitutah.com/places-to-go/cities-and-towns/salt-lake-city/trails/the-living-room
+short: Climb the foothills to the stone armchairs and kick back over the whole Salt Lake Valley.
+description: >
+  Start on Colorow Road near the Natural History Museum of Utah and climb the
+  foothills to the Living Room, a set of flat rocks arranged into chairs and couches
+  with the entire Salt Lake Valley spread out below. It's only about 2.5 miles round
+  trip, but you gain almost 1,000 feet, much of it in a steep draw. Lots of side
+  trails branch off near the Bonneville Shoreline Trail, so stay on the big,
+  well-used path and ask other hikers if you're unsure. Grab a stone armchair and
+  take a photo of the view from your seat. If you go up for sunset, bring a headlamp
+  for the walk down, and traction spikes in winter.
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [conditions]
+tags: [hiking, views, sunset, foothills, free, salt-lake-city]
+credit:

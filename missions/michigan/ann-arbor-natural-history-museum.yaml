@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Mastodons and Stars in Ann Arbor
+mode: both
+who: [solo, friends, family]
+place:
+  name: University of Michigan Museum of Natural History
+  area: Central Campus, Ann Arbor
+  address: 1105 N University Ave, Ann Arbor, MI 48109
+  coords: [42.27750, -83.73520]  # APPROX: set at the entrance before publishing
+  website: https://lsa.umich.edu/ummnh
+short: Meet the dueling mastodons in Ann Arbor, then catch a planetarium show. Shoot up at the tusks.
+description: >
+  Wander the free natural history museum inside U-M's bright Biological
+  Sciences Building, where a pair of full-size mastodon skeletons stands in
+  the atrium under two hanging prehistoric whales. Take your time in the
+  fossil galleries and the Michigan natural history exhibits, then grab a
+  ticket at the museum store for a show in the planetarium dome (shows run
+  Friday through Sunday). Get a photo looking straight up at the
+  mastodons from underneath their tusks. Campus parking is tight right now, so
+  plan to walk or bus in.
+steps:
+  - The mastodons, from underneath
+  - The weirdest fossil you can find
+  - The planetarium dome
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+tags: [museum, dinosaurs, fossils, planetarium, rainy-day, solo, ann-arbor]
+credit:

@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 58
+name: Invent a Board Game
+mode: both
+who: [friends, family, kids]
+short: Design a board game from scratch, playtest it, fix the boring parts, and name it.
+description: >
+  Pick a theme together: escape the volcano, a race across your town, the
+  cat's revenge. Draw the board on a big sheet of paper or a flattened
+  cardboard box, use bottle caps or coins as pieces, and make a stack of
+  chance and trap cards. Write three to five rules, play a test round, then
+  fix whatever was broken or dull. Play the final version for real, give it
+  a name, and make a cover for the box lid. Get a photo of everyone holding
+  up the finished game, then put it on the shelf next to the store-bought
+  ones.
+steps:
+  - Drawing the board
+  - The cards and pieces
+  - The test round
+  - The winner of the final game
+  - The finished box with its title
+for_kids:
+  short: Make your very own board game!
+  steps:
+    - Your game board
+    - Your game pieces
+    - Roll the dice!
+    - The winner!
+    - A selfie with your grown-up!
+duration: short
+effort: moderate
+cost: $
+setting: indoor
+season: any
+time_of_day: any
+travel: home
+tags: [game-night, craft, creative, rainy-day, home, build]
+credit:

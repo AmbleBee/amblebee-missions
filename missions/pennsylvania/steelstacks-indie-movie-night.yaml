@@ -1,0 +1,32 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 11
+name: Indie Movie Night at SteelStacks
+mode: date
+place:
+  name: Frank Banko Alehouse Cinemas, ArtsQuest Center at SteelStacks
+  area: SteelStacks, South Bethlehem
+  address: 101 Founders Way, Bethlehem, PA 18015
+  coords: [40.61400, -75.36550]  # APPROX: set at the entrance before publishing
+  website: https://www.artsquest.org/performing-arts/cinema/
+short: Catch an indie film in the shadow of Bethlehem's old blast furnaces. Pick it blind.
+description: >
+  The two-screen indie cinema inside the ArtsQuest Center sits right under the
+  rusted blast furnaces of the old Bethlehem Steel plant. Pick a film neither
+  of you has heard of from the lineup of indie, foreign and documentary picks,
+  grab a drink from the bar a short walk away, and settle in. Afterward, step outside
+  to see the furnaces towering over the plaza after dark while you each rate the
+  film out of ten. Get a photo of the two of you with the stacks behind you on your way
+  out. ArtsQuest is cashless, so bring a card.
+steps:
+  - Your tickets in front of the poster
+  - The two of you with the stacks behind you
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, tickets]
+tags: [movies, indie-film, cinema, industrial, rainy-day, bethlehem]
+credit:

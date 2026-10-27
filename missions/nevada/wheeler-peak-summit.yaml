@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Summit Wheeler Peak
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Summit Trailhead, Great Basin National Park
+  area: Great Basin National Park, near Baker
+  address: Wheeler Peak Scenic Dr, Baker, NV 89311
+  coords: [39.01080, -114.22560]  # APPROX: set at the trailhead before publishing
+  website: https://www.nps.gov/grba/
+short: Start at sunrise and climb to the 13,063-foot top of Nevada's Great Basin. Summit selfie!
+description: >
+  Drive to the top of the Wheeler Peak Scenic Drive and start early from the
+  Summit Trailhead. The trail climbs gently past alpine meadows, then turns
+  into a steep, rocky ridge walk above treeline for the last couple of miles,
+  about 8.6 miles round trip with over 3,000 feet of climbing at serious
+  altitude. Take a summit photo with the desert valleys stretching out in
+  every direction. Afternoon thunderstorms are common, so turn around if
+  clouds build, carry plenty of water (there's none on the drive), and go
+  slow if the altitude hits you. Pets aren't allowed on the trail. The upper
+  scenic drive is closed by snow in winter and usually opens by Memorial Day,
+  and vehicles over 24 feet can't go past Upper Lehman Campground.
+steps:
+  - Sunrise at the trailhead
+  - The ridge above treeline
+  - Summit selfie with the valleys below
+duration: all-day
+effort: hard
+cost: free
+setting: outdoor
+season: [summer, fall]
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions, seasonal]
+tags: [hiking, summit, alpine, national-park, high-altitude, great-basin, baker, ely]
+credit:

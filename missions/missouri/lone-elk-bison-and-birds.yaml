@@ -1,0 +1,42 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 24
+name: Bison, Elk and Eagles at Lone Elk Park
+mode: adventure
+who: [family, kids]
+place:
+  name: Lone Elk County Park
+  area: Valley Park, St. Louis County
+  address: 1 Lone Elk Park Rd, Valley Park, MO 63088  # verify
+  coords: [38.53250, -90.54140]  # APPROX: park centroid (Wikipedia); set at the entrance before publishing
+  website: https://stlouiscountymo.gov/st-louis-county-departments/parks/find-a-park/lone-elk-park/
+  links:
+    - label: World Bird Sanctuary
+      url: https://worldbirdsanctuary.org
+short: Drive slowly through a park where bison and elk roam free. Then meet the owls next door.
+description: >
+  Roll down the windows and creep along the park road while you hunt for the
+  herds of elk and bison that wander right up near the cars, plus deer and
+  wild turkeys. Never get out near the animals; watch from the car or a safe
+  distance. Have a picnic, then head next door to the World Bird Sanctuary (small
+  admission fee) to walk past outdoor enclosures of eagles, owls, hawks and vultures that can't
+  go back to the wild. Get a photo of a bison through your car window. No pets
+  are allowed in Lone Elk Park, not even inside the car, and motorcycles
+  aren't allowed either.
+for_kids:
+  short: Spot the big animals and the birds!
+  steps:
+    - A bison
+    - An elk with antlers
+    - A wild turkey
+    - An owl
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [wildlife, bison, elk, birds, raptors, picnic, kids, st-louis, valley-park]
+credit:

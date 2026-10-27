@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Wild Cave Crawl
+mode: date
+place:
+  name: Raccoon Mountain Caverns
+  area: Raccoon Mountain, Chattanooga
+  address: 319 West Hills Dr, Chattanooga, TN 37419
+  coords: [35.0212, -85.4079]  # APPROX: Wikipedia cave coords; set at the entrance before publishing
+  website: https://openroadresorts.com/raccoon-mountain-caverns/wild-cave
+short: Helmet up and crawl through a wild cave together. Get muddy, then get a mud-streaked selfie.
+description: >
+  Skip the walking tour and book a guided Wild Cave Expedition under Raccoon
+  Mountain, just outside Chattanooga. The Canyon Crawl is the entry-level
+  one: with helmets, pads, gloves and lights provided, you crawl, climb, slide
+  and squeeze through undeveloped passages with a small group and a guide. Expect mud and some
+  tight spots, so it's not for anyone claustrophobic, and wear clothes you
+  don't mind ruining. Get a photo of the two of you, lamps on and covered in
+  cave mud, when you crawl back out into daylight. Book ahead online (wild cave
+  tickets are non-refundable) and check the age, height and weight rules when
+  you do; there are no bathrooms in the cave.
+steps:
+  - The two of you suited up before going in
+  - The tightest squeeze you made it through
+  - A formation in your headlamp beam
+  - Muddy selfie back in daylight
+duration: half-day
+effort: moderate
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [reservation, tickets]
+tags: [caving, cave, adventure, muddy, underground, chattanooga]
+credit:

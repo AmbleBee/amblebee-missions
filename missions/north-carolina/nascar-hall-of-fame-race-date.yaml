@@ -1,0 +1,33 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Race Day at the NASCAR Hall of Fame
+mode: date
+place:
+  name: NASCAR Hall of Fame
+  area: Uptown Charlotte
+  address: 400 E Martin Luther King Jr Blvd, Charlotte, NC 28202
+  coords: [35.22150, -80.84470]  # APPROX: set at the entrance before publishing
+  website: https://www.nascarhall.com
+short: Race each other in the NASCAR Hall of Fame simulators. Loser picks up dinner.
+description: >
+  Get the ticket package with unlimited simulator rides and make it a
+  rivalry. Walk Glory Road, the banked ramp lined with famous race cars, try
+  the pit-stop challenge to see who changes a tire faster, then strap into the
+  iRacing simulators side by side and race head to head. Best of three, and
+  the loser buys dinner in Uptown afterward. Get a photo of the two of you on
+  the banked curve of Glory Road.
+steps:
+  - Your favorite car on Glory Road
+  - The pit-stop challenge mid-swap
+  - Two racers in the simulators
+duration: half-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours, tickets]
+discounts: [senior]
+tags: [racing, museum, simulator, competitive, playful, rainy-day, charlotte]
+credit:

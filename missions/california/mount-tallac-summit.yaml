@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 61
+name: Summit Mount Tallac
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Mount Tallac Trailhead
+  area: South Lake Tahoe
+  address: Mt Tallac Trailhead Rd, off CA-89 across from Baldwin Beach, South Lake Tahoe, CA 96150
+  coords: [38.92260, -120.06600]  # APPROX: set at the trailhead before publishing
+  website: https://www.fs.usda.gov/main/ltbmu/home
+short: Climb Tahoe's big peak past two alpine lakes. Photo with the whole lake below you.
+description: >
+  Mount Tallac is the peak that towers over the southwest shore of Lake Tahoe, and the trail
+  to the top is a full, steep day: roughly 10 miles round trip with over 3,000 feet of climbing.
+  Fill out the free self-serve Desolation Wilderness day permit at the trailhead, then climb
+  past Floating Island Lake and Cathedral Lake before the last rocky push up the ridge. From
+  the summit you can see nearly all of Lake Tahoe on one side and Desolation's granite and
+  lakes on the other. Get a summit photo with the lake stretched out below you. Start early,
+  carry plenty of water and layers, and turn around if storms build.
+steps:
+  - Floating Island Lake
+  - Looking back down at Fallen Leaf Lake
+  - Summit shot with Lake Tahoe behind you
+duration: all-day
+effort: hard
+cost: free
+setting: outdoor
+season: [summer, fall]
+time_of_day: morning
+travel: local
+check_ahead: [conditions, seasonal]
+tags: [hiking, summit, alpine-lakes, views, wilderness, lake-tahoe, south-lake-tahoe]
+credit:

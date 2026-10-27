@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: A Century of Handbags at ESSE
+mode: adventure
+who: [solo, friends]
+place:
+  name: ESSE Purse Museum & Store
+  area: SoMa, Little Rock
+  address: 1510 Main St, Little Rock, AR 72202
+  coords: [34.73310, -92.27390]  # APPROX: set at the entrance before publishing
+  website: https://essepursemuseum.com
+short: Walk a hundred years of women's lives through their purses. Pick the bag you'd have carried.
+description: >
+  Spend an unhurried hour at a small museum in Little Rock's SoMa district that
+  tells the story of American women decade by decade through their handbags
+  and what they kept inside them. Read the little stories next to each case,
+  from beaded flapper bags to 80s statement pieces, and see what's in the rotating exhibit. Choose the one bag you'd have carried in each era. Get a
+  photo of your favorite purse and its contents. Afterward, browse the shop or
+  wander South Main for coffee.
+steps:
+  - The oldest bag you can find
+  - The bag from the decade you were born
+  - Your favorite purse and what was inside it
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [senior, military, student]
+tags: [museum, history, fashion, quirky, rainy-day, soma, little-rock]
+credit:

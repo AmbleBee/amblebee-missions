@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Free Sunday Art Hunt at the RISD Museum
+mode: adventure
+who: [family, kids]
+place:
+  name: RISD Museum
+  area: College Hill, Providence
+  address: 20 N Main St, Providence, RI 02903  # verify: main entrance; second entrance at 224 Benefit St
+  coords: [41.82680, -71.40870]  # APPROX: set at the entrance before publishing
+  website: https://risdmuseum.org
+short: Go on a Sunday art hunt at the RISD Museum. Find the giant Buddha!
+description: >
+  Spend a Sunday at the RISD Museum, Rhode Island School of Design's art museum,
+  when admission is free for everyone (kids 18 and under are free any day). Turn
+  it into a scavenger hunt: track down the huge wooden Buddha in its own quiet
+  room, something from ancient Egypt, and the strangest painting each of you can
+  find. Let the kids lead and pick which gallery comes next. Get a family photo in
+  front of the big Buddha (no flash). It's an easy rainy-day outing, and Thursday
+  evenings are free too.
+for_kids:
+  short: Art treasure hunt! Can you find them all?
+  steps:
+    - The giant Buddha
+    - Something from ancient Egypt
+    - An animal in a painting
+    - Your favorite artwork
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [military, senior, student]
+tags: [museum, art, scavenger-hunt, rainy-day, family, providence]
+credit:

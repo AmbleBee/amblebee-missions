@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 62
+name: Movie Night at the Tampa Theatre
+mode: both
+who: [friends]
+place:
+  name: Tampa Theatre
+  area: Downtown Tampa
+  address: 711 N Franklin St, Tampa, FL 33602
+  coords: [27.95030, -82.45840]  # APPROX: set at the entrance before publishing
+  website: https://tampatheatre.org
+short: Catch a film in Tampa's 1926 movie palace. Get there early for the Wurlitzer!
+description: >
+  Grab tickets for whatever's on at the Tampa Theatre, a 1926 movie palace
+  downtown with a ceiling made to look like a starry night sky over a
+  Mediterranean courtyard. Pick an evening show and come early: a live
+  organist usually plays the original 1926 Mighty Wurlitzer before the film.
+  Pick up popcorn and drinks, then let the group vote on who gets to choose
+  the next movie night. Get a photo of your crew under the stars before the
+  lights go down. The lineup mixes classics, indies and special events, so
+  check the calendar first.
+steps:
+  - Your crew under the starry ceiling
+  - The Mighty Wurlitzer and the organist
+  - The marquee out front on Franklin Street
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, tickets]
+tags: [movies, historic, theater, classic-films, rainy-day, downtown, tampa]
+credit:

@@ -1,0 +1,30 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 74
+name: Old Cemetery Stroll
+mode: date
+short: Walk the oldest cemetery in town quietly. Read the stones and find one life story.
+description: >
+  Find your town's oldest cemetery, often beside an old church or a big
+  tree-lined one from the 1800s, and go in daylight. Walk quietly, stay on the
+  paths, and give any funeral or fresh grave plenty of room. Look for the
+  oldest date, a carved symbol like a hand, anchor or willow, and the most
+  beautiful epitaph, without leaning on, rubbing or touching the fragile
+  stones. Each of you picks one name, and over coffee afterward you look the
+  person up and trade what you learned. Get a photo of the carving you liked
+  best.
+steps:
+  - The cemetery gate
+  - The oldest date you found
+  - A carved symbol up close
+  - Your favorite epitaph
+  - The avenue of old trees
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [history, walk, quiet, stories, free]
+credit:

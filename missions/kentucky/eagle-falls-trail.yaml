@@ -1,0 +1,31 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Eagle Falls Over Cumberland Falls
+mode: both
+who: [solo, friends]
+place:
+  name: Eagle Falls Trailhead, Cumberland Falls State Resort Park
+  area: Daniel Boone National Forest, near Corbin
+  address: KY-90, Corbin, KY 40701  # verify: small Eagle Falls lot just across the river bridge from the falls overlook
+  coords: [36.83678, -84.34553]  # trailhead, from Hiking Project
+  website: https://parks.ky.gov/corbin/parks/resort/cumberland-falls-state-resort-park
+short: Climb the cliffside trail to hidden Eagle Falls and look back at the big Cumberland Falls.
+description: >
+  Drive across the river bridge from the busy main overlook and start up the
+  Eagle Falls Trail, which climbs the cliffs above the Cumberland River on stairs
+  and rocky ledges. It's only about a mile and a half, but steep in spots, and it
+  ends with a stair spur down to the base of Eagle Falls, a narrow ribbon dropping
+  into a rocky pool with the much bigger Cumberland Falls roaring in the
+  distance. Get a photo of yourself on the rocks at the base with both waterfalls
+  in view. The steps get slick when wet and the small lot fills on summer
+  weekends, so go early.
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, waterfall, cliffs, cumberland-falls, corbin]
+credit:

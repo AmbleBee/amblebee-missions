@@ -1,0 +1,30 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Dome After Dark
+mode: date
+place:
+  name: Greater Des Moines Botanical Garden
+  area: East Village riverfront, Des Moines
+  address: 909 Robert D. Ray Dr, Des Moines, IA 50309
+  coords: [41.59460, -93.60990]  # APPROX: set at the entrance before publishing
+  website: https://dmbotanicalgarden.com
+short: Escape an Iowa winter night under the glowing tropical dome. Kiss under the palms.
+description: >
+  On Friday nights from January through March, the Botanical Garden keeps its
+  big glass conservatory dome open late and lights it up, so you can trade the
+  snow outside for warm, humid air and tropical plants. Grab a glass of wine or
+  a beer in the Garden Gateway, wander the paths slowly, and find the quietest
+  bench under the canopy. Get a photo of the two of you with the lit-up plants
+  all around. It runs only in winter; buy tickets ahead or at the door, or book
+  the Friday dinner at Flora that includes Dome After Dark tickets.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: [winter]
+time_of_day: evening
+travel: local
+check_ahead: [seasonal, tickets]
+discounts: [senior, military]
+tags: [garden, conservatory, winter, romantic, date-night, des-moines]
+credit:

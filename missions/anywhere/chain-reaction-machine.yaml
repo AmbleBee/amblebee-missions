@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 61
+name: Chain Reaction Machine
+mode: both
+who: [friends, family, kids]
+short: Build a Rube Goldberg machine across the room to do one silly job. Film the final run.
+description: >
+  Pick a silly final job for your machine: ring a bell, drop a ball into a
+  cup, knock a hat onto someone's head. Raid the house for parts like
+  dominoes or books, paper towel tubes, marbles, toy cars, string, and tape.
+  Build a chain of steps across the room, test each one on its own, then link
+  them. Most runs will fail at first, and fixing them is the fun part. When
+  it finally works start to finish, film the whole run in one take.
+steps:
+  - The build across the floor
+  - Your favorite step up close
+  - A near miss
+  - The final job, done
+  - The builders celebrating
+for_kids:
+  short: Build a crazy machine that does one silly job!
+  steps:
+    - Your machine parts
+    - The first step
+    - The marble rolling
+    - It worked!
+    - A selfie with your grown-up!
+duration: half-day
+effort: moderate
+cost: $
+setting: indoor
+season: any
+time_of_day: any
+travel: home
+tags: [build, science, engineering, rainy-day, home, video]
+credit:

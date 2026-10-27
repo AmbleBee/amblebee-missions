@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 62
+name: Plane Spotting Picnic
+mode: both
+who: [friends, family, kids]
+short: Picnic under an airport's landing path. Guess where each plane came from, then check.
+description: >
+  Find a public park, viewing area, or legal parking spot under the approach
+  path of your nearest airport, where planes come in low. Spread out a
+  picnic, open a flight-tracking app like Flightradar24, and guess where each
+  plane is coming from before you look it up. Keep a logbook of airlines and
+  cities, and give bonus points for the biggest plane and the farthest
+  origin. Bring ear protection for little ones, stay outside any fences, and
+  check the wind, since it decides which runway they land on. Get the shot
+  of a plane right overhead with everyone pointing up.
+steps:
+  - The picnic spread under the flight path
+  - A plane right overhead
+  - The logbook
+  - The biggest plane of the day
+  - Everyone pointing up
+for_kids:
+  short: Watch the big planes fly right over you!
+  steps:
+    - Your picnic
+    - A plane in the sky
+    - The biggest plane!
+    - Point at a plane!
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [conditions]
+tags: [planes, airport, picnic, free, outdoors, aviation]
+credit:

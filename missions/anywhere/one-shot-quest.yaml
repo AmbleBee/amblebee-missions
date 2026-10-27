@@ -1,0 +1,27 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 50
+name: One-Shot Quest for Two
+mode: both
+who: [friends]
+short: One of you runs the story, one plays the hero. Roll dice, draw the map, save the day.
+description: >
+  Find a free one-page roleplaying game or a short two-player adventure online,
+  so nobody has to study a rulebook. One of you is the storyteller and the
+  other plays a single hero; swap next time. Dim the lights, put on a moody
+  playlist, set out snacks, and sketch the map on paper as the story goes.
+  Roll for the big moments, let the dice surprise you, and give the villain
+  a ridiculous voice. Snap the final roll that decides how it all ends.
+steps:
+  - Your hero's character sheet
+  - The map as it grows
+  - The storyteller in villain mode
+  - The big final dice roll
+duration: short
+effort: moderate
+cost: free
+setting: indoor
+season: any
+time_of_day: evening
+travel: home
+tags: [games, storytelling, creative, at-home, rainy-day]
+credit:

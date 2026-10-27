@@ -1,0 +1,32 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Movie Night at the Senator
+mode: date
+place:
+  name: The Senator Theatre
+  area: Govans, Baltimore
+  address: 5904 York Rd, Baltimore, MD 21212
+  coords: [39.36361, -76.61083]
+  website: https://www.thesenatortheatre.com
+short: See a movie in a 1939 Art Deco palace. Sit dead center and share the popcorn.
+description: >
+  The Senator is a round 1939 Art Deco movie palace on York Road, with a
+  glowing neon marquee, a curved lobby, and a grand main
+  auditorium. Pick a showing, ideally one of its classic-film revivals, get
+  a popcorn to share and grab seats right in the middle. Before the lights
+  go down, check out the walk of fame in the sidewalk out front. Get a photo of the
+  two of you under the lit-up marquee after the show. Belvedere Square across
+  the street is an easy spot for a bite before or after.
+steps:
+  - The two of you under the neon marquee
+  - The big screen before the lights go down
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [movies, art-deco, historic, theater, classic-films, baltimore]
+credit:

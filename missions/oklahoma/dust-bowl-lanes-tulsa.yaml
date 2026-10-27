@@ -1,0 +1,29 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Retro Bowling at Dust Bowl Lanes
+mode: adventure
+who: [friends]
+place:
+  name: Dust Bowl Lanes & Lounge
+  area: Blue Dome District, Tulsa
+  address: 211 S Elgin Ave, Tulsa, OK 74120
+  coords: [36.15730, -95.98660]  # APPROX: set at the entrance before publishing
+  website: https://dustbowllounge.com/locations/tulsa/
+short: Rent a lane at a 70s-style bowling lounge in Tulsa. Worst score picks the next round's song.
+description: >
+  Grab your crew and book a lane at Dust Bowl, a retro bowling lounge in the Blue
+  Dome District with eight lanes, 70s-style decor and a full bar. Lanes rent by
+  the hour, so split one between the group, order some bar food and play a couple
+  of games, with the lowest scorer on the hook for picking the next song or buying
+  the fries. Get a group photo mid-celebration after somebody's strike. Book a lane
+  ahead on weekend nights, and check the age policy if anyone in the group is under 21.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, reservation]
+tags: [bowling, retro, games, drinks, rainy-day, blue-dome, tulsa]
+credit:

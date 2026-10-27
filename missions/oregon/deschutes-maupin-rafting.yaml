@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 61
+name: Raft the Deschutes from Maupin
+mode: both
+who: [friends]
+place:
+  name: Sage Canyon River Co.
+  area: Maupin, Lower Deschutes River
+  address: 509 Deschutes Ave, Maupin, OR 97037  # verify: confirm the trip meeting point when booking
+  coords: [45.17486, -121.08144]  # shop location from sagerafting.com map link
+  website: https://www.sagerafting.com
+short: Paddle a full day of Deschutes whitewater out of Maupin. Survive the big rapids together.
+description: >
+  Book a guided full-day raft trip out of Maupin and spend the day paddling
+  about thirteen miles of the Lower Deschutes through a desert canyon of basalt
+  and sagebrush, with class II to IV rapids and a riverside barbecue lunch.
+  Paddle hard when the guide calls it and hang on through the big ones. The
+  sun is strong in the canyon, so wear quick-dry clothes, river shoes, a hat
+  and sunglasses with a strap. Get a soaked-and-grinning photo of the two of
+  you on the beach after the last rapid. Book ahead in summer; kids need to be
+  at least 6 to come along.
+steps:
+  - Life jackets on at the put-in
+  - The canyon walls from the raft
+  - Soaked and grinning after the last rapid
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [reservation, seasonal, conditions]
+tags: [rafting, whitewater, river, canyon, deschutes, maupin]
+credit:

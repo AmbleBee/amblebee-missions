@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Old Speck Fire Tower Climb
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Grafton Notch State Park, Old Speck trailhead
+  area: Grafton Notch, near Newry
+  address: ME-26, Newry, ME 04261  # main Grafton Notch trailhead lot, west side of Route 26, about 12 mi north of US-2
+  coords: [44.58316, -70.95528]  # trailhead lot, from Maine Trail Finder
+  website: https://www.maine.gov/graftonnotch
+short: Grind up Old Speck on the Appalachian Trail and climb the fire tower. Spot Katahdin.
+description: >
+  Start at the Grafton Notch trailhead and climb Old Speck, one of Maine's
+  highest peaks, about seven and a half miles round trip and roughly 2,700 feet
+  of climbing on the Appalachian Trail; plan on four to seven hours. The bottom follows a brook through birch woods, then
+  the trail turns steep, rocky and rooty for the long push to the summit. Climb
+  the old fire tower, now an open observation tower, for a huge view over the Mahoosucs and western
+  mountains; on a clear day you can pick out the Presidentials and maybe
+  Katahdin. Get a photo at the top of the tower with the mountains all around.
+  Bold hikers can start up the Eyebrow Trail's iron rungs and ladders instead;
+  start early, pack plenty of water, and pay the small park day-use fee (cash or
+  check).
+steps:
+  - The brook near the bottom
+  - The steepest part of the climb
+  - Everyone on top of the fire tower
+duration: half-day
+effort: hard
+cost: $
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions, seasonal]
+tags: [hiking, mountain, fire-tower, appalachian-trail, views, grafton-notch, newry]
+credit:

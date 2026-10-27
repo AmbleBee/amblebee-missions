@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 59
+name: Cardboard Arcade
+mode: adventure
+who: [friends, family, kids]
+short: Build an arcade out of boxes, hand out tickets, and open a prize counter.
+description: >
+  Save boxes for a few days, then have everyone build one or two arcade
+  games: a ball toss into holes worth different points, a string-and-hook
+  claw machine, a tiny basketball hoop, or a marble maze. Make paper tickets
+  and set up a prize counter with stickers, candy, or chore-free passes. Hang
+  a sign, open the doors, and invite neighbors or grandparents in as
+  customers. Play every game, collect your tickets, and cash them in. The
+  best photo is the first customer stepping up to play.
+steps:
+  - Builders mid-tape
+  - The arcade sign
+  - The first customer
+  - A high score
+  - The prize counter
+for_kids:
+  short: Build your own arcade from boxes!
+  steps:
+    - Your box game
+    - Your arcade sign
+    - Someone playing your game
+    - Your prize
+    - A selfie with your grown-up!
+duration: half-day
+effort: moderate
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: home
+tags: [build, craft, cardboard, rainy-day, home, games]
+credit:

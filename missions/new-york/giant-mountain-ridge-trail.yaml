@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 20
+name: Climb Giant Mountain
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Giant Mountain Ridge Trail (Zander Scott Trail) trailhead
+  area: Route 73 near Chapel Pond, Keene Valley (Adirondacks)
+  address: NY-73, Keene Valley, NY 12943  # no street number: lots on both sides of NY-73 just past Chapel Pond, about 1.5 mi past the Roaring Brook lot
+  coords: [44.13849, -73.74377]  # from lakeplacid.com trail page map link
+  website: https://www.lakeplacid.com/hiking/giant-mountain
+short: Grind up Giant's steep Ridge Trail in the Adirondacks. Summit photo at 4,627 feet.
+description: >
+  Start at the Ridge Trail near Chapel Pond and climb, because this trail
+  barely lets up: bare-rock ledges, a lookout down onto Chapel Pond, then
+  Giant's Washbowl, a little mountain pond less than a mile up. Keep
+  going over open rock to the summit of Giant, one of the Adirondack High
+  Peaks, with views across Keene Valley to the rest of the range. Take your
+  summit photo with the whole High Peaks skyline behind you. Start early: the
+  small lots fill fast and parking along Route 73 isn't allowed, and in winter
+  you'll need snowshoes and traction spikes.
+steps:
+  - Chapel Pond from the first ledges
+  - The Giant's Washbowl
+  - Summit photo with the High Peaks behind you
+duration: all-day
+effort: hard
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: morning
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, mountains, high-peaks, adirondacks, views, keene-valley]
+credit:

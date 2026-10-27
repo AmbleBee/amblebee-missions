@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Thacker Mountain Radio Night
+mode: date
+place:
+  name: The Powerhouse Community Arts Center (Thacker Mountain Radio Hour)
+  area: Oxford
+  address: 413 S 14th St, Oxford, MS 38655
+  coords: [34.36380, -89.52350]  # APPROX: set at the entrance before publishing
+  website: https://www.thackermountain.com
+short: Sit in the live audience of Oxford's Thursday radio show. Dinner on the Square after.
+description: >
+  Oxford's homegrown radio show tapes in front of a free live audience on
+  Thursday evenings: an hour of Southern authors reading from new books, mixed with
+  live bands and plenty of local banter. Show up a little early, grab a seat
+  together, and watch how a radio broadcast comes together. Get a photo of the
+  two of you with the stage behind you before the show starts. Afterward, walk
+  over to the Square for dinner and a browse through the bookstores if
+  they're still open. Shows run in spring and fall seasons, and the venue
+  sometimes moves, so check the schedule first.
+steps:
+  - The two of you, stage behind you
+  - The author at the mic
+  - Dinner on the Square
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: [winter, spring, fall]
+time_of_day: evening
+travel: local
+check_ahead: [seasonal, hours]
+tags: [live-radio, books, live-music, southern-culture, date-night, oxford]
+credit:

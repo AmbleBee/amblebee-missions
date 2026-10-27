@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 62
+name: McNeil Point Stone Shelter
+mode: adventure
+who: [solo, friends]
+place:
+  name: Top Spur Trailhead (to McNeil Point)
+  area: Northwest side of Mount Hood, Mt. Hood National Forest
+  address: Forest Road 1828-118, Mt. Hood National Forest, OR  # verify: no street address; from Lolo Pass Rd via FR 1825 and 1828
+  coords: [45.40770, -121.78594]  # trailhead coords from the Forest Service page
+  website: https://www.fs.usda.gov/r06/mthood/recreation/top-spur-trailhead
+short: Climb Mount Hood's flank through wildflower meadows to an old stone shelter. Lunch with a view.
+description: >
+  Start at Top Spur and join the Timberline Trail around Bald Mountain for your
+  first big look at Mount Hood, then keep climbing through steep wildflower
+  meadows and past the little McNeil Ponds. The last stretch crosses open scree
+  to a broad ridge where a historic stone shelter sits right under the mountain's
+  glaciers, with the Cascades spread out below. It's about 10 miles out and back
+  with roughly 2,200 feet of climbing, so pack lunch, layers and plenty of water,
+  and take the longer trail around rather than the steep shortcut up the point.
+  Get a photo framed by the shelter's stone doorway with Hood behind it. Bring a
+  Northwest Forest Pass (not sold at the trailhead), fill out the free wilderness
+  permit at the trailhead, and expect snow on the upper trail until July.
+steps:
+  - Mount Hood from the Bald Mountain viewpoint
+  - Wildflowers in the meadows
+  - The McNeil Ponds
+  - The stone shelter with Hood behind it
+duration: all-day
+effort: hard
+cost: $
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions, seasonal]
+tags: [hiking, mount-hood, wildflowers, views, timberline-trail, wilderness, portland]
+credit:

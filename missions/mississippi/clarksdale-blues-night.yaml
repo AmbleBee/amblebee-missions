@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Clarksdale Blues Night
+mode: date
+place:
+  name: Delta Blues Museum
+  area: Downtown, Clarksdale
+  address: 1 Blues Alley Ln, Clarksdale, MS 38614
+  coords: [34.19650, -90.57240]  # APPROX: set at the entrance before publishing
+  website: https://www.deltabluesmuseum.org
+  links:
+    - label: Ground Zero Blues Club
+      url: https://groundzerobluesclub.com
+short: See Muddy Waters' cabin, then catch live blues in a juke joint. Dance at least one song.
+description: >
+  Spend the late afternoon at the Delta Blues Museum in Clarksdale, in an old
+  railroad freight depot, where the remains of Muddy Waters' sharecropper cabin
+  sit inside the gallery. When it closes, walk next door to Ground Zero Blues
+  Club for dinner and live blues on the graffiti-covered stage, or wander
+  downtown to whichever juke joint has a band that night. Get a photo of the two
+  of you in front of the stage, then get up and dance to at least one song.
+  Museum is daytime only and closed Sundays; music is mostly at night, so plan
+  for a late start that runs into the evening.
+steps:
+  - The two of you outside the old depot
+  - Muddy Waters' cabin
+  - The band on stage
+  - Your dance
+duration: half-day
+effort: easy
+cost: $$$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours, tickets]
+tags: [blues, live-music, museum, juke-joint, history, delta, clarksdale]
+credit:

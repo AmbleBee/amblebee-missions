@@ -1,0 +1,32 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Arthouse Night at Red River
+mode: date
+place:
+  name: Red River Theatres
+  area: Downtown, Concord
+  address: 11 S Main St, Concord, NH 03301
+  coords: [43.20500, -71.53700]  # APPROX: set at the entrance before publishing
+  website: https://redrivertheatres.org
+short: Pick an indie film neither of you has heard of. Glass of wine, popcorn, then argue about it.
+description: >
+  Red River is downtown Concord's nonprofit arthouse cinema, showing indie,
+  foreign and classic films on three screens. Pick a movie neither of you knows
+  much about, grab popcorn and a beer or glass of wine from the Indie Cafe, and
+  settle into the stadium seats. Afterward, walk Main Street and each give the
+  film a score out of ten; whoever's further from the other's score buys
+  dessert. Get a photo of the two of you out front with your tickets.
+steps:
+  - The two of you out front
+  - Your tickets and popcorn
+  - Your scores out of ten
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [tickets]
+tags: [movies, arthouse, cinema, date-night, rainy-day, concord]
+credit:

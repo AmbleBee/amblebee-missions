@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Sam Noble Museum Fossil Wander
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Sam Noble Oklahoma Museum of Natural History
+  area: University of Oklahoma campus, Norman
+  address: 2401 Chautauqua Ave, Norman, OK 73072
+  coords: [35.19440, -97.44860]  # APPROX: set at the entrance before publishing
+  website: https://samnoblemuseum.ou.edu
+short: Wander Norman's natural history museum at your own pace. Find the biggest skeleton.
+description: >
+  A good one to do alone: take your time through the Sam Noble Museum on the
+  OU campus, where the dinosaur hall towers over you with giant mounted
+  skeletons, including a huge Apatosaurus. Keep
+  going through the galleries on Oklahoma's ancient seas, ice-age animals and
+  the people who lived here first, and pick one thing you'd never heard of to
+  read about later. Get a photo looking straight up at the tallest skeleton.
+  Parking is free right out front.
+steps:
+  - Looking straight up at the tallest skeleton
+  - The weirdest creature in the museum
+  - The one thing you want to read more about
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [senior, military]
+tags: [museum, dinosaurs, fossils, solo, rainy-day, norman]
+credit:

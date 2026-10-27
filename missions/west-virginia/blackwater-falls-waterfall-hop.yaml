@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Blackwater Falls Waterfall Hop
+mode: adventure
+who: [family, kids]
+place:
+  name: Blackwater Falls State Park
+  area: Davis, Tucker County
+  address: 1584 Blackwater Lodge Rd, Davis, WV 26260
+  coords: [39.11370, -79.48310]  # APPROX: set at the main falls trailhead before publishing
+  website: https://wvstateparks.com/park/blackwater-falls-state-park/
+short: Hop between amber waterfalls and canyon overlooks. Count the stairs down to the big falls!
+description: >
+  Spend a few easy hours bouncing between short walks at Blackwater Falls
+  State Park, just outside the small town of Davis. Start with the boardwalk
+  and 200-plus stairs down to the main falls, where the creek runs amber-colored from
+  tannins in the hemlock and spruce forest; the Gentle Trail on the other side
+  gives an easier view. Then walk the short trail from the lodge to Elakala
+  Falls and drive to the Lindy Point trail, a short but rockier walk out to
+  an overlook above the canyon. Get a family photo at the
+  big falls with the spray behind you. Hold little hands near the overlook
+  edges, and expect slick steps after rain or in winter.
+for_kids:
+  short: Find the waterfalls!
+  steps:
+    - The big waterfall
+    - Water that looks like root beer
+    - A giant rock
+    - The view from the top of the canyon
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [conditions]
+tags: [waterfall, state-park, overlook, short-hikes, kids, davis, tucker-county]
+credit:

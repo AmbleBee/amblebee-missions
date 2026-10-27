@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Saddle Up at the Cowboy Bar
+mode: both
+who: [friends]
+place:
+  name: Million Dollar Cowboy Bar
+  area: Town Square, Jackson
+  address: 25 N Cache St, Jackson, WY 83001
+  coords: [43.47990, -110.76200]  # APPROX: set at the entrance before publishing
+  website: https://www.milliondollarcowboybar.com
+short: Grab a saddle at the bar on Jackson's Town Square. Line up for a crew photo in the saddles.
+description: >
+  Head to the Million Dollar Cowboy Bar on Jackson's Town Square, a Western
+  landmark where the bar stools are real horse saddles. Claim a row of
+  saddles for your crew, order a round, and take in the knotty pine, the
+  old-west décor and the live country band most nights, and get out on the
+  floor if the dancing starts. Get a group photo of everyone sitting in the
+  saddles at the bar. It's a bar first: plan on everyone being 21 or
+  older with ID at night, and summer evenings get packed.
+steps:
+  - The neon cowboy sign out front
+  - Everyone in the saddles at the bar
+  - The band on stage
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [bar, western, live-music, dancing, historic, town-square, jackson]
+credit:

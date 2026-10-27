@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 56
+name: Model Rocket Launch
+mode: both
+who: [solo, friends, family, kids]
+short: Build a model rocket, count down together, and chase the parachute across the field.
+description: >
+  Pick up a beginner model rocket launch set (Estes-style kits are sold at
+  hobby and craft stores, big-box toy aisles, and online) plus a pack of
+  engines, which usually come separately, and build it the night before.
+  Choose a calm, dry day and a big open field you have permission to use, far
+  from trees, power lines, buildings, and dry grass; bigger engines need
+  bigger fields. Check local rules first, since some parks ban launches and
+  many areas prohibit model rockets during fire restrictions. Stand at least
+  15 feet back, count down out loud together, and take turns on the button.
+  Chase the parachute after every flight, give each launch a name, and use
+  burst mode for liftoff.
+for_kids:
+  short: Blast off a rocket!
+  steps:
+    - Your rocket on the pad
+    - Count down from 10
+    - Liftoff!
+    - Catch the parachute
+    - A selfie with your grown-up!
+steps:
+  - The finished rocket on the pad
+  - The countdown
+  - Liftoff
+  - The parachute recovery run
+duration: half-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [conditions]
+tags: [rockets, science, build, outdoors, field]
+credit:

@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Ride the Tahoe Flume Trail
+mode: both
+who: [friends]
+place:
+  name: Flume Trail Bikes (Tunnel Creek)
+  area: Incline Village, Lake Tahoe
+  address: 1115 Tunnel Creek Rd, Incline Village, NV 89451
+  coords: [39.22900, -119.92800]  # APPROX: set at the shop before publishing
+  website: https://www.flumetrailtahoe.com
+short: Mountain bike the cliffside Flume Trail high above Lake Tahoe. Lunch at Marlette Lake.
+description: >
+  Rent mountain bikes at the shop in Incline Village, take their shuttle to
+  Spooner Lake, and ride about 14 miles back: a climb of over 1,000 feet to
+  quiet Marlette Lake, then the famous Flume Trail, a narrow singletrack cut into the granite cliffs with
+  Lake Tahoe glowing blue far below. Pack a picnic for Marlette and take your
+  time on the flume section; the first stretch is rocky and technical and the
+  drop-off is real, so walk anything that spooks you. Stop on a big boulder halfway along for the
+  photo of the two of you with the whole lake behind. It's an intermediate to
+  advanced ride at 8,000 feet, so you should be fit, comfortable on dirt trails
+  and fine with heights. Book bikes and the shuttle ahead.
+steps:
+  - Marlette Lake from your picnic spot
+  - The two of you with Tahoe behind
+  - Muddy legs back at the shop
+gear:
+  - item: bikes
+    rent: on-site
+duration: all-day
+effort: hard
+cost: $$$
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [reservation, seasonal, conditions]
+tags: [mountain-biking, lake, views, cliffs, lake-tahoe, incline-village]
+credit:

@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: KU Natural History Museum
+mode: adventure
+who: [family, kids]
+place:
+  name: KU Natural History Museum (Dyche Hall)
+  area: KU campus, Lawrence
+  address: 1345 Jayhawk Blvd, Lawrence, KS 66045
+  coords: [38.95860, -95.24360]  # APPROX: set at the entrance before publishing
+  website: https://biodiversity.ku.edu/visit
+short: Climb four floors of fossils and wildlife in a castle-like museum. Find the sea monster.
+description: >
+  On the KU campus, Dyche Hall's carved stone castle holds four floors of
+  animals, fossils and dioramas, starting with the giant Panorama of North
+  American wildlife on the ground floor. Work your way up through Kansas
+  critters, fossil sea creatures from when Kansas was an ocean, and a living
+  garden of ancient plants. Let the kids lead and count how many animals they
+  can name. Get a photo of everyone pretending to be scared of the biggest
+  fossil. Entry is by a suggested donation, and campus parking can be tight
+  on weekdays, so check the museum's parking tips.
+for_kids:
+  short: Museum hunt! Find each thing.
+  steps:
+    - A bear or a bison
+    - A fossil with sharp teeth
+    - A bird with its wings open
+    - The biggest skeleton
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, fossils, animals, kids, rainy-day, free, university, lawrence]
+credit:

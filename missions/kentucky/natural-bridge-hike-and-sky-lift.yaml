@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Natural Bridge Hike and Sky Lift
+mode: both
+who: [friends]
+place:
+  name: Natural Bridge State Resort Park (Hemlock Lodge trailheads)
+  area: Red River Gorge area, Slade
+  address: 2135 Natural Bridge Rd, Slade, KY 40376  # verify
+  coords: [37.77780, -83.68300]  # APPROX: set at the trailhead before publishing
+  website: https://parks.ky.gov/explore/natural-bridge-state-resort-park-7796
+short: Hike up to a giant sandstone arch, walk across the top, and ride the chairlift down.
+description: >
+  Start near Hemlock Lodge and climb the Original Trail through hemlocks and
+  rock shelters to Natural Bridge, a huge sandstone arch you can walk right
+  across. Squeeze through the narrow rock slot of Fat Man's Squeeze beside the
+  arch, then follow the Laurel Ridge Trail out to Lover's Leap for the big view
+  over the gorge. Come down the
+  Balanced Rock Trail for a full loop, or hop on the Sky Lift chairlift for a
+  lazy ride back to the bottom. Get a photo of the group standing on top of
+  the arch. The trails are steep with lots of stairs; the lift only runs
+  seasonally, roughly spring through fall.
+steps:
+  - Fat Man's Squeeze
+  - The group on top of the arch
+  - The view from Lover's Leap
+duration: half-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [hiking, arch, chairlift, views, state-park, red-river-gorge, slade, lexington-day-trip]
+credit:

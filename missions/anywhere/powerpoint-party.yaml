@@ -1,0 +1,29 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 60
+name: PowerPoint Party
+mode: adventure
+who: [friends]
+short: Everyone brings a 5-minute slideshow on something they love. Present, heckle, hand out awards.
+description: >
+  A week ahead, each guest makes a short slideshow (five minutes, five to ten
+  slides) on anything they love or have a strong opinion on: a ranking of
+  local burritos, a defense of a movie everyone hates, the secret history of
+  pigeons. Plug a laptop into the TV, dim the lights, and take turns at the
+  front of the room. The audience gets one question per talk. Finish with
+  silly awards like best chart, wildest thesis, and most convincing argument.
+  Grab a photo of each presenter mid-point with their slide behind them.
+steps:
+  - The title slide
+  - A presenter mid-point
+  - The best chart of the night
+  - The crowd reacting
+  - The award winners
+duration: short
+effort: moderate
+cost: free
+setting: indoor
+season: any
+time_of_day: evening
+travel: home
+tags: [party, group, game-night, home, playful, free]
+credit:

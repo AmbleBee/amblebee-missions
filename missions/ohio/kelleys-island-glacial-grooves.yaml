@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 9
+name: Ferry to the Kelleys Island Glacial Grooves
+mode: adventure
+who: [friends]
+place:
+  name: Kelleys Island Ferry Boat Line dock
+  area: Lakeside Marblehead (ferry to Kelleys Island)
+  address: 510 W Main St, Lakeside Marblehead, OH 43440
+  coords: [41.53780, -82.73500]  # APPROX: set at the dock before publishing
+  website: https://www.kelleysislandferry.com
+short: Ferry to Kelleys Island and hike or bike to the giant glacier scratches. Lake Erie photo.
+description: >
+  Walk on (or roll your bikes on) the ferry from Marblehead and cross to
+  Kelleys Island, a quiet little Lake Erie island. From the
+  dock, bike or hike a few miles across the island to the Glacial Grooves, deep
+  smooth troughs carved into the limestone by an ice-age glacier, and follow
+  the walkway around them. Keep going along the North Shore Loop Trail through
+  the state park woods to the lakeshore, then wander back to town for food
+  before the ferry home. Get a crew photo lined up along the walkway with
+  the grooves behind you.
+steps:
+  - The crew on the ferry deck
+  - Everyone lined up along the Glacial Grooves
+  - Lake Erie from the north shore
+duration: half-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, conditions]
+tags: [island, ferry, biking, hiking, geology, lake-erie, kelleys-island, marblehead]
+credit:

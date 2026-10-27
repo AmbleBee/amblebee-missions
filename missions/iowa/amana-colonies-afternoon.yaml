@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: An Afternoon in the Amana Colonies
+mode: date
+place:
+  name: Amana Colonies Visitor Center
+  area: Main Amana, Amana Colonies
+  address: 622 46th Ave, Amana, IA 52203
+  coords: [41.79900, -91.87000]  # APPROX: set at the entrance before publishing
+  website: https://www.amanacolonies.com
+short: Stroll the old German villages, taste the local beer and wine, then share a family-style feast.
+description: >
+  The Amana Colonies are seven old German villages west of Iowa City, with
+  brick and stone buildings, a working woolen mill, bakeries and tasting
+  rooms. Start at the visitor center for a map, walk the Kolonieweg trail
+  around Lily Lake if the weather is good, then wander Main Amana's shops and
+  share a flight at the brewery or a winery. Finish with a big family-style
+  dinner, where the platters keep coming until you give up. Get a photo of
+  the two of you under the sign of the oldest building you can find. Pick a
+  driver before the tastings.
+steps:
+  - An old brick or stone building
+  - Your tasting flight, side by side
+  - The first platter at dinner
+duration: half-day
+effort: moderate
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, reservation]
+tags: [small-town, german, history, brewery, wine, dinner, amana, iowa-city]
+credit:

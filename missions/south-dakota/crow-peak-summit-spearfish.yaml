@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Crow Peak Summit
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Crow Peak Trailhead (Trail #64)
+  area: Higgins Gulch, Spearfish
+  address: Higgins Gulch Rd (FSR 214), about 7 mi southwest of Spearfish, SD  # verify
+  coords: [44.40399, -103.97118]  # SummitPost trailhead coords; confirm at the pullout
+  website: https://www.fs.usda.gov/blackhills
+short: Grind up 1,600 feet to the top of Crow Peak. Sign the summit register and earn that view.
+description: >
+  Drive out Higgins Gulch Road from Spearfish and climb Crow Peak, a steep
+  Black Hills summit that locals use as their go-to leg-burner. The lower half
+  winds gently through pine forest; the upper half turns rocky and steep before
+  you top out with views across the northern Black Hills.
+  Add the short Beaver Ridge spur if your legs still have something left. Sign
+  the summit register and get a photo next to the wooden summit sign with the
+  hills rolling out behind you. Start early: summer afternoons bring sudden
+  thunderstorms, and there's no water on the trail.
+steps:
+  - The trailhead sign before you start
+  - The first big view through the pines
+  - The wooden sign at the summit
+  - Your name in the summit register
+duration: half-day
+effort: hard
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: morning
+travel: drive
+check_ahead: [conditions]
+tags: [hiking, summit, views, black-hills, national-forest, spearfish]
+credit:

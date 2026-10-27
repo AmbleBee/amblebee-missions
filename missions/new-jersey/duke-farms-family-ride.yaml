@@ -1,0 +1,47 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Duke Farms Bike and Orchid Day
+mode: adventure
+who: [family, kids]
+place:
+  name: Duke Farms Orientation Center
+  area: Hillsborough, Somerset County
+  address: 1112 Dukes Pkwy W, Hillsborough, NJ 08844
+  coords: [40.55440, -74.62100]  # APPROX: set at the entrance before publishing
+  website: https://www.dukefarms.org
+short: Bike the car-free paths of an old tobacco heiress's estate. Hunt for turtles, statues and orchids.
+description: >
+  Duke Farms is Doris Duke's huge former estate, now free to visit, with miles
+  of quiet, car-free paths past lakes, meadows, big outdoor sculptures and old
+  estate buildings. Bring your bikes or a stroller (there's also a pay-per-ride
+  bike share on site), ride a loop at kid speed,
+  and stop at the lakes to look for turtles sunning on logs. Finish inside the
+  glass Orchid Range, a greenhouse full of orchids. Get a photo of the family
+  with the biggest statue you find. It isn't open every day, so check the hours
+  calendar, and on Saturdays from April through October you need a free parking
+  pass reserved ahead.
+steps:
+  - Everyone with the biggest statue
+  - A turtle on a log
+  - The strangest orchid
+for_kids:
+  short: Find turtles, statues and flowers!
+  steps:
+    - A turtle
+    - A big statue
+    - A duck or a goose
+    - The prettiest flower
+    - A selfie with your grown-up!
+gear:
+  - item: bikes
+    rent: on-site  # Tandem bike share (pay per ride); kid sizes unconfirmed
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [hours, reservation]
+tags: [biking, estate, gardens, greenhouse, turtles, free, hillsborough]
+credit:

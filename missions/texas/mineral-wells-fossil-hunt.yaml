@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 62
+name: Mineral Wells Fossil Hunt
+mode: adventure
+who: [family, kids]
+place:
+  name: Mineral Wells Fossil Park
+  area: Indian Creek Rd, Mineral Wells
+  address: 2375 Indian Creek Rd, Mineral Wells, TX 76067
+  coords: [32.8263, -98.1913]  # Visit Mineral Wells map link (parking lot at end of Indian Creek Rd)
+  website: https://visitmineralwells.org/mineral-wells-fossil-park
+short: Hunt for 300-million-year-old sea fossils in an old dirt pit, and keep what you find!
+description: >
+  Spend a morning crawling around an old city borrow pit outside Mineral Wells,
+  where erosion has uncovered an ancient seafloor full of fossils. The most common
+  finds are little crinoid stems (sea lilies), but sharp eyes also turn up shells,
+  snails and, if you're lucky, a shark tooth or a trilobite, and you can keep what
+  you find for personal use. It's surface collecting only, so bring zip bags, knee pads, small garden tools (no
+  shovels), lots of water and some shade, since the site is primitive with only
+  portable restrooms. Get a photo of the kids holding up their best find. Stay out
+  of the steep, crumbly edges and enter only at the marked points, and in summer go
+  early or in the evening.
+for_kids:
+  short: Be a fossil hunter!
+  steps:
+    - A fossil that looks like a tiny wheel
+    - A shell in the rocks
+    - Your bag of treasures
+    - Your very best find
+    - A selfie with your grown-up!
+duration: half-day
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: morning
+travel: drive
+check_ahead: [conditions]
+tags: [fossils, digging, kids, free, nature, science, mineral-wells]
+credit:

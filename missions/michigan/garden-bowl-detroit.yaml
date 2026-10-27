@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Bowl at the Garden Bowl
+mode: both
+who: [friends]
+place:
+  name: Garden Bowl at the Majestic
+  area: Midtown, Detroit
+  address: 4140 Woodward Ave, Detroit, MI 48201
+  coords: [42.35160, -83.06070]  # APPROX: set at the entrance before publishing
+  website: https://majesticdetroit.com/garden-bowl/
+short: Bowl a few frames at a Detroit alley that's been rolling since 1913. Loser buys the snacks.
+description: >
+  The Garden Bowl has been knocking down pins on Woodward since 1913, and it
+  still has the feel of well-worn neighborhood lanes, with low lights and
+  the Majestic's bar and pizza right next door. Grab a lane, play a couple of
+  games with silly side bets (granny-style frame, wrong-hand frame), and the
+  lowest score buys the snacks. Get a photo of everyone lined up at the ball
+  return with your best strike pose. Book a lane online for weekend nights, and
+  check the age rules if anyone in your group is under 21 late at night.
+steps:
+  - Your team at the ball return
+  - The scoreboard after game one
+  - Someone's best strike pose
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours, reservation]
+tags: [bowling, historic, games, friends, rainy-day, midtown, detroit]
+credit:

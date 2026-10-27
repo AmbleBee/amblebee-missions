@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 54
+name: Hide and Seek in the Woods
+mode: both
+who: [friends, family, kids]
+short: Play best-of-five hide and seek on a wooded trail. Longest hidden wins.
+description: >
+  Pick a patch of public woods or a big park with trees you both know. Set the
+  rules before you start: hide within sight of the trail without
+  trampling plants, no climbing, and one whistle means "come out now." The seeker counts to 60 with eyes closed while
+  the other finds a spot, and you time how long each hider lasts. Play best of
+  five, wear something bright, play only in daylight, skip woods open to
+  hunting in season, and check for ticks afterward. Snap the hider's
+  face at the exact moment they're found.
+for_kids:
+  short: Hide and seek in the trees!
+  steps:
+    - Count to 60
+    - A great hiding spot
+    - Your grown-up hiding
+    - The moment you find them
+    - A selfie with your grown-up!
+steps:
+  - The seeker counting
+  - The sneakiest hiding spot
+  - The moment you're found
+  - The winner on the trail
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+tags: [games, playful, woods, outdoors, free]
+credit:

@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Dino Hunt at the Heritage Center
+mode: adventure
+who: [family, kids]
+place:
+  name: North Dakota Heritage Center and State Museum
+  area: State Capitol grounds, Bismarck
+  address: 612 E Boulevard Ave, Bismarck, ND 58505
+  coords: [46.82020, -100.77990]  # APPROX: set at the entrance before publishing
+  website: https://statemuseum.nd.gov
+short: Meet a T. rex and a giant squid fossil at Bismarck's free state museum.
+description: >
+  The state museum on the Capitol grounds is free every day and packs 600
+  million years into four galleries. Start with the fossils: a life-size
+  T. rex skeleton cast and the world's largest giant squid fossil. Then climb
+  into the tractor cab simulator, check out the Mars spacesuit, and let little
+  ones loose in the Treehouse play area. Get a photo of everyone doing their
+  best roar in front of the T. rex.
+for_kids:
+  short: Go on a dinosaur hunt in the big museum!
+  steps:
+    - The T. rex skeleton
+    - The giant squid fossil
+    - You driving the tractor
+    - A spacesuit
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, dinosaurs, fossils, kids, rainy-day, free, bismarck]
+credit:

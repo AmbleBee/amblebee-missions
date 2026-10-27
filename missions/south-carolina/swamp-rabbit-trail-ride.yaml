@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Ride the Swamp Rabbit Trail
+mode: adventure
+who: [friends]
+place:
+  name: Swamp Rabbit Trail (start at Reedy Rides, downtown Greenville)
+  area: Downtown Greenville to Travelers Rest
+  address: 2 S Richardson St, Greenville, SC 29601  # Reedy Rides bike rentals, inside the Summit
+  coords: [34.85160, -82.40070]  # APPROX: set at the bike shop entrance before publishing
+  website: https://greenvillerec.com/swamprabbit/
+  links:
+    - label: Bike rentals
+      url: https://reedyrides.com/rentals/
+short: Rent bikes downtown and ride the Swamp Rabbit Trail north. First one to the cafe buys snacks.
+description: >
+  Rent bikes in downtown Greenville, roll through Falls Park past the Reedy River
+  waterfall, then follow the Swamp Rabbit Trail north on a paved, mostly flat old
+  rail line. Stop at the Swamp Rabbit Cafe & Grocery for a snack, keep going past
+  Furman's Swan Lake, and if the group has legs left, push on to Travelers Rest for
+  lunch before riding back. The full round trip is about 20 miles, so turn around
+  wherever the group decides. Get a group photo with your bikes at your turnaround
+  point. Bring water and stop at every road crossing.
+steps:
+  - The falls in Falls Park
+  - Your crew at the Swamp Rabbit Cafe
+  - Your turnaround point
+duration: half-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+gear:
+  - item: bikes
+    rent: on-site
+tags: [biking, rail-trail, greenway, cafe, falls-park, greenville, travelers-rest]
+credit:

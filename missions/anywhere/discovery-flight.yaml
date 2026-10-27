@@ -1,0 +1,30 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 72
+name: Discovery Flight
+mode: both
+who: [solo, family]
+short: Book a discovery flight and take the controls of a small plane. Find your house from above.
+description: >
+  Call a flight school at your nearest small airport and ask for a discovery
+  or intro flight. An instructor walks you around the plane, then you climb
+  into the pilot's seat, and on most flights you get to fly it once you're up.
+  Find your street, your favorite trail or your town's landmark from the air.
+  On many planes a second person can ride in back, so ask when you book. For
+  ages 8 to 17, check whether a local EAA chapter offers free Young Eagles
+  flights. Get a photo of your hands on the controls.
+steps:
+  - The preflight walkaround
+  - You in the pilot's seat
+  - Hands on the controls
+  - Your town from above
+  - Back on the ground with your instructor
+duration: short
+effort: easy
+cost: $$$
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [reservation, conditions]
+tags: [flying, aviation, splurge, bucket-list, views]
+credit:

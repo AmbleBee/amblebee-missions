@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 53
+name: Dog Park Name Game
+mode: both
+who: [solo, friends, family, kids]
+short: Sit by a busy dog park and guess each dog's name before the owner calls it.
+description: >
+  Grab a coffee and settle on a bench just outside a busy dog park on a
+  weekend morning or after work. Before an owner calls out, guess each dog's
+  name and personality, and score a point for every hit or near miss. Cast the
+  regulars as characters: the mayor, the troublemaker, the one who only wants
+  the stick. Stay outside the fence, keep snacks and kids
+  out of the park, and only pet or photograph a dog after its owner says yes. Crown an MVP before you go.
+for_kids:
+  short: Guess the dog names!
+  steps:
+    - Find a bench by the dog park
+    - The biggest dog you see
+    - The smallest dog you see
+    - A dog that is running fast
+    - A selfie with your grown-up!
+steps:
+  - Your scorecard of name guesses
+  - The dog park mayor (with owner OK)
+  - The MVP of the day
+  - You on the bench
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+tags: [dogs, animals, games, people-watching, free]
+credit:

@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Fish Camp and Dioramas at the Morris Thompson Center
+mode: adventure
+who: [family, kids]
+place:
+  name: Morris Thompson Cultural and Visitors Center
+  area: Downtown Fairbanks
+  address: 101 Dunkel St, Fairbanks, AK 99701
+  coords: [64.84380, -147.71660]  # APPROX: set at the entrance before publishing
+  website: https://www.morristhompsoncenter.org
+short: Walk through Interior Alaska's seasons indoors. Find a moose, a fish camp and a cabin.
+description: >
+  Warm up inside downtown Fairbanks' free cultural and visitors center, where
+  a big exhibit hall walks you through a year in Interior Alaska. Life-size
+  dioramas show wildlife and the changing seasons, and you can step into a
+  fish camp smokehouse, a hunting camp and a public-use cabin. Pick up a national
+  parks passport stamp at the public lands desk on the way out. Get a
+  photo of the family in the doorway of the cabin. On a nice day, peek at the
+  old log cabin and sculptures outside along the Chena River.
+for_kids:
+  short: Explore Alaska inside! Find each thing.
+  steps:
+    - An animal with antlers
+    - The smokehouse at fish camp
+    - Something that shows winter
+    - The door of the little cabin
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, culture, wildlife, rainy-day, free, kids, fairbanks]
+credit:

@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Bean and Bear Lakes Loop
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Superior Hiking Trail, Penn Boulevard Trailhead
+  area: Silver Bay, North Shore
+  address: Penn Blvd, Silver Bay, MN 55614  # verify
+  coords: [47.30180, -91.28650]  # APPROX: set at the trailhead before publishing
+  website: https://superiorhiking.org
+short: Hike the ridges above twin lakes on the North Shore. Lunch on the cliff, Lake Superior below.
+description: >
+  Start at the Penn Boulevard trailhead outside Silver Bay and follow the
+  Superior Hiking Trail up into the hills to the cliffs above Bean and Bear
+  Lakes, two narrow lakes tucked between rock walls, with Lake Superior and
+  Tettegouche spread out behind you. The loop is about 7 miles with constant
+  steep ups and downs, rocks, roots and mud, so plan four to five hours on the
+  trail (more with a long lunch) and bring poles, lunch and plenty of water
+  (there's nothing at the trailhead). Take your
+  long lunch on the ledge where both lakes line up below you and get that photo.
+  Fall color peaks here in late September and early October.
+steps:
+  - Bean Lake from the cliffs
+  - Bear Lake and Lake Superior in one shot
+  - Your boots after the muddiest stretch
+duration: half-day
+effort: hard
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, superior-hiking-trail, lakes, views, fall-color, north-shore, silver-bay]
+credit:

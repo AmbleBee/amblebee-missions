@@ -1,0 +1,41 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 23
+name: Lift a Gold Bar at the Money Museum
+mode: adventure
+who: [family, kids]
+place:
+  name: Money Museum, Federal Reserve Bank of Kansas City
+  area: Crown Center, Kansas City
+  address: 1 Memorial Dr, Kansas City, MO 64198
+  coords: [39.08320, -94.58550]  # APPROX: set at the entrance before publishing
+  website: https://www.kansascityfed.org/money-museum/
+short: Go inside the Federal Reserve and try to lift a real gold bar. Who's strongest?
+description: >
+  The Federal Reserve Bank of Kansas City runs a free, walk-in money museum
+  right across from the WWI Memorial. Go through the airport-style security,
+  then take turns trying to lift a real gold bar, check out the Truman coin
+  collection, and learn how to spot a counterfeit bill. Get a photo of each
+  person's face mid-lift. It's open weekdays only, grown-ups need a photo ID,
+  and no pocketknives. No photos of the security gear or the cash operations.
+steps:
+  - Everyone's gold-bar lifting face
+  - The oldest coin you can find
+  - Something about fake money
+for_kids:
+  short: Try to lift a real gold bar!
+  steps:
+    - The gold bar
+    - A coin with a face on it
+    - The biggest money you can find
+    - Your strong muscles
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, free, money, history, rainy-day, kansas-city]
+credit:

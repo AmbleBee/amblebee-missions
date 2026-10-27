@@ -1,0 +1,30 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 62
+name: Bouldering Date at Vertical World
+mode: date
+place:
+  name: Vertical World Seattle
+  area: Magnolia, Seattle
+  address: 2330 W Commodore Way, Seattle, WA 98199
+  coords: [47.66140, -122.39480]  # APPROX: set at the entrance before publishing
+  website: https://seattle.verticalworld.com
+short: Boulder together at the gym from the folks who opened America's first. Cheer every send.
+description: >
+  Vertical World opened America's first climbing gym in Seattle in 1987, and today
+  its Commodore Way gym welcomes total beginners to just show up and boulder: short
+  walls, no ropes, no class needed. Buy two day passes, rent climbing shoes, and
+  pick easy problems to work out together, taking turns coaching each other on
+  where to put your feet, and rest between tries. Get a photo of your partner at the
+  top of their best climb. Everyone, even people just watching, needs a waiver, so
+  fill it out online before you go; the roped walls need a belay check or an intro
+  class first.
+duration: short
+effort: moderate
+cost: $$$
+setting: indoor
+season: any
+time_of_day: any
+travel: local
+check_ahead: [hours]
+tags: [climbing, bouldering, active, rainy-day, magnolia, seattle]
+credit:

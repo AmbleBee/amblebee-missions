@@ -1,0 +1,44 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Twelve Miles by Canoe
+mode: both
+who: [friends]
+place:
+  name: Downriver Canoe Company
+  area: Bentonville, near Front Royal
+  address: 884 Indian Hollow Rd, Bentonville, VA 22610
+  coords: [38.83570, -78.33950]  # APPROX: set at the outfitter's base before publishing
+  website: https://www.downriver.com
+  links:
+    - label: Canoe trips
+      url: https://www.downriver.com/canoe-trips
+short: Share one canoe for 12 miles down the Shenandoah. Lunch on a gravel bar, photo mid-river.
+description: >
+  Book a canoe for the longer day trips on the South Fork of the Shenandoah
+  with Downriver Canoe Company in Bentonville. They shuttle you upriver with
+  a map, and you paddle your way back to your car through quiet riffles
+  between the Massanutten ridge and the Blue Ridge, with no guide and no
+  schedule but your own. Pack a cooler lunch and pull out on a gravel bar
+  halfway. Get a photo of the two of you from the canoe with the mountains
+  behind you. It's a long day of steady paddling, so bring sunscreen, water
+  and a dry bag, and reserve ahead on summer weekends.
+steps:
+  - The two of you pushing off
+  - Lunch on a gravel bar
+  - Mountains from the middle of the river
+  - Tired and happy back at the take-out
+gear:
+  - item: canoe
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: drive
+check_ahead: [reservation, seasonal, conditions]
+tags: [canoe, paddling, river, shenandoah-river, picnic, front-royal, bentonville]
+credit:

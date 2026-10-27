@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 12
+name: Tour Fallingwater
+mode: date
+place:
+  name: Fallingwater
+  area: Mill Run, Laurel Highlands
+  address: 1491 Mill Run Rd, Mill Run, PA 15464
+  coords: [39.90620, -79.46830]  # APPROX: set at the visitor center before publishing
+  website: https://fallingwater.org
+short: Tour Frank Lloyd Wright's house over the waterfall. Then find the classic view from below.
+description: >
+  Drive into the Laurel Highlands for a guided tour of Fallingwater, the house
+  Frank Lloyd Wright cantilevered right over a waterfall on Bear Run. Walk the
+  quarter-mile gravel path down from the visitor center, then follow your guide
+  through the stone-and-glass rooms and up more than 100 steps to the terraces
+  hanging over the creek. Afterward, take your time on the wooded grounds and each
+  pick the room you'd move into tomorrow. Get the famous photo of the two of you at
+  the downstream viewpoint with the house stacked over the falls. Tours sell out
+  weeks ahead in summer and October, kids under 6 can't take the house tour, and
+  inside photos are only allowed (no flash) when your guide says so.
+steps:
+  - The house from the path on the way in
+  - The stairs down to the stream from outside
+  - The cantilevered terraces from the grounds
+  - The two of you at the classic viewpoint
+duration: half-day
+effort: moderate
+cost: $$$
+setting: either
+season: any
+time_of_day: daytime
+travel: day-trip
+check_ahead: [hours, tickets, reservation, seasonal]
+tags: [architecture, frank-lloyd-wright, waterfall, history, laurel-highlands, mill-run]
+credit:

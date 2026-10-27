@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Monhegan Island Day Trip
+mode: date
+place:
+  name: Monhegan Boat Line dock
+  area: Port Clyde, St. George
+  address: 880 Port Clyde Rd, Port Clyde, ME 04855  # verify: company address, should match the dock
+  coords: [43.92710, -69.26060]  # APPROX: set at the dock before publishing
+  website: https://www.monheganboat.com
+short: Ferry out to a tiny island 10 miles at sea. Hike the cliffs and catch the last boat home.
+description: >
+  Take the morning ferry from Port Clyde out to Monhegan, a car-free fishing
+  island about an hour offshore with no paved roads and a village of
+  artists' studios. Climb up to the lighthouse for the view over the harbor,
+  walk through the mossy Cathedral Woods, and follow the cliff trails along
+  the back of the island to the high headlands at White Head and Burnt Head.
+  Pack a picnic or grab lunch in the village, then keep an eye on the clock
+  for the afternoon boat back. Get a photo of the two of you on the cliffs
+  with nothing but ocean behind you. The trails are rocky and steep in spots,
+  and same-day round trips only work when the boat runs more than once a day
+  (roughly mid-May to mid-October).
+steps:
+  - The harbor from the ferry deck
+  - The lighthouse
+  - The two of you on the cliffs with only ocean behind you
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [tickets, seasonal, conditions]
+tags: [island, ferry, hiking, cliffs, lighthouse, ocean, port-clyde, monhegan, midcoast]
+credit:

@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Crane Beach Dunes Loop
+mode: adventure
+who: [friends]
+place:
+  name: Crane Beach on the Crane Estate
+  area: Ipswich, North Shore
+  address: 310 Argilla Rd, Ipswich, MA 01938
+  coords: [42.68340, -70.76500]  # APPROX: set at the trailhead kiosk before publishing
+  website: https://thetrustees.org/place/crane-beach-on-the-crane-estate/
+short: Trek the sand dunes behind Crane Beach, then walk the shoreline back. Group shot up top.
+description: >
+  Skip the beach towel crowd and head for the trail kiosk at the east end of
+  the parking lot. The marked trails wind through pitch pine and up over
+  big open dunes that feel more like a desert than Massachusetts, then drop
+  you onto the beach for the walk back along the water. A loop of a few miles is
+  plenty, and soft sand makes it a real workout. Get a group photo on the
+  highest dune with the ocean behind you. Pack water and a picnic, and do a
+  tick check afterward. Reserve a parking pass ahead on weekends, stay out of
+  fenced dune areas, and leave dogs home from April through September.
+steps:
+  - The first big dune
+  - Your crew on the highest dune, ocean behind you
+  - Footprints in the sand on the walk back
+duration: half-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, reservation, conditions]
+tags: [hiking, dunes, beach, ocean, friends, ipswich, north-shore]
+credit:

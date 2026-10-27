@@ -1,0 +1,40 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Paddle and Scramble the Granite Dells
+mode: adventure
+who: [friends]
+place:
+  name: Watson Lake Park
+  area: Granite Dells, Prescott
+  address: 3101 Watson Lake Park Rd, Prescott, AZ 86301
+  coords: [34.58250, -112.42000]  # APPROX: set at the south boat ramp before publishing
+  website: https://prescott-az.gov/rec-services/recreation-areas-prescott/lakes/watson-lake/
+  links:
+    - label: Kayak rentals
+      url: https://b2bwild.com
+short: Kayak between the granite islands, then scramble the dells on foot. Race to the best rock.
+description: >
+  Rent kayaks at the south boat ramp and weave through the rounded granite
+  boulders and little islands of Watson Lake. Once you're back on shore, hike
+  part of the Watson Lake Loop, which climbs over bare granite following white
+  dots painted on the rock, with a few hands-on scrambles. Pick a high perch
+  for a snack and a breather over the water. Get a group photo on top of the
+  boulders with the lake behind you. Book the boats ahead, and bring plenty of
+  water since there's little shade.
+steps:
+  - Your boats between two granite islands
+  - The white dots leading up the rock
+  - The whole crew on top of the boulders
+gear:
+  - item: kayak
+    rent: nearby
+duration: half-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [hours, reservation, conditions]
+tags: [kayaking, hiking, scrambling, lake, granite-dells, prescott]
+credit:

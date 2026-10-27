@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 75
+name: Spider-Eye Safari
+mode: both
+who: [friends, family, kids]
+short: Hold a light by your eyes on a warm night. The tiny sparkles in the grass are spiders!
+description: >
+  On a warm night, put on a headlamp or hold a flashlight level with your
+  eyes and sweep it slowly over the lawn or a garden bed. Those tiny blue-green
+  sparkles that look like dew are wolf spider eyes shining back at you. Walk
+  toward one to find its owner, count the sparkles in one patch, and hunt for
+  the biggest spider and any other eyeshine. Look closely but don't touch,
+  and leave every spider where it is. Get a photo of the headlamp crew ready
+  to set out.
+steps:
+  - The headlamp crew
+  - The yard in the dark
+  - A spider up close (use flash)
+  - Your sparkle tally
+for_kids:
+  short: Night safari! Find the sparkly spider eyes.
+  steps:
+    - Your headlamp
+    - The dark yard
+    - A spider you found
+    - How many sparkles?
+    - A selfie with your grown-up!
+gear:
+  - item: headlamps
+    rent: "no"
+duration: short
+effort: easy
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: night
+travel: home
+tags: [night, nature, bugs, backyard, free]
+credit:

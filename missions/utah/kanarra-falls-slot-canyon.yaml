@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Kanarra Falls Creek Walk
+mode: adventure
+who: [friends]
+place:
+  name: Kanarra Falls Trailhead
+  area: Kanarraville, near Cedar City
+  address: E 100 N, Kanarraville, UT 84742  # verify: public lot at the east end of 100 N
+  coords: [37.53760, -113.17640]  # APPROX: set at the trailhead before publishing
+  website: https://kanarrafalls.com
+short: Wade up a red-rock creek into a slot canyon with your crew. Group photo under the falls.
+description: >
+  Grab permits and hike up Kanarra Creek from the little town of Kanarraville,
+  south of Cedar City. Most of the way you're splashing through ankle- to
+  knee-deep water between red canyon walls that pinch into a narrow slot, then
+  climb the ladder beside the first waterfall to keep going, turning back by
+  the second falls. Wear shoes you don't mind
+  soaking; the water stays cold even in summer. Get a group photo with the
+  falls pouring down behind you inside the slot. Everyone needs a permit, daily
+  permits are capped and sell out on busy days, so buy ahead; no dogs are
+  allowed (the creek is the town's water supply), and don't go when rain is
+  in the forecast: the canyon can flash flood.
+steps:
+  - The crew's feet in the creek
+  - The narrowest spot in the slot
+  - Group photo under the falls
+duration: half-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: drive
+check_ahead: [tickets, conditions]
+tags: [hiking, slot-canyon, waterfall, creek, wading, cedar-city, kanarraville]
+credit:

@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 17
+name: Tabasco Factory on Avery Island
+mode: both
+who: [friends]
+place:
+  name: TABASCO Factory Tour & Museum
+  area: Avery Island, near New Iberia
+  address: Hwy 329, Avery Island, LA 70513
+  coords: [29.91320, -91.91000]  # APPROX: set at the visitor entrance before publishing
+  website: https://www.tabasco.com/visit-avery-island/tabasco-tour
+short: Watch Tabasco get bottled, then dare each other at the hot-sauce tasting bar.
+description: >
+  Drive out onto Avery Island, the salt dome where the Tabasco family has made
+  its pepper sauce since the 1860s, and take the self-guided factory tour through
+  the museum, the pepper greenhouse, the barrel warehouse full of aging mash, and
+  the windows over the bottling line. Finish in the Country Store, where you can
+  sample flavors you never knew existed. Make it a challenge: everyone ranks the
+  samples, and the loser tries the hottest one again. Get a group photo with the
+  biggest Tabasco bottle you can find. Reserve tickets online, and stay for lunch at the
+  restaurant on site if you're hungry.
+steps:
+  - The biggest Tabasco bottle you can find
+  - Barrels of aging pepper mash
+  - Your bravest face at the tasting bar
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [hours, tickets]
+discounts: [senior, military]
+tags: [food, factory-tour, hot-sauce, cajun-country, avery-island, new-iberia]
+credit:

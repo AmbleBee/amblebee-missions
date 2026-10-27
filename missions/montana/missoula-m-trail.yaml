@@ -1,0 +1,31 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Climb to the M
+mode: adventure
+who: [solo, friends]
+place:
+  name: M Trail trailhead, Mount Sentinel
+  area: University of Montana, Missoula
+  address: Campus Dr (east end, by Washington-Grizzly Stadium), Missoula, MT 59812
+  coords: [46.86220, -113.98046]
+  website: https://www.umt.edu/natural-areas/mtrail.php
+short: Zigzag up the switchbacks to Missoula's giant hillside M. Snap the whole valley from it.
+description: >
+  Start at the east edge of the University of Montana campus and grind up the
+  steep zigzag of switchbacks on Mount Sentinel's grassy face to the big
+  concrete M everyone in town can see. It's only about three-quarters of a mile
+  and 13 switchbacks, but it climbs about 650 feet, so take breathers and
+  look back as the city opens up below. Sit on the M and get a photo of the whole valley, the river and the campus spread
+  out under your feet. If your legs still want more, the trail keeps going to
+  the summit, a much bigger climb. Bring water; the slope has no shade. Campus
+  lots near the trailhead may charge for parking, and dogs must be leashed.
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: any
+travel: local
+check_ahead: [conditions]
+tags: [hiking, viewpoint, switchbacks, solo, quick-climb, missoula]
+credit:

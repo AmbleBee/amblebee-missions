@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Turkey Run Ladder Canyons
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Turkey Run State Park (Turkey Run Inn / suspension bridge trailhead)
+  area: Sugar Creek, near Marshall
+  address: 8121 E Park Rd, Marshall, IN 47859
+  coords: [39.88360, -87.20260]  # APPROX: set at the trailhead before publishing
+  website: https://www.in.gov/dnr/state-parks/parks-lakes/turkey-run-state-park/
+short: Cross the suspension bridge and spend the day climbing ladders through mossy canyons.
+description: >
+  Cross the suspension bridge over Sugar Creek and spend the whole day
+  stringing together Turkey Run's rugged trails: squeeze through the narrow
+  sandstone canyons of Rocky Hollow and Bear Hollow, climb the wooden ladders
+  on Trail 3, then keep going to the Lusk home and the covered bridge. Expect
+  wet feet, slick rock and lots of up and down, so wear shoes with good grip
+  and pack lunch and plenty of water. Get a photo looking up from the bottom
+  of a ladder with the canyon walls on both sides. Skip Trail 3 after heavy
+  rain, when the creek beds can be impassable, and leave small kids and dogs
+  for the gentler trails.
+steps:
+  - The suspension bridge over Sugar Creek
+  - Looking up a ladder between the canyon walls
+  - The narrowest squeeze in Bear Hollow
+  - The covered bridge
+duration: all-day
+effort: hard
+cost: $
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [conditions]
+tags: [hiking, canyons, ladders, creek, state-park, marshall, indianapolis-day-trip]
+credit:

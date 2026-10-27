@@ -1,0 +1,32 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 15
+name: Redfish Lake Boat Out, Hike Back
+mode: adventure
+who: [friends]
+place:
+  name: Redfish Lake Lodge Marina
+  area: Sawtooth Mountains, near Stanley
+  address: 401 Redfish Lodge Rd, Stanley, ID 83278
+  coords: [44.14376, -114.91540]  # APPROX: set at the dock before publishing
+  website: https://redfishlake.com
+short: Ride the hiker boat across Redfish Lake, then hike the ridge trail home. Photo at the inlet.
+description: >
+  Catch the hiker shuttle boat from Redfish Lake Lodge across the lake to the
+  inlet trailhead, right at the foot of the Sawtooth peaks. Take the short side
+  trip to the Lily Ponds and the little waterfalls (about a mile and a half
+  round trip), then hike the trail back to the lodge, about five miles along the
+  glacial moraine above the lake, with switchbacks, around 1,000 feet of
+  climbing, and big views of the lake, the Sawtooths and the White Clouds. Get a
+  group photo on the beach at the inlet with the jagged peaks behind you. Boats
+  run from just before Memorial Day to mid-October and leave from the marina in
+  front of the lodge; finish with a cold drink on the lodge beach.
+duration: half-day
+effort: moderate
+cost: $$
+setting: outdoor
+season: [summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, conditions]
+tags: [hiking, lake, boat, mountains, sawtooths, stanley]
+credit:

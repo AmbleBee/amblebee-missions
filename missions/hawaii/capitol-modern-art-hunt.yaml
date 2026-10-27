@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Art Hunt at Capitol Modern
+mode: adventure
+who: [family, kids]
+place:
+  name: Capitol Modern, the Hawaiʻi State Art Museum
+  area: Downtown Honolulu
+  address: 250 S Hotel St, Honolulu, HI 96813
+  coords: [21.30793, -157.85863]  # APPROX: set at the entrance before publishing
+  website: https://capitolmodern.org
+short: Hunt the galleries for your favorite island art, then roam the sculpture garden. Free!
+description: >
+  Climb to the second-floor galleries of the downtown building that houses
+  Hawaiʻi's state art collection, made up of work by artists of the islands.
+  Turn it into a hunt: everyone picks a favorite painting, a favorite sculpture,
+  and the weirdest thing in the building. Finish outside in the sculpture garden,
+  where the kids can walk among the big pieces. Get a family photo in front of
+  the piece the kids voted best. Admission is free; it's open only a few days a
+  week, so check the schedule, and look on the events calendar for Super
+  Saturday, a free family art-making day.
+for_kids:
+  short: Find art made in Hawaiʻi!
+  steps:
+    - Art with the ocean in it
+    - A sculpture taller than you
+    - Your favorite color in a painting
+    - The silliest art you can find
+    - A selfie with your grown-up in the garden!
+duration: short
+effort: easy
+cost: free
+setting: either
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [art, museum, free, rainy-day, kids, honolulu, oahu]
+credit:

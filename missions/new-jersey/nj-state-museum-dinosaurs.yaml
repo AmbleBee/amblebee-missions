@@ -1,0 +1,38 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Fossil Hunt at the NJ State Museum
+mode: adventure
+who: [family, kids]
+place:
+  name: New Jersey State Museum
+  area: Downtown Trenton
+  address: 205 W State St, Trenton, NJ 08608
+  coords: [40.22070, -74.77150]  # APPROX: set at the entrance before publishing
+  website: https://nj.gov/state/museum/
+short: Meet New Jersey's own dinosaur at the free state museum in Trenton. Find the biggest bones!
+description: >
+  Walk through the free state museum's natural history hall, where fossils and
+  casts trace life in New Jersey from ancient seas to the Ice Age, including
+  Hadrosaurus, the state dinosaur first dug up in Haddonfield. Let the kids
+  lead the way and hunt for the biggest skull, the sharpest teeth and the
+  strangest sea creature. Get a photo of everyone standing under the tallest
+  skeleton. The planetarium runs weekend shows for an extra fee if you want
+  to add one. Expect a bag check at the door.
+for_kids:
+  short: Fossil hunt! Find each one.
+  steps:
+    - A dinosaur
+    - Big sharp teeth
+    - A sea creature fossil
+    - The biggest bone you can find
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, dinosaurs, fossils, kids, free, rainy-day, trenton]
+credit:

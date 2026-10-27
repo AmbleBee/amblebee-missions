@@ -1,0 +1,37 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Dinosaurs at the Peabody
+mode: adventure
+who: [family, kids]
+place:
+  name: Yale Peabody Museum
+  area: Science Hill, New Haven
+  address: 170 Whitney Ave, New Haven, CT 06511
+  coords: [41.31580, -72.92100]  # APPROX: set at the entrance before publishing
+  website: https://peabody.yale.edu
+short: Meet a Brontosaurus and a Triceratops at a free natural history museum. Roar for the photo!
+description: >
+  The Yale Peabody Museum reopened after a big renovation and admission is now always free.
+  Head straight for the dinosaur fossils, including the giant Brontosaurus, a Stegosaurus and a huge Triceratops
+  skull, then let the kids pick the next gallery: minerals and gems, animals or whatever
+  catches their eye. Make it a scavenger hunt and see who can find the smallest thing on display.
+  Get a family photo doing your best dinosaur roar in front of the biggest skeleton. No tickets
+  are needed for regular visits; it's closed Mondays.
+for_kids:
+  short: Dinosaur hunt! Can you find them all?
+  steps:
+    - The biggest dinosaur
+    - A dinosaur with horns
+    - A shiny rock or crystal
+    - Your favorite animal
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, dinosaurs, science, rainy-day, kids, new-haven]
+credit:

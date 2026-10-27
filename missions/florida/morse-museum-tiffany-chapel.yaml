@@ -1,0 +1,31 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 61
+name: Tiffany Glass at the Morse
+mode: adventure
+who: [solo, friends]
+place:
+  name: Charles Hosmer Morse Museum of American Art
+  area: Park Avenue, Winter Park
+  address: 445 N Park Ave, Winter Park, FL 32789
+  coords: [28.60000, -81.35090]  # APPROX: set at the entrance before publishing
+  website: https://www.morsemuseum.org
+short: Wander a small museum full of glowing Tiffany glass and sit in his jeweled chapel.
+description: >
+  The Morse holds the world's biggest collection of Louis Comfort Tiffany's work: leaded-glass
+  windows and lamps, jewelry, pottery and the whole glittering chapel interior he built for the
+  1893 Chicago World's Fair. Take it slow, sit in the chapel for a few quiet minutes, and pick
+  the one window you would take home if you could. Then step outside and stroll Park Avenue for a
+  coffee in the shade of Central Park. Galleries may not allow photos, so
+  get your shot out front with the museum sign before you go in. Admission is cheap, and
+  Friday evenings from November through April are free.
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [senior, student]
+tags: [museum, art, stained-glass, tiffany, rainy-day, winter-park, orlando]
+credit:

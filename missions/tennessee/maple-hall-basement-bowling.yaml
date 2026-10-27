@@ -1,0 +1,29 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Basement Bowling at Maple Hall
+mode: date
+place:
+  name: Maple Hall
+  area: Downtown Knoxville
+  address: 414 S Gay St, Knoxville, TN 37902
+  coords: [35.96320, -83.91790]  # APPROX: set at the entrance before publishing
+  website: https://maplehallknox.com
+short: Bowl a few frames in a cozy basement alley under Gay Street. Loser picks the next drinks.
+description: >
+  Head downstairs below Gay Street to Maple Hall, an 11-lane boutique bowling
+  alley with leather couches at every lane, craft cocktails and a made-from-scratch
+  menu. You pay by the lane and the hour, so it's just the two of you on your own
+  lane: play a game, and the loser picks the next round. Afterward, go upstairs to
+  the cocktail lounge for life-sized board games and the patio. Get a photo of the
+  two of you mid-throw with the lanes glowing behind you. They don't take lane
+  reservations, and it turns 21+ at 9 PM on Friday and Saturday nights.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: evening
+travel: local
+check_ahead: [hours]
+tags: [bowling, games, cocktails, playful, rainy-day, downtown, knoxville]
+credit:

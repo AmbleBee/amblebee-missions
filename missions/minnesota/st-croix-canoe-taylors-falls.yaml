@@ -1,0 +1,42 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Canoe the St. Croix from Taylors Falls
+mode: both
+who: [friends]
+place:
+  name: Taylors Falls Canoe & Kayak Rental
+  area: Taylors Falls, St. Croix Valley
+  address: 307 Milltown Rd, Taylors Falls, MN 55084
+  coords: [45.39600, -92.65500]  # APPROX: set at the rental office before publishing
+  website: https://www.taylorsfallscanoe.com
+short: Paddle past cliffs and sandbars from Taylors Falls to Osceola. Picnic on an island beach.
+description: >
+  Start the morning poking around the glacial potholes in Interstate State
+  Park, giant holes the old river drilled into the rock. Then rent a canoe
+  and let the outfitter's shuttle bring you back later while you paddle about
+  seven miles down the St. Croix to Osceola Landing, past tall cliffs, eagles
+  and sandy islands made for a long lunch stop. The current is gentle, but
+  it's still a few hours of paddling. Get a photo of the two of you in the
+  canoe with the cliffs behind you. Finish with burgers at the old drive-in
+  in Taylors Falls. You'll need a Minnesota state park vehicle permit, and
+  the outfitter sat out the 2026 season, so confirm it's running before you go.
+steps:
+  - The deepest glacial pothole
+  - The two of you in the canoe, cliffs behind
+  - Your picnic beach
+  - Burgers at the drive-in
+gear:
+  - item: canoe
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, reservation, conditions]
+tags: [canoe, paddling, river, cliffs, picnic, st-croix, taylors-falls]
+credit:

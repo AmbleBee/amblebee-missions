@@ -1,0 +1,33 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: McAfee Knob the Long Way
+mode: adventure
+who: [solo, friends, family]
+place:
+  name: Catawba Greenway trailhead (Catawba Sustainability Center)
+  area: Catawba Valley, near Roanoke
+  address: 5075 Catawba Creek Rd, Catawba, VA 24070
+  coords: [37.38120, -80.10570]  # APPROX: set at the trailhead before publishing
+  website: https://greenways.org/trails/catawba-greenway/
+short: Hike 10 miles up to McAfee Knob's famous rock ledge. Strike your best pose out on the edge.
+description: >
+  Start at the Catawba Sustainability Center and climb the Catawba Greenway to meet
+  the McAfee Knob Trail, then follow it and the white-blazed Appalachian Trail to
+  McAfee Knob, the rock ledge with near 270-degree views over the Catawba and
+  Roanoke valleys. Starting here instead of the main Route 311 lot makes it about a
+  10-mile round trip with more than 1,600 feet of climbing, past AT shelters and up
+  lots of rock and wooden steps. Pack lunch and plenty of water, and eat it on the
+  outcrops near the top. Get a photo of yourself standing out on the knob with the
+  valley behind you, keeping well back from the edge. The center's lot is day-use
+  only with no overnight parking, and on busy weekends you can also use the seasonal
+  McAfee Shuttle (March to November, Friday to Sunday) to the main trailhead.
+duration: all-day
+effort: hard
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: drive
+check_ahead: [conditions]
+tags: [hiking, appalachian-trail, views, triple-crown, catawba, roanoke]
+credit:

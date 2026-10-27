@@ -1,0 +1,39 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 61
+name: Dinosaurs at Texas Tech
+mode: adventure
+who: [family, kids]
+place:
+  name: Museum of Texas Tech University
+  area: Texas Tech campus, Lubbock
+  address: 3301 4th St, Lubbock, TX 79415
+  coords: [33.59180, -101.88810]  # APPROX: set at the entrance before publishing
+  website: https://www.depts.ttu.edu/museumttu/
+short: Hunt for dinosaurs at the free Texas Tech museum. Find the biggest skeleton in the building.
+description: >
+  Spend an easy, free afternoon at the Museum of Texas Tech University on the
+  edge of campus in Lubbock. Start with the T. rex and Triceratops skeleton casts
+  that have greeted visitors near the entrance, find the mammoth in the Ice
+  Age room, wander the West Texas history halls, and let the kids pick which
+  skeleton is the scariest. If the Moody Planetarium has a show on while you're there,
+  it's worth checking the schedule. Get a photo of the whole family standing
+  in front of the biggest dinosaur you can find. The museum is closed Mondays
+  and over university breaks, so check before you go.
+for_kids:
+  short: Go on a dinosaur hunt!
+  steps:
+    - The biggest dinosaur
+    - Sharp dinosaur teeth
+    - A giant mammoth
+    - Your favorite thing in the museum
+    - A selfie with your grown-up!
+duration: short
+effort: easy
+cost: free
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+tags: [museum, dinosaurs, fossils, free, rainy-day, kids, lubbock]
+credit:

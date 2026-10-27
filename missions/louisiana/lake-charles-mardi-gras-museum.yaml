@@ -1,0 +1,32 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 16
+name: Lake Charles Mardi Gras Museum
+mode: adventure
+who: [solo]
+place:
+  name: Mardi Gras Museum of Imperial Calcasieu
+  area: Nellie Lutcher Cultural District, Lake Charles
+  address: 701 Enterprise Blvd, Lake Charles, LA 70601
+  coords: [30.22800, -93.20500]  # APPROX: set at the entrance before publishing
+  website: https://mardigrasmuseum.org
+short: Wander a hall of sparkling Mardi Gras costumes. Try one on and ride the fake parade float.
+description: >
+  Southwest Louisiana throws its own Mardi Gras, and this museum in Lake
+  Charles shows off the costumes: rooms of towering gowns and headpieces
+  covered in beads, sequins and feathers, plus the stories of the local
+  krewes that made them. Take your time with the details, learn how the
+  floats get built, and climb aboard the simulated parade ride. Find the one
+  costume you'd actually dare to wear. Get a photo of yourself trying on a
+  costume piece in front of the brightest display. The museum recently
+  moved into a new building and isn't open every day, so check before you go.
+duration: short
+effort: easy
+cost: $$
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+discounts: [senior, military]
+tags: [museum, mardi-gras, costumes, culture, rainy-day, lake-charles]
+credit:

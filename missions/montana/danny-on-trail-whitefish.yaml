@@ -1,0 +1,35 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Hike Up Big Mountain, Ride Down
+mode: both
+who: [friends]
+place:
+  name: Danny On Trail, Whitefish Mountain Resort
+  area: Big Mountain, Whitefish
+  address: 1015 Glades Dr, Whitefish, MT 59937  # verify
+  coords: [48.48280, -114.35090]  # APPROX: set at the trailhead before publishing
+  website: https://skiwhitefish.com/hiking/
+short: Hike 2,000 feet up Big Mountain, toast at the summit, then ride the chairlift down.
+description: >
+  Start in the village at Whitefish Mountain Resort and hike the Danny On Trail
+  up through the forest and open ski runs, almost four miles and over 2,000
+  feet of climbing, with Whitefish Lake and the Glacier Park peaks opening up
+  behind you. At the top, grab a cold drink at the Summit House, then buy a
+  scenic lift ticket and ride the chairlift back down instead of pounding your
+  knees. Get a group photo at the summit with the peaks behind you. Summer only,
+  and the lower trail sometimes gets rerouted for forest work, so check the
+  resort's trail notes first.
+steps:
+  - The lake view on the way up
+  - Everyone at the summit
+  - Feet dangling on the chairlift down
+duration: half-day
+effort: hard
+cost: $$
+setting: outdoor
+season: [summer]
+time_of_day: daytime
+travel: local
+check_ahead: [seasonal, tickets, conditions]
+tags: [hiking, chairlift, views, mountain, summer, whitefish, glacier]
+credit:

@@ -1,0 +1,36 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Marsh Boardwalk on the Markell Trail
+mode: adventure
+who: [solo, friends]
+place:
+  name: DuPont Environmental Education Center (Jack A. Markell Trail north trailhead)
+  area: Riverfront, Wilmington
+  address: 1400 Delmarva Ln, Wilmington, DE 19801
+  coords: [39.72960, -75.55570]  # APPROX: set at the trailhead before publishing
+  website: https://delawarenaturesociety.org/visit/dupont-environmental-education-center/
+short: Walk the boardwalk over a tidal marsh in the middle of the city. Count the herons.
+description: >
+  Start at the environmental center on the Wilmington Riverfront and head south
+  on the Jack A. Markell Trail, which begins with a long elevated boardwalk
+  across the freshwater tidal marsh of the Peterson Wildlife Refuge. Go slow
+  on the boardwalk and look for herons, turtles and maybe an eagle, then keep
+  going on the paved trail toward New Castle until you've done about two and
+  a half miles, and turn back. Get a photo looking down the boardwalk with the
+  marsh grass on both sides and the city skyline behind. It's an easy surface
+  but a good five miles round trip; bring water since the only restrooms are back
+  at the center.
+steps:
+  - The boardwalk stretching into the marsh
+  - A bird you spotted
+  - The skyline from out in the reeds
+duration: short
+effort: moderate
+cost: free
+setting: outdoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [conditions]
+tags: [walking, boardwalk, marsh, wildlife, birding, rail-trail, wilmington]
+credit:

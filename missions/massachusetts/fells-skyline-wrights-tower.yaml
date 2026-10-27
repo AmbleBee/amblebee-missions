@@ -1,0 +1,34 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 2
+name: Fells Skyline Scramble to Wright's Tower
+mode: adventure
+who: [solo, friends]
+place:
+  name: Middlesex Fells Reservation (Bellevue Pond pull-off)
+  area: Middlesex Fells, Medford
+  address: South Border Rd, Medford, MA 02155
+  coords: [42.43077, -71.10729]  # APPROX: Bellevue Pond pull-off (Hiking Project); set at the lot before publishing
+  website: https://www.mass.gov/locations/middlesex-fells-reservation
+short: Scramble the white-blazed rocks of the Fells up to a stone tower. Find the Boston skyline.
+description: >
+  From little Bellevue Pond, climb Pine Hill to Wright's Tower, a 1930s stone
+  lookout with a view of the Boston skyline across the treetops. Then pick up the
+  white blazes of the Skyline Trail, which passes the tower, and follow it over
+  ledges and rocky knobs, up and down short steep pitches the whole way (the
+  full loop is about 7 miles). The blazes are easy to lose, so bring a map or
+  offline trail app and do as much of the loop as you like. Take a photo of the skyline framed by the tower's stone window. Skip it
+  right after rain, when the rocks get slick.
+steps:
+  - The skyline from Wright's Tower
+  - A white blaze on bare rock
+  - The best ledge view on the loop
+duration: half-day
+effort: moderate
+cost: free
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: local
+check_ahead: [conditions]
+tags: [hiking, skyline-trail, rock-scramble, views, skyline, solo, medford, boston]
+credit:

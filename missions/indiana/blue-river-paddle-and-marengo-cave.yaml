@@ -1,0 +1,41 @@
+draft: true  # pin or address not verified yet; delete this line once it's checked
+number: 3
+name: Blue River Paddle and Marengo Cave
+mode: date
+place:
+  name: Cave Country Canoes
+  area: Milltown, Southern Indiana cave country
+  address: 112 W Main St, Milltown, IN 47145
+  coords: [38.34220, -86.27650]  # APPROX: set at the outfitter before publishing
+  website: https://www.cavecountrycanoes.com
+  links:
+    - label: Marengo Cave
+      url: https://www.marengocave.com
+short: Paddle seven miles of the clear Blue River, then go underground at Marengo Cave.
+description: >
+  Start your day at the outfitter in tiny Milltown, ride the bus up to the
+  launch, and paddle about seven miles of the Blue River back to town through
+  riffles, little rapids and deep green pools under limestone bluffs. Pull over
+  on a gravel bar for a packed lunch and get a photo of the two of you in your
+  boats with the bluffs behind you. Dry off and drive ten minutes to Marengo Cave
+  for a walking tour through its glittering formations, a cool 52 degrees all
+  year. Reserve the river trip ahead; it runs about April through October.
+steps:
+  - Your paddles raised at the launch
+  - The two of you on a gravel bar for lunch
+  - The best formation in the cave
+gear:
+  - item: kayak
+    rent: on-site
+  - item: life-jackets
+    rent: on-site
+duration: all-day
+effort: moderate
+cost: $$$
+setting: outdoor
+season: [spring, summer, fall]
+time_of_day: daytime
+travel: day-trip
+check_ahead: [seasonal, reservation, conditions]
+tags: [kayaking, river, cave, southern-indiana, milltown, marengo]
+credit:
