@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 2
 name: Saddle Up at the Cowboy Bar
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Million Dollar Cowboy Bar
   area: Town Square, Jackson
   address: 25 N Cache St, Jackson, WY 83001
-  coords: [43.47990, -110.76200]  # APPROX: set at the entrance before publishing
+  coords: [43.479875, -110.762453]
   website: https://www.milliondollarcowboybar.com
 short: Grab a saddle at the bar on Jackson's Town Square. Line up for a crew photo in the saddles.
 description: >
@@ -29,6 +29,6 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: local
-check_ahead: [hours]
+check_ahead: [hours, tickets]
 tags: [bar, western, live-music, dancing, historic, town-square, jackson]
 credit:

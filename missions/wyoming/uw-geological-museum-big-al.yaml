@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated: 2026-10-26
 number: 3
 name: Meet Big Al in Laramie
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: University of Wyoming Geological Museum
   area: UW campus, Laramie
   address: 1000 E University Ave, Laramie, WY 82071
-  coords: [41.31390, -105.58280]  # APPROX: set at the entrance before publishing
+  coords: [41.313996, -105.583202]
   website: https://www.uwyo.edu/geomuseum/
 short: Toss a pinecone at the copper T. rex, then go inside to meet Big Al and a 75-foot giant.
 description: >
