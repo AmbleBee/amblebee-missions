@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 20
 name: Ruby Beach
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Ruby Beach, Olympic National Park
   area: Olympic Coast, south of Forks
-  coords: [47.71050, -124.41500]  # APPROX: set at the Ruby Beach parking lot before publishing
+  coords: [47.710054, -124.413704]
+  website: https://www.nps.gov/places/000/ruby-beach.htm
 short: Walk down to Ruby Beach. Climb over the driftwood and photograph the sea stacks.
 description: >
   Take the short path down from Highway 101 to one of the wildest beaches on the

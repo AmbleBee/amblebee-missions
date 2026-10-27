@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 15
 name: Pearson Air Museum
 mode: both
@@ -7,7 +7,8 @@ place:
   name: Pearson Air Museum, Fort Vancouver National Historic Site
   area: Vancouver, WA
   address: 1115 E 5th St, Vancouver, WA 98661
-  coords: [45.62290, -122.65750]  # APPROX: set at the entrance before publishing
+  coords: [45.624236, -122.656561]
+  website: https://www.nps.gov/fova/planyourvisit/pearsonairmuseum.htm
 short: Explore the old planes at Pearson Air Museum. Each pick the one you'd fly.
 description: >
   Visit one of the oldest operating airfields in the country and look over the

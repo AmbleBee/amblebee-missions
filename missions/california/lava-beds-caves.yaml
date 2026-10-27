@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 42
 name: Lava Beds Caves
 mode: both
@@ -6,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Lava Beds National Monument Visitor Center
   area: Near Tulelake, Siskiyou County
-  coords: [41.71400, -121.50900]  # APPROX: set at the visitor center before publishing
-  website: https://www.nps.gov/labe/planyourvisit/caving.htm
+  coords: [41.714359, -121.509914]
+  website: https://www.nps.gov/labe/index.htm
 short: Explore lava tube caves on your own at Lava Beds. Start with lit Mushpot, then go darker.
 description: >
   Pick up a free caving permit at the visitor center, then explore lava tubes,

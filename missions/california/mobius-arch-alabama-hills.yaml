@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 57
 name: Mobius Arch at Sunrise
 mode: both
@@ -6,7 +6,11 @@ who: [solo, friends, family, kids]
 place:
   name: Mobius Arch Trailhead, Alabama Hills
   area: Movie Road, near Lone Pine
-  coords: [36.60900, -118.12500]  # APPROX: set at the trailhead parking before publishing
+  coords: [36.611299, -118.124961]
+  website: https://www.blm.gov/visit/mobius-arch-loop-trail
+  links:
+    - label: alltrails
+      url: https://www.alltrails.com/trail/us/california/mobius-arch-loop-trail
 short: Hike to Mobius Arch at sunrise and frame Mount Whitney through the rock window.
 description: >
   Drive Movie Road into the Alabama Hills, a maze of rounded orange boulders

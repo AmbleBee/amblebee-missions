@@ -1,4 +1,3 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
 number: 2
 name: Manhattan Beach Pier and Roundhouse Aquarium
 mode: both
@@ -7,7 +6,7 @@ place:
   name: Manhattan Beach Pier (Roundhouse Aquarium at the end)
   area: Downtown Manhattan Beach
   address: 2 Manhattan Beach Blvd, Manhattan Beach, CA 90266
-  coords: [33.88480, -118.41040]  # APPROX: set at the pier entrance before publishing
+  coords: [33.884307, -118.412011]
   website: https://roundhouseaquarium.org
 short: Walk to the end of Manhattan Beach Pier. Visit the tiny free aquarium at the tip.
 description: >

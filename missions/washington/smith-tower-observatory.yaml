@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 48
 name: Smith Tower Observatory Bar
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Smith Tower
   area: Pioneer Square, Seattle
   address: 506 2nd Ave, Seattle, WA 98104
-  coords: [47.60180, -122.33170]  # APPROX: set at the entrance before publishing
+  coords: [47.601867,-122.331905]
   website: https://www.smithtower.com
 short: Ride the old brass elevator up Smith Tower for a cocktail on the 35th-floor observation deck.
 description: >
