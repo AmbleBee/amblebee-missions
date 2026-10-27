@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 51
 name: Crystal Crane Hot Springs
 mode: both
@@ -6,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Crystal Crane Hot Springs
   area: Hwy 78 near Crane, southeast of Burns
-  coords: [43.44000, -118.64000]  # APPROX: set at the entrance before publishing
-  website: https://cranehotsprings.com  # verify
+  coords: [43.440879, -118.639820]
+  website: https://cranehotsprings.com
 short: Soak in the big hot pond at Crystal Crane under a huge high-desert sky.
 description: >
   Soak in a big natural hot spring pond, around 101 degrees, out in the open

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 19
 name: Wooden Shoe Tulip Fest
 mode: both
@@ -7,10 +7,10 @@ place:
   name: Wooden Shoe Tulip Farm
   area: Woodburn
   address: 33814 S Meridian Rd, Woodburn, OR 97071
-  coords: [45.11700, -122.74700]  # APPROX: set at the entrance before publishing
+  coords: [45.118598, -122.748688]
 short: Walk the tulip fields in bloom. Find a row in your favorite color.
 description: >
-  During the spring Tulip Fest, walk the rows of tulips stretching toward the
+  During the spring Tulip Fest, walk 40 acres of tulips stretching toward the
   mountains. Each pick your favorite color row and take a photo in it. Wear boots;
   the fields can be muddy.
 duration: short

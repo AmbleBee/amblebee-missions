@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 20026-10-27
 number: 24
 name: Oregon Zoo
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Oregon Zoo
   area: Washington Park, Portland
   address: 4001 SW Canyon Rd, Portland, OR 97221
-  coords: [45.51000, -122.71600]  # APPROX: set at the entrance before publishing
+  coords: [45.510240, -122.715935]
   website: https://www.oregonzoo.org
 short: Visit the Oregon Zoo. Each find the animal most like you.
 description: >

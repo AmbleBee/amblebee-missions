@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 3
 name: Tamolitch Blue Pool Hike
 mode: both
@@ -6,7 +6,11 @@ who: [solo, friends, family]
 place:
   name: Tamolitch Blue Pool trailhead
   area: McKenzie River, Willamette National Forest
-  coords: [44.38800, -122.00000]  # APPROX: set at the trailhead before publishing
+  coords: [44.290356, -122.035628]
+  website: https://www.fs.usda.gov/r06/willamette/recreation/mckenzie-river-trailhead-tamolitch-blue-pool
+  links:
+    - label: alltrails
+      url: https://www.alltrails.com/trail/us/oregon/tamolitch-blue-pool-via-mckenzie-river-trail
 short: Hike the McKenzie River Trail to the impossibly blue pool. Photo from the rim.
 description: >
   Follow the McKenzie River Trail through old lava flows and mossy forest to
@@ -21,4 +25,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+caution: "Extremely Cold Water: Blue Pool stays near 37°F (3°C) year-round. Never jump in, no matter how hot it is outside. The freezing water can cause cold shock, making it difficult to breathe or swim."
 tags: [hiking, water, forest]

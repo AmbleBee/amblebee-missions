@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 35
 name: Ground Kontrol Arcade
 mode: both
@@ -7,7 +7,8 @@ place:
   name: Ground Kontrol Classic Arcade
   area: Old Town, Portland
   address: 115 NW 5th Ave, Portland, OR 97209
-  coords: [45.52410, -122.67580]  # APPROX: set at the entrance before publishing
+  coords: [45.524055, -122.675469]
+  website: https://groundkontrol.com/
 short: Play retro arcade games and pinball. Best of three on a game neither of you knows.
 description: >
   Load up on tokens at this classic arcade full of old cabinets and pinball

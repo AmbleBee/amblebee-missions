@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 31
 name: Antiquing in Aurora
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family]
 place:
   name: Historic Aurora (Main Street antique shops)
   area: Aurora
-  coords: [45.23040, -122.75530]  # APPROX: set on Main Street in the historic district before publishing
+  coords: [45.231724, -122.7559660]
+  website: https://www.ci.aurora.or.us
 short: Browse Aurora's antique shops. Each find the oddest treasure, then grab lunch.
 description: >
   Spend a slow morning or afternoon wandering the antique shops in Aurora's

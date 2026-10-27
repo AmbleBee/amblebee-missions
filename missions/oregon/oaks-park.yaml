@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 6
 name: Oaks Park
 mode: both
@@ -7,7 +7,8 @@ place:
   name: Oaks Amusement Park
   area: Sellwood, Portland
   address: 7805 SE Oaks Park Way, Portland, OR 97202
-  coords: [45.47300, -122.66100]  # APPROX: set at the entrance before publishing
+  coords: [45.472080, -122.661902]
+  website: https://www.oakspark.com
 short: Ride something at Oaks Park, then skate the old roller rink. Loser buys the treats.
 description: >
   Spend an afternoon at one of the oldest amusement parks in the country. Ride a

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 50
 name: Alvord Desert
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Alvord Desert playa (Frog Springs access)
   area: Below Steens Mountain, north of Fields
-  coords: [42.50000, -118.53000]  # APPROX: set at the Frog Springs access lot before publishing
+  coords: [42.507913, -118.532454]
+  website: https://www.blm.gov/programs/national-conservation-lands/oregon-washington/alvord-desert-wsa
 short: Walk out onto the empty Alvord playa under Steens Mountain. Stay for the stars.
 description: >
   Walk (or carefully drive) out onto the Alvord Desert, a dry lakebed so flat
@@ -36,4 +37,5 @@ season: [summer, fall]
 time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
+caution: "Limited Cell Service: Some visitors report having cell reception in this area, but coverage is unreliable. Do not rely on cell service."
 tags: [desert, stargazing, remote, views, high-desert, eastern-oregon]

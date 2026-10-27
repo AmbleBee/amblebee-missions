@@ -6,7 +6,8 @@ who: [solo, friends, family]
 place:
   name: Natural Bridges Viewpoint, Samuel H. Boardman State Scenic Corridor
   area: Southern Oregon Coast, near Brookings
-  coords: [42.19000, -124.36600]  # APPROX: set at the viewpoint parking before publishing
+  coords: [42.189997, -124.365989]
+  website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=56
 short: Walk out to Natural Bridges. Then hop to one more Boardman viewpoint.
 description: >
   Start at the Natural Bridges viewpoint and take the short trail out to see the

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 3
 name: Zip the Treetops at Bretton Woods
 mode: date
@@ -6,7 +6,7 @@ place:
   name: Bretton Woods Canopy Tour (Base Lodge Guest Services)
   area: Bretton Woods, White Mountains
   address: 99 Ski Area Rd, Bretton Woods, NH 03575
-  coords: [44.25820, -71.44180]  # APPROX: set at the base lodge entrance before publishing
+  coords: [44.259388, -71.459943]
   website: https://www.brettonwoods.com/experiences/canopy-tour/
 short: Gondola up, then zipline, rappel and cross sky bridges down the mountain. Warm up by a fire after.
 description: >

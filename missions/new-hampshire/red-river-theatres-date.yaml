@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 2
 name: Arthouse Night at Red River
 mode: date
@@ -6,7 +6,7 @@ place:
   name: Red River Theatres
   area: Downtown, Concord
   address: 11 S Main St, Concord, NH 03301
-  coords: [43.20500, -71.53700]  # APPROX: set at the entrance before publishing
+  coords: [43.203527, -71.535173]
   website: https://redrivertheatres.org
 short: Pick an indie film neither of you has heard of. Glass of wine, popcorn, then argue about it.
 description: >
@@ -28,5 +28,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
+discounts: [senior, military, student]
 tags: [movies, arthouse, cinema, date-night, rainy-day, concord]
 credit:

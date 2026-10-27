@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 7
 name: Multnomah Falls
 mode: both
@@ -7,7 +7,8 @@ place:
   name: Multnomah Falls
   area: Columbia River Gorge
   address: 53000 E Historic Columbia River Hwy, Bridal Veil, OR 97010
-  coords: [45.57620, -122.11580]  # APPROX: set at the lodge before publishing
+  coords: [45.577539, -122.116923]
+  website: https://www.fs.usda.gov/r06/columbiarivergorge/recreation/multnomah-falls
 short: Stand on Benson Bridge in the mist. Hike to the top if you're up for it.
 description: >
   Walk up to Benson Bridge and stand in the spray of Oregon's tallest waterfall.
