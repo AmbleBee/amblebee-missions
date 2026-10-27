@@ -7,7 +7,7 @@ place:
   name: Milwaukee Kayak Company (main location, Jerry's Docks)
   area: Harbor District, Milwaukee
   address: 318 S Water St, Milwaukee, WI 53204
-  coords: [43.02720, -87.90850]  # APPROX: set at the dock before publishing
+  coords: [43.028764, -87.907066]
   website: https://milwaukeekayak.com
 short: Kayak up the Milwaukee River through downtown with your crew. Race to the next bridge!
 description: >

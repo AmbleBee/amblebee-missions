@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 3
 name: Under the Saturn V in Huntsville
 mode: both
@@ -7,7 +7,7 @@ place:
   name: U.S. Space & Rocket Center
   area: Cummings Research Park, Huntsville
   address: One Tranquility Base, Huntsville, AL 35805
-  coords: [34.71100, -86.65440]  # APPROX: set at the entrance before publishing
+  coords: [34.711357, -86.655737]
   website: https://www.rocketcenter.com
 short: Walk the length of a real Saturn V, then ride the G-Force simulator together. Hold hands at liftoff.
 description: >

@@ -26,5 +26,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [reservation, conditions]
+caution: "Don't handle the camera while you're flying; hand it to your instructor or a passenger. Flying carries inherent risks."
 tags: [flying, aviation, splurge, bucket-list, views]
 credit:

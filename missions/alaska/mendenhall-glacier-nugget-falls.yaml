@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated: 2026-10-26
 number: 2
 name: Mendenhall Glacier and Nugget Falls
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Mendenhall Glacier Visitor Center
   area: Mendenhall Valley, Juneau
   address: 8510 Mendenhall Loop Rd, Juneau, AK 99801
-  coords: [58.41680, -134.54550]  # APPROX: set at the entrance before publishing
+  coords: [58.416777, -134.546716]
   website: https://www.fs.usda.gov/r10/tongass/offices/mendenhall-glacier-visitor-center
 short: Walk the flat trail to a roaring waterfall beside a real glacier. Spot the blue ice!
 description: >

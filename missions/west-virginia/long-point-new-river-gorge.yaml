@@ -1,12 +1,15 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 1
 name: Long Point and the New River Gorge Bridge
 mode: date
 place:
   name: Long Point Trail
   area: Newton Rd, Fayetteville
-  coords: [38.05260, -81.08600]  # APPROX coords: Newton Rd trailhead
+  coords: [38.041846, -81.078119]
   website: https://www.nps.gov/places/long-point-trail.htm
+  links:
+    - label: alltrails
+      url: https://www.alltrails.com/trail/us/west-virginia/long-point-via-fayetteville-trail
 short: Hike to Long Point for the best view of the New River Gorge Bridge. Pack a picnic.
 description: >
   An easy-going three mile round trip through the woods ends on a rock point with a huge

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-26
 number: 2
 name: Movie Night at the Capri
 mode: date
@@ -6,7 +6,7 @@ place:
   name: Capri Theatre
   area: Cloverdale, Montgomery
   address: 1045 E Fairview Ave, Montgomery, AL 36106
-  coords: [32.35560, -86.28720]  # APPROX: set at the entrance before publishing
+  coords: [32.352176, -86.290875]
   website: https://capritheatre.org
 short: Catch an indie film at a 1941 neighborhood movie house. Photo under the marquee.
 description: >
