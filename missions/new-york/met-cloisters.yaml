@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 5
 name: The Met Cloisters
 mode: both
@@ -6,8 +6,8 @@ who: [solo, friends, family]
 place:
   name: The Met Cloisters
   area: Fort Tryon Park, northern Manhattan
-  address: 99 Margaret Corbin Dr, New York, NY 10040  # verify
-  coords: [40.86490, -73.93190]  # APPROX: set at the entrance before publishing
+  address: 99 Margaret Corbin Dr, New York, NY 10040
+  coords: [40.865194, -73.931222]
   website: https://www.metmuseum.org/visit/visit-the-cloisters
 short: Step into medieval Europe at the Met Cloisters. Find the unicorn tapestries.
 description: >
@@ -25,4 +25,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+discounts: [senior, student]
 tags: [museum, art, history, gardens, medieval, nyc]

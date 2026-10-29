@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 61
 name: Dinosaurs at Texas Tech
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Museum of Texas Tech University
   area: Texas Tech campus, Lubbock
   address: 3301 4th St, Lubbock, TX 79415
-  coords: [33.59180, -101.88810]  # APPROX: set at the entrance before publishing
+  coords: [33.590757, -101.885778]
   website: https://www.depts.ttu.edu/museumttu/
 short: Hunt for dinosaurs at the free Texas Tech museum. Find the biggest skeleton in the building.
 description: >

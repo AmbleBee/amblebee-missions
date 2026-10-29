@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 55
 name: Track an Animal
 mode: both
@@ -10,8 +10,7 @@ description: >
   next to it for scale and photograph it from low down while the light is
   still slanting. Follow the trail a little way to see whether it walked,
   hopped, or bounded, and look for other clues like chewed pine cones, burrows,
-  or scat. Back home, try to name your animal with a tracks chart or the
-  iNaturalist app.
+  or scat. Back home, try to name yourrt or animal with a tracks chart.
 for_kids:
   short: Be a track detective!
   steps:

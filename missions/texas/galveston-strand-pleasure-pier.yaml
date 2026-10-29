@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 24
 name: Galveston's Strand and Pleasure Pier
 mode: both
@@ -6,7 +6,9 @@ who: [solo, friends, family, kids]
 place:
   name: Galveston Island Historic Pleasure Pier
   area: Seawall Blvd, Galveston
-  coords: [29.28500, -94.78800]  # APPROX: set at the pier entrance before publishing
+  address: 2501 Seawall Blvd, Galveston, TX 77550
+  coords: [29.288000, -94.790417]
+  website: https://www.pleasurepier.com
 short: Explore Galveston's Victorian Strand, then ride the rides on the Pleasure Pier over the Gulf.
 description: >
   Start in Galveston's Strand district, rows of Victorian iron-front buildings
@@ -31,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
+discounts: [military, senior]
 tags: [beach, pier, rides, history, galveston]
 credit:

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-27
 number: 36
 name: Dr Pepper Museum
 mode: both
@@ -6,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Dr Pepper Museum
   area: Downtown Waco
-  coords: [31.55900, -97.13300]  # APPROX: set at the entrance before publishing
+  coords: [31.555046, -97.129710]
   website: https://drpeppermuseum.com
 short: Visit the birthplace of Dr Pepper in Waco, then share a float at the old soda fountain.
 description: >

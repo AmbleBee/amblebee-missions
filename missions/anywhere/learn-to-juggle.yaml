@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-29
 number: 70
 name: Learn to Juggle in an Afternoon
 mode: both
@@ -10,8 +10,7 @@ description: >
   away. Start with one ball tossed hand to hand at eye height, then two (throw
   the second when the first peaks, and throw it, don't hand it across), then
   all three. Work in short bursts and cheer every new record. Once someone
-  hits ten catches in a row, try passing between two people. Film your first
-  clean run in slow motion.
+  hits ten catches in a row, try passing between two people.
 steps:
   - Your three homemade balls
   - One ball, the warm-up
