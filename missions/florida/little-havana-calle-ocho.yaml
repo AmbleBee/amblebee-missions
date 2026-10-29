@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-29
 number: 3
 name: Little Havana and Calle Ocho
 mode: both
@@ -6,7 +6,9 @@ who: [solo, friends, family, kids]
 place:
   name: Domino Park (Máximo Gómez Park), Calle Ocho
   area: Little Havana, Miami
-  coords: [25.76550, -80.21900]  # APPROX: set at Domino Park before publishing
+  address: 1444 SW 8th St, Miami, FL 33135
+  coords: [25.765629, -80.219340]
+  website: https://www.miami.gov/Parks-Public-Places/Parks-Directory/Domino-Park
 short: Sip a cafecito on Calle Ocho, watch the domino games, and try a fresh guava pastry.
 description: >
   Walk Calle Ocho, the heart of Miami's Cuban community. Stop at a ventanita

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-29
 number: 18
 name: Morikami Japanese Gardens
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Morikami Museum and Japanese Gardens
   area: Delray Beach
-  coords: [26.42500, -80.18400]  # APPROX: set at the entrance before publishing
+  address: 4000 Morikami Park Rd, Delray Beach, FL 33446
+  coords: [26.429233, -80.156348]
   website: https://morikami.org
 short: Walk the quiet paths of the Morikami Japanese Gardens in Delray Beach. Feed the koi.
 description: >

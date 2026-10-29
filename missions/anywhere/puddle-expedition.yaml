@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-29
 number: 64
 name: Puddle Expedition
 mode: adventure
@@ -10,8 +10,7 @@ description: >
   jump in every puddle, keep a tally, and crown the biggest splash. Race leaf
   boats down the gutter and look for rain-day finds: worms, snails, and
   streams that only exist today. Set out dry clothes by the door and hot
-  chocolate before you leave, so coming home is part of the fun. Use burst
-  mode to catch a jump in mid-air.
+  chocolate before you leave, so coming home is part of the fun.
 steps:
   - Suited up at the door
   - The mid-air jump

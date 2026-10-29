@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-29
 number: 76
 name: Sleep Out Under the Sky
 mode: both
@@ -12,7 +12,8 @@ description: >
   need. Check the forecast and skip it if storms are coming, tell someone
   where you'll be, and pack a headlamp, water and breakfast. Watch the stars
   come out, sleep when you can, and wake up for the sunrise. Get a photo of
-  your bed laid out at dusk.
+  your bed laid out at dusk. Bring bug spray, keep food sealed or inside so you don’t draw visitors, 
+  and do a tick check in the morning.
 steps:
   - Your bed laid out at dusk
   - The sky after dark
@@ -28,9 +29,7 @@ for_kids:
     - A selfie with your grown-up!
 gear:
   - item: sleeping-bags
-    rent: "no"
   - item: headlamps
-    rent: "no"
 duration: all-day
 effort: hard
 cost: free

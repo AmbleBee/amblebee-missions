@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-29
 number: 60
 name: Sea Turtle Walk at Juno Beach
 mode: both
@@ -6,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Loggerhead Marinelife Center
   area: Juno Beach
-  coords: [26.88600, -80.05600]  # APPROX: set at the center before publishing
+  coords: [26.884413, -80.056543]
   website: https://marinelife.org/program/guided-turtle-walk/
 short: Join a night turtle walk on Juno Beach and watch a giant loggerhead lay her eggs.
 description: >

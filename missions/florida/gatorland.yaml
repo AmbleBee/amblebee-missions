@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-29
 number: 19
 name: Gatorland
 mode: both
@@ -6,7 +6,7 @@ who: [solo, friends, family, kids]
 place:
   name: Gatorland
   area: South Orlando
-  coords: [28.35500, -81.40400]  # APPROX: set at the entrance before publishing
+  coords: [28.355884, -81.402245]
   website: https://www.gatorland.com
 short: Walk over a swamp full of thousands of alligators at Gatorland, the original Orlando attraction.
 description: >
@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+discounts: [senior]
 tags: [alligators, animals, classic-florida, orlando]
 credit:
