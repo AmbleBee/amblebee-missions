@@ -245,6 +245,7 @@ details.extra li { margin: 2px 0; }
 .fmatch b { color: var(--sage-deep); font-size: 1.35rem; }
 .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 22px 28px; }
 .filters .near { grid-column: 1 / -1; }
+#themes-field { grid-column: 1 / -1; }   /* themes get their own full-width row under the other filters */
 .near-row { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
 .within { display: inline-flex; align-items: center; gap: 8px; font-weight: 800; }
 .sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }

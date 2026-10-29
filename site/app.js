@@ -1105,13 +1105,18 @@ function renderThemeCounts(f) {
   const labels = document.querySelectorAll('[data-filter="themes"] label');
   if (!labels.length) return;
   const base = S.missions.filter((m) => passes(m, { ...f, themes: [] }));
-  labels.forEach((l) => {
+  const rows = [...labels].map((l) => {
     const id = l.querySelector("input").value;
     const n = base.filter((m) => (m.themes || []).includes(id)).length;
     l.querySelector(".count").textContent = String(n);
     l.querySelector("input").setAttribute("aria-label", `${S.themeLabel[id] || id}, ${n} ${n === 1 ? "mission" : "missions"}`);
     l.classList.toggle("is-empty", n === 0);
+    return { l, n, name: S.themeLabel[id] || id };
   });
+  // themes you can get right now first, A to Z, then the dimmed ones, A to Z. Picking a theme never changes
+  // the counts (they ignore the theme picks), so chips only move when another filter changes.
+  rows.sort((a, b) => (a.n === 0) - (b.n === 0) || a.name.localeCompare(b.name));
+  labels[0].parentElement.append(...rows.map((r) => r.l));
 }
 function renderBrowse() {
   const f = readFilters();
