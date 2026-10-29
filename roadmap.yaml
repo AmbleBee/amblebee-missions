@@ -65,7 +65,7 @@
 
 - title: Filter Themes
   status: doing
-  progress: 0/603 missions themed
+  progress: 1/603 missions themed
   tag: missions
   summary: Giving every mission its themes, so the new filter has something to filter. Each one gets checked as it's verified.
 
