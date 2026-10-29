@@ -244,6 +244,10 @@ def check_catalog(root):
                 problems.append(f"{where}: themes lists the same theme twice")
             if len(m["themes"]) > THEMES_MAX:
                 problems.append(f"{where}: themes has {len(m['themes'])}; keep it to {THEMES_MAX} that really fit")
+            # "romantic" is a date filter; on an adventure-only mission it would hand someone a family trip
+            if "romantic" in m["themes"] and m.get("mode") == "adventure":
+                problems.append(f"{where}: themes has romantic, but mode is adventure (no dates); "
+                                "drop romantic, or make the mode date or both")
         if isinstance(m.get("number"), int):
             key = (m["pack"], m["number"])
             if key in seen_numbers:

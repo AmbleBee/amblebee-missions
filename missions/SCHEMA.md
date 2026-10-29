@@ -92,7 +92,8 @@ missions that fit **any** of them. The chips only appear once some published mis
 - Themes never repeat a field: no theme for free, indoor/outdoor, kids, season or time of day, since
   the filters for those already exist.
 - `check_missions.py` fails a themes line with a word that isn't on the list, the same theme twice,
-  or more than 6. A mission with no themes line passes (`THEMES_REQUIRED = False` in
+  more than 6, or `romantic` on a `mode: adventure` mission (romantic is for dates, so it needs
+  `date` or `both`). A mission with no themes line passes (`THEMES_REQUIRED = False` in
   `tools/missions_lib.py`; flip it to `True` once every mission has themes).
 - `python tools/suggest_themes.py` suggests themes from a mission's tags; `--write` adds the
   `themes:` line to missions that don't have one (never touches ones that do). Check its picks as

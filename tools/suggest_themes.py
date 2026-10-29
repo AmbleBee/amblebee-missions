@@ -76,7 +76,7 @@ TAGS_FOR = {
     "holidays": """holiday holiday-lights christmas festival mardi-gras pumpkins corn-maze fair rodeo fireworks""",
     "road-trips": """scenic-drive road-trip""",
     "playful": """playful silly dress-up role-play party surprise costumes""",
-    "romantic": """romantic date-night fancy anniversary""",
+    "romantic": """romantic date-night anniversary""",   # not "fancy": a fancy night out can be with friends
     "relaxing": """calm cozy relaxing quiet unplugged""",
     "small-towns": """small-town village""",
     "make-something": """creative crafts craft build make-something painting drawing cooking writing movie-making dye
