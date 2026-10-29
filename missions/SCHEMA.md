@@ -77,5 +77,33 @@ Check your changes with `python tools/check_missions.py` (also part of the test 
 | `caution_until` | Optional date (`YYYY-MM-DD`) the caution ends; the website shows it through that day and hides it after. Use it for anything temporary (closures, maintenance, construction); leave it out for lasting facts like no cell service. Needs a `caution`. `python tools/check_missions.py` lists cautions that have ended so you can delete them; an ended caution never fails the check. [none] |
 | `draft` | `true` keeps the mission out of the website and catalog.json (and so off the Hive) while its pin, address or details still need checking. It's still checked by `check_missions.py`, and its number stays taken. Delete the line once it's verified to publish it. New missions from the template start as drafts. [`false`] |
 | `routine` | `true` for repeatable routines [`false`] |
-| `tags` | Free-form list [none] |
+| `themes` | Up to 6 themes from the fixed list (see **Themes** below), e.g. `[views, hiking]`. They're the "What kind of mission" filter chips on the website. **Optional for now**: missions without the line pass the check and publish as usual, while themes get filled in. [none] |
+| `tags` | Free-form keywords, used by search (`[cemetery, epitaphs]`). Anything goes, but words that are a theme belong in `themes`, and words that repeat a field don't need to be tags at all (`free` is `cost`, `rainy-day` is `setting: indoor`, `kids` is `who`). [none] |
 | `credit` | Name of the person who suggested the mission, shown small under the title as "Suggested by …". Only for missions from contributors who asked to be credited; leave it blank or leave the line out otherwise (nothing shows; older missions without the line need no changes). A name only: no links or email addresses, 40 characters max. [none] |
+
+## Themes (added 2026-10-29)
+
+A fixed list, so filters work: each theme is a chip under "What kind of mission" in the website's
+More filters, with a live count of how many missions you could get. Picking several chips shows
+missions that fit **any** of them. The chips only appear once some published mission has themes.
+
+- Pick the 1-6 that a visitor would actually filter by. A waterfall hike is `[hiking, waterfalls]`,
+  not every theme it brushes against.
+- Themes never repeat a field: no theme for free, indoor/outdoor, kids, season or time of day, since
+  the filters for those already exist.
+- `check_missions.py` fails a themes line with a word that isn't on the list, the same theme twice,
+  or more than 6. A mission with no themes line passes (`THEMES_REQUIRED = False` in
+  `tools/missions_lib.py`; flip it to `True` once every mission has themes).
+- `python tools/suggest_themes.py` suggests themes from a mission's tags; `--write` adds the
+  `themes:` line to missions that don't have one (never touches ones that do). Check its picks as
+  you verify each mission.
+- New theme: add it to `THEMES` in `tools/missions_lib.py` (the order there is the chip order) and to
+  the table below; the label is what the chip says.
+
+| Group | Themes (`id` and the chip's label) |
+|---|---|
+| Outdoors and nature | `views` (Views & lookouts), `hiking` (Hiking), `walks` (Easy walks & strolls), `waterfalls` (Waterfalls), `beach` (Beaches & coast), `lakes-rivers` (Lakes, rivers & wetlands), `mountains` (Mountains), `deserts` (Deserts), `swimming` (Swimming & springs), `boating` (Out on the water), `caves` (Caves & underground), `rocks-fossils` (Rocks & fossils), `forests` (Forests & fall color), `parks` (National & state parks), `wildlife` (Animals & wildlife), `gardens` (Gardens & flowers), `stars` (Stars & space), `biking` (Biking), `picnic` (Picnics), `sunsets` (Sunrise & sunset) |
+| Culture and history | `history` (History), `museums` (Museums), `science` (Science & discovery), `art` (Art), `architecture` (Architecture & bridges), `vehicles` (Planes, trains & cars), `spooky` (Spooky & mysterious) |
+| Food and fun | `food` (Food & treats), `drinks` (Wine, beer & cocktails), `markets` (Markets & shopping), `movies` (Movies), `shows` (Music & shows), `games` (Games & arcades), `thrills` (Rides & thrills), `quirky` (Quirky & roadside), `holidays` (Holidays & festivals), `road-trips` (Scenic drives & road trips) |
+| The feel of it | `playful` (Playful & silly), `romantic` (Romantic), `relaxing` (Calm & cozy), `small-towns` (Small towns), `make-something` (Make or learn something) |
+

@@ -105,6 +105,11 @@ h1, h2, h3 { font-family: var(--display); font-variation-settings: "SOFT" 100; f
   background: var(--sage-deep); color: #FFFDF8; box-shadow: 0 3px 0 var(--sage-shadow);
 }
 .chips input:focus-visible + span, .modes input:focus-visible + span { outline: 3px solid var(--honey); outline-offset: 2px; }
+/* theme chips: 40-odd of them, so a little tighter, with the mission count after the name */
+.chips.themes { gap: 6px; }
+.chips.themes span { min-height: 40px; padding: 0 12px; gap: 6px; font-size: .92rem; }
+.chips.themes label.is-empty span { opacity: .45; }
+.chips.themes .count { font-weight: 800; font-size: .78rem; opacity: .7; font-variant-numeric: tabular-nums; }
 fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 legend { font: 800 .95rem var(--body); color: var(--walnut); margin-bottom: 8px; padding: 0; }
 select {

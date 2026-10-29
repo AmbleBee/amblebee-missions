@@ -35,7 +35,7 @@ LIST_ALLOWED = {
     "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
 KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit",
-                                                              "caution", "caution_until", "draft"}
+                                                              "caution", "caution_until", "draft", "themes"}
 GEAR = {
     # Water
     "kayak", "canoe", "paddleboard", "life-jackets", "wetsuit", "river-tube", "fishing-gear",
@@ -48,6 +48,56 @@ GEAR = {
     # Games and sport / getting there
     "golf-clubs", "disc-golf-discs", "tennis-rackets", "kite", "high-clearance-vehicle",
 }
+# Themes: the fixed set of filter chips on the website (and later the Hive). Picked 2026-10-29 from
+# the 800-odd free-form tags. Optional on missions for now; tools/suggest_themes.py fills them in from tags.
+# Order here is the order the chips show in. Don't add themes that repeat a field (cost, setting, who, season).
+THEMES = {
+    "views": "Views & lookouts",
+    "hiking": "Hiking",
+    "walks": "Easy walks & strolls",
+    "waterfalls": "Waterfalls",
+    "beach": "Beaches & coast",
+    "lakes-rivers": "Lakes, rivers & wetlands",
+    "mountains": "Mountains",
+    "deserts": "Deserts",
+    "swimming": "Swimming & springs",
+    "boating": "Out on the water",
+    "caves": "Caves & underground",
+    "rocks-fossils": "Rocks & fossils",
+    "forests": "Forests & fall color",
+    "parks": "National & state parks",
+    "wildlife": "Animals & wildlife",
+    "gardens": "Gardens & flowers",
+    "stars": "Stars & space",
+    "biking": "Biking",
+    "picnic": "Picnics",
+    "sunsets": "Sunrise & sunset",
+    "history": "History",
+    "museums": "Museums",
+    "science": "Science & discovery",
+    "art": "Art",
+    "architecture": "Architecture & bridges",
+    "vehicles": "Planes, trains & cars",
+    "spooky": "Spooky & mysterious",
+    "food": "Food & treats",
+    "drinks": "Wine, beer & cocktails",
+    "markets": "Markets & shopping",
+    "movies": "Movies",
+    "shows": "Music & shows",
+    "games": "Games & arcades",
+    "thrills": "Rides & thrills",
+    "quirky": "Quirky & roadside",
+    "holidays": "Holidays & festivals",
+    "road-trips": "Scenic drives & road trips",
+    "playful": "Playful & silly",
+    "romantic": "Romantic",
+    "relaxing": "Calm & cozy",
+    "small-towns": "Small towns",
+    "make-something": "Make or learn something",
+}
+THEMES_MAX = 6          # more than this and a mission shows up under every chip, which makes filtering useless
+THEMES_REQUIRED = False  # flip to True once every mission has themes; until then a missing themes line is fine
+
 RENT = {"on-site", "nearby", "no"}
 PLACE_KEYS = {"name", "area", "address", "coords", "website", "links"}
 LINKS_MAX, LINK_LABEL_MAX = 3, 25  # extra place links: short labels so the buttons fit on a phone
@@ -179,6 +229,21 @@ def check_catalog(root):
             bad = [v for v in values if v not in allowed]
             if bad:
                 problems.append(f"{where}: {key} has {bad}; allowed: {sorted(allowed)}")
+        # themes: optional for now (THEMES_REQUIRED), but when the line is there every word must be on the list
+        if "themes" not in m or m["themes"] in (None, []):
+            if THEMES_REQUIRED:
+                problems.append(f"{where}: needs themes (pick 1-{THEMES_MAX} from the theme list in SCHEMA.md)")
+        elif not isinstance(m["themes"], list):
+            problems.append(f"{where}: themes should be a list in square brackets, like `themes: [views, hiking]`")
+        else:
+            bad = [t for t in m["themes"] if t not in THEMES]
+            if bad:
+                problems.append(f"{where}: themes has {bad}, which isn't on the theme list (SCHEMA.md → Themes); "
+                                f"free-form words go in tags instead")
+            if len(set(map(str, m["themes"]))) != len(m["themes"]):
+                problems.append(f"{where}: themes lists the same theme twice")
+            if len(m["themes"]) > THEMES_MAX:
+                problems.append(f"{where}: themes has {len(m['themes'])}; keep it to {THEMES_MAX} that really fit")
         if isinstance(m.get("number"), int):
             key = (m["pack"], m["number"])
             if key in seen_numbers:

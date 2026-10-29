@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from missions_lib import check_catalog, load_catalog  # noqa: E402
+from missions_lib import THEMES, check_catalog, load_catalog  # noqa: E402
 
 PRIVATE_KEYS = {"file"}  # local paths never go into the published file
 
@@ -34,6 +34,8 @@ def build(folder):
         "schema_version": info["schema_version"],
         "source": {k: info.get(k) for k in ("name", "source_id", "author", "updated")},
         "packs": list(packs.values()),
+        # the theme list (filter chips): id + label, in display order; missions list theirs under "themes"
+        "themes": [{"id": t, "label": label} for t, label in THEMES.items()],
         "missions": out_missions,
     }
     # content hash: lets the Hive's "Check for updates" tell instantly whether anything changed

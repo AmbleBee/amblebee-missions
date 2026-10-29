@@ -171,7 +171,7 @@ function readFilters() {
     mode: (document.querySelector('input[name="mode"]:checked') || {}).value || "any",
     pack: $("#pack-select").value,
     who: checked("who"), duration: checked("duration"), effort: checked("effort"),
-    cost: checked("cost"), setting: checked("setting"),
+    cost: checked("cost"), setting: checked("setting"), themes: checked("themes"),
     inSeason: $("#f-season").checked, goNow: $("#f-gonow").checked,
     within: $("#within-select").value ? Number($("#within-select").value) : null,
   };
@@ -185,13 +185,15 @@ function passes(m, f) {
   if (f.effort.length && !f.effort.includes(m.effort)) return false;
   if (f.cost.length && !f.cost.includes(m.cost)) return false;
   if (f.setting.length && m.setting !== "either" && !f.setting.includes(m.setting)) return false;
+  // themes: any of the picked ones (Food or Views), so picking more widens rather than narrows
+  if (f.themes.length && !(m.themes || []).some((t) => f.themes.includes(t))) return false;
   if (f.inSeason && m.season !== "any" && !(m.season || []).includes(seasonNow())) return false;
   if (f.goNow && (m.check_ahead || []).some((c) => c === "tickets" || c === "reservation")) return false;
   if (f.within != null) { const d = distM(m); if (d != null && d > f.within * M_PER[S.unit]) return false; }
   return true;
 }
 function activeFilters(f) {
-  return f.who.length + f.duration.length + f.effort.length + f.cost.length + f.setting.length
+  return f.who.length + f.duration.length + f.effort.length + f.cost.length + f.setting.length + f.themes.length
     + (f.inSeason ? 1 : 0) + (f.goNow ? 1 : 0);
 }
 const pool = () => { const f = readFilters(); return S.missions.filter((m) => passes(m, f)); };
@@ -1075,7 +1077,8 @@ function searchText(m) {
   if (m._hay) return m._hay;
   const pack = S.packById[m.pack] || {};
   const pl = m.place || {};
-  const parts = [m.name, m.short, m.description, (m.tags || []).join(" "), pl.name, pl.area, pl.address,
+  const parts = [m.name, m.short, m.description, (m.tags || []).join(" "),
+    (m.themes || []).map((t) => (S.themeLabel || {})[t] || t).join(" "), pl.name, pl.area, pl.address,
     pack.name, pack.region, m.credit, m.id, (m.gear || []).map((g) => g.item).join(" "),
     m.for_kids && m.for_kids.short, (m.season === "any" ? [] : m.season || []).join(" "),
     L.mode[m.mode], L.setting && L.setting[m.setting], L.time && L.time[m.time_of_day],
@@ -1096,8 +1099,23 @@ function searchScore(m, words) {
   return score;
 }
 const searchWords = () => fold(S.q).split(/\s+/).filter((w) => w.length > 0);
+// theme chip counts follow the other picks (pack, mode, distance, More filters), so "Waterfalls 3" means
+// 3 waterfall missions you could actually get right now. Chips with none left are dimmed, not removed.
+function renderThemeCounts(f) {
+  const labels = document.querySelectorAll('[data-filter="themes"] label');
+  if (!labels.length) return;
+  const base = S.missions.filter((m) => passes(m, { ...f, themes: [] }));
+  labels.forEach((l) => {
+    const id = l.querySelector("input").value;
+    const n = base.filter((m) => (m.themes || []).includes(id)).length;
+    l.querySelector(".count").textContent = String(n);
+    l.querySelector("input").setAttribute("aria-label", `${S.themeLabel[id] || id}, ${n} ${n === 1 ? "mission" : "missions"}`);
+    l.classList.toggle("is-empty", n === 0);
+  });
+}
 function renderBrowse() {
   const f = readFilters();
+  renderThemeCounts(f);
   const matches = S.missions.filter((m) => passes(m, f));
   const n = matches.length, total = S.missions.length;
   const active = activeFilters(f);
@@ -1306,6 +1324,18 @@ async function start() {
   const order = (p) => (p.id === "anywhere" ? "0" : p.id === "general" ? "2" : "1") + (p.name || p.id);
   S.packs = (data.packs || []).filter((p) => p.count).sort((a, b) => order(a).localeCompare(order(b)));
   S.packById = Object.fromEntries(S.packs.map((p) => [p.id, p]));
+  // theme chips (More filters): only themes some published mission has, each with its count. The whole
+  // group stays hidden until missions have themes, so the site looks the same during the backfill.
+  S.themeLabel = Object.fromEntries((data.themes || []).map((t) => [t.id, t.label]));
+  const themeChips = (data.themes || [])
+    .map((t) => [t, S.missions.filter((m) => (m.themes || []).includes(t.id)).length])
+    .filter(([, n]) => n > 0)
+    .map(([t, n]) => h("label", {}, h("input", { type: "checkbox", value: t.id }),
+      h("span", {}, t.label, h("small", { class: "count" }, String(n)))));
+  if (themeChips.length) {
+    $('[data-filter="themes"]').replaceChildren(...themeChips);
+    $("#themes-field").hidden = false;
+  }
 
   const sel = $("#pack-select");
   S.packs.forEach((p) => sel.append(h("option", { value: p.id }, p.name)));

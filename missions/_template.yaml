@@ -60,5 +60,11 @@ travel: local                  # home | local | drive | day-trip
 #                              # aim for under 120 characters (200 max). Shows in a yellow box on the ticket.
 # caution_until: 2026-12-01    # optional: hide the caution after this date (YYYY-MM-DD). Use it for anything
 #                              # temporary (closures, maintenance, construction); leave it out for lasting facts.
-tags: []
+# themes: [views, hiking]     # optional for now: 1-6 from this list, used for the website's filter chips
+#   outdoors: views, hiking, walks, waterfalls, beach, lakes-rivers, mountains, deserts, swimming, boating,
+#             caves, rocks-fossils, forests, parks, wildlife, gardens, stars, biking, picnic, sunsets
+#   culture:  history, museums, science, art, architecture, vehicles, spooky
+#   fun:      food, drinks, markets, movies, shows, games, thrills, quirky, holidays, road-trips
+#   feel:     playful, romantic, relaxing, small-towns, make-something
+tags: []                       # free-form keywords for search (anything goes)
 credit:                        # leave blank, or the name of whoever suggested it ("Suggested by Sam R.")
