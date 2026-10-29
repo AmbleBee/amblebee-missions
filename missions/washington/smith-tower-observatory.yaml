@@ -25,4 +25,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
+themes: [views, drinks, architecture, history, romantic]
 tags: [cocktails, views, history, romantic, nightlife, seattle]
