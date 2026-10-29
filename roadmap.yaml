@@ -63,12 +63,6 @@
   tag: missions
   summary: Swap 231 one-off tags for a fixed set of about 20 you can filter by, like views, food, rainy-day and animals.
 
-- title: Filter Themes
-  status: doing
-  progress: 1/603 missions themed
-  tag: missions
-  summary: Giving every mission its themes, so the new filter has something to filter. Each one gets checked as it's verified.
-
 - title: Exact Map Pins for Every Place
   status: doing
   progress: 195/603
@@ -81,6 +75,16 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Filter Themes
+  status: done
+  date: 2026-10-29
+  tag: missions
+  summary: All 603 missions now have themes, so the "What kind of mission" filter covers everything on the site.
+  items:
+  - Tap Waterfalls, Food or Romantic and get every mission that fits, not just the first few
+  - Each mission has a few themes picked from its old tags, and they'll get a closer look as missions are verified
+  - Romantic only shows up on date missions, so it'll never hand you a family zoo trip
+
 - title: Filter Themes, Groundwork
   status: done
   date: 2026-10-29
