@@ -58,11 +58,6 @@
   tag: hive
   summary: Dock the camera, flip through the photos, and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own.
 
-- title: Filter Tags
-  status: next
-  tag: missions
-  summary: Swap 231 one-off tags for a fixed set of about 20 you can filter by, like views, food, rainy-day and animals.
-
 - title: Exact Map Pins for Every Place
   status: doing
   progress: 195/603
