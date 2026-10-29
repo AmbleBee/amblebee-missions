@@ -34,5 +34,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [conditions]
+themes: [lakes-rivers, make-something]
 tags: [creek, nature, build, water, free, outdoors]
 credit:

@@ -31,5 +31,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [walks, gardens, history, small-towns]
 tags: [history, small-town, gardens, walking, east-texas]
 credit:

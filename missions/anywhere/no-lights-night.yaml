@@ -16,4 +16,5 @@ setting: indoor
 season: any
 time_of_day: night
 travel: local
+themes: [markets, games, relaxing]
 tags: [at-home, cozy, unplugged, games, books, rainy-day]

@@ -29,5 +29,6 @@ season: any
 time_of_day: morning
 travel: local
 check_ahead: [conditions]
+themes: [views, hiking, walks, deserts, sunsets]
 tags: [hiking, walking, desert, saguaro, views, sunrise, tucson]
 credit:

@@ -33,4 +33,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [hiking, waterfalls, forests, parks]
 tags: [waterfall, hiking, forest, state-park, willamette-valley]

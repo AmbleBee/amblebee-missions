@@ -22,4 +22,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets, seasonal]
+themes: [spooky, quirky]
 tags: [roadside, quirky, mystery]

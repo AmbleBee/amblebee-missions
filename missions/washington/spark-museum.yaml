@@ -34,4 +34,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
+themes: [museums, science]
 tags: [science, museum, inventions, rainy-day, bellingham]

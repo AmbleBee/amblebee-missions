@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
+themes: [walks, biking, history]
 tags: [history, revolutionary-war, walking, biking, free]

@@ -23,5 +23,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, hiking, parks, architecture]
 tags: [hike, bridge, views, national-park]
 credit:

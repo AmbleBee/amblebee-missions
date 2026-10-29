@@ -31,4 +31,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
+themes: [beach, sunsets, history, thrills]
 tags: [beach, pier, rides, route-66, sunset, los-angeles]

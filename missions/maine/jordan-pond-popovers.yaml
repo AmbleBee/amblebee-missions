@@ -21,5 +21,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
+themes: [walks, lakes-rivers, parks, food]
 tags: [national-park, lake, food, walk]
 credit:

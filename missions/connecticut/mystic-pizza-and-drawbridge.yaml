@@ -22,5 +22,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
+themes: [lakes-rivers, food, movies]
 tags: [food, pizza, movie, waterfront]
 credit:

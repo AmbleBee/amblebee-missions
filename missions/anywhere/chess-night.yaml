@@ -25,4 +25,5 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: local
+themes: [games, relaxing]
 tags: [at-home, games, strategy, cozy, rainy-day]

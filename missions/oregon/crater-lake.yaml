@@ -20,4 +20,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [views, lakes-rivers, parks]
 tags: [lake, views, national-park]

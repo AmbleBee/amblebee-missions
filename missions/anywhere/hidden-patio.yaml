@@ -13,4 +13,5 @@ setting: outdoor
 season: [spring, summer, fall]
 time_of_day: any
 travel: local
+themes: [relaxing]
 tags: [calm, explore, local, outdoors]

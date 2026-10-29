@@ -35,4 +35,5 @@ travel: day-trip
 check_ahead: [conditions]
 caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
           Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
+themes: [hiking, lakes-rivers, forests, wildlife]
 tags: [lake, hiking, wildlife, fall-colors, colville-forest, northeast-washington]

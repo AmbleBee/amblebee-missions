@@ -35,5 +35,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [reservation, seasonal, conditions]
+themes: [views, lakes-rivers, rocks-fossils, biking]
 tags: [mountain-biking, lake, views, cliffs, lake-tahoe, incline-village]
 credit:

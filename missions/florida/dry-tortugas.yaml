@@ -33,5 +33,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [boating, parks, history]
 tags: [national-park, fort, snorkeling, boat, history, florida-keys]
 credit:

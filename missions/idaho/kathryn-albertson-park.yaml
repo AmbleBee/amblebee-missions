@@ -29,4 +29,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [walks, wildlife, relaxing]
 tags: [park, wildlife, calm, walking, boise]

@@ -25,5 +25,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [museums, art, relaxing]
 tags: [art, museum, calm, free, rainy-day, houston]
 credit:

@@ -22,5 +22,6 @@ season: any
 time_of_day: evening
 travel: drive
 check_ahead: [hours, tickets]
+themes: [views, sunsets, shows]
 tags: [music, views, sunset]
 credit:

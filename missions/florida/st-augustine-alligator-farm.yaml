@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [wildlife]
 tags: [alligators, crocodiles, birds, zoo, st-augustine]
 credit:

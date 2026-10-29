@@ -36,5 +36,6 @@ time_of_day: any
 travel: day-trip
 check_ahead: [hours]
 discounts: [military, student, senior]
+themes: [history, museums, art]
 tags: [art, museum, history, rainy-day, sacramento]
 credit:

@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
+themes: [beach, thrills, playful]
 tags: [amusement-park, beach, rides, playful, santa-cruz]
 credit:

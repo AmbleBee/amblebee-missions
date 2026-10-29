@@ -34,5 +34,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
+themes: [history, museums, shows]
 tags: [blues, live-music, museum, juke-joint, history, delta, clarksdale]
 credit:

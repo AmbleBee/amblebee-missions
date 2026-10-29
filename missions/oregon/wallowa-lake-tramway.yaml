@@ -35,4 +35,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal, conditions, tickets]
 discounts: [senior, military, student,]
+themes: [views, lakes-rivers, mountains]
 tags: [gondola, mountains, views, lake, eastern-oregon, wallowas]

@@ -37,5 +37,6 @@ season: [summer, fall]
 time_of_day: night
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
+themes: [boating, wildlife, stars]
 tags: [bioluminescence, kayak, night, wildlife, space-coast]
 credit:

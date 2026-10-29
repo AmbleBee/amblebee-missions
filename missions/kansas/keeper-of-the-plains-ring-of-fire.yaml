@@ -21,5 +21,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
+themes: [lakes-rivers, art]
 tags: [river, fire, art, free]
 credit:

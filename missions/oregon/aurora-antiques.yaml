@@ -22,4 +22,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours]
+themes: [food, markets, small-towns]
 tags: [antiques, shopping, small-town, food]

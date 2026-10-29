@@ -21,5 +21,6 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: day-trip
 check_ahead: [tickets, conditions]
+themes: [lakes-rivers, boating, sunsets]
 tags: [sailing, boat, sunset, bay]
 credit:

@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal]
+themes: [history, shows, small-towns]
 tags: [history, small-town, gold-rush, music, southern-oregon]

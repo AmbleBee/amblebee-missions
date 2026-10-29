@@ -28,4 +28,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [beach, food]
 tags: [food, ice-cream, coast, rainy-day]

@@ -24,5 +24,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation]
+themes: [beach, romantic]
 tags: [horseback, beach, romantic, northeast-florida]
 credit:

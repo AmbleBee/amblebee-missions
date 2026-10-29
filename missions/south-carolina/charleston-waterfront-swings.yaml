@@ -20,5 +20,6 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: local
+themes: [walks, lakes-rivers]
 tags: [waterfront, swings, walk, free]
 credit:

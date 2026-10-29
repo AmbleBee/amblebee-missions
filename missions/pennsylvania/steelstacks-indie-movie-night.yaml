@@ -28,5 +28,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
+themes: [movies]
 tags: [movies, indie-film, cinema, industrial, rainy-day, bethlehem]
 credit:

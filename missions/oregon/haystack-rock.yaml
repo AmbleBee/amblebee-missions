@@ -28,4 +28,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [beach]
 tags: [coast, tide-pools, beach]

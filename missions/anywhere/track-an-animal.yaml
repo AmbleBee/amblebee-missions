@@ -32,5 +32,6 @@ season: any
 time_of_day: morning
 travel: local
 check_ahead: [conditions]
+themes: [wildlife]
 tags: [nature, wildlife, explore, detective, free]
 credit:

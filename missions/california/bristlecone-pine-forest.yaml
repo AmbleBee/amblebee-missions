@@ -27,4 +27,5 @@ travel: day-trip
 check_ahead: [seasonal, conditions]
 caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
           Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
+themes: [hiking, mountains, forests]
 tags: [hiking, trees, mountains, photography, high-altitude]

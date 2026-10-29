@@ -40,5 +40,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets, seasonal]
+themes: [hiking, boating, caves, history, architecture]
 tags: [castle, ferry, trails, tunnel, history, kids, east-haddam]
 credit:

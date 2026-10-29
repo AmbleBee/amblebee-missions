@@ -33,5 +33,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [beach, biking, food]
 tags: [biking, beach-towns, food, panhandle]
 credit:

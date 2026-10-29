@@ -25,5 +25,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
 discounts: [military]
+themes: [swimming, caves, spooky]
 tags: [cave, lantern, spooky, mineral-springs, manitou-springs, colorado-springs]
 credit:

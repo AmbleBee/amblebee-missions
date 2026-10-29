@@ -20,4 +20,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
+themes: [food, movies, relaxing]
 tags: [movies, food, cozy, rainy-day, portland]

@@ -33,5 +33,6 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [tickets, conditions]
+themes: [stars]
 tags: [stars, astronomy, telescope, dark-sky, west-texas]
 credit:

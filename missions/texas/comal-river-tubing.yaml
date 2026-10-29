@@ -34,5 +34,6 @@ season: [summer]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions, seasonal]
+themes: [lakes-rivers, swimming, boating]
 tags: [tubing, river, swimming, summer, hill-country]
 credit:

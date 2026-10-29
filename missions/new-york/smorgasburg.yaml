@@ -33,4 +33,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [seasonal]
+themes: [views, food, markets]
 tags: [food, market, outdoor, skyline, brooklyn, nyc]

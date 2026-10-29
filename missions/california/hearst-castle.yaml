@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
+themes: [history, architecture]
 tags: [history, castle, architecture, tour, central-coast]
 credit:

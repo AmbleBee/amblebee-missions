@@ -30,5 +30,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, seasonal, conditions]
+themes: [lakes-rivers, boating, forests, parks, wildlife]
 tags: [kayaking, paddling, swamp, cypress, wildlife, state-park, laurel]
 credit:

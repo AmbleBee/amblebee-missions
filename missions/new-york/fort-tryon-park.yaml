@@ -32,4 +32,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [views, forests, gardens]
 tags: [park, gardens, views, fall-colors, free, nyc]

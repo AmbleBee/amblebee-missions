@@ -32,4 +32,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [seasonal, conditions]
+themes: [boating, romantic]
 tags: [boating, park, romantic, central-park, nyc]

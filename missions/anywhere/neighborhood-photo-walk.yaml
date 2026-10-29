@@ -26,4 +26,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [walks]
 tags: [walk, guided, photo]

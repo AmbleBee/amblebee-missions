@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
+themes: [views, museums, art, quirky]
 tags: [quirky, roadside, art, museum, views, columbia-gorge]

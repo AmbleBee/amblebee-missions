@@ -26,5 +26,6 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
+themes: [thrills]
 tags: [climbing, bouldering, active, rainy-day, magnolia, seattle]
 credit:

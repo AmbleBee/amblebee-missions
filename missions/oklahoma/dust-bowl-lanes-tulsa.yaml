@@ -25,5 +25,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, reservation]
+themes: [drinks, games, quirky]
 tags: [bowling, retro, games, drinks, rainy-day, blue-dome, tulsa]
 credit:

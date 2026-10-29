@@ -24,4 +24,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [history, museums, shows]
 tags: [jazz, music, history, museum, new-orleans]

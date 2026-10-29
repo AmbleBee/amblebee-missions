@@ -35,5 +35,6 @@ season: [summer]
 time_of_day: daytime
 travel: local
 check_ahead: [seasonal]
+themes: [food]
 tags: [foraging, berries, nature, baking, summer, outdoors]
 credit:

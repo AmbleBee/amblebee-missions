@@ -30,5 +30,6 @@ time_of_day: daytime
 travel: drive
 check_ahead: [reservation, tickets, conditions]
 discounts: [senior, military]
+themes: [beach, boating, wildlife, history]
 tags: [island, wild-horses, beach, ruins, ferry, national-seashore, st-marys]
 credit:

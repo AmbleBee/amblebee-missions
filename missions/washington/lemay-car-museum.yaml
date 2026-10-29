@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [history, museums, vehicles]
 tags: [cars, museum, history, rainy-day, tacoma]

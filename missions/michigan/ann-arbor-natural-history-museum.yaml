@@ -31,5 +31,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+themes: [rocks-fossils, stars, museums]
 tags: [museum, dinosaurs, fossils, planetarium, rainy-day, solo, ann-arbor]
 credit:

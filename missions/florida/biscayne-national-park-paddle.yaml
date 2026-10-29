@@ -38,5 +38,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions, hours]
+themes: [lakes-rivers, boating, parks]
 tags: [kayak, national-park, mangroves, water, south-florida]
 credit:

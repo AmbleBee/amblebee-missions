@@ -26,4 +26,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, student]
+themes: [gardens, history, museums, art]
 tags: [museum, art, history, gardens, medieval, nyc]

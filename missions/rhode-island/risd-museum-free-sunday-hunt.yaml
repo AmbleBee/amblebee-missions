@@ -35,5 +35,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [military, senior, student]
+themes: [museums, art, games]
 tags: [museum, art, scavenger-hunt, rainy-day, family, providence]
 credit:

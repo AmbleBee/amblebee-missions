@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [lakes-rivers, rocks-fossils, parks]
 tags: [dinosaurs, fossils, river, state-park, central-texas]
 credit:

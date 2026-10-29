@@ -29,4 +29,5 @@ season: [spring, summer]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [views, waterfalls, rocks-fossils]
 tags: [waterfall, canyon, views, twin-falls]

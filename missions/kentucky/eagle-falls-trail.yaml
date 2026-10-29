@@ -27,5 +27,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [hiking, waterfalls, rocks-fossils]
 tags: [hiking, waterfall, cliffs, cumberland-falls, corbin]
 credit:

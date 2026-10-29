@@ -32,5 +32,6 @@ season: [fall, winter, spring]
 time_of_day: night
 travel: day-trip
 check_ahead: [conditions]
+themes: [deserts, stars, art]
 tags: [stars, dark-sky, art, desert, night, anza-borrego]
 credit:

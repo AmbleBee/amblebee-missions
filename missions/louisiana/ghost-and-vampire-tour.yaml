@@ -22,4 +22,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [tickets]
+themes: [walks, history, spooky]
 tags: [ghosts, spooky, history, walking, night, new-orleans]

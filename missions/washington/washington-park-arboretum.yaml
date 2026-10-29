@@ -30,4 +30,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [walks, forests, gardens]
 tags: [garden, trees, seasonal, walking, seattle]

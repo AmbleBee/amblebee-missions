@@ -22,4 +22,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
+themes: [swimming, food, games]
 tags: [pool, games, food, rainy-day, springfield]

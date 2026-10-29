@@ -27,4 +27,5 @@ season: [spring, fall, winter]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, hiking, waterfalls]
 tags: [hiking, waterfall, summit, views, ozarks]

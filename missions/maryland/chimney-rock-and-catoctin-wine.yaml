@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, reservation, conditions]
+themes: [views, hiking, drinks, romantic]
 tags: [hiking, views, wine, vineyard, romantic, catoctin, thurmont]
 credit:

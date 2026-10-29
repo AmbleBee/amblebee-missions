@@ -21,4 +21,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [reservation]
+themes: [quirky, relaxing]
 tags: [relaxing, quirky, portland]

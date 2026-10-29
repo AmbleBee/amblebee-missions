@@ -14,4 +14,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
+themes: [food]
 tags: [food, local, explore]

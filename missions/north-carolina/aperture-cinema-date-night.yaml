@@ -24,5 +24,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
+themes: [drinks, movies, relaxing]
 tags: [movies, cinema, indie-film, wine, cozy, rainy-day, winston-salem]
 credit:

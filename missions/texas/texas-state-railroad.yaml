@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal]
+themes: [views, forests, history, vehicles]
 tags: [trains, history, forest, scenic, east-texas]
 credit:

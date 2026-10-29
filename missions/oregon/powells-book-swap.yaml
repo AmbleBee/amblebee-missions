@@ -21,4 +21,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
+themes: [markets]
 tags: [books, gifts, rainy-day, portland]

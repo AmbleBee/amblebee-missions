@@ -23,4 +23,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
 caution: "Swimming is NOT recommended due to deadly and unpredictable river currents."
+themes: [hiking, waterfalls, history]
 tags: [waterfall, history, hiking]

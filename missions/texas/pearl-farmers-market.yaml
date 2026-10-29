@@ -31,5 +31,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [hours]
+themes: [food, markets]
 tags: [farmers-market, food, breakfast, san-antonio]
 credit:

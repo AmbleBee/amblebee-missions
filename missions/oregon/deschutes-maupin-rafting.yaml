@@ -31,5 +31,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
+themes: [lakes-rivers, boating, rocks-fossils]
 tags: [rafting, whitewater, river, canyon, deschutes, maupin]
 credit:

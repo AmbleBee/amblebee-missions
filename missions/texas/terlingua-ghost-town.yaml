@@ -32,5 +32,6 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: day-trip
+themes: [sunsets, history, quirky]
 tags: [ghost-town, history, sunset, quirky, big-bend]
 credit:

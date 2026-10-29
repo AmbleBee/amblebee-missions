@@ -20,4 +20,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, reservation]
+themes: [food, drinks]
 tags: [wine, food, weekend, splurge]

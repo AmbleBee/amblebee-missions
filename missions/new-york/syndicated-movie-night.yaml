@@ -24,4 +24,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
+themes: [food, drinks, movies]
 tags: [movies, dinner, drinks, brooklyn, rainy-day, nyc]

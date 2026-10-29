@@ -13,4 +13,5 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: local
+themes: [walks, food]
 tags: [coffee, walk, explore]

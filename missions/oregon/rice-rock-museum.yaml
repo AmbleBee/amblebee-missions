@@ -30,4 +30,5 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets]
 discounts: [military, senior, educator,first-responder, student]
+themes: [rocks-fossils, museums]
 tags: [museum, geology, rainy-day]

@@ -30,5 +30,6 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours, reservation]
+themes: [history, games]
 tags: [bowling, historic, games, friends, rainy-day, midtown, detroit]
 credit:

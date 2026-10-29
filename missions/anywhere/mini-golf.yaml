@@ -15,4 +15,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
+themes: [games, playful]
 tags: [games, playful, rainy-day-option]

@@ -35,5 +35,6 @@ setting: outdoor
 season: [spring, summer, fall]
 time_of_day: night
 travel: home
+themes: [wildlife]
 tags: [night, nature, bugs, backyard, free]
 credit:

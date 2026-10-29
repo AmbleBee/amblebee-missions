@@ -31,4 +31,5 @@ season: [winter]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
+themes: [wildlife, holidays]
 tags: [winter, horses, snow, christmas, leavenworth]

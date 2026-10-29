@@ -34,5 +34,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions, seasonal]
+themes: [views, hiking, gardens]
 tags: [hiking, mount-hood, wildflowers, views, timberline-trail, wilderness, portland]
 credit:

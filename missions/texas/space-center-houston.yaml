@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
+themes: [stars, museums, science]
 tags: [space, nasa, museum, science, rainy-day, houston]
 credit:

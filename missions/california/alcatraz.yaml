@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets]
+themes: [beach, boating, history]
 tags: [history, island, boat, san-francisco, rainy-day]

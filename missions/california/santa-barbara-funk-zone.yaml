@@ -22,5 +22,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [hours]
+themes: [walks, beach, art, drinks, romantic]
 tags: [wine, art, walking, romantic, beach, santa-barbara]
 credit:

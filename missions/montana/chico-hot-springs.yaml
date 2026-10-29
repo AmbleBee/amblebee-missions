@@ -21,5 +21,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [hours, reservation]
+themes: [mountains, swimming, food]
 tags: [hot-springs, soak, dinner, mountains]
 credit:

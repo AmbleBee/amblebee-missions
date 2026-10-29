@@ -33,4 +33,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
+themes: [games, quirky, playful]
 tags: [arcade, retro, games, playful, rainy-day, springfield]

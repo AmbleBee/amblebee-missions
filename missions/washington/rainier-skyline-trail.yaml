@@ -24,4 +24,5 @@ season: [summer, fall]
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
+themes: [views, hiking, mountains, parks, gardens]
 tags: [hiking, mountain, national-park, wildflowers, views]

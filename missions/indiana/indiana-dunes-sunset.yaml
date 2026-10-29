@@ -21,5 +21,6 @@ season: any
 time_of_day: evening
 travel: drive
 check_ahead: [hours]
+themes: [beach, lakes-rivers, sunsets]
 tags: [beach, sunset, dunes, lake]
 credit:

@@ -38,5 +38,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [wildlife, picnic]
 tags: [wildlife, bison, elk, birds, raptors, picnic, kids, st-louis, valley-park]
 credit:

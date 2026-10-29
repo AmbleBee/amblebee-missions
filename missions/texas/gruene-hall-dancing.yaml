@@ -25,5 +25,6 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [tickets]
+themes: [history, shows, romantic]
 tags: [dancing, music, honky-tonk, history, romantic, hill-country]
 credit:

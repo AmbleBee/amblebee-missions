@@ -31,5 +31,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [beach, swimming]
 tags: [beach, swimming, pier, panhandle]
 credit:

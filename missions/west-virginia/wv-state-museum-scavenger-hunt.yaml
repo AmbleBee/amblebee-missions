@@ -35,5 +35,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [history, museums, games]
 tags: [museum, history, free, kids, scavenger-hunt, rainy-day, charleston]
 credit:

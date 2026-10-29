@@ -33,4 +33,5 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
+themes: [beach, boating, wildlife, sunsets]
 tags: [whales, wildlife, islands, sunset, lighthouse, ferry]

@@ -19,5 +19,6 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: day-trip
+themes: [lakes-rivers, sunsets, history]
 tags: [river, sunset, historic, free]
 credit:

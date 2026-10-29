@@ -29,4 +29,5 @@ setting: outdoor
 season: any
 time_of_day: any
 travel: local
+themes: [walks, architecture, markets]
 tags: [walking, architecture, shopping, city, chicago]

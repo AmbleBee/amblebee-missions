@@ -34,5 +34,6 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
 discounts: [military, senior]
+themes: [beach, history, thrills]
 tags: [beach, pier, rides, history, galveston]
 credit:

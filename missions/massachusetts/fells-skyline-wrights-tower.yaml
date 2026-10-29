@@ -30,5 +30,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [conditions]
+themes: [views, hiking]
 tags: [hiking, skyline-trail, rock-scramble, views, skyline, solo, medford, boston]
 credit:

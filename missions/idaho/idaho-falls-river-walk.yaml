@@ -27,4 +27,5 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: local
+themes: [walks, waterfalls, lakes-rivers, sunsets]
 tags: [river, waterfall, walking, sunset, east-idaho]

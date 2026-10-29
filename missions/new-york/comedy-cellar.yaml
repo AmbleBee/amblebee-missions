@@ -24,4 +24,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [reservation]
+themes: [drinks, shows, small-towns]
 tags: [comedy, nightlife, drinks, village, nyc]

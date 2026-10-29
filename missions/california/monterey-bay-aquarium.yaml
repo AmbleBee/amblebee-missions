@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
+themes: [beach, wildlife]
 tags: [aquarium, animals, ocean, rainy-day, splurge]

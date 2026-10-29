@@ -17,4 +17,5 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: local
+themes: [views, sunsets, food]
 tags: [sunrise, views, early, coffee]

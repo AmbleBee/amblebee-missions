@@ -31,4 +31,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [hiking, forests]
 tags: [redwoods, forest, hiking, humboldt]

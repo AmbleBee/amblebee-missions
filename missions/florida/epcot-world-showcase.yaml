@@ -32,5 +32,6 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [tickets, hours]
+themes: [food, thrills, holidays]
 tags: [theme-park, food, fireworks, travel, orlando]
 credit:

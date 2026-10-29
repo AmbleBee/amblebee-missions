@@ -25,5 +25,6 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [hours]
+themes: [food, playful]
 tags: [food, late-night, explore, playful, cheap]
 credit:

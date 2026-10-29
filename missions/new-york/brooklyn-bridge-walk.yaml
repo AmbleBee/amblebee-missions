@@ -30,4 +30,5 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: local
+themes: [views, walks, architecture]
 tags: [walking, bridge, views, skyline, free, nyc]

@@ -23,4 +23,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [conditions]
+themes: [views, beach, rocks-fossils, picnic, sunsets]
 tags: [picnic, sunset, ocean, cliffs, views, san-diego]

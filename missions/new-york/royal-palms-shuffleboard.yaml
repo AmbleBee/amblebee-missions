@@ -25,4 +25,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, reservation]
+themes: [drinks, games, playful]
 tags: [games, drinks, playful, competitive, brooklyn, nyc]

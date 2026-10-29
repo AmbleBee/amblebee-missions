@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation]
+themes: [swimming, boating, caves]
 tags: [snorkeling, cave, springs, swimming, north-florida]
 credit:

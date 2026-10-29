@@ -33,5 +33,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: home
+themes: [make-something]
 tags: [movie-making, creative, toys, rainy-day, home]
 credit:

@@ -36,5 +36,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
+themes: [caves, parks]
 tags: [caves, lava-tubes, national-monument, adventure, far-north]
 credit:

@@ -34,5 +34,6 @@ season: any
 time_of_day: any
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, beach, wildlife, architecture, road-trips]
 tags: [views, ocean, bridge, whales, scenic-drive, big-sur]
 credit:

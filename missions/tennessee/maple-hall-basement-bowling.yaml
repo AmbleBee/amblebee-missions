@@ -25,5 +25,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
+themes: [drinks, games, playful]
 tags: [bowling, games, cocktails, playful, rainy-day, downtown, knoxville]
 credit:

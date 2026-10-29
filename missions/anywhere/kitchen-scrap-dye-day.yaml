@@ -26,5 +26,6 @@ setting: indoor
 season: any
 time_of_day: daytime
 travel: home
+themes: [science, make-something]
 tags: [craft, dye, science, kitchen, rainy-day, home]
 credit:

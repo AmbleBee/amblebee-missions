@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, conditions]
+themes: [wildlife, picnic]
 tags: [zoo, animals, free, picnic, kids, garden-city]
 credit:

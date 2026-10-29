@@ -21,5 +21,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [hiking, museums, art]
 tags: [art, museum, trails, free]
 credit:

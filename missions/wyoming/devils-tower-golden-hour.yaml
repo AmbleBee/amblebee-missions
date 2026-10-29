@@ -22,5 +22,6 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
+themes: [walks, parks, stars, sunsets]
 tags: [sunset, stars, national-monument, walk]
 credit:

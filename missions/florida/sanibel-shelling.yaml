@@ -33,5 +33,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [beach, wildlife, sunsets]
 tags: [beach, shells, wildlife, sunrise, southwest-florida]
 credit:

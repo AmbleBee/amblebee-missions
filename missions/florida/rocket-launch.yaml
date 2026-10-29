@@ -32,5 +32,6 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [conditions]
+themes: [stars]
 tags: [space, rockets, night, free, space-coast]
 credit:

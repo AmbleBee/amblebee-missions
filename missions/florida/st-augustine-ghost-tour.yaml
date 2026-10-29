@@ -31,5 +31,6 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [reservation]
+themes: [history, spooky]
 tags: [ghosts, history, spooky, night, st-augustine]
 credit:

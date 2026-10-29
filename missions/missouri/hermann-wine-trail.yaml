@@ -24,4 +24,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [lakes-rivers, history, food, drinks, small-towns]
 tags: [wine, food, river, history, small-town]

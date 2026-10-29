@@ -33,5 +33,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions, seasonal]
+themes: [views, hiking, mountains]
 tags: [hiking, mountain, fire-tower, appalachian-trail, views, grafton-notch, newry]
 credit:

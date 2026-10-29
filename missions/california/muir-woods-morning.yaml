@@ -33,5 +33,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation]
+themes: [walks, forests, parks]
 tags: [redwoods, forest, walking, national-monument, bay-area]
 credit:

@@ -24,4 +24,5 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [reservation]
+themes: [food, drinks, romantic]
 tags: [dinner, wine, romantic, food, spokane]

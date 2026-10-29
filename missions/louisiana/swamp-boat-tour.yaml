@@ -28,4 +28,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [reservation]
+themes: [lakes-rivers, boating, wildlife]
 tags: [wildlife, swamp, boat, alligators]

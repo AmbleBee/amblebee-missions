@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
+themes: [boating, parks, history]
 tags: [history, fort, boat, free, national-monument, st-augustine]
 credit:

@@ -23,4 +23,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [hours]
+themes: [shows, playful]
 tags: [jazz, music, night, dress-up, kansas-city]

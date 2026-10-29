@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [reservation, tickets]
+themes: [caves]
 tags: [caving, cave, adventure, muddy, underground, chattanooga]
 credit:

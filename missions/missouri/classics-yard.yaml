@@ -31,4 +31,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours, reservation]
+themes: [games, playful]
 tags: [games, sports, playful, rainy-day, springfield]

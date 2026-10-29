@@ -25,4 +25,5 @@ season: any
 time_of_day: any
 travel: day-trip
 check_ahead: [tickets, hours, seasonal]
+themes: [gardens, holidays, romantic]
 tags: [gardens, flowers, fountains, romantic, holiday-lights]

@@ -31,4 +31,5 @@ season: [summer]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [lakes-rivers, boating]
 tags: [river, canoe, kayak, float-trip, ozarks]

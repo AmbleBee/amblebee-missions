@@ -24,5 +24,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
+themes: [history, movies]
 tags: [movies, cinema, historic, indie-film, rainy-day, montgomery]
 credit:

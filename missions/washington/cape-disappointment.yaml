@@ -33,4 +33,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
+themes: [beach, history]
 tags: [lighthouse, ocean, history, storms, coast, southwest-washington]

@@ -36,5 +36,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, conditions]
+themes: [lakes-rivers, parks, wildlife, biking]
 tags: [everglades, alligators, wildlife, biking, national-park]
 credit:

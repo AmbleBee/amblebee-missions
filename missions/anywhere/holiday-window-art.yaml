@@ -28,4 +28,5 @@ setting: indoor
 season: any
 time_of_day: any
 travel: home
+themes: [art, games, holidays, playful, make-something]
 tags: [art, holiday, at-home, playful, creative, competitive]

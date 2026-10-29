@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [hiking, waterfalls, swimming, caves]
 tags: [swimming-hole, waterfall, hiking, grotto, hill-country]
 credit:

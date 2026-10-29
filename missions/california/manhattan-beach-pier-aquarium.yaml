@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [beach, wildlife]
 tags: [beach, pier, aquarium, ocean, los-angeles]

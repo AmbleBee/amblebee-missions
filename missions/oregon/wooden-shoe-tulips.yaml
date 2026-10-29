@@ -21,4 +21,5 @@ season: [spring]
 time_of_day: daytime
 travel: drive
 check_ahead: [tickets, seasonal]
+themes: [wildlife, gardens]
 tags: [flowers, farm, seasonal]

@@ -27,5 +27,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, tickets]
+themes: [beach, boating, biking, food]
 tags: [biking, island, ferry, fudge]
 credit:

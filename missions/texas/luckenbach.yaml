@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [history, shows, quirky, small-towns]
 tags: [music, small-town, quirky, history, hill-country]
 credit:

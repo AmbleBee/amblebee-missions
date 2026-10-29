@@ -34,4 +34,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [walks, history, museums]
 tags: [history, oregon-trail, museum, walking, eastern-oregon]

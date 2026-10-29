@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal]
+themes: [wildlife, holidays]
 tags: [animals, farm, christmas, leavenworth]

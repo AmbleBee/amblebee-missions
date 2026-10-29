@@ -27,5 +27,6 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
+themes: [food, playful, make-something]
 tags: [food, surprise, local, try-something-new]
 credit: Nikki D.

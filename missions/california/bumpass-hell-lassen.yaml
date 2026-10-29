@@ -35,5 +35,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [hiking, swimming, rocks-fossils, parks]
 tags: [volcano, geothermal, hiking, national-park, lassen]
 credit:

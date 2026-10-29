@@ -20,4 +20,5 @@ setting: outdoor
 season: any
 time_of_day: night
 travel: local
+themes: [drinks, shows]
 tags: [nightlife, music, new-orleans]

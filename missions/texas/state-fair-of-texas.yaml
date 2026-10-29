@@ -32,5 +32,6 @@ season: [fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal]
+themes: [food, thrills, holidays]
 tags: [fair, food, rides, fall, festival, dallas]
 credit:

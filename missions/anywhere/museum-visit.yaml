@@ -15,4 +15,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
+themes: [art, make-something]
 tags: [art, culture, learning, rainy-day]

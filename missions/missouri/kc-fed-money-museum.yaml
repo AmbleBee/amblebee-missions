@@ -37,5 +37,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [history, museums]
 tags: [museum, free, money, history, rainy-day, kansas-city]
 credit:

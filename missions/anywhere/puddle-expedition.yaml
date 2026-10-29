@@ -33,5 +33,6 @@ season: [fall, winter, spring]
 time_of_day: daytime
 travel: home
 check_ahead: [conditions]
+themes: [walks]
 tags: [rainy-day, rain, nature, walk, free, outdoors]
 credit:

@@ -22,4 +22,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets]
+themes: [walks, spooky, games, playful]
 tags: [puzzles, mystery, walking, playful, new-orleans]

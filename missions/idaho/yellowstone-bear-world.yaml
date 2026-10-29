@@ -32,4 +32,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
+themes: [wildlife]
 tags: [animals, wildlife, drive-thru, east-idaho]

@@ -35,4 +35,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal]
+themes: [beach, thrills]
 tags: [dunes, thrill, beach, coast, central-coast]

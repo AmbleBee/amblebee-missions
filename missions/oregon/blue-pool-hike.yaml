@@ -26,4 +26,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 caution: "Extremely Cold Water: Blue Pool stays near 37°F (3°C) year-round. Never jump in, no matter how hot it is outside. The freezing water can cause cold shock, making it difficult to breathe or swim."
+themes: [hiking, forests]
 tags: [hiking, water, forest]

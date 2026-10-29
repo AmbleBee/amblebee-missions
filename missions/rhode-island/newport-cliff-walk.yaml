@@ -22,5 +22,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [walks, beach, history]
 tags: [ocean, walk, mansions, free]
 credit:

@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
+themes: [views, mountains, deserts]
 tags: [tram, mountains, views, desert, palm-springs]
 credit:

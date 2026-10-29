@@ -29,4 +29,5 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [seasonal]
+themes: [walks, lakes-rivers, boating, sunsets]
 tags: [lake, boat, sunset, walking, north-idaho]

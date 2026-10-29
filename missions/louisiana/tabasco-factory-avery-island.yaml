@@ -32,5 +32,6 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets]
 discounts: [senior, military]
+themes: [food]
 tags: [food, factory-tour, hot-sauce, cajun-country, avery-island, new-iberia]
 credit:

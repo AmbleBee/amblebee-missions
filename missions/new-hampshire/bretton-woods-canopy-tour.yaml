@@ -31,5 +31,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
+themes: [mountains, thrills]
 tags: [zipline, canopy-tour, gondola, mountains, thrill, date, bretton-woods, white-mountains]
 credit:

@@ -33,4 +33,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
 discounts: [senior, student]
+themes: [stars, museums, science]
 tags: [space, science, museum, rainy-day, los-angeles]

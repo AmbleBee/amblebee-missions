@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours]
+themes: [museums, art, shows, quirky]
 tags: [museum, puppets, art, quirky, barn, northeast-kingdom, glover]
 credit:

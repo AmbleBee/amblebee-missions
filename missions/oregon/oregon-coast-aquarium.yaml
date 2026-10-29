@@ -31,4 +31,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
 discounts: [birthday, military, local]
+themes: [beach, wildlife]
 tags: [aquarium, animals, coast, rainy-day]

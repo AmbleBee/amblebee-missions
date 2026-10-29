@@ -31,4 +31,5 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: day-trip
+themes: [views, beach, parks, architecture]
 tags: [bridge, views, beach, state-park, whidbey]

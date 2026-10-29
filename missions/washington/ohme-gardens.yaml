@@ -32,4 +32,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
+themes: [views, gardens, relaxing]
 tags: [gardens, views, calm, central-washington, wenatchee]

@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
+themes: [caves, parks]
 tags: [cave, underground, state-park, tour, panhandle]
 credit:

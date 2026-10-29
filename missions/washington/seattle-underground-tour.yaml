@@ -34,4 +34,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [tickets]
+themes: [caves, history, quirky]
 tags: [history, underground, tour, quirky, rainy-day, seattle]

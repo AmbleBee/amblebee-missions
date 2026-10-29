@@ -37,5 +37,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [boating, wildlife]
 tags: [kayak, otters, wildlife, water, central-coast]
 credit:

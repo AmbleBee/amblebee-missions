@@ -14,4 +14,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [relaxing]
 tags: [nature, calm, seasonal, outdoors]

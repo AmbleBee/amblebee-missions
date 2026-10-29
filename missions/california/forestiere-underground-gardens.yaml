@@ -35,5 +35,6 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal]
 discounts: [military, student, senior]
+themes: [caves, gardens, history, quirky]
 tags: [quirky, underground, history, gardens, central-valley]
 credit:

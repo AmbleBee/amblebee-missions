@@ -31,5 +31,6 @@ setting: outdoor
 season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
+themes: [gardens]
 tags: [gardens, roses, flowers, free, east-texas]
 credit:

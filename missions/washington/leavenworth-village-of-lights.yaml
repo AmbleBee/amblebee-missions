@@ -31,4 +31,5 @@ season: [fall, winter]
 time_of_day: night
 travel: day-trip
 check_ahead: [seasonal]
+themes: [holidays]
 tags: [christmas, lights, holiday, leavenworth]

@@ -33,5 +33,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [food]
 tags: [food, culture, coffee, cuban, miami]
 credit:

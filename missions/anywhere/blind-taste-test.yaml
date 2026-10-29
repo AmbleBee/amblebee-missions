@@ -25,4 +25,5 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: home
+themes: [food, games, playful]
 tags: [food, games, playful, at-home, competitive]

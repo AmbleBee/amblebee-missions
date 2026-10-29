@@ -31,5 +31,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, student, military]
+themes: [museums, vehicles]
 tags: [cars, hot-rods, racing, engines, museum, rainy-day, lincoln]
 credit:

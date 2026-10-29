@@ -32,5 +32,6 @@ season: [fall]
 time_of_day: morning
 travel: day-trip
 check_ahead: [seasonal, hours]
+themes: [wildlife, food]
 tags: [apples, farms, fall, food, gold-country]
 credit:

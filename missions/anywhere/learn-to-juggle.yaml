@@ -32,5 +32,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: home
+themes: [make-something]
 tags: [juggling, new-skill, challenge, rainy-day, home]
 credit:

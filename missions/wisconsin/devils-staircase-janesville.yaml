@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [conditions]
+themes: [hiking, lakes-rivers, rocks-fossils]
 tags: [hiking, ice-age-trail, rock-steps, river, cliffs, janesville]
 credit:

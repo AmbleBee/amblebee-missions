@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [tickets, seasonal]
+themes: [views, forests, parks, vehicles]
 tags: [train, national-park, fall-color, scenic]

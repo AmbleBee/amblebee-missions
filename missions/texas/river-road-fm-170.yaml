@@ -34,5 +34,6 @@ travel: day-trip
 check_ahead: [conditions]
 caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
           Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
+themes: [lakes-rivers, deserts, rocks-fossils, road-trips]
 tags: [scenic-drive, river, canyon, desert, big-bend]
 credit:

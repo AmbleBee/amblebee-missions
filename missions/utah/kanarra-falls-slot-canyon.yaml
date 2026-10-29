@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [tickets, conditions]
+themes: [hiking, waterfalls, lakes-rivers, swimming, rocks-fossils]
 tags: [hiking, slot-canyon, waterfall, creek, wading, cedar-city, kanarraville]
 credit:

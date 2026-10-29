@@ -34,4 +34,5 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [hours, conditions]
+themes: [deserts, wildlife]
 tags: [birds, wildlife, nature, high-desert, eastern-oregon]

@@ -28,5 +28,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [hiking, lakes-rivers, mountains, boating]
 tags: [hiking, lake, boat, mountains, sawtooths, stanley]
 credit:

@@ -31,5 +31,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [history, art, quirky]
 tags: [art, quirky, roadside, route-66, free, panhandle]
 credit:

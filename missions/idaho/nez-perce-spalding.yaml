@@ -34,4 +34,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [lakes-rivers, history, museums]
 tags: [history, culture, museum, river, nez-perce]

@@ -35,5 +35,6 @@ season: [winter]
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, seasonal]
+themes: [beach, boating, wildlife]
 tags: [birds, wildlife, boat, winter, gulf-coast]
 credit:

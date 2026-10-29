@@ -34,5 +34,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [beach, swimming, architecture, road-trips]
 tags: [scenic-drive, beach, bridge, swimming, florida-keys]
 credit:

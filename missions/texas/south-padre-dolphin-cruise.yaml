@@ -31,5 +31,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [reservation]
+themes: [boating, wildlife, sunsets, romantic]
 tags: [dolphins, boat, sunset, romantic, south-padre]
 credit:

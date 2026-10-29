@@ -28,4 +28,5 @@ season: [spring, summer, fall, winter]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets, seasonal]
+themes: [gardens, history, holidays]
 tags: [mansion, gardens, history, holiday-lights]

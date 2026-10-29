@@ -23,4 +23,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal]
+themes: [caves, rocks-fossils]
 tags: [cave, volcano, adventure]

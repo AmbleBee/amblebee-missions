@@ -32,5 +32,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [deserts, swimming, parks]
 tags: [swimming, springs, desert, state-park, west-texas]
 credit:

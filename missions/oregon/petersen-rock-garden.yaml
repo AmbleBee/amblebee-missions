@@ -22,4 +22,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [art, quirky]
 tags: [roadside, quirky, folk-art]

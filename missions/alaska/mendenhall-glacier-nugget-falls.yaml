@@ -35,5 +35,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, conditions]
 discounts: [senior, military]
+themes: [hiking, waterfalls, rocks-fossils, wildlife]
 tags: [glacier, waterfall, wildlife, salmon, easy-hike, juneau]
 credit:

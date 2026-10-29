@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal, conditions]
+themes: [beach, wildlife]
 tags: [lighthouse, seals, wildlife, ocean, national-seashore, bay-area]
 credit:

@@ -15,4 +15,5 @@ setting: either
 season: any
 time_of_day: any
 travel: local
+themes: [food, romantic]
 tags: [sentimental, anniversary, food, nostalgia]

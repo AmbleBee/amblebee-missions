@@ -38,5 +38,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [lakes-rivers, boating, forests, wildlife]
 tags: [paddling, swamp, cypress, wildlife, east-texas]
 credit:

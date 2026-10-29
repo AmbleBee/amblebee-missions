@@ -20,5 +20,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, parks, sunsets, road-trips]
 tags: [scenic-drive, sunset, national-park, views]
 credit:

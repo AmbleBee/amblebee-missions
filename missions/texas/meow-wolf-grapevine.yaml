@@ -33,5 +33,6 @@ season: any
 time_of_day: any
 travel: day-trip
 check_ahead: [tickets]
+themes: [science, art, playful]
 tags: [immersive-art, interactive, playful, rainy-day, dallas-fort-worth]
 credit:

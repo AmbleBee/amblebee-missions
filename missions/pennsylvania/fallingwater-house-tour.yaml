@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets, reservation, seasonal]
+themes: [waterfalls, history, architecture]
 tags: [architecture, frank-lloyd-wright, waterfall, history, laurel-highlands, mill-run]
 credit:

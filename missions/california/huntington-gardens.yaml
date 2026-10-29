@@ -34,4 +34,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 discounts: [senior, military, student]
+themes: [gardens, art, relaxing]
 tags: [garden, art, calm, splurge, los-angeles]

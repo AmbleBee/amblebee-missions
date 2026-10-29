@@ -24,4 +24,5 @@ setting: indoor
 season: any
 time_of_day: any
 travel: local
+themes: [art, playful]
 tags: [at-home, art, coloring, playful, rainy-day]

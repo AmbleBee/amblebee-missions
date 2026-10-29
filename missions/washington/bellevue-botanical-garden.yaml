@@ -28,4 +28,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [gardens, relaxing]
 tags: [garden, flowers, calm, bellevue]

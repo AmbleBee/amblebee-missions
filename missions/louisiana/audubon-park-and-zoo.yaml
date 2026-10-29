@@ -32,4 +32,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 discounts: [military, senior]
+themes: [forests, wildlife, vehicles]
 tags: [park, trees, zoo, animals, streetcar, new-orleans]

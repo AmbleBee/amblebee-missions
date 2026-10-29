@@ -26,5 +26,6 @@ season: [summer, fall]
 time_of_day: night
 travel: day-trip
 check_ahead: [tickets, seasonal]
+themes: [picnic, shows, romantic]
 tags: [music, concert, picnic, romantic, night, los-angeles]
 credit:

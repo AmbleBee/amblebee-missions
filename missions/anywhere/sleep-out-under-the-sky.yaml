@@ -38,5 +38,6 @@ season: [spring, summer, fall]
 time_of_day: night
 travel: local
 check_ahead: [conditions]
+themes: [stars, sunsets]
 tags: [camping, overnight, stars, sunrise, microadventure]
 credit:

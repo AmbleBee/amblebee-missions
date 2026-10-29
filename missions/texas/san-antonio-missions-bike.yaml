@@ -34,5 +34,6 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: day-trip
+themes: [parks, biking, history]
 tags: [biking, history, missions, national-park, san-antonio]
 credit:

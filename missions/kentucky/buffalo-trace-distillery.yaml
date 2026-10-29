@@ -21,5 +21,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation]
+themes: [drinks]
 tags: [bourbon, tour, tasting, "21+"]
 credit:

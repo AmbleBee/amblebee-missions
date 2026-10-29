@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, hours]
+themes: [waterfalls, wildlife]
 tags: [wildlife, bison, waterfall, ozarks, branson]

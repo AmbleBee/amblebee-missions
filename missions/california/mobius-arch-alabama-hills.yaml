@@ -36,5 +36,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [hiking, rocks-fossils, sunsets, movies]
 tags: [sunrise, rocks, arch, hiking, movies, eastern-sierra]
 credit:

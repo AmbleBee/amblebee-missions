@@ -25,4 +25,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, hiking, gardens]
 tags: [hiking, summit, views, wildflowers]

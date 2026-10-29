@@ -20,4 +20,5 @@ setting: outdoor
 season: [spring, summer, fall]
 time_of_day: evening
 travel: local
+themes: [lakes-rivers, picnic, architecture]
 tags: [picnic, bridge, river, portland]

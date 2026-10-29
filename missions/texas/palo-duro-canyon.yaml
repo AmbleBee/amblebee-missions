@@ -33,5 +33,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [hiking, rocks-fossils, parks]
 tags: [canyon, hiking, state-park, panhandle]
 credit:

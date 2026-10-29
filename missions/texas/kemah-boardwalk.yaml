@@ -31,5 +31,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [hours]
+themes: [walks, lakes-rivers, food, thrills]
 tags: [boardwalk, rides, seafood, bay, houston-area]
 credit:

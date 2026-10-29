@@ -32,5 +32,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, hiking, lakes-rivers, forests]
 tags: [hiking, superior-hiking-trail, lakes, views, fall-color, north-shore, silver-bay]
 credit:

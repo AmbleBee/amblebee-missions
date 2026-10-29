@@ -23,4 +23,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
+themes: [food, movies]
 tags: [movies, food, rainy-day, springfield]

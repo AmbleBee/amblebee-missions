@@ -21,4 +21,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
+themes: [walks, history, drinks]
 tags: [cocktails, history, tour, walking, new-orleans]

@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [history, museums, quirky]
 tags: [museum, quirky, soda, history, rainy-day, waco]
 credit:

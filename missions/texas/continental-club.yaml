@@ -26,5 +26,6 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [tickets]
+themes: [drinks, shows, romantic]
 tags: [music, nightlife, dancing, romantic, austin]
 credit:

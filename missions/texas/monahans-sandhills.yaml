@@ -35,5 +35,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [beach, parks, playful]
 tags: [dunes, sledding, playful, state-park, west-texas]
 credit:

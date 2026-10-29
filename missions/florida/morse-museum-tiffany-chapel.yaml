@@ -27,5 +27,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, student]
+themes: [museums, art]
 tags: [museum, art, stained-glass, tiffany, rainy-day, winter-park, orlando]
 credit:

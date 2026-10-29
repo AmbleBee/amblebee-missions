@@ -35,5 +35,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [rocks-fossils, museums]
 tags: [museum, dinosaurs, fossils, free, rainy-day, kids, lubbock]
 credit:

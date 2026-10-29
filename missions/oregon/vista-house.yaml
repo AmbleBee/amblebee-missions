@@ -23,4 +23,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, conditions]
+themes: [views, rocks-fossils, history, road-trips]
 tags: [views, history, gorge, scenic-drive]

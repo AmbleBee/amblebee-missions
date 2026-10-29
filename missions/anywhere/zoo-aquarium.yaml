@@ -24,4 +24,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [tickets, hours]
+themes: [wildlife]
 tags: [animals, rainy-day-option]

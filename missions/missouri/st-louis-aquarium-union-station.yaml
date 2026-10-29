@@ -33,4 +33,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [tickets]
+themes: [views, wildlife, history]
 tags: [aquarium, animals, views, history, rainy-day, st-louis]

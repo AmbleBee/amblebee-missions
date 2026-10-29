@@ -22,5 +22,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
+themes: [lakes-rivers, boating, food]
 tags: [boat, canal, dinner, city]
 credit:

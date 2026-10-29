@@ -22,5 +22,6 @@ setting: outdoor
 season: any
 time_of_day: night
 travel: local
+themes: [beach, architecture, drinks, quirky, romantic]
 tags: [architecture, neon, nightlife, beach, romantic, miami]
 credit:

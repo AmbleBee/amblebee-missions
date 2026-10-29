@@ -32,5 +32,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
+themes: [lakes-rivers, rocks-fossils, sunsets]
 tags: [sunset, lake, geology, photography, eastern-sierra]
 credit:

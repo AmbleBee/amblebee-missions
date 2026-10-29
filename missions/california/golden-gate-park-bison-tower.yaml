@@ -34,4 +34,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, student]
+themes: [views, walks, wildlife]
 tags: [park, views, animals, walking, san-francisco]

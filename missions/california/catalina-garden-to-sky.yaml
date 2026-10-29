@@ -36,5 +36,6 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, reservation, conditions]
 discounts: [senior, student, military]
+themes: [views, hiking, beach, boating, gardens]
 tags: [island, ferry, hiking, garden, ocean-views, catalina, avalon, los-angeles]
 credit:

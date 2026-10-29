@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
+themes: [gardens, history, architecture]
 tags: [history, mansion, gardens, architecture, miami]
 credit:

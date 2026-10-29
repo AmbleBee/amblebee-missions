@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
+themes: [caves, history, architecture]
 tags: [underground, history, architecture, tour, rainy-day, houston]
 credit:

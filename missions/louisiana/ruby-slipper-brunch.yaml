@@ -22,4 +22,5 @@ season: any
 time_of_day: morning
 travel: local
 check_ahead: [hours]
+themes: [food]
 tags: [food, brunch, new-orleans]

@@ -21,5 +21,6 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: day-trip
+themes: [beach, sunsets, games]
 tags: [beach, sunset, treasure-hunt, free]
 credit:

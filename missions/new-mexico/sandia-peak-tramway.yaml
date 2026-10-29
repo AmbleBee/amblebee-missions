@@ -22,5 +22,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets, conditions]
+themes: [views, mountains, sunsets]
 tags: [views, sunset, tram, mountains]
 credit:

@@ -35,5 +35,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
+themes: [wildlife, history, drinks, playful]
 tags: [cider, apples, playful, history, farm, upstate-new-york]
 credit: Anonymous User

@@ -23,5 +23,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: home
+themes: [make-something]
 tags: [crafts, make-something, gifts, creative, at-home]
 credit:

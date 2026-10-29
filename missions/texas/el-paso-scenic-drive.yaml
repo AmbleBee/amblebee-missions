@@ -30,5 +30,6 @@ setting: outdoor
 season: any
 time_of_day: night
 travel: day-trip
+themes: [views]
 tags: [views, night, city-lights, free, el-paso]
 credit:

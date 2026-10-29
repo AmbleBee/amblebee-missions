@@ -27,4 +27,5 @@ season: any
 time_of_day: night
 travel: drive
 check_ahead: [conditions]
+themes: [stars]
 tags: [stars, night, astronomy, dark-sky]

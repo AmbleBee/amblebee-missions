@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, hours]
+themes: [history, museums]
 tags: [history, museum, mission, free, san-antonio]
 credit:

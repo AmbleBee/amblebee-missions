@@ -19,4 +19,5 @@ setting: outdoor
 season: [spring, summer]
 time_of_day: any
 travel: local
+themes: [views, gardens]
 tags: [garden, flowers, views, portland]

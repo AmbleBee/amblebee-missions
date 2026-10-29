@@ -31,4 +31,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [beach, wildlife]
 tags: [wildlife, ocean, sea-lions, coast, san-diego]

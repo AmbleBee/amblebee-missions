@@ -35,5 +35,6 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
+themes: [picnic, vehicles]
 tags: [planes, airport, picnic, free, outdoors, aviation]
 credit:

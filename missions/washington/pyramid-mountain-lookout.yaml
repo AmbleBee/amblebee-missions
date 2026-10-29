@@ -22,4 +22,5 @@ season: [summer, fall]
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, hiking]
 tags: [hiking, lookout, views, olympic]

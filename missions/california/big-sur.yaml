@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, waterfalls, beach, road-trips]
 tags: [scenic-drive, coast, waterfall, views, road-trip]

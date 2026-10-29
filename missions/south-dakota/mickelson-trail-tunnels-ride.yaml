@@ -34,5 +34,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [reservation, seasonal, conditions]
+themes: [caves, forests, biking]
 tags: [biking, rail-trail, tunnels, forest, black-hills, hill-city, rochford]
 credit:

@@ -40,5 +40,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [reservation, seasonal, conditions]
+themes: [lakes-rivers, boating, picnic]
 tags: [canoe, paddling, river, shenandoah-river, picnic, front-royal, bentonville]
 credit:

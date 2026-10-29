@@ -32,5 +32,6 @@ season: [spring, summer, fall]
 time_of_day: morning
 travel: drive
 check_ahead: [conditions]
+themes: [views, hiking, parks]
 tags: [hiking, summit, views, black-hills, national-forest, spearfish]
 credit:

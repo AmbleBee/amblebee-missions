@@ -23,5 +23,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [walks, picnic, drinks, romantic]
 tags: [wine, walking, romantic, picnic, wine-country]
 credit:

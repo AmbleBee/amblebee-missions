@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, seasonal]
+themes: [parks, history]
 tags: [history, native-american, fort, state-park, family, mandan, bismarck]
 credit:

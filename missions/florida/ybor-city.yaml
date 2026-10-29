@@ -25,5 +25,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [reservation]
+themes: [history, food, romantic]
 tags: [dinner, history, flamenco, romantic, tampa]
 credit:

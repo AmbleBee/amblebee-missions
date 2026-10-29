@@ -30,4 +30,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 discounts: [military]
+themes: [wildlife]
 tags: [animals, portland]

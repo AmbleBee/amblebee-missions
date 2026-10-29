@@ -23,5 +23,6 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [reservation, seasonal]
 discounts: [local, military]
+themes: [views, rocks-fossils, food]
 tags: [dinner, tram, glaciers, views]
 credit:

@@ -33,5 +33,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [hours]
+themes: [walks, lakes-rivers, forests, wildlife]
 tags: [swamp, birds, boardwalk, cypress, southwest-florida]
 credit:

@@ -33,5 +33,6 @@ season: any
 time_of_day: morning
 travel: local
 check_ahead: [hours, conditions]
+themes: [swimming]
 tags: [swimming, springs, park, austin]
 credit:

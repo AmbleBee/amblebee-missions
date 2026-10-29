@@ -20,4 +20,5 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [views, lakes-rivers, rocks-fossils]
 tags: [volcano, views, lake]

@@ -33,4 +33,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [views, history, museums]
 tags: [history, museum, views, rainy-day, baton-rouge]

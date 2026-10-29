@@ -22,5 +22,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
+themes: [views, sunsets]
 tags: [views, sunset, city-lights, statue]
 credit:

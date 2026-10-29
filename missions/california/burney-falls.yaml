@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions, reservation]
+themes: [hiking, waterfalls, parks]
 tags: [waterfall, hiking, state-park, far-north]
 credit:

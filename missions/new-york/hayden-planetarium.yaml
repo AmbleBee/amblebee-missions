@@ -33,4 +33,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets]
+themes: [stars, museums, science]
 tags: [space, planetarium, science, museum, rainy-day, nyc]

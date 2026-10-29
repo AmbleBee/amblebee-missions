@@ -38,4 +38,5 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
 caution: "Limited Cell Service: Some visitors report having cell reception in this area, but coverage is unreliable. Do not rely on cell service."
+themes: [views, deserts, stars]
 tags: [desert, stargazing, remote, views, high-desert, eastern-oregon]

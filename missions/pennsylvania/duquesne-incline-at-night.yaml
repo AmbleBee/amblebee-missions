@@ -22,5 +22,6 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [hours]
+themes: [views, history]
 tags: [views, city-lights, historic, incline]
 credit:

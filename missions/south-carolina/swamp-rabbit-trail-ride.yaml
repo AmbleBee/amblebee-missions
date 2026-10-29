@@ -36,5 +36,6 @@ check_ahead: [hours]
 gear:
   - item: bikes
     rent: on-site
+themes: [walks, waterfalls, biking, food]
 tags: [biking, rail-trail, greenway, cafe, falls-park, greenville, travelers-rest]
 credit:

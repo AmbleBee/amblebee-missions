@@ -18,5 +18,6 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: local
+themes: [food, make-something]
 tags: [food, sushi, try-something-new, dinner, rating]
 credit:

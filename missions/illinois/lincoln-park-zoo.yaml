@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [wildlife, holidays]
 tags: [zoo, animals, free, holiday-lights, chicago]

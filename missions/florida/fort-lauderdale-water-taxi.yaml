@@ -30,5 +30,6 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: day-trip
+themes: [lakes-rivers, boating, sunsets]
 tags: [boat, canals, sunset, fort-lauderdale]
 credit:

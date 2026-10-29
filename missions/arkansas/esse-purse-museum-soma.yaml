@@ -30,5 +30,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, military, student]
+themes: [history, museums, quirky]
 tags: [museum, history, fashion, quirky, rainy-day, soma, little-rock]
 credit:

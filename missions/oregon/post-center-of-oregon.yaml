@@ -36,4 +36,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [quirky, small-towns]
 tags: [quirky, roadside, small-town, central-oregon]

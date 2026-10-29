@@ -29,5 +29,6 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets]
 discounts: [senior, military, student]
+themes: [movies, romantic]
 tags: [movies, arthouse, cinema, date-night, rainy-day, concord]
 credit:

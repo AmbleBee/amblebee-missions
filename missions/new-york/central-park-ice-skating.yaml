@@ -32,4 +32,5 @@ season: [fall, winter]
 time_of_day: evening
 travel: local
 check_ahead: [tickets, seasonal]
+themes: [romantic]
 tags: [ice-skating, winter, romantic, central-park, nyc]

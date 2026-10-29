@@ -27,5 +27,6 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [conditions]
+themes: [views, hiking, sunsets]
 tags: [hiking, views, sunset, foothills, free, salt-lake-city]
 credit:

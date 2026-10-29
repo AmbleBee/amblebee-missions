@@ -22,4 +22,5 @@ season: any
 time_of_day: morning
 travel: drive
 check_ahead: [reservation, conditions]
+themes: [hiking, waterfalls, rocks-fossils]
 tags: [waterfall, gorge, hiking]

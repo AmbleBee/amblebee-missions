@@ -23,5 +23,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation]
+themes: [food, drinks, romantic, small-towns]
 tags: [wine, small-town, romantic, food, hill-country]
 credit:

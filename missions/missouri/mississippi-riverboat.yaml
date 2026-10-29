@@ -29,4 +29,5 @@ season: [spring, summer, fall]
 time_of_day: any
 travel: local
 check_ahead: [tickets, seasonal]
+themes: [views, lakes-rivers, boating, history]
 tags: [river, boat, views, history]

@@ -20,5 +20,6 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: local
+themes: [lakes-rivers, architecture]
 tags: [bridge, river, state-line, free]
 credit:

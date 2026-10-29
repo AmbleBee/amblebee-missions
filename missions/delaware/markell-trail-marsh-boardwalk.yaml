@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [conditions]
+themes: [walks, lakes-rivers, wildlife, biking]
 tags: [walking, boardwalk, marsh, wildlife, birding, rail-trail, wilmington]
 credit:

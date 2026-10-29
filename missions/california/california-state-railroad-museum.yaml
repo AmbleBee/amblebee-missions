@@ -34,5 +34,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [history, museums, vehicles]
 tags: [trains, museum, history, rainy-day, sacramento]
 credit:

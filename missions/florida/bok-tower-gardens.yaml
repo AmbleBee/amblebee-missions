@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [gardens, architecture, shows, relaxing]
 tags: [gardens, music, architecture, calm, central-florida]
 credit:

@@ -17,5 +17,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: home
+themes: [art, drinks, make-something]
 tags: [painting, art, drinks, at-home, creative]
 credit: Kali W.

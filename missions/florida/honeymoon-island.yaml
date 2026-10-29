@@ -31,5 +31,6 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: day-trip
+themes: [hiking, beach, parks, wildlife]
 tags: [beach, birds, hiking, state-park, tampa-bay]
 credit:

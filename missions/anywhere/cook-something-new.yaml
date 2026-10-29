@@ -17,4 +17,5 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: local
+themes: [food, shows, make-something]
 tags: [at-home, cooking, food, music, rainy-day]

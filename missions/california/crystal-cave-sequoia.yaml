@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal]
+themes: [caves, forests, parks]
 tags: [cave, underground, national-park, tour, sequoia]
 credit:

@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [beach, wildlife]
 tags: [turtles, wildlife, rescue, beach, south-padre]
 credit:

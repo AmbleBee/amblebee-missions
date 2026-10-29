@@ -14,4 +14,5 @@ setting: outdoor
 season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
+themes: [picnic, food, playful]
 tags: [food, picnic, surprise, outdoors]

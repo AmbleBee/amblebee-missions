@@ -30,5 +30,6 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: day-trip
+themes: [history, architecture, food]
 tags: [night, bridge, history, dinner, sacramento]
 credit:

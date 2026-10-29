@@ -13,4 +13,5 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: home
+themes: [food, make-something]
 tags: [food, cooking, rainy-day, home]

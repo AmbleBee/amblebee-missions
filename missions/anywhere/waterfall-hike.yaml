@@ -16,4 +16,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
+themes: [hiking, waterfalls]
 tags: [hiking, nature, waterfall, outdoors]

@@ -31,5 +31,6 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, reservation]
 discounts: [senior, military]
+themes: [caves, rocks-fossils, parks]
 tags: [cave, national-park, underground, geology, rainy-day, carlsbad]
 credit:

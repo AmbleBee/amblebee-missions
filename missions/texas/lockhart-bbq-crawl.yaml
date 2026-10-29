@@ -31,5 +31,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [food, small-towns]
 tags: [bbq, food, small-town, food-crawl, central-texas]
 credit:

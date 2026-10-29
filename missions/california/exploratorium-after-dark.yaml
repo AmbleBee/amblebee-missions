@@ -29,5 +29,6 @@ time_of_day: night
 travel: day-trip
 check_ahead: [tickets]
 discounts: [educator, military]
+themes: [museums, science, drinks]
 tags: [science, museum, nightlife, interactive, san-francisco]
 credit:

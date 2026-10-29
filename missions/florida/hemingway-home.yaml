@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [wildlife, history, museums]
 tags: [history, museum, cats, writers, key-west]
 credit:

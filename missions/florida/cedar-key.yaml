@@ -30,5 +30,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [food, small-towns]
 tags: [small-town, seafood, old-florida, nature-coast]
 credit:

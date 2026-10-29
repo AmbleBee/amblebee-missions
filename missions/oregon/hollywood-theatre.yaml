@@ -20,4 +20,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
+themes: [history, movies]
 tags: [movies, history, rainy-day, portland]

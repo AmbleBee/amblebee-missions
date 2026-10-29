@@ -29,5 +29,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, reservation]
+themes: [architecture, food, relaxing]
 tags: [tea, dinner, architecture, cozy, rainy-day, boulder]
 credit:

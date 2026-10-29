@@ -31,5 +31,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [food, quirky, small-towns]
 tags: [small-town, food, bakery, quirky, central-coast]
 credit:

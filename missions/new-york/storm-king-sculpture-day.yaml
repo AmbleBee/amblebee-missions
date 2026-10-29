@@ -36,5 +36,6 @@ discounts: [senior, student, military]
 gear:
   - item: bikes
     rent: on-site
+themes: [forests, biking, picnic, art]
 tags: [art, sculpture, hudson-valley, biking, picnic, fall-colors, new-windsor]
 credit:

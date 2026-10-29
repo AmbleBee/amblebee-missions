@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [parks, history]
 tags: [history, fort, national-monument, st-augustine]
 credit:

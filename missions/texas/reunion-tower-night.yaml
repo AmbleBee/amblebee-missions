@@ -32,5 +32,6 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [tickets]
+themes: [views]
 tags: [views, skyline, night, observation-deck, dallas]
 credit:

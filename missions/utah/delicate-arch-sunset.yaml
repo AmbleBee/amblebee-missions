@@ -21,5 +21,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [hiking, rocks-fossils, parks, sunsets]
 tags: [hike, sunset, arch, national-park]
 credit:

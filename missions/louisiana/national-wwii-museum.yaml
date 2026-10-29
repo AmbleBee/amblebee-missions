@@ -25,4 +25,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+themes: [history, museums, vehicles]
 tags: [history, museum, aviation, rainy-day, new-orleans]

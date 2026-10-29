@@ -32,4 +32,5 @@ season: [spring]
 time_of_day: morning
 travel: day-trip
 check_ahead: [seasonal, tickets]
+themes: [wildlife, gardens, holidays]
 tags: [flowers, farms, spring, festival, skagit]

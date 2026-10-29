@@ -14,4 +14,5 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: home
+themes: [art, make-something]
 tags: [art, creative, rainy-day, home, keepsake]

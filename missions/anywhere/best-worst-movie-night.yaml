@@ -16,4 +16,5 @@ setting: indoor
 season: any
 time_of_day: night
 travel: local
+themes: [movies, playful, relaxing]
 tags: [at-home, movies, cozy, playful, rainy-day]

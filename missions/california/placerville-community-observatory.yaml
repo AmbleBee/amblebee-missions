@@ -35,5 +35,6 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [hours, conditions]
+themes: [stars]
 tags: [stars, astronomy, telescope, night, free, sierra-foothills]
 credit:

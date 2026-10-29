@@ -20,4 +20,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours]
+themes: [views, architecture, markets, relaxing]
 tags: [architecture, books, calm, views]

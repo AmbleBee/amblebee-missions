@@ -32,4 +32,5 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [views, hiking, mountains]
 tags: [mountains, views, hiking, alpine, north-cascades]

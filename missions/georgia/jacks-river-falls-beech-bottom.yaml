@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [hiking, waterfalls]
 tags: [hiking, waterfall, wilderness, cohutta, chatsworth, north-georgia]
 credit:

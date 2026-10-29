@@ -29,4 +29,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [conditions]
+themes: [beach, playful]
 tags: [kite, outdoors, playful, park, beach]

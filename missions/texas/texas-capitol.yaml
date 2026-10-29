@@ -33,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [history, architecture]
 tags: [history, government, architecture, free, rainy-day, austin]
 credit:

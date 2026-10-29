@@ -30,5 +30,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [picnic, food]
 tags: [park, food-trucks, picnic, free, dallas]
 credit:

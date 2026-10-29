@@ -30,5 +30,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, reservation]
+themes: [history, food, drinks, small-towns]
 tags: [small-town, german, history, brewery, wine, dinner, amana, iowa-city]
 credit:

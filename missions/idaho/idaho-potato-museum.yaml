@@ -31,4 +31,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [museums, food, quirky]
 tags: [quirky, roadside, food, museum, rainy-day]

@@ -25,5 +25,6 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
+themes: [swimming, parks, history, drinks]
 tags: [brewery, beer, historic, national-park, hot-springs]
 credit:

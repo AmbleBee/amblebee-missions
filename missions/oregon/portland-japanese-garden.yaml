@@ -20,4 +20,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+themes: [gardens, relaxing]
 tags: [garden, calm, seasonal, portland]

@@ -23,5 +23,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [waterfalls, mountains, forests, road-trips]
 tags: [scenic-drive, fall-color, waterfalls, mountains]
 credit:

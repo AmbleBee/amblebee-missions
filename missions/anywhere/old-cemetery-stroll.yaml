@@ -26,5 +26,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [walks, history, relaxing]
 tags: [history, walk, quiet, stories, free]
 credit:

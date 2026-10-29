@@ -31,5 +31,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
+themes: [history, movies, shows]
 tags: [movies, historic, theater, classic-films, rainy-day, downtown, tampa]
 credit:

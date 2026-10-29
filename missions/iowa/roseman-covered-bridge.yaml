@@ -18,5 +18,6 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: drive
+themes: [architecture, movies]
 tags: [movie, covered-bridge, countryside, free]
 credit:

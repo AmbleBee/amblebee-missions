@@ -30,4 +30,5 @@ setting: outdoor
 season: any
 time_of_day: any
 travel: local
+themes: [views, art]
 tags: [park, sculpture, free, views, chicago]

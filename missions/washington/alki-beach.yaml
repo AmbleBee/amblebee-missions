@@ -29,4 +29,5 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: local
+themes: [views, beach, sunsets]
 tags: [beach, sunset, views, seattle]

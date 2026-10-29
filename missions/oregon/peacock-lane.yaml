@@ -28,4 +28,5 @@ season: [winter]
 time_of_day: night
 travel: local
 check_ahead: [seasonal]
+themes: [holidays]
 tags: [christmas, lights, holiday, portland]

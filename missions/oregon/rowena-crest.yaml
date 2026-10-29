@@ -24,4 +24,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [views, hiking, rocks-fossils, gardens, road-trips]
 tags: [scenic-drive, hiking, wildflowers, gorge, views]

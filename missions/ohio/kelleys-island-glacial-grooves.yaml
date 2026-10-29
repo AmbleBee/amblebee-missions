@@ -31,5 +31,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, conditions]
+themes: [hiking, beach, boating, rocks-fossils, biking]
 tags: [island, ferry, biking, hiking, geology, lake-erie, kelleys-island, marblehead]
 credit:

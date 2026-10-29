@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
+themes: [lakes-rivers, boating, history]
 tags: [boat, lakes, mansions, orlando-area]
 credit:

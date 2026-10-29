@@ -29,4 +29,5 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [hours]
+themes: [walks, food, markets]
 tags: [food, market, pennsylvania-dutch, sweets, walking]

@@ -33,5 +33,6 @@ season: [summer]
 time_of_day: night
 travel: day-trip
 check_ahead: [reservation, seasonal]
+themes: [beach, wildlife]
 tags: [sea-turtles, wildlife, night, beach, palm-beach]
 credit:

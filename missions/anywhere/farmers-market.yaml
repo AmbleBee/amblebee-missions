@@ -15,4 +15,5 @@ season: [spring, summer, fall]
 time_of_day: morning
 travel: local
 check_ahead: [hours, seasonal]
+themes: [food]
 tags: [food, local, seasonal, outdoors]

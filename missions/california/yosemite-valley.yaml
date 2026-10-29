@@ -31,4 +31,5 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, hiking, waterfalls, mountains, parks]
 tags: [national-park, waterfall, mountains, views, hiking]

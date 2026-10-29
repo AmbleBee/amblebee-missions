@@ -21,5 +21,6 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: drive
 check_ahead: [conditions, seasonal]
+themes: [views, hiking, sunsets]
 tags: [hike, sunset, views, blue-ridge]
 credit:

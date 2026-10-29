@@ -32,5 +32,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [swimming, boating, parks, wildlife]
 tags: [springs, boat, wildlife, state-park, big-bend-coast]
 credit:

@@ -21,5 +21,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [conditions]
+themes: [lakes-rivers, sunsets, architecture]
 tags: [bridge, river, sunset, free]
 credit:

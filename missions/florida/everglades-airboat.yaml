@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation]
+themes: [lakes-rivers, boating, wildlife, thrills]
 tags: [airboat, everglades, alligators, thrill, south-florida]
 credit:

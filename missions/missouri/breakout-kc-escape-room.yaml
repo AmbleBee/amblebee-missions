@@ -24,4 +24,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [reservation]
+themes: [games]
 tags: [puzzles, escape-room, teamwork, rainy-day, kansas-city]

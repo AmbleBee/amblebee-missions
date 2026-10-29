@@ -24,5 +24,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
+themes: [history, museums]
 tags: [history, museum, rainy-day, dallas]
 credit:

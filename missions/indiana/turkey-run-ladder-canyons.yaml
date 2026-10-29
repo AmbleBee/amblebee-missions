@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [hiking, lakes-rivers, rocks-fossils, parks]
 tags: [hiking, canyons, ladders, creek, state-park, marshall, indianapolis-day-trip]
 credit:

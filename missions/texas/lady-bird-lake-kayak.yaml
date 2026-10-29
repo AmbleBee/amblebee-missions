@@ -37,5 +37,6 @@ season: any
 time_of_day: morning
 travel: local
 check_ahead: [conditions]
+themes: [views, boating]
 tags: [kayak, water, skyline, austin]
 credit:

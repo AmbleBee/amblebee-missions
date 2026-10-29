@@ -35,5 +35,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [local]
+themes: [forests, wildlife, gardens]
 tags: [zoo, animals, rainforest, gardens, playground, kids, hilo, big-island]
 credit:

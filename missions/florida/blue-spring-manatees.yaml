@@ -33,5 +33,6 @@ season: [winter]
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, seasonal]
+themes: [swimming, wildlife]
 tags: [manatees, wildlife, springs, winter, central-florida]
 credit:

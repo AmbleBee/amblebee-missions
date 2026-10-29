@@ -30,5 +30,6 @@ season: [summer, fall]
 time_of_day: morning
 travel: local
 check_ahead: [conditions, seasonal]
+themes: [views, hiking, lakes-rivers]
 tags: [hiking, summit, alpine-lakes, views, wilderness, lake-tahoe, south-lake-tahoe]
 credit:

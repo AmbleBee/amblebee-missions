@@ -32,5 +32,6 @@ season: [spring, summer]
 time_of_day: any
 travel: local
 check_ahead: [seasonal, conditions]
+themes: [boating, picnic]
 tags: [paddleboard, picnic, water, outdoors]
 credit: Angie C.

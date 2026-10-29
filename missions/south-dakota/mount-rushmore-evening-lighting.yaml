@@ -22,5 +22,6 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: day-trip
 check_ahead: [seasonal]
+themes: [parks, history]
 tags: [national-memorial, night, history]
 credit:

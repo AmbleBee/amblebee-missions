@@ -36,4 +36,5 @@ season: [winter]
 time_of_day: morning
 travel: day-trip
 check_ahead: [seasonal, conditions]
+themes: [wildlife, sunsets]
 tags: [birds, eagles, wildlife, winter, sunrise, southern-oregon]

@@ -22,5 +22,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [views, beach, history]
 tags: [views, history, coast]
 credit: Max W.

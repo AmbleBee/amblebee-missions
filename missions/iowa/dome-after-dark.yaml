@@ -26,5 +26,6 @@ time_of_day: evening
 travel: local
 check_ahead: [seasonal, tickets]
 discounts: [senior, military]
+themes: [gardens, romantic]
 tags: [garden, conservatory, winter, romantic, date-night, des-moines]
 credit:

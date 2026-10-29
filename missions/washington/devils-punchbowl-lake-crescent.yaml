@@ -22,4 +22,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [hiking, lakes-rivers, swimming]
 tags: [lake, hiking, swimming, olympic]

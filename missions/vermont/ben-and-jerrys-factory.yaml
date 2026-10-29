@@ -21,5 +21,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [food, playful]
 tags: [ice-cream, tour, silly]
 credit:

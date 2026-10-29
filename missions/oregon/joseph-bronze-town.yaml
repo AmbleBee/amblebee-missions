@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [walks, art, small-towns]
 tags: [small-town, art, sculpture, walking, eastern-oregon, wallowas]

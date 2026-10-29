@@ -36,4 +36,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [forests, parks]
 tags: [redwoods, old-growth, forest, national-park, humboldt]

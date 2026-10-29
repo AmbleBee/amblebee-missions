@@ -33,5 +33,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
+themes: [swimming, boating]
 tags: [springs, swimming, tubing, north-florida]
 credit:

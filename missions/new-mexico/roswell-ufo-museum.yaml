@@ -31,5 +31,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, military, first-responder]
+themes: [museums, spooky, quirky]
 tags: [museum, ufo, quirky, roadside, rainy-day, roswell]
 credit:

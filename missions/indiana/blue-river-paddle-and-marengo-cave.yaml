@@ -37,5 +37,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, reservation, conditions]
+themes: [lakes-rivers, boating, caves]
 tags: [kayaking, river, cave, southern-indiana, milltown, marengo]
 credit:

@@ -27,5 +27,6 @@ season: any
 time_of_day: any
 travel: drive
 check_ahead: [hours]
+themes: [games, quirky, playful]
 tags: [arcade, retro, games, playful, competitive, rainy-day, brookfield, chicago-suburbs]
 credit:

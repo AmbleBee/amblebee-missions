@@ -14,4 +14,5 @@ season: [summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, seasonal]
+themes: [food]
 tags: [food, local, seasonal, outdoors]

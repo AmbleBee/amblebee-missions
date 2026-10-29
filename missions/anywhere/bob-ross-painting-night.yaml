@@ -24,4 +24,5 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: local
+themes: [art, relaxing, make-something]
 tags: [at-home, art, painting, cozy, rainy-day]

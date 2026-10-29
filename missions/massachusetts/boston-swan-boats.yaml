@@ -21,5 +21,6 @@ season: [spring, summer]
 time_of_day: daytime
 travel: local
 check_ahead: [seasonal]
+themes: [boating, gardens]
 tags: [boat, garden, classic, city]
 credit:

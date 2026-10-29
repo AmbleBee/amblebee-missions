@@ -37,5 +37,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [lakes-rivers, swimming, boating, wildlife]
 tags: [kayak, springs, river, swimming, wildlife, central-florida]
 credit:

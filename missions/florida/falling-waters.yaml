@@ -32,5 +32,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+themes: [waterfalls, rocks-fossils, parks]
 tags: [waterfall, sinkhole, state-park, panhandle]
 credit:

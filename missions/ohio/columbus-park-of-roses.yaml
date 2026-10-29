@@ -24,4 +24,5 @@ season: [spring, summer, fall]
 time_of_day: any
 travel: local
 check_ahead: [seasonal]
+themes: [gardens, romantic]
 tags: [gardens, flowers, roses, romantic, free, columbus]

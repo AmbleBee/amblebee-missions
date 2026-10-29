@@ -21,5 +21,6 @@ season: [spring, summer, fall]
 time_of_day: any
 travel: local
 check_ahead: [tickets]
+themes: [boating, architecture]
 tags: [boat, architecture, city]
 credit:

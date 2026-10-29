@@ -33,5 +33,6 @@ season: [fall, winter, spring]
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
+themes: [views, deserts, parks, sunsets]
 tags: [sunrise, desert, national-park, views, death-valley]
 credit:

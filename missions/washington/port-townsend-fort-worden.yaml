@@ -31,4 +31,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [beach, history, small-towns]
 tags: [history, small-town, bunkers, lighthouse, beach, olympic-peninsula]

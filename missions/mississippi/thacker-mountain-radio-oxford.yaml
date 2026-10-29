@@ -30,5 +30,6 @@ season: [winter, spring, fall]
 time_of_day: evening
 travel: local
 check_ahead: [seasonal, hours]
+themes: [markets, shows, romantic]
 tags: [live-radio, books, live-music, southern-culture, date-night, oxford]
 credit:

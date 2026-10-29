@@ -29,4 +29,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
+themes: [views, picnic]
 tags: [landmark, views, photography, picnic, los-angeles]

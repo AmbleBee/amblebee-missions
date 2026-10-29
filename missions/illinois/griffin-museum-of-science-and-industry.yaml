@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+themes: [museums, science, vehicles]
 tags: [museum, science, trains, rainy-day, chicago]

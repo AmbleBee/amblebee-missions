@@ -23,4 +23,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
+themes: [games, quirky, playful]
 tags: [games, retro, playful, rainy-day, portland]

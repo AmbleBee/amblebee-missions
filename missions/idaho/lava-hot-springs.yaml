@@ -29,4 +29,5 @@ season: any
 time_of_day: any
 travel: day-trip
 check_ahead: [hours]
+themes: [swimming, relaxing, small-towns]
 tags: [hot-springs, relaxing, winter, small-town]

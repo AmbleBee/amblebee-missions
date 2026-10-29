@@ -21,5 +21,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
+themes: [views, rocks-fossils, parks, sunsets]
 tags: [sunrise, volcano, views, national-park]
 credit:

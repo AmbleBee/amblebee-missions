@@ -31,4 +31,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
+themes: [walks, lakes-rivers, forests, gardens]
 tags: [park, creek, gardens, walking, fall-colors, southern-oregon]

@@ -28,5 +28,6 @@ season: [fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets, seasonal]
+themes: [spooky, holidays, make-something]
 tags: [pumpkins, corn-maze, halloween, seasonal, crafts, fall]
 credit: Kali W.

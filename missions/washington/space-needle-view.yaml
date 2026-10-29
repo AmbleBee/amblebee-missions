@@ -29,4 +29,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [tickets, hours]
+themes: [views]
 tags: [views, landmark, seattle]

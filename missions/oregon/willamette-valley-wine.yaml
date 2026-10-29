@@ -19,4 +19,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [reservation, hours]
+themes: [views, food, drinks]
 tags: [wine, food, views, splurge]

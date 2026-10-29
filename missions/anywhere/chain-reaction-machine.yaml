@@ -32,5 +32,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: home
+themes: [science, make-something]
 tags: [build, science, engineering, rainy-day, home, video]
 credit:

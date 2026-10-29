@@ -32,5 +32,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal, conditions]
+themes: [hiking, beach, boating, rocks-fossils]
 tags: [island, ferry, hiking, cliffs, lighthouse, ocean, port-clyde, monhegan, midcoast]
 credit:

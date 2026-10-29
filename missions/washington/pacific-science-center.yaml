@@ -32,4 +32,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+themes: [museums, science]
 tags: [science, museum, rainy-day, seattle]

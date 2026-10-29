@@ -34,5 +34,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: home
+themes: [games, make-something]
 tags: [game-night, craft, creative, rainy-day, home, build]
 credit:
