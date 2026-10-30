@@ -151,6 +151,13 @@ function seasonNow() {
   const mo = new Date().getMonth();
   return ["winter", "winter", "spring", "spring", "spring", "summer", "summer", "summer", "fall", "fall", "fall", "winter"][mo];
 }
+// when a mission's time_of_day fits, in 24-hour clock hours; night runs past midnight to 5am
+const TIME_WINDOW = { morning: [5, 11], daytime: [9, 18], evening: [16, 22], night: [19, 29] };
+function rightTime(m, hour) {
+  const w = TIME_WINDOW[m.time_of_day];
+  return !w || (hour >= w[0] && hour < w[1]) || (hour + 24 >= w[0] && hour + 24 < w[1]);
+}
+const inSeason = (m) => m.season === "any" || (m.season || []).includes(seasonNow());
 function meters(a, b) {   // haversine: straight line, "as the bee flies"
   const R = 6371008.8, r = Math.PI / 180;
   const dLat = (b[0] - a[0]) * r, dLon = (b[1] - a[1]) * r;
@@ -172,7 +179,7 @@ function readFilters() {
     pack: $("#pack-select").value,
     who: checked("who"), duration: checked("duration"), effort: checked("effort"),
     cost: checked("cost"), setting: checked("setting"), themes: checked("themes"),
-    inSeason: $("#f-season").checked, goNow: $("#f-gonow").checked,
+    inSeason: $("#f-season").checked, goNow: $("#f-gonow").checked, hour: new Date().getHours(),
     within: $("#within-select").value ? Number($("#within-select").value) : null,
   };
 }
@@ -187,8 +194,9 @@ function passes(m, f) {
   if (f.setting.length && m.setting !== "either" && !f.setting.includes(m.setting)) return false;
   // themes: any of the picked ones (Food or Views), so picking more widens rather than narrows
   if (f.themes.length && !(m.themes || []).some((t) => f.themes.includes(t))) return false;
-  if (f.inSeason && m.season !== "any" && !(m.season || []).includes(seasonNow())) return false;
-  if (f.goNow && (m.check_ahead || []).some((c) => c === "tickets" || c === "reservation")) return false;
+  if (f.inSeason && !inSeason(m)) return false;
+  if (f.goNow && ((m.check_ahead || []).some((c) => c === "tickets" || c === "reservation")
+    || !inSeason(m) || !rightTime(m, f.hour))) return false;
   if (f.within != null) { const d = distM(m); if (d != null && d > f.within * M_PER[S.unit]) return false; }
   return true;
 }
@@ -199,11 +207,6 @@ function activeFilters(f) {
 const pool = () => { const f = readFilters(); return S.missions.filter((m) => passes(m, f)); };
 
 // ---- the ticket ---------------------------------------------------------------------------------
-function packTotal(m) {
-  const p = S.packById[m.pack];
-  const top = Math.max(0, ...S.missions.filter((x) => x.pack === m.pack).map((x) => x.number || 0));
-  return Math.max(p ? p.count : 0, top);
-}
 function ticket(m, { titleId } = {}) {
   const pack = S.packById[m.pack] || { name: m.pack };
   const isKids = (m.who || []).includes("kids") && m.for_kids;
@@ -288,7 +291,7 @@ function ticket(m, { titleId } = {}) {
       notes.length ? h("div", { class: "notes" }, notes) : null,
       caution, place, extras,
       h("p", { class: "source" }, svg(packIcon(pack), 18),
-        h("span", {}, "Mission ", h("b", {}, `${m.number || "?"} of ${packTotal(m)}`), " in ", h("b", {}, pack.name)),
+        h("span", {}, "Mission ", h("b", {}, String(m.number || "?")), " in ", h("b", {}, pack.name)),
         h("code", {}, m.full_id)),
       reportUrl(m) ? h("p", { class: "report" }, "Closed, moved or something off? ",
         h("a", { href: reportUrl(m), target: "_blank", rel: "noopener" }, "Report a problem")) : null));
@@ -590,12 +593,12 @@ function saveButton(m, gift) {
 const IMG = { w: 1080, pad: 64, minH: 1350, maxH: 2400 };
 const IMGC = {   // always the light palette, so saved images look the same everywhere
   oat: "#EFE7D8", paper: "#FFFDF8", linen: "#FAF5EC", line: "#E4D9C6", lineStrong: "#D9CDB6", sand: "#F1E5D2",
-  sage: "#A3B18A", sageDeep: "#5F7550", sageTint: "#E3EAD6", sageInk: "#3F5235", honey: "#D8A65A", honeyTint: "#F6E6C6", honeyDeep: "#946628",
+  sage: "#A3B18A", sageDeep: "#566B48", sageTint: "#E3EAD6", sageInk: "#3F5235", honey: "#D8A65A", honeyTint: "#F6E6C6", honeyDeep: "#946628",
   walnut: "#5A3E2B", walnutSoft: "#7A5A42", ink: "#4A3323",
 };
 const IMGT = {   // note-card colours per theme: frame, dashed border, names
   partner: { frame: "#F6DDD6", dash: "#E2A699", accent: "#A9544A" },
-  friend: { frame: "#E3EAD6", dash: "#A3B18A", accent: "#5F7550" },
+  friend: { frame: "#E3EAD6", dash: "#A3B18A", accent: "#566B48" },
   family: { frame: "#F6E6C6", dash: "#D8A65A", accent: "#946628" },
 };
 const IMGF = {
@@ -785,7 +788,7 @@ async function drawMission(m, gift) {
       ctx.setLineDash([6, 8]); ctx.strokeStyle = IMGC.lineStrong; ctx.lineWidth = 3;
       ctx.beginPath(); ctx.moveTo(inX, y); ctx.lineTo(inX + inW, y); ctx.stroke(); ctx.setLineDash([]);
       ctx.font = IMGF.body(700, 28); ctx.fillStyle = IMGC.walnutSoft; ctx.textBaseline = "alphabetic";
-      ctx.fillText(`Mission ${m.number || "?"} of ${packTotal(m)} in ${pack.name}`, inX, y + 50);
+      ctx.fillText(`Mission ${m.number || "?"} in ${pack.name}`, inX, y + 50);
     }
     y += 80;
     const cardBottom = y;
@@ -1115,10 +1118,24 @@ function openDialog(m) {
 }
 
 // ---- browse --------------------------------------------------------------------------------------
-// search: every word must appear somewhere in the mission; matches in the name rank highest
-const fold = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g, "").replace(/[-_/]/g, " ");
-function searchText(m) {
-  if (m._hay) return m._hay;
+// search: every word must match a whole word in the mission, so "sea" doesn't find "season".
+// Longer words also match word starts ("waterfal"); matches in the name rank highest.
+const fold = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/['\u2019]/g, "");
+const tokens = (t) => fold(t).split(/[^a-z0-9]+/).filter(Boolean);
+const stem = (w) => (w.length < 4 ? w : /(ch|sh|ss|x)es$/.test(w) ? w.slice(0, -2) : /[^s]s$/.test(w) ? w.slice(0, -1) : w);
+const STOP_WORDS = new Set("a an and at by do for from fun in near of on or some the thing things to with".split(" "));
+const SEARCH_ALSO = {   // one way: "food" finds dinner, but "dinner" doesn't find all food
+  hike: ["hiking", "trail"], hiking: ["hike", "trail"], trail: ["hike", "hiking"],
+  food: ["restaurant", "dinner", "lunch", "brunch"], eat: ["food", "restaurant", "dinner", "lunch", "brunch"],
+  restaurant: ["dinner", "lunch", "brunch"], drink: ["bar", "beer", "wine", "cocktail", "brewery"],
+  kid: ["children", "child"], child: ["kid"], children: ["kid"],
+  beach: ["ocean", "coast", "shore"], ocean: ["sea", "beach", "coast"], sea: ["ocean"],
+  bike: ["biking", "cycling"], biking: ["bike", "cycling"], swim: ["swimming"], camp: ["camping"],
+  rain: ["rainy", "indoor"], rainy: ["indoor"], view: ["overlook", "lookout", "vista"],
+  cheap: ["free"], romantic: ["date"], boat: ["boating", "kayak", "canoe", "ferry"],
+};
+function searchIndex(m) {
+  if (m._words) return m;
   const pack = S.packById[m.pack] || {};
   const pl = m.place || {};
   const parts = [m.name, m.short, m.description, (m.tags || []).join(" "),
@@ -1126,23 +1143,53 @@ function searchText(m) {
     pack.name, pack.region, m.credit, m.id, (m.gear || []).map((g) => g.item).join(" "),
     m.for_kids && m.for_kids.short, (m.season === "any" ? [] : m.season || []).join(" "),
     L.mode[m.mode], L.setting && L.setting[m.setting], L.time && L.time[m.time_of_day],
+    (m.who || []).join(" "), m.cost === "free" ? "free" : "",
     (m.discounts || []).length ? "discount discounts deal " + m.discounts.map((d) => `${d} ${L.discount[d] || ""}`).join(" ")
       + (m.discounts.includes("military") ? " veteran veterans" : "") + (m.discounts.includes("educator") ? " teacher" : "")
       + (m.discounts.includes("senior") ? " senior citizen" : "") : ""];
-  m._name = fold(m.name);
-  m._tags = (m.tags || []).map(fold);
-  return (m._hay = fold(parts.filter(Boolean).join(" ")));
+  const stems = (t) => new Set(tokens(t).map(stem));
+  m._nameWords = stems(m.name);
+  m._tagWords = stems((m.tags || []).join(" "));
+  m._words = stems(parts.filter(Boolean).join(" "));
+  return m;
 }
-function searchScore(m, words) {
-  const hay = searchText(m);
+function editDistance(a, b) {
+  let row = Array.from({ length: b.length + 1 }, (_, i) => i);
+  for (let i = 1; i <= a.length; i++) {
+    const next = [i];
+    for (let j = 1; j <= b.length; j++) next[j] = Math.min(row[j] + 1, next[j - 1] + 1, row[j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    row = next;
+  }
+  return row[b.length];
+}
+function wordScore(m, word, loose) {
+  const { _words: all, _nameWords: name, _tagWords: tag } = searchIndex(m);
+  const weight = (w) => (name.has(w) ? 5 : tag.has(w) ? 3 : 1);
+  const w = stem(word);
+  if (all.has(w)) return weight(w);
+  const also = (SEARCH_ALSO[w] || SEARCH_ALSO[word] || []).map(stem).filter((a) => all.has(a));
+  if (also.length) return Math.max(...also.map(weight)) - 0.5;
+  if (word.length >= 4 || loose) for (const t of all) if (t.startsWith(w)) return name.has(t) ? 3 : 1;
+  if (loose && w.length >= 5) {
+    const most = w.length >= 8 ? 2 : 1;
+    for (const t of all) if (t[0] === w[0] && Math.abs(t.length - w.length) <= most && editDistance(w, t) <= most) return 0.5;
+  }
+  return 0;
+}
+function searchScore(m, words, loose) {
   let score = 0;
   for (const w of words) {
-    if (!hay.includes(w)) return 0;
-    score += m._name.includes(w) ? 5 : m._tags.some((t) => t.includes(w)) ? 3 : 1;
+    const s = wordScore(m, w, loose);
+    if (!s) return 0;
+    score += s;
   }
   return score;
 }
-const searchWords = () => fold(S.q).split(/\s+/).filter((w) => w.length > 0);
+function searchWords() {
+  const all = tokens(S.q);
+  const useful = all.filter((w) => !STOP_WORDS.has(w));
+  return useful.length ? useful : all;
+}
 // theme chip counts follow the other picks (pack, mode, distance, More filters), so "Waterfalls 3" means
 // 3 waterfall missions you could actually get right now. Chips with none left are dimmed, not removed.
 function renderThemeCounts(f) {
@@ -1188,10 +1235,11 @@ function renderBrowse() {
   const fc = $("#filters-count");
   fc.hidden = !active; fc.textContent = String(active);
   fc.setAttribute("aria-label", `${active} on`);
-  // "Every mission" is for looking, so it ignores the opener's picks (who's it for, pick from, More filters).
-  // Only the ZIP carries over, to show distances and offer "Closest to"; it never hides anything here.
-  const everything = S.missions;
-  $("#browse-count").textContent = liveLine();
+  // "Every mission" follows every pick except "Pick from", because the list has its own pack menu
+  const everything = S.missions.filter((m) => passes(m, { ...f, pack: "all" }));
+  const browsing = narrowed || f.mode !== "any";
+  $("#browse-count").textContent = browsing ? `${everything.length} of ${total} live missions fit your filters` : liveLine();
+  $("#browse-clear").hidden = !browsing;
 
   renderBrowsePick(everything);
   const wrap = $("#packs");
@@ -1199,6 +1247,7 @@ function renderBrowse() {
   const words = searchWords();
   const searching = words.length > 0;
   $("#search-hint").hidden = !searching;
+  $("#search-hint").textContent = browsing ? "Searching the missions that fit your filters." : "Searching all missions in every pack.";
   $(".pack-field").hidden = searching;
   const card = (m) => {
     const d = distM(m);
@@ -1227,15 +1276,21 @@ function renderBrowse() {
         h("span", {}, L.cost[m.cost] || m.cost)));
   };
   if (searching) {
-    const found = everything.map((m) => [searchScore(m, words), m]).filter(([sc]) => sc > 0)
+    const rank = (loose) => everything.map((m) => [searchScore(m, words, loose), m]).filter(([sc]) => sc > 0)
       .sort((a, b) => b[0] - a[0] || (S.here ? (distM(a[1]) ?? 1e12) - (distM(b[1]) ?? 1e12) : 0)
         || a[1].name.localeCompare(b[1].name))
       .map(([, m]) => m);
-    $("#browse-count").textContent = `${found.length} ${found.length === 1 ? "mission matches" : "missions match"} "${S.q.trim()}"`;
+    let found = rank(false);
+    const close = !found.length;
+    if (close) found = rank(true);   // nothing exact: try short word starts and small typos
+    $("#browse-count").textContent = close && found.length
+      ? `${found.length} close ${found.length === 1 ? "match" : "matches"} for "${S.q.trim()}"`
+      : `${found.length} ${found.length === 1 ? "mission matches" : "missions match"} "${S.q.trim()}"`;
     if (found.length) wrap.append(h("section", { class: "pack", "aria-label": "Search results" },
       h("div", { class: "cards" }, found.map(card))));
     else wrap.append(h("p", { class: "none" },
-      `Nothing matches "${S.q.trim()}". Try a different word, like a town, a place or an activity.`));
+      browsing ? `Nothing matches "${S.q.trim()}" with these filters. Try clearing them.`
+        : `Nothing matches "${S.q.trim()}". Try a different word, like a town, a place or an activity.`));
     return;
   }
   if (S.browse === "near" && S.here) {
@@ -1259,7 +1314,7 @@ function renderBrowse() {
         h("div", { class: "cards" }, ms.map(card))));
     }
   }
-  if (!wrap.children.length) wrap.append(h("p", { class: "none" }, "No missions in this pack yet."));
+  if (!wrap.children.length) wrap.append(h("p", { class: "none" }, browsing ? "None of these fit your filters. Clear them to see more." : "No missions in this pack yet."));
 }
 function renderBrowsePick(matches) {
   const sel = $("#browse-pack");
@@ -1270,7 +1325,7 @@ function renderBrowsePick(matches) {
   for (const p of S.packs) opts.push(h("option", { value: p.id }, `${p.name} (${count(p.id)})`));
   sel.replaceChildren(...opts);
   if (S.browse === "near" && !S.here) S.browse = null;
-  if (!S.browse || ![...sel.options].some((o) => o.value === S.browse)) S.browse = S.packById.anywhere ? "anywhere" : "all";
+  if (!S.browse || ![...sel.options].some((o) => o.value === S.browse)) S.browse = "all";
   sel.value = S.browse;
 }
 
@@ -1445,6 +1500,12 @@ async function start() {
     setPanel(false);
     $(".roll").scrollIntoView({ behavior: "smooth", block: "start" });
   });
+  $("#browse-clear").addEventListener("click", () => {
+    document.querySelectorAll("#filters input").forEach((i) => { i.checked = false; });
+    document.querySelector('input[name="mode"][value="any"]').checked = true;
+    $("#within-select").value = "";
+    refresh();
+  });
   $("#filters-reset").addEventListener("click", () => {
     document.querySelectorAll("#filters input").forEach((i) => { i.checked = false; });
     refresh();
@@ -1461,6 +1522,13 @@ async function start() {
   window.addEventListener("popstate", route);
   window.addEventListener("hashchange", route);
   $("#reveal-adjust").addEventListener("click", () => startOver({ filters: true }));
+  // skip link: move focus without touching the address, which would close an open mission
+  $(".skip").addEventListener("click", (e) => {
+    e.preventDefault();
+    const m = $("#main");
+    m.tabIndex = -1;
+    m.focus();
+  });
   // nav links: from the reveal view, go home first, then jump to the section
   document.querySelectorAll('.top a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
     if (!revealing()) return;

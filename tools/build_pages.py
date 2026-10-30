@@ -6,6 +6,7 @@ Writes, inside the built site:
     missions/index.html          every pack
     packs/<pack>/index.html      one pack's missions
     missions/<id>/index.html     one mission, with its own title, preview and structured data
+    safety/, privacy/, contact/  written in pages/, wrapped in the same header and footer
     sitemap.xml, robots.txt
 
 Drafts never get a page. URLs use the mission id, which is permanent (SCHEMA.md), so moving a mission
@@ -18,7 +19,7 @@ import json
 import re
 import sys
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlencode
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -28,6 +29,14 @@ from build_icons import load as load_icons  # noqa: E402
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee Missions"
 OG_IMAGE = f"{BASE}/og-image.png"
+# the same "Report a problem" form as site/app.js: opens with the mission's id and name already filled in
+REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
+REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
+INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
+    "safety": ("Safety", "How to stay safe on an AmbleBee mission, and what's up to you."),
+    "privacy": ("Privacy", "What AmbleBee Missions keeps, what stays on your device, and what goes to Google or GitHub."),
+    "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
+}
 
 # the same wording as the labels at the top of site/app.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -99,6 +108,7 @@ def page(title, description, path, main, jsonld, brand, extra_script=""):
 {main}
 </main>
 <footer class="foot">
+  <p class="foot-links"><a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/contact/">Contact</a></p>
   <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
 </footer>
 {extra_script}</body>
@@ -178,6 +188,9 @@ def mission_html(m, pack, icons, today):
         kids = m["for_kids"]
         extras += extra("Kids' version", f'<p style="margin:0;font-weight:800">{esc(kids["short"])}</p>{steps(kids.get("steps") or [])}')
 
+    report = REPORT_FORM + "?" + urlencode({"usp": "pp_url", REPORT_FIELDS["id"]: m["full_id"], REPORT_FIELDS["name"]: m["name"]})
+    report_html = (f'<p class="report">Closed, moved or something off? '
+                   f'<a href="{esc(report)}" target="_blank" rel="noopener">Report a problem</a></p>')
     credit = str(m.get("credit") or "").strip()
     credit_html = f'<p class="credit">Suggested by {esc(credit)}</p>' if credit else ""
     return f"""<article class="ticket">
@@ -188,6 +201,7 @@ def mission_html(m, pack, icons, today):
     <p class="desc">{esc(str(m["description"]).strip())}</p>
     <ul class="tags" aria-label="Details">{tag_html}</ul>
     {notes_html}{caution_html}{place_html}{extras}
+    {report_html}
   </div>
 </article>"""
 
@@ -275,6 +289,13 @@ def build_pages(out):
     (Path(out) / "missions").mkdir(parents=True, exist_ok=True)
     (Path(out) / "missions" / "index.html").write_text(
         page(f"Every mission · {SITE_NAME}", intro, "/missions/", main, ld, brand), encoding="utf-8")
+
+    for name, (title, desc) in INFO_PAGES.items():
+        path = f"/{name}/"
+        body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
+        main = f'<div class="page info">\n{body}</div>'
+        ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
+        write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand))
 
     sitemap = "".join(f"<url><loc>{esc(BASE + u)}</loc></url>" for u in urls)
     (Path(out) / "sitemap.xml").write_text(

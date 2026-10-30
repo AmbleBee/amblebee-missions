@@ -243,7 +243,7 @@
 .side-center .stop-node .hex { width: 52px; height: 60px; }
 .rm-latest {
   position: absolute; top: -20px; right: 18px; margin: 0; padding: 2px 12px; border-radius: 10px;
-  background: var(--sage-deep); color: #FFFDF8; font-size: 1.35rem; rotate: 4deg; box-shadow: 0 3px 0 var(--sage-shadow);
+  background: var(--fill); color: #FFFDF8; font-size: 1.35rem; rotate: 4deg; box-shadow: 0 3px 0 var(--fill-shadow);
 }
 
 /* drift in as the bee arrives */

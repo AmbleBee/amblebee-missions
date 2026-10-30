@@ -70,6 +70,20 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Easier Finding, Clearer Phones
+  status: done
+  date: 2026-10-30
+  tag: website
+  summary: Filters and search now work the way you'd expect, phones get to the good part faster, and the site has real Safety, Privacy and Contact pages.
+  items:
+    - Every mission now starts with all live missions showing, and your filters narrow that list too, with one Clear filters button
+    - Search matches whole words, forgives small typos, and understands that food means dinner and "kids" means kid-friendly missions
+    - On phones, the Open a mission button sits right under "Who's it for?", and there's only one of it
+    - '"Go right now" now checks the time of day and the season, so a night mission won''t turn up at breakfast'
+    - Mission tickets no longer count hidden drafts in their numbers
+    - Easier-to-read colors in light and dark mode, and a skip link that keeps your mission open
+    - New Safety, Privacy and Contact pages, and the mission license is now in the repo
+
 - title: Sturdier Links and Pages for Every Mission
   status: done
   date: 2026-10-30

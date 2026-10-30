@@ -6,8 +6,11 @@
   --line: #E4D9C6;
   --line-strong: #D9CDB6;
   --sage: #A3B18A;
-  --sage-deep: #5F7550;
+  --sage-deep: #566B48;     /* sage text and links; darker than the buttons' old sage so it passes on oat paper */
   --sage-shadow: #4A5D3E;
+  --fill: #566B48;          /* solid sage behind light text: buttons, chips, ticket stubs */
+  --fill-hover: #4D6141;
+  --fill-shadow: #445638;
   --sage-tint: #E3EAD6;
   --sage-ink: #3F5235;
   --walnut: #5A3E2B;
@@ -27,7 +30,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
-    --sage: #8FA078; --sage-deep: #7E9268; --sage-shadow: #5F7550; --sage-tint: #33402B; --sage-ink: #D3E0C3;
+    --sage: #8FA078; --sage-deep: #9AAE85; --sage-shadow: #5F7550; --fill: #4F6443; --fill-hover: #5A704B; --fill-shadow: #39492F; --sage-tint: #33402B; --sage-ink: #D3E0C3;
     --walnut: #E9DCCB; --walnut-soft: #C9B79A; --ink: #F3E9DC; --honey: #E0B66E; --honey-tint: #4A3B22; --honey-deep: #E8C27E;
     --sand: #3A3027; --shadow: 0 10px 22px rgba(0, 0, 0, .35);
   }
@@ -42,7 +45,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 a { color: var(--sage-deep); }
-a:hover { color: var(--sage-shadow); }
+a:hover { color: var(--sage-ink); }
 :focus-visible { outline: 3px solid var(--honey); outline-offset: 3px; border-radius: 8px; }
 h1, h2, h3 { font-family: var(--display); font-variation-settings: "SOFT" 100; font-weight: 600; color: var(--ink); margin: 0; }
 .hand { font: 700 1.55rem/1.15 var(--hand); color: var(--sage-deep); margin: 0; }
@@ -85,9 +88,9 @@ h1, h2, h3 { font-family: var(--display); font-variation-settings: "SOFT" 100; f
   background: var(--paper); box-shadow: inset 0 0 0 2.5px var(--sage);
 }
 .btn:hover { background: var(--linen); }
-.btn.primary { background: var(--sage-deep); color: #FFFDF8; box-shadow: 0 5px 0 var(--sage-shadow); }
-.btn.primary:hover { background: #56694a; }
-.btn.primary:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--sage-shadow); }
+.btn.primary { background: var(--fill); color: #FFFDF8; box-shadow: 0 5px 0 var(--fill-shadow); }
+.btn.primary:hover { background: var(--fill-hover); color: #FFFDF8; }
+.btn.primary:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--fill-shadow); }
 .btn.small { min-height: 44px; padding: 0 16px; font-size: .95rem; }
 .linkish {
   appearance: none; background: none; border: 0; padding: 8px 0; cursor: pointer; min-height: 44px;
@@ -102,14 +105,14 @@ h1, h2, h3 { font-family: var(--display); font-variation-settings: "SOFT" 100; f
   background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); font-weight: 700; color: var(--walnut-soft);
 }
 .chips input:checked + span, .modes input:checked + span {
-  background: var(--sage-deep); color: #FFFDF8; box-shadow: 0 3px 0 var(--sage-shadow);
+  background: var(--fill); color: #FFFDF8; box-shadow: 0 3px 0 var(--fill-shadow);
 }
 .chips input:focus-visible + span, .modes input:focus-visible + span { outline: 3px solid var(--honey); outline-offset: 2px; }
 /* theme chips: 40-odd of them, so a little tighter, with the mission count after the name */
 .chips.themes { gap: 6px; }
 .chips.themes span { min-height: 40px; padding: 0 12px; gap: 6px; font-size: .92rem; }
-.chips.themes label.is-empty span { opacity: .45; }
-.chips.themes .count { font-weight: 800; font-size: .78rem; opacity: .7; font-variant-numeric: tabular-nums; }
+.chips.themes label.is-empty span { background: transparent; box-shadow: inset 0 0 0 2px var(--line); }
+.chips.themes .count { font-weight: 800; font-size: .78rem; font-variant-numeric: tabular-nums; }
 fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
 legend { font: 800 .95rem var(--body); color: var(--walnut); margin-bottom: 8px; padding: 0; }
 select {
@@ -143,15 +146,15 @@ main { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 }
 .filters-btn:hover { filter: brightness(1.04); }
 .filters-btn:active { transform: translateY(2px); box-shadow: inset 0 0 0 2.5px var(--honey), 0 2px 0 var(--honey); }
-.filters-btn[aria-expanded="true"] { background: var(--honey); }
+.filters-btn[aria-expanded="true"] { background: var(--honey); color: #4A3323; }
 .fcount[hidden] { display: none; }
-.fcount { min-width: 28px; height: 28px; padding: 0 8px; border-radius: 14px; background: var(--sage-deep); color: #FFFDF8; font-size: .9rem; display: inline-grid; place-items: center; }
+.fcount { min-width: 28px; height: 28px; padding: 0 8px; border-radius: 14px; background: var(--fill); color: #FFFDF8; font-size: .9rem; display: inline-grid; place-items: center; }
 
 /* ---- the ticket ---- */
 .ticket-slot { min-width: 0; }
 .ticket { display: flex; filter: drop-shadow(0 12px 18px rgba(90, 62, 43, .18)); }
 .ticket .stub {
-  width: 112px; flex-shrink: 0; background: var(--sage-deep); color: #FFFDF8; border-radius: 24px 0 0 24px;
+  width: 112px; flex-shrink: 0; background: var(--fill); color: #FFFDF8; border-radius: 24px 0 0 24px;
   display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 6px; padding: 20px 0;
   -webkit-mask: radial-gradient(circle at 100% 0, transparent 13px, #000 14px) top / 100% 51% no-repeat,
                 radial-gradient(circle at 100% 100%, transparent 13px, #000 14px) bottom / 100% 51% no-repeat;
@@ -285,7 +288,7 @@ details.extra li { margin: 2px 0; }
   appearance: none; border: 0; background: none; min-height: 40px; min-width: 48px; border-radius: 10px;
   font: 800 .95rem var(--body); color: var(--walnut-soft); cursor: pointer;
 }
-.units button[aria-pressed="true"] { background: var(--sage-deep); color: #FFFDF8; }
+.units button[aria-pressed="true"] { background: var(--fill); color: #FFFDF8; }
 
 /* ---- browse ---- */
 .browse { padding: 0 0 24px; }
@@ -513,7 +516,7 @@ body.revealing main > :not(#reveal) { display: none !important; }
 .gift-label { margin: 16px 0 8px; font-weight: 800; color: var(--ink); }
 .gift-desk { margin-top: 14px; padding: 48px 14px 10px; border-radius: 18px; background: var(--linen); box-shadow: inset 0 0 0 2px var(--line); }
 .gift-count { display: block; min-height: 1.2em; margin-top: 8px; text-align: right; font-size: .82rem; font-weight: 700; color: var(--walnut-soft); }
-.gift-count.near { color: #B5853F; }
+.gift-count.near { color: var(--honey-deep); }
 .gift-err { margin: 12px 0 0; color: #A4482F; font-weight: 800; }
 .gift-err:empty { display: none; }
 .gift-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px 16px; margin-top: 18px; }
@@ -581,7 +584,7 @@ body.revealing main > :not(#reveal) { display: none !important; }
   appearance: none; -webkit-appearance: none; margin: 0; padding: 0 2px; border: 0; border-radius: 4px;
   background: transparent; font: inherit; color: inherit; height: 30px; min-width: 4ch; max-width: 100%;
 }
-.gift-note.editing :is(input, textarea)::placeholder { color: var(--walnut-soft); opacity: .55; }
+.gift-note.editing :is(input, textarea)::placeholder { color: var(--walnut-soft); opacity: 1; }
 .gift-note.editing :is(input, textarea, select):hover { background: rgba(216, 166, 90, .12); }
 .gift-note.editing :is(input, textarea, select):focus-visible { outline: 2px dashed var(--gn-ring); outline-offset: 2px; background: rgba(216, 166, 90, .1); }
 .gift-note.editing .gift-to { display: flex; align-items: baseline; padding-right: 36px; }
@@ -717,3 +720,37 @@ a.card:hover { color: inherit; }
 .card h2 { margin: 0; font: 600 1.25rem/1.15 var(--display); font-variation-settings: "SOFT" 100; color: var(--ink); }
 .rm-live { margin: 0 0 1.2rem; font-weight: 800; color: var(--sage-ink); }
 .rm-live[hidden] { display: none; }
+
+/* ---- skip link target, footer links, the Safety, Privacy and Contact pages ---- */
+main:focus { outline: none; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 4px 18px; font-weight: 700; }
+.info { max-width: 720px; }
+.info h2 { font-size: 1.45rem; margin: 1.6rem 0 .4rem; }
+.info p, .info ul { margin: 0 0 .8rem; }
+.info li { margin: .25rem 0; }
+
+/* ---- phones and small tablets: the main button comes right after "Who's it for?", the rest follows ---- */
+@media (max-width: 860px) {
+  .roll { padding-top: 14px; }
+  .roll-intro { display: flex; flex-direction: column; }
+  .roll-intro .lede { display: none; }
+  .roll-intro .hand { font-size: 1.5rem; }
+  .roll-intro .about-teaser { margin: .6rem 0 1rem; }
+  .roll-row { display: contents; }
+  .roll-intro .modes { order: 1; margin-bottom: 14px; }
+  .roll-intro #roll-btn { order: 2; width: 100%; }
+  .roll-intro #match-count { order: 3; align-self: flex-start; margin-bottom: 14px; }
+  .roll-intro .near-pick { order: 4; }
+  .roll-intro .pack-pick { order: 5; margin-bottom: 4px; }
+  .roll-intro #filters-toggle { order: 6; width: 100%; }
+  .ticket-slot .env-open { display: none; }   /* one main button: "Open a mission" above does the same thing */
+}
+@media (max-width: 560px) {
+  .brand { min-width: 0; }
+  .brand span { font-size: 1.2rem; white-space: nowrap; }
+  .brand svg { width: 38px; height: 32px; flex-shrink: 0; }
+  .top-share { min-height: 36px; padding: 0 10px; font-size: .85rem; }
+  .top { padding-top: 8px; flex-wrap: wrap; }
+  .top nav a { min-height: 38px; }
+  .within select, .near-pick .within select { width: 8.5rem; }
+}

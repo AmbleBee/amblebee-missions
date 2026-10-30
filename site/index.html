@@ -192,7 +192,7 @@
         <label><input type="checkbox" id="f-season"><span>In season now</span></label>
         <label><input type="checkbox" id="f-gonow"><span>Go right now</span></label>
       </div>
-      <p class="hint">"Go right now" skips anything that needs tickets or a reservation.</p>
+      <p class="hint">"Go right now" skips anything that needs booking, is out of season, or is better at another time of day. Opening hours still vary, so check first.</p>
     </fieldset>
     <fieldset id="themes-field" hidden>
       <legend>What kind of mission</legend>
@@ -214,6 +214,7 @@
   <div class="browse-head">
     <h2 id="browse-title">Every mission</h2>
     <p class="hand" id="browse-count"></p>
+    <button type="button" class="linkish" id="browse-clear" hidden>Clear filters</button>
   </div>
   <div class="browse-pick">
     <div class="search-field" role="search">
@@ -248,7 +249,7 @@
 </main>
 
 <footer class="foot">
-  <p><a href="missions/">Browse every mission by pack</a></p>
+  <p class="foot-links"><a href="missions/">Every mission by pack</a> <a href="safety/">Safety</a> <a href="privacy/">Privacy</a> <a href="contact/">Contact</a></p>
   <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
   <p id="catalog-meta"></p>
 </footer>
