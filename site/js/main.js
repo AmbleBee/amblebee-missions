@@ -74,6 +74,18 @@ async function findCity(text) {
     h("button", { type: "button", class: "linkish zip-clear", onclick: () => use(c) }, `${c[0]}, ${c[1]}`)),
   found.length > 6 ? h("span", { class: "zip-more" }, `Not listed? Add the state, like ${found[0][0]}, ${found[0][1]}.`) : "");
 }
+// after "Use my location": the closest ZIP goes in the box, so it's easy to see the spot looks right.
+// Worked out here in the browser. Nothing is filled in if no ZIP is close, like outside the US
+async function showNearestZip(lat, lon) {
+  try { S.zips = S.zips || (await loadList("zips.json", "zips")) || {}; }
+  catch (err) { return; }
+  let nearest = null, least = NEAREST_ZIP_M;
+  for (const [zip, c] of Object.entries(S.zips)) {
+    const d = meters([lat, lon], c);
+    if (d < least) { least = d; nearest = zip; }
+  }
+  if (nearest && S.zip === "your location" && !$("#zip-input").value) $("#zip-input").value = nearest;
+}
 function useLocation() {
   const status = $("#zip-status");
   if (!navigator.geolocation) { status.textContent = "This browser can't share a location. Try a ZIP code or city."; return; }
@@ -81,6 +93,7 @@ function useLocation() {
   navigator.geolocation.getCurrentPosition((p) => {
     $("#zip-input").value = "";
     setPlace(p.coords.latitude, p.coords.longitude, "your location");
+    showNearestZip(p.coords.latitude, p.coords.longitude);
   }, () => { status.textContent = "Couldn't get your location. Try a ZIP code or city instead."; },
   { timeout: 10000, maximumAge: 600000 });
 }

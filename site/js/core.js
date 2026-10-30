@@ -87,6 +87,7 @@ function discountText(m) {
 const NEAR_MAX = 24;
 const NEARBY_SHARE = 0.75;      // with a ZIP set, how often a pick is a real place nearby
 const NEARBY_M = 160934;        // "nearby" when no distance is picked: 100 miles
+const NEAREST_ZIP_M = 50000;    // "Use my location" only shows a ZIP within this far
 const WITHIN = { mi: [5, 15, 30, 60, 100], km: [10, 25, 50, 100, 150] };
 const M_PER = { mi: 1609.344, km: 1000 };
 

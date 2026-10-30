@@ -390,6 +390,26 @@ def t_shared_city_names_list_the_likely_one_first(site, catalog):
     assert page.locator("#zip-status button").count() == 6
 
 
+def t_location_shows_the_closest_zip(site, catalog):
+    def locate(lat, lon):
+        page = site.home()
+        page.context.grant_permissions(["geolocation"])
+        page.context.set_geolocation({"latitude": lat, "longitude": lon})
+        page.click("#use-location")
+        page.wait_for_selector("text=Near your location")
+        return page
+
+    page = locate(45.52, -122.68)
+    page.wait_for_function("() => document.querySelector('#zip-input').value")
+    zip_code = page.input_value("#zip-input")
+    assert re.fullmatch(r"972\d\d", zip_code), zip_code
+    assert zip_code not in page.url
+    assert page.evaluate("Object.values(localStorage).join()").find(zip_code) < 0, "a location must never be saved"
+    page = locate(51.5, -0.12)   # London: no ZIP anywhere close
+    page.wait_for_function("() => S.zips")
+    assert page.input_value("#zip-input") == ""
+
+
 def t_filters_survive_in_the_address(site, catalog):
     page = site.home()
     page.select_option("#pack-select", "all")
