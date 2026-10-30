@@ -71,7 +71,8 @@ async function findCity(text) {
   if (!found.length) { status.textContent = `Couldn't find ${text}. Try adding the state, like Portland, OR, or use a ZIP code.`; return; }
   if (found.length === 1 || state) { use(found[0]); return; }
   status.replaceChildren("Which one? ", ...found.slice(0, 6).map((c) =>
-    h("button", { type: "button", class: "linkish zip-clear", onclick: () => use(c) }, `${c[0]}, ${c[1]}`)));
+    h("button", { type: "button", class: "linkish zip-clear", onclick: () => use(c) }, `${c[0]}, ${c[1]}`)),
+  found.length > 6 ? h("span", { class: "zip-more" }, `Not listed? Add the state, like ${found[0][0]}, ${found[0][1]}.`) : "");
 }
 function useLocation() {
   const status = $("#zip-status");

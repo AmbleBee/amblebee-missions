@@ -218,7 +218,7 @@ def t_phone_shows_the_main_button_first(site, catalog):
     assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
 
 
-def t_who_is_coming_widens_and_skips_romantic(site, catalog):
+def t_who_is_coming_widens_keeps_kids_safe_and_skips_romantic(site, catalog):
     page = site.home()
     page.select_option("#pack-select", "all")
     page.click("#filters-toggle")
@@ -239,6 +239,17 @@ def t_who_is_coming_widens_and_skips_romantic(site, catalog):
     by_id = {m["full_id"]: m for m in catalog["missions"]}
     assert any(by_id[i]["mode"] in ("adventure", "both") for i in family), "family should still get adventures"
     assert not any("romantic" in (by_id[i].get("themes") or []) or by_id[i]["mode"] == "date" for i in both)
+    pick("friends")
+    pick("family")
+    pick("kids")
+    kids = fits()
+    assert kids, "friends + kids should find missions"
+    assert all("kids" in (by_id[i].get("who") or []) for i in kids), "with Kids picked, every mission must welcome kids"
+    assert not any("drinks" in (by_id[i].get("themes") or []) for i in kids)
+    assert not any(by_id[i]["id"] in ("saluti-cellars-highland-cattle", "exploratorium-after-dark") for i in kids)
+    pick("kids")
+    pick("friends")
+    pick("family")
     page.check('input[name="mode"][value="adventure"]', force=True)
     assert fits(), "family + adventure should find missions"
 
@@ -361,6 +372,22 @@ def t_city_search_and_location(site, catalog):
     page.wait_for_selector("text=Near your location")
     assert "lat" not in page.url and "45." not in page.url
     assert page.locator('text="Remember on this device"').count() == 0
+
+
+def t_shared_city_names_list_the_likely_one_first(site, catalog):
+    page = site.home()
+    page.fill("#zip-input", "Albany")
+    page.click("#zip-form button")
+    page.wait_for_selector("#zip-status >> text=Albany, NY")
+    assert page.locator("#zip-status button").first.inner_text() == "Albany, NY"
+    page.fill("#zip-input", "Pasadena")
+    page.click("#zip-form button")
+    page.wait_for_selector("#zip-status >> text=Pasadena, CA")
+    assert page.locator("text=Not listed?").count() == 0
+    page.fill("#zip-input", "Springfield")
+    page.click("#zip-form button")
+    page.wait_for_selector("text=Not listed? Add the state")
+    assert page.locator("#zip-status button").count() == 6
 
 
 def t_filters_survive_in_the_address(site, catalog):

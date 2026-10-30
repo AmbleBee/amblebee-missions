@@ -7,14 +7,14 @@ missions/
   _template.yaml        copy this to start a new mission (files starting with _ are ignored)
   general/              missions that aren't in a pack
     sunset-picnic.yaml
-  portland/             a pack: one folder per pack
+  oregon/               a pack: one folder per pack
     pack.yaml           pack information
-    voodoo-doughnut-run.yaml
+    blue-pool-hike.yaml
 ```
 
-Structure is **source > pack > mission**. A pack is a curated, usually place-specific collection
-(Portland, Seattle) that people can add or skip on its own. Themes (ocean, camping, rainy day)
-are tags and filters, not packs.
+Structure is **source > pack > mission**. A pack is a curated collection, one per state plus Amble
+Anywhere, that people can add or skip on its own. Themes (ocean, camping, rainy day) are tags and
+filters, not packs.
 
 **The file name is the mission's id** (`sunset-picnic.yaml` → id `sunset-picnic`, shown on the Hive
 as `amblebee/sunset-picnic`). Ids are permanent: never rename a published mission's file. Use lowercase
@@ -38,8 +38,8 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 
 | Field | Meaning |
 |---|---|
-| `name` | Pack name ("Portland") |
-| `region` | Where it applies ("Portland, OR") |
+| `name` | Pack name ("Amble Oregon") |
+| `region` | Where it applies ("Oregon") |
 | `description` | One or two sentences |
 | `icon` | Name of an icon in `icons/packs/`, without `.svg` (`evergreen`, `needle`, `covered-bridge`…). To add one, see `icons/README.md`. |
 
@@ -49,10 +49,10 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 
 | Field | Values |
 |---|---|
-| `number` | Permanent number within its pack ("Mission 3 of 12 in Portland"). Never reuse or renumber, even if a mission is removed. |
+| `number` | Permanent number within its pack ("Mission 3 in Amble Oregon"). Never reuse or renumber, even if a mission is removed. |
 | `name` | Mission title |
 | `mode` | `date` (you and your partner), `adventure` (everyone else), or `both` |
-| `short` | One line for the Amblebee's e-ink screen, 100 characters max |
+| `short` | One line for the AmbleBee's e-ink screen, 100 characters max |
 | `description` | A few sentences for the Hive's mission card |
 | `duration` | `short` (1-3 hrs), `half-day`, `all-day` |
 | `effort` | `easy`, `moderate`, `hard` |

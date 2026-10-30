@@ -17,9 +17,16 @@ function passes(m, f) {
   if (f.mode === "date" && !["date", "both"].includes(m.mode)) return false;
   if (f.mode === "adventure" && !["adventure", "both"].includes(m.mode)) return false;
   if (f.pack !== "all" && m.pack !== f.pack) return false;
-  // who's coming: fits any of the people picked. Romantic missions are for two, so they're left out here,
+  // who's coming: kids have to be welcome if they're coming; otherwise a mission fits if it suits any of the
+  // people picked (Friends + Family widens). Romantic missions are for two, so they're left out here,
   // and date-only missions have no "who" at all
-  if (f.who.length && (!f.who.some((w) => (m.who || []).includes(w)) || (m.themes || []).includes("romantic"))) return false;
+  if (f.who.length) {
+    const who = m.who || [];
+    if ((m.themes || []).includes("romantic")) return false;
+    if (f.who.includes("kids") && !who.includes("kids")) return false;
+    const others = f.who.filter((w) => w !== "kids");
+    if (others.length && !others.some((w) => who.includes(w))) return false;
+  }
   if (f.duration.length && !f.duration.includes(m.duration)) return false;
   if (f.effort.length && !f.effort.includes(m.effort)) return false;
   if (f.cost.length && !f.cost.includes(m.cost)) return false;
