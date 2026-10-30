@@ -70,77 +70,31 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
-- title: A Menu and a Proper Footer
+- title: The Big Website Tune-Up
   status: done
   date: 2026-10-30
   tag: website
-  summary: Everything is now one tap away from the top of any page, and the page has a clear end.
+  summary: A full day of fixes and new features, with better ways to find a mission, a cleaner layout on every screen, and a sturdier site behind it all.
   items:
-    - A Menu button on phones, and a More menu on computers, with Safety, Privacy and Contact
-    - The same menu on every page
-    - A dark footer that's easy to tell apart from the rest of the page
-
-- title: Find It Your Way
-  status: done
-  date: 2026-10-30
-  tag: website
-  summary: New ways to find a mission, and to share the list you found.
-  items:
-    - Type a city as well as a ZIP, or press Use my location. Where you are stays in your browser
-    - A Time of day filter, from morning to night
-    - Sort Every mission by distance, cost or how long it takes
-    - Copy a link to any list of missions. Your filters and search come along, but your location never does
-
-- title: Smoother Browsing
-  status: done
-  date: 2026-10-30
-  tag: website
-  summary: Mission cards are real links now, dead ends offer a way out, and the ZIP box got friendlier.
-  items:
-    - Every mission has its own address, even in a pop-up, so you can copy it, refresh it or open it in a new tab
-    - '"Who''s coming" now shows missions that suit anyone you pick, and leaves romantic dates out'
-    - No matches? The site says which change would bring missions back, with one Clear all button
-    - Your ZIP can stay on this device if you'd like, and switching miles and kilometers keeps your distance
-    - A friendly page for addresses that don't exist, and better support for screen readers
-
-- title: Closer to Home
-  status: done
-  date: 2026-10-30
-  tag: website
-  summary: Set your ZIP and most picks are now real places nearby, and the picker comes first on every screen.
-  items:
-    - With a ZIP set, most picks are places near you, with a few do-anywhere ideas mixed in
-    - '"Where to next?" now comes first on computers too, with the AmbleBee story further down'
-    - Pop-ups keep the page behind them still and fit better on phones
-    - The note card now says plainly that notes are hidden, not encrypted
-    - Behind the scenes, the site gets tested in a real browser before every update
-
-- title: Easier Finding, Clearer Phones
-  status: done
-  date: 2026-10-30
-  tag: website
-  summary: Filters and search now work the way you'd expect, phones get to the good part faster, and the site has real Safety, Privacy and Contact pages.
-  items:
-    - Every mission now starts with all live missions showing, and your filters narrow that list too, with one Clear filters button
+    - Search by city as well as ZIP, or press Use my location. Where you are stays in your browser
+    - With a place set, most picks are real places nearby, with a few do-anywhere ideas mixed in
+    - Your ZIP or city can stay on this device if you'd like, and switching miles and kilometers keeps your distance
+    - Every mission now starts with all live missions showing, and your filters narrow that list too
+    - New Time of day filter, and sort Every mission by distance, cost or how long it takes
     - Search matches whole words, forgives small typos, and understands that food means dinner and "kids" means kid-friendly missions
-    - On phones, the Open a mission button sits right under "Who's it for?", and there's only one of it
-    - '"Go right now" now checks the time of day and the season, so a night mission won''t turn up at breakfast'
-    - Mission tickets no longer count hidden drafts in their numbers
-    - Easier-to-read colors in light and dark mode, and a skip link that keeps your mission open
-    - New Safety, Privacy and Contact pages, and the mission license is now in the repo
-
-- title: Sturdier Links and Pages for Every Mission
-  status: done
-  date: 2026-10-30
-  tag: website
-  summary: Every live mission now has its own page, shared links fail gracefully, and the cards you write are much harder to lose.
-  items:
-    - Each live mission and pack gets a real page that search engines can find, listed in a sitemap and on a new page of every pack
-    - Refreshing your own mission keeps it yours, instead of saying someone sent it to you
-    - Cards you're writing save as you type, have a close button, and won't close if you tap outside them with writing on the card
-    - Links to a missing mission, or links cut off when copied, now get a clear "lost in the mail" letter
-    - The site and this trail now show how many missions are live and how many are still being checked, and two old claims about mission and state counts got corrected
-    - Envelopes keep their shape on narrower screens
+    - '"Who''s coming" shows missions that suit anyone you pick, and leaves romantic dates out'
+    - '"Go right now" checks the time of day and the season, so a night mission won''t turn up at breakfast'
+    - No matches? The site says which change would bring missions back, with one Clear all button
+    - Copy a link to any list of missions. Your filters and search come along, but your location never does
+    - Each live mission and pack has its own page and address, so you can copy, refresh or open one in a new tab
+    - A Menu button on phones, a More menu on computers, and a dark footer, the same on every page
+    - '"Where to next?" comes first on every screen, and on phones the Open a mission button sits right under "Who''s it for?"'
+    - Cards you're writing save as you type, and the note card says plainly that notes are hidden, not encrypted
+    - Refreshing your own mission keeps it yours, and missing or broken links get a clear "lost in the mail" letter
+    - New Safety, Privacy and Contact pages, plus a friendly page for addresses that don't exist
+    - The site and this trail now show how many missions are live and how many are still being checked
+    - Easier-to-read colors, better screen reader support, and pop-ups that fit phones and keep the page behind them still
+    - Behind the scenes, the site gets tested in a real browser before every update
 
 - title: Filter Themes
   status: done
