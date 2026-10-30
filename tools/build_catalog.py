@@ -50,8 +50,11 @@ def build(folder):
         "themes": [{"id": t, "label": label} for t, label in THEMES.items()],
         "missions": out_missions,
     }
-    # content hash: lets the Hive's "Check for updates" tell instantly whether anything changed
-    digest = hashlib.sha256(json.dumps(body, sort_keys=True, default=str).encode()).hexdigest()
+    # content hash: lets the Hive's "Check for updates" tell instantly whether anything changed. It leaves out
+    # the date and the draft count, so editing a draft doesn't send every Hive off to download the same missions
+    published = {**body, "source": {k: v for k, v in body["source"].items() if k != "updated"},
+                 "stats": {k: v for k, v in stats.items() if k != "drafts"}}
+    digest = hashlib.sha256(json.dumps(published, sort_keys=True, default=str).encode()).hexdigest()
     return {**body, "content_hash": digest,
             "generated_at": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
 
