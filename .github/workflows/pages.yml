@@ -51,7 +51,7 @@ jobs:
           python tools/build_roadmap.py --out _site/roadmap.json
           python tools/build_icons.py --out _site/icons.json
           python tools/build_pages.py --out _site
-          cp data/zips.json _site/zips.json
+          cp data/zips.json data/cities.json _site/
       - name: Install the test browser
         run: |
           pip install playwright==1.64.1

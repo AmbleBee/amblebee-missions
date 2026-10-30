@@ -12,33 +12,16 @@ function renderWithin() {
   document.querySelectorAll(".units button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.unit === S.unit)));
 }
 function zipLine() {
-  const saved = readPref("zip") === S.zip;
+  const canSave = S.zip !== "your location" && readPref("zip") !== S.zip;
   $("#zip-status").replaceChildren(h("span", { class: "zip-set" }, `Near ${S.zip}`),
     ": places close by plus missions you can do anywhere. Distances are as the bee flies.",
     h("button", { type: "button", class: "linkish zip-clear", onclick: clearZip }, "Clear"),
-    saved ? null : h("button", { type: "button", class: "linkish zip-clear",
-      onclick: () => { writePref("zip", S.zip); zipLine(); } }, "Remember on this device"));
+    canSave ? h("button", { type: "button", class: "linkish zip-clear",
+      onclick: () => { writePref("zip", S.zip); zipLine(); } }, "Remember on this device") : null);
 }
-async function setZip(e) {
-  if (e) e.preventDefault();
-  const status = $("#zip-status");
-  const zip = ($("#zip-input").value || "").trim();
-  if (!/^\d{5}$/.test(zip)) { status.textContent = "A ZIP code is 5 numbers, like 97201."; return; }
-  if (!S.zips) {
-    status.textContent = "Looking it up…";
-    try {
-      const r = await fetch(`${HOME}zips.json`);
-      if (!r.ok) throw new Error(r.status);
-      S.zips = (await r.json()).zips || {};
-    } catch (err) {
-      status.textContent = "ZIP lookup isn't available right now. You can still browse everything.";
-      return;
-    }
-  }
-  const c = S.zips[zip];
-  if (!c) { status.textContent = `Couldn't find ${zip}. Double-check the number? (US ZIP codes only for now.)`; return; }
+function setPlace(lat, lon, label) {
   const first = !S.here;
-  S.here = { lat: c[0], lon: c[1] }; S.zip = zip;
+  S.here = { lat, lon }; S.zip = label;
   if (first && $("#pack-select").value === "anywhere") { $("#pack-select").value = "all"; S.packWidened = true; }
   renderWithin();
   if (first && !$("#within-select").value) $("#within-select").value = String(WITHIN[S.unit][2]);
@@ -47,6 +30,59 @@ async function setZip(e) {
   renderWithin(); refresh();
   rerenderReveal();
 }
+async function loadList(url, key) {
+  const r = await fetch(`${HOME}${url}`);
+  if (!r.ok) throw new Error(r.status);
+  return (await r.json())[key];
+}
+// a ZIP goes straight to its point; anything with letters is a city
+async function setZip(e) {
+  if (e) e.preventDefault();
+  const status = $("#zip-status");
+  const text = ($("#zip-input").value || "").trim();
+  if (!text) { status.textContent = "Type a ZIP code or a city, like 97201 or Portland, OR."; return; }
+  if (/[a-z]/i.test(text)) { findCity(text); return; }
+  if (!/^\d{5}$/.test(text)) { status.textContent = "A ZIP code is 5 numbers, like 97201."; return; }
+  if (!S.zips) {
+    status.textContent = "Looking it up…";
+    try { S.zips = (await loadList("zips.json", "zips")) || {}; }
+    catch (err) { status.textContent = "ZIP lookup isn't available right now. You can still browse everything."; return; }
+  }
+  const c = S.zips[text];
+  if (!c) { status.textContent = `Couldn't find ${text}. Double-check the number? (US ZIP codes only for now.)`; return; }
+  setPlace(c[0], c[1], text);
+}
+// cities: [name, state, lat, lon], biggest first. "Portland, OR" or "Portland OR" settles it;
+// "Portland" alone offers the choices
+async function findCity(text) {
+  const status = $("#zip-status");
+  if (!S.cities) {
+    status.textContent = "Looking it up…";
+    try { S.cities = (await loadList("cities.json", "cities")) || []; }
+    catch (err) { status.textContent = "City lookup isn't available right now. A ZIP code should still work."; return; }
+  }
+  const named = /^(.*?)[,\s]+([a-z]{2})$/i.exec(text);
+  const state = named && S.cities.some((c) => c[1] === named[2].toUpperCase()) ? named[2].toUpperCase() : null;
+  const name = fold(state ? named[1] : text.replace(/,\s*$/, "")).replace(/\bsaint\b/g, "st.").trim();
+  const inState = (c) => !state || c[1] === state;
+  let found = S.cities.filter((c) => fold(c[0]) === name && inState(c));
+  if (!found.length) found = S.cities.filter((c) => fold(c[0]).startsWith(name) && inState(c));
+  const use = (c) => { $("#zip-input").value = `${c[0]}, ${c[1]}`; setPlace(c[2], c[3], `${c[0]}, ${c[1]}`); };
+  if (!found.length) { status.textContent = `Couldn't find ${text}. Try adding the state, like Portland, OR, or use a ZIP code.`; return; }
+  if (found.length === 1 || state) { use(found[0]); return; }
+  status.replaceChildren("Which one? ", ...found.slice(0, 6).map((c) =>
+    h("button", { type: "button", class: "linkish zip-clear", onclick: () => use(c) }, `${c[0]}, ${c[1]}`)));
+}
+function useLocation() {
+  const status = $("#zip-status");
+  if (!navigator.geolocation) { status.textContent = "This browser can't share a location. Try a ZIP code or city."; return; }
+  status.textContent = "Asking your browser…";
+  navigator.geolocation.getCurrentPosition((p) => {
+    $("#zip-input").value = "";
+    setPlace(p.coords.latitude, p.coords.longitude, "your location");
+  }, () => { status.textContent = "Couldn't get your location. Try a ZIP code or city instead."; },
+  { timeout: 10000, maximumAge: 600000 });
+}
 function clearZip() {
   S.here = null; S.zip = null; $("#zip-input").value = "";
   dropPref("zip");
@@ -54,9 +90,47 @@ function clearZip() {
   S.packWidened = false;
   if (S.browse === "near") S.browse = null;
   $("#within-select").value = "";
-  $("#zip-status").textContent = "Add a ZIP to see places close by, plus missions you can do anywhere. It's never sent anywhere.";
+  $("#zip-status").textContent = "Add a ZIP or city to see places close by, plus missions you can do anywhere. It's never sent anywhere.";
   renderWithin(); refresh();
   rerenderReveal();
+}
+
+// ---- shareable links: picks live in the address, so a copied link or a refresh keeps them ------------
+// Where you are never goes in the address, so sharing a link can't share your location.
+const QUERY_LISTS = ["who", "duration", "effort", "cost", "setting", "time", "themes"];
+function filterQuery() {
+  const f = readFilters(), q = new URLSearchParams();
+  if (f.mode !== "any") q.set("mode", f.mode);
+  if (f.pack !== "anywhere") q.set("pack", f.pack);
+  QUERY_LISTS.forEach((k) => { if (f[k].length) q.set(k, f[k].join(",")); });
+  if (f.inSeason) q.set("season", "now");
+  if (f.goNow) q.set("go", "now");
+  if (S.browse && !["all", "near"].includes(S.browse)) q.set("list", S.browse);
+  if (S.q.trim()) q.set("q", S.q.trim());
+  if (S.sort) q.set("sort", S.sort);
+  const text = q.toString();
+  return text ? `?${text}` : "";
+}
+function syncUrl() {
+  if (location.pathname !== HOME) return;   // a mission pop-up has its own address
+  const url = `${HOME}${filterQuery()}${location.hash}`;
+  if (url !== location.pathname + location.search + location.hash) history.replaceState(history.state, "", url);
+}
+function readQuery() {
+  const q = new URLSearchParams(location.search);
+  const mode = document.querySelector(`input[name="mode"][value="${CSS.escape(q.get("mode") || "any")}"]`);
+  if (mode) mode.checked = true;
+  if (q.has("pack") && [...$("#pack-select").options].some((o) => o.value === q.get("pack"))) $("#pack-select").value = q.get("pack");
+  for (const k of QUERY_LISTS) {
+    const picks = (q.get(k) || "").split(",");
+    document.querySelectorAll(`[data-filter="${k}"] input`).forEach((i) => { i.checked = picks.includes(i.value); });
+  }
+  $("#f-season").checked = q.get("season") === "now";
+  $("#f-gonow").checked = q.get("go") === "now";
+  if (S.packById[q.get("list")]) S.browse = q.get("list");
+  S.q = (q.get("q") || "").slice(0, 80);
+  $("#search-input").value = S.q;
+  if (SORTS[q.get("sort")]) S.sort = q.get("sort");
 }
 
 // ---- wiring --------------------------------------------------------------------------------------
@@ -128,6 +202,14 @@ async function start() {
   $("#roll-btn").addEventListener("click", () => roll());
   $("#zip-form").addEventListener("submit", setZip);
   $("#browse-pack").addEventListener("change", (e) => { S.browse = e.target.value; renderBrowse(); });
+  $("#browse-sort").addEventListener("change", (e) => { S.sort = e.target.value; renderBrowse(); });
+  $("#use-location").addEventListener("click", useLocation);
+  $("#browse-share").addEventListener("click", async (e) => {
+    const b = e.target;
+    try { await navigator.clipboard.writeText(`${location.origin}${HOME}${filterQuery()}`); b.textContent = "Copied!"; }
+    catch (err) { b.textContent = "Copy it from the address bar"; }
+    setTimeout(() => { b.textContent = "Copy a link to this list"; }, 2200);
+  });
   let searchTimer = null;
   const sInput = $("#search-input");
   sInput.addEventListener("input", () => {
@@ -194,6 +276,7 @@ async function start() {
     startOver({ then: { id, search: a.id === "nav-search" } });   // scrolls once the home page is back
   }));
 
+  readQuery();
   renderWithin();
   renderBrowse();
   renderTeaser();

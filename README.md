@@ -11,7 +11,7 @@ The website is at [amblebee.com](https://amblebee.com). It's built from this rep
 | `site/` | The website: home page, roadmap page, styles, and the scripts in `site/js/` |
 | `pages/` | The words on the Safety, Privacy, Contact and 404 pages |
 | `icons/` | Pack and site icons ([how to add one](icons/README.md)) |
-| `data/` | The ZIP code lookup, refreshed with `python tools/build_zips.py` |
+| `data/` | ZIP code and city lookups, refreshed with `python tools/build_zips.py` and `python tools/build_cities.py` |
 | `tools/` | Checks and build scripts |
 | `roadmap.yaml` | The bee trail page. Edit it, push, done |
 
@@ -38,4 +38,4 @@ Want to add a mission? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-The missions in `missions/` are shared under [CC BY-SA 4.0](LICENSE). The fonts in `site/fonts/` have their own licenses, next to them. The ZIP data comes from the US Census Bureau and is public domain. The license doesn't cover the website code or icons.
+The missions in `missions/` are shared under [CC BY-SA 4.0](LICENSE). The fonts in `site/fonts/` have their own licenses, next to them. The ZIP and city data comes from the US Census Bureau and is public domain. The license doesn't cover the website code or icons.

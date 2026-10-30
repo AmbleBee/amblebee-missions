@@ -290,6 +290,75 @@ def t_files_have_versions_and_404_is_branded(site, catalog):
     assert page.locator('link[href*="style.css?v="]').count() == 1
 
 
+def t_time_of_day_filter_keeps_any_time_missions(site, catalog):
+    page = site.home()
+    page.select_option("#pack-select", "all")
+    page.click("#filters-toggle")
+    page.click('[data-filter="time"] label:has(input[value="night"])')
+    picks = page.evaluate("pool().map((m) => m.time_of_day)")
+    assert picks and set(picks) <= {"night", "any"}
+
+
+def t_city_search_and_location(site, catalog):
+    page = site.home()
+    page.fill("#zip-input", "Portland, OR")
+    page.click("#zip-form button")
+    page.wait_for_selector("text=Near Portland, OR")
+    page.click(".zip-clear")
+    page.fill("#zip-input", "Portland")
+    page.click("#zip-form button")
+    page.wait_for_selector("#zip-status >> text=Portland, ME")
+    page.click("#zip-status >> text=Portland, ME")
+    page.wait_for_selector("text=Near Portland, ME")
+    page.click(".zip-clear")
+    page.fill("#zip-input", "Notarealplacehere")
+    page.click("#zip-form button")
+    page.wait_for_selector("text=Couldn't find Notarealplacehere")
+    page.context.grant_permissions(["geolocation"])
+    page.context.set_geolocation({"latitude": 45.52, "longitude": -122.68})
+    page.click("#use-location")
+    page.wait_for_selector("text=Near your location")
+    assert "lat" not in page.url and "45." not in page.url
+    assert page.locator('text="Remember on this device"').count() == 0
+
+
+def t_filters_survive_in_the_address(site, catalog):
+    page = site.home()
+    page.select_option("#pack-select", "all")
+    page.click("#filters-toggle")
+    page.click('[data-filter="cost"] label:has(input[value="free"])')
+    page.fill("#search-input", "waterfall")
+    page.wait_for_function("() => location.search.includes('q=waterfall')")
+    url = page.url
+    assert "cost=free" in url
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".zip-set")
+    assert "97201" not in page.url, "a location must never go in the address"
+    other = site.home(url.replace(site.base, ""))
+    assert other.input_value("#search-input") == "waterfall"
+    assert other.is_checked('[data-filter="cost"] input[value="free"]')
+    assert other.input_value("#pack-select") == "all"
+    assert 0 < other.locator("#packs .card").count() < len(catalog["missions"])
+    assert other.is_visible("#browse-share")
+
+
+def t_sort_makes_one_ordered_list(site, catalog):
+    page = site.home()
+    page.select_option("#browse-sort", "cost")
+    costs = page.locator("#packs .card .meta span:last-child").all_inner_texts()
+    order = ["Free", "Under $20", "$20-60", "Over $60"]
+    assert [order.index(c) for c in costs] == sorted(order.index(c) for c in costs)
+    assert page.locator("#packs .pack-head").count() == 0
+    assert "sort=cost" in page.url
+    assert page.locator('#browse-sort option[value="distance"]').count() == 0
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".zip-set")
+    page.select_option("#browse-sort", "distance")
+    assert "mi" in page.locator("#packs .card .meta .d").first.inner_text()
+
+
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",

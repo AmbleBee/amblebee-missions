@@ -95,8 +95,8 @@
       <legend>Near you</legend>
       <div class="near-row">
         <form class="zip-form" id="zip-form" autocomplete="on" novalidate>
-          <label class="sr" for="zip-input">ZIP code</label>
-          <input id="zip-input" name="postal-code" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="ZIP code" required>
+          <label class="sr" for="zip-input">ZIP code or city</label>
+          <input id="zip-input" name="place" autocomplete="off" placeholder="ZIP code or city">
           <button type="submit" class="btn small">Set</button>
         </form>
         <label class="within"><span>Within</span>
@@ -107,7 +107,8 @@
           <button type="button" data-unit="km" aria-pressed="false">km</button>
         </div>
       </div>
-      <p class="hint" id="zip-status" role="status">Add a ZIP to see places close by, plus missions you can do anywhere. It's never sent anywhere.</p>
+      <button type="button" class="linkish" id="use-location">Use my location</button>
+      <p class="hint" id="zip-status" role="status">Add a ZIP or city to see places close by, plus missions you can do anywhere. It's never sent anywhere.</p>
     </fieldset>
 
     <div class="roll-row">
@@ -179,6 +180,15 @@
       </div>
     </fieldset>
     <fieldset>
+      <legend>Time of day</legend>
+      <div class="chips" data-filter="time">
+        <label><input type="checkbox" value="morning"><span>Morning</span></label>
+        <label><input type="checkbox" value="daytime"><span>Daytime</span></label>
+        <label><input type="checkbox" value="evening"><span>Evening</span></label>
+        <label><input type="checkbox" value="night"><span>Night</span></label>
+      </div>
+    </fieldset>
+    <fieldset>
       <legend>Right now</legend>
       <div class="chips">
         <label><input type="checkbox" id="f-season"><span>In season now</span></label>
@@ -207,6 +217,7 @@
     <h2 id="browse-title">Every mission</h2>
     <p class="hand" id="browse-count"></p>
     <button type="button" class="linkish" id="browse-clear" hidden>Clear filters</button>
+    <button type="button" class="linkish" id="browse-share" hidden>Copy a link to this list</button>
   </div>
   <div class="browse-pick">
     <div class="search-field" role="search">
@@ -216,6 +227,10 @@
     <div class="pack-field">
       <label for="browse-pack">Show missions from</label>
       <select id="browse-pack"></select>
+    </div>
+    <div class="pack-field sort-field">
+      <label for="browse-sort">Sort by</label>
+      <select id="browse-sort"></select>
     </div>
     <p class="hint" id="search-hint" hidden>Searching all missions in every pack.</p>
   </div>

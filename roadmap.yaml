@@ -70,6 +70,17 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Find It Your Way
+  status: done
+  date: 2026-10-30
+  tag: website
+  summary: New ways to find a mission, and to share the list you found.
+  items:
+    - Type a city as well as a ZIP, or press Use my location. Where you are stays in your browser
+    - A Time of day filter, from morning to night
+    - Sort Every mission by distance, cost or how long it takes
+    - Copy a link to any list of missions. Your filters and search come along, but your location never does
+
 - title: Smoother Browsing
   status: done
   date: 2026-10-30

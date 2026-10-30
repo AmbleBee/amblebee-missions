@@ -141,10 +141,11 @@ const S = {
   current: null,
   unit: readPref("unit") || (/^en-US/.test(navigator.language || "") ? "mi" : "km"),
   here: null,   // {lat, lon} of the ZIP: in memory only, never stored or sent
-  zip: null,
+  zip: null,    // what S.here is called on screen: "97201", "Portland, OR" or "your location"
   zips: null,   // ZIP -> [lat, lon], downloaded whole the first time someone sets a ZIP
   browse: null, // which pack "Every mission" shows ("all", "near", or a pack id)
   q: "",        // search box text ("" = not searching)
+  sort: "",     // "Sort by" in Every mission: "" (by pack), distance, cost or duration
 };
 function readPref(k) { try { return localStorage.getItem("amble." + k); } catch (e) { return null; } }
 function dropPref(k) { try { localStorage.removeItem("amble." + k); } catch (e) { /* private mode: fine */ } }

@@ -98,6 +98,13 @@ function liveLine() {
   const drafts = (S.catalog.stats || {}).drafts || 0;
   return `${S.missions.length} live missions in ${S.packs.length} packs${drafts ? `, ${drafts} more being checked` : ""}`;
 }
+// "Sort by" in Every mission: a flat list instead of pack sections. Ties stay in A to Z order.
+const byRank = (order, get) => (a, b) => order.indexOf(get(a)) - order.indexOf(get(b)) || a.name.localeCompare(b.name);
+const SORTS = {
+  distance: (a, b) => (distM(a) ?? Infinity) - (distM(b) ?? Infinity) || a.name.localeCompare(b.name),
+  cost: byRank(["free", "$", "$$", "$$$"], (m) => m.cost),
+  duration: byRank(["short", "half-day", "all-day"], (m) => m.duration),
+};
 function renderBrowse() {
   const f = readFilters();
   renderThemeCounts(f);
@@ -128,10 +135,12 @@ function renderBrowse() {
   $("#browse-clear").hidden = !browsing;
 
   renderBrowsePick(everything);
+  syncUrl();
   const wrap = $("#packs");
   wrap.replaceChildren();
   const words = searchWords();
   const searching = words.length > 0;
+  $("#browse-share").hidden = !(browsing || searching || S.sort || !["all", "near"].includes(S.browse));
   $("#search-hint").hidden = !searching;
   $("#search-hint").textContent = browsing ? "Searching the missions that fit your filters." : "Searching all missions in every pack.";
   $(".pack-field").hidden = searching;
@@ -155,7 +164,7 @@ function renderBrowse() {
       openDialog(m);
     } },
       h("span", { class: "card-top" },
-        h("span", { class: "no" }, (S.browse === "near" || searching) && pack ? `${pack.name} · Mission ${m.number}`
+        h("span", { class: "no" }, (S.browse === "near" || searching || S.sort) && pack ? `${pack.name} · Mission ${m.number}`
           : `Mission ${m.number}${m.place && m.place.area ? " · " + m.place.area : ""}`),
         flags.length ? h("span", { class: "flags" }, flags) : null),
       h("h4", {}, m.name),
@@ -174,6 +183,7 @@ function renderBrowse() {
     let found = rank(false);
     const close = !found.length;
     if (close) found = rank(true);   // nothing exact: try short word starts and small typos
+    if (S.sort) found = [...found].sort(SORTS[S.sort]);
     $("#browse-count").textContent = close && found.length
       ? `${found.length} close ${found.length === 1 ? "match" : "matches"} for "${S.q.trim()}"`
       : `${found.length} ${found.length === 1 ? "mission matches" : "missions match"} "${S.q.trim()}"`;
@@ -187,12 +197,16 @@ function renderBrowse() {
   }
   if (S.browse === "near" && S.here) {
     const near = everything.filter((m) => distM(m) != null).sort((x, y) => distM(x) - distM(y)).slice(0, NEAR_MAX);
+    if (S.sort) near.sort(SORTS[S.sort]);
     if (near.length) wrap.append(h("section", { class: "pack", "aria-label": "Closest to your ZIP" },
       h("div", { class: "pack-head" },
         h("span", { class: "badge" }, svg(ICON.pin, 26)),
         h("div", {}, h("h3", {}, `Closest to ${S.zip}`),
-          h("p", {}, `The ${near.length} nearest places, as the bee flies. Amble Anywhere missions work from any ZIP.`))),
+          h("p", {}, `${near.length === 1 ? "The nearest place" : `The ${near.length} nearest places`}, as the bee flies. Amble Anywhere missions work from anywhere.`))),
       h("div", { class: "cards" }, near.map(card))));
+  } else if (S.sort) {
+    const ms = everything.filter((m) => S.browse === "all" || m.pack === S.browse).sort(SORTS[S.sort]);
+    if (ms.length) wrap.append(h("section", { class: "pack", "aria-label": "Sorted missions" }, h("div", { class: "cards" }, ms.map(card))));
   } else {
     for (const p of S.packs) {
       if (S.browse !== "all" && S.browse !== p.id) continue;
@@ -219,6 +233,10 @@ function renderBrowsePick(matches) {
   if (S.browse === "near" && !S.here) S.browse = null;
   if (!S.browse || ![...sel.options].some((o) => o.value === S.browse)) S.browse = "all";
   sel.value = S.browse;
+  if (S.sort === "distance" && !S.here) S.sort = "";
+  const sorts = [["", "Pack"], ...(S.here ? [["distance", "Closest first"]] : []), ["cost", "Lowest cost first"], ["duration", "Shortest first"]];
+  $("#browse-sort").replaceChildren(...sorts.map(([v, label]) => h("option", { value: v }, label)));
+  $("#browse-sort").value = S.sort;
 }
 
 // ---- pack list in "What is AmbleBee?": Anywhere first, then the 4 biggest packs, then "+ N more"

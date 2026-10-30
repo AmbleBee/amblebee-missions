@@ -10,7 +10,7 @@ rm -rf _site && cp -r site _site
 python3 tools/build_catalog.py --out _site/catalog.json
 python3 tools/build_icons.py --out _site/icons.json
 python3 tools/build_pages.py --out _site
-cp data/zips.json _site/zips.json
+cp data/zips.json data/cities.json _site/
 [ -f tools/build_roadmap.py ] && python3 tools/build_roadmap.py --out _site/roadmap.json
 echo "Open http://localhost:8811  (Ctrl+C to stop)"
 cd _site && python3 -m http.server 8811

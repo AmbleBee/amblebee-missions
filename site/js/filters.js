@@ -8,7 +8,7 @@ function readFilters() {
     mode: (document.querySelector('input[name="mode"]:checked') || {}).value || "any",
     pack: $("#pack-select").value,
     who: checked("who"), duration: checked("duration"), effort: checked("effort"),
-    cost: checked("cost"), setting: checked("setting"), themes: checked("themes"),
+    cost: checked("cost"), setting: checked("setting"), time: checked("time"), themes: checked("themes"),
     inSeason: $("#f-season").checked, goNow: $("#f-gonow").checked, hour: new Date().getHours(),
     within: $("#within-select").value ? Number($("#within-select").value) : null,
   };
@@ -24,6 +24,7 @@ function passes(m, f) {
   if (f.effort.length && !f.effort.includes(m.effort)) return false;
   if (f.cost.length && !f.cost.includes(m.cost)) return false;
   if (f.setting.length && m.setting !== "either" && !f.setting.includes(m.setting)) return false;
+  if (f.time.length && m.time_of_day !== "any" && !f.time.includes(m.time_of_day)) return false;
   // themes: any of the picked ones (Food or Views), so picking more widens rather than narrows
   if (f.themes.length && !(m.themes || []).some((t) => f.themes.includes(t))) return false;
   if (f.inSeason && !inSeason(m)) return false;
@@ -33,14 +34,14 @@ function passes(m, f) {
   return true;
 }
 function activeFilters(f) {
-  return f.who.length + f.duration.length + f.effort.length + f.cost.length + f.setting.length + f.themes.length
+  return f.who.length + f.duration.length + f.effort.length + f.cost.length + f.setting.length + f.time.length + f.themes.length
     + (f.inSeason ? 1 : 0) + (f.goNow ? 1 : 0);
 }
 const pool = () => { const f = readFilters(); return S.missions.filter((m) => passes(m, f)); };
 // at zero results: the one change that would bring the most missions back
 function bestRelax(f) {
   const lists = [["who", "Who's coming"], ["duration", "How long"], ["effort", "Effort"], ["cost", "Cost for two"],
-    ["setting", "Inside or out"], ["themes", "What kind of mission"]];
+    ["setting", "Inside or out"], ["time", "Time of day"], ["themes", "What kind of mission"]];
   const tries = lists.filter(([k]) => f[k].length).map(([k, label]) => [label, { ...f, [k]: [] }]);
   if (f.inSeason) tries.push(["In season now", { ...f, inSeason: false }]);
   if (f.goNow) tries.push(["Go right now", { ...f, goNow: false }]);
