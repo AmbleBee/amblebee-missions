@@ -81,6 +81,8 @@ function discountText(m) {
   return joinList(keys.map((k) => L.discount[k] || k));
 }
 const NEAR_MAX = 24;
+const NEARBY_SHARE = 0.75;      // with a ZIP set, how often a pick is a real place nearby
+const NEARBY_M = 160934;        // "nearby" when no distance is picked: 100 miles
 const WITHIN = { mi: [5, 15, 30, 60, 100], km: [10, 25, 50, 100, 150] };
 const M_PER = { mi: 1609.344, km: 1000 };
 
@@ -498,6 +500,7 @@ function openGiftForm(m, opts = {}) {
     h("p", { class: "gift-label" }, "Who's it for?"),
     chips,
     h("div", { class: "gift-desk" }, card, count),
+    h("p", { class: "gift-privacy" }, "Your note travels inside the link. It's hidden, not encrypted, so anyone with the link could read it."),
     err,
     h("div", { class: "gift-actions" },
       h("button", { type: "submit", class: "btn primary" }, svg(ICON.mail, 20), "Seal it"),
@@ -911,7 +914,14 @@ function pickMission() {
   const p = pool();
   if (!p.length) return null;
   const choices = p.length > 1 && S.current ? p.filter((m) => m.full_id !== S.current.full_id) : p;
-  return choices[Math.floor(Math.random() * choices.length)];
+  const pick = (from) => from[Math.floor(Math.random() * from.length)];
+  if (!S.here) return pick(choices);
+  // with a ZIP set, most picks are real places nearby; the rest are do-anywhere ideas
+  const f = readFilters();
+  const reach = f.within != null ? f.within * M_PER[S.unit] : NEARBY_M;
+  const near = choices.filter((m) => { const d = distM(m); return d != null && d <= reach; });
+  const rest = choices.filter((m) => !near.includes(m));
+  return pick(near.length && (!rest.length || Math.random() < NEARBY_SHARE) ? near : rest);
 }
 function renderTeaser() {
   const n = pool().length;

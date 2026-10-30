@@ -10,9 +10,10 @@ on:
 permissions:
   contents: read
 
+# each branch builds on its own, so a pull request can never replace a waiting deploy from main
 concurrency:
-  group: pages
-  cancel-in-progress: false
+  group: pages-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 
 jobs:
   build:
@@ -28,6 +29,10 @@ jobs:
         run: python tools/check_missions.py
       - name: Check roadmap
         run: python tools/build_roadmap.py
+      - name: Check packs
+        run: python tools/check_packs.py --strict
+      - name: Report mission numbers
+        run: python tools/check_numbers.py   # gaps can be on purpose, so this one only reports
       - name: Check icons
         run: python tools/build_icons.py
       - name: Check color contrast
@@ -46,11 +51,15 @@ jobs:
           python tools/build_roadmap.py --out _site/roadmap.json
           python tools/build_icons.py --out _site/icons.json
           python tools/build_pages.py --out _site
-      - name: Build ZIP lookup
-        continue-on-error: true   # without it, only the ZIP box stops working
-        run: python tools/build_zips.py --out _site/zips.json
+          cp data/zips.json _site/zips.json
+      - name: Install the test browser
+        run: |
+          pip install playwright==1.64.1
+          python -m playwright install --with-deps chromium
+      - name: Test the site in a browser
+        run: python tools/smoke_test.py
       - name: Upload site
-        if: github.event_name != 'pull_request'
+        if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v3
         with:
           path: _site
@@ -59,6 +68,9 @@ jobs:
     needs: build
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    concurrency:
+      group: pages-deploy
+      cancel-in-progress: false
     permissions:
       pages: write
       id-token: write

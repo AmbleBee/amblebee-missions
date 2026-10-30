@@ -1,11 +1,15 @@
 """Build zips.json: US ZIP code -> [lat, lon] for the website's "Starting from ZIP" box.
 
-    python tools/build_zips.py --out _site/zips.json
+    python tools/build_zips.py
+
+Refreshes data/zips.json, which is committed and copied into the site on every build. Census data
+changes about once a year, so run this by hand now and then and commit the result. Keeping the file
+in the repo means a Census outage can never take the ZIP box down.
 
 Downloads the Census Bureau's ZCTA gazetteer (public domain) and keeps just the ZIP and its
 center point, rounded to 2 decimals (about 1 km, plenty for "as the bee flies").
 The whole file goes to the visitor's browser and the lookup happens there, so nobody's ZIP is
-ever sent anywhere. Runs in the GitHub Action; a failed download only disables the ZIP box.
+ever sent anywhere.
 """
 import argparse
 import io
@@ -71,7 +75,7 @@ def download():
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--out", default="build/zips.json")
+    ap.add_argument("--out", default="data/zips.json")
     ap.add_argument("--from-file", help="use a local gazetteer .txt instead of downloading")
     a = ap.parse_args()
     if a.from_file:

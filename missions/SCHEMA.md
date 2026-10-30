@@ -17,20 +17,20 @@ Structure is **source > pack > mission**. A pack is a curated, usually place-spe
 are tags and filters, not packs.
 
 **The file name is the mission's id** (`sunset-picnic.yaml` → id `sunset-picnic`, shown on the Hive
-as `max/sunset-picnic`). Ids are permanent: never rename a published mission's file. Use lowercase
+as `amblebee/sunset-picnic`). Ids are permanent: never rename a published mission's file. Use lowercase
 letters, numbers and dashes.
 
 **The folder is the pack.** Moving a file to another folder moves the mission to that pack; its id
 (and its history) stays the same.
 
-Check your changes with `python tools/check_missions.py` (also part of the test task).
+Check your changes with `python tools/check_missions.py` (this also runs on every push).
 
 ## catalog.yaml
 
 | Field | Meaning |
 |---|---|
-| `name` | Shown on the Hive's source list and on mission tickets ("Max's Missions") |
-| `source_id` | Short, unique, never changes; prefixes every mission id (`max/...`) |
+| `name` | Shown on the Hive's source list and on mission tickets ("Amblebee Missions") |
+| `source_id` | Short, unique, never changes; prefixes every mission id (`amblebee/...`) |
 | `author` | Who maintains the collection |
 | `schema_version` | Bump only when the field format changes |
 | `updated` | Date of the last change (YYYY-MM-DD) |

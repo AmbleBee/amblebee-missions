@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AmbleBee Missions</title>
 <meta name="description" content="Date and adventure ideas to get you out the door together. Open a mission, go do it, take a few photos.">
@@ -22,16 +23,7 @@
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
-<script>
-  /* Opening a shared or gift link: hide the home page before it's drawn, so the letter shows first.
-     app.js removes this once the letter is ready (or after a few seconds, just in case). */
-  (function () {
-    if (!/(?:^#|&)(gift|mission)=/.test(location.hash)) return;
-    var d = document.documentElement;
-    d.classList.add("arriving");
-    setTimeout(function () { d.classList.remove("arriving"); }, 6000);
-  })();
-</script>
+<script src="arrive.js"></script>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
 <script src="app.js" defer></script>
@@ -75,17 +67,6 @@
   <div class="ticket-actions" id="reveal-actions"></div>
   <button type="button" class="linkish reveal-adjust" id="reveal-adjust">Adjust filters</button>
 </section>
-
-<section id="about" class="about" aria-labelledby="about-title">
-  <div class="about-text">
-    <h2 id="about-title">What is AmbleBee?</h2>
-    <p>AmbleBee is a little camera that hands you a <b>mission</b>: a date or adventure idea to go out and do. Pick a coffee shop you've never tried, hike to a waterfall, get the strangest doughnut on the menu. You take photos along the way, and when you come home the camera docks into the <b>Hive</b>, a picture frame that keeps your photos as memories of where you've been.</p>
-    <p>The camera is a personal project, built by hand and still in progress. The missions are here for everyone, with or without one. No points, no streaks, nothing to fail: just a reason to go.</p>
-  </div>
-  <ul class="packs-legend" id="pack-legend" aria-label="Mission packs"></ul>
-</section>
-
-<div class="divider div-about" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
 
 <section class="roll" aria-labelledby="roll-title">
   <div class="roll-intro">
@@ -228,6 +209,17 @@
     <p class="hint" id="search-hint" hidden>Searching all missions in every pack.</p>
   </div>
   <div id="packs"></div>
+</section>
+
+<div class="divider div-about" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
+
+<section id="about" class="about" aria-labelledby="about-title">
+  <div class="about-text">
+    <h2 id="about-title">What is AmbleBee?</h2>
+    <p>AmbleBee is a little camera that hands you a <b>mission</b>: a date or adventure idea to go out and do. Pick a coffee shop you've never tried, hike to a waterfall, get the strangest doughnut on the menu. You take photos along the way, and when you come home the camera docks into the <b>Hive</b>, a picture frame that keeps your photos as memories of where you've been.</p>
+    <p>The camera is a personal project, built by hand and still in progress. The missions are here for everyone, with or without one. No points, no streaks, nothing to fail: just a reason to go.</p>
+  </div>
+  <ul class="packs-legend" id="pack-legend" aria-label="Mission packs"></ul>
 </section>
 
 <div class="divider big div-share" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>

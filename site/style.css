@@ -352,10 +352,11 @@ details.extra li { margin: 2px 0; }
 /* ---- dialog ---- */
 dialog {
   border: 0; padding: 0; background: transparent; width: min(760px, calc(100vw - 24px));
-  max-height: calc(100vh - 24px); overflow: visible;
+  max-height: calc(100vh - 24px); max-height: calc(100dvh - 24px); overflow: visible;
 }
 dialog::backdrop { background: rgba(42, 30, 22, .55); }
-dialog .dialog-body { max-height: calc(100vh - 40px); overflow: auto; border-radius: 24px; }
+html:has(dialog[open]) { overflow: hidden; scrollbar-gutter: stable; }   /* the page behind a pop-up stays still */
+dialog .dialog-body { max-height: calc(100vh - 40px); max-height: calc(100dvh - 40px); overflow: auto; overscroll-behavior: contain; border-radius: 24px; }
 dialog form { display: flex; justify-content: center; margin-top: 12px; }
 dialog .close { min-height: 48px; }
 /* mission pop-up: a round X pinned to the card's top-right corner (stays put while the card scrolls) */
@@ -503,7 +504,7 @@ body.revealing main > :not(#reveal) { display: none !important; }
 #gift-dialog form.gift-form { display: block; margin: 0; }   /* undo the generic "dialog form" rule */
 .gift-sheet {
   background: var(--paper); color: var(--walnut); border-radius: 24px; padding: 24px 26px 22px;
-  box-shadow: inset 0 0 0 2px var(--line), var(--shadow); max-height: calc(100vh - 40px); overflow: auto;
+  box-shadow: inset 0 0 0 2px var(--line), var(--shadow); max-height: calc(100vh - 40px); max-height: calc(100dvh - 40px); overflow: auto; overscroll-behavior: contain;
 }
 .gift-sheet h2 { font-size: 1.6rem; margin: 0 0 10px; }
 .gift-kicker { font-size: 1.4rem; padding-right: 48px; }
@@ -515,6 +516,7 @@ body.revealing main > :not(#reveal) { display: none !important; }
 .gift-mission svg { flex-shrink: 0; }
 .gift-label { margin: 16px 0 8px; font-weight: 800; color: var(--ink); }
 .gift-desk { margin-top: 14px; padding: 48px 14px 10px; border-radius: 18px; background: var(--linen); box-shadow: inset 0 0 0 2px var(--line); }
+.gift-privacy { margin: 10px 0 0; font-size: .88rem; color: var(--walnut-soft); }
 .gift-count { display: block; min-height: 1.2em; margin-top: 8px; text-align: right; font-size: .82rem; font-weight: 700; color: var(--walnut-soft); }
 .gift-count.near { color: var(--honey-deep); }
 .gift-err { margin: 12px 0 0; color: #A4482F; font-weight: 800; }
@@ -654,28 +656,17 @@ html.arriving #reveal-slot:empty::before {
 .near-pick .near-row { gap: 10px; }
 .near-pick .zip-form input { width: 7.5rem; }
 .near-pick .hint { max-width: 34rem; }
-.about-teaser { display: none; }
 .top-share { display: none; }
 
 /* ---- "Know a great spot?" now sits at the end, after Every mission, with its own bee trail ---- */
 .divider.div-share { margin-top: 56px; }
 #share { margin-bottom: 40px; }
 
-/* ---- phones: open a mission first, the "What is AmbleBee?" story further down ---- */
-@media (max-width: 860px) {
-  main { display: flex; flex-direction: column; }
-  main > #reveal { order: 0; }
-  main > .roll { order: 1; }
-  main > #filters { order: 2; }
-  main > .divider.big:not(.div-share) { order: 3; }
-  main > #browse { order: 4; }
-  main > .div-about { order: 5; margin: 48px 0 26px; }
-  main > #about { order: 6; }
-  main > .div-share { order: 7; }
-  main > #share { order: 8; }
-  .about-teaser { display: block; margin: -.6rem 0 1.3rem; max-width: 34rem; font-size: .95rem; color: var(--walnut-soft); }
-  .about-teaser a { font-weight: 800; white-space: nowrap; }
-}
+/* ---- the opener comes first; "What is AmbleBee?" sits further down, with a short teaser up top ---- */
+.about-teaser { margin: -.6rem 0 1.3rem; max-width: 34rem; font-size: .95rem; color: var(--walnut-soft); }
+.about-teaser a { font-weight: 800; white-space: nowrap; }
+.divider.div-about { margin: 56px 0 26px; }
+@media (max-width: 860px) { .divider.div-about { margin: 48px 0 26px; } }
 
 /* ---- phone header: logo + "Add a spot" on one row, the four links on the next ---- */
 @media (max-width: 560px) {

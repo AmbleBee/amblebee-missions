@@ -29,6 +29,7 @@ from build_icons import load as load_icons  # noqa: E402
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee Missions"
 OG_IMAGE = f"{BASE}/og-image.png"
+CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html
 # the same "Report a problem" form as site/app.js: opens with the mission's id and name already filled in
 REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
 REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
@@ -75,6 +76,7 @@ def page(title, description, path, main, jsonld, brand, extra_script=""):
 <html lang="en">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="{CSP}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
@@ -214,9 +216,7 @@ def build_pages(out):
     brand = re.search(r'<a class="brand".*?</a>', (ROOT / "site" / "index.html").read_text(encoding="utf-8"), re.S).group(0)
     brand = brand.replace('href="./"', 'href="/"')
     today = datetime.date.today().isoformat()
-    until_script = ('<script>(function(){var d=new Date(),t=d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+'
-                    'String(d.getDate()).padStart(2,"0");document.querySelectorAll("[data-until]").forEach(function(e){'
-                    'if(t>e.dataset.until)e.remove();});})();</script>\n')
+    until_script = '<script src="/until.js" defer></script>\n'
 
     missions = catalog["missions"]
     packs = sorted(catalog["packs"], key=lambda p: (p["id"] != "anywhere", p.get("name") or p["id"]))

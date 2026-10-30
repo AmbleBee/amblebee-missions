@@ -70,6 +70,18 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Closer to Home
+  status: done
+  date: 2026-10-30
+  tag: website
+  summary: Set your ZIP and most picks are now real places nearby, and the picker comes first on every screen.
+  items:
+    - With a ZIP set, most picks are places near you, with a few do-anywhere ideas mixed in
+    - '"Where to next?" now comes first on computers too, with the AmbleBee story further down'
+    - Pop-ups keep the page behind them still and fit better on phones
+    - The note card now says plainly that notes are hidden, not encrypted
+    - Behind the scenes, the site gets tested in a real browser before every update
+
 - title: Easier Finding, Clearer Phones
   status: done
   date: 2026-10-30
