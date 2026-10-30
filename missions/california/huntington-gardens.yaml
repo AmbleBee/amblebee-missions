@@ -2,7 +2,7 @@
 number: 5
 name: The Huntington Gardens
 mode: both
-who: [solo, friends, family, kids]
+who: [friends, family, kids]
 place:
   name: The Huntington Library, Art Museum, and Botanical Gardens
   area: San Marino, near Pasadena
@@ -15,8 +15,8 @@ description: >
   pick one garden "world" to lead the other through: the spiky Desert Garden,
   the Japanese Garden with its moon bridge, the Chinese Garden's pavilions and
   lake, or the Rose Garden. Give your best tour-guide pitch for why yours is the
-  best. Finish in the art galleries to find The Blue Boy, and get a photo of the
-  two of you in your favorite spot of the day.
+  best. Finish in the art galleries to find The Blue Boy, and get a photo of
+  you in your favorite spot of the day.
 for_kids:
   short: Garden explorer! Find each thing.
   steps:

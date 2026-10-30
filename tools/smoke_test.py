@@ -155,6 +155,47 @@ def t_note_card_survives_and_seals(site, catalog):
     assert opened.inner_text(".gift-body") == "Pack a jacket"
 
 
+def t_sealed_letter_stays_sealed_with_a_remembered_zip(site, catalog):
+    page = site.home()
+    page.click("#packs .card")
+    page.click('#dialog-body button:has-text("Share this mission")')
+    page.click('button:has-text("Share without a note")')
+    page.wait_for_selector(".gift-link")
+    link = page.input_value(".gift-link").replace(site.base, "")
+    page.goto(site.base + "/contact/")   # a different page, so the link below is a fresh start
+    page.evaluate("localStorage.setItem('amble.zip', '97201')")
+    page.goto(site.base + link)
+    page.wait_for_selector(".env-open")
+    page.wait_for_function("() => S.here")
+    assert page.is_visible(".env-open"), "the letter must wait for its Open button"
+    page.click(".env-open")
+    page.wait_for_selector("#reveal-title")
+
+
+def t_back_closes_the_card(site, catalog):
+    page = site.home()
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    page.click('#reveal-actions button:has-text("Share this mission")')
+    page.fill(".gc-note", "Pack a jacket")
+    page.go_back()
+    page.wait_for_selector("#gift-dialog", state="hidden")
+    assert page.is_visible("#roll-btn")
+
+
+def t_no_places_nearby_says_so_and_offers_more(site, catalog):
+    page = site.home()
+    page.fill("#zip-input", "59001")
+    page.click("#zip-form button")
+    page.wait_for_selector("text=Nothing within 30 mi of 59001 yet.")
+    assert "No places within 30 mi" in page.inner_text("#match-count")
+    anywhere = sum(1 for m in catalog["missions"] if m["pack"] == "anywhere")
+    assert page.locator("#packs .card").count() == anywhere, "do-anywhere missions still show"
+    page.click(".near-widen")
+    page.wait_for_selector("#packs .card .meta .d")
+    assert page.locator("text=Nothing within").count() == 0
+
+
 def t_popup_locks_the_page_behind_it(site, catalog):
     page = site.home(viewport=PHONE)
     page.locator("#packs .card").first.scroll_into_view_if_needed()

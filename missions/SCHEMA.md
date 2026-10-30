@@ -33,7 +33,6 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 | `source_id` | Short, unique, never changes; prefixes every mission id (`amblebee/...`) |
 | `author` | Who maintains the collection |
 | `schema_version` | Bump only when the field format changes |
-| `updated` | Date of the last change (YYYY-MM-DD) |
 
 ## pack.yaml (one per pack folder; `general/` needs none)
 

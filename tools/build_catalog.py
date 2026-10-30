@@ -9,6 +9,7 @@ this on every push). Refuses to build if tools/check_missions.py finds problems.
 import argparse
 import hashlib
 import json
+import subprocess
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -18,6 +19,15 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from missions_lib import THEMES, check_catalog, live_stats, load_catalog  # noqa: E402
 
 PRIVATE_KEYS = {"file"}  # local paths never go into the published file
+
+
+def last_changed(folder):
+    """The date of the newest commit that touched the missions (None outside a full git checkout)."""
+    try:
+        out = subprocess.run(["git", "log", "-1", "--format=%cs", "--", "."], cwd=folder, capture_output=True, text=True, check=True)
+    except (OSError, subprocess.CalledProcessError):
+        return None
+    return out.stdout.strip() or None
 
 
 def build(folder):
@@ -33,7 +43,7 @@ def build(folder):
     packs = {pid: {k: v for k, v in p.items() if k != "drafts"} for pid, p in packs.items() if p["count"]}
     body = {
         "schema_version": info["schema_version"],
-        "source": {k: info.get(k) for k in ("name", "source_id", "author", "updated")},
+        "source": {**{k: info.get(k) for k in ("name", "source_id", "author")}, "updated": last_changed(folder)},
         "stats": stats,
         "packs": list(packs.values()),
         # the theme list (filter chips): id + label, in display order; missions list theirs under "themes"

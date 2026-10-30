@@ -40,13 +40,13 @@ function activeFilters(f) {
 const pool = () => { const f = readFilters(); return S.missions.filter((m) => passes(m, f)); };
 // at zero results: the one change that would bring the most missions back
 function bestRelax(f) {
-  const lists = [["who", "Who's coming"], ["duration", "How long"], ["effort", "Effort"], ["cost", "Cost for two"],
+  const lists = [["who", "Who's coming"], ["duration", "How long"], ["effort", "Effort"], ["cost", "Cost"],
     ["setting", "Inside or out"], ["time", "Time of day"], ["themes", "What kind of mission"]];
   const tries = lists.filter(([k]) => f[k].length).map(([k, label]) => [label, { ...f, [k]: [] }]);
   if (f.inSeason) tries.push(["In season now", { ...f, inSeason: false }]);
   if (f.goNow) tries.push(["Go right now", { ...f, goNow: false }]);
   if (f.within != null) tries.push(["the distance", { ...f, within: null }]);
-  if (f.mode !== "any") tries.push(["Who's it for?", { ...f, mode: "any" }]);
+  if (f.mode !== "any") tries.push(["What are you in the mood for?", { ...f, mode: "any" }]);
   if (f.pack !== "all") tries.push(["Pick from", { ...f, pack: "all" }]);
   let best = null;
   for (const [label, g] of tries) {

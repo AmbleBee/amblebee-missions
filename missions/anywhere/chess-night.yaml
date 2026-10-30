@@ -1,13 +1,13 @@
 number: 37
 name: Chess Night
 mode: both
-who: [solo, friends, family, kids]
+who: [friends, family, kids]
 short: Play a best-of-three chess match. If one of you is new, the other teaches as you go.
 description: >
   Set up a board, pour something good, and play a best-of-three chess match.
   If one of you is new to chess, play the first game as a lesson with the moves
   explained out loud, then play for real. Try a fast round with a timer to mix
-  it up. Loser picks the snack for the rematch. Take a photo of the two of you
+  it up. Loser picks the snack for the rematch. Take a photo of you
   over the board right before checkmate. No board? Look for a café or park with
   chess tables.
 for_kids:

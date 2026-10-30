@@ -105,6 +105,8 @@ ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 CREDIT_MAX = 40  # shown as "Suggested by …" under the mission title
 SHORT_MAX = 100
 CAUTION_MAX = 200  # the yellow box on the website ticket; about 3 lines on a phone, so shorter is better
+# wording that assumes a couple. Fine on date-only missions, wrong once friends, family or one person can go
+COUPLE_WORDS = re.compile(r"\b(the two of you|you two|both of you|your partner|your date|hold hands)\b", re.I)
 
 
 def caution_until_date(v):
@@ -264,6 +266,12 @@ def check_catalog(root):
             seen_numbers[key] = where
         elif "number" in m:
             problems.append(f"{where}: number should be a whole number")
+        if m.get("mode") != "date":
+            text = " ".join([str(m.get(k) or "") for k in ("name", "short", "description")] + [str(x) for x in m.get("steps") or []])
+            found = COUPLE_WORDS.search(" ".join(text.split()))
+            if found:
+                problems.append(f"{where}: says \"{found.group(0)}\", but friends, family or one person can go on this mission; "
+                                "try \"you\" or \"your group\" (or make the mode date)")
         if len(str(m.get("short", ""))) > SHORT_MAX:
             problems.append(f"{where}: short is {len(m['short'])} characters; keep it to {SHORT_MAX} for the camera screen")
         if "kids" in m.get("who", []):

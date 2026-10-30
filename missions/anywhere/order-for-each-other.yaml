@@ -1,7 +1,7 @@
 number: 43
 name: Order for Each Other
 mode: both
-who: [solo, friends, family, kids]
+who: [friends, family, kids]
 short: At a favorite local spot, order something for the other person they'd never pick themselves.
 description: >
   Head to one of your local haunts, like a favorite café, bakery, taco stand or
@@ -9,7 +9,7 @@ description: >
   person to try, food, a drink or a small item, that they would never order
   for themselves. Keep your choices secret until they arrive. Taste, react
   honestly, and explain why you picked what you did. Rate each pick out of 10,
-  and get a photo of the two of you holding the surprise picks. Bring a
+  and get a photo of you holding the surprise picks. Bring a
   friend or the kids and everyone picks for someone else.
 for_kids:
   short: Surprise pick! Do each thing.

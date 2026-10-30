@@ -138,7 +138,8 @@ function refresh() {
   renderBrowse();
   if (!revealing()) renderTeaser();
 }
-const rerenderReveal = () => { if (revealing() && S.current) showReveal(S.current, { from: S.revealFrom }); };
+// a sealed letter stays sealed: it picks up the new distance when it's opened
+const rerenderReveal = () => { if (revealing() && S.current && !$("#reveal-slot .env")) showReveal(S.current, { from: S.revealFrom }); };
 // the mission named in the address: null = none, "" = there but unreadable (a link cut off partway)
 function hashMission() {
   const m = /(?:^#|&)mission=([^&]*)/.exec(location.hash);
@@ -252,6 +253,7 @@ async function start() {
   window.addEventListener("popstate", () => {
     if (history.state && history.state.amble === "popup") { location.reload(); return; }   // Forward: show the real page
     if ($("#mission-dialog").open) $("#mission-dialog").close();
+    if ($("#gift-dialog").open) $("#gift-dialog").close();   // the draft is kept
     route();
   });
   window.addEventListener("hashchange", route);

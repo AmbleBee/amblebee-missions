@@ -328,6 +328,8 @@ details.extra li { margin: 2px 0; }
 .card .meta span { background: var(--sand); border-radius: 9px; padding: 2px 8px; }
 .card .meta .d { background: var(--sage-tint); color: var(--sage-ink); }
 .none { padding: 26px; border-radius: 18px; background: var(--linen); font-weight: 700; color: var(--walnut-soft); }
+div.none { margin-bottom: 34px; }
+.near-widen { display: flex; margin-top: 12px; }
 
 /* ---- about / share ---- */
 .about {
@@ -637,7 +639,7 @@ html.arriving #reveal-slot:empty::before {
 @keyframes arrivepulse { from { opacity: .55; } to { opacity: .9; } }
 @media (max-width: 560px) { html.arriving #reveal-slot:empty::before { aspect-ratio: 1.15 / 1; margin-top: 60px; } }
 
-/* ---- opener: "Near you" sits right under "Who's it for?" ---- */
+/* ---- opener: "Near you" sits right under the mood picker ---- */
 .near-pick { margin: 0 0 18px; border: 0; padding: 0; }
 .near-pick legend { font-size: .95rem; }
 .near-pick .near-row { gap: 10px; }
@@ -697,7 +699,7 @@ main:focus { outline: none; }
 .info p, .info ul { margin: 0 0 .8rem; }
 .info li { margin: .25rem 0; }
 
-/* ---- phones and small tablets: the main button comes right after "Who's it for?", the rest follows ---- */
+/* ---- phones and small tablets: the main button comes right after the mood picker, the rest follows ---- */
 @media (max-width: 860px) {
   .roll { padding-top: 14px; }
   .roll-intro { display: flex; flex-direction: column; }

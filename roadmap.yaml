@@ -12,7 +12,8 @@
 #   summary: one or two sentences                        (optional)
 #   items:   a list of bullet points                     (optional)
 #   progress: 140/415                                    (optional, not for done: shows a bar with "140 / 415" and 33%;
-#             add a label after it if you like: 140/415 places pinned. Bump the first number as you go.)
+#             add a label after it if you like: 140/415 places pinned. Bump the first number as you go.
+#             Or write  progress: live  to count live missions out of all missions, updated on every build.)
 #
 # Order doesn't matter much. The page reads like time flowing downward:
 #   later (top) -> next -> doing -> "You are here" -> done, newest to oldest (bottom).
@@ -60,7 +61,7 @@
 
 - title: Exact Map Pins for Every Place
   status: doing
-  progress: 195/603
+  progress: live
   tag: missions
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 

@@ -114,8 +114,10 @@ function renderBrowse() {
   const mc = $("#match-count");
   const word = (k) => (k === 1 ? "mission" : "missions");
   mc.className = "match" + (n === total ? "" : " filtered") + (n === 0 ? " zero" : "");
-  const narrowed = active > 0 || f.within != null;   // pack or "Who's it for?" alone aren't "filters"
+  const narrowed = active > 0 || f.within != null;   // pack or the mood picker alone aren't "filters"
+  const placesInReach = S.here && S.missions.some((m) => distM(m) != null && passes(m, { ...f, pack: "all" }));
   mc.textContent = !narrowed && n ? `${n} ${word(n)} to pick from`
+    : !active && n && S.here && !placesInReach ? `${n} ${word(n)} you can do anywhere. No places within ${f.within} ${S.unit} of ${S.zip} yet.`
     : !active && n && S.here ? `${n} ${word(n)} to pick from, within ${f.within} ${S.unit} of ${S.zip}`
     : n === 0 ? "No missions fit these filters. Try clearing one."
     : n === 1 ? "Only 1 mission fits these filters"
@@ -197,13 +199,23 @@ function renderBrowse() {
   }
   if (S.browse === "near" && S.here) {
     const near = everything.filter((m) => distM(m) != null).sort((x, y) => distM(x) - distM(y)).slice(0, NEAR_MAX);
-    if (S.sort) near.sort(SORTS[S.sort]);
+    const anywhere = everything.filter((m) => distM(m) == null);
+    if (S.sort) { near.sort(SORTS[S.sort]); anywhere.sort(SORTS[S.sort]); }
     if (near.length) wrap.append(h("section", { class: "pack", "aria-label": "Closest to your ZIP" },
       h("div", { class: "pack-head" },
         h("span", { class: "badge" }, svg(ICON.pin, 26)),
         h("div", {}, h("h3", {}, `Closest to ${S.zip}`),
-          h("p", {}, `${near.length === 1 ? "The nearest place" : `The ${near.length} nearest places`}, as the bee flies. Amble Anywhere missions work from anywhere.`))),
+          h("p", {}, `${near.length === 1 ? "The nearest place" : `The ${near.length} nearest places`}, as the bee flies.`))),
       h("div", { class: "cards" }, near.map(card))));
+    else if (f.within != null) wrap.append(nothingNear(f));
+    if (anywhere.length) {
+      const p = S.packById.anywhere || {};
+      wrap.append(h("section", { class: "pack", "aria-label": "Missions you can do anywhere" },
+        h("div", { class: "pack-head" },
+          h("span", { class: "badge" }, svg(packIcon(p), 26)),
+          h("div", {}, h("h3", {}, p.name || "Do it anywhere"), h("p", {}, "No place needed, so these work wherever you are."))),
+        h("div", { class: "cards" }, anywhere.map(card))));
+    }
   } else if (S.sort) {
     const ms = everything.filter((m) => S.browse === "all" || m.pack === S.browse).sort(SORTS[S.sort]);
     if (ms.length) wrap.append(h("section", { class: "pack", "aria-label": "Sorted missions" }, h("div", { class: "cards" }, ms.map(card))));
@@ -221,6 +233,18 @@ function renderBrowse() {
     }
   }
   if (!wrap.children.length) wrap.append(h("p", { class: "none" }, browsing ? "None of these fit your filters. Clear them to see more." : "No missions in this pack yet."));
+}
+// no real place inside the distance: name the closest one and offer the step that reaches it
+function nothingNear(f) {
+  const closest = S.missions.filter((m) => distM(m) != null && passes(m, { ...f, pack: "all", within: null }))
+    .sort((x, y) => distM(x) - distM(y))[0];
+  const lead = `Nothing within ${f.within} ${S.unit} of ${S.zip} yet.`;
+  if (!closest) return h("p", { class: "none" }, lead);
+  const miles = distM(closest) / M_PER[S.unit];
+  const step = WITHIN[S.unit].find((v) => v >= miles);
+  return h("div", { class: "none" }, `${lead} The closest is ${closest.name}, ${fmtDist(distM(closest))} away.`,
+    h("button", { type: "button", class: "btn small near-widen", onclick: () => { $("#within-select").value = step || ""; refresh(); } },
+      step ? `Widen to ${step} ${S.unit}` : "Show any distance"));
 }
 function renderBrowsePick(matches) {
   const sel = $("#browse-pack");

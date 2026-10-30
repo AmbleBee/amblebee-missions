@@ -36,7 +36,7 @@ def as_date(value):
     raise ValueError
 
 
-def check(entries):
+def check(entries, stats):
     problems, clean = [], []
     if not isinstance(entries, list):
         return ["roadmap.yaml should be a list of entries, each starting with '- title:'"], []
@@ -63,7 +63,9 @@ def check(entries):
             problems.append(f"{name}: done entries need a date, like 'date: 2026-10-19'")
         progress = None
         if e.get("progress") not in (None, ""):
-            m = PROGRESS_RE.match(str(e["progress"]))
+            live = str(e["progress"]).strip().lower() == "live"   # counted from the mission files
+            text = f"{stats['live']}/{stats['live'] + stats['drafts']}" if live else str(e["progress"])
+            m = PROGRESS_RE.match(text)
             if not m:
                 problems.append(f"{name}: progress should look like 140/415 (done/total), "
                                 f"optionally followed by a label like 140/415 places pinned (got '{e['progress']}')")
@@ -99,15 +101,16 @@ def build(path):
         entries = yaml.safe_load(path.read_text(encoding="utf-8")) or []
     except yaml.YAMLError as err:
         raise SystemExit(f"roadmap.yaml isn't valid YAML (check indents and colons):\n  {err}")
-    problems, clean = check(entries)
+    _, packs, missions = load_catalog(ROOT / "missions")
+    stats = live_stats(packs, missions)
+    problems, clean = check(entries, stats)
     if problems:
         raise SystemExit("Not building the roadmap, fix these in roadmap.yaml first:\n  - " + "\n  - ".join(problems))
     upcoming = [e for e in clean if e["status"] != "done"]
     # time runs one way down the page: someday at the top, then next, then doing (right above "today")
     upcoming.sort(key=lambda e: ("later", "next", "doing").index(e["status"]))  # stable: file order within a status
     done = sorted((e for e in clean if e["status"] == "done"), key=lambda e: e["date"], reverse=True)
-    _, packs, missions = load_catalog(ROOT / "missions")
-    return {"upcoming": upcoming, "done": done, "stats": live_stats(packs, missions),
+    return {"upcoming": upcoming, "done": done, "stats": stats,
             "generated_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
 
 
