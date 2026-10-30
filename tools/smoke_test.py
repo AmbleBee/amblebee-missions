@@ -177,6 +177,119 @@ def t_phone_shows_the_main_button_first(site, catalog):
     assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
 
 
+def t_who_is_coming_widens_and_skips_romantic(site, catalog):
+    page = site.home()
+    page.select_option("#pack-select", "all")
+    page.click("#filters-toggle")
+
+    def fits():
+        return page.evaluate("pool().map((m) => m.full_id)")
+
+    def pick(who):
+        page.click(f'[data-filter="who"] label:has(input[value="{who}"])')
+
+    pick("friends")
+    friends = fits()
+    pick("family")
+    both = fits()
+    assert len(both) >= len(friends), "picking more people should never narrow the results"
+    pick("friends")
+    family = fits()
+    by_id = {m["full_id"]: m for m in catalog["missions"]}
+    assert any(by_id[i]["mode"] in ("adventure", "both") for i in family), "family should still get adventures"
+    assert not any("romantic" in (by_id[i].get("themes") or []) or by_id[i]["mode"] == "date" for i in both)
+    page.check('input[name="mode"][value="adventure"]', force=True)
+    assert fits(), "family + adventure should find missions"
+
+
+def t_cards_are_links_with_real_addresses(site, catalog):
+    page = site.home()
+    card = page.locator("#packs .card").first
+    href = card.get_attribute("href")
+    assert re.fullmatch(r"/missions/[a-z0-9-]+/", href), href
+    card.click()
+    page.wait_for_selector("#mission-dialog[open]")
+    assert page.url.endswith(href)
+    page.go_back()
+    page.wait_for_selector("#mission-dialog", state="hidden")
+    assert not page.url.endswith(href)
+    card.click()
+    page.wait_for_selector("#mission-dialog[open]")
+    page.click("#mission-dialog .x-close")
+    page.wait_for_url(lambda u: not u.endswith(href))
+    card.click()
+    page.reload()
+    page.wait_for_selector(".ticket h1")
+
+
+def t_gift_link_from_a_popup_points_home(site, catalog):
+    page = site.home()
+    page.click("#packs .card")
+    page.click('#dialog-body button:has-text("Share this mission")')
+    page.click('button:has-text("Share without a note")')
+    page.wait_for_selector(".gift-link")
+    assert re.search(r":\d+/#gift=", page.input_value(".gift-link"))
+
+
+def t_zero_results_offer_a_way_out(site, catalog):
+    page = site.home()
+    page.select_option("#pack-select", "all")
+    page.click("#filters-toggle")
+    for chip in ('[data-filter="effort"] label:has(input[value="hard"])', '[data-filter="cost"] label:has(input[value="free"])',
+                 '[data-filter="setting"] label:has(input[value="indoor"])'):
+        page.click(chip)
+    page.wait_for_selector("text=Nothing matches, yet.")
+    assert "would open up" in page.inner_text(".env-sub")
+    page.click('#ticket-slot button:has-text("Clear all")')
+    assert page.locator(".env-title:has-text('Nothing matches')").count() == 0
+
+
+def t_zip_can_be_remembered_and_units_keep_distance(site, catalog):
+    page = site.home()
+    page.fill("#zip-input", "12")
+    page.click("#zip-form button")
+    page.wait_for_selector("text=A ZIP code is 5 numbers")
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".zip-set")
+    assert page.input_value("#within-select") == "30"
+    page.click('.units button[data-unit="km"]')
+    assert page.input_value("#within-select") == "50"
+    page.click('.units button[data-unit="mi"]')
+    page.click("text=Remember on this device")
+    page.reload()
+    page.wait_for_selector(".zip-set")
+    page.click(".zip-clear")
+    page.reload()
+    page.wait_for_selector("#packs .card", state="attached")
+    assert page.locator(".zip-set").count() == 0
+
+
+def t_mission_view_has_its_own_title_and_heading(site, catalog):
+    page = site.home()
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert page.title().startswith(page.inner_text("#reveal-title"))
+    assert page.evaluate("document.querySelector('#reveal-title').tagName") == "H1"
+    page.click('#reveal-actions button:has-text("Start over")')
+    page.wait_for_selector("#roll-btn")
+    assert page.title() == "AmbleBee Missions"
+
+
+def t_search_results_are_announced(site, catalog):
+    page = site.home()
+    page.fill("#search-input", "museum")
+    page.wait_for_function("() => document.querySelector('#live').textContent.includes('museum')")
+
+
+def t_files_have_versions_and_404_is_branded(site, catalog):
+    page = site.open("/404.html")
+    assert "doesn't go anywhere" in page.inner_text("h1")
+    page = site.home()
+    assert page.locator('script[src*="js/core.js?v="]').count() == 1
+    assert page.locator('link[href*="style.css?v="]').count() == 1
+
+
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",

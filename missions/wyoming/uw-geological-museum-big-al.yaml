@@ -2,7 +2,7 @@
 number: 3
 name: Meet Big Al in Laramie
 mode: adventure
-who: [solo]
+who: [solo, family]
 place:
   name: University of Wyoming Geological Museum
   area: UW campus, Laramie

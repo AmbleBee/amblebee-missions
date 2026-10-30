@@ -70,6 +70,18 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Smoother Browsing
+  status: done
+  date: 2026-10-30
+  tag: website
+  summary: Mission cards are real links now, dead ends offer a way out, and the ZIP box got friendlier.
+  items:
+    - Every mission has its own address, even in a pop-up, so you can copy it, refresh it or open it in a new tab
+    - '"Who''s coming" now shows missions that suit anyone you pick, and leaves romantic dates out'
+    - No matches? The site says which change would bring missions back, with one Clear all button
+    - Your ZIP can stay on this device if you'd like, and switching miles and kilometers keeps your distance
+    - A friendly page for addresses that don't exist, and better support for screen readers
+
 - title: Closer to Home
   status: done
   date: 2026-10-30

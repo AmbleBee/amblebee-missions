@@ -7,13 +7,16 @@ Writes, inside the built site:
     packs/<pack>/index.html      one pack's missions
     missions/<id>/index.html     one mission, with its own title, preview and structured data
     safety/, privacy/, contact/  written in pages/, wrapped in the same header and footer
+    404.html                     shown by GitHub Pages for any address that doesn't exist
     sitemap.xml, robots.txt
 
-Drafts never get a page. URLs use the mission id, which is permanent (SCHEMA.md), so moving a mission
+Finally it adds a version to every script and stylesheet link (style.css?v=1a2b...), so visitors get new
+files as soon as a deploy lands. Drafts never get a page. URLs use the mission id, which is permanent (SCHEMA.md), so moving a mission
 to another pack doesn't break its link. Runs after the site is copied; a failure here stops the deploy.
 """
 import argparse
 import datetime
+import hashlib
 import html
 import json
 import re
@@ -30,7 +33,7 @@ BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee Missions"
 OG_IMAGE = f"{BASE}/og-image.png"
 CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html
-# the same "Report a problem" form as site/app.js: opens with the mission's id and name already filled in
+# the same "Report a problem" form as site/js/core.js: opens with the mission's id and name already filled in
 REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
 REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
 INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
@@ -39,7 +42,7 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
 }
 
-# the same wording as the labels at the top of site/app.js
+# the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
 DURATION = {"short": "1-3 hours", "half-day": "Half day", "all-day": "All day"}
 EFFORT = {"easy": "Easy", "moderate": "Moderate", "hard": "Hard"}
@@ -80,7 +83,8 @@ def page(title, description, path, main, jsonld, brand, extra_script=""):
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
-<meta name="theme-color" content="#EFE7D8">
+<meta name="theme-color" content="#EFE7D8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#211B16" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="{esc(url)}">
 <meta property="og:title" content="{esc(title)}">
 <meta property="og:description" content="{esc(description)}">
@@ -131,7 +135,7 @@ def card(href, top, title, short, meta):
 
 
 def mission_html(m, pack, icons, today):
-    """The ticket, in the same markup as ticket() in site/app.js, with the title as the page's h1."""
+    """The ticket, in the same markup as ticket() in site/js/ticket.js, with the title as the page's h1."""
     tags = [("sage", MODE[m["mode"]]), ("", DURATION[m["duration"]]), ("", EFFORT[m["effort"]]),
             ("", COST[m["cost"]]), ("", SETTING[m["setting"]])]
     if m.get("season") not in (None, "any"):
@@ -206,6 +210,17 @@ def mission_html(m, pack, icons, today):
     {report_html}
   </div>
 </article>"""
+
+
+def version_files(out):
+    """Add ?v=<content hash> to script and stylesheet links, so a new file is fetched as soon as it's deployed."""
+    names = ["style.css", "roadmap.css", "roadmap.js", "arrive.js", "until.js"]
+    names += [f"js/{f.name}" for f in sorted((out / "js").glob("*.js"))]
+    versions = {n: hashlib.sha256((out / n).read_bytes()).hexdigest()[:10] for n in names}
+    links = re.compile(r'((?:href|src)="/?)(' + "|".join(map(re.escape, names)) + r')"')
+    for f in out.rglob("*.html"):
+        text = f.read_text(encoding="utf-8")
+        f.write_text(links.sub(lambda m: f'{m.group(1)}{m.group(2)}?v={versions[m.group(2)]}"', text), encoding="utf-8")
 
 
 def build_pages(out):
@@ -297,11 +312,17 @@ def build_pages(out):
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand))
 
+    body = (ROOT / "pages" / "404.html").read_text(encoding="utf-8")
+    text = page(f"Page not found · {SITE_NAME}", "This page doesn't exist on AmbleBee Missions.", "/404.html",
+                f'<div class="page info">\n{body}</div>', {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found"}, brand)
+    (Path(out) / "404.html").write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
+
     sitemap = "".join(f"<url><loc>{esc(BASE + u)}</loc></url>" for u in urls)
     (Path(out) / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n',
         encoding="utf-8")
     (Path(out) / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
+    version_files(Path(out))
     return len(missions), len(packs), len(urls)
 
 

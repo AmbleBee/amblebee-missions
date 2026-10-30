@@ -6,7 +6,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>AmbleBee Missions</title>
 <meta name="description" content="Date and adventure ideas to get you out the door together. Open a mission, go do it, take a few photos.">
-<meta name="theme-color" content="#EFE7D8">
+<meta name="theme-color" content="#EFE7D8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#211B16" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://amblebee.com/">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AmbleBee Missions","url":"https://amblebee.com/","description":"Date and adventure ideas to get you out the door together."}</script>
 <meta property="og:title" content="AmbleBee Missions">
@@ -20,13 +21,20 @@
 <meta property="og:image:alt" content="A sealed AmbleBee envelope with a honey wax seal pressed with a beehive, and a bee flying off to deliver it">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="https://amblebee.com/og-image.png">
-<link rel="icon" href="favicon.svg" type="image/svg+xml">
-<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
-<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="arrive.js"></script>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
-<script src="app.js" defer></script>
+<script src="js/core.js" defer></script>
+<script src="js/filters.js" defer></script>
+<script src="js/ticket.js" defer></script>
+<script src="js/gift.js" defer></script>
+<script src="js/image.js" defer></script>
+<script src="js/reveal.js" defer></script>
+<script src="js/browse.js" defer></script>
+<script src="js/main.js" defer></script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to the missions</a>
@@ -46,7 +54,7 @@
     </svg>
     <span>AmbleBee <em>Missions</em></span>
   </a>
-  <a href="#share" class="top-share">Add a spot</a>
+  <a href="#share" class="top-share">Suggest a spot</a>
   <nav aria-label="Sections">
     <a href="#about">About</a>
     <a href="#browse">Every mission</a>
@@ -56,6 +64,7 @@
   </nav>
 </header>
 
+<p class="sr" id="live" role="status"></p>
 <main id="main">
 
 <section id="reveal" class="reveal" hidden aria-labelledby="reveal-kicker">
@@ -63,7 +72,7 @@
     <p class="hand" id="reveal-kicker">Your mission</p>
     <p class="reveal-summary" id="reveal-summary"></p>
   </div>
-  <div id="reveal-slot" aria-live="polite"></div>
+  <div id="reveal-slot"></div>
   <div class="ticket-actions" id="reveal-actions"></div>
   <button type="button" class="linkish reveal-adjust" id="reveal-adjust">Adjust filters</button>
 </section>
@@ -85,7 +94,7 @@
     <fieldset class="near near-pick">
       <legend>Near you</legend>
       <div class="near-row">
-        <form class="zip-form" id="zip-form" autocomplete="on">
+        <form class="zip-form" id="zip-form" autocomplete="on" novalidate>
           <label class="sr" for="zip-input">ZIP code</label>
           <input id="zip-input" name="postal-code" autocomplete="postal-code" inputmode="numeric" pattern="[0-9]{5}" maxlength="5" placeholder="ZIP code" required>
           <button type="submit" class="btn small">Set</button>
@@ -98,7 +107,7 @@
           <button type="button" data-unit="km" aria-pressed="false">km</button>
         </div>
       </div>
-      <p class="hint" id="zip-status">Add a ZIP to see places close by, plus missions you can do anywhere. It never leaves this browser tab.</p>
+      <p class="hint" id="zip-status" role="status">Add a ZIP to see places close by, plus missions you can do anywhere. It's never sent anywhere.</p>
     </fieldset>
 
     <div class="roll-row">
@@ -111,7 +120,8 @@
         Open a mission
       </button>
     </div>
-    <p class="match" id="match-count" aria-live="polite"></p>
+    <p class="match" id="match-count"></p>
+    <button type="button" class="linkish" id="match-clear" hidden>Clear all</button>
     <button type="button" class="btn filters-btn" id="filters-toggle" aria-expanded="false" aria-controls="filters">
       <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
       <span id="filters-label">More filters</span>
@@ -119,7 +129,7 @@
     </button>
   </div>
 
-  <div class="ticket-slot" id="ticket-slot" aria-live="polite">
+  <div class="ticket-slot" id="ticket-slot">
     <p class="loading">Loading missions…</p>
   </div>
 </section>
@@ -134,6 +144,7 @@
         <label><input type="checkbox" value="family"><span>Family</span></label>
         <label><input type="checkbox" value="kids"><span>Kids</span></label>
       </div>
+      <p class="hint">Shows missions that suit any of the people you pick. Romantic dates are left out.</p>
     </fieldset>
     <fieldset>
       <legend>How long</legend>
@@ -182,7 +193,7 @@
     </fieldset>
   </div>
   <div class="filters-bar">
-    <p class="fmatch" id="filters-match" aria-live="polite"></p>
+    <p class="fmatch" id="filters-match"></p>
     <button type="button" class="linkish" id="filters-reset">Clear filters</button>
     <button type="button" class="btn primary small" id="filters-done">Done</button>
   </div>
@@ -226,9 +237,9 @@
 
 <section id="share" class="share" aria-labelledby="share-title">
   <h2 id="share-title">Know a great spot?</h2>
-  <p>Share a date spot or adventure and it might end up in a pack. It takes about five minutes, and every one gets read.</p>
+  <p>Suggest a date spot or adventure and it might end up in a pack. It takes about five minutes, and every one gets read.</p>
   <div class="share-row">
-    <a class="btn primary" id="form-link" href="https://forms.gle/V8UZRwmDrLwzQpuM6" target="_blank" rel="noopener">Share a mission</a>
+    <a class="btn primary" id="form-link" href="https://forms.gle/V8UZRwmDrLwzQpuM6" target="_blank" rel="noopener">Suggest a mission</a>
     <a class="btn" id="repo-link" href="https://github.com/AmbleBee/amblebee-missions">Or send a pull request</a>
   </div>
   <p class="hint" id="form-note"></p>

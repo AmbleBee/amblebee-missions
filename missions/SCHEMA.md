@@ -29,7 +29,7 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 
 | Field | Meaning |
 |---|---|
-| `name` | Shown on the Hive's source list and on mission tickets ("Amblebee Missions") |
+| `name` | Shown on the Hive's source list and on mission tickets ("AmbleBee Missions") |
 | `source_id` | Short, unique, never changes; prefixes every mission id (`amblebee/...`) |
 | `author` | Who maintains the collection |
 | `schema_version` | Bump only when the field format changes |

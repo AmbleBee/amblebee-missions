@@ -8,8 +8,8 @@ The website is at [amblebee.com](https://amblebee.com). It's built from this rep
 | Folder | What it holds |
 |---|---|
 | `missions/` | One YAML file per mission, in a folder per pack. Format: [SCHEMA.md](missions/SCHEMA.md) |
-| `site/` | The website: home page, roadmap page, styles and scripts |
-| `pages/` | The words on the Safety, Privacy and Contact pages |
+| `site/` | The website: home page, roadmap page, styles, and the scripts in `site/js/` |
+| `pages/` | The words on the Safety, Privacy, Contact and 404 pages |
 | `icons/` | Pack and site icons ([how to add one](icons/README.md)) |
 | `data/` | The ZIP code lookup, refreshed with `python tools/build_zips.py` |
 | `tools/` | Checks and build scripts |

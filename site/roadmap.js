@@ -92,7 +92,7 @@
     opts = opts || {};
     var when = e.date ? shortDate(e.date) : (e.when || "");
     return (
-      '<article class="stop side-' + side + " st-" + e.status + (opts.latest ? " latest" : "") + '">' +
+      "<article" + (opts.latest ? ' id="latest"' : "") + ' class="stop side-' + side + " st-" + e.status + (opts.latest ? " latest" : "") + '">' +
         '<div class="stop-when">' + (when ? '<time' + (e.date ? ' datetime="' + e.date + '"' : "") + ">" + esc(when) + "</time>" : "") + "</div>" +
         '<div class="stop-node">' + hex(e.status) + "</div>" +
         card(e, opts) +
