@@ -12,19 +12,19 @@ function renderWithin() {
   document.querySelectorAll(".units button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.unit === S.unit)));
 }
 function zipLine() {
-  const canSave = S.zip !== "your location" && readPref("zip") !== S.zip;
+  const canSave = !S.located && readPref("zip") !== S.zip;
   $("#zip-status").replaceChildren(h("span", { class: "zip-set" }, `Near ${S.zip}`),
     ": places close by plus missions you can do anywhere. Distances are as the bee flies.",
     h("button", { type: "button", class: "linkish zip-clear", onclick: clearZip }, "Clear"),
     canSave ? h("button", { type: "button", class: "linkish zip-clear",
       onclick: () => { writePref("zip", S.zip); zipLine(); } }, "Remember on this device") : null);
 }
-function setPlace(lat, lon, label) {
+function setPlace(lat, lon, label, located = false) {
   const first = !S.here;
-  S.here = { lat, lon }; S.zip = label;
+  S.here = { lat, lon }; S.zip = label; S.located = located;
   if (first && $("#pack-select").value === "anywhere") { $("#pack-select").value = "all"; S.packWidened = true; }
   renderWithin();
-  if (first && !$("#within-select").value) $("#within-select").value = String(WITHIN[S.unit][2]);
+  if ((first || located) && !$("#within-select").value) $("#within-select").value = String(WITHIN[S.unit][2]);
   if (first && (S.browse === "anywhere" || S.browse === "all" || !S.browse)) S.browse = "near";
   zipLine();
   renderWithin(); refresh();
@@ -74,8 +74,9 @@ async function findCity(text) {
     h("button", { type: "button", class: "linkish zip-clear", onclick: () => use(c) }, `${c[0]}, ${c[1]}`)),
   found.length > 6 ? h("span", { class: "zip-more" }, `Not listed? Add the state, like ${found[0][0]}, ${found[0][1]}.`) : "");
 }
-// after "Use my location": the closest ZIP goes in the box, so it's easy to see the spot looks right.
-// Worked out here in the browser. Nothing is filled in if no ZIP is close, like outside the US
+// after "Use my location": the closest ZIP goes in the box and names the spot, already set, so it's easy to
+// see it looks right. Distances keep using the exact location. Worked out here in the browser.
+// Nothing changes if no ZIP is close, like outside the US
 async function showNearestZip(lat, lon) {
   try { S.zips = S.zips || (await loadList("zips.json", "zips")) || {}; }
   catch (err) { return; }
@@ -84,7 +85,10 @@ async function showNearestZip(lat, lon) {
     const d = meters([lat, lon], c);
     if (d < least) { least = d; nearest = zip; }
   }
-  if (nearest && S.zip === "your location" && !$("#zip-input").value) $("#zip-input").value = nearest;
+  if (nearest && S.zip === "your location" && !$("#zip-input").value) {
+    $("#zip-input").value = nearest;
+    setPlace(lat, lon, nearest, true);
+  }
 }
 function useLocation() {
   const status = $("#zip-status");
@@ -92,7 +96,7 @@ function useLocation() {
   status.textContent = "Asking your browser…";
   navigator.geolocation.getCurrentPosition((p) => {
     $("#zip-input").value = "";
-    setPlace(p.coords.latitude, p.coords.longitude, "your location");
+    setPlace(p.coords.latitude, p.coords.longitude, "your location", true);
     showNearestZip(p.coords.latitude, p.coords.longitude);
   }, () => { status.textContent = "Couldn't get your location. Try a ZIP code or city instead."; },
   { timeout: 10000, maximumAge: 600000 });

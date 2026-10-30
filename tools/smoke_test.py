@@ -369,9 +369,12 @@ def t_city_search_and_location(site, catalog):
     page.context.grant_permissions(["geolocation"])
     page.context.set_geolocation({"latitude": 45.52, "longitude": -122.68})
     page.click("#use-location")
-    page.wait_for_selector("text=Near your location")
+    page.wait_for_selector("text=Near 972")
     assert "lat" not in page.url and "45." not in page.url
     assert page.locator('text="Remember on this device"').count() == 0
+    page.fill("#zip-input", "97201")             # a ZIP typed by hand can be saved again
+    page.click("#zip-form button")
+    page.wait_for_selector('text="Remember on this device"')
 
 
 def t_shared_city_names_list_the_likely_one_first(site, catalog):
@@ -391,23 +394,35 @@ def t_shared_city_names_list_the_likely_one_first(site, catalog):
 
 
 def t_location_shows_the_closest_zip(site, catalog):
-    def locate(lat, lon):
-        page = site.home()
+    def locate(lat, lon, page=None):
+        page = page or site.home()
         page.context.grant_permissions(["geolocation"])
         page.context.set_geolocation({"latitude": lat, "longitude": lon})
         page.click("#use-location")
-        page.wait_for_selector("text=Near your location")
         return page
 
     page = locate(45.52, -122.68)
-    page.wait_for_function("() => document.querySelector('#zip-input').value")
+    page.wait_for_selector("text=Near 972")      # set by itself, no pressing Set
     zip_code = page.input_value("#zip-input")
     assert re.fullmatch(r"972\d\d", zip_code), zip_code
+    assert page.input_value("#within-select") == "30", "the distance should already be picked"
+    assert page.evaluate("S.here.lat") == 45.52, "distances should keep using the exact location"
     assert zip_code not in page.url
     assert page.evaluate("Object.values(localStorage).join()").find(zip_code) < 0, "a location must never be saved"
+
+    page.fill("#zip-input", "10001")             # came back to "any distance", then asked again
+    page.click("#zip-form button")
+    page.wait_for_selector("text=Near 10001")
+    page.select_option("#within-select", "")
+    locate(45.52, -122.68, page)
+    page.wait_for_selector("text=Near 972")
+    assert page.input_value("#within-select") == "30"
+
     page = locate(51.5, -0.12)   # London: no ZIP anywhere close
+    page.wait_for_selector("text=Near your location")
     page.wait_for_function("() => S.zips")
     assert page.input_value("#zip-input") == ""
+    assert page.input_value("#within-select") == "30"
 
 
 def t_filters_survive_in_the_address(site, catalog):

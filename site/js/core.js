@@ -143,6 +143,7 @@ const S = {
   unit: readPref("unit") || (/^en-US/.test(navigator.language || "") ? "mi" : "km"),
   here: null,   // {lat, lon} of the ZIP: in memory only, never stored or sent
   zip: null,    // what S.here is called on screen: "97201", "Portland, OR" or "your location"
+  located: false,   // S.here came from "Use my location", so it's never offered for saving
   zips: null,   // ZIP -> [lat, lon], downloaded whole the first time someone sets a ZIP
   browse: null, // which pack "Every mission" shows ("all", "near", or a pack id)
   q: "",        // search box text ("" = not searching)
