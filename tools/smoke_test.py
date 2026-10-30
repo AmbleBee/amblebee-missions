@@ -359,6 +359,51 @@ def t_sort_makes_one_ordered_list(site, catalog):
     assert "mi" in page.locator("#packs .card .meta .d").first.inner_text()
 
 
+def t_phone_menu_reaches_everything_from_any_page(site, catalog):
+    mission = catalog["missions"][0]
+    for path in ("/", "/roadmap.html", f"/missions/{mission['id']}/", "/contact/"):
+        page = site.open(path, PHONE)
+        page.click(".top .menu summary")
+        for text in ("Every mission", "Search", "About", "Bee trail", "Know a great spot?", "Safety", "Privacy", "Contact"):
+            assert page.locator(".menu-panel a", has_text=text).first.is_visible(), f"{text} missing on {path}"
+        page.keyboard.press("Escape")
+        assert not page.is_visible(".menu-panel")
+        assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+    page = site.home(viewport=PHONE)
+    page.click(".top .menu summary")
+    page.locator(".menu-panel a", has_text="Safety").click()
+    page.wait_for_url("**/safety/")
+
+
+def t_computer_menu_and_search_link(site, catalog):
+    page = site.home()
+    assert page.is_visible('.top nav > a:has-text("Bee trail")')
+    page.click(".top .menu summary")
+    assert page.is_visible('.menu-panel a:has-text("Privacy")')
+    assert not page.is_visible('.menu-panel a:has-text("Bee trail")')
+    page.mouse.click(5, 400)
+    assert not page.is_visible(".menu-panel")
+    page.click('.top nav > a[href="/#search"]')
+    page.wait_for_function("() => document.activeElement.id === 'search-input'")
+
+
+def t_menu_links_keep_filters_and_leave_a_mission(site, catalog):
+    page = site.home("/?cost=free")
+    page.click('.top nav > a[href="/#about"]')
+    assert "cost=free" in page.url
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    page.click('.top nav > a[href="/#about"]')
+    page.wait_for_selector("#about", state="visible")
+
+
+def t_footer_is_dark_on_short_pages_too(site, catalog):
+    page = site.open("/contact/", {"width": 1280, "height": 1600})
+    box = page.locator(".foot").bounding_box()
+    assert box["y"] + box["height"] >= 1599, "the footer should reach the bottom of a short page"
+    assert page.evaluate("getComputedStyle(document.querySelector('.foot')).backgroundColor") == "rgb(74, 51, 35)"
+
+
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",

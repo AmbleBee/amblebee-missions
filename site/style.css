@@ -20,6 +20,9 @@
   --honey-tint: #F6E6C6;
   --honey-deep: #946628;
   --sand: #F1E5D2;
+  --foot-bg: #4A3323;       /* the footer stays dark in both themes, so the page has a clear end */
+  --foot-ink: #F3E9DC;
+  --foot-link: #F6E6C6;
   --tape: rgba(163, 177, 138, .62);
   --tape-honey: rgba(216, 166, 90, .55);
   --shadow: 0 10px 22px rgba(90, 62, 43, .14);
@@ -32,7 +35,7 @@
     --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
     --sage: #8FA078; --sage-deep: #9AAE85; --sage-shadow: #5F7550; --fill: #4F6443; --fill-hover: #5A704B; --fill-shadow: #39492F; --sage-tint: #33402B; --sage-ink: #D3E0C3;
     --walnut: #E9DCCB; --walnut-soft: #C9B79A; --ink: #F3E9DC; --honey: #E0B66E; --honey-tint: #4A3B22; --honey-deep: #E8C27E;
-    --sand: #3A3027; --shadow: 0 10px 22px rgba(0, 0, 0, .35);
+    --sand: #3A3027; --shadow: 0 10px 22px rgba(0, 0, 0, .35); --foot-bg: #3B2B20;
   }
 }
 
@@ -42,6 +45,7 @@ html { scroll-behavior: smooth; }
 body {
   margin: 0; background: var(--oat); color: var(--walnut);
   font: 500 17px/1.55 var(--body);
+  min-height: 100vh; min-height: 100dvh; display: flex; flex-direction: column;   /* short pages keep the footer at the bottom */
   -webkit-font-smoothing: antialiased;
 }
 a { color: var(--sage-deep); }
@@ -56,13 +60,14 @@ h1, h2, h3 { font-family: var(--display); font-variation-settings: "SOFT" 100; f
 
 /* ---- header ---- */
 .top {
+  position: relative; z-index: 20; width: 100%;
   max-width: 1200px; margin: 0 auto; padding: 18px 20px 0;
   display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
 }
 .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); margin-right: auto; }
 .brand span { font: 600 1.55rem/1 var(--display); font-variation-settings: "SOFT" 100; }
 .brand em { font-style: normal; color: var(--sage-deep); }
-.top nav { display: flex; gap: 4px; flex-wrap: wrap; }
+.top nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
 .top nav a {
   display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 22px;
   font-weight: 700; color: var(--walnut); text-decoration: none;
@@ -125,7 +130,7 @@ select {
 select:disabled { opacity: .55; }
 
 /* ---- roll (hero) ---- */
-main { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+main { width: 100%; flex: 1 0 auto; max-width: 1200px; margin: 0 auto; padding: 0 20px; }
 .roll {
   display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: 48px; align-items: start;
   padding: 26px 0 28px;
@@ -344,8 +349,14 @@ details.extra li { margin: 2px 0; }
 .share p { max-width: 38rem; margin: 0 0 1rem; }
 .share-row { display: flex; flex-wrap: wrap; gap: 12px; }
 #form-note { margin-top: 14px; }
-.foot { max-width: 1200px; margin: 0 auto; padding: 10px 20px 40px; color: var(--walnut-soft); font-size: .9rem; }
-.foot p { margin: 0 0 6px; }
+.foot {
+  margin-top: 48px; padding: 30px max(20px, calc((100% - 1160px) / 2)) 34px;
+  background: var(--foot-bg); color: var(--foot-ink); font-size: .95rem;
+}
+.foot p { margin: 0 0 8px; }
+.foot p:last-child { margin-bottom: 0; }
+.foot a { color: var(--foot-link); }
+.foot a:hover { color: var(--foot-ink); }
 
 /* ---- dialog ---- */
 dialog {
@@ -374,9 +385,6 @@ dialog form { display: flex; justify-content: center; margin-top: 12px; }
 @media (max-width: 560px) {
   body { font-size: 16px; }
   .top { padding: 12px 16px 0; }
-  .top nav { width: 100%; justify-content: space-between; flex-wrap: nowrap; gap: 2px; }
-  .top nav a { padding: 0 8px; font-size: .92rem; white-space: nowrap; }
-  .top nav a.nav-share { padding: 0 12px; }
   main { padding: 0 16px; }
   .ticket { flex-direction: column; }
   .ticket .stub {
@@ -388,7 +396,6 @@ dialog form { display: flex; justify-content: center; margin-top: 12px; }
   .filters { padding: 20px 16px 0; }
   .filters-bar { margin: 18px -16px 0; padding: 12px 16px; }
   .filters-btn { width: 100%; }
-  .top nav a.nav-share { margin-left: 0; }
   .packs-legend { display: none; }
   .divider.big { margin: 48px 0 26px; }
   .share { padding: 26px 20px; }
@@ -476,9 +483,6 @@ body.revealing main > :not(#reveal) { display: none !important; }
   .env.in-reveal { margin-top: 60px; }
 }
 .reveal-summary[hidden] { display: none; }
-@media (max-width: 560px) {
-  .top nav { flex-wrap: wrap; justify-content: flex-start; row-gap: 6px; }
-}
 .reveal-head, #reveal-actions, #reveal-adjust { transition: opacity .3s ease .25s; }
 .grow-wait { opacity: 0; transition: none !important; }
 
@@ -640,11 +644,9 @@ html.arriving #reveal-slot:empty::before {
 .near-pick .zip-form { flex: 1 1 100%; max-width: 24rem; display: flex; }
 .near-pick .zip-form input { flex: 1 1 auto; width: 0; }
 .near-pick .hint { max-width: 34rem; }
-.top-share { display: none; }
 
 /* ---- "Know a great spot?" now sits at the end, after Every mission, with its own bee trail ---- */
 .divider.div-share { margin-top: 56px; }
-#share { margin-bottom: 40px; }
 
 /* ---- the opener comes first; "What is AmbleBee?" sits further down, with a short teaser up top ---- */
 .about-teaser { margin: -.6rem 0 1.3rem; max-width: 34rem; font-size: .95rem; color: var(--walnut-soft); }
@@ -654,14 +656,6 @@ html.arriving #reveal-slot:empty::before {
 
 /* ---- phone header: logo + "Add a spot" on one row, the four links on the next ---- */
 @media (max-width: 560px) {
-  .top { row-gap: 6px; }
-  .top-share {
-    display: inline-flex; align-items: center; min-height: 40px; padding: 0 14px; border-radius: 20px; white-space: nowrap;
-    font-weight: 800; font-size: .9rem; color: var(--ink); text-decoration: none;
-    background: var(--honey-tint); box-shadow: inset 0 0 0 2px var(--honey);
-  }
-  .top nav a.nav-share { display: none; }
-  .top nav { width: 100%; flex-wrap: nowrap; justify-content: space-between; }
   .brand span { font-size: 1.35rem; }
   .brand svg { width: 44px; height: 38px; }
   .near-pick .near-row { flex-wrap: wrap; }
@@ -725,7 +719,28 @@ main:focus { outline: none; }
   .brand span { font-size: 1.2rem; white-space: nowrap; }
   .brand em { display: none; }
   .brand svg { width: 38px; height: 32px; flex-shrink: 0; }
-  .top-share { min-height: 36px; padding: 0 10px; font-size: .85rem; }
-  .top { padding-top: 8px; flex-wrap: wrap; }
-  .top nav a { min-height: 38px; }
+}
+
+/* ---- the header menu: "More" on computers, "Menu" with all the links on phones (built by tools/build_pages.py) ---- */
+.top .menu { position: relative; }
+.top .menu summary {
+  display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 14px; border-radius: 22px;
+  font-weight: 700; color: var(--walnut); cursor: pointer; list-style: none;
+}
+.top .menu summary::-webkit-details-marker { display: none; }
+.top .menu summary:hover, .top .menu[open] summary { background: var(--linen); }
+.menu-burger, .menu-phone { display: none; }
+.menu-panel {
+  position: absolute; right: 0; top: calc(100% + 8px); min-width: 15rem; padding: 8px; border-radius: 18px;
+  background: var(--paper); box-shadow: inset 0 0 0 2px var(--line), var(--shadow); display: grid; gap: 2px;
+}
+.top nav .menu-panel a { display: flex; min-height: 44px; border-radius: 12px; }
+.top nav .menu-panel a.phone-only { display: none; }
+@media (max-width: 860px) {
+  .top { flex-wrap: nowrap; }
+  .top nav > a { display: none; }
+  .menu-burger, .menu-phone { display: inline; }
+  .top nav .menu-panel a.phone-only { display: flex; }
+  .menu-wide { display: none; }
+  .top .menu summary { box-shadow: inset 0 0 0 2px var(--line-strong); background: var(--paper); font-weight: 800; }
 }

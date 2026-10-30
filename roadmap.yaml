@@ -70,6 +70,16 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: A Menu and a Proper Footer
+  status: done
+  date: 2026-10-30
+  tag: website
+  summary: Everything is now one tap away from the top of any page, and the page has a clear end.
+  items:
+    - A Menu button on phones, and a More menu on computers, with Safety, Privacy and Contact
+    - The same menu on every page
+    - A dark footer that's easy to tell apart from the rest of the page
+
 - title: Find It Your Way
   status: done
   date: 2026-10-30

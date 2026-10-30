@@ -217,11 +217,6 @@ async function start() {
     searchTimer = setTimeout(() => { S.q = sInput.value; renderBrowse(); }, 120);
   });
   sInput.addEventListener("keydown", (e) => { if (e.key === "Escape") { sInput.value = ""; S.q = ""; renderBrowse(); } });
-  $("#nav-search").addEventListener("click", (e) => {
-    e.preventDefault();
-    $("#browse").scrollIntoView({ behavior: "smooth" });
-    setTimeout(() => sInput.focus({ preventScroll: true }), 300);
-  });
   document.querySelectorAll(".units button").forEach((b) => b.addEventListener("click", () => {
     const sel = $("#within-select"), at = WITHIN[S.unit].indexOf(Number(sel.value));   // keep the same step: 30 mi becomes 50 km
     S.unit = b.dataset.unit; writePref("unit", S.unit); renderWithin();
@@ -268,12 +263,13 @@ async function start() {
     m.tabIndex = -1;
     m.focus();
   });
-  // nav links: from the reveal view, go home first, then jump to the section
-  document.querySelectorAll('.top a[href^="#"]').forEach((a) => a.addEventListener("click", (e) => {
-    if (!revealing()) return;
+  // header links to sections of this page: stay here, so filters in the address survive
+  document.querySelectorAll('.top a[href^="/#"]').forEach((a) => a.addEventListener("click", (e) => {
     e.preventDefault();
-    const id = (a.getAttribute("href") || "").replace("#", "");
-    startOver({ then: { id, search: a.id === "nav-search" } });   // scrolls once the home page is back
+    const id = a.getAttribute("href").slice(2), search = id === "search", target = search ? "browse" : id;
+    if (revealing()) { startOver({ then: { id: target, search } }); return; }
+    $(`#${target}`).scrollIntoView({ behavior: REDUCED() ? "auto" : "smooth" });
+    if (search) setTimeout(() => sInput.focus({ preventScroll: true }), 300);
   }));
 
   readQuery();
@@ -282,6 +278,7 @@ async function start() {
   renderTeaser();
   try { await route(); }
   finally { document.documentElement.classList.remove("arriving"); }   // the letter (or home page) is ready; see arrive.js
+  if (location.hash === "#search") { $("#browse").scrollIntoView(); sInput.focus({ preventScroll: true }); }   // from another page's menu
   const zip = readPref("zip");
   if (zip) { $("#zip-input").value = zip; setZip(); }
 }

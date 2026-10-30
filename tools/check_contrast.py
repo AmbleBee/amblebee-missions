@@ -15,7 +15,8 @@ WHITE = "#FFFDF8"  # the light text on solid sage
 
 PAPERS = ["oat", "linen", "paper", "sand", "honey-tint"]
 PAIRS = [(fg, bg) for fg in ("sage-deep", "walnut", "walnut-soft", "ink") for bg in PAPERS]
-PAIRS += [("sage-ink", "sage-tint"), ("honey-deep", "paper"), (WHITE, "fill"), (WHITE, "fill-hover")]
+PAIRS += [("sage-ink", "sage-tint"), ("honey-deep", "paper"), (WHITE, "fill"), (WHITE, "fill-hover"),
+          ("foot-ink", "foot-bg"), ("foot-link", "foot-bg")]
 
 
 def tokens(block):

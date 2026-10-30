@@ -72,6 +72,28 @@ def icon(markup, size):
             f'stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">{markup}</svg>')
 
 
+def nav_html(current=""):
+    """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
+    home = current == "index"
+    main = [("/#about", "About"), ("/#browse" if home else "/missions/", "Every mission"), ("/#search", "Search"),
+            ("/roadmap.html", "Bee trail"), ("/#share", "Know a great spot?")]
+    if not home:
+        main.insert(0, ("/", "Open a mission"))
+    extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/contact/", "Contact")]
+
+    def link(href, text, cls=""):
+        cls = " nav-share" if cls != "phone-only" and text.startswith("Know") else cls
+        here = ' aria-current="page"' if href == "/roadmap.html" and current == "roadmap" else ""
+        attr = f' class="{cls.strip()}"' if cls else ""
+        return f'<a href="{href}"{attr}{here}>{text}</a>'
+    burger = ('<svg class="menu-burger" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+              'stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>')
+    return (f'<nav aria-label="Main">{"".join(link(h, t) for h, t in main)}'
+            f'<details class="menu"><summary>{burger}<span class="menu-phone">Menu</span><span class="menu-wide">More</span></summary>'
+            f'<div class="menu-panel">{"".join(link(h, t, "phone-only") for h, t in main)}{"".join(link(h, t) for h, t in extra)}</div>'
+            '</details></nav>')
+
+
 def page(title, description, path, main, jsonld, brand, extra_script=""):
     url = BASE + path
     data = json.dumps(jsonld, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
@@ -96,6 +118,7 @@ def page(title, description, path, main, jsonld, brand, extra_script=""):
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<script src="/nav.js" defer></script>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{data}</script>
@@ -104,11 +127,7 @@ def page(title, description, path, main, jsonld, brand, extra_script=""):
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top">
   {brand}
-  <nav aria-label="Sections">
-    <a href="/">Open a mission</a>
-    <a href="/missions/">Every mission</a>
-    <a href="/roadmap.html">Bee trail</a>
-  </nav>
+  {nav_html()}
 </header>
 <main id="main">
 {main}
@@ -214,7 +233,7 @@ def mission_html(m, pack, icons, today):
 
 def version_files(out):
     """Add ?v=<content hash> to script and stylesheet links, so a new file is fetched as soon as it's deployed."""
-    names = ["style.css", "roadmap.css", "roadmap.js", "arrive.js", "until.js"]
+    names = ["style.css", "roadmap.css", "roadmap.js", "arrive.js", "until.js", "nav.js"]
     names += [f"js/{f.name}" for f in sorted((out / "js").glob("*.js"))]
     versions = {n: hashlib.sha256((out / n).read_bytes()).hexdigest()[:10] for n in names}
     links = re.compile(r'((?:href|src)="/?)(' + "|".join(map(re.escape, names)) + r')"')
@@ -322,6 +341,9 @@ def build_pages(out):
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n',
         encoding="utf-8")
     (Path(out) / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
+    for name, current in (("index.html", "index"), ("roadmap.html", "roadmap")):
+        f = Path(out) / name
+        f.write_text(f.read_text(encoding="utf-8").replace("<!--site-nav-->", nav_html(current)), encoding="utf-8")
     version_files(Path(out))
     return len(missions), len(packs), len(urls)
 
