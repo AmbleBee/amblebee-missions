@@ -32,7 +32,7 @@ python -m playwright install chromium
 python tools/smoke_test.py
 ```
 
-The same tests run on every push and pull request, in Chromium, Firefox and WebKit (Safari's engine). A failure in Chromium or Firefox stops the deploy; WebKit only reports for now. To try another engine here, install it and run `SMOKE_ENGINE=firefox python tools/smoke_test.py`.
+The same tests run on every push and pull request, in Chromium, Firefox and WebKit (Safari's engine). A failure in any of them stops the deploy. To try another engine here, install it and run `SMOKE_ENGINE=firefox python tools/smoke_test.py`.
 
 Want to add a mission? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
