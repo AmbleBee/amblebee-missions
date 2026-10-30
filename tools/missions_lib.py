@@ -172,6 +172,15 @@ def load_catalog(root):
     return info, packs, missions
 
 
+def live_stats(packs, missions):
+    """Published vs draft counts for the website. "live" never includes drafts; Amble Anywhere isn't a state."""
+    states = [p for pid, p in packs.items() if pid not in ("anywhere", "general")]
+    return {"live": sum(1 for m in missions if not m.get("draft")),
+            "drafts": sum(1 for m in missions if m.get("draft")),
+            "states_live": sum(1 for p in states if p["count"]),
+            "states_total": len(states)}
+
+
 def check_catalog(root):
     """Returns a list of problems (empty = all good)."""
     problems = []

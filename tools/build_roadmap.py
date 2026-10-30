@@ -15,6 +15,8 @@ from pathlib import Path
 
 import yaml
 
+from missions_lib import live_stats, load_catalog
+
 ROOT = Path(__file__).resolve().parent.parent
 STATUSES = ("doing", "next", "later", "done")
 KEYS = {"title", "status", "date", "when", "tag", "summary", "items", "progress"}
@@ -104,7 +106,8 @@ def build(path):
     # time runs one way down the page: someday at the top, then next, then doing (right above "today")
     upcoming.sort(key=lambda e: ("later", "next", "doing").index(e["status"]))  # stable: file order within a status
     done = sorted((e for e in clean if e["status"] == "done"), key=lambda e: e["date"], reverse=True)
-    return {"upcoming": upcoming, "done": done,
+    _, packs, missions = load_catalog(ROOT / "missions")
+    return {"upcoming": upcoming, "done": done, "stats": live_stats(packs, missions),
             "generated_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")}
 
 

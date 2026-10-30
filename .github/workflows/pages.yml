@@ -43,6 +43,7 @@ jobs:
           python tools/build_catalog.py --out _site/catalog.json
           python tools/build_roadmap.py --out _site/roadmap.json
           python tools/build_icons.py --out _site/icons.json
+          python tools/build_pages.py --out _site
       - name: Build ZIP lookup
         continue-on-error: true   # without it, only the ZIP box stops working
         run: python tools/build_zips.py --out _site/zips.json

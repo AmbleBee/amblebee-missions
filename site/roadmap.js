@@ -193,6 +193,13 @@
 
     var meta = document.getElementById("rm-meta");
     if (meta) meta.textContent = done.length + " things done · " + up.length + " on the way";
+    // counted at build time from the mission files; drafts are never included in the live number
+    var live = document.getElementById("rm-live"), st = data.stats;
+    if (live && st) {
+      live.textContent = st.live + " missions live · " + st.states_live + " of " + st.states_total + " states · " +
+        st.drafts + " more being checked";
+      live.hidden = false;
+    }
 
     reveal();
     bee();

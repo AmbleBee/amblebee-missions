@@ -70,11 +70,24 @@
   summary: Help decide what comes next, like which state gets a pack after this and which features land first.
 
 # ---------- Done ----------
+- title: Sturdier Links and Pages for Every Mission
+  status: done
+  date: 2026-10-30
+  tag: website
+  summary: Every live mission now has its own page, shared links fail gracefully, and the cards you write are much harder to lose.
+  items:
+    - Each live mission and pack gets a real page that search engines can find, listed in a sitemap and on a new page of every pack
+    - Refreshing your own mission keeps it yours, instead of saying someone sent it to you
+    - Cards you're writing save as you type, have a close button, and won't close if you tap outside them with writing on the card
+    - Links to a missing mission, or links cut off when copied, now get a clear "lost in the mail" letter
+    - The site and this trail now show how many missions are live and how many are still being checked, and two old claims about mission and state counts got corrected
+    - Envelopes keep their shape on narrower screens
+
 - title: Filter Themes
   status: done
   date: 2026-10-29
   tag: missions
-  summary: All 603 missions now have themes, so the "What kind of mission" filter covers everything on the site.
+  summary: Every mission now has themes, live or still in draft, so the "What kind of mission" filter covers everything on the site.
   items:
   - Tap Waterfalls, Food or Romantic and get every mission that fits, not just the first few
   - Each mission has a few themes picked from its old tags, and they'll get a closer look as missions are verified
@@ -116,7 +129,7 @@
   status: done
   date: 2026-10-21
   tag: missions
-  summary: All 50 states now have at least one mission! More missions being added every day!
+  summary: All 50 states now have a pack started! A state shows up on the site once its first mission is verified.
 
 - title: Easier to Start, Especially on Phones
   status: done

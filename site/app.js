@@ -412,6 +412,17 @@ function giftNote(g) {
       h("p", { class: "gift-from" }, g.f || "a friend")));
 }
 
+// the card being written lasts as long as the tab, through a closed pop-up or a refresh
+function keepDraft(g) {
+  S.giftDraft = g;
+  try { sessionStorage.setItem("amble.giftDraft", JSON.stringify(g)); } catch (e) { /* private mode: memory is enough */ }
+}
+function readDraft(id) {
+  let g = S.giftDraft;
+  if (!g) { try { g = JSON.parse(sessionStorage.getItem("amble.giftDraft")); } catch (e) { g = null; } }
+  return g && g.m === id ? g : null;
+}
+
 // "Send with a note": you write right on the card, pick who it's for, then seal it
 function openGiftForm(m, opts = {}) {
   const d = $("#gift-dialog"), body = $("#gift-body");
@@ -420,7 +431,7 @@ function openGiftForm(m, opts = {}) {
   if (opts.fresh) S.replyTo = null;
   if (opts.reply) S.replyTo = opts.reply;
   const reply = S.replyTo && S.replyTo.m === m.full_id ? S.replyTo : null;
-  let draft = S.giftDraft && S.giftDraft.m === m.full_id ? S.giftDraft : null;
+  let draft = readDraft(m.full_id);
   if (reply && (!draft || draft.t !== reply.f)) draft = { m: m.full_id, t: reply.f, f: reply.t, n: "", th: reply.th, s: null };
   let theme = themeOf(draft ? draft.th : readPref("giftTheme"));
   const lastSign = {};   // remembers the sign-off picked for each theme while you flip between them
@@ -438,7 +449,7 @@ function openGiftForm(m, opts = {}) {
   const note = h("textarea", { class: "gc-note", maxlength: NOTE_MAX, rows: 3, placeholder: "Write a little note… (optional, it stays hidden until they open the envelope)", "aria-label": "A little note" });
   const sign = h("select", { class: "gc-sign", "aria-label": "Sign-off" });
   to.value = draft ? draft.t : "";
-  from.value = draft ? draft.f : (readPref("giftFrom") || "");
+  from.value = (draft && draft.f) || readPref("giftFrom") || "";
   note.value = draft ? draft.n : "";
   const grow = () => { note.style.height = "auto"; note.style.height = `${Math.max(90, note.scrollHeight)}px`; };
   [to, from].forEach((el) => el.addEventListener("input", () => fit(el, el.placeholder)));
@@ -479,6 +490,7 @@ function openGiftForm(m, opts = {}) {
   const form = h("form", { class: "gift-form", novalidate: true },
     h("p", { class: "hand gift-kicker" }, reply ? "Send one back" : "Send it sealed"),
     h("h2", { id: "gift-title" }, reply ? `Write back to ${reply.f}` : "Write them a card"),
+    draft && draft.n ? h("p", { class: "gift-kept" }, "We kept what you wrote.") : null,
     h("p", { class: "gift-mission" }, svg(packIcon(pack), 18), h("span", {}, h("b", {}, m.name), ` · ${pack.name}`)),
     h("p", { class: "gift-label" }, "Who's it for?"),
     chips,
@@ -489,6 +501,11 @@ function openGiftForm(m, opts = {}) {
       h("button", { type: "button", class: "btn", onclick: () => sharePlain(m) }, "Share without a note"),
       h("button", { type: "button", class: "linkish", onclick: () => d.close() }, "Cancel")));
 
+  // saved as they type, so closing the card by accident never loses it
+  const saveCard = () => keepDraft({ m: m.full_id, t: to.value, f: from.value, n: note.value, th: theme, s: sign.value });
+  form.addEventListener("input", saveCard);
+  form.addEventListener("change", saveCard);
+
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const g = cleanGift({ m: m.full_id, f: from.value, t: to.value, n: note.value, th: theme, s: sign.value });
@@ -498,7 +515,7 @@ function openGiftForm(m, opts = {}) {
     }
     err.textContent = "";
     writePref("giftFrom", g.f); writePref("giftTheme", g.th); writePref("giftSign", g.s);
-    S.giftDraft = g;
+    keepDraft(g);
     sealGift(m, g, giftUrl(await packGift(g)));
   });
 
@@ -841,6 +858,10 @@ async function saveMissionImage(m, gift, btn) {
 const revealing = () => document.body.classList.contains("revealing");
 // ---- the sealed letter: flips over, the flap lifts, the mission card slides out ------------------
 const REDUCED = () => window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+const LOST = {
+  gone: "That mission isn't available right now. Open one of your own?",
+  cut: "The link may have been cut off when it was copied. Ask them to send it again, or open your own.",
+};
 const BEE = '<path d="M6 21 h14" stroke="#7A5A42" stroke-width="2" stroke-linecap="round"/><path d="M8 21 C8 15 9 11 13 7 C17 11 18 15 18 21z" fill="#D8A65A"/><path d="M9.5 17 h7 M9 19 h8 M10.5 14.5 h5" stroke="#B5853F" stroke-width="1.3" stroke-linecap="round"/><path d="M11.5 21 v-2 a1.5 1.5 0 0 1 3 0 v2z" fill="#5A3E2B"/><ellipse cx="20" cy="6" rx="2.6" ry="1.8" fill="#FFFDF8" stroke="#7A5A42" stroke-width=".9" transform="rotate(-25 20 6)"/><ellipse cx="21.3" cy="9" rx="3.4" ry="2.5" fill="#E8B54A"/><path d="M20.6 6.8 v4.4 M22.4 7 v4" stroke="#5A3E2B" stroke-width="1"/><circle cx="24.4" cy="8.7" r="1.5" fill="#5A3E2B"/>';
 function envelope({ title, sub, from, to, button, onOpen, card }) {
   const stamp = h("span", { class: "env-stamp", "aria-hidden": "true" });
@@ -917,8 +938,9 @@ function openFromHome() {
 function goReveal(m, { replace = false, growFrom = null } = {}) {
   S.rolledId = m.full_id;
   const url = `#mission=${encodeURIComponent(m.full_id)}`;
-  if (replace || revealing()) history.replaceState(history.state, "", url);
-  else history.pushState({ amble: "reveal" }, "", url);
+  // "rolled" stays with this history entry, so a refresh still knows this mission is yours, not a shared one
+  if (replace || revealing()) history.replaceState({ ...history.state, rolled: m.full_id }, "", url);
+  else history.pushState({ amble: "reveal", rolled: m.full_id }, "", url);
   showReveal(m, { from: "roll", growFrom });
 }
 function rollSummary() {
@@ -943,7 +965,7 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   $("#reveal-kicker").textContent = gift ? `A mission from ${gift.f || "a friend"}` : linked ? "A mission, shared with you" : "Your mission";
   $("#reveal-summary").textContent = gift ? `Sealed just for ${gift.t || "you"}. Open your own any time.`
     : linked ? "Someone sent you this one. Open your own any time." : rollSummary();
-  $("#reveal-summary").hidden = sealed;
+  $("#reveal-summary").hidden = sealed || from === "mine";   // "mine": reopened, so the old picks are gone
   window.scrollTo({ top: 0 });
   const slot = $("#reveal-slot");
   if (sealed || animate) {
@@ -1002,6 +1024,24 @@ function showHome() {
   S.current = null;
   renderTeaser();
 }
+// a link that can't be delivered: says so in the reveal view, where it can't be missed on a phone
+function showLost(sub) {
+  S.current = null;
+  document.body.classList.add("revealing");
+  $("#reveal").hidden = false;
+  $("#reveal-kicker").textContent = "Return to sender";
+  $("#reveal-summary").hidden = true;
+  $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true;
+  const env = envelope({ title: "This letter got lost in the mail.", sub, to: "you", button: "Open your own",
+    onOpen: () => {
+      history.replaceState(null, "", location.pathname + location.search);
+      S.shownGift = null; S.shownLost = null; S.giftKey = null; S.giftP = Promise.resolve(null);
+      showHome(); openFromHome();
+    } });
+  env.classList.add("in-reveal");
+  $("#reveal-slot").replaceChildren(env);
+  window.scrollTo({ top: 0 });
+}
 // Back from the reveal goes home. A reveal opened from the home page pushes one history entry;
 // re-rolls replace it, so Back always lands on the home page.
 function startOver({ filters = false, then = null } = {}) {
@@ -1023,11 +1063,7 @@ async function route() {
       if (S.shownGift !== code) { S.shownGift = code; showReveal(gm, { from: "gift", sealed: true }); }
     } else if (S.shownGift !== code) {
       S.shownGift = code;
-      showHome();
-      $("#ticket-slot").replaceChildren(envelope({ title: "This letter got lost in the mail.",
-        sub: gift ? "That mission isn't in the catalog anymore. Open one of your own?" : "The link may have been cut off when it was copied. Ask them to send it again, or open your own.",
-        to: "you", button: "Open your own",
-        onOpen: () => { history.replaceState(null, "", location.pathname + location.search); S.shownGift = null; S.giftKey = null; S.giftP = Promise.resolve(null); openFromHome(); } }));
+      showLost(gift ? LOST.gone : LOST.cut);
     }
     S.booted = true; return;
   }
@@ -1035,11 +1071,19 @@ async function route() {
   const m = fromHash();
   if (m) {
     if (!revealing() || m !== S.current) {
-      const from = S.rolledId === m.full_id ? "roll" : "link";
+      // your own pick after a refresh, or arriving from the mission's own page: no envelope from "a friend"
+      const mine = (history.state && history.state.rolled === m.full_id) || /(?:^#|&)from=page(?:&|$)/.test(location.hash);
+      const from = S.rolledId === m.full_id ? "roll" : mine ? "mine" : "link";
       showReveal(m, { from, sealed: from === "link" && !S.booted });
     }
     S.booted = true; return;
   }
+  const wanted = hashMission();
+  if (wanted != null) {
+    if (S.shownLost !== location.hash) { S.shownLost = location.hash; showLost(wanted ? LOST.gone : LOST.cut); }
+    S.booted = true; return;
+  }
+  S.shownLost = null;
   S.booted = true;
   if (revealing() || !$("#ticket-slot").firstChild) showHome();
   const after = S.afterHome; S.afterHome = null;
@@ -1060,7 +1104,7 @@ function roll() {
   const m = pickMission();
   if (!m) { startOver(); return; }
   S.rolledId = m.full_id;
-  history.replaceState(history.state, "", `#mission=${encodeURIComponent(m.full_id)}`);
+  history.replaceState({ ...history.state, rolled: m.full_id }, "", `#mission=${encodeURIComponent(m.full_id)}`);
   showReveal(m, { from: "roll", animate: true });
 }
 function openDialog(m) {
@@ -1118,6 +1162,11 @@ function renderThemeCounts(f) {
   rows.sort((a, b) => (a.n === 0) - (b.n === 0) || a.name.localeCompare(b.name));
   labels[0].parentElement.append(...rows.map((r) => r.l));
 }
+// only published missions count as live; drafts are still being checked and never show on the site
+function liveLine() {
+  const drafts = (S.catalog.stats || {}).drafts || 0;
+  return `${S.missions.length} live missions in ${S.packs.length} packs${drafts ? `, ${drafts} more being checked` : ""}`;
+}
 function renderBrowse() {
   const f = readFilters();
   renderThemeCounts(f);
@@ -1142,7 +1191,7 @@ function renderBrowse() {
   // "Every mission" is for looking, so it ignores the opener's picks (who's it for, pick from, More filters).
   // Only the ZIP carries over, to show distances and offer "Closest to"; it never hides anything here.
   const everything = S.missions;
-  $("#browse-count").textContent = `${total} missions, ${S.packs.length} packs`;
+  $("#browse-count").textContent = liveLine();
 
   renderBrowsePick(everything);
   const wrap = $("#packs");
@@ -1303,9 +1352,15 @@ function refresh() {
   if (!revealing()) renderTeaser();
 }
 const rerenderReveal = () => { if (revealing() && S.current) showReveal(S.current, { from: S.revealFrom }); };
+// the mission named in the address: null = none, "" = there but unreadable (a link cut off partway)
+function hashMission() {
+  const m = /(?:^#|&)mission=([^&]*)/.exec(location.hash);
+  if (!m) return null;
+  try { return decodeURIComponent(m[1]); } catch (e) { return ""; }
+}
 function fromHash() {
-  const m = /mission=([^&]+)/.exec(location.hash);
-  return m ? S.missions.find((x) => x.full_id === decodeURIComponent(m[1])) : null;
+  const id = hashMission();
+  return id ? S.missions.find((x) => x.full_id === id) : null;
 }
 
 async function start() {
@@ -1347,7 +1402,7 @@ async function start() {
   if (S.packById.anywhere) sel.value = "anywhere";
   renderLegend();
   const src = data.source || {};
-  $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} missions · updated ${src.updated || "recently"}`;
+  $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} live missions · updated ${src.updated || "recently"}`;
 
   const form = $("#form-link");
   if (safeUrl(FORM_URL)) { form.href = FORM_URL; form.target = "_blank"; form.rel = "noopener"; }
@@ -1394,8 +1449,15 @@ async function start() {
     document.querySelectorAll("#filters input").forEach((i) => { i.checked = false; });
     refresh();
   });
-  $("#mission-dialog").addEventListener("click", (e) => { if (e.target.id === "mission-dialog") e.target.close(); });
-  $("#gift-dialog").addEventListener("click", (e) => { if (e.target.id === "gift-dialog") e.target.close(); });
+  // a tap on the dim area closes a pop-up, but only if the press began there (dragging out of a text box doesn't count)
+  const closeOnBackdrop = (d, keepOpen) => {
+    let began = false;
+    d.addEventListener("pointerdown", (e) => { began = e.target === d; });
+    d.addEventListener("click", (e) => { if (e.target === d && began && !(keepOpen && keepOpen())) d.close(); });
+  };
+  closeOnBackdrop($("#mission-dialog"));
+  // a card with writing on it stays open; X, Cancel and Escape still close it, and the draft is kept
+  closeOnBackdrop($("#gift-dialog"), () => [...document.querySelectorAll("#gift-body .gc-to, #gift-body .gc-note")].some((el) => el.value.trim()));
   window.addEventListener("popstate", route);
   window.addEventListener("hashchange", route);
   $("#reveal-adjust").addEventListener("click", () => startOver({ filters: true }));
@@ -1410,7 +1472,7 @@ async function start() {
   renderWithin();
   renderBrowse();
   renderTeaser();
-  await route();
-  document.documentElement.classList.remove("arriving");   // the letter (or home page) is ready; see index.html
+  try { await route(); }
+  finally { document.documentElement.classList.remove("arriving"); }   // the letter (or home page) is ready; see index.html
 }
 start();

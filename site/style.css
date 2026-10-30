@@ -356,7 +356,7 @@ dialog .dialog-body { max-height: calc(100vh - 40px); overflow: auto; border-rad
 dialog form { display: flex; justify-content: center; margin-top: 12px; }
 dialog .close { min-height: 48px; }
 /* mission pop-up: a round X pinned to the card's top-right corner (stays put while the card scrolls) */
-#mission-dialog form.x-form { position: absolute; top: 12px; right: 12px; margin: 0; z-index: 3; }
+#mission-dialog form.x-form, #gift-dialog form.x-form { position: absolute; top: 12px; right: 12px; margin: 0; z-index: 3; }
 .x-close {
   appearance: none; border: 0; cursor: pointer; width: 44px; height: 44px; border-radius: 50%;
   display: grid; place-items: center; background: var(--linen); color: var(--walnut);
@@ -401,7 +401,7 @@ dialog .close { min-height: 48px; }
 /* ---- the reveal view (one mission, nothing else) ---- */
 .reveal[hidden] { display: none; }
 body.revealing main > :not(#reveal) { display: none !important; }
-.reveal { max-width: 860px; margin: 0 auto; padding: 26px 0 48px; }
+.reveal { width: 100%; max-width: 860px; margin: 0 auto; padding: 26px 0 48px; }
 .reveal-head { text-align: center; margin-bottom: 22px; }
 .reveal-head .hand { font-size: 2.1rem; margin: 0; }
 .reveal-summary { display: inline-block; margin: .6rem 0 0; padding: 6px 14px; border-radius: 14px; background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; }
@@ -503,7 +503,8 @@ body.revealing main > :not(#reveal) { display: none !important; }
   box-shadow: inset 0 0 0 2px var(--line), var(--shadow); max-height: calc(100vh - 40px); overflow: auto;
 }
 .gift-sheet h2 { font-size: 1.6rem; margin: 0 0 10px; }
-.gift-kicker { font-size: 1.4rem; }
+.gift-kicker { font-size: 1.4rem; padding-right: 48px; }
+.gift-kept { margin: 0 0 10px; font-weight: 700; font-size: .92rem; color: var(--sage-ink); }
 .gift-mission {
   display: flex; align-items: center; gap: 8px; margin: 0; padding: 8px 12px; border-radius: 12px;
   background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; font-size: .95rem;
@@ -700,3 +701,19 @@ html.arriving #reveal-slot:empty::before {
   .near-pick .zip-form input { flex: 1 1 auto; width: 0; }
   .near-pick .within select { width: 7rem; }
 }
+
+/* ---- the built pages: /missions/, /packs/<pack>/, /missions/<mission>/ (tools/build_pages.py) ---- */
+.page { max-width: 860px; margin: 0 auto; padding: 22px 0 48px; }
+.page-wide { max-width: none; }
+.crumbs { margin: 0 0 16px; font-weight: 700; font-size: .95rem; color: var(--walnut-soft); }
+.crumbs a { color: var(--walnut-soft); }
+.page-intro { margin-bottom: 24px; }
+.page-intro h1 { font-size: clamp(2.2rem, 5vw, 3.2rem); line-height: 1.05; }
+.page-intro p { margin: .5rem 0 0; }
+.ticket h1 { font-size: clamp(1.9rem, 4vw, 2.6rem); line-height: 1.05; }
+.pack-head h1 { font-size: clamp(1.9rem, 4vw, 2.5rem); }
+a.card { text-decoration: none; }
+a.card:hover { color: inherit; }
+.card h2 { margin: 0; font: 600 1.25rem/1.15 var(--display); font-variation-settings: "SOFT" 100; color: var(--ink); }
+.rm-live { margin: 0 0 1.2rem; font-weight: 800; color: var(--sage-ink); }
+.rm-live[hidden] { display: none; }

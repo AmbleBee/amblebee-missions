@@ -15,7 +15,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from missions_lib import THEMES, check_catalog, load_catalog  # noqa: E402
+from missions_lib import THEMES, check_catalog, live_stats, load_catalog  # noqa: E402
 
 PRIVATE_KEYS = {"file"}  # local paths never go into the published file
 
@@ -25,6 +25,7 @@ def build(folder):
     if problems:
         raise SystemExit("Not building, fix these first:\n  - " + "\n  - ".join(problems))
     info, packs, missions = load_catalog(folder)
+    stats = live_stats(packs, missions)
     # draft missions (draft: true) are left out until they're verified
     out_missions = [{k: v for k, v in m.items() if k not in PRIVATE_KEYS and k != "draft"}
                     for m in sorted(missions, key=lambda m: (m["pack"] != "general", m["pack"], m["number"]))
@@ -33,6 +34,7 @@ def build(folder):
     body = {
         "schema_version": info["schema_version"],
         "source": {k: info.get(k) for k in ("name", "source_id", "author", "updated")},
+        "stats": stats,
         "packs": list(packs.values()),
         # the theme list (filter chips): id + label, in display order; missions list theirs under "themes"
         "themes": [{"id": t, "label": label} for t, label in THEMES.items()],
