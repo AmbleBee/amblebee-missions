@@ -3,9 +3,9 @@
     python tools/smoke_test.py              # tests _site/
     python tools/smoke_test.py other/folder
 
-Needs Playwright (see README.md). Set SMOKE_CHROME=1 to use an installed Google Chrome instead of
-Playwright's Chromium. Any failure, or any error in the browser console, exits with an error,
-which stops the deploy.
+Needs Playwright (see README.md). Set SMOKE_ENGINE=firefox or webkit to test in that engine, or SMOKE_CHROME=1
+to use an installed Google Chrome instead of Playwright's Chromium. Any failure, or any error in the browser
+console, exits with an error, which stops the deploy.
 """
 import functools
 import http.server
@@ -495,7 +495,8 @@ def main():
     server = serve(folder)
     failed = []
     with sync_playwright() as p:
-        browser = p.chromium.launch(channel="chrome" if os.environ.get("SMOKE_CHROME") else None)
+        engine = getattr(p, os.environ.get("SMOKE_ENGINE", "chromium"))
+        browser = engine.launch(channel="chrome" if os.environ.get("SMOKE_CHROME") else None)
         site = Site(browser, f"http://127.0.0.1:{server.server_address[1]}")
         for name, fn in tests:
             label = re.sub(r"^t_", "", name).replace("_", " ")

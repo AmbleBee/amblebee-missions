@@ -12,8 +12,14 @@ const b64url = {
   dec(str) { let s = str.replace(/-/g, "+").replace(/_/g, "/"); while (s.length % 4) s += "="; return Uint8Array.from(atob(s), (c) => c.charCodeAt(0)); },
 };
 async function squash(bytes, Stream) {
-  const out = new Blob([bytes]).stream().pipeThrough(new Stream("deflate-raw"));
-  return new Uint8Array(await new Response(out).arrayBuffer());
+  // read piece by piece: on a damaged link, new Response(stream) makes Firefox log an error even though it's caught
+  const reader = new Blob([bytes]).stream().pipeThrough(new Stream("deflate-raw")).getReader();
+  const parts = [];
+  for (;;) {
+    const { done, value } = await reader.read();
+    if (done) return new Uint8Array(await new Blob(parts).arrayBuffer());
+    parts.push(value);
+  }
 }
 // format: one version character, then base64url. "1" = deflate-raw compressed JSON, "0" = plain JSON bytes.
 async function packGift(g) {

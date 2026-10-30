@@ -18,7 +18,7 @@ The website is at [amblebee.com](https://amblebee.com). It's built from this rep
 ## Working on it
 
 ```bash
-pip install pyyaml
+pip install pyyaml==6.0.1
 bash tools/preview.sh
 ```
 
@@ -27,12 +27,12 @@ That checks everything, builds the site and serves it at http://localhost:8811.
 To run the browser tests against a built `_site`:
 
 ```bash
-pip install playwright
+pip install playwright==1.64.1
 python -m playwright install chromium
 python tools/smoke_test.py
 ```
 
-The same tests run on every push and pull request. A failure stops the deploy.
+The same tests run on every push and pull request, in Chromium, Firefox and WebKit (Safari's engine). A failure in Chromium or Firefox stops the deploy; WebKit only reports for now. To try another engine here, install it and run `SMOKE_ENGINE=firefox python tools/smoke_test.py`.
 
 Want to add a mission? See [CONTRIBUTING.md](CONTRIBUTING.md).
 

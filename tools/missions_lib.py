@@ -272,6 +272,10 @@ def check_catalog(root):
             if found:
                 problems.append(f"{where}: says \"{found.group(0)}\", but friends, family or one person can go on this mission; "
                                 "try \"you\" or \"your group\" (or make the mode date)")
+        # the Kids filter trusts "who", so nothing about drinks gets through it once a mission is live
+        if "kids" in (m.get("who") or []) and "drinks" in (m.get("themes") or []) and not m.get("draft"):
+            problems.append(f"{where}: who includes kids, but themes has drinks; "
+                            "drop kids, or drop drinks if the drinks here are for everyone (like fresh cider)")
         if len(str(m.get("short", ""))) > SHORT_MAX:
             problems.append(f"{where}: short is {len(m['short'])} characters; keep it to {SHORT_MAX} for the camera screen")
         if "kids" in m.get("who", []):

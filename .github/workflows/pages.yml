@@ -26,7 +26,7 @@ jobs:
         with:
           python-version: "3.12"
       - name: Install PyYAML
-        run: pip install pyyaml
+        run: pip install pyyaml==6.0.1
       - name: Check missions
         run: python tools/check_missions.py
       - name: Check roadmap
@@ -39,12 +39,6 @@ jobs:
         run: python tools/build_icons.py
       - name: Check color contrast
         run: python tools/check_contrast.py
-      - uses: actions/setup-node@v7
-        with:
-          node-version: "24"
-      - name: Fetch fonts
-        continue-on-error: true   # site still works with system fonts
-        run: bash tools/fetch_fonts.sh
       - name: Build site
         run: |
           rm -rf _site
@@ -54,12 +48,21 @@ jobs:
           python tools/build_icons.py --out _site/icons.json
           python tools/build_pages.py --out _site
           cp data/zips.json data/cities.json _site/
-      - name: Install the test browser
+      - name: Install the test browsers
         run: |
           pip install playwright==1.64.1
-          python -m playwright install --with-deps chromium
-      - name: Test the site in a browser
+          python -m playwright install --with-deps chromium firefox webkit
+      - name: Test the site in Chromium
         run: python tools/smoke_test.py
+      - name: Test the site in Firefox
+        run: python tools/smoke_test.py
+        env:
+          SMOKE_ENGINE: firefox
+      - name: Test the site in WebKit (Safari's engine)
+        continue-on-error: true   # reports only for now; remove this line once it has passed here
+        run: python tools/smoke_test.py
+        env:
+          SMOKE_ENGINE: webkit
       - name: Upload site
         if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
         uses: actions/upload-pages-artifact@v5

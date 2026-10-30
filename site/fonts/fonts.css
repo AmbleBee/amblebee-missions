@@ -1,5 +1,5 @@
-/* Self-hosted fonts (no requests to Google). The .woff2 files are fetched by tools/fetch_fonts.sh,
-   which the GitHub Action runs on every build. Until they exist, the page falls back to system fonts. */
+/* Self-hosted fonts (no requests to Google). The .woff2 files are committed here; run tools/fetch_fonts.sh
+   by hand to update them. */
 @font-face { font-family: "Fraunces Variable"; src: url("fraunces.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
 @font-face { font-family: "Nunito Variable"; src: url("nunito.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
 @font-face { font-family: "Caveat"; src: url("caveat-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
