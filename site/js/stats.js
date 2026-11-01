@@ -17,6 +17,29 @@
   // only the page itself goes to Google: never the filters or search words in the address, or a card in the #link
   function cleanAddress() { return location.origin + location.pathname; }
 
+  // A few actions, by name only, for people who said yes. The rest of the site calls ambleTrack();
+  // it does nothing until stats are loaded, so callers never need to check.
+  window.ambleTrack = function (name, params) {
+    if (loaded && window.gtag) window.gtag("event", name, params || {});
+  };
+  var REPORT_ID_FIELD = "entry.872618061";   // the mission id field on the "Report a problem" form (site/js/core.js)
+  function watchActions() {
+    document.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a) return;
+      if (/forms\.gle\//.test(a.href)) window.ambleTrack("suggest_click");
+      else if (/docs\.google\.com\/forms\//.test(a.href)) {
+        var id = null;
+        try { id = new URL(a.href).searchParams.get(REPORT_ID_FIELD); } catch (err) { /* old browser: count without the id */ }
+        window.ambleTrack("report_click", id ? { mission_id: id } : {});
+      }
+    }, true);
+    document.addEventListener("change", function (e) {
+      var t = e.target;
+      if (t && t.name === "mode" && t.checked) window.ambleTrack("mode_pick", { mode: t.value });
+    });
+  }
+
   function load() {
     if (loaded || !live) return;
     loaded = true;
@@ -80,6 +103,7 @@
   }
 
   function start() {
+    watchActions();
     document.addEventListener("click", function (e) {
       var b = e.target.closest && e.target.closest("[data-stats]");
       if (b && GA_ID) choose(b.getAttribute("data-stats"));

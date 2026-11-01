@@ -116,6 +116,11 @@ function rollSummary() {
 }
 function showReveal(m, { from = "roll", sealed = false, animate = false, growFrom = null } = {}) {
   S.current = m; S.revealFrom = from;
+  // counted once, when the mission itself is on screen (not the sealed envelope, not a redraw)
+  if (!sealed && !animate && S.countedOpen !== m.full_id) {
+    S.countedOpen = m.full_id;
+    if (window.ambleTrack) window.ambleTrack("mission_open", { mission_id: m.full_id, pack: m.pack, how: from });
+  }
   document.body.classList.add("revealing");
   $("#reveal").hidden = false;
   const gift = from === "gift" ? S.gift : null;
@@ -179,6 +184,7 @@ function growTicket(t, from) {
   });
 }
 function showHome() {
+  S.countedOpen = null;
   document.body.classList.remove("revealing");
   $("#reveal").hidden = true;
   S.current = null;

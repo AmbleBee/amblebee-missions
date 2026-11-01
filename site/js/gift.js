@@ -181,6 +181,7 @@ function openGiftForm(m, opts = {}) {
     err.textContent = "";
     writePref("giftFrom", g.f); writePref("giftTheme", g.th); writePref("giftSign", g.s);
     keepDraft(g);
+    if (window.ambleTrack) window.ambleTrack("card_sealed", { mission_id: m.full_id });   // never the names or note
     sealGift(m, g, giftUrl(await packGift(g)));
   });
 
