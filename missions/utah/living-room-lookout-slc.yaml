@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 3
 name: Take a Seat in the Living Room
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Living Room Trailhead
   area: Foothills above the Natural History Museum, Salt Lake City
   address: 383 Colorow Rd, Salt Lake City, UT
-  coords: [40.76265, -111.82446]  # Visit Utah, Colorow Road north access
+  coords: [40.759456, -111.821471]
   website: https://www.visitutah.com/places-to-go/cities-and-towns/salt-lake-city/trails/the-living-room
 short: Climb the foothills to the stone armchairs and kick back over the whole Salt Lake Valley.
 description: >

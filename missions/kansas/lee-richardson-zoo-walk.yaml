@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 3
 name: Walk the Lee Richardson Zoo
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Lee Richardson Zoo
   area: Finnup Park, Garden City
   address: 312 E Finnup Dr, Garden City, KS 67846
-  coords: [37.95540, -100.87370]  # APPROX: set at the pedestrian entrance before publishing
+  coords: [37.959378, -100.873308]
   website: https://www.leerichardsonzoo.org
 short: Walk a big prairie-town zoo for free. Spot the giraffes, cats and bears.
 description: >

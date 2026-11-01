@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-31
 number: 1
 name: Sunset on the Stone Arch Bridge
 mode: date
@@ -6,7 +6,7 @@ place:
   name: Stone Arch Bridge
   area: St. Anthony Falls, Minneapolis
   address: 1 Portland Ave, Minneapolis, MN 55401
-  coords: [44.98100, -93.25390]  # APPROX coords: middle of the bridge
+  coords: [44.980687, -93.254106]
   website: https://www.nps.gov/miss/planyourvisit/stonarch.htm
 short: Walk the old stone railroad bridge over the Mississippi at sunset and watch the falls.
 description: >

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-31
 number: 3
 name: Thacker Mountain Radio Night
 mode: date
@@ -6,7 +6,7 @@ place:
   name: The Powerhouse Community Arts Center (Thacker Mountain Radio Hour)
   area: Oxford
   address: 413 S 14th St, Oxford, MS 38655
-  coords: [34.36380, -89.52350]  # APPROX: set at the entrance before publishing
+  coords: [34.364455, -89.517446]
   website: https://www.thackermountain.com
 short: Sit in the live audience of Oxford's Thursday radio show. Dinner on the Square after.
 description: >

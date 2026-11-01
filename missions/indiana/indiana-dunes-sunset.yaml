@@ -1,12 +1,12 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-31
 number: 1
 name: Sunset on the Indiana Dunes
 mode: date
 place:
   name: Indiana Dunes State Park
   area: Chesterton
-  address: 1600 N 25 E, Chesterton, IN 46304
-  coords: [41.66200, -87.06000]  # APPROX coords: beach by the pavilion
+  address: 1600 N 25 E First Floor, Chesterton, IN 46304
+  coords: [41.662465, -87.063138]
   website: https://www.in.gov/dnr/state-parks/parks-lakes/indiana-dunes-state-park/
 short: Climb a dune, then watch the sun set over Lake Michigan from the beach.
 description: >

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-10-31
 number: 1
 name: Nez Perce National Historical Park at Spalding
 mode: both
@@ -6,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Nez Perce National Historical Park, Spalding Visitor Center
   area: Spalding, on the Clearwater River east of Lewiston
-  address: 39063 US Hwy 95, Lapwai, ID 83540  # park HQ address; verify it matches the visitor center
-  coords: [46.44800, -116.81700]  # APPROX: set at the visitor center parking before publishing
+  address: 39063 US-95, Lapwai, ID 83540
+  coords: [46.447475, -116.822934]
   website: https://www.nps.gov/nepe
 short: Learn the Nez Perce story at the Spalding visitor center. Then walk down to the Clearwater River.
 description: >

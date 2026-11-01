@@ -1,12 +1,12 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 2
 name: Race Day at the NASCAR Hall of Fame
 mode: date
 place:
   name: NASCAR Hall of Fame
   area: Uptown Charlotte
-  address: 400 E Martin Luther King Jr Blvd, Charlotte, NC 28202
-  coords: [35.22150, -80.84470]  # APPROX: set at the entrance before publishing
+  address: 400 E M.L.K. Jr Blvd, Charlotte, NC 28202
+  coords: [35.221130, -80.843956]
   website: https://www.nascarhall.com
 short: Race each other in the NASCAR Hall of Fame simulators. Loser picks up dinner.
 description: >

@@ -1,12 +1,14 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 9
 name: Mallory Square Sunset Celebration
 mode: both
 who: [solo, friends, family, kids]
 place:
   name: Mallory Square
-  area: Old Town, Key West
-  coords: [24.56000, -81.80700]  # APPROX: set at the Mallory Square dock before publishing
+  area: Old Town, Key Westad 
+  address: Mallory Square Pier, 420 Wall St, Key West, FL 33040
+  coords: [24.559858, -81.807651]
+  website: https://www.sunsetcelebration.org
 short: Watch street performers and the sunset at Key West's nightly Mallory Square celebration.
 description: >
   Join the nightly Sunset Celebration at Mallory Square in Key West, where the

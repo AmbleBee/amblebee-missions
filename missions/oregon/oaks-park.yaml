@@ -1,4 +1,4 @@
-# Updated 2026-10-27
+# Updated 2026-11-1
 number: 6
 name: Oaks Park
 mode: both
@@ -31,3 +31,4 @@ travel: local
 check_ahead: [hours, tickets, seasonal]
 themes: [thrills, playful]
 tags: [playful, rides, portland]
+credit: Elle M.

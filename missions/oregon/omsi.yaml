@@ -1,4 +1,4 @@
-# Updated 2026-10-22
+# Updated 2026-11-1
 number: 38
 name: OMSI
 mode: both
@@ -33,3 +33,4 @@ check_ahead: [hours, tickets]
 discounts: [military, senior]
 themes: [museums, science]
 tags: [museum, science, rainy-day, portland]
+credit: Elle M.

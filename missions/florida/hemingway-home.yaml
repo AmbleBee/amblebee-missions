@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 10
 name: Hemingway Home and the Six-Toed Cats
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Ernest Hemingway Home and Museum
   area: Whitehead St, Key West
-  coords: [24.55100, -81.80100]  # APPROX: set at the entrance before publishing
+  address: 907 Whitehead St, Key West, FL 33040
+  coords: [24.551101, -81.800822]
   website: https://www.hemingwayhome.com
 short: Tour Hemingway's Key West home and meet the six-toed cats that still live there.
 description: >

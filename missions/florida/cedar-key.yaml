@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 59
 name: Cedar Key
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Dock Street, Cedar Key
   area: Cedar Key, Nature Coast
-  coords: [29.13800, -83.03500]  # APPROX: set on Dock Street before publishing
+  coords: [29.137170, -83.032850]
+  website: https://www.cedarkey.org
 short: Wander Cedar Key, an old fishing village on stilts over the Gulf. Try the clam chowder.
 description: >
   Visit Cedar Key, a tiny island fishing village that feels like old Florida,

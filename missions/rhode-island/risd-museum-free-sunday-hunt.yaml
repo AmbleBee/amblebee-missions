@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 3
 name: Free Sunday Art Hunt at the RISD Museum
 mode: adventure
@@ -6,8 +6,8 @@ who: [family, kids]
 place:
   name: RISD Museum
   area: College Hill, Providence
-  address: 20 N Main St, Providence, RI 02903  # verify: main entrance; second entrance at 224 Benefit St
-  coords: [41.82680, -71.40870]  # APPROX: set at the entrance before publishing
+  address: 20 N Main St, Providence, RI 02903
+  coords: [41.826114, -71.408107]
   website: https://risdmuseum.org
 short: Go on a Sunday art hunt at the RISD Museum. Find the giant Buddha!
 description: >
