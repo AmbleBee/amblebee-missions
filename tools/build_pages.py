@@ -32,7 +32,7 @@ from build_icons import load as load_icons  # noqa: E402
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee Missions"
 OG_IMAGE = f"{BASE}/og-image.png"
-CSP = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html
+CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js
 # the same "Report a problem" form as site/js/core.js: opens with the mission's id and name already filled in
 REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
 REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
@@ -119,6 +119,7 @@ def page(title, description, path, main, jsonld, brand, extra_script=""):
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/nav.js" defer></script>
+<script src="/js/stats.js" defer></script>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{data}</script>
