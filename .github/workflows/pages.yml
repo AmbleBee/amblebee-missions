@@ -33,6 +33,8 @@ jobs:
         run: python tools/build_roadmap.py
       - name: Check packs
         run: python tools/check_packs.py --strict
+      - name: Check map pins
+        run: python tools/check_pins.py   # a live pin outside its state stops the deploy
       - name: Report mission numbers
         run: python tools/check_numbers.py   # gaps can be on purpose, so this one only reports
       - name: Check icons

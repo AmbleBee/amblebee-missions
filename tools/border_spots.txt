@@ -1,0 +1,14 @@
+# Missions whose pins have been checked and really are right next to a state line, so tools/check_pins.py
+# doesn't warn about them on every build. One pack/mission per line, as the warning prints it (without "(draft)").
+# Only add one after looking at the pin on a map.
+
+oregon/multnomah-falls          # Columbia River Gorge; Washington is across the river
+oregon/vista-house              # Columbia River Gorge; Washington is across the river
+oregon/alvord-desert            # southeast Oregon; the nearest town is over the Nevada line
+oregon/klamath-bald-eagles      # Klamath Basin, on the California line
+georgia/jacks-river-falls-beech-bottom  # Cohutta Wilderness, on the Tennessee line
+missouri/dogwood-canyon-tram    # on the Arkansas line
+missouri/kc-fed-money-museum    # Kansas City, Missouri side
+missouri/kc-wheel-date-night    # Kansas City, Missouri side
+nebraska/bob-kerrey-pedestrian-bridge   # Omaha end of the bridge; Council Bluffs, Iowa is across the river
+tennessee/raccoon-mountain-wild-cave-crawl  # Chattanooga, on the Georgia line
