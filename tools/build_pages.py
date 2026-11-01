@@ -37,6 +37,7 @@ CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; s
 REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
 REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
 INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
+    "about": ("About", "How AmbleBee started, where the missions came from, and where the camera and Hive are going."),
     "safety": ("Safety", "How to stay safe on an AmbleBee mission, and what's up to you."),
     "privacy": ("Privacy", "What AmbleBee Missions keeps, what stays on your device, and what goes to Google or GitHub."),
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
@@ -75,7 +76,7 @@ def icon(markup, size):
 def nav_html(current=""):
     """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
     home = current == "index"
-    main = [("/#about", "About"), ("/#browse" if home else "/missions/", "Every mission"), ("/#search", "Search"),
+    main = [("/about/", "About"), ("/#browse" if home else "/missions/", "Every mission"), ("/#search", "Search"),
             ("/roadmap.html", "Bee trail"), ("/#share", "Know a great spot?")]
     if not home:
         main.insert(0, ("/", "Open a mission"))
@@ -83,7 +84,7 @@ def nav_html(current=""):
 
     def link(href, text, cls=""):
         cls = " nav-share" if cls != "phone-only" and text.startswith("Know") else cls
-        here = ' aria-current="page"' if href == "/roadmap.html" and current == "roadmap" else ""
+        here = ' aria-current="page"' if (href, current) in (("/roadmap.html", "roadmap"), ("/about/", "about")) else ""
         attr = f' class="{cls.strip()}"' if cls else ""
         return f'<a href="{href}"{attr}{here}>{text}</a>'
     burger = ('<svg class="menu-burger" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
@@ -94,7 +95,7 @@ def nav_html(current=""):
             '</details></nav>')
 
 
-def page(title, description, path, main, jsonld, brand, extra_script=""):
+def page(title, description, path, main, jsonld, brand, extra_script="", current=""):
     url = BASE + path
     data = json.dumps(jsonld, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     return f"""<!doctype html>
@@ -128,13 +129,13 @@ def page(title, description, path, main, jsonld, brand, extra_script=""):
 <a class="skip" href="#main">Skip to the content</a>
 <header class="top">
   {brand}
-  {nav_html()}
+  {nav_html(current)}
 </header>
 <main id="main">
 {main}
 </main>
 <footer class="foot">
-  <p class="foot-links"><a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/contact/">Contact</a></p>
+  <p class="foot-links"><a href="/about/">About</a> <a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/contact/">Contact</a></p>
   <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
 </footer>
 {extra_script}</body>
@@ -330,7 +331,7 @@ def build_pages(out):
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
         main = f'<div class="page info">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
-        write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand))
+        write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name))
 
     body = (ROOT / "pages" / "404.html").read_text(encoding="utf-8")
     text = page(f"Page not found · {SITE_NAME}", "This page doesn't exist on AmbleBee Missions.", "/404.html",

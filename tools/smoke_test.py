@@ -492,12 +492,12 @@ def t_computer_menu_and_search_link(site, catalog):
 
 def t_menu_links_keep_filters_and_leave_a_mission(site, catalog):
     page = site.home("/?cost=free")
-    page.click('.top nav > a[href="/#about"]')
+    page.click('.top nav > a[href="/#browse"]')
     assert "cost=free" in page.url
     page.click("#roll-btn")
     page.wait_for_selector("#reveal-title")
-    page.click('.top nav > a[href="/#about"]')
-    page.wait_for_selector("#about", state="visible")
+    page.click('.top nav > a[href="/#browse"]')
+    page.wait_for_selector("#browse", state="visible")
 
 
 def t_footer_is_dark_on_short_pages_too(site, catalog):
@@ -510,7 +510,7 @@ def t_footer_is_dark_on_short_pages_too(site, catalog):
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",
-                 "/safety/", "/privacy/", "/contact/"):
+                 "/about/", "/safety/", "/privacy/", "/contact/"):
         page = site.open(path)
         page.wait_for_selector("h1")
     page = site.open(f"/missions/{mission['id']}/")
