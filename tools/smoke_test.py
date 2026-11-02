@@ -564,6 +564,11 @@ def t_built_pages_load(site, catalog):
         page.wait_for_selector("h1")
     page = site.open(f"/missions/{mission['id']}/")
     assert mission["name"] in page.inner_text("h1")
+    for path in (f"/missions/{mission['id']}/", f"/packs/{mission['pack']}/", "/free-date-ideas/"):   # each has its share card
+        card = site.open(path).get_attribute('meta[property="og:image"]', "content")
+        assert "/cards/" in card and "?v=" in card, f"{path} has no share card of its own"
+        r = page.request.get(site.base + card.split("amblebee.com", 1)[1])
+        assert r.ok and r.headers["content-type"] == "image/png", f"{path}: its share card is missing"
     assert page.locator(".report a").count() == 1
     assert page.locator("a[href^='mailto:']").count() == 0
     page = site.open("/contact/")

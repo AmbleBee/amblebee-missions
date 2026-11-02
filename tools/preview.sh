@@ -10,6 +10,8 @@ python3 tools/build_catalog.py --out _site/catalog.json
 python3 tools/build_icons.py --out _site/icons.json
 python3 tools/build_pages.py --out _site
 cp data/zips.json data/cities.json _site/
+if python3 -c "import playwright" 2>/dev/null; then python3 tools/build_cards.py --out _site
+else echo "Skipping share cards (they need Playwright, see README.md)"; rm -f _site/cards/cards.json; fi
 [ -f tools/build_roadmap.py ] && python3 tools/build_roadmap.py --out _site/roadmap.json
 echo "Open http://localhost:8811  (Ctrl+C to stop)"
 cd _site && python3 -m http.server 8811

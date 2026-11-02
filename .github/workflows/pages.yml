@@ -54,6 +54,8 @@ jobs:
         run: |
           pip install playwright==1.64.1
           python -m playwright install --with-deps chromium firefox webkit
+      - name: Draw the share cards
+        run: python tools/build_cards.py --out _site   # the picture shown when someone shares a mission, pack or idea page
       - name: Test the site in Chromium
         run: python tools/smoke_test.py
       - name: Test the site in Firefox

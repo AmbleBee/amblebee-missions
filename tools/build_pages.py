@@ -10,6 +10,7 @@ Writes, inside the built site:
     about/, safety/, privacy/, contact/  written in pages/, wrapped in the same header and footer
     404.html                     shown by GitHub Pages for any address that doesn't exist
     sitemap.xml, robots.txt      with each page's last-changed date from git, when there's a full checkout
+    cards/cards.json             what each share card says; tools/build_cards.py then draws them
 
 Finally it adds a version to every script and stylesheet link (style.css?v=1a2b...), so visitors get new
 files as soon as a deploy lands. Drafts never get a page. URLs use the mission id, which is permanent (SCHEMA.md), so moving a mission
@@ -31,6 +32,7 @@ import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
+from build_cards import look_version  # noqa: E402
 from build_catalog import build  # noqa: E402
 from build_icons import load as load_icons  # noqa: E402
 from missions_lib import load_catalog  # noqa: E402
@@ -42,7 +44,8 @@ NEARBY = 3         # "More missions nearby" at the bottom of each mission page: 
 META_MAX = 158     # Google cuts search snippets off at about this many characters
 COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked once it has this many live missions
 NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
-OG_IMAGE = f"{BASE}/og-image.png"
+OG_IMAGE = {"url": f"{BASE}/og-image.png",   # for pages without their own share card; the same as site/index.html
+            "alt": "A sealed AmbleBee envelope with a honey wax seal pressed with a beehive, and a bee flying off to deliver it"}
 CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js
 # the same "Report a problem" form as site/js/core.js: opens with the mission's id and name already filled in
 REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
@@ -106,8 +109,9 @@ def nav_html(current=""):
             '</details></nav>')
 
 
-def page(title, description, path, main, jsonld, brand, extra_script="", current=""):
+def page(title, description, path, main, jsonld, brand, extra_script="", current="", image=None):
     url = BASE + path
+    image = image or OG_IMAGE
     data = json.dumps(jsonld, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     return f"""<!doctype html>
 <html lang="en">
@@ -125,8 +129,12 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{SITE_NAME}">
 <meta property="og:url" content="{esc(url)}">
-<meta property="og:image" content="{OG_IMAGE}">
+<meta property="og:image" content="{esc(image["url"])}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="{esc(image["alt"])}">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{esc(image["url"])}">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
@@ -364,6 +372,15 @@ def build_pages(out):
         for m in c["missions"]:
             in_collections.setdefault(m["id"], []).append(c)
     urls = ["/", "/roadmap.html", "/missions/"]
+    to_draw = []   # what each share card says, for tools/build_cards.py
+    look = look_version()
+
+    def share_card(name, alt, **spec):
+        """Lists a card to draw and returns its address. The ?v= changes whenever the words or the look do."""
+        spec["name"] = name
+        to_draw.append(spec)
+        v = hashlib.sha1((json.dumps(spec, sort_keys=True) + look).encode("utf-8")).hexdigest()[:8]
+        return {"url": f"{BASE}/cards/{name}.png?v={v}", "alt": alt}
 
     def write(path, text):
         f = Path(out) / path.strip("/") / "index.html"
@@ -423,7 +440,11 @@ def build_pages(out):
             desc = f"{short} " + " · ".join(x for x in (MODE[m["mode"]], DURATION[m["duration"]], COST[m["cost"]])) + "."
         if len(desc) > META_MAX:
             desc = short
-        write(path, page(title, desc, path, main, ld, brand, until_script if 'data-until="' in main else ""))
+        image = share_card(f"mission-{m['id']}", f"{m['name']}: {short}", badge=icons["packs"].get(pack.get("icon"), ""),
+                           eyebrow=pack.get("name"), sub=re.sub(r"\s*\([^)]*\)", "", where) if place else "Do it anywhere",
+                           corner=f"Mission {m['number']}", title=m["name"], text=short,
+                           chips=[MODE[m["mode"]], DURATION[m["duration"]], COST[m["cost"]]])
+        write(path, page(title, desc, path, main, ld, brand, until_script if 'data-until="' in main else "", image=image))
         f = dates.get(f"missions/{m['pack']}/{m['id']}.yaml")
         if f:
             lastmod[path] = f
@@ -451,7 +472,10 @@ def build_pages(out):
             crumbs_ld([("Every mission", "/missions/"), (p.get("name"), path)])]}
         meta = next((d for d in (f"{desc} {count_line}, picked and checked by AmbleBee.", f"{desc} {count_line}.")
                      if len(d) <= META_MAX), desc)
-        write(path, page(f"{pack_heading(p)} · {p.get('name')}", meta, path, main, ld, brand))
+        image = share_card(f"pack-{p['id']}", f"{p.get('name')}: {desc}", badge=icons["packs"].get(p.get("icon"), ""),
+                           eyebrow="Date & adventure ideas", title=p.get("name"), text=desc,
+                           note=f"{len(rows)} ideas" + (f" in {state}" if state else " you can do anywhere"))
+        write(path, page(f"{pack_heading(p)} · {p.get('name')}", meta, path, main, ld, brand, image=image))
         days = [lastmod[f"/missions/{m['id']}/"] for m in rows if f"/missions/{m['id']}/" in lastmod]
         days += [d for d in [dates.get(f"missions/{p['id']}/pack.yaml")] if d]
         if days:
@@ -489,7 +513,10 @@ def build_pages(out):
         ld = {"@context": "https://schema.org", "@graph": [
             {"@type": "CollectionPage", "@id": BASE + c["path"], "url": BASE + c["path"], "name": c["title"], "description": meta},
             crumbs_ld([("Every mission", "/missions/"), (c["title"], c["path"])])]}
-        write(c["path"], page(f"{c['title']} · {len(rows)} Ideas · AmbleBee", meta, c["path"], main, ld, brand))
+        image = share_card(f"idea-{c['id']}", f"{c['title']}: {' '.join(str(c['description']).split())}", badge="hive",
+                           eyebrow="Ideas from AmbleBee", title=c["title"], text=" ".join(str(c["description"]).split()),
+                           note=count_line)
+        write(c["path"], page(f"{c['title']} · {len(rows)} Ideas · AmbleBee", meta, c["path"], main, ld, brand, image=image))
         days = [lastmod[f"/missions/{m['id']}/"] for m in rows if f"/missions/{m['id']}/" in lastmod]
         if dates.get("collections.yaml"):
             days.append(dates["collections.yaml"])
@@ -546,6 +573,8 @@ def build_pages(out):
     (Path(out) / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n',
         encoding="utf-8")
+    (Path(out) / "cards").mkdir(parents=True, exist_ok=True)
+    (Path(out) / "cards" / "cards.json").write_text(json.dumps(to_draw, ensure_ascii=False), encoding="utf-8")
     (Path(out) / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
     for name, current in (("index.html", "index"), ("roadmap.html", "roadmap")):
         f = Path(out) / name
