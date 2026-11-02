@@ -583,6 +583,15 @@ def t_built_pages_load(site, catalog):
         page.wait_for_selector("h1")
     page = site.open(f"/missions/{mission['id']}/")
     assert mission["name"] in page.inner_text("h1")
+    checked = next((m for m in catalog["missions"] if m.get("checked")), None)
+    if checked:   # the "Checked November 2026" line, on the mission's page and in the popup
+        page = site.open(f"/missions/{checked['id']}/")
+        assert re.match(r"Checked [A-Z][a-z]+ 20\d\d$", page.inner_text(".ticket .checked").strip())
+        page = site.home()
+        page.goto(site.base + "/#mission=" + checked["full_id"].replace("/", "%2F") + "&from=page")
+        page.wait_for_selector("#reveal-title")
+        assert page.inner_text(".ticket .checked").strip() == site.open(f"/missions/{checked['id']}/").inner_text(".ticket .checked").strip()
+    page = site.open(f"/missions/{mission['id']}/")
     for path in (f"/missions/{mission['id']}/", f"/packs/{mission['pack']}/", "/free-date-ideas/", "/about/", "/roadmap.html"):   # each has its share card
         card = site.open(path).get_attribute('meta[property="og:image"]', "content")
         assert "/cards/" in card and "?v=" in card, f"{path} has no share card of its own"

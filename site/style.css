@@ -802,3 +802,5 @@ main:focus { outline: none; }
 .stats-btns .btn { flex: 1 1 140px; }
 .stats-choice { display: flex; gap: 10px; flex-wrap: wrap; margin: .4rem 0 1rem; }
 .ideas-count { margin-bottom: 22px; }
+.checked { display: flex; align-items: center; gap: 6px; margin: 1rem 0 0; font-size: .88rem; font-weight: 700; color: var(--sage-deep); }
+.checked + .report { margin-top: .3rem; }

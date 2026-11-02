@@ -87,8 +87,16 @@ function ticket(m, { titleId, heading = "h3" } = {}) {
       caution, place, extras,
       h("p", { class: "source" }, svg(packIcon(pack), 18),
         h("span", {}, "Mission ", h("b", {}, String(m.number || "?")), " in ", h("b", {}, pack.name))),
+      checkedLine(m),
       reportUrl(m) ? h("p", { class: "report" }, "Closed, moved or something off? ",
         h("a", { href: reportUrl(m), target: "_blank", rel: "noopener" }, "Report a problem")) : null));
+}
+
+// "Checked November 2026": when the place, hours and pin were last confirmed (missions/SCHEMA.md → checked)
+const MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+function checkedLine(m) {
+  const d = /^(\d{4})-(\d{2})-\d{2}$/.exec(String(m.checked || ""));
+  return d ? h("p", { class: "checked" }, svg(ICON.checkmark, 16), `Checked ${MONTHS[+d[2] - 1]} ${d[1]}`) : null;
 }
 
 function reportUrl(m) {

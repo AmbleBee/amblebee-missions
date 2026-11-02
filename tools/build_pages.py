@@ -251,7 +251,7 @@ def mission_html(m, pack, icons, today):
     <p class="desc">{esc(str(m["description"]).strip())}</p>
     <ul class="tags" aria-label="Details">{tag_html}</ul>
     {notes_html}{caution_html}{place_html}{extras}
-    {report_html}
+    {checked_html(m)}{report_html}
   </div>
 </article>"""
 
@@ -259,8 +259,18 @@ def mission_html(m, pack, icons, today):
 UI_ICON = {   # the same artwork as ICON in site/js/core.js
     "share": '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
     "download": '<path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/>',
+    "check": '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
 }
 
+
+
+def checked_html(m):
+    """"Checked November 2026": when the place, hours and pin were last confirmed (the same line as site/js/ticket.js)."""
+    d = re.fullmatch(r"(\d{4})-(\d{2})-\d{2}", str(m.get("checked") or ""))
+    if not d:
+        return ""
+    month = datetime.date(int(d.group(1)), int(d.group(2)), 1).strftime("%B %Y")
+    return f'<p class="checked">{icon(UI_ICON["check"], 16)}Checked {month}</p>\n    '
 
 
 def version_files(out):

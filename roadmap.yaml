@@ -68,15 +68,20 @@
 # ---------- Done ----------
 - title: The Big Website Tune-Up, Part 2
   status: done
-  date: 2026-11-01
+  date: 2026-11-02
   tag: website
-  summary: A second big day on the website, this time about helping people find AmbleBee, and helping us learn which missions are worth making more of.
+  summary: Two more big days on the website, all about helping people find AmbleBee, making missions easier to share, and showing how fresh each one is.
   items:
     - Every state now has its own page, with its icon, a short intro and a longer guide to what you'll find there
     - The home page shows the first four missions from each state, with an "X more · Show all" link to the rest. On phones each state swipes sideways
     - 'New idea pages: [Rainy Day Date Ideas](/rainy-day-date-ideas/), [At-Home Date Night Ideas](/at-home-date-ideas/), [Free Date Ideas](/free-date-ideas/) and [Kid-Friendly Adventures](/kid-friendly-adventures/)'
     - A "Browse by idea" row on the home page and Every mission, and each mission page lists the idea pages it's in
     - Mission pages suggest a few other missions nearby
+    - Every mission now says when it was last checked, like "Checked November 2026", and nothing goes live until it has been
+    - Share a mission and the link shows a preview card with its name, state, cost and how long it takes. Every state, idea and site page has its own card too, and the home page shows the AmbleBee name
+    - '"Share without a note" now gives the mission''s own page, already copied, so the preview shows where you''re headed. Writing a card is still the first choice, and sealed cards keep the surprise'
+    - On a mission's own page, Share opens the card writer and Save as image saves in one tap, no second trip
+    - The site is simply AmbleBee now, with a crisp beehive icon next to it in Google results
     - Every mission, state and idea page has its own search title and description, so each one can turn up on Google
     - A sitemap that tells Google when each page last changed, and the site is now set up in Google Search Console
     - A new [About](/about/) page with the story of how AmbleBee started and where it's headed
@@ -84,7 +89,7 @@
     - The Suggest a mission and Report a problem forms have every theme, tag and question they need
     - '**Opt-in** visitor stats with Google Analytics. Nothing loads unless you say yes, and the [Privacy](/privacy/) page explains what we count and why'
     - The stats count things like which packs get opened and whether dates or adventures get picked more, never who you are or where exactly you live
-    - Behind the scenes, a new check catches map pins that land in the wrong state before they ever go live
+    - Behind the scenes, new checks catch map pins in the wrong state and mission dates with typos before anything goes live
 
 - title: The Big Website Tune-Up
   status: done

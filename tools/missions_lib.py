@@ -35,7 +35,7 @@ LIST_ALLOWED = {
     "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
 KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit",
-                                                              "caution", "caution_until", "draft", "themes"}
+                                                              "caution", "caution_until", "draft", "themes", "checked"}
 GEAR = {
     # Water
     "kayak", "canoe", "paddleboard", "life-jackets", "wetsuit", "river-tube", "fishing-gear",
@@ -104,13 +104,14 @@ LINKS_MAX, LINK_LABEL_MAX = 3, 25  # extra place links: short labels so the butt
 ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 CREDIT_MAX = 40  # shown as "Suggested by …" under the mission title
 SHORT_MAX = 100
+CHECKED_EARLIEST = datetime.date(2026, 1, 1)   # a checked date before this is a typo in the year
 CAUTION_MAX = 200  # the yellow box on the website ticket; about 3 lines on a phone, so shorter is better
 # wording that assumes a couple. Fine on date-only missions, wrong once friends, family or one person can go
 COUPLE_WORDS = re.compile(r"\b(the two of you|you two|both of you|your partner|your date|hold hands)\b", re.I)
 
 
 def caution_until_date(v):
-    """caution_until as a date, or None if it's missing or not a real YYYY-MM-DD date."""
+    """caution_until (or checked) as a date, or None if it's missing or not a real YYYY-MM-DD date."""
     if isinstance(v, datetime.datetime):
         return v.date()
     if isinstance(v, datetime.date):
@@ -161,9 +162,10 @@ def load_catalog(root):
                 raise ValueError(f"{f}: has a value that isn't valid ({e}); dates are YYYY-MM-DD") from e
             m = {**DEFAULTS, **m, "id": f.stem, "pack": folder.name, "file": str(f)}
             m["full_id"] = f"{source}/{f.stem}"
-            d = caution_until_date(m.get("caution_until"))
-            if d:
-                m["caution_until"] = d.isoformat()
+            for key in ("caution_until", "checked"):   # dates travel as plain "YYYY-MM-DD" text
+                d = caution_until_date(m.get(key))
+                if d:
+                    m[key] = d.isoformat()
             missions.append(m)
     # drafts (draft: true) stay in the repo but are left out of the site, so they don't count
     for pid, p in packs.items():
@@ -356,6 +358,19 @@ def check_catalog(root):
                 problems.append(f"{where}: caution_until is set but there's no caution for it to end")
             if not caution_until_date(m["caution_until"]):
                 problems.append(f"{where}: caution_until should be a date like 2026-12-01 (YYYY-MM-DD)")
+        # checked: the day the mission was last confirmed (place, hours and pin; for Amble Anywhere, that it still
+        # makes sense). Shown on the ticket as "Checked November 2026". Every live mission needs it, or draft: true.
+        if "checked" in m and m["checked"] not in (None, ""):
+            when = caution_until_date(m["checked"])
+            if not when:
+                problems.append(f"{where}: checked should be a date like 2026-11-02 (YYYY-MM-DD, two-digit month and day)")
+            elif when > datetime.date.today() + datetime.timedelta(days=1):
+                problems.append(f"{where}: checked is {when.isoformat()}, which hasn't happened yet (typo?)")
+            elif when < CHECKED_EARLIEST:
+                problems.append(f"{where}: checked is {when.isoformat()}, before AmbleBee existed (typo in the year?)")
+        elif not m.get("draft"):
+            problems.append(f"{where}: needs either `checked: YYYY-MM-DD` (the day you last checked it) "
+                            f"or `draft: true` (not checked yet, so it stays off the site)")
         for g in m.get("gear") or []:
             if not isinstance(g, dict) or g.get("item") not in GEAR:
                 problems.append(f"{where}: gear item {g.get('item') if isinstance(g, dict) else g!r} isn't in the gear list (SCHEMA.md)")

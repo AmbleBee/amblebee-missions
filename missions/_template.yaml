@@ -5,6 +5,9 @@
 #   python tools/check_numbers.py     (shows the next free number in each pack)
 
 draft: true                    # hidden from the site until you've checked the pin and address; delete this line to publish
+# checked: 2026-11-02          # the day you last checked it (YYYY-MM-DD): place, hours and pin, or for Amble Anywhere
+#                              # that it still makes sense. When you publish, swap draft: true for this. Every live
+#                              # mission needs one or the other. Shows on the ticket as "Checked November 2026".
 number: 99                     # next free number in this pack; permanent, never reused
 name: Mission Name
 mode: date                     # date | adventure | both
