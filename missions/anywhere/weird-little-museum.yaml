@@ -1,0 +1,24 @@
+# Updated 2026-11-2
+number: 48
+name: Weird Little Museum
+mode: both
+who: [solo, friends, family]
+short: Find the weirdest little museum near you. Each share the strangest thing you learned.
+description: >
+  Skip the big famous museum and find the quirky little one instead: the
+  historical society in an old house, the museum of one local obsession, the
+  unusual collection with hand-written labels and a volunteer who knows
+  everything. Read the plaques, ask the volunteer one question, and each find
+  the strangest fact in the building. Over coffee or lunch afterward, trade
+  your facts and decide which one wins. It's a great cheap date idea for a
+  rainy afternoon, and you'll learn something about your own town.
+duration: short
+effort: easy
+cost: $
+setting: indoor
+season: any
+time_of_day: daytime
+travel: local
+check_ahead: [hours]
+themes: [museums, quirky, history]
+tags: [small museum, odd museum, local history, roadside]
