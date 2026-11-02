@@ -44,8 +44,8 @@ NEARBY = 3         # "More missions nearby" at the bottom of each mission page: 
 META_MAX = 158     # Google cuts search snippets off at about this many characters
 COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked once it has this many live missions
 NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
-OG_IMAGE = {"url": f"{BASE}/og-image.png",   # for pages without their own share card; the same as site/index.html
-            "alt": "A sealed AmbleBee envelope with a honey wax seal pressed with a beehive, and a bee flying off to deliver it"}
+OG_IMAGE = {"url": f"{BASE}/og-image.png?v=2",   # for pages without their own share card; the same as site/index.html
+            "alt": "AmbleBee: date ideas and adventures near you. A sealed envelope with a honey wax seal, and a bee flying off to deliver it"}
 CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js
 # the same "Report a problem" form as site/js/core.js: opens with the mission's id and name already filled in
 REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
@@ -53,9 +53,12 @@ REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
 INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "about": ("About", "How AmbleBee started, where the missions came from, and where the camera and Hive are going."),
     "safety": ("Safety", "How to stay safe on an AmbleBee mission, and what's up to you."),
-    "privacy": ("Privacy", "What AmbleBee Missions keeps, what stays on your device, and what goes to Google or GitHub."),
+    "privacy": ("Privacy", "What AmbleBee keeps, what stays on your device, and what goes to Google or GitHub."),
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
 }
+
+# the small line above the title on each info page's share card
+CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -554,14 +557,18 @@ def build_pages(out):
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "url": f"{BASE}/missions/", "name": "Every mission", "description": intro}
     (Path(out) / "missions").mkdir(parents=True, exist_ok=True)
     (Path(out) / "missions" / "index.html").write_text(
-        page(f"Every mission · {SITE_NAME}", intro, "/missions/", main, ld, brand), encoding="utf-8")
+        page(f"Every mission · {SITE_NAME}", intro, "/missions/", main, ld, brand,
+             image=share_card("page-missions", f"Every mission: {intro}", badge="hive", eyebrow="Date & adventure ideas",
+                              title="Every mission", text=intro, note="amblebee.com/missions")), encoding="utf-8")
 
     for name, (title, desc) in INFO_PAGES.items():
         path = f"/{name}/"
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
         main = f'<div class="page info">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
-        write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name))
+        image = share_card(f"page-{name}", f"{title}: {desc}", badge="hive", eyebrow=CARD_EYEBROW.get(name, "AmbleBee"),
+                           title=title, text=desc, note=f"amblebee.com/{name}")
+        write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image))
         if dates.get(f"pages/{name}.html"):
             lastmod[path] = dates[f"pages/{name}.html"]
 
@@ -581,13 +588,23 @@ def build_pages(out):
     (Path(out) / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n',
         encoding="utf-8")
+    trail = "What's new on AmbleBee, and what's coming next."   # the same as og:description in site/roadmap.html
+    trail_card = share_card("page-roadmap", f"The Bee Trail: {trail}", badge="hive", eyebrow="Roadmap & changelog",
+                            title="The Bee Trail", text=trail, note="amblebee.com/roadmap")
     (Path(out) / "cards").mkdir(parents=True, exist_ok=True)
     (Path(out) / "cards" / "cards.json").write_text(json.dumps(to_draw, ensure_ascii=False), encoding="utf-8")
     (Path(out) / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
     for name, current in (("index.html", "index"), ("roadmap.html", "roadmap")):
         f = Path(out) / name
-        f.write_text(f.read_text(encoding="utf-8").replace("<!--site-nav-->", nav_html(current))
-                     .replace("<!--ideas-->", ideas_html(collections)), encoding="utf-8")
+        text = f.read_text(encoding="utf-8").replace("<!--site-nav-->", nav_html(current)).replace("<!--ideas-->", ideas_html(collections))
+        if name == "roadmap.html":   # the Bee trail gets its own share card; the home page keeps the envelope
+            old = re.search(r'<meta property="og:image" content="[^"]*">', text)
+            assert old, "site/roadmap.html lost its og:image line"
+            text = text.replace(old.group(0), f'<meta property="og:image" content="{esc(trail_card["url"])}">\n'
+                                '<meta property="og:image:width" content="1200">\n<meta property="og:image:height" content="630">\n'
+                                f'<meta property="og:image:alt" content="{esc(trail_card["alt"])}">\n'
+                                f'<meta name="twitter:image" content="{esc(trail_card["url"])}">')
+        f.write_text(text, encoding="utf-8")
     version_files(Path(out))
     return len(missions), len(packs), len(urls)
 
