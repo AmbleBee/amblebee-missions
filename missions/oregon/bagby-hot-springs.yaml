@@ -1,4 +1,4 @@
-# Updated: 2026-10-26
+# Updated 2026-11-01
 number: 44
 name: Bagby Hot Springs
 mode: both
@@ -6,13 +6,20 @@ who: [solo, friends]
 place:
   name: Bagby Hot Springs trailhead
   area: Mount Hood National Forest, near Estacada
-  coords: [44.95400, -122.17000]  # APPROX: set at the trailhead before publishing
-short: Hike through old forest to Bagby's cedar soaking tubs. Bring cash for the fee.
+  coords: [44.95409, -122.17007]
+  website: https://www.fs.usda.gov/r06/mthood/recreation/bagby-hot-springs
+  links:
+    - label: Bagby Preservation
+      url: https://bagbypreservation.com
+short: Hike through old-growth forest to Bagby's historic bathhouse and soak in hand-carved cedar tubs.
 description: >
-  Walk about a mile and a half through old-growth forest to the historic
-  bathhouse, where hot spring water runs into wooden soaking tubs. Bring cash
-  for the small fee, expect a wait on weekends, and pack out everything you
-  bring.
+  Walk about a mile and a half through old-growth forest in the Mount Hood
+  National Forest to Bagby's historic bathhouse, where hot spring water runs
+  into wooden soaking tubs. Bring cash: the fee is per person at the
+  trailhead, and Northwest Forest Passes don't count. There are no
+  reservations, so expect a wait on weekends, or go early on a weekday. You
+  can't camp at the springs, but Bagby Campground is right by the trailhead
+  if you want to stay the night. Pack out everything you bring.
 duration: half-day
 effort: easy
 cost: $
@@ -21,7 +28,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
-caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
-          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
-themes: [hiking, swimming, forests, relaxing]
-tags: [hot-springs, forest, relaxing, hiking]
+caution: No cell service here. Download offline maps before you go.
+themes: [hiking, forests, relaxing]
+tags: [hot springs, soaking, bathhouse, old-growth]

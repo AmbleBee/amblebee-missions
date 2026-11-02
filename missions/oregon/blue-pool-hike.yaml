@@ -1,4 +1,4 @@
-# Updated 2026-10-27
+# Updated 2026-11-01
 number: 3
 name: Tamolitch Blue Pool Hike
 mode: both
@@ -6,17 +6,21 @@ who: [solo, friends, family]
 place:
   name: Tamolitch Blue Pool trailhead
   area: McKenzie River, Willamette National Forest
-  coords: [44.290356, -122.035628]
+  coords: [44.29036, -122.03563]
   website: https://www.fs.usda.gov/r06/willamette/recreation/mckenzie-river-trailhead-tamolitch-blue-pool
   links:
-    - label: alltrails
+    - label: AllTrails
       url: https://www.alltrails.com/trail/us/oregon/tamolitch-blue-pool-via-mckenzie-river-trail
-short: Hike the McKenzie River Trail to the impossibly blue pool. Photo from the rim.
+short: Hike 4.2 miles round trip on the McKenzie River Trail to the impossibly blue Tamolitch Pool.
 description: >
-  Follow the McKenzie River Trail through old lava flows and mossy forest to
-  Tamolitch Blue Pool, where the river comes up from underground. Find a spot on
-  the rim, eat a snack and take in the color. The water is ice cold, so enjoy it
-  from above.
+  About 1,600 years ago, lava from Belknap Crater filled this valley, and
+  today the McKenzie River runs underneath it and comes up in Tamolitch Blue
+  Pool. Follow the McKenzie River Trail about two miles through old lava flows
+  and mossy forest to the rim, where the water is so clear and blue it looks
+  shallow, but it's about 30 feet deep. Find a spot on the rim, eat a snack and
+  take in the color, and look for the dry falls above it that only run in
+  heavy snowmelt. Parking is free but fills up fast, so go early or late in the
+  day, and never park along Highway 126.
 duration: half-day
 effort: moderate
 cost: free
@@ -25,6 +29,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-caution: "Extremely Cold Water: Blue Pool stays near 37°F (3°C) year-round. Never jump in, no matter how hot it is outside. The freezing water can cause cold shock, making it difficult to breathe or swim."
-themes: [hiking, forests]
-tags: [hiking, water, forest]
+caution: "The water is 37–42°F and about 30 feet deep. Don't jump or swim: cold shock can be deadly."
+themes: [hiking, forests, lakes-rivers]
+tags: [blue pool, mckenzie river, lava, tamolitch falls]

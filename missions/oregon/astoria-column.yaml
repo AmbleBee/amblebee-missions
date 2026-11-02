@@ -1,19 +1,33 @@
-# Updated 2026-10-27
+# Updated 2026-11-01
 number: 22
 name: Astoria Column
 mode: both
-who: [solo, friends, family]
+who: [solo, friends, family, kids]
 place:
   name: Astoria Column
   area: Astoria
   address: 1 Coxcomb Dr, Astoria, OR 97103
-  coords: [46.181255, -123.817893]
+  coords: [46.181360, -123.817544]
   website: https://astoriacolumn.org
-short: Climb the Astoria Column. Throw a balsa glider off the top.
+short: Climb all 164 steps of the Astoria Column and send a balsa plane flying off the top.
 description: >
-  Climb the spiral stairs to the top of the painted column for a view over the
-  Columbia River and the coast. Buy a little balsa glider in the gift shop and
-  launch it from the top together.
+  The Astoria Column stands 125 feet tall on top of Coxcomb Hill, wrapped in a
+  spiral mural of 14 scenes from the area's history. Walk around the base and
+  pick your favorite scene, then climb the 164 spiral steps (there's no
+  elevator) to the lookout. From the top you can see the Columbia River
+  meeting the Pacific, the Astoria-Megler Bridge and the hills of the coast.
+  Grab a $1 balsa plane from the gift shop on the way up, count down together
+  and launch it off the top, then race down to find where it landed. Climbing
+  is free; parking is a yearly pass per car. Check the gift shop hours before
+  you go if you want a plane.
+for_kids:
+  short: Climb the tower and fly a plane off the top!
+  steps:
+    - Your favorite picture on the tower
+    - Your plane before the climb
+    - The view from the top
+    - Your plane flying!
+    - Where your plane landed
 duration: short
 effort: moderate
 cost: $
@@ -21,7 +35,7 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: day-trip
-check_ahead: [hours]
-themes: [views, beach, history]
-tags: [views, history, coast]
+check_ahead: [hours, seasonal]
+themes: [views, history, art]
+tags: [tower, mural, balsa plane, glider, columbia river, coast, stairs]
 credit: Max W.

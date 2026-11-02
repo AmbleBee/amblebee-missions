@@ -1,18 +1,20 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+# Updated 2026-11-1
 number: 66
-name: Wild Blackberry Forage
+name: Wild Blackberry Picking
 mode: both
 who: [friends, family, kids]
 short: Pick wild blackberries in late summer, race to fill a cup, then bake something with them.
 description: >
-  In late summer, look for bramble patches along trails, park edges, and
-  bike paths, and check that picking is allowed there first. Only pick fruit
-  you are 100% sure is blackberry: the thorny canes and the bumpy, shiny
-  black berries are easy to know, and if you are not sure, skip it. Stay
-  away from busy roads, ditches, and anywhere that might be sprayed, pick
-  above dog height, and leave plenty for the birds. Wear long sleeves, race
-  to fill a cup, and rinse everything at home. Then bake a crumble or flip
-  some blackberry pancakes, and get a photo of everyone's purple fingers.
+  Wild blackberry season usually runs from late July into September, depending
+  on where you live. Look for bramble patches along trails, park edges and bike
+  paths, and check that picking is allowed there first. Only pick fruit you are
+  100% sure is blackberry: the thorny canes and the bumpy, shiny black berries
+  are easy to know, and if you are not sure, skip it. Ripe ones are deep black
+  and come off with a gentle tug; red ones aren't ready yet. Stay away from busy
+  roads, ditches and anywhere that might be sprayed, pick above dog height, and
+  leave plenty for the birds. Wear long sleeves, race to fill a cup, and rinse
+  everything at home. Then bake a crumble or flip some blackberry pancakes, and
+  get a photo of everyone's purple fingers.
 steps:
   - The bramble patch
   - A perfect ripe berry
@@ -31,10 +33,10 @@ duration: half-day
 effort: easy
 cost: $
 setting: outdoor
-season: [summer]
+season: [summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [seasonal]
 themes: [food]
-tags: [foraging, berries, nature, baking, summer, outdoors]
+tags: [foraging, berries, blackberry picking, picking, nature, baking]
 credit:

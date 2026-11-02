@@ -1,4 +1,4 @@
-# Updated 2026-10-27
+# Updated 2026-11-01
 number: 31
 name: Antiquing in Aurora
 mode: both
@@ -6,14 +6,17 @@ who: [solo, friends, family]
 place:
   name: Historic Aurora (Main Street antique shops)
   area: Aurora
-  coords: [45.231724, -122.7559660]
+  coords: [45.23172, -122.75597]
   website: https://www.ci.aurora.or.us
-short: Browse Aurora's antique shops. Each find the oddest treasure, then grab lunch.
+short: Hunt for the oddest treasure in the antique shops of historic Aurora, then grab lunch in town.
 description: >
-  Spend a slow morning or afternoon wandering the antique shops in Aurora's
-  historic district. Each hunt for the strangest or most charming thing you can
-  find and show it off to the other. Buy something small only if you love it,
-  then sit down for a bite to eat in town.
+  Aurora began in 1856 as the Aurora Colony, a communal settlement known for
+  its food, crafts and traveling band, and in 1974 it became Oregon's first
+  historic district of its kind. Today its old colony buildings are full of
+  antique shops. Spend a slow morning or afternoon wandering them, and each of
+  you hunt for the strangest or most charming thing you can find, then show
+  it off. Buy something small only if you love it. If you want the backstory,
+  stop by the Old Aurora Colony Museum, then sit down for a bite to eat in town.
 duration: half-day
 effort: easy
 cost: $$
@@ -22,5 +25,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours]
-themes: [food, markets, small-towns]
-tags: [antiques, shopping, small-town, food]
+themes: [history, small-towns, museums]
+tags: [antiques, vintage, aurora colony, shopping]
