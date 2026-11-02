@@ -3,17 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AmbleBee: Date Ideas and Adventures Near You</title>
+<meta name="description" content="Date ideas and adventures near you, from rainy-day dates to free outings and kid-friendly trips. Open a mission, go do it, take a few photos.">
 <title>AmbleBee: Date Ideas and Adventures Near You</title>
 <meta name="description" content="Date ideas and adventures near you, from rainy-day dates to free outings and kid-friendly trips. Open a mission, go do it, take a few photos.">
 <meta name="theme-color" content="#EFE7D8" media="(prefers-color-scheme: light)">
 <meta name="theme-color" content="#211B16" media="(prefers-color-scheme: dark)">
 <link rel="canonical" href="https://amblebee.com/">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AmbleBee Missions","url":"https://amblebee.com/","description":"Date and adventure ideas to get you out the door together."}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"AmbleBee","alternateName":["AmbleBee Missions","amblebee.com"],"url":"https://amblebee.com/","description":"Date and adventure ideas to get you out the door together."}</script>
 <meta property="og:title" content="AmbleBee: Date Ideas and Adventures Near You">
 <meta property="og:description" content="Date and adventure ideas to get you out the door together.">
 <meta property="og:type" content="website">
-<meta property="og:site_name" content="AmbleBee Missions">
+<meta property="og:site_name" content="AmbleBee">
 <meta property="og:url" content="https://amblebee.com/">
 <meta property="og:image" content="https://amblebee.com/og-image.png">
 <meta property="og:image:width" content="1200">
@@ -23,9 +26,11 @@
 <meta name="twitter:image" content="https://amblebee.com/og-image.png">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="arrive.js"></script>
 <script src="/nav.js" defer></script>
+<script src="/js/stats.js" defer></script>
 <script src="/js/stats.js" defer></script>
 <link rel="stylesheet" href="fonts/fonts.css">
 <link rel="stylesheet" href="style.css">
@@ -104,6 +109,7 @@
       </div>
       <button type="button" class="linkish" id="use-location">Use my location</button>
       <p class="hint" id="zip-status" role="status">Add a ZIP or city to see places close by, plus missions you can do anywhere. It's never sent anywhere.</p>
+      <p class="hint">Distances are as the bee flies. Driving is often farther.</p>
       <p class="hint">Distances are as the bee flies. Driving is often farther.</p>
     </fieldset>
 
@@ -216,6 +222,7 @@
     <button type="button" class="linkish" id="browse-share" hidden>Copy a link to this list</button>
   </div>
   <!--ideas-->
+  <!--ideas-->
   <div class="browse-pick">
     <div class="search-field" role="search">
       <label for="search-input">Search missions</label>
@@ -241,6 +248,7 @@
     <h2 id="about-title">What is AmbleBee?</h2>
     <p>AmbleBee is a little camera that hands you a <b>mission</b>: a date or adventure idea to go out and do. Pick a coffee shop you've never tried, hike to a waterfall, get the strangest doughnut on the menu. You take photos along the way, and when you come home the camera docks into the <b>Hive</b>, a picture frame that keeps your photos as memories of where you've been.</p>
     <p>The camera is a personal project, built by hand and still in progress. The missions are here for everyone, with or without one. No points, no streaks, nothing to fail: just a reason to go.</p>
+    <p><a href="/about/">Read our story</a></p>
     <p><a href="/about/">Read our story</a></p>
   </div>
   <ul class="packs-legend" id="pack-legend" aria-label="Mission packs"></ul>

@@ -36,7 +36,7 @@ from build_icons import load as load_icons  # noqa: E402
 from missions_lib import load_catalog  # noqa: E402
 
 BASE = "https://amblebee.com"
-SITE_NAME = "AmbleBee Missions"
+SITE_NAME = "AmbleBee"
 PACK_PREVIEW = 4   # missions per pack on /missions/, the same as PACK_PREVIEW in site/js/browse.js
 NEARBY = 3         # "More missions nearby" at the bottom of each mission page: one full row on a computer
 META_MAX = 158     # Google cuts search snippets off at about this many characters
@@ -129,6 +129,7 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/nav.js" defer></script>
 <script src="/js/stats.js" defer></script>
@@ -530,7 +531,7 @@ def build_pages(out):
             lastmod[path] = dates[f"pages/{name}.html"]
 
     body = (ROOT / "pages" / "404.html").read_text(encoding="utf-8")
-    text = page(f"Page not found · {SITE_NAME}", "This page doesn't exist on AmbleBee Missions.", "/404.html",
+    text = page(f"Page not found · {SITE_NAME}", "This page doesn't exist on AmbleBee.", "/404.html",
                 f'<div class="page info">\n{body}</div>', {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found"}, brand)
     (Path(out) / "404.html").write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
 
