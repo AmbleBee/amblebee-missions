@@ -155,11 +155,7 @@ function writePref(k, v) { try { localStorage.setItem("amble." + k, v); } catch 
 
 // ---- helpers ------------------------------------------------------------------------------------
 const $ = (s) => document.querySelector(s);
-<<<<<<< HEAD
-const SITE_NAME = "AmbleBee Missions";
-=======
 const SITE_NAME = "AmbleBee";
->>>>>>> 848a5c0 (Rename site to AmbleBee and add square search icon)
 const HOME_TITLE = document.title;   // the home page's own title, put back when a mission closes
 const HOME = location.pathname.replace(/[^/]*$/, "");   // the home page's path, even while a pop-up has its own address
 const pretty = (s) => String(s).replace(/-/g, " ");
