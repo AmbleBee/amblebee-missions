@@ -2,3 +2,8 @@ name: Amble Indiana
 region: Indiana
 description: Real places all over Indiana, starting on the Lake Michigan dunes.
 icon: race-flag
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for things to do in Indiana? There's more than cornfields: big sand dunes on Lake Michigan, limestone
+  caves in the south and small towns with plenty of character. Watch the sun go down over the lake at the
+  Indiana Dunes, an easy drive from Chicago.

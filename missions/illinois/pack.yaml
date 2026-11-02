@@ -2,3 +2,8 @@ name: Amble Illinois
 region: Illinois
 description: Real places all over Illinois, starting in Chicago with the Bean, the lakefront museums and the view from the Skydeck.
 icon: skyline
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Chicago is one of the great architecture cities in the world, with a lakefront full of museums, parks and
+  beaches, and there's more to find in Springfield and around Illinois. For a date in Chicago, a river cruise
+  through downtown is one of the best ways to see the city.

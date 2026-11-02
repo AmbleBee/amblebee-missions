@@ -2,3 +2,8 @@ name: Amble Kentucky
 region: Kentucky
 description: Real places all over Kentucky, starting in bourbon country on the Kentucky River.
 icon: horseshoe
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Kentucky is bourbon country, horse farms and sandstone gorges, from Frankfort and Lexington to the Red River
+  Gorge. For a date idea in Kentucky, tour one of the country's oldest distilleries on the Kentucky River, and
+  watch for more of the Bluegrass State here.

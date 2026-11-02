@@ -2,3 +2,8 @@ name: Amble Virginia
 region: Virginia
 description: Real places all over Virginia, starting on Skyline Drive in Shenandoah National Park.
 icon: dogwood
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Searching for things to do in Virginia? It runs from the Blue Ridge Mountains and Shenandoah to the Chesapeake
+  Bay, with history around every bend. On Skyline Drive in Shenandoah National Park, overlooks like The Point
+  are perfect for sunset.

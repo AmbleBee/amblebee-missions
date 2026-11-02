@@ -42,6 +42,7 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 | `region` | Where it applies ("Oregon") |
 | `description` | One or two sentences |
 | `icon` | Name of an icon in `icons/packs/`, without `.svg` (`evergreen`, `needle`, `covered-bridge`…). To add one, see `icons/README.md`. |
+| `about` | Optional. A longer description (a short paragraph or two) shown on the pack's own page on the website, under the icon and `description`: what the state is like and what you'll find in the pack. Write it as `about: >` with the text indented on the lines below; a blank line starts a new paragraph. Website only: it's left out of catalog.json, so the Hive never downloads it. |
 
 ## Mission files
 

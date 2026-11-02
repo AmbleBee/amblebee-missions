@@ -2,3 +2,9 @@ name: Amble Alabama
 region: Alabama
 description: Real places all over Alabama, starting on Red Mountain above Birmingham.
 icon: rocket
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas or things to do in Alabama? From Birmingham to Montgomery to Huntsville, the state
+  mixes Southern cities with real rocket history. Watch the sunset over Birmingham from Red Mountain, catch a
+  movie in an old Montgomery theater, or stand under a Saturn V in Huntsville, the town that helped send people
+  to the Moon.

@@ -1,4 +1,9 @@
 name: Amble Mississippi
 region: Mississippi
-description: Real places all over Mississippi, starting on the river bluff in Natchez.
+description: Real places all over Mississippi, starting with live music and stories in Oxford.
 icon: riverboat
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Searching for things to do in Mississippi? It's blues, literature and river towns, from Oxford to Clarksdale
+  and the bluffs of Natchez. In Oxford, an evening of live music and stories at Thacker Mountain Radio is a
+  great way to meet the town.

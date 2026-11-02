@@ -2,3 +2,8 @@ name: Amble Colorado
 region: Colorado
 description: Real places all over Colorado, starting at Red Rocks, where the stage sits between two giant red sandstone walls.
 icon: mountain
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Colorado is mountain towns, high trails and big skies, with plenty of things to do around Denver, Boulder and
+  Colorado Springs. For a date or an adventure, start at Red Rocks in Morrison, an outdoor amphitheater between
+  giant sandstone walls that's worth a visit even when there's no show.

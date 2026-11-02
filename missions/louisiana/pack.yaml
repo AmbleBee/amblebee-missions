@@ -2,3 +2,8 @@ name: Amble Louisiana
 region: Louisiana
 description: Real places all over Louisiana, from French Quarter nights and walking tours to swamp boats and gators.
 icon: fleur
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in New Orleans or around Louisiana? It's music, food and stories, from French Quarter
+  balconies to Baton Rouge, Lake Charles and the cypress swamps. Start with a walk through New Orleans history,
+  then let your appetite plan the rest.

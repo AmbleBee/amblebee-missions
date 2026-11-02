@@ -2,3 +2,8 @@ name: Amble Hawaii
 region: Hawaii
 description: Real places all over Hawaii, starting above the clouds on Haleakalā.
 icon: volcano
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  There are more things to do in Hawaii than the beach: volcanoes, rainforest and some of the best sunrises on
+  Earth, from Maui to Honolulu and Hilo. Start above the clouds on Haleakalā, and remember that many spots,
+  including the sunrise there, need a reservation or permit.

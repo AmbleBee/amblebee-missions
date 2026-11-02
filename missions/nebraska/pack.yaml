@@ -2,3 +2,8 @@ name: Amble Nebraska
 region: Nebraska
 description: Real places all over Nebraska, starting on the Missouri River in Omaha.
 icon: windmill
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for things to do in Nebraska? It's prairie, rivers and friendly towns along the old trails west, from
+  Omaha and Lincoln to North Platte. In Omaha, a pedestrian bridge over the Missouri River lets you stand in two
+  states at once.

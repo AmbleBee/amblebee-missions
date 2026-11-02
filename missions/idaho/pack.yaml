@@ -2,3 +2,8 @@ name: Amble Idaho
 region: Idaho
 description: Real places all over Idaho, starting on the Clearwater River in the heart of the Nez Perce homeland.
 icon: potato
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for adventures and things to do in Idaho? It's rivers, mountains, hot springs and wide-open public
+  land, from Boise and Coeur d'Alene to McCall and Idaho Falls. This pack starts on the Clearwater River at Nez
+  Perce National Historical Park, where the story of the Nez Perce people is told on their homeland.

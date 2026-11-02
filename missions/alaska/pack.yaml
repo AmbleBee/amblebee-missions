@@ -2,3 +2,9 @@ name: Amble Alaska
 region: Alaska
 description: Real places all over Alaska, starting up the mountain in Girdwood above Turnagain Arm.
 icon: dipper
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Alaska is an adventure in every direction: glaciers you can walk up to, mountains that drop into the sea and
+  summer days that barely end. Ride a tram to dinner above Turnagain Arm in Girdwood, hike to a waterfall beside
+  a glacier in Juneau, or learn about life in the Interior in Fairbanks. Check the season and the weather before
+  you go; up here, both matter.

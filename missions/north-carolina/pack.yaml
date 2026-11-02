@@ -1,4 +1,9 @@
 name: Amble North Carolina
 region: North Carolina
-description: Real places all over North Carolina, starting on the Blue Ridge Parkway near Asheville.
+description: Real places all over North Carolina, starting with racing history in Charlotte.
 icon: airplane
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in North Carolina? It runs from the Blue Ridge Mountains near Asheville to the Outer
+  Banks, with Charlotte and Winston-Salem in between. In Charlotte, the NASCAR Hall of Fame gets you close to
+  the sport's history, race simulators included.

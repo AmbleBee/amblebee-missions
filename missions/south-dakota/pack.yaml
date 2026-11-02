@@ -2,3 +2,8 @@ name: Amble South Dakota
 region: South Dakota
 description: Real places all over South Dakota, starting in the Black Hills.
 icon: buttes
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  South Dakota is the Black Hills, the Badlands and wide-open prairie, from Rapid City and Keystone to
+  Spearfish. Among the classic things to do here, Mount Rushmore's evening lighting ceremony makes a perfect
+  summer night out.

@@ -1,0 +1,65 @@
+# Collection pages: missions gathered by idea instead of by state, like "Rainy Day Date Ideas".
+# tools/build_pages.py builds one page per collection at amblebee.com/<id>/, fills it from the live missions that
+# match, and links it from the home page, the Every mission page and each mission it includes.
+#
+#   id       the page's address (amblebee.com/<id>/). Keep it once it's live: changing it breaks links.
+#   title    the page heading and the start of the browser tab title
+#   label    the short name used in "Browse by idea" and "Also in" links
+#   match    which missions belong: every field listed must match. A list means "any of these";
+#            for a list field like who, it means the mission's list includes one of them.
+#   exclude  missions to leave out, written the same way (optional)
+#   description  one sentence for Google's search results (under about 120 characters, so the count fits after it)
+#   intro    a short paragraph or two about the page; a blank line starts a new paragraph
+#
+# A collection with fewer than 8 live missions isn't built or linked yet; it appears on its own once it has enough.
+
+- id: rainy-day-date-ideas
+  title: Rainy Day Date Ideas
+  label: Rainy day
+  description: "Indoor date ideas for a rainy day: museums, old theaters, arcades, aquariums and cozy nights in."
+  match: {setting: indoor, mode: [date, both]}
+  intro: >
+    Rain doesn't have to cancel the plan. These indoor date ideas include places worth leaving the house for, like
+    museums, old theaters, arcades, bookstores and aquariums, and cozy nights in where the weather outside just
+    makes it better.
+
+    Each one has a little challenge or photo idea built in, so it feels like more than killing time until the sun
+    comes out. Check hours before you go, since indoor spots are often busiest on rainy weekends.
+
+- id: at-home-date-ideas
+  title: At-Home Date Night Ideas
+  label: At home
+  description: "At-home date night ideas that turn an ordinary evening into something worth remembering."
+  match: {travel: home}
+  intro: >
+    Some of the best date nights never leave the house. These at-home date ideas turn an ordinary evening into
+    something worth remembering, from pantry cooking challenges and pass-the-canvas painting to inventing your own
+    board game and writing letters to your future selves.
+
+    Most need nothing more than what's already in your kitchen or junk drawer, so they're perfect for a weeknight,
+    a tight budget or a night when you just don't want to put real shoes on.
+
+- id: free-date-ideas
+  title: Free Date Ideas
+  label: Free
+  description: "Free date ideas: waterfall hikes, sunset spots, free museums, gardens and city views."
+  match: {cost: free, mode: [date, both]}
+  intro: >
+    A great date doesn't have to cost anything. These free date ideas include waterfall hikes, sunset spots, free
+    museums, gardens, city views and simple ideas you can do anywhere.
+
+    Parking, gas or a snack along the way may cost a little, and some parks charge an entry or parking fee, so check
+    before you go. The plan itself is free.
+
+- id: kid-friendly-adventures
+  title: Kid-Friendly Adventures
+  label: With kids
+  description: "Things to do with kids that grown-ups enjoy too: zoos, science museums, beaches and easy trails."
+  match: {who: [kids]}
+  intro: >
+    Looking for things to do with kids that the grown-ups will enjoy too? These kid-friendly adventures include
+    zoos, science museums, beaches, easy trails and silly challenges, and every one comes with its own kids' version
+    of the mission.
+
+    An adult should always be with kids on a mission, especially near water, roads, heights and wildlife. See the
+    safety page for more.

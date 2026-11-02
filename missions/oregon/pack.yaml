@@ -2,3 +2,9 @@ name: Amble Oregon
 region: Oregon
 description: Real places all over Oregon, from Portland doughnuts to coast wrecks, caves and painted hills.
 icon: evergreen
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas or adventures in Oregon? From Portland to the coast, the Columbia River Gorge, central
+  Oregon and the high desert, there's a little of everything. It's AmbleBee's home state, so this is the biggest
+  pack, from Crater Lake and Multnomah Falls to Astoria's shipwreck, Powell's Books and rainy-day museums.
+  Weather changes fast at the coast and in the mountains, so check conditions before you go.

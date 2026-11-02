@@ -2,3 +2,8 @@ name: Amble Arkansas
 region: Arkansas
 description: Real places all over Arkansas, starting in Bentonville with free American art in the Ozark woods.
 icon: diamond
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  The Natural State lives up to its name, with Ozark hills, clear rivers and trails that start right in town,
+  from Bentonville to Little Rock and Hot Springs. If you're looking for things to do in Arkansas, start in
+  Bentonville, where a walk through the woods leads straight into a free museum of American art.

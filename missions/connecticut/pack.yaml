@@ -2,3 +2,8 @@ name: Amble Connecticut
 region: Connecticut
 description: Real places all over Connecticut, starting in the seaport town of Mystic.
 icon: whale
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Searching for things to do in Connecticut? This small state packs in old seaport towns, rocky shoreline and
+  New England villages, from Mystic to New Haven and the Connecticut River valley. Mystic, with its drawbridge
+  and maritime history, makes a great date.

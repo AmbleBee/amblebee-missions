@@ -307,7 +307,17 @@ details.extra li { margin: 2px 0; }
   display: grid; place-items: center;
 }
 .pack-head h3 { font-size: 1.5rem; }
+.pack-head h2 { font-size: 1.5rem; }   /* the pack sections on /missions/ */
+.pack-head h3 a, .pack-head h2 a { color: inherit; text-decoration: none; }
+.pack-head h3 a:hover, .pack-head h2 a:hover { color: var(--sage-deep); text-decoration: underline; }
 .pack-head p { margin: 2px 0 0; color: var(--walnut-soft); font-size: .95rem; }
+/* "28 more · Show all 32": below a pack's first few missions, to the pack's own page */
+.pack-more {
+  display: inline-flex; align-items: center; min-height: 44px; margin-top: 10px; padding: 0 18px; border-radius: 22px;
+  background: var(--sage-tint); color: var(--sage-ink); font-weight: 800; text-decoration: none;
+}
+.pack-more::after { content: "\2192"; margin-left: 8px; }
+.pack-more:hover { background: var(--fill); color: #FFFDF8; }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 .card {
   appearance: none; border: 0; cursor: pointer; text-align: left; font: inherit; color: inherit;
@@ -391,6 +401,17 @@ dialog form { display: flex; justify-content: center; margin-top: 12px; }
   body { font-size: 16px; }
   .top { padding: 12px 16px 0; }
   main { padding: 0 16px; }
+  /* a pack's first few missions swipe sideways on phones, edge to edge, with the next card peeking in */
+  .pack.preview .cards {
+    display: flex; gap: 12px; overflow-x: auto; overscroll-behavior-x: contain; scroll-snap-type: x mandatory;
+    margin: 0 -16px; padding: 4px 16px 10px; scroll-padding: 0 16px; scrollbar-width: none;
+  }
+  .pack.preview .cards::-webkit-scrollbar { display: none; }
+  .pack.preview .card { flex: 0 0 82%; scroll-snap-align: start; }
+  .pack.preview .card:hover { transform: none; }
+  /* a pack's own page: the icon sits above the name, so long state names don't break mid-heading */
+  .page .pack-head:has(.badge-lg) { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .pack-head .badge.badge-lg { width: 54px; height: 54px; border-radius: 16px; }
   .ticket { flex-direction: column; }
   .ticket .stub {
     width: auto; flex-direction: row; justify-content: flex-start; gap: 12px; padding: 14px 20px; border-radius: 22px 22px 0 0;
@@ -689,7 +710,26 @@ html.arriving #reveal-slot:empty::before {
 .pack-head h1 { font-size: clamp(1.9rem, 4vw, 2.5rem); }
 a.card { text-decoration: none; }
 a.card:hover { color: inherit; }
-.card h2 { margin: 0; font: 600 1.25rem/1.15 var(--display); font-variation-settings: "SOFT" 100; color: var(--ink); }
+.card h2, .card h3 { margin: 0; font: 600 1.25rem/1.15 var(--display); font-variation-settings: "SOFT" 100; color: var(--ink); }
+/* a pack's own page: a bigger icon, then the long "about" text from pack.yaml */
+.pack-head .badge.badge-lg { width: 64px; height: 64px; border-radius: 18px; }
+.pack-about { max-width: 920px; margin: 4px 0 18px; }   /* wide enough to save a line or two, narrow enough to read easily */
+.pack-about p { margin: 0 0 .8rem; }
+/* "Browse by idea": links to the collection pages (collections.yaml) on the home page and /missions/ */
+.ideas { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 22px; }
+.ideas span { font-weight: 800; color: var(--walnut); margin-right: 4px; }
+.ideas a {
+  display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border-radius: 20px;
+  background: var(--paper); color: var(--walnut); font-weight: 700; text-decoration: none; box-shadow: inset 0 0 0 2px var(--line-strong);
+}
+.ideas a:hover { background: var(--sage-tint); color: var(--sage-ink); box-shadow: inset 0 0 0 2px var(--sage); }
+.ideas-more { margin-top: 30px; }
+/* "Also in: Free Date Ideas" under a mission page's buttons */
+.also-in { margin: 22px 0 0; font-weight: 700; color: var(--walnut-soft); }
+.also-in a { color: var(--sage-deep); }
+/* "More missions nearby" under a mission page's ticket */
+.nearby { margin: 40px 0 8px; }
+.nearby h2 { font-size: 1.6rem; margin-bottom: 14px; }
 .rm-live { margin: 0 0 .6rem; font-weight: 800; color: var(--sage-ink); }
 .rm-jump { margin: 0 0 1.2rem; font-weight: 700; }
 .rm-live[hidden] { display: none; }
@@ -761,3 +801,4 @@ main:focus { outline: none; }
 .stats-btns { display: flex; gap: 10px; flex-wrap: wrap; justify-content: flex-end; }
 .stats-btns .btn { flex: 1 1 140px; }
 .stats-choice { display: flex; gap: 10px; flex-wrap: wrap; margin: .4rem 0 1rem; }
+.ideas-count { margin-bottom: 22px; }

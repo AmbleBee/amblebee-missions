@@ -66,6 +66,26 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: The Big Website Tune-Up, Part 2
+  status: done
+  date: 2026-11-01
+  tag: website
+  summary: A second big day on the website, this time about helping people find AmbleBee, and helping us learn which missions are worth making more of.
+  items:
+    - Every state now has its own page, with its icon, a short intro and a longer guide to what you'll find there
+    - The home page shows the first four missions from each state, with an "X more · Show all" link to the rest. On phones each state swipes sideways
+    - 'New idea pages: [Rainy Day Date Ideas](/rainy-day-date-ideas/), [At-Home Date Night Ideas](/at-home-date-ideas/), [Free Date Ideas](/free-date-ideas/) and [Kid-Friendly Adventures](/kid-friendly-adventures/)'
+    - A "Browse by idea" row on the home page and Every mission, and each mission page lists the idea pages it's in
+    - Mission pages suggest a few other missions nearby
+    - Every mission, state and idea page has its own search title and description, so each one can turn up on Google
+    - A sitemap that tells Google when each page last changed, and the site is now set up in Google Search Console
+    - A new [About](/about/) page with the story of how AmbleBee started and where it's headed
+    - A plain note that distances are as the bee flies and driving is often farther, next to the location box and on the [Safety](/safety/) page
+    - The Suggest a mission and Report a problem forms have every theme, tag and question they need
+    - '**Opt-in** visitor stats with Google Analytics. Nothing loads unless you say yes, and the [Privacy](/privacy/) page explains what we count and why'
+    - The stats count things like which packs get opened and whether dates or adventures get picked more, never who you are or where exactly you live
+    - Behind the scenes, a new check catches map pins that land in the wrong state before they ever go live
+
 - title: The Big Website Tune-Up
   status: done
   date: 2026-10-30

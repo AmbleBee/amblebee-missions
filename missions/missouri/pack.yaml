@@ -2,3 +2,8 @@ name: Amble Missouri
 region: Missouri
 description: Real places all over Missouri, starting with St. Louis's wildest playground for grown-ups and kids alike.
 icon: arch
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in St. Louis, Kansas City or the Ozarks? Missouri runs from big-city fun to quiet hills
+  and lakes. Climb, crawl and slide through St. Louis's City Museum, then head south to Taum Sauk Mountain, the
+  state's highest point, and its seasonal waterfall.

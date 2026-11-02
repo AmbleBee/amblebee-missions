@@ -2,3 +2,8 @@ name: Amble Massachusetts
 region: Massachusetts
 description: Real places all over Massachusetts, starting with the swan boats in Boston's Public Garden.
 icon: swan
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Massachusetts mixes American history with seaside towns and old college streets, from Boston to the North
+  Shore. For a classic date in Boston, take a ride on the Public Garden's swan boats, which have been gliding
+  around the pond since the 1800s.

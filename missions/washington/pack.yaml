@@ -2,3 +2,9 @@ name: Amble Washington
 region: Washington
 description: Real places all over Washington, from Seattle markets and the Space Needle to lava caves and volcanoes.
 icon: needle
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in Seattle or adventures around Washington? The state stretches from Seattle, Tacoma
+  and Vancouver to Spokane, with rainforest beaches, volcanoes and mountain lakes in between. Walk wild Ruby
+  Beach on the Olympic coast, have a drink at Seattle's historic Smith Tower, or explore old planes at Pearson
+  Air Museum in Vancouver. Mountain passes can close in winter, so check before you drive.

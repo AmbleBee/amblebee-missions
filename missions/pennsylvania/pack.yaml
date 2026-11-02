@@ -1,4 +1,9 @@
 name: Amble Pennsylvania
 region: Pennsylvania
-description: Real places all over Pennsylvania, from Gettysburg and Valley Forge to Hershey chocolate, Lancaster's market and Philadelphia's famous steps.
+description: Real places all over Pennsylvania, starting with a ride up the Duquesne Incline in Pittsburgh.
 icon: bell
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in Pittsburgh, Philadelphia or around Pennsylvania? The state mixes American history,
+  farm country and cities with deep character, from Gettysburg and Lancaster to Hershey. In Pittsburgh, ride the
+  Duquesne Incline up Mount Washington at night for one of the best city views in the country.

@@ -2,3 +2,9 @@ name: Amble Texas
 region: Texas
 description: Real places all over Texas, from Austin's bats and Hill Country dance halls to Big Bend country, the Gulf Coast and the Piney Woods.
 icon: star
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Texas is big enough to feel like several states, with things to do from Austin, Houston and Fort Worth to
+  Galveston, Waco, Lubbock and Big Bend country. Walk Galveston's Strand, taste history at the Dr Pepper Museum
+  in Waco, meet dinosaurs at Texas Tech or drive the River Road along the Rio Grande. Distances are long, so map
+  the drive first.

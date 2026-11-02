@@ -3,12 +3,13 @@
     python tools/build_pages.py --out _site
 
 Writes, inside the built site:
-    missions/index.html          every pack
-    packs/<pack>/index.html      one pack's missions
-    missions/<id>/index.html     one mission, with its own title, preview and structured data
-    safety/, privacy/, contact/  written in pages/, wrapped in the same header and footer
+    missions/index.html          every pack, with its first few missions (like the home page) and a Show all link
+    <collection>/index.html      missions gathered by idea ("Rainy Day Date Ideas"), from collections.yaml
+    packs/<pack>/index.html      one pack's missions, under its icon, description and long "about" text
+    missions/<id>/index.html     one mission, with its own title, preview, structured data and nearby missions
+    about/, safety/, privacy/, contact/  written in pages/, wrapped in the same header and footer
     404.html                     shown by GitHub Pages for any address that doesn't exist
-    sitemap.xml, robots.txt
+    sitemap.xml, robots.txt      with each page's last-changed date from git, when there's a full checkout
 
 Finally it adds a version to every script and stylesheet link (style.css?v=1a2b...), so visitors get new
 files as soon as a deploy lands. Drafts never get a page. URLs use the mission id, which is permanent (SCHEMA.md), so moving a mission
@@ -19,18 +20,28 @@ import datetime
 import hashlib
 import html
 import json
+import math
 import re
+import subprocess
 import sys
 from pathlib import Path
 from urllib.parse import quote, urlencode
+
+import yaml
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_catalog import build  # noqa: E402
 from build_icons import load as load_icons  # noqa: E402
+from missions_lib import load_catalog  # noqa: E402
 
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee Missions"
+PACK_PREVIEW = 4   # missions per pack on /missions/, the same as PACK_PREVIEW in site/js/browse.js
+NEARBY = 3         # "More missions nearby" at the bottom of each mission page: one full row on a computer
+META_MAX = 158     # Google cuts search snippets off at about this many characters
+COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked once it has this many live missions
+NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
 OG_IMAGE = f"{BASE}/og-image.png"
 CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js
 # the same "Report a problem" form as site/js/core.js: opens with the mission's id and name already filled in
@@ -149,10 +160,10 @@ def crumbs_ld(items):
         for i, (name, path) in enumerate(items, 1)]}
 
 
-def card(href, top, title, short, meta):
+def card(href, top, title, short, meta, level=2):
     tags = "".join(f"<span>{esc(t)}</span>" for t in meta)
     return (f'<a class="card" href="{esc(href)}"><span class="card-top"><span class="no">{esc(top)}</span></span>'
-            f'<h2>{esc(title)}</h2><p class="s">{esc(short)}</p><span class="meta">{tags}</span></a>')
+            f'<h{level}>{esc(title)}</h{level}><p class="s">{esc(short)}</p><span class="meta">{tags}</span></a>')
 
 
 def mission_html(m, pack, icons, today):
@@ -244,6 +255,91 @@ def version_files(out):
         f.write_text(links.sub(lambda m: f'{m.group(1)}{m.group(2)}?v={versions[m.group(2)]}"', text), encoding="utf-8")
 
 
+def state_of(pack):
+    """The state a pack covers ("Oregon"), or None for Amble Anywhere and other packs that aren't one place."""
+    region = str(pack.get("region") or "").strip()
+    return None if pack.get("id") in ("anywhere", "general") or region.lower() in ("", "anywhere") else region
+
+
+def pack_heading(pack):
+    """What people actually search for, used as the pack page's title."""
+    state = state_of(pack)
+    return f"Date & Adventure Ideas in {state}" if state else "Date & Adventure Ideas You Can Do Anywhere"
+
+
+def km_between(a, b):
+    lat1, lon1, lat2, lon2 = map(math.radians, (a[0], a[1], b[0], b[1]))
+    h = math.sin((lat2 - lat1) / 2) ** 2 + math.cos(lat1) * math.cos(lat2) * math.sin((lon2 - lon1) / 2) ** 2
+    return 12742 * math.asin(math.sqrt(min(1, h)))
+
+
+def git_dates():
+    """Path (relative to the repo) -> the date it last changed, from one git log. Empty outside a full checkout,
+    and then the sitemap simply leaves the dates out."""
+    try:
+        out = subprocess.run(["git", "log", "--format=@%cs", "--name-only", "--", "missions", "pages", "roadmap.yaml", "collections.yaml"],
+                             cwd=ROOT, capture_output=True, text=True, check=True).stdout
+    except (OSError, subprocess.CalledProcessError):
+        return {}
+    dates, day = {}, None
+    for line in out.splitlines():
+        if line.startswith("@"):
+            day = line[1:]
+        elif line.strip() and day:
+            dates.setdefault(line.strip(), day)   # newest commit first, so the first date seen is the latest
+    return dates
+
+
+def nearby_missions(m, missions):
+    """The closest other missions with a place, within NEARBY_KM; or, failing that, the next ones in its own pack."""
+    c = (m.get("place") or {}).get("coords")
+    if c:
+        near = sorted(((km_between(c, o["place"]["coords"]), o) for o in missions
+                       if o is not m and (o.get("place") or {}).get("coords")), key=lambda x: x[0])
+        near = [o for d, o in near if d <= NEARBY_KM][:NEARBY]
+        if near:
+            return near, "More missions nearby"
+    same = sorted((o for o in missions if o["pack"] == m["pack"] and o is not m), key=lambda o: o["number"])
+    after = [o for o in same if o["number"] > m["number"]] + [o for o in same if o["number"] < m["number"]]
+    return after[:NEARBY], "More missions like this" if m["pack"] == "anywhere" else "More from this pack"
+
+
+def matches(m, rule):
+    """True when the mission fits every field in rule (collections.yaml). A list means any of these values;
+    a list field on the mission (who) matches when it includes one of them."""
+    for key, want in (rule or {}).items():
+        want = want if isinstance(want, list) else [want]
+        have = m.get(key)
+        have = have if isinstance(have, list) else [have]
+        if not set(map(str, want)) & set(map(str, have)):
+            return False
+    return True
+
+
+def load_collections(missions):
+    """collections.yaml with each collection's live missions; ones below COLLECTION_MIN are left out until they grow."""
+    f = ROOT / "collections.yaml"
+    if not f.exists():
+        return []
+    out = []
+    for c in yaml.safe_load(f.read_text(encoding="utf-8")) or []:
+        for key in ("id", "title", "label", "match", "description", "intro"):
+            if not c.get(key):
+                raise SystemExit(f"collections.yaml: '{c.get('id', '?')}' needs {key}")
+        rows = [m for m in missions if matches(m, c["match"]) and not (c.get("exclude") and matches(m, c["exclude"]))]
+        if len(rows) >= COLLECTION_MIN:
+            out.append({**c, "missions": rows, "path": f"/{c['id']}/"})
+    return out
+
+
+def ideas_html(collections, cls="ideas"):
+    """The "Browse by idea" row of links to the collection pages."""
+    if not collections:
+        return ""
+    links = "".join(f'<a href="{c["path"]}">{esc(c["label"])}</a>' for c in collections)
+    return f'<nav class="{cls}" aria-label="Browse by idea"><span>Browse by idea</span>{links}</nav>'
+
+
 def build_pages(out):
     catalog = build(ROOT / "missions")
     icons, problems = load_icons()
@@ -252,12 +348,20 @@ def build_pages(out):
     brand = re.search(r'<a class="brand".*?</a>', (ROOT / "site" / "index.html").read_text(encoding="utf-8"), re.S).group(0)
     brand = brand.replace('href="./"', 'href="/"')
     today = datetime.date.today().isoformat()
+    pack_about = {pid: str(pk.get("about") or "").strip() for pid, pk in load_catalog(ROOT / "missions")[1].items()}
+    dates = git_dates()
+    lastmod = {}   # page path -> date, for the sitemap
     until_script = '<script src="/until.js" defer></script>\n'
 
     missions = catalog["missions"]
     packs = sorted(catalog["packs"], key=lambda p: (p["id"] != "anywhere", p.get("name") or p["id"]))
     by_id = {p["id"]: p for p in packs}
     stats = catalog["stats"]
+    collections = load_collections(missions)
+    in_collections = {}   # mission id -> the collections it's in, for "Also in" on its page
+    for c in collections:
+        for m in c["missions"]:
+            in_collections.setdefault(m["id"], []).append(c)
     urls = ["/", "/roadmap.html", "/missions/"]
 
     def write(path, text):
@@ -265,6 +369,12 @@ def build_pages(out):
         f.parent.mkdir(parents=True, exist_ok=True)
         f.write_text(text, encoding="utf-8")
         urls.append(path)
+
+    def mission_card(m, level=2, with_pack=False):
+        area = (m.get("place") or {}).get("area")
+        top = f"{by_id[m['pack']].get('name')} · Mission {m['number']}" if with_pack else f"Mission {m['number']}" + (f" · {area}" if area else "")
+        return card(f"/missions/{m['id']}/", top, m["name"], m["short"],
+                    [MODE[m["mode"]], DURATION[m["duration"]], COST[m["cost"]]], level)
 
     for m in missions:
         pack = by_id[m["pack"]]
@@ -283,6 +393,13 @@ def build_pages(out):
              "isPartOf": {"@type": "WebSite", "name": SITE_NAME, "url": BASE + "/"}, **about},
             crumbs_ld([("Every mission", "/missions/"), (pack.get("name"), pack_path), (m["name"], path)])]}
         app_link = "/#mission=" + quote(m["full_id"], safe="") + "&from=page"
+        others, others_title = nearby_missions(m, missions)
+        nearby_html = (f'<section class="nearby" aria-labelledby="nearby-title"><h2 id="nearby-title">{others_title}</h2>'
+                       f'<div class="cards">{"".join(mission_card(o, 3, with_pack=True) for o in others)}</div></section>'
+                       if others else "")
+        also = in_collections.get(m["id"], [])
+        also_links = " · ".join(f'<a href="{c["path"]}">{esc(c["title"])}</a>' for c in also)
+        also_html = f'<p class="also-in">Also in: {also_links}</p>' if also else ""
         main = f"""<div class="page">
 <p class="crumbs"><a href="/missions/">Every mission</a> › <a href="{esc(pack_path)}">{esc(pack.get("name"))}</a></p>
 {mission_html(m, pack, icons, today)}
@@ -290,36 +407,113 @@ def build_pages(out):
   <a class="btn primary" href="{esc(app_link)}">Share or save this mission</a>
   <a class="btn" href="/">Open a different mission</a>
 </div>
+{also_html}
+{nearby_html}
 </div>"""
-        where = f" in {place['area']}" if place.get("area") else ""
-        write(path, page(f"{m['name']}{where} · {SITE_NAME}", m["short"], path, main, ld, brand,
-                         until_script if 'data-until="' in main else ""))
+        # "Multnomah Falls, Columbia River Gorge, Oregon": the place and the state are what people search for
+        state = state_of(pack)
+        where = ", ".join(x for x in (place.get("area"), state) if x and x != m["name"])
+        title = f"{m['name']}, {where} · {SITE_NAME}" if where else f"{m['name']} · {SITE_NAME}"
+        facts = " · ".join(x for x in (MODE[m["mode"]], DURATION[m["duration"]], COST[m["cost"]], where) if x)
+        short = str(m["short"]).strip()
+        short = short if short[-1:] in ".!?" else short + "."
+        desc = f"{short} {facts}."
+        if len(desc) > META_MAX:   # too long for the search snippet: drop the place, then all the facts
+            desc = f"{short} " + " · ".join(x for x in (MODE[m["mode"]], DURATION[m["duration"]], COST[m["cost"]])) + "."
+        if len(desc) > META_MAX:
+            desc = short
+        write(path, page(title, desc, path, main, ld, brand, until_script if 'data-until="' in main else ""))
+        f = dates.get(f"missions/{m['pack']}/{m['id']}.yaml")
+        if f:
+            lastmod[path] = f
 
     for p in packs:
         path = f"/packs/{p['id']}/"
-        rows = [m for m in missions if m["pack"] == p["id"]]
-        cards = "".join(card(f"/missions/{m['id']}/",
-                             f"Mission {m['number']}" + (f" · {m['place']['area']}" if (m.get("place") or {}).get("area") else ""),
-                             m["name"], m["short"], [MODE[m["mode"]], DURATION[m["duration"]], COST[m["cost"]]]) for m in rows)
+        rows = sorted((m for m in missions if m["pack"] == p["id"]), key=lambda m: m["number"])
+        cards = "".join(mission_card(m) for m in rows)
         desc = str(p.get("description") or f"Date and adventure missions in {p.get('region') or p.get('name')}.")
+        # the long description (pack.yaml "about", written with "about: >"): a blank line there starts a new paragraph
+        long_html = "".join(f"<p>{esc(' '.join(par.split()))}</p>" for par in pack_about.get(p["id"], "").split("\n") if par.strip())
+        state = state_of(p)
+        count_line = (f"{len(rows)} date and adventure {'idea' if len(rows) == 1 else 'ideas'} in {state}" if state
+                      else f"{len(rows)} date and adventure {'idea' if len(rows) == 1 else 'ideas'} you can do anywhere")
         main = f"""<div class="page page-wide">
 <p class="crumbs"><a href="/missions/">Every mission</a></p>
-<div class="pack-head"><span class="badge">{icon(icons["packs"].get(p.get("icon"), ""), 26)}</span>
+<div class="pack-head"><span class="badge badge-lg">{icon(icons["packs"].get(p.get("icon"), ""), 34)}</span>
 <div><h1>{esc(p.get("name"))}</h1><p>{esc(desc)}</p></div></div>
-<p class="hand">{len(rows)} live {"mission" if len(rows) == 1 else "missions"}</p>
+{f'<div class="pack-about">{long_html}</div>' if long_html else ""}
+<p class="hand">{esc(count_line)}</p>
 <div class="cards">{cards}</div>
 </div>"""
         ld = {"@context": "https://schema.org", "@graph": [
             {"@type": "CollectionPage", "@id": BASE + path, "url": BASE + path, "name": p.get("name"), "description": desc},
             crumbs_ld([("Every mission", "/missions/"), (p.get("name"), path)])]}
-        write(path, page(f"{p.get('name')} · {SITE_NAME}", desc, path, main, ld, brand))
+        meta = next((d for d in (f"{desc} {count_line}, picked and checked by AmbleBee.", f"{desc} {count_line}.")
+                     if len(d) <= META_MAX), desc)
+        write(path, page(f"{pack_heading(p)} · {p.get('name')}", meta, path, main, ld, brand))
+        days = [lastmod[f"/missions/{m['id']}/"] for m in rows if f"/missions/{m['id']}/" in lastmod]
+        days += [d for d in [dates.get(f"missions/{p['id']}/pack.yaml")] if d]
+        if days:
+            lastmod[path] = max(days)
 
-    cards = "".join(card(f"/packs/{p['id']}/", p.get("region") or "", p.get("name"), p.get("description") or "",
-                         [f"{p['count']} live {'mission' if p['count'] == 1 else 'missions'}"]) for p in packs)
+    for c in collections:   # missions gathered by idea, grouped by pack (Amble Anywhere first)
+        rows = c["missions"]
+        groups = []
+        for p in packs:
+            ms = sorted((m for m in rows if m["pack"] == p["id"]), key=lambda m: m["number"])
+            if ms:
+                groups.append(
+                    f'<section class="pack" aria-label="{esc(p.get("name"))}"><div class="pack-head">'
+                    f'<span class="badge">{icon(icons["packs"].get(p.get("icon"), ""), 26)}</span>'
+                    f'<div><h2><a href="/packs/{p["id"]}/">{esc(p.get("name"))}</a></h2>'
+                    f'<p>{len(ms)} {"idea" if len(ms) == 1 else "ideas"}</p></div></div>'
+                    f'<div class="cards">{"".join(mission_card(m, 3) for m in ms)}</div></section>')
+        intro_html = "".join(f"<p>{esc(' '.join(par.split()))}</p>" for par in str(c["intro"]).split("\n") if par.strip())
+        states = sum(1 for p in packs if p["id"] not in ("anywhere", "general") and any(m["pack"] == p["id"] for m in rows))
+        count_line = f"{len(rows)} ideas" + (f" in {states} {'state' if states == 1 else 'states'}" if states else " you can do anywhere") + \
+            (" and anywhere" if any(m["pack"] == "anywhere" for m in rows) and states else "")
+        others = [o for o in collections if o is not c]
+        main = f"""<div class="page page-wide">
+<p class="crumbs"><a href="/missions/">Every mission</a></p>
+<div class="page-intro"><h1>{esc(c["title"])}</h1></div>
+<div class="pack-about">{intro_html}</div>
+<p class="hand ideas-count">{esc(count_line)}</p>
+{"".join(groups)}
+{ideas_html(others, "ideas ideas-more")}
+</div>"""
+        # the search snippet: the collection's own description, with the count when there's room
+        meta = " ".join(str(c["description"]).split())
+        if len(f"{meta} {count_line}.") <= META_MAX:
+            meta = f"{meta} {count_line}."
+        ld = {"@context": "https://schema.org", "@graph": [
+            {"@type": "CollectionPage", "@id": BASE + c["path"], "url": BASE + c["path"], "name": c["title"], "description": meta},
+            crumbs_ld([("Every mission", "/missions/"), (c["title"], c["path"])])]}
+        write(c["path"], page(f"{c['title']} · {len(rows)} Ideas · AmbleBee", meta, c["path"], main, ld, brand))
+        days = [lastmod[f"/missions/{m['id']}/"] for m in rows if f"/missions/{m['id']}/" in lastmod]
+        if dates.get("collections.yaml"):
+            days.append(dates["collections.yaml"])
+        if days:
+            lastmod[c["path"]] = max(days)
+
+    sections = []
+    for p in packs:   # the same taste of each pack as the home page: its first missions, then its own page
+        rows = sorted((m for m in missions if m["pack"] == p["id"]), key=lambda m: m["number"])
+        if not rows:
+            continue
+        more = len(rows) - PACK_PREVIEW
+        link = f"/packs/{p['id']}/"
+        sections.append(
+            f'<section class="pack preview" aria-label="{esc(p.get("name"))}"><div class="pack-head">'
+            f'<span class="badge">{icon(icons["packs"].get(p.get("icon"), ""), 26)}</span>'
+            f'<div><h2><a href="{link}">{esc(p.get("name"))}</a></h2><p>{esc(p.get("description") or "")}</p></div></div>'
+            f'<div class="cards">{"".join(mission_card(m, 3) for m in rows[:PACK_PREVIEW])}</div>'
+            + (f'<a class="pack-more" href="{link}">{more} more · Show all {len(rows)}</a>' if more > 0 else "")
+            + "</section>")
     intro = f"{stats['live']} live missions in {len(packs)} packs, with {stats['drafts']} more being checked."
     main = f"""<div class="page page-wide">
 <div class="page-intro"><h1>Every mission</h1><p>{esc(intro)}</p></div>
-<div class="cards">{cards}</div>
+{ideas_html(collections)}
+{"".join(sections)}
 </div>"""
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "url": f"{BASE}/missions/", "name": "Every mission", "description": intro}
     (Path(out) / "missions").mkdir(parents=True, exist_ok=True)
@@ -332,20 +526,30 @@ def build_pages(out):
         main = f'<div class="page info">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name))
+        if dates.get(f"pages/{name}.html"):
+            lastmod[path] = dates[f"pages/{name}.html"]
 
     body = (ROOT / "pages" / "404.html").read_text(encoding="utf-8")
     text = page(f"Page not found · {SITE_NAME}", "This page doesn't exist on AmbleBee Missions.", "/404.html",
                 f'<div class="page info">\n{body}</div>', {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found"}, brand)
     (Path(out) / "404.html").write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
 
-    sitemap = "".join(f"<url><loc>{esc(BASE + u)}</loc></url>" for u in urls)
+    newest = max(lastmod.values(), default=None)
+    for u in ("/", "/missions/"):
+        if newest:
+            lastmod[u] = newest
+    if dates.get("roadmap.yaml"):
+        lastmod["/roadmap.html"] = dates["roadmap.yaml"]
+    sitemap = "".join(f"<url><loc>{esc(BASE + u)}</loc>" + (f"<lastmod>{lastmod[u]}</lastmod>" if u in lastmod else "") + "</url>"
+                      for u in urls)
     (Path(out) / "sitemap.xml").write_text(
         f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">{sitemap}</urlset>\n',
         encoding="utf-8")
     (Path(out) / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
     for name, current in (("index.html", "index"), ("roadmap.html", "roadmap")):
         f = Path(out) / name
-        f.write_text(f.read_text(encoding="utf-8").replace("<!--site-nav-->", nav_html(current)), encoding="utf-8")
+        f.write_text(f.read_text(encoding="utf-8").replace("<!--site-nav-->", nav_html(current))
+                     .replace("<!--ideas-->", ideas_html(collections)), encoding="utf-8")
     version_files(Path(out))
     return len(missions), len(packs), len(urls)
 

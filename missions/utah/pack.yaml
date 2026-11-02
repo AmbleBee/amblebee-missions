@@ -1,4 +1,9 @@
 name: Amble Utah
 region: Utah
-description: Real places all over Utah, starting with red rock arches outside Moab.
+description: Real places all over Utah, starting on a hillside above Salt Lake City.
 icon: rock-arch
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for adventures and things to do in Utah? It's red rock country, with five national parks, slot canyons
+  and dark skies, plus plenty around Salt Lake City. Above the city, a short hike leads to the Living Room, a
+  set of stone chairs with a view over the valley.

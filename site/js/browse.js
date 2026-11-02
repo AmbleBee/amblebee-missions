@@ -98,6 +98,7 @@ function liveLine() {
   const drafts = (S.catalog.stats || {}).drafts || 0;
   return `${S.missions.length} live missions in ${S.packs.length} packs${drafts ? `, ${drafts} more being checked` : ""}`;
 }
+const PACK_PREVIEW = 4;   // missions per pack in "Every pack" with no filters; build_pages.py shows the same on /missions/
 // "Sort by" in Every mission: a flat list instead of pack sections. Ties stay in A to Z order.
 const byRank = (order, get) => (a, b) => order.indexOf(get(a)) - order.indexOf(get(b)) || a.name.localeCompare(b.name);
 const SORTS = {
@@ -220,16 +221,24 @@ function renderBrowse() {
     const ms = everything.filter((m) => S.browse === "all" || m.pack === S.browse).sort(SORTS[S.sort]);
     if (ms.length) wrap.append(h("section", { class: "pack", "aria-label": "Sorted missions" }, h("div", { class: "cards" }, ms.map(card))));
   } else {
+    // every pack and no filters: a taste of each pack (its first few missions, a swipe row on phones), and the
+    // rest on the pack's own page. With filters or a mood picked, every match shows, since that list is the answer.
+    const preview = S.browse === "all" && !browsing;
     for (const p of S.packs) {
       if (S.browse !== "all" && S.browse !== p.id) continue;
       const ms = everything.filter((m) => m.pack === p.id);
       if (!ms.length) continue;
       if (S.here) ms.sort((x, y) => (distM(x) ?? 0) - (distM(y) ?? 0) || x.number - y.number);
-      wrap.append(h("section", { class: "pack", "aria-label": p.name },
+      else ms.sort((x, y) => x.number - y.number);
+      const shown = preview ? ms.slice(0, PACK_PREVIEW) : ms;
+      const more = ms.length - shown.length;
+      const page = `${HOME}packs/${encodeURIComponent(p.id)}/`;
+      wrap.append(h("section", { class: "pack" + (preview ? " preview" : ""), "aria-label": p.name },
         h("div", { class: "pack-head" },
           h("span", { class: "badge" }, svg(packIcon(p), 26)),
-          h("div", {}, h("h3", {}, p.name), p.description ? h("p", {}, p.description) : null)),
-        h("div", { class: "cards" }, ms.map(card))));
+          h("div", {}, h("h3", {}, preview ? h("a", { href: page }, p.name) : p.name), p.description ? h("p", {}, p.description) : null)),
+        h("div", { class: "cards" }, shown.map(card)),
+        more > 0 ? h("a", { class: "pack-more", href: page }, `${more} more · Show all ${ms.length}`) : null));
     }
   }
   if (!wrap.children.length) wrap.append(h("p", { class: "none" }, browsing ? "None of these fit your filters. Clear them to see more." : "No missions in this pack yet."));

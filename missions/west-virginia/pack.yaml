@@ -2,3 +2,8 @@ name: Amble West Virginia
 region: West Virginia
 description: Real places all over West Virginia, starting in the New River Gorge.
 icon: bridge
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  West Virginia is mountains, rivers and some of the best whitewater in the East, from the New River Gorge to
+  Canaan Valley and Charleston. For an easy adventure, the trail to Long Point leads to a classic view of the
+  New River Gorge Bridge.

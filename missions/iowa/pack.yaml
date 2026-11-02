@@ -2,3 +2,8 @@ name: Amble Iowa
 region: Iowa
 description: Real places all over Iowa, starting at the covered bridges of Madison County.
 icon: corn
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Iowa is rolling farmland, small towns and surprising history, from Des Moines to the Amana Colonies and the
+  covered bridges of Madison County. For a slow, sweet date idea in Iowa, start with those bridges near
+  Winterset and notice the details.

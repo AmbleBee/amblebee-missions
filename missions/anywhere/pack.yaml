@@ -2,3 +2,9 @@ name: Amble Anywhere
 region: Anywhere
 description: Missions you can do wherever you are. No specific place, just a good idea and a reason to go.
 icon: compass
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas that work wherever you live? These missions don't need a particular place, so they fit
+  a big city, a small town or a rainy night at home. Some get you out the door, like a coffee walk somewhere new
+  or a farmers market morning, and some turn an ordinary night in into something worth a photo. Open one, make
+  it your own, and go.

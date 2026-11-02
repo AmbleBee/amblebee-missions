@@ -2,3 +2,8 @@ name: Amble Vermont
 region: Vermont
 description: Real places all over Vermont, starting with ice cream in Waterbury.
 icon: maple-leaf
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Vermont is green mountains, covered bridges, maple syrup and small towns that look like postcards, from
+  Burlington to Waterbury and the Northeast Kingdom. For a sweet date idea, the Ben & Jerry's factory in
+  Waterbury even has a graveyard for retired flavors.

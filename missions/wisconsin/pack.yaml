@@ -2,3 +2,8 @@ name: Amble Wisconsin
 region: Wisconsin
 description: Real places all over Wisconsin, starting with a fish boil in Door County.
 icon: cheese
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in Wisconsin? It's lakes, supper clubs, cheese and the Door County peninsula, plus
+  Milwaukee, Madison and Janesville to explore. A fish boil in Fish Creek, with its big flare-up at the end, is
+  a show and a dinner in one.

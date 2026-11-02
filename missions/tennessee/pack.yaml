@@ -2,3 +2,8 @@ name: Amble Tennessee
 region: Tennessee
 description: Real places all over Tennessee, starting with songwriters in the round in Nashville.
 icon: guitar
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in Nashville or around Tennessee? It's music country, with Knoxville and Chattanooga
+  near the mountains and Memphis out west. At Nashville's Bluebird Cafe, songwriters play in the round, a few
+  feet from your table.

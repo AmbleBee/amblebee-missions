@@ -40,7 +40,8 @@ def build(folder):
     out_missions = [{k: v for k, v in m.items() if k not in PRIVATE_KEYS and k != "draft"}
                     for m in sorted(missions, key=lambda m: (m["pack"] != "general", m["pack"], m["number"]))
                     if not m.get("draft")]
-    packs = {pid: {k: v for k, v in p.items() if k != "drafts"} for pid, p in packs.items() if p["count"]}
+    # "about" (a pack page's long description) is for the website only, so the Hive never downloads it
+    packs = {pid: {k: v for k, v in p.items() if k not in ("drafts", "about")} for pid, p in packs.items() if p["count"]}
     body = {
         "schema_version": info["schema_version"],
         "source": {**{k: info.get(k) for k in ("name", "source_id", "author")}, "updated": last_changed(folder)},

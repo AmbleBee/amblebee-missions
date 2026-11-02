@@ -2,3 +2,8 @@ name: Amble New Hampshire
 region: New Hampshire
 description: Real places all over New Hampshire, starting in the White Mountains.
 icon: covered-bridge
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Searching for things to do in New Hampshire? Think White Mountains, covered bridges and small-town New
+  England, from Concord to North Woodstock and Bretton Woods. Drive the Kancamagus Highway for fall color, zip
+  through the treetops at Bretton Woods, or catch an indie film in Concord.

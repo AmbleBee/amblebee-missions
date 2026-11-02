@@ -57,10 +57,37 @@ class Site:
         return page
 
 
-def t_home_lists_every_live_mission(site, catalog):
+PREVIEW = 4   # missions per pack in "Every pack" with no filters (PACK_PREVIEW in site/js/browse.js)
+
+
+def t_home_shows_a_taste_of_every_pack(site, catalog):
     page = site.home()
-    assert page.locator("#packs .card").count() == len(catalog["missions"])
+    packs = [p for p in catalog["packs"] if p["count"]]
+    assert page.locator("#packs .pack.preview").count() == len(packs)
+    assert page.locator("#packs .card").count() == sum(min(PREVIEW, p["count"]) for p in packs)
+    big = [p for p in packs if p["count"] > PREVIEW]
+    assert page.locator("#packs .pack-more").count() == len(big), "only packs with more than a row get a Show all link"
+    p = max(big, key=lambda x: x["count"])
+    more = page.locator(f'#packs .pack-more[href="/packs/{p["id"]}/"]')
+    assert more.inner_text().startswith(f'{p["count"] - PREVIEW} more · Show all {p["count"]}')
+    first = sorted((m for m in catalog["missions"] if m["pack"] == p["id"]), key=lambda m: m["number"])[:PREVIEW]
+    section = page.locator(f'#packs .pack[aria-label="{p["name"]}"]')
+    assert section.locator(".card h4").all_inner_texts() == [m["name"] for m in first], "the first missions by number"
     assert f"{len(catalog['missions'])} live missions" in page.inner_text("#browse-count")
+    page.select_option("#browse-pack", p["id"])   # one pack on its own: all of it, no Show all link
+    assert page.locator("#packs .card").count() == p["count"]
+    assert page.locator("#packs .pack-more").count() == 0
+    page.goto(site.base + f'/packs/{p["id"]}/')     # and the Show all page lists every mission in the pack
+    assert page.locator(".cards .card").count() == p["count"]
+
+
+def t_phone_packs_swipe_sideways(site, catalog):
+    page = site.home(viewport=PHONE)
+    row = page.locator("#packs .pack.preview:has(.pack-more) .cards").first
+    row.scroll_into_view_if_needed()
+    assert row.evaluate("r => getComputedStyle(r).overflowX") == "auto"
+    assert row.evaluate("r => r.scrollWidth > r.clientWidth + 50"), "the row should be wider than the screen"
+    assert page.evaluate("document.scrollingElement.scrollWidth <= innerWidth"), "the page itself must not scroll sideways"
 
 
 def t_picker_comes_before_the_story(site, catalog):
@@ -97,14 +124,15 @@ def t_bad_links_get_a_letter(site, catalog):
 
 def t_filters_narrow_the_list_and_clear(site, catalog):
     page = site.home()
-    total = page.locator("#packs .card").count()
+    taste = page.locator("#packs .card").count()
     page.click("#filters-toggle")
     page.click('[data-filter="cost"] label:has(input[value="free"])')
-    narrowed = page.locator("#packs .card").count()
-    assert 0 < narrowed < total
+    free = sum(1 for m in catalog["missions"] if m["cost"] == "free")
+    assert page.locator("#packs .card").count() == free, "with a filter on, every match shows, not a taste"
+    assert page.locator("#packs .pack-more").count() == 0
     assert "fit your filters" in page.inner_text("#browse-count")
     page.click("#browse-clear")
-    assert page.locator("#packs .card").count() == total
+    assert page.locator("#packs .card").count() == taste
 
 
 def t_search_matches_words_and_typos(site, catalog):
@@ -325,7 +353,7 @@ def t_mission_view_has_its_own_title_and_heading(site, catalog):
     assert page.evaluate("document.querySelector('#reveal-title').tagName") == "H1"
     page.click('#reveal-actions button:has-text("Start over")')
     page.wait_for_selector("#roll-btn")
-    assert page.title() == "AmbleBee Missions"
+    assert page.title() == "AmbleBee: Date Ideas and Adventures Near You"
 
 
 def t_search_results_are_announced(site, catalog):
@@ -507,10 +535,31 @@ def t_footer_is_dark_on_short_pages_too(site, catalog):
     assert page.evaluate("getComputedStyle(document.querySelector('.foot')).backgroundColor") == "rgb(74, 51, 35)"
 
 
+def t_idea_pages_gather_missions_and_link_both_ways(site, catalog):
+    kids = [m for m in catalog["missions"] if "kids" in (m.get("who") or [])]
+    page = site.home()
+    assert page.title().startswith("AmbleBee: Date Ideas"), "the home page has a searchable title"
+    page.locator("#browse .ideas a[href='/kid-friendly-adventures/']").click()   # Browse by idea, from home
+    page.wait_for_selector("h1")
+    assert page.inner_text("h1") == "Kid-Friendly Adventures"
+    assert page.locator(".card").count() == len(kids)
+    assert f"{len(kids)} ideas" in page.inner_text("main")
+    assert page.locator(".ideas-more a[href='/kid-friendly-adventures/']").count() == 0, "no link to itself"
+    page = site.open(f"/missions/{kids[0]['id']}/")                                 # and back from the mission
+    assert page.locator(".also-in a[href='/kid-friendly-adventures/']").count() == 1
+    page = site.open("/missions/")
+    assert page.locator(".ideas a").count() >= 4
+    page = site.home()
+    page.locator("#packs .card").first.click()                                     # leaving a mission restores the title
+    page.go_back()
+    page.wait_for_function("document.title.startsWith('AmbleBee: Date Ideas')")
+
+
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",
-                 "/about/", "/safety/", "/privacy/", "/contact/"):
+                 "/about/", "/safety/", "/privacy/", "/contact/", "/rainy-day-date-ideas/", "/at-home-date-ideas/",
+                 "/free-date-ideas/", "/kid-friendly-adventures/"):
         page = site.open(path)
         page.wait_for_selector("h1")
     page = site.open(f"/missions/{mission['id']}/")

@@ -2,3 +2,8 @@ name: Amble New York
 region: New York
 description: Real places all over New York, starting in New York City with Central Park, Brooklyn and the museums.
 icon: apple
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  New York City is full of date ideas, from Manhattan to Brooklyn, and upstate has the Hudson Valley, the
+  Adirondacks and Cooperstown. Start at the Met Cloisters, where medieval art and gardens sit on a quiet hilltop
+  above the Hudson.

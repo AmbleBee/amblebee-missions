@@ -2,3 +2,7 @@ name: Amble Nevada
 region: Nevada
 description: Real places all over Nevada, starting on the Las Vegas Strip.
 icon: dice
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  There's more to Nevada than the Strip, from Lake Tahoe to desert canyons and Great Basin National Park. For a
+  date in Las Vegas that won't cost a thing, see the Bellagio's fountains and flower conservatory.

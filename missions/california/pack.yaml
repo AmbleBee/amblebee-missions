@@ -2,3 +2,9 @@ name: Amble California
 region: California
 description: Real places all over California, starting in Los Angeles with swan boats on a city lake and a tiny aquarium at the end of a pier.
 icon: poppy
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas or weekend adventures in California? From Los Angeles, San Diego and San Francisco to
+  the redwoods, Big Sur and the desert, there's no shortage. Ride the swan boats at Echo Park, watch sea lions
+  in La Jolla, walk among old-growth redwoods up north or count stars in Joshua Tree. Distances are big here, so
+  check the drive before you plan the day.

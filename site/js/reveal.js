@@ -188,7 +188,7 @@ function showHome() {
   document.body.classList.remove("revealing");
   $("#reveal").hidden = true;
   S.current = null;
-  document.title = SITE_NAME;
+  document.title = HOME_TITLE;
   renderTeaser();
 }
 // a link that can't be delivered: says so in the reveal view, where it can't be missed on a phone

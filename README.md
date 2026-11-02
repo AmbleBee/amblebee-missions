@@ -14,6 +14,7 @@ The website is at [amblebee.com](https://amblebee.com). It's built from this rep
 | `data/` | ZIP code and city lookups, refreshed with `python tools/build_zips.py` and `python tools/build_cities.py` |
 | `tools/` | Checks and build scripts |
 | `roadmap.yaml` | The bee trail page. Edit it, push, done |
+| `collections.yaml` | The idea pages, like [Rainy Day Date Ideas](https://amblebee.com/rainy-day-date-ideas/): each page's address, title, intro and which missions belong. The file explains each field. Edit it, push, done |
 
 ## Working on it
 

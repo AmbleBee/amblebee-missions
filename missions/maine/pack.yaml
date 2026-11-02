@@ -2,3 +2,8 @@ name: Amble Maine
 region: Maine
 description: Real places all over Maine, starting in Acadia National Park.
 icon: lighthouse
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Maine is rocky coast, lighthouses, lobster shacks and deep woods, from Acadia to the midcoast and the western
+  mountains. If you're looking for things to do in Maine, start in Acadia National Park, where a walk around
+  Jordan Pond ends with popovers and a view of the mountains.

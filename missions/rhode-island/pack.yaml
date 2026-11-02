@@ -1,4 +1,9 @@
 name: Amble Rhode Island
 region: Rhode Island
-description: Real places all over Rhode Island, starting on Newport's Cliff Walk.
+description: Real places all over Rhode Island, starting with an art hunt in Providence.
 icon: anchor
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Rhode Island is small but full of coastline, colonial streets and art, from Providence to Newport and
+  Westerly. For a rainy-day date in Providence, the RISD Museum makes a great art hunt, with free entry at
+  certain times.

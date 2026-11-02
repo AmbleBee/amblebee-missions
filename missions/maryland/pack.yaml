@@ -2,3 +2,8 @@ name: Amble Maryland
 region: Maryland
 description: Real places all over Maryland, starting on the water in Annapolis.
 icon: crab
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Need date ideas in Maryland? The state lives on the water, from the Chesapeake Bay and Baltimore's harbor to
+  the Catoctin Mountains. Sail out of Annapolis on a classic schooner and see the town the way sailors have for
+  centuries.

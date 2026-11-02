@@ -1,4 +1,9 @@
 name: Amble Ohio
 region: Ohio
-description: Real places all over Ohio, from Hocking Hills waterfalls and a Lake Erie lighthouse to Columbus brick streets and Cleveland's free art museum.
+description: Real places all over Ohio, starting under the stars at the Cincinnati Observatory.
 icon: buckeye
+# A longer description for this pack's own page on the website (not sent to the Hive).
+about: >
+  Looking for date ideas in Ohio? From Cincinnati, Columbus and Cleveland to the Hocking Hills and the Lake Erie
+  shore, there's plenty to find. In Cincinnati, a historic observatory opens its telescopes to the public on
+  certain nights.
