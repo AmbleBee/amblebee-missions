@@ -253,6 +253,13 @@ def mission_html(m, pack, icons, today):
 </article>"""
 
 
+UI_ICON = {   # the same artwork as ICON in site/js/core.js
+    "share": '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
+    "download": '<path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/>',
+}
+
+
+
 def version_files(out):
     """Add ?v=<content hash> to script and stylesheet links, so a new file is fetched as soon as it's deployed."""
     names = ["style.css", "roadmap.css", "roadmap.js", "arrive.js", "until.js", "nav.js"]
@@ -422,7 +429,8 @@ def build_pages(out):
 <p class="crumbs"><a href="/missions/">Every mission</a> › <a href="{esc(pack_path)}">{esc(pack.get("name"))}</a></p>
 {mission_html(m, pack, icons, today)}
 <div class="ticket-actions">
-  <a class="btn primary" href="{esc(app_link)}">Share or save this mission</a>
+  <a class="btn primary" href="{esc(app_link)}&amp;do=card">{icon(UI_ICON["share"], 20)}Share this mission</a>
+  <a class="btn" href="{esc(app_link)}&amp;do=save">{icon(UI_ICON["download"], 20)}Save as image</a>
   <a class="btn" href="/">Open a different mission</a>
 </div>
 {also_html}

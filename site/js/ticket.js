@@ -102,13 +102,13 @@ function reportUrl(m) {
 function actions(m) {
   return h("div", { class: "ticket-actions" }, shareButtons(m), saveButton(m));
 }
-// two ways to share: a plain link, or a sealed "gift" link with names and a hidden note
-// sharing always starts at the card, so people see the note option; "Share without a note" is at the bottom of it
+// two ways to share: a sealed "gift" link with names and a hidden note, or a plain link to the mission's own page
+// sharing always starts at the card, so people see the note option; "Share without a note" sits next to Seal it
 function shareButtons(m) {
   return [h("button", { type: "button", class: "btn", onclick: () => openGiftForm(m, { fresh: true }) }, svg(ICON.share, 20), "Share this mission")];
 }
 // link box + Copy / Share… / Preview, used for both kinds of link
-function linkPanel(url) {
+function linkPanel(url, shared = { title: "An AmbleBee mission", text: "You've got mail from AmbleBee. Open the envelope:" }) {
   const box = h("input", { class: "gift-link", readonly: true, "aria-label": "Your link", value: url, onfocus: (e) => e.target.select() });
   const copy = h("button", { type: "button", class: "btn primary" }, svg(ICON.link, 20), "Copy link");
   copy.addEventListener("click", async () => {
@@ -117,20 +117,23 @@ function linkPanel(url) {
   });
   const share = navigator.share ? h("button", { type: "button", class: "btn" }, svg(ICON.share, 20), "Share…") : null;
   if (share) share.addEventListener("click", async () => {
-    try { await navigator.share({ title: "An AmbleBee mission", text: "You've got mail from AmbleBee. Open the envelope:", url }); } catch (e) { /* closed the sheet */ }
+    try { await navigator.share({ ...shared, url }); } catch (e) { /* closed the sheet */ }
   });
   return { box, copy, row: h("div", { class: "gift-actions" }, copy, share,
     h("a", { class: "btn", href: url, target: "_blank", rel: "noopener" }, "Preview")) };
 }
-// no names, no note: still a sealed envelope (from "a friend") with the mission inside, and the link stays unreadable
-async function sharePlain(m) {
+// no names, no note: a plain link to the mission's own page, so texts and chat apps show its preview card.
+// It's copied the moment you click, so it's ready to paste.
+const missionPage = (m) => `${location.origin}/missions/${encodeURIComponent(m.id)}/`;
+function sharePlain(m) {
   const d = $("#gift-dialog"), body = $("#gift-body");
-  const url = giftUrl(await packGift(cleanGift({ m: m.full_id })));
-  const p = linkPanel(url);
+  const url = missionPage(m);
+  const p = linkPanel(url, { title: m.name });
+  if (navigator.clipboard) navigator.clipboard.writeText(url).then(() => { p.copy.lastChild.textContent = "Copied!"; }, () => { /* the Copy button still works */ });
   body.replaceChildren(h("div", { class: "gift-done" },
     h("p", { class: "hand gift-kicker" }, "Just the mission"),
     h("h2", { id: "gift-title" }, "Here's your link"),
-    h("p", { class: "gift-lede" }, "No names and no note. They'll get a sealed envelope from \u201ca friend\u201d with this mission inside."),
+    h("p", { class: "gift-lede" }, "No names and no note, just the mission. When you send it, they'll see a little preview of where you're headed."),
     p.box, p.row,
     h("div", { class: "gift-actions small" },
       h("button", { type: "button", class: "linkish", onclick: () => openGiftForm(m) }, "Add a card after all"),

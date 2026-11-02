@@ -243,6 +243,13 @@ async function route() {
       const mine = (history.state && history.state.rolled === m.full_id) || /(?:^#|&)from=page(?:&|$)/.test(location.hash);
       const from = S.rolledId === m.full_id ? "roll" : mine ? "mine" : "link";
       showReveal(m, { from, sealed: from === "link" && !S.booted });
+      // from a mission page's Share or Save button: straight to the card writer or the saved image, once
+      const act = /(?:^#|&)do=(card|save)(?:&|$)/.exec(location.hash);
+      if (act && from === "mine") {
+        history.replaceState(history.state, "", location.pathname + location.search + location.hash.replace(/&do=(card|save)/, ""));
+        if (act[1] === "card") openGiftForm(m, { fresh: true });
+        else [...$("#reveal-actions").querySelectorAll("button")].find((b) => /Save as image/.test(b.textContent))?.click();
+      }
     }
     S.booted = true; return;
   }

@@ -187,7 +187,9 @@ def t_sealed_letter_stays_sealed_with_a_remembered_zip(site, catalog):
     page = site.home()
     page.click("#packs .card")
     page.click('#dialog-body button:has-text("Share this mission")')
-    page.click('button:has-text("Share without a note")')
+    page.fill(".gc-to", "Sam")
+    page.fill(".gc-from", "Alex")
+    page.click('button:has-text("Seal it")')
     page.wait_for_selector(".gift-link")
     link = page.input_value(".gift-link").replace(site.base, "")
     page.goto(site.base + "/contact/")   # a different page, so the link below is a fresh start
@@ -302,13 +304,30 @@ def t_cards_are_links_with_real_addresses(site, catalog):
     page.wait_for_selector(".ticket h1")
 
 
-def t_gift_link_from_a_popup_points_home(site, catalog):
+def t_share_without_a_note_is_the_mission_page(site, catalog):
     page = site.home()
     page.click("#packs .card")
+    title = page.inner_text("#dialog-body h1, #dialog-body h2")
     page.click('#dialog-body button:has-text("Share this mission")')
     page.click('button:has-text("Share without a note")')
     page.wait_for_selector(".gift-link")
-    assert re.search(r":\d+/#gift=", page.input_value(".gift-link"))
+    link = page.input_value(".gift-link")
+    assert re.search(r":\d+/missions/[a-z0-9-]+/$", link), "a plain link to the mission's own page, so chats show its preview"
+    page.goto(link)
+    assert page.inner_text("h1").strip() == title.strip()
+
+
+def t_mission_page_shares_in_one_click(site, catalog):
+    mission = catalog["missions"][0]
+    path = f"/missions/{mission['id']}/"
+    page = site.open(path)
+    page.click('a:has-text("Share this mission")')              # the card writer opens straight away
+    page.wait_for_selector(".gc-note")
+    assert "do=card" not in page.url, "refreshing shouldn't open the card writer again"
+    page = site.open(path)
+    with page.expect_download() as saved:                       # and Save as image saves in one click
+        page.click('a:has-text("Save as image")')
+    assert saved.value.suggested_filename.endswith(".png")
 
 
 def t_zero_results_offer_a_way_out(site, catalog):
