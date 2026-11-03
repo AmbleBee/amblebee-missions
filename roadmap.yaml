@@ -32,33 +32,39 @@
   status: later
   tag: hive
   summary: Tell the Hive what gear you have, can borrow or can rent, and it only hands you missions you can actually do.
-
+ 
 - title: Our Own Plans
   status: later
   tag: hive
   summary: Birthdays, anniversaries and trips get their own photo logs on the Hive, right next to the missions.
-
+ 
 - title: Kids' Scavenger Hunts
   status: later
   tag: missions
   summary: Photo hunts for little ones, like "find something blue" or "find an animal", one step at a time.
-
-- title: The First Real AmbleBee
+ 
+- title: State Icons on the Hive
+  status: later
+  tag: hive
+  summary: The same icon pack the website uses, turned into crisp pictures for the Hive's screen.
+ 
+- title: The AmbleCam
   status: later
   tag: camera
-  when: After the breadboards
-  summary: Everything on one custom circuit board, in a 3D-printed body with an e-ink screen that shows your mission.
-
-- title: State Icons on the Hive and AmbleBee
-  status: later
-  tag: hive
-  summary: The same icon pack the website uses, turned into crisp pictures for the Hive's screen and the AmbleBee's black-and-white e-ink.
-
-- title: Simulated Photo Review on the Hive
+  when: After the Hive
+  summary: For anyone who'd like to build one, a little camera made for missions. Its e-ink screen shows your mission, and it drops your photos off at the Hive when it docks. Totally optional; your phone works great.
+ 
+- title: The AmbleBee Hive, Version 1
   status: next
   tag: hive
-  summary: Dock the camera, flip through the photos, and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own.
-
+  when: A little each month
+  summary: A photo frame for your wall that keeps your missions and your memories together. Pick a mission on the frame, go do it, then scan the QR code with your phone to send it your photos.
+  items:
+    - Missions on the frame, from the same list as the website
+    - Upload photos from your phone with a QR code, no app needed
+    - Flip through the photos and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own
+    - Every finished mission becomes a memory, with its photos and a note
+ 
 - title: Exact Map Pins for Every Place
   status: doing
   progress: live
