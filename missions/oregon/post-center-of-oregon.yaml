@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 53
 name: Post, the Center of Oregon
 mode: both
@@ -6,19 +6,28 @@ who: [solo, friends, family, kids]
 place:
   name: Post General Store and Eatery
   area: Post, Crook County, east of Prineville
-  coords: [44.15709, -120.49093]
+  address: 28550 SE Paulina Hwy, Post, OR 97752
+  coords: [44.15699, -120.49097]
   links:
     - label: Geographic Center
       url: https://maps.app.goo.gl/HFUv6eXmYCzagFaG9
-short: Stand in the middle of Oregon at tiny Post. Split a milkshake at the general store.
+short: Stand near the middle of Oregon in tiny Post, east of Prineville. Split a milkshake at the store.
 description: >
-  Drive out to Post, a tiny ranch town on the Crooked River that claims to be
-  the geographic center of Oregon. The true center point is on private ranch
-  land just north of town, so celebrate at the Post General Store instead,
-  which doubles as the post office and the café. Pick from over a dozen
-  milkshake flavors, grab a "Center of Oregon" souvenir, and get a photo of you by the center sign. Make a loop of it through the Ochoco
-  country around Prineville. (The geographical center locator is on private property, 
-  Please call to schedule access by visiting the link. Phone number is in the photo on google maps)
+  Drive out to Post, a tiny ranch town that claims to be the center of Oregon,
+  and celebrate at the Post General Store, which is also the café and the post
+  office. Each pick a milkshake flavor the other would never order, swap a sip,
+  and get a photo by the "Center of Oregon" sign. Grab a souvenir and make a
+  loop of it through the Ochoco country around Prineville.
+about: >
+  Post sits on Oregon Route 380 southeast of Prineville, about an hour from
+  Bend. It's named for Walter Post, who became its first postmaster in 1889,
+  and the general store still holds the post office, with just 48 mailboxes,
+  along with a small eatery that makes more than a dozen milkshake flavors.
+
+  The actual center point is on Bonnieview Ranch, private land just north of
+  town, marked by a small metal survey marker from 1903. To see it, you need
+  the landowner's permission ahead of time; the Geographic Center link has the
+  contact details.
 for_kids:
   short: Center hunt! Find each thing.
   steps:
@@ -36,4 +45,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [quirky, small-towns]
-tags: [quirky, roadside, small-town, central-oregon]
+tags: [post oregon, center of oregon, general store, milkshakes, prineville, crook county]

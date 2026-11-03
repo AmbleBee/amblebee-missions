@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 13
 name: Wreck of the Peter Iredale
 mode: both
@@ -9,11 +9,23 @@ place:
   address: Peter Iredale Rd, Hammond, OR 97121
   coords: [46.17829, -123.97839]
   website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=129
-short: Find the old shipwreck on the beach. Get a photo framed by its rusted bones.
+short: Find the Peter Iredale shipwreck on the beach near Astoria. Get a photo framed by its rusted bones.
 description: >
   Walk out to the rusted skeleton of the Peter Iredale, a sailing ship that ran
-  aground here in 1906. Go at low tide to walk right up to it, and find the angle
-  that makes the best photo of you.
+  aground here in 1906. Go at low tide so you can walk right up to it, and find
+  the angle that frames you between its rusted ribs for a photo. Then each come
+  up with a toast to the old ship, the way her captain did when he left her.
+about: >
+  The Peter Iredale was a four-masted steel sailing ship built in England in
+  1890. On October 25, 1906, she ran aground on Clatsop Spit near the mouth of
+  the Columbia River, and all 27 people aboard, including two stowaways, made
+  it ashore. Her captain is said to have saluted the wreck with "May God bless
+  you, and may your bones bleach in the sands."
+
+  Today the bow, a few ribs and parts of the masts still stand on the beach in
+  Fort Stevens State Park. In 1942 a Japanese submarine shelled the fort; the
+  wreck was in the line of fire but wasn't hit, and it spent the rest of the
+  war tangled in barbed wire strung along the beach. Back in Astoria, climb the [[astoria-column]] for a view over the whole river mouth.
 duration: short
 effort: easy
 cost: $
@@ -23,4 +35,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [beach, history]
-tags: [coast, shipwreck, history, beach]
+tags: [peter iredale, shipwreck, fort stevens state park, astoria, oregon coast]

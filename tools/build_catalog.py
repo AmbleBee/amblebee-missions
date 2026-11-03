@@ -18,7 +18,7 @@ ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from missions_lib import THEMES, check_catalog, live_stats, load_catalog  # noqa: E402
 
-PRIVATE_KEYS = {"file"}  # local paths never go into the published file
+PRIVATE_KEYS = {"file", "about"}  # local paths never go into the published file; a mission's about is for its web page only
 
 
 def last_changed(folder):

@@ -35,7 +35,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_cards import look_version  # noqa: E402
 from build_catalog import build  # noqa: E402
 from build_icons import load as load_icons  # noqa: E402
-from missions_lib import load_catalog  # noqa: E402
+from missions_lib import MISSION_LINK, load_catalog  # noqa: E402
 
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee"
@@ -260,6 +260,7 @@ UI_ICON = {   # the same artwork as ICON in site/js/core.js
     "share": '<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
     "download": '<path d="M12 4v11"/><path d="M7 10.5l5 5 5-5"/><path d="M5 20h14"/>',
     "check": '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+    "book": '<path d="M12 6.5C10 5 7 4.5 3.5 5v13c3.5-.5 6.5 0 8.5 1.5 2-1.5 5-2 8.5-1.5V5c-3.5-.5-6.5 0-8.5 1.5z"/><path d="M12 6.5v13"/>',
 }
 
 
@@ -271,6 +272,23 @@ def checked_html(m):
         return ""
     month = datetime.date(int(d.group(1)), int(d.group(2)), 1).strftime("%B %Y")
     return f'<p class="checked">{icon(UI_ICON["check"], 16)}Checked {month}</p>\n    '
+
+
+def about_html(m, text, names, live):
+    """The mission's about: background, facts and tips, website only (the Hive and camera get the short description).
+    [[mission-id]] becomes a link to that mission's page, showing its name; a draft's name shows as plain text."""
+    text = str(text or "").strip()
+    if not text:
+        return ""
+
+    def link(found):
+        mid = found.group(1)
+        name = esc(names.get(mid, mid))
+        return f'<a href="/missions/{mid}/">{name}</a>' if mid in live else name
+    paras = "".join(f"<p>{MISSION_LINK.sub(link, esc(' '.join(p.split())))}</p>" for p in text.split("\n") if p.strip())
+    title = "About this place" if m.get("place") else "More about this mission"
+    head = f'<div class="about-head"><span class="about-icon">{icon(UI_ICON["book"], 24)}</span><h2 id="about-title">{esc(title)}</h2></div>'
+    return f'<section class="mission-about" aria-labelledby="about-title">{head}{paras}</section>'
 
 
 def welcome_html(pack, pack_path, live, collections):
@@ -392,12 +410,16 @@ def build_pages(out):
     brand = re.search(r'<a class="brand".*?</a>', (ROOT / "site" / "index.html").read_text(encoding="utf-8"), re.S).group(0)
     brand = brand.replace('href="./"', 'href="/"')
     today = datetime.date.today().isoformat()
-    pack_about = {pid: str(pk.get("about") or "").strip() for pid, pk in load_catalog(ROOT / "missions")[1].items()}
+    _, raw_packs, raw_missions = load_catalog(ROOT / "missions")   # the "about" texts are left out of catalog.json, so read them here
+    pack_about = {pid: str(pk.get("about") or "").strip() for pid, pk in raw_packs.items()}
+    mission_about = {rm["id"]: str(rm.get("about") or "").strip() for rm in raw_missions}
+    mission_names = {rm["id"]: rm.get("name") or rm["id"] for rm in raw_missions}
     dates = git_dates()
     lastmod = {}   # page path -> date, for the sitemap
     until_script = '<script src="/until.js" defer></script>\n'
 
     missions = catalog["missions"]
+    live_ids = {m["id"] for m in missions}   # drafts aren't in the catalog, so a [[link]] to one stays plain text
     packs = sorted(catalog["packs"], key=lambda p: (p["id"] != "anywhere", p.get("name") or p["id"]))
     by_id = {p["id"]: p for p in packs}
     stats = catalog["stats"]
@@ -461,6 +483,7 @@ def build_pages(out):
   <a class="btn" href="{esc(app_link)}&amp;do=save">{icon(UI_ICON["download"], 20)}Save as image</a>
   <a class="btn" href="/">Open a different mission</a>
 </div>
+{about_html(m, mission_about.get(m["id"]), mission_names, live_ids)}
 {also_html}
 {welcome_html(pack, pack_path, stats["live"], collections)}
 {nearby_html}

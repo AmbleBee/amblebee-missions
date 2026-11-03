@@ -87,9 +87,15 @@ function ticket(m, { titleId, heading = "h3" } = {}) {
       caution, place, extras,
       h("p", { class: "source" }, svg(packIcon(pack), 18),
         h("span", {}, "Mission ", h("b", {}, String(m.number || "?")), " in ", h("b", {}, pack.name))),
-      checkedLine(m),
-      reportUrl(m) ? h("p", { class: "report" }, "Closed, moved or something off? ",
-        h("a", { href: reportUrl(m), target: "_blank", rel: "noopener" }, "Report a problem")) : null));
+      // the bottom row: when it was checked and how to report it, with the mission's own page on the right
+      // (the page has everything, including the "About this place" background the popup leaves out)
+      h("div", { class: "ticket-foot" },
+        h("div", {},
+          checkedLine(m),
+          reportUrl(m) ? h("p", { class: "report" }, "Closed, moved or something off? ",
+            h("a", { href: reportUrl(m), target: "_blank", rel: "noopener" }, "Report a problem")) : null),
+        m.id ? h("a", { class: "btn small full-page", href: `/missions/${encodeURIComponent(m.id)}/` },
+          "See the full page", svg(ICON.arrow, 18)) : null)));
 }
 
 // "Checked November 2026": when the place, hours and pin were last confirmed (missions/SCHEMA.md → checked)

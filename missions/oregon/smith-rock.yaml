@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 5
 name: Smith Rock State Park
 mode: both
@@ -7,12 +7,25 @@ place:
   name: Smith Rock State Park
   area: Terrebonne
   address: 10087 NE Crooked River Dr, Terrebonne, OR 97760
-  coords: [44.36650, -121.14070]  # APPROX: set at the day-use parking before publishing
-short: Walk down to the Crooked River and look up at the rock walls. Find a climber.
+  coords: [44.36411, -121.13953]
+  website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=36
+short: Walk the Crooked River below Smith Rock's 600-foot cliffs near Terrebonne. Spot a climber up top.
 description: >
-  Walk down into the canyon and follow the Crooked River below the cliffs. Try to
-  spot a climber on the walls, and if you're feeling strong, take on Misery Ridge
-  for the view of Monkey Face. Bring plenty of water; there's little shade.
+  Walk down from the rim into the canyon and follow the Crooked River below
+  Smith Rock's orange cliffs. Each try to spot the first climber and get a photo
+  of them, tiny on the wall, and keep an eye out for golden eagles and river
+  otters. Feeling strong? Take the steep switchbacks up Misery Ridge for a close
+  look at Monkey Face. Bring plenty of water; there's very little shade.
+about: >
+  Smith Rock's cliffs rise about 600 feet above the Crooked River near
+  Terrebonne, and it's often called the birthplace of American sport climbing,
+  with thousands of routes on the walls. Monkey Face is a 350-foot spire of
+  volcanic tuff, and the Misery Ridge Loop is about 4 miles with nearly 1,000
+  feet of climbing.
+
+  Summer is hot, so start early, and watch for rattlesnakes near the river.
+  You'll need a day-use parking permit, sold on site. The park is open from dawn
+  to dusk. Just outside Redmond, stop at the folk-art castles of [[petersen-rock-garden]].
 duration: half-day
 effort: moderate
 cost: $
@@ -21,5 +34,7 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+caution: "Some trails and parking close for construction from December 2026 through May 2027. Check before you go."
+caution_until: 2027-05-31
 themes: [views, hiking, deserts]
-tags: [hiking, desert, views]
+tags: [rock climbing, crooked river, misery ridge, monkey face, high desert]

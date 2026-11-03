@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 28
 name: Hood River Pipeline Trail
 mode: both
@@ -6,12 +6,27 @@ who: [solo, friends, family]
 place:
   name: Powerdale trailhead (Hood River Pipeline Trail)
   area: Hood River
-  coords: [45.70000, -121.51100]  # APPROX: set at the trailhead parking before publishing
+  address: Hood River Penstock Flume Pipeline Trail, Hood River, OR 97031
+  coords: [45.70384, -121.50601]
 short: Walk the catwalk on top of the old pipeline along the Hood River.
 description: >
-  Start at the old Powerdale powerhouse and follow the trail upriver until it
-  turns into a narrow catwalk running on top of the old wooden pipeline. It ends
-  where a 2006 flood tore the pipe away. Not for dogs or bikes.
+  Start by the old Powerdale powerhouse and follow the trail upriver until it
+  turns into a narrow metal catwalk running along the top of a giant old water
+  pipe above the Hood River. Take a photo looking down the catwalk as it curves
+  away upriver, then walk to where the pipe suddenly ends and get a photo of
+  the end of the line. Each guess what happened to the rest of it before you
+  read the answer.
+about: >
+  The pipeline is the old penstock for Powerdale Dam, built in 1923 to carry
+  river water down to the powerhouse. The pipe is about nine feet across, and
+  the last 0.6 miles of the trail run along a catwalk on top of it. In November
+  2006 a flood on the Hood River tore away part of the pipe and catwalk, which
+  is why it ends so suddenly. That flood led to the dam being shut down in 2010
+  and taken out, and the corridor is now protected by the Columbia Land Trust.
+
+  The trail is day use only. Watch for poison oak, cross the railroad tracks
+  carefully, and leave dogs off the catwalk; the metal grating is hard on their
+  paws. The cottonwoods along the river turn gold in fall.
 duration: short
 effort: easy
 cost: free
@@ -20,5 +35,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [hiking, lakes-rivers, rocks-fossils, history]
-tags: [hiking, river, history, gorge]
+caution: "Poison oak grows along the trail, and the catwalk's metal grating can hurt dogs' paws."
+themes: [hiking, lakes-rivers, history, quirky]
+tags: [hood river pipeline, catwalk, powerdale dam, penstock, columbia gorge, dam removal]

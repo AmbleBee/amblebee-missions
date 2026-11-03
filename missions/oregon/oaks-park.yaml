@@ -7,13 +7,24 @@ place:
   name: Oaks Amusement Park
   area: Sellwood, Portland
   address: 7805 SE Oaks Park Way, Portland, OR 97202
-  coords: [45.472080, -122.661902]
+  coords: [45.47208, -122.66190]
   website: https://www.oakspark.com
-short: Ride something at Oaks Park, then skate the old roller rink. Loser buys the treats.
+short: Ride something at Portland's Oaks Park, then skate the old roller rink. Loser buys the treats.
 description: >
-  Spend an afternoon at one of the oldest amusement parks in the country. Ride a
-  few rides, try the historic roller rink with its pipe organ, and grab a classic
-  fair treat. Take a photo on the ride you were most nervous about.
+  Spend an afternoon at one of the oldest amusement parks in the country. Ride
+  a few rides, and take a photo on the one you were most nervous about. Then
+  lace up at the historic roller rink while the pipe organ plays. Whoever falls
+  first buys the fair treats.
+about: >
+  Oaks Park opened on May 30, 1905, about three and a half miles south of
+  downtown Portland, and it's one of the oldest amusement parks in the country
+  that has never closed. It's been run by a nonprofit since 1985.
+
+  The wooden roller rink is open year-round and has had a Wurlitzer pipe organ
+  since 1955. Its floor sits on airtight barrels so it can float, and it rode
+  out the floods of 1964 and 1996. Look for the 1912 Noah's Ark carousel, and
+  if you want a real scare, the Adrenaline Peak roller coaster opened in 2018.
+  The rides are seasonal, so check what's open before you go.
 for_kids:
   short: Fun park day! Find each thing.
   steps:
@@ -30,5 +41,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets, seasonal]
 themes: [thrills, playful]
-tags: [playful, rides, portland]
+tags: [oaks amusement park, roller rink, wurlitzer organ, sellwood, portland, roller coaster]
 credit: Elle M.

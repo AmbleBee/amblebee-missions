@@ -1,4 +1,4 @@
-checked: 2026-11-01
+checked: 2026-11-02
 number: 44
 name: Bagby Hot Springs
 mode: both
@@ -11,15 +11,25 @@ place:
   links:
     - label: Bagby Preservation
       url: https://bagbypreservation.com
-short: Hike through old-growth forest to Bagby's historic bathhouse and soak in hand-carved cedar tubs.
+short: Walk through old-growth forest to Bagby Hot Springs near Estacada and soak in a wooden tub.
 description: >
-  Walk about a mile and a half through old-growth forest in the Mount Hood
-  National Forest to Bagby's historic bathhouse, where hot spring water runs
-  into wooden soaking tubs. Bring cash: the fee is per person at the
-  trailhead, and Northwest Forest Passes don't count. There are no
-  reservations, so expect a wait on weekends, or go early on a weekday. You
-  can't camp at the springs, but Bagby Campground is right by the trailhead
-  if you want to stay the night. Pack out everything you bring.
+  Walk the easy trail through old-growth forest to Bagby's bathhouses and soak
+  in a wooden tub of hot spring water. On the way in, each find the biggest tree
+  you can and take a photo with it for scale. Bring cash for the fee at the
+  trailhead, expect a wait on weekends, and pack out everything you bring.
+about: >
+  Bagby Hot Springs sits deep in the Mount Hood National Forest, about 67 miles
+  southeast of Portland, at the end of a mile-and-a-half trail. The springs come
+  out of the ground at around 138 degrees.
+
+  It's named for Bob Bagby, a prospector who found it in 1880. The old bathhouse
+  burned in 1979 and was rebuilt by volunteers, and the springs reopened in 2024
+  after a long closure.
+
+  The fee is per person and paid in cash at the trailhead; Northwest Forest
+  Passes don't count. There are no reservations, so go early on a weekday to
+  skip the wait. You can't camp at the springs, but Bagby Campground is right by
+  the trailhead.
 duration: half-day
 effort: easy
 cost: $
@@ -30,4 +40,4 @@ travel: day-trip
 check_ahead: [seasonal, conditions]
 caution: No cell service here. Download offline maps before you go.
 themes: [hiking, forests, relaxing]
-tags: [hot springs, soaking, bathhouse, old-growth]
+tags: [hot springs, soaking, bathhouse, old-growth, estacada, mount hood national forest, oregon hot springs]

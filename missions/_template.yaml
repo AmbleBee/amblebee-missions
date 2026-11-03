@@ -26,7 +26,15 @@ mode: date                     # date | adventure | both
 
 short: One line for the camera screen, under 100 characters.
 description: >
-  A few sentences describing the mission for the Hive's mission card.
+  The mission itself, in a few sentences: what to do, a small challenge, and the photo to take.
+  This is what the Hive's mission card and the top of the ticket show (aim for about 400 characters, 800 max).
+
+# about: >                     # optional, website only: the background that makes the place interesting
+#   History, numbers and practical tips (parking, permits, best season). Shown on the mission's
+#   own web page under "About this place", where Google reads it; never sent to the camera or
+#   the Hive. A blank line starts a new paragraph. 1500 characters max.
+#   Link to another mission with its file name in double brackets: [[wallowa-lake-tramway]]
+#   shows as "Wallowa Lake Tramway" and links to its page (plain text while it's a draft).
 
 # steps:                       # photo prompts, one camera screen each
 #   - First photo prompt

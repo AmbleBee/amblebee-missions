@@ -1,4 +1,4 @@
-checked: 2026-10-23
+checked: 2026-11-02
 number: 17
 name: Tillamook Creamery
 mode: both
@@ -9,11 +9,23 @@ place:
   address: 4165 US-101, Tillamook, OR 97141
   coords: [45.48377, -123.84417]
   website: https://www.tillamook.com/visit-us/creamery#plan
-short: Watch the cheese get made, then get ice cream. Each try a flavor you'd never pick.
+short: Watch cheese get made at the Tillamook Creamery, then each try an ice cream you'd never pick.
 description: >
-  Walk the self-guided viewing gallery above the cheese factory floor, then head
-  downstairs for ice cream. Each order one flavor you'd never normally choose and
-  trade bites.
+  Walk the self-guided viewing gallery above the cheese factory floor, then hit
+  the sample counter and each rank the cheeses from best to worst. Head down
+  for ice cream: each order one flavor you'd never normally choose, trade
+  bites, and get a photo of both cones side by side before they melt.
+about: >
+  The Tillamook Creamery sits just north of the town of Tillamook, and it's
+  free to visit. Tillamook started in 1909, when ten small creameries joined
+  forces, and it's still a farmer-owned co-op of about 60 dairy farms, most of
+  them in Tillamook County. Its medium cheddar won gold at the 2010 World
+  Cheese Championship.
+
+  The visitor center opened in 2018 and draws more than a million people a
+  year, so weekends get busy. The cheeses at the sample counter change, so
+  there's always something new to try, and there's a dining hall for lunch.
+  Guided tours are available too; book ahead for those.
 for_kids:
   short: Cheese factory! Find each thing.
   steps:
@@ -28,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [beach, food]
-tags: [food, ice-cream, coast, rainy-day]
+themes: [food]
+tags: [tillamook creamery, cheese factory, ice cream, cheese samples, tillamook, oregon coast]

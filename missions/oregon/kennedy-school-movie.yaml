@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 33
 name: Movie at the Kennedy School
 mode: date
@@ -6,12 +6,26 @@ place:
   name: McMenamins Kennedy School Theater
   area: Concordia, Northeast Portland
   address: 5736 NE 33rd Ave, Portland, OR 97211
-  coords: [45.56440, -122.63110]  # APPROX: set at the entrance before publishing
+  coords: [45.56491, -122.63015]
+  website: https://www.mcmenamins.com/kennedy-school
 short: Catch a movie in the old school auditorium. Pizza and a drink from your couch.
 description: >
-  See a movie in the Kennedy School's old auditorium, where you sink into couches
-  and armchairs and order pizza and drinks to your seat. Take a photo in the
-  hallway before the lights go down.
+  Before the movie, each pick a bar to start in: the Detention Bar or the
+  Honors Bar, and defend your choice. Wander the old school hallways, covered
+  in art, and take a photo together at a classroom chalkboard. Then see a movie
+  in the school's old auditorium, where you sink into couches and armchairs and
+  order pizza and drinks to your seat.
+about: >
+  Kennedy School was built in 1915 as an elementary school in Northeast Portland
+  and closed in 1975. McMenamins restored it and reopened it in 1997, and it's
+  now on the National Register of Historic Places. Classrooms became 57 hotel
+  rooms, many still with their original chalkboards, and there's a brewery,
+  several bars and a soaking pool for overnight guests.
+
+  Nearly every wall, ceiling and doorway is covered in art and old photos, and
+  there's a hidden art room to find if the small bars are open. Some theater
+  events are 21 and over, so check before you bring anyone younger. Come early
+  for the [[kennedy-school-soaking-pool]] in the courtyard.
 duration: short
 effort: easy
 cost: $$
@@ -21,4 +35,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
 themes: [food, movies, relaxing]
-tags: [movies, food, cozy, rainy-day, portland]
+tags: [mcmenamins, kennedy school, movie theater, detention bar, historic school, northeast portland]

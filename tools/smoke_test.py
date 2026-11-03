@@ -304,6 +304,18 @@ def t_cards_are_links_with_real_addresses(site, catalog):
     page.wait_for_selector(".ticket h1")
 
 
+def t_popup_links_to_the_full_page(site, catalog):
+    page = site.home()
+    page.click("#packs .card")
+    link = page.locator('#dialog-body a.full-page')
+    href = link.get_attribute("href")
+    assert re.fullmatch(r"/missions/[a-z0-9-]+/", href), href
+    link.click()
+    page.wait_for_selector(".page .ticket h1")
+    assert page.url.endswith(href)
+    assert page.locator(".page a.full-page").count() == 0, "no full-page button on the full page itself"
+
+
 def t_share_without_a_note_is_the_mission_page(site, catalog):
     page = site.home()
     page.click("#packs .card")
@@ -583,6 +595,23 @@ def t_built_pages_load(site, catalog):
         page.wait_for_selector("h1")
     page = site.open(f"/missions/{mission['id']}/")
     assert mission["name"] in page.inner_text("h1")
+    assert all("about" not in m for m in catalog["missions"]), "a mission's about is for its web page, never catalog.json"
+    sys.path.insert(0, str(ROOT / "tools"))
+    from missions_lib import load_catalog
+    live_ids = {m["id"] for m in catalog["missions"]}
+    with_about = next((m for m in load_catalog(ROOT / "missions")[2] if m.get("about") and m["id"] in live_ids), None)
+    if with_about:   # ...but it does show on the mission's own page
+        about = site.open(f"/missions/{with_about['id']}/").locator(".mission-about")
+        assert about.count() == 1 and about.locator("p").count() >= 1, "the about text should show on the mission page"
+        assert about.locator(".about-icon svg").count() == 1, "the about card has its open-book badge"
+    linked = next(((m, t) for m in load_catalog(ROOT / "missions")[2] if m["id"] in live_ids
+                   for t in re.findall(r"\[\[([a-z0-9-]+)\]\]", str(m.get("about") or "")) if t in live_ids), None)
+    if linked:   # [[mission-id]] in an about becomes a link to that mission, showing its name
+        m, target = linked
+        link = site.open(f"/missions/{m['id']}/").locator(f'.mission-about a[href="/missions/{target}/"]')
+        name = next(x["name"] for x in catalog["missions"] if x["id"] == target)
+        assert link.count() >= 1 and link.first.inner_text() == name
+    page = site.open(f"/missions/{mission['id']}/")
     welcome = page.locator(".welcome")   # first-time visitors from Google learn what AmbleBee is
     assert "New to AmbleBee?" in welcome.inner_text() and welcome.locator('a[href="/"]').count() == 1
     assert welcome.locator(".ideas a").count() >= 1

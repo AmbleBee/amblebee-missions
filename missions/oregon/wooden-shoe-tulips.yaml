@@ -1,4 +1,4 @@
-checked: 2026-10-27
+checked: 2026-11-02
 number: 19
 name: Wooden Shoe Tulip Fest
 mode: both
@@ -7,12 +7,25 @@ place:
   name: Wooden Shoe Tulip Farm
   area: Woodburn
   address: 33814 S Meridian Rd, Woodburn, OR 97071
-  coords: [45.118598, -122.748688]
-short: Walk the tulip fields in bloom. Find a row in your favorite color.
+  coords: [45.11860, -122.74869]
+  website: https://woodenshoe.com
+short: Walk the Wooden Shoe tulip fields near Woodburn in bloom. Find a row in your favorite color.
 description: >
-  During the spring Tulip Fest, walk 40 acres of tulips stretching toward the
-  mountains. Each pick your favorite color row and take a photo in it. Wear boots;
-  the fields can be muddy.
+  During the spring Tulip Fest, walk the tulip fields with Mount Hood in the
+  distance. Each pick your favorite color row and take a photo standing in it,
+  with the mountain behind you if it's out. Then hunt for the strangest-looking
+  tulip in the field and show it off. Wear boots; the fields can be muddy.
+about: >
+  The Iverson family has farmed this land near Woodburn since 1950 and started
+  growing tulips in 1974. In 1985 a neighbor suggested opening the fields to
+  the public, and the family put an ad in the local paper for Easter weekend.
+  Tulip Fest has grown every spring since.
+
+  Today about 40 acres bloom with more than 100 kinds of tulips each March and
+  April, with views of Mount Hood on clear days. There's a wine tasting room
+  overlooking the fields, and food trucks and a small farmers market on
+  weekends. Sunrise and golden hour make the best photos. Get tickets ahead,
+  and check the bloom before you go. Make a day of it with [[aurora-antiques]], about ten minutes up the road.
 duration: short
 effort: easy
 cost: $$
@@ -21,5 +34,5 @@ season: [spring]
 time_of_day: daytime
 travel: drive
 check_ahead: [tickets, seasonal]
-themes: [wildlife, gardens]
-tags: [flowers, farm, seasonal]
+themes: [gardens, views]
+tags: [wooden shoe tulip fest, tulip fields, woodburn, mount hood view, spring flowers, willamette valley]

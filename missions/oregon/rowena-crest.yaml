@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 40
 name: Rowena Crest and the Rowena Loops
 mode: both
@@ -11,11 +11,23 @@ place:
   website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=221
 short: Drive the twisty Rowena Loops up to Rowena Crest. Hike out for the Gorge view.
 description: >
-  Take the old Columbia River Highway from Mosier up to Rowena Crest, then
-  photograph the famous looping road from the viewpoint. From there, hike the
-  trail up Tom McCall Point for wildflowers in spring and a huge view over the
-  Gorge. The trail is closed November through February, there's no shade, and
-  dogs aren't allowed on the trails.
+  Take the old Columbia River Highway from Mosier up the twisty Rowena Loops to
+  Rowena Crest, and photograph the looping road from the viewpoint. Then hike
+  up Tom McCall Point. On the way, each try to be first to spot both Mount Hood
+  and Mount Adams, and get a photo at the top with the whole Gorge behind you.
+  There's no shade, so bring water.
+about: >
+  The Historic Columbia River Highway, built from 1913 to 1922, is called the
+  first planned scenic highway in the country. Engineer Samuel Lancaster laid
+  it out, inspired by the mountain roads of Switzerland, and the Rowena Loops
+  are its famous curves near the east end. It's now a National Historic
+  Landmark.
+
+  The trail up Tom McCall Point is about 3 miles round trip with roughly 1,000
+  feet of climbing, through a Nature Conservancy preserve known for spring
+  balsamroot and lupine. Dogs aren't allowed, poison oak and ticks are common,
+  and the upper trail closes each winter and early spring to protect the plants,
+  so check before you go.
 duration: half-day
 effort: moderate
 cost: free
@@ -24,5 +36,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
-themes: [views, hiking, rocks-fossils, gardens, road-trips]
-tags: [scenic-drive, hiking, wildflowers, gorge, views]
+caution: "Poison oak and ticks are common on the trail. Wear long pants. No dogs on the preserve."
+themes: [views, hiking, road-trips, history]
+tags: [rowena loops, tom mccall point, historic columbia river highway, wildflowers, columbia gorge, mosier]

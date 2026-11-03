@@ -1,4 +1,4 @@
-checked: 2026-11-01
+checked: 2026-11-02
 number: 31
 name: Antiquing in Aurora
 mode: both
@@ -8,15 +8,21 @@ place:
   area: Aurora
   coords: [45.23172, -122.75597]
   website: https://www.ci.aurora.or.us
-short: Hunt for the oddest treasure in the antique shops of historic Aurora, then grab lunch in town.
+short: Hunt for the oddest treasure in Aurora's antique shops, a historic colony town south of Portland.
 description: >
-  Aurora began in 1856 as the Aurora Colony, a communal settlement known for
-  its food, crafts and traveling band, and in 1974 it became Oregon's first
-  historic district of its kind. Today its old colony buildings are full of
-  antique shops. Spend a slow morning or afternoon wandering them, and each of
-  you hunt for the strangest or most charming thing you can find, then show
-  it off. Buy something small only if you love it. If you want the backstory,
-  stop by the Old Aurora Colony Museum, then sit down for a bite to eat in town.
+  Spend a slow morning or afternoon wandering the antique shops in Aurora's old
+  colony buildings. Each hunt for the strangest or most charming thing you can
+  find, take a photo of yourself holding it, then show it off. Buy something
+  small only if you love it. Stop by the Old Aurora Colony Museum for the
+  backstory, then sit down for lunch at one of the bakeries or cafés in town.
+about: >
+  Aurora sits about 22 miles south of Portland on Highway 99E, halfway to Salem.
+  It began in 1856 as the Aurora Colony, a communal settlement known for its
+  food, crafts and traveling band, and in 1974 it became Oregon's first historic
+  district of its kind.
+
+  Today the colony buildings are full of antique and vintage shops, including an
+  architectural salvage shop in the town's 1890 seed mill. In spring, pair it with the tulip fields at [[wooden-shoe-tulips]], about ten minutes away.
 duration: half-day
 effort: easy
 cost: $$
@@ -26,4 +32,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours]
 themes: [history, small-towns, museums]
-tags: [antiques, vintage, aurora colony, shopping]
+tags: [antiques, antique shopping, vintage, architectural salvage, aurora colony, day trip from portland]

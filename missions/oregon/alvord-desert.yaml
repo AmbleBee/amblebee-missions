@@ -1,4 +1,4 @@
-checked: 2026-10-27
+checked: 2026-11-02
 number: 50
 name: Alvord Desert
 mode: both
@@ -6,17 +6,24 @@ who: [solo, friends, family, kids]
 place:
   name: Alvord Desert playa (Frog Springs access)
   area: Below Steens Mountain, north of Fields
-  coords: [42.507913, -118.532454]
+  coords: [42.50791, -118.53245]
   website: https://www.blm.gov/programs/national-conservation-lands/oregon-washington/alvord-desert-wsa
-short: Walk out onto the empty Alvord playa under Steens Mountain. Stay for the stars.
+short: Walk onto the Alvord Desert, a dry lakebed under Steens Mountain, and stay for the Milky Way.
 description: >
-  Walk (or carefully drive) out onto the Alvord Desert, a dry lakebed so flat
-  and empty it feels like another planet, with Steens Mountain towering over
-  it. Spell something out together in footprints, take the classic photo of you tiny on the cracked white ground, and stay after sunset for
-  some of the darkest skies in Oregon. Use the free Frog Springs access; it's
-  best July through November, when the playa is dry. If there's any water or
-  mud on it, stay off, since getting stuck out there is very expensive. Grab a
-  milkshake at Fields Station on the way.
+  Walk (or carefully drive) out onto the cracked white floor of the Alvord
+  Desert, with Steens Mountain towering over it. Spell something out together in
+  footprints and take the classic photo of you tiny in the middle of it. Stay
+  after sunset, when the Milky Way shows up over some of the darkest skies in
+  Oregon. If there's any water or mud on the playa, stay off. Getting stuck out
+  there is very expensive.
+about: >
+  The Alvord Desert is a dry lakebed in southeast Oregon, so flat and empty it
+  feels like another planet. Steens Mountain rises more than a mile above its
+  western edge, and the playa gets less than 4 inches of rain a year. In 1976
+  Kitty O'Neil drove a jet car across it at 512 miles an hour.
+
+  Use the free Frog Springs access. The playa is usually dry from July through
+  November. Grab a milkshake at Fields Station on the way.
 for_kids:
   short: Desert hunt! Find each thing.
   steps:
@@ -36,6 +43,6 @@ season: [summer, fall]
 time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
-caution: "Limited Cell Service: Some visitors report having cell reception in this area, but coverage is unreliable. Do not rely on cell service."
+caution: "No reliable cell service out here. Download offline maps and tell someone your plan before you go."
 themes: [views, deserts, stars]
-tags: [desert, stargazing, remote, views, high-desert, eastern-oregon]
+tags: [playa, milky way, steens mountain, land speed record, fields station, eastern oregon]

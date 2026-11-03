@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 36
 name: Hollywood Theatre
 mode: date
@@ -6,12 +6,23 @@ place:
   name: Hollywood Theatre
   area: Hollywood District, Portland
   address: 4122 NE Sandy Blvd, Portland, OR 97212
-  coords: [45.53550, -122.62060]  # APPROX: set at the entrance before publishing
+  coords: [45.53558, -122.62085]
+  website: https://hollywoodtheatre.org
 short: See a film at the 1926 Hollywood Theatre. Pick something you'd never stream.
 description: >
-  Catch a movie at Portland's historic movie palace, which shows classics, cult
-  favorites and films on real film. Pick something neither of you would ever
-  choose at home. Take a photo under the marquee before you go in.
+  Catch a movie at Portland's 1926 movie palace. Pick something neither of you
+  would ever choose at home: a kung fu classic, a cult favorite or something
+  shown on real film. Take a photo under the marquee before you go in. Over a
+  drink or dessert afterward, each sum up the movie in one word.
+about: >
+  The Hollywood Theatre opened in July 1926 with nearly 1,500 seats for
+  vaudeville and silent films, and the whole Hollywood District is named after
+  it. Its Spanish Colonial Revival front is on the National Register of
+  Historic Places, and a nonprofit has restored it with new seats, sound and a
+  new marquee.
+
+  It still shows movies on 16mm, 35mm and 70mm film as well as digital, and it's
+  known for series like Kung Fu Theater and B-Movie Bingo.
 duration: short
 effort: easy
 cost: $$
@@ -21,4 +32,4 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets]
 themes: [history, movies]
-tags: [movies, history, rainy-day, portland]
+tags: [historic movie theater, 70mm film, hollywood district, b-movie bingo, kung fu theater, portland]

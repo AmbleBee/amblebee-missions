@@ -1,20 +1,30 @@
-checked: 2026-10-27
+checked: 2026-11-02
 number: 51
-name: Crystal Crane Hot Springs
+name: Crane Hot Springs
 mode: both
 who: [solo, friends, family, kids]
 place:
-  name: Crystal Crane Hot Springs
+  name: Crane Hot Springs (formerly Crystal Crane Hot Springs)
   area: Hwy 78 near Crane, southeast of Burns
-  coords: [43.440879, -118.639820]
+  address: 59315 OR-78, Burns, OR 97720
+  coords: [43.44088, -118.63982]
   website: https://cranehotsprings.com
-short: Soak in the big hot pond at Crystal Crane under a huge high-desert sky.
+short: Soak in the big hot spring pond at Crane Hot Springs near Burns under a huge high-desert sky.
 description: >
-  Soak in a big natural hot spring pond, around 101 degrees, out in the open
-  high desert with nothing but sagebrush and sky around you. Go at sunset or
-  on a cold night, when the steam rises and the stars come out. For more
-  privacy, book one of the private indoor tubs fed by the same water. Bring
-  towels and water, and book ahead on weekends.
+  Soak in the big hot spring pond out in the open high desert, with nothing but
+  sagebrush and sky around you. Go at sunset or on a cold night, when the steam
+  rises and the stars come out. Get a photo of the steam drifting off the pond
+  against the sunset, then lie back and each try to spot the first star or
+  satellite. Bring towels and water.
+about: >
+  Crane Hot Springs, called Crystal Crane Hot Springs until 2026, sits on
+  Highway 78 about 25 miles southeast of Burns. The spring comes out of the
+  ground at about 165 degrees and is cooled to around 100 for the soaking pond,
+  which is nearly 7 feet deep in the middle.
+
+  Day passes are sold for the pond, private tubs rent by the hour, and there are
+  cabins, teepees and an RV park if you want to stay the night. Book ahead on
+  weekends.
 for_kids:
   short: Hot pond day! Find each thing.
   steps:
@@ -31,5 +41,6 @@ season: any
 time_of_day: evening
 travel: day-trip
 check_ahead: [hours, reservation]
+caution: "The pond is nearly 7 feet deep in places. Keep kids within reach."
 themes: [deserts, swimming, stars, relaxing]
-tags: [hot-springs, relaxing, stargazing, high-desert, eastern-oregon]
+tags: [hot springs, crystal crane, burns oregon, soaking pond, high desert, eastern oregon]

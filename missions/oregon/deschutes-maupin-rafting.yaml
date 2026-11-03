@@ -1,23 +1,31 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 61
 name: Raft the Deschutes from Maupin
 mode: both
-who: [friends]
+who: [friends, family]
 place:
   name: Sage Canyon River Co.
   area: Maupin, Lower Deschutes River
-  address: 509 Deschutes Ave, Maupin, OR 97037  # verify: confirm the trip meeting point when booking
-  coords: [45.17486, -121.08144]  # shop location from sagerafting.com map link
+  address: 509 Deschutes Ave, Maupin, OR 97037
+  coords: [45.174858, -121.081452]
   website: https://www.sagerafting.com
-short: Paddle a full day of Deschutes whitewater out of Maupin. Survive the big rapids together.
+short: Raft the Lower Deschutes out of Maupin, Oregon's whitewater capital. Survive Boxcar and Oak Springs.
 description: >
-  Book a guided full-day raft trip out of Maupin and spend the day paddling
-  about thirteen miles of the Lower Deschutes through a desert canyon of basalt
-  and sagebrush, with class II to IV rapids and a riverside barbecue lunch.
-  Paddle hard when the guide calls it and hang on through the big ones. The
-  sun is strong in the canyon, so wear quick-dry clothes, river shoes, a hat
-  and sunglasses with a strap. Get a soaked-and-grinning photo of you on the beach after the last rapid. Book ahead in summer; kids need to be
-  at least 6 to come along.
+  Take a guided full-day raft trip out of Maupin through a desert canyon of
+  basalt and sagebrush. Before each big rapid, everyone in the raft guesses
+  who'll get soaked first. Paddle hard when the guide calls it, hang on through
+  the big ones, and get a photo of your whole crew soaked and grinning on the
+  beach after the last rapid.
+about: >
+  Maupin, a couple of hours from Portland, calls itself Oregon's whitewater
+  capital, and more than a dozen outfitters run the Lower Deschutes from here.
+  The day stretch has class III rapids like Wapinitia, Boxcar (named for a 1950s
+  train wreck) and Oak Springs, and full-day trips usually include a riverside
+  barbecue lunch.
+
+  The sun is strong in the canyon, so wear quick-dry clothes, river shoes, a hat
+  and sunglasses with a strap. Book ahead in summer, and check the minimum age
+  if you're bringing kids. Just up the road, the White River tumbles over [[white-river-falls]] on its way into the Deschutes.
 steps:
   - Life jackets on at the put-in
   - The canyon walls from the raft
@@ -31,5 +39,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
 themes: [lakes-rivers, boating, rocks-fossils]
-tags: [rafting, whitewater, river, canyon, deschutes, maupin]
+tags: [whitewater rafting, lower deschutes, maupin, boxcar rapid, oak springs, guided raft trip]
 credit:

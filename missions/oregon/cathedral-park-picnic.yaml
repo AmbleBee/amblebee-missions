@@ -1,4 +1,4 @@
-checked: 2026-10-27
+checked: 2026-11-02
 number: 10
 name: Cathedral Park Picnic
 mode: date
@@ -6,13 +6,23 @@ place:
   name: Cathedral Park
   area: St. Johns, Portland
   address: N Edison St & N Pittsburg Ave, Portland, OR 97203
-  coords: [45.587679, -122.762600]
+  coords: [45.58768, -122.76260]
   website: https://www.portland.gov/parks/cathedral-park
-short: Picnic under the St. Johns Bridge arches. Stay until the bridge lights up.
+short: Picnic in Cathedral Park under the Gothic arches of Portland's St. Johns Bridge. Stay until dusk.
 description: >
-  Pack a picnic and spread out on the lawn under the Gothic arches of the
-  St. Johns Bridge, right by the Willamette. Each bring one snack the other
-  doesn't know about. If you can, stay until dusk.
+  Pack a picnic and spread out on the lawn under the Gothic arches of the St.
+  Johns Bridge, right by the Willamette. Each bring one snack the other doesn't
+  know about. Lie back on the grass and take a photo looking straight up through
+  the arches. Stay until dusk, when the arches turn into silhouettes against the
+  sky.
+about: >
+  Cathedral Park sits at the east end of the St. Johns Bridge in North Portland,
+  and it's named for the soaring Gothic arches that hold the bridge up. The
+  bridge opened in 1931, its green towers rise 400 feet, and it's the only major
+  highway suspension bridge in the Willamette Valley.
+
+  Long before the bridge, this riverbank was a fishing and camping spot for
+  Native tribes, and William Clark and eight of his men camped here in 1806.
 duration: short
 effort: easy
 cost: $
@@ -20,5 +30,5 @@ setting: outdoor
 season: [spring, summer, fall]
 time_of_day: evening
 travel: local
-themes: [lakes-rivers, picnic, architecture]
-tags: [picnic, bridge, river, portland]
+themes: [lakes-rivers, picnic, architecture, parks]
+tags: [st johns bridge, gothic arches, willamette river, north portland, lewis and clark, picnic spot]

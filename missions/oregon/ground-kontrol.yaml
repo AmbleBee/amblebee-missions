@@ -7,14 +7,22 @@ place:
   name: Ground Kontrol Classic Arcade
   area: Old Town, Portland
   address: 115 NW 5th Ave, Portland, OR 97209
-  coords: [45.524055, -122.675469]
+  coords: [45.52406, -122.67547]
   website: https://groundkontrol.com/
-short: Play retro arcade games and pinball. Best of three on a game neither of you knows.
+short: Retro arcade games and pinball at Ground Kontrol in Portland. Best of three on a game nobody knows.
 description: >
-  Load up on tokens at this classic arcade full of old cabinets and pinball
+  Load up at Portland's classic arcade, full of old cabinets and pinball
   machines. Each pick a game the other has never played, then go best of three
-  on one neither of you knows. Photo of your high score. Check the age rules if
-  anyone under 21 is coming.
+  on one that's new to everybody. Whoever wins puts their initials on the high
+  score screen, and you photograph it as proof. Check the age rules if anyone
+  under 21 is coming.
+about: >
+  Ground Kontrol has been Portland's classic arcade since 1999, packed with
+  Golden Age arcade cabinets and long rows of pinball machines in Old Town, with
+  a full bar since 2011. It's all ages in the afternoon and 21 and over in the
+  evening.
+
+  If you get hooked, they run monthly pinball tournaments.
 duration: short
 effort: easy
 cost: $
@@ -24,4 +32,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [games, quirky, playful]
-tags: [games, retro, playful, rainy-day, portland]
+tags: [retro arcade, pinball, video games, arcade bar, old town portland]

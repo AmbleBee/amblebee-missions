@@ -1,4 +1,4 @@
-checked: 2026-10-23
+checked: 2026-11-02
 number: 37
 name: Saddle Mountain
 mode: both
@@ -9,14 +9,27 @@ place:
   coords: [45.96288, -123.68985]
   website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=140
   links:
-    - label: alltrails
+    - label: AllTrails
       url: https://www.alltrails.com/trail/us/oregon/saddle-mountain
-short: Climb Saddle Mountain to the summit. On a clear day you can see the ocean.
+short: Climb Saddle Mountain near Seaside to the summit. On a clear day you can see the ocean.
 description: >
-  A steep climb through forest and up open rocky slopes to one of the best views
-  in northwest Oregon: the Pacific on one side and Cascade volcanoes on the
-  other. Spring brings wildflowers. Wear good boots; the top section is steep
-  and slick when wet. The park has had closures for repairs, so check first.
+  Climb through forest and up open rocky slopes to the summit of Saddle
+  Mountain. At the top, find where the Columbia River meets the Pacific, then
+  see who can name the most Cascade volcanoes on the other horizon. Get a
+  summit photo with the ocean behind you. Wear good boots; the top section is
+  steep and slick when wet.
+about: >
+  Saddle Mountain's summit is 3,288 feet up in the northern Oregon Coast Range.
+  The trail is about 2.4 miles with more than
+  1,600 feet of climbing, and it's steep in places, with wire mesh on some
+  sections for grip. On a clear day you can see miles of Pacific shoreline,
+  the mouth of the Columbia River and the Cascade peaks of Oregon and
+  Washington.
+
+  In spring the slopes bloom with rare wildflowers, like Saddle Mountain
+  bittercress and rosy lewisia. It's day use only, with no drinking water, and
+  the park sometimes closes for snow, wind or fallen trees. Dogs must be
+  leashed, and the wire mesh can hurt their paws.
 duration: half-day
 effort: hard
 cost: free
@@ -25,5 +38,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [views, hiking, gardens]
-tags: [hiking, summit, views, wildflowers]
+themes: [views, hiking, mountains]
+tags: [saddle mountain, summit hike, seaside, wildflowers, oregon coast range, columbia river]

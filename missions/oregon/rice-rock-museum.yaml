@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 20
 name: Rice NW Museum of Rocks and Minerals
 mode: both
@@ -9,11 +9,23 @@ place:
   address: 26385 NW Groveland Dr, Hillsboro, OR 97124
   coords: [45.57420, -122.94792]
   website: https://www.ricenorthwestmuseum.org
-short: Tour the rock museum. Each pick the crystal you'd keep if you could.
+short: Tour the Rice rock museum in Hillsboro. Each pick the crystal you'd keep if you could.
 description: >
   Explore the crystals, meteorites, fossils and the glowing fluorescent mineral
-  room. Each pick the one specimen you'd take home if you were allowed, and
-  photograph it. (The grounds and nature trails are free for anyone to explore)
+  room. First, race to find the biggest thunderegg in the building. Then each
+  pick the one specimen you'd take home if you were allowed, photograph it,
+  and make your case. Afterward, walk the free nature trails on the grounds.
+about: >
+  Richard and Helen Rice started collecting rocks in 1938 and built this
+  ranch-style house north of Hillsboro in 1952 to show them off. It was the
+  first ranch-style home in Oregon added to the National Register of Historic
+  Places, and it opened as a nonprofit museum in 1997.
+
+  With more than 20,000 specimens, it's the largest museum of its kind in the
+  Pacific Northwest and a Smithsonian Affiliate. Highlights include the Alma
+  Rose, a big red rhodochrosite crystal; the world's largest known opal-filled
+  thunderegg, which weighs well over a ton; and a meteorite from Namibia. The
+  museum is closed Mondays and Tuesdays.
 for_kids:
   short: Rock hunt! Find each treasure.
   steps:
@@ -31,4 +43,4 @@ travel: drive
 check_ahead: [hours, tickets]
 discounts: [military, senior, educator,first-responder, student]
 themes: [rocks-fossils, museums]
-tags: [museum, geology, rainy-day]
+tags: [rice northwest museum, rocks and minerals, thunderegg, meteorite, crystals, hillsboro]

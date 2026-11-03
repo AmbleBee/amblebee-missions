@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 47
 name: Joseph, Oregon's Bronze Town
 mode: both
@@ -6,16 +6,27 @@ who: [solo, friends, family, kids]
 place:
   name: Downtown Joseph (Main Street)
   area: Joseph, Wallowa Valley
-  coords: [45.35400, -117.22950]  # APPROX: set on Main St downtown before publishing
+  coords: [45.35426, -117.22977]
   website: https://josephoregon.com
 short: Hunt the bronze statues on Main Street in Joseph. Tour the foundry that casts them.
 description: >
   Walk Main Street in the little mountain town of Joseph, with the snowy
-  Wallowas right behind it and life-size bronze sculptures on nearly every
-  corner. Each pick a favorite statue and pose like it for a photo. To see how
-  they're made, take the Valley Bronze foundry tour; it has run Monday through
-  Thursday at 11 a.m., so call ahead. Finish with coffee or a slice of pie in
-  one of the galleries and cafés downtown.
+  Wallowas right behind it and bronze sculptures on nearly every corner. Each
+  pick a favorite statue and pose like it for a photo. To see how they're made,
+  take a tour of the Valley Bronze foundry; tours run on weekday mornings, so
+  call ahead. Finish with coffee or a slice of pie at one of the cafés
+  downtown.
+about: >
+  Joseph is a town of about 1,200 people in the Wallowa Valley, named in 1879
+  for the Nez Perce leader Chief Joseph, whose larger-than-life bronze stands
+  on Main Street. Valley Bronze has been casting sculptures here since 1982,
+  and the town now has three foundries and more than a dozen bronzes along its
+  main street. The foundry tour shows how an artist's original is molded and
+  cast in metal; it costs a little, and kids 12 and under are free.
+
+  Wallowa Lake sits just south of town, where the [[wallowa-lake-tramway]] climbs
+  to the top of 8,150-foot Mount Howard. The peaks of the Eagle Cap Wilderness
+  behind town have earned the area the nickname Little Switzerland.
 for_kids:
   short: Statue hunt! Find each thing.
   steps:
@@ -33,4 +44,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [walks, art, small-towns]
-tags: [small-town, art, sculpture, walking, eastern-oregon, wallowas]
+tags: [bronze sculptures, valley bronze foundry, wallowa lake, chief joseph, eagle cap wilderness, eastern oregon]

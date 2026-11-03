@@ -1,4 +1,4 @@
-checked: 2026-10-27
+checked: 2026-11-02
 number: 9
 name: Crater Lake
 mode: both
@@ -6,12 +6,25 @@ who: [solo, friends, family]
 place:
   name: Rim Village, Crater Lake National Park
   area: Crater Lake National Park
-  coords: [42.911113, -122.143624]
-short: Stand at the rim of Crater Lake. Agree on one word for that blue.
+  coords: [42.91111, -122.14362]
+  website: https://www.nps.gov/crla/
+short: Stand at the rim of Crater Lake, the deepest lake in the U.S., and agree on one word for that blue.
 description: >
-  Drive up to the rim and get your first look at the deepest lake in the country.
-  Walk part of the rim, find a viewpoint you like, and each pick one word for the
-  color. Summer opens up the whole Rim Drive; in winter only some of it is open.
+  Drive up to Rim Village for your first look at Crater Lake, then walk part of
+  the rim and find a viewpoint you like. Spot Wizard Island, a little volcano
+  inside the volcano, and the Phantom Ship rock near the south shore. Each pick
+  one word for the color, write it on your hand, and photograph it held up
+  against the lake. Then agree on a winner.
+about: >
+  About 7,700 years ago a volcano called Mount Mazama erupted and collapsed, and
+  the bowl it left slowly filled with rain and snow. Crater Lake is 1,949 feet
+  deep, the deepest lake in the United States, and no rivers flow in, which is
+  why the water is so clear and so blue.
+
+  The full 33-mile Rim Drive is only open in summer, since the park gets around
+  40 feet of snow a year; in winter you can still reach the rim at Rim Village.
+  The trail down to the water at Cleetwood Cove is closed for a multi-year
+  rebuild.
 duration: all-day
 effort: easy
 cost: $$
@@ -21,4 +34,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
 themes: [views, lakes-rivers, parks]
-tags: [lake, views, national-park]
+tags: [deepest lake, national park, mount mazama, wizard island, rim drive, southern oregon]

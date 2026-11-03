@@ -35,7 +35,7 @@ LIST_ALLOWED = {
     "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
 KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit",
-                                                              "caution", "caution_until", "draft", "themes", "checked"}
+                                                              "caution", "caution_until", "draft", "themes", "checked", "about"}
 GEAR = {
     # Water
     "kayak", "canoe", "paddleboard", "life-jackets", "wetsuit", "river-tube", "fishing-gear",
@@ -105,6 +105,9 @@ ID_RE = re.compile(r"^[a-z0-9][a-z0-9-]*$")
 CREDIT_MAX = 40  # shown as "Suggested by …" under the mission title
 SHORT_MAX = 100
 CHECKED_EARLIEST = datetime.date(2026, 1, 1)   # a checked date before this is a typo in the year
+MISSION_LINK = re.compile(r"\[\[([a-z0-9-]+)\]\]")   # [[wallowa-lake-tramway]] in an about links to that mission
+ABOUT_MAX = 1500   # the "About this place" section on a mission's web page; a few short paragraphs at most
+DESCRIPTION_MAX = 800   # the mission card on the Hive and the top of the ticket: what to do, not the whole story (aim for about 400)
 CAUTION_MAX = 200  # the yellow box on the website ticket; about 3 lines on a phone, so shorter is better
 # wording that assumes a couple. Fine on date-only missions, wrong once friends, family or one person can go
 COUPLE_WORDS = re.compile(r"\b(the two of you|you two|both of you|your partner|your date|hold hands)\b", re.I)
@@ -345,6 +348,18 @@ def check_catalog(root):
                                 "(the site adds \"Suggested by\" itself; no brackets or quotes)")
         if "draft" in m and not isinstance(m["draft"], bool):
             problems.append(f"{where}: draft should be true or false (or leave the line out)")
+        # description: the mission itself (what to do, the challenge, the photo), short enough for the Hive's card.
+        # The background (history, numbers, tips) goes in about, which only the website shows.
+        desc = m.get("description")
+        if isinstance(desc, str) and len(" ".join(desc.split())) > DESCRIPTION_MAX:
+            problems.append(f"{where}: description is {len(' '.join(desc.split()))} characters; keep it to {DESCRIPTION_MAX} "
+                            f"(what to do and what to photograph). Move the background and facts into about")
+        ab = m.get("about")
+        if "about" in m and ab not in (None, ""):
+            if not isinstance(ab, str) or not ab.strip():
+                problems.append(f"{where}: about should be text (write `about: >` with the paragraphs indented below it)")
+            elif len(" ".join(ab.split())) > ABOUT_MAX:
+                problems.append(f"{where}: about is {len(' '.join(ab.split()))} characters; keep it to {ABOUT_MAX}")
         # caution: one short warning shown in a yellow box on the website ticket (never on the camera)
         ca = m.get("caution")
         if "caution" in m and ca not in (None, ""):
@@ -376,4 +391,16 @@ def check_catalog(root):
                 problems.append(f"{where}: gear item {g.get('item') if isinstance(g, dict) else g!r} isn't in the gear list (SCHEMA.md)")
             elif "rent" in g and g["rent"] not in RENT:
                 problems.append(f"{where}: gear rent '{g['rent']}' should be one of {sorted(RENT)}")
+    # [[mission-id]] in about links to another mission's page; it must name a real mission, and links only work in about
+    all_ids = {m["id"] for m in missions}
+    for m in missions:
+        where = Path(m["file"]).relative_to(root)
+        for key in ("short", "description", "name"):
+            if MISSION_LINK.search(str(m.get(key) or "")):
+                problems.append(f"{where}: [[...]] links only work in about (the {key} goes to the camera and the Hive)")
+        for target in MISSION_LINK.findall(str(m.get("about") or "")):
+            if target not in all_ids:
+                problems.append(f"{where}: about links to [[{target}]], but there's no mission with that file name (typo?)")
+            elif target == m["id"]:
+                problems.append(f"{where}: about links to itself with [[{target}]]")
     return problems

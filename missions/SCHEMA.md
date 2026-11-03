@@ -54,7 +54,7 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 | `name` | Mission title |
 | `mode` | `date` (you and your partner), `adventure` (everyone else), or `both` |
 | `short` | One line for the AmbleBee's e-ink screen, 100 characters max |
-| `description` | A few sentences for the Hive's mission card |
+| `description` | The mission itself, in a few sentences: what to do, a small challenge, and the photo to take. Shown on the Hive's mission card and the ticket. Aim for about 400 characters (800 max); the background goes in `about` |
 | `duration` | `short` (1-3 hrs), `half-day`, `all-day` |
 | `effort` | `easy`, `moderate`, `hard` |
 
@@ -64,6 +64,7 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 |---|---|
 | `who` | List of who else can come: `solo`, `friends`, `family`, `kids`. Date-only missions leave it out. [none] |
 | `for_kids` | Required when `who` includes `kids`. `short`: one simple sentence; `steps`: simple photo prompts, one per camera screen |
+| `about` | The background that makes the place interesting: history, numbers, practical tips (parking, permits, best season). **Website only**: shown on the mission's own page under "About this place" (where Google reads it), left out of catalog.json so the camera and the Hive never get it. Write `about: >` with the text indented below; a blank line starts a new paragraph. 1500 characters max. To link to another mission, write its file name in double brackets, like `[[wallowa-lake-tramway]]`: the page shows the mission's name as a link (plain text while that mission is a draft), and the check catches typos. Links only work in `about`. [none] |
 | `steps` | Prompts for a guided mission, one camera screen each [none] |
 | `place` | **Required in every state pack** (Amble Oregon, Amble Texas...), **left out in Amble Anywhere**; the checker enforces both. Fields: `name`, `area`, `address`, `coords: [lat, lon]` (required in state packs: the entrance, dock or trailhead, 5 decimals; used for Near you and distances), optional `website`, optional `links` (up to 3 extra buttons: a list of `label` + `url`, labels 25 characters max, e.g. `- label: Bike rentals` / `url: https://...`). Map links are never stored; the Hive builds them from the address or coords. |
 | `cost` | `free`, `$` (under $20 for two), `$$` ($20-60), `$$$` (over $60) [`$`] |

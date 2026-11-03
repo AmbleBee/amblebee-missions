@@ -7,19 +7,26 @@ place:
   name: Astoria Column
   area: Astoria
   address: 1 Coxcomb Dr, Astoria, OR 97103
-  coords: [46.181360, -123.817544]
+  coords: [46.18136, -123.81754]
   website: https://astoriacolumn.org
 short: Climb all 164 steps of the Astoria Column and send a balsa plane flying off the top.
 description: >
-  The Astoria Column stands 125 feet tall on top of Coxcomb Hill, wrapped in a
-  spiral mural of 14 scenes from the area's history. Walk around the base and
-  pick your favorite scene, then climb the 164 spiral steps (there's no
-  elevator) to the lookout. From the top you can see the Columbia River
-  meeting the Pacific, the Astoria-Megler Bridge and the hills of the coast.
-  Grab a $1 balsa plane from the gift shop on the way up, count down together
-  and launch it off the top, then race down to find where it landed. Climbing
-  is free; parking is a yearly pass per car. Check the gift shop hours before
-  you go if you want a plane.
+  Walk around the base of the Astoria Column and each pick your favorite scene
+  in the painted spiral. Grab a $1 balsa plane from the gift shop, then climb
+  the 164 spiral steps to the lookout. Count down together, launch your planes
+  off the top and try to get a photo of yours mid-flight. Then race down to
+  find where it landed.
+about: >
+  The Astoria Column stands 125 feet tall on top of Coxcomb Hill and turned 100
+  in 2026. It's wrapped in a spiral mural of 14 scenes from the area's history,
+  etched into the plaster by Italian artist Attilio Pusterla. There's no
+  elevator. From the top you can see the Columbia River meeting the Pacific,
+  the Astoria-Megler Bridge and the hills of the coast.
+
+  The $1 balsa planes are a local tradition, kept cheap by an anonymous donor.
+  Climbing is free; parking is a yearly pass per car. The park is open early
+  until late, but the gift shop keeps shorter hours that change with the
+  seasons, so check before you go if you want a plane. Make a day of it with the [[peter-iredale-wreck]] on the beach nearby.
 for_kids:
   short: Climb the tower and fly a plane off the top!
   steps:

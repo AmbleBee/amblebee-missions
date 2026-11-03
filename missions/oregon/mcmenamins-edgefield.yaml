@@ -1,4 +1,4 @@
-checked: 2026-10-23
+checked: 2026-11-02
 number: 42
 name: McMenamins Edgefield
 mode: date
@@ -10,10 +10,23 @@ place:
   website: https://www.mcmenamins.com/edgefield
 short: Spend a cozy day at Edgefield. Find every hidden little bar on the grounds.
 description: >
-  Wander the old poor farm turned hotel: painted hallways, gardens, a winery and
-  little bars tucked into odd corners. Add the soaking pool or the movie theater
-  if you like. Try to find every hidden bar on the property, and pick your
-  favorite for one last drink.
+  Wander the old poor farm turned hotel, through painted hallways, gardens and
+  little bars tucked into sheds and odd corners. Try to find every bar on the
+  property, take a photo toasting in the tiny Little Red Shed, and pick your
+  favorite for one last drink. If you have time, add a round on the par-3 pub
+  golf course or a movie at the Power Station Theater.
+about: >
+  Edgefield opened in 1911 as the county poor farm, where people with nowhere
+  else to go lived and worked the land; at its peak in 1935 it housed more
+  than 600 residents. It closed in the early 1980s and was nearly torn down
+  before McMenamins bought it in 1990, the same year it joined the National
+  Register of Historic Places.
+
+  Today its 74 acres hold more than 100 hotel rooms (with no TVs or phones), a
+  winery, brewery and distillery, two par-3 pub golf courses, a movie theater,
+  gardens, and summer concerts on the lawn. Glassblowing and pottery happen on
+  site, and art covers nearly every wall. The soaking pool is for overnight
+  guests only.
 duration: half-day
 effort: easy
 cost: $$
@@ -22,5 +35,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, reservation]
-themes: [food, quirky, relaxing]
-tags: [cozy, quirky, rainy-day, food]
+themes: [drinks, quirky, history, relaxing]
+tags: [mcmenamins edgefield, troutdale, little red shed, pub golf, poor farm, columbia gorge]

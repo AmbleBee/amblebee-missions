@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 41
 name: Vista House at Crown Point
 mode: both
@@ -12,9 +12,21 @@ place:
 short: Stop at Vista House high above the Gorge. Hold onto your hat in the wind.
 description: >
   Drive the Historic Columbia River Highway to the stone Vista House perched on
-  Crown Point, with a view straight up the Columbia River Gorge. Look inside the
-  building if it's open, then lean into the famous wind for a photo with the
-  river behind you. Pairs well with the waterfalls further east.
+  Crown Point, with a view straight up the Columbia River Gorge. Before you
+  look it up, each guess how high above the river you're standing. Look inside
+  if it's open, then lean into the famous wind for a photo with the river
+  behind you. Pairs well with the waterfalls further east.
+about: >
+  Vista House was built from 1916 to 1918 on Crown Point, 733 feet above the
+  Columbia River, as a rest stop for travelers on the brand-new Columbia River
+  Highway and a memorial to Oregon's pioneers. Architect Edgar Lazarus gave it
+  a gray sandstone outside, a green tile roof, marble inside, a bronze-lined
+  dome and opalescent glass windows.
+
+  It cost so much that some Oregonians called it the "$100,000 outhouse." It's
+  on the National Register of Historic Places and part of the highway's
+  National Historic Landmark district. The building keeps its own hours, so
+  check before you go if you want to see inside.
 duration: short
 effort: easy
 cost: free
@@ -23,5 +35,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, conditions]
-themes: [views, rocks-fossils, history, road-trips]
-tags: [views, history, gorge, scenic-drive]
+themes: [views, history, architecture, road-trips]
+tags: [vista house, crown point, columbia river gorge, historic columbia river highway, corbett, scenic viewpoint]

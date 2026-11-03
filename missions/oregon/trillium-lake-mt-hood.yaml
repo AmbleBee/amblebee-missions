@@ -1,4 +1,4 @@
-checked: 2026-10-27
+checked: 2026-11-02
 number: 29
 name: Mount Hood from Trillium Lake
 mode: both
@@ -7,13 +7,25 @@ place:
   name: Trillium Lake Day Use Area
   area: Mount Hood National Forest
   address: Trillium Lake Rd, Government Camp, OR 97028
-  coords: [45.267194, -121.738833]
+  coords: [45.26719, -121.73883]
   website: https://www.fs.usda.gov/r06/mthood/recreation/trillium-lake-day-use
-short: Walk around Trillium Lake. Catch Mount Hood reflected in the water.
+short: Walk around Trillium Lake near Government Camp. Catch Mount Hood reflected in the water.
 description: >
-  Walk the easy loop around Trillium Lake and find the spot where Mount Hood
-  reflects in the water. Calm mornings give the best reflection. In winter the
-  road closes and it becomes a snowshoe trip.
+  Walk the easy loop around Trillium Lake. Each scout your own spot for the
+  best shot of Mount Hood reflected in the water, take your photo, and compare
+  at the end to pick a winner. Calm mornings give the clearest reflection. In
+  winter, the road closes and it turns into a snowshoe trip.
+about: >
+  Trillium Lake isn't natural: a dam across Mud Creek in 1960 flooded a boggy
+  meadow and made this 63-acre lake below Mount Hood. The view from the dam is
+  the classic postcard shot. The loop trail is about 2 miles and nearly flat,
+  with boardwalks through wetlands where wildflowers bloom in summer. People
+  swim, paddle non-motorized boats and fish for trout off the pier.
+
+  The day use area is open from May to December, with a per-car fee; check
+  which passes count before you go. In winter, park at the Trillium Sno-Park on
+  Highway 26 (you'll need a Sno-Park permit) and snowshoe or ski about 4.4
+  miles round trip to the lake.
 duration: half-day
 effort: easy
 cost: $
@@ -23,4 +35,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [seasonal, conditions]
 themes: [views, lakes-rivers, mountains]
-tags: [lake, mountain, views]
+tags: [trillium lake, mount hood reflection, government camp, easy hike, snowshoeing, mount hood national forest]

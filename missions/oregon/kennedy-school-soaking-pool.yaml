@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 32
 name: Kennedy School Soaking Pool
 mode: date
@@ -6,20 +6,34 @@ place:
   name: McMenamins Kennedy School
   area: Concordia, Northeast Portland
   address: 5736 NE 33rd Ave, Portland, OR 97211
-  coords: [45.56440, -122.63110]  # APPROX: set at the entrance before publishing
+  coords: [45.56426, -122.63019]  # APPROX: set at the entrance before publishing
   website: https://www.mcmenamins.com/kennedy-school/soaking-pool
 short: Book an hour in the Kennedy School soaking pool. Then wander the old school halls.
 description: >
-  Reserve an hour in the warm outdoor soaking pool at this old elementary school
-  turned hotel. Soak, talk, and do nothing else. Afterward, explore the halls,
-  the painted murals and the little bars tucked into old classrooms.
+  Reserve an hour in the warm outdoor soaking pool tucked into the courtyard of
+  this old elementary school, and bring your own towels and swimsuits. While
+  you soak, each describe your perfect day off, no limits. Get a photo of the
+  tiled pool and the garden around it, then dry off and wander the halls, the
+  murals and the little bars tucked into old classrooms.
+about: >
+  The pool sits in a private garden courtyard at McMenamins Kennedy School, a
+  1915 elementary school that reopened as a hotel in 1997. It's heated, open
+  year-round and built as a ceramic work of art, and it uses a salt system,
+  though it isn't chlorine-free.
+
+  The public can book a one-hour soak for a small per-person fee;
+  reservations are required, and adults need a photo ID. Neighbors who live
+  close by can soak free with an ID showing their address. Towels aren't
+  provided, swimsuits are required, and anyone under 18 needs a parent along.
+  You can order drinks from the Courtyard Restaurant and the Honors Bar. Make a
+  day of it with a [[kennedy-school-movie]] in the old auditorium.
 duration: short
 effort: easy
-cost: $
+cost: $$
 setting: either
 season: any
 time_of_day: daytime
 travel: local
 check_ahead: [reservation]
 themes: [quirky, relaxing]
-tags: [relaxing, quirky, portland]
+tags: [mcmenamins, kennedy school, soaking pool, outdoor hot pool, northeast portland]

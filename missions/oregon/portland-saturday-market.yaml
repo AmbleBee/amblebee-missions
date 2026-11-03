@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 45
 name: Portland Saturday Market
 mode: both
@@ -11,10 +11,21 @@ place:
   website: https://www.portlandsaturdaymarket.com
 short: Browse Saturday Market. Each pick a handmade gift for the other, under $20.
 description: >
-  Wander the stalls of Portland's big open-air craft market, open on weekends
-  despite its name. Split up for a few minutes and each find one handmade thing
-  under $20 for the other, then meet back up, swap, and grab lunch from the food
+  Wander the stalls of Portland's big open-air craft market by the Willamette.
+  Split up for a few minutes and each find one handmade thing under $20 for
+  someone else in your group (draw names if there are more than two of you).
+  Meet back up, get a photo of the big gift swap, then grab lunch from the food
   carts.
+about: >
+  Portland Saturday Market was started in 1974 by two local craftspeople, and
+  it's now the largest continuously running outdoor market in the country.
+  The rule that makes it special: everything sold at Saturday Market has to be
+  made by the person selling it. It's run by its own members, more than 400 of
+  them across this market and the neighboring Skidmore Market.
+
+  It runs every Saturday from March through December in Tom McCall Waterfront
+  Park, just south of the Burnside Bridge. Sunday markets have come and gone
+  over the years, so check the schedule if you're going on a Sunday.
 duration: short
 effort: easy
 cost: $$
@@ -24,4 +35,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, seasonal]
 themes: [food, markets, make-something]
-tags: [market, crafts, food, gifts, portland]
+tags: [portland saturday market, handmade crafts, waterfront park, food carts, gift ideas, portland]

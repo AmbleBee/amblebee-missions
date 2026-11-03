@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 12
 name: Haystack Rock
 mode: both
@@ -6,12 +6,23 @@ who: [friends, family, kids]
 place:
   name: Haystack Rock
   area: Cannon Beach
-  coords: [45.88400, -123.96800]  # APPROX: set at the beach access before publishing
-short: Visit Haystack Rock at low tide. Find a starfish in the tide pools.
+  coords: [45.88479, -123.96337]
+short: Explore the tide pools at Haystack Rock in Cannon Beach at low tide. Find a starfish and a puffin.
 description: >
-  Time your visit for low tide and walk out toward Haystack Rock to explore the
-  tide pools. Look but don't touch: starfish, anemones, and puffins in spring and
-  summer. Then walk the beach and grab something warm in town.
+  Time your visit for low tide and walk out to the tide pools around Haystack
+  Rock. Each count how many colors of sea star you can find, and photograph the
+  best one. Look, but don't touch or collect anything. Then get a photo of the
+  rock reflected in the wet sand, walk the beach and grab something warm in
+  town.
+about: >
+  Haystack Rock is a 235-foot block of basalt left by lava flows about 15
+  million years ago, standing right on the beach in Cannon Beach, about 80 miles
+  from Portland. You might know it from The Goonies.
+
+  It's part of a national wildlife refuge, and the tide pools around its base
+  are a protected marine garden, so don't climb above the barnacle line. From
+  March to September, look up for tufted puffins nesting on the north side; in
+  summer, volunteers in red are on the beach to help you spot them.
 for_kids:
   short: Tide pool hunt! Find each sea creature.
   steps:
@@ -28,5 +39,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [beach]
-tags: [coast, tide-pools, beach]
+caution: "The tide comes back fast around the rock. Head in before it turns, and watch for sneaker waves."
+themes: [beach, wildlife, views]
+tags: [cannon beach, tide pools, tufted puffins, sea stars, the goonies, sea stack, oregon coast]

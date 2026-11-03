@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 2
 name: Powell's Book Swap
 mode: date
@@ -8,11 +8,21 @@ place:
   address: 1005 W Burnside St, Portland, OR 97209
   coords: [45.52307, -122.68126]
   website: https://www.powells.com/bookstore/powells-city-of-books
-short: Split up in Powell's. Each pick the other a book under $10.
+short: Split up in Powell's City of Books in Portland. Each pick the other a book under $10.
 description: >
   Grab a store map at the entrance, split up, and each pick a book for the
-  other from a room you'd never usually go into, under $10. Meet at the
-  coffee shop and swap.
+  other from a room you'd never usually wander into, under $10. Meet back up,
+  swap books, and take a photo of each other's face at the big reveal. Then
+  find a spot for coffee and read each other the first page.
+about: >
+  Powell's started in 1971, and its City of Books fills an entire city block in
+  the Pearl District, with more than 68,000 square feet of new, used and rare
+  books in nine color-coded rooms and over 3,500 sections. It calls itself the
+  largest independent new and used bookstore in the world.
+
+  Look for the Pillar of Books by the entrance facing the Pearl District, a
+  stone stack of eight great books carved with the words "Buy the book, read
+  the book, enjoy the book, sell the book."
 duration: short
 effort: easy
 cost: $
@@ -22,4 +32,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [markets]
-tags: [books, gifts, rainy-day, portland]
+tags: [powells city of books, bookstore, used books, pearl district, book swap, portland]

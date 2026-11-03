@@ -1,4 +1,4 @@
-checked: 2026-10-27
+checked: 2026-11-02
 number: 24
 name: Oregon Zoo
 mode: both
@@ -7,13 +7,25 @@ place:
   name: Oregon Zoo
   area: Washington Park, Portland
   address: 4001 SW Canyon Rd, Portland, OR 97221
-  coords: [45.510240, -122.715935]
+  coords: [45.51024, -122.71594]
   website: https://www.oregonzoo.org
-short: Visit the Oregon Zoo. Each find the animal most like you.
+short: Visit the Oregon Zoo in Portland's Washington Park. Each find the animal most like you.
 description: >
   Spend a day at the zoo and take your time at each exhibit. Each pick the
-  animal that's most like you, and the one that's most like the other person,
-  and explain why over a snack.
+  animal that's most like you, and one that's most like someone else in your
+  group. Get a photo of everyone copying their animal twin's pose, then explain
+  your picks over a snack.
+about: >
+  The Oregon Zoo started in 1888 with two bears given to the city, making it
+  the oldest zoo west of the Mississippi. Today it covers 64 acres in
+  Washington Park, about two miles from downtown Portland, with more than 1,800
+  animals from over 230 species.
+
+  It's famous for its Asian elephants: Packy, born here in 1962, was the first
+  elephant born in the Western Hemisphere in 44 years, and the zoo has had
+  dozens of elephant births since. Don't miss Elephant Lands, the Great
+  Northwest and the Africa exhibits. You can skip the parking by taking the MAX
+  light rail to the underground Washington Park station.
 for_kids:
   short: Zoo hunt! Find each animal.
   steps:
@@ -31,4 +43,4 @@ travel: local
 check_ahead: [hours, tickets]
 discounts: [military]
 themes: [wildlife]
-tags: [animals, portland]
+tags: [oregon zoo, portland zoo, washington park, elephant lands, max light rail]

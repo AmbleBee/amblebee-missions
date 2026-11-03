@@ -1,18 +1,30 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-02
 number: 4
-name: Samuel H. Boardman Coast
+name: Natural Bridges on the Boardman Coast
 mode: both
 who: [solo, friends, family]
 place:
   name: Natural Bridges Viewpoint, Samuel H. Boardman State Scenic Corridor
   area: Southern Oregon Coast, near Brookings
-  coords: [42.189997, -124.365989]
+  coords: [42.18999, -124.36601]
   website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=56
-short: Walk out to Natural Bridges. Then hop to one more Boardman viewpoint.
+short: See the seven Natural Bridges sea arches near Brookings, then explore one more Boardman viewpoint.
 description: >
-  Start at the Natural Bridges viewpoint and take the short trail out to see the
-  sea arches. Then pick one more pullout along the corridor and see what you find.
-  Bring a jacket; the wind on this stretch of coast is no joke.
+  From the parking area, take the short walk to the viewing platform above
+  Natural Bridges, where the surf runs under seven stone arches. Wait for a big
+  wave and photograph it blasting through. Then each pick one more stop along
+  the corridor, like Arch Rock, Whaleshead Beach or Cape Ferrelo, take one photo
+  there, and decide whose pick won. Bring a jacket; the wind on this stretch of
+  coast is no joke.
+about: >
+  Samuel H. Boardman State Scenic Corridor runs 12 miles along Highway 101
+  between Brookings and Gold Beach, and Natural Bridges is its most famous stop.
+  The seven arch rocks were once sea caves; when their roofs fell in, bridges of
+  stone were left behind with the ocean running underneath.
+
+  The corridor is named for Samuel Boardman, the first superintendent of Oregon
+  State Parks, and about 18 miles of the Oregon Coast Trail run through it,
+  linking the viewpoints.
 duration: half-day
 effort: easy
 cost: free
@@ -21,5 +33,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [views, hiking, beach]
-tags: [coast, views, hiking]
+caution: "The paths down to the bridges are steep, unofficial and drop off sharply. Enjoy them from the platform."
+themes: [views, beach, walks]
+tags: [sea arches, natural bridges, blowholes, oregon coast trail, brookings]

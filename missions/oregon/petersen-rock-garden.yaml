@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 18
 name: Petersen Rock Garden
 mode: both
@@ -9,11 +9,24 @@ place:
   address: 7930 SW 77th St, Redmond, OR 97756
   coords: [44.20330, -121.26235]
   website: https://www.petersenrockgarden.org
-short: Explore the tiny stone castles and bridges. Find the strangest little building.
+short: Explore the tiny stone castles of Petersen Rock Garden near Redmond. Find the strangest one.
 description: >
   Wander this odd, wonderful folk-art garden of miniature castles, bridges and
-  towers built from rocks by one farmer starting in the 1930s. Each find your
-  favorite tiny building and take a photo of it.
+  towers built from rocks by one farmer. See who can spot the little Statue of
+  Liberty first, then each find your favorite tiny building and take a photo
+  of it. Bonus points for getting a peacock in the shot. Finish in the museum's
+  glowing rock room.
+about: >
+  Rasmus Petersen, a Danish immigrant farmer, started building this garden in
+  1935 and kept at it until he died in 1952. He covered four acres with castles,
+  bridges, ponds, a seven-foot Statue of Liberty and a concrete American flag,
+  all made from rocks he found within about 85 miles of home: agate, jasper,
+  obsidian, petrified wood and thundereggs. It was added to the National
+  Register of Historic Places in 2013.
+
+  The museum, from the 1940s, has a room where fluorescent minerals glow under
+  black light, and about 40 peacocks roam the grounds. There's no set
+  admission, just a suggested donation, and the hours change with the seasons. Pair it with a walk below the cliffs at [[smith-rock]], just up the road near Terrebonne.
 duration: short
 effort: easy
 cost: $
@@ -23,4 +36,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [art, quirky]
-tags: [roadside, quirky, folk-art]
+tags: [petersen rock garden, folk art, roadside attraction, redmond, peacocks, central oregon]

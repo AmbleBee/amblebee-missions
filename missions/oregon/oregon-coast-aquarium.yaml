@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-02
 number: 43
 name: Oregon Coast Aquarium
 mode: both
@@ -11,9 +11,21 @@ place:
   website: https://aquarium.org
 short: Walk under the sharks at the Oregon Coast Aquarium. Each pick a favorite creature.
 description: >
-  Spend a rainy coast day at the aquarium: sea otters, tide pools, and the
-  tunnels where sharks and rays swim over your head. Each pick your favorite
-  creature, then walk Newport's bayfront to hear the sea lions bark.
+  Spend a coast day at the aquarium: walk the glass tunnels where sharks and
+  rays swim over your head, then head outside for the sea otters and the
+  seabird aviary. Each pick your favorite creature and get a photo with it,
+  then make the case for why yours wins. Afterward, walk Newport's bayfront and
+  listen for the sea lions barking under the docks.
+about: >
+  The Oregon Coast Aquarium opened in 1992 on 23 acres along Yaquina Bay in
+  Newport, and it's run as a nonprofit. Keiko, the orca from the movie Free
+  Willy, lived here from 1996 to 1998 before moving to Iceland.
+
+  His old pool became Passages of the Deep, the aquarium's biggest exhibit,
+  where you walk through clear tunnels past a rocky reef full of rockfish, a
+  sandy flat with halibut and a sunken ship, and the open sea with sevengill
+  sharks and rays. Outside are sea otters, harbor seals and sea lions, and a
+  seabird aviary the aquarium calls the largest outdoor one in North America. A few miles north, the ocean churns inside [[devils-punchbowl]] at Otter Rock.
 for_kids:
   short: Sea creature hunt! Find each animal.
   steps:
@@ -32,4 +44,4 @@ travel: day-trip
 check_ahead: [hours, tickets]
 discounts: [birthday, military, local]
 themes: [beach, wildlife]
-tags: [aquarium, animals, coast, rainy-day]
+tags: [oregon coast aquarium, newport, keiko free willy, sea otters, shark tunnel, yaquina bay]

@@ -7,13 +7,29 @@ place:
   name: Multnomah Falls
   area: Columbia River Gorge
   address: 53000 E Historic Columbia River Hwy, Bridal Veil, OR 97010
-  coords: [45.577539, -122.116923]
+  coords: [45.57754, -122.11692]
   website: https://www.fs.usda.gov/r06/columbiarivergorge/recreation/multnomah-falls
-short: Stand on Benson Bridge in the mist. Hike to the top if you're up for it.
+short: Stand in the mist on Benson Bridge at Multnomah Falls, Oregon's tallest waterfall. Hike to the top.
 description: >
-  Walk up to Benson Bridge and stand in the spray of Oregon's tallest waterfall.
-  If you're feeling it, keep going up the switchbacks to the viewing platform at
-  the top. Go early on a weekday to beat the crowds.
+  Walk up to Benson Bridge and stand in the spray of Oregon's tallest
+  waterfall, then get a photo of yourself on the bridge with the upper falls
+  pouring down behind you. If you're up for more, each guess how many
+  switchbacks it takes to reach the top, count them on the way up to the
+  viewing platform, and see who was closest. Go early on a weekday to beat the
+  crowds.
+about: >
+  Multnomah Falls drops 620 feet in two tiers, 542 feet on top and 69 below,
+  making it the tallest waterfall in Oregon, and more than two million people
+  visit every year. Benson Bridge was built by Italian stonemasons and paid for
+  by lumberman Simon Benson, and the stone Multnomah Falls Lodge below it was
+  finished in 1925. The Multnomah people tell of a young woman who gave her life
+  to save her village from sickness, after which the water began to fall.
+
+  The trail to the top is 2.4 miles round trip with about 600 feet of climbing,
+  about like 60 flights of stairs. From late May to early September, you need a
+  timed-use permit to park at the I-84 lot during the day; book online at
+  Recreation.gov for a small fee, or pick up a free one in Troutdale or Cascade
+  Locks. The Columbia Gorge Express bus is a car-free way to get there.
 duration: short
 effort: moderate
 cost: free
@@ -22,5 +38,7 @@ season: any
 time_of_day: morning
 travel: drive
 check_ahead: [reservation, conditions]
-themes: [hiking, waterfalls, rocks-fossils]
-tags: [waterfall, gorge, hiking]
+caution: "Restrooms at the falls are closed for renovation through November 2026. There are portable toilets."
+caution_until: 2026-11-30
+themes: [waterfalls, hiking, views]
+tags: [multnomah falls, benson bridge, columbia river gorge, tallest waterfall in oregon, timed use permit]
