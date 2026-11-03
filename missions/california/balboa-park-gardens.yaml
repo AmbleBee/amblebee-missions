@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-03
 number: 12
 name: Balboa Park Free Garden Crawl
 mode: both
@@ -6,16 +6,31 @@ who: [solo, friends, family, kids]
 place:
   name: Botanical Building and Lily Pond, Balboa Park
   area: El Prado, Balboa Park, San Diego
-  website: https://balboaparkbotanical.org
   address: 1550 El Prado, San Diego, CA 92101
   coords: [32.73222, -117.14924]
-short: Crawl Balboa Park's free gardens. Each crown your favorite one.
+  website: https://balboaparkbotanical.org
+short: Balboa Park in San Diego. Crawl its free gardens, from the lily pond to the cactus, and crown a winner.
 description: >
-  Start at the Botanical Building, the big 1915 wooden lath house reflected in
-  the lily pond, then wander from garden to garden: the tiled Spanish-style
-  Alcazar Garden under the California Tower, the little sunken Zoro Garden, and
-  across the bridge to the Rose Garden and Desert Garden. They're all free. Each
-  crown one garden the winner and get a photo of you in it.
+  Start at the Botanical Building reflected in the lily pond, then crawl
+  from garden to garden: the tiled Alcazar Garden under the California
+  Tower, the little sunken Zoro Garden, and across the footbridge to the
+  Rose Garden and the Desert Garden. Score each one out of ten as you go,
+  and crown a winner. The photo to get: the two of you in the winning
+  garden, then the Botanical Building upside down in the lily pond.
+about: >
+  Most of what you'll see was built for two world's fairs. The Botanical
+  Building, one of the largest wooden lath structures in the world, went up
+  for the 1915 Panama-California Exposition and holds thousands of plants.
+  The Alcazar Garden is modeled on the gardens of the Alcázar in Seville.
+
+  The Zoro Garden has the best story: at the 1935 exposition it was a
+  "nudist colony" exhibit that fairgoers paid to peek at. Today it's a quiet
+  butterfly garden.
+
+  The Inez Grant Parker Memorial Rose Garden and the Desert Garden sit side
+  by side across the Park Boulevard footbridge. Roses peak in spring, and
+  the Desert Garden blooms in late winter and spring. All of the gardens are
+  free.
 for_kids:
   short: Garden hunt! Find each thing.
   steps:
@@ -33,4 +48,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [walks, gardens, relaxing]
-tags: [garden, flowers, walking, calm, san-diego]
+tags: [balboa park, botanical building, lily pond, rose garden, desert garden, san-diego]

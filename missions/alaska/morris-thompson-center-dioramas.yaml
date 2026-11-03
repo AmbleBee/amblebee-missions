@@ -1,4 +1,4 @@
-checked: 2026-10-26
+checked: 2026-11-03
 number: 3
 name: Fish Camp and Dioramas at the Morris Thompson Center
 mode: adventure
@@ -7,17 +7,28 @@ place:
   name: Morris Thompson Cultural and Visitors Center
   area: Downtown Fairbanks
   address: 101 Dunkel St, Fairbanks, AK 99701
-  coords: [64.845903, -147.712936]
+  coords: [64.84590, -147.71294]
   website: https://www.morristhompsoncenter.org
-short: Walk through Interior Alaska's seasons indoors. Find a moose, a fish camp and a cabin.
+short: Morris Thompson Center in Fairbanks. Walk through a year in Interior Alaska and find the fish camp.
 description: >
-  Warm up inside downtown Fairbanks' free cultural and visitors center, where
-  a big exhibit hall walks you through a year in Interior Alaska. Life-size
-  dioramas show wildlife and the changing seasons, and you can step into a
-  fish camp smokehouse, a hunting camp and a public-use cabin. Pick up a national
-  parks passport stamp at the public lands desk on the way out. Get a
-  photo of the family in the doorway of the cabin. On a nice day, peek at the
-  old log cabin and sculptures outside along the Chena River.
+  Warm up inside downtown Fairbanks' free cultural center and walk through a
+  year in Interior Alaska, season by season. Find the moose, step into the
+  fish camp smokehouse and the hunting camp, and each pick the season you'd
+  most want to live in. The photo to get: the family in the doorway of the
+  little cabin. On the way out, stamp your national parks passport at the
+  public lands desk.
+about: >
+  The center opened in 2008 and is named for Morris Thompson, a Koyukon
+  Athabascan leader from Tanana who served as U.S. Commissioner of Indian
+  Affairs and later led Doyon, the regional Native corporation for Interior
+  Alaska.
+
+  It's shared by several groups, including the Tanana Chiefs Conference and
+  the Alaska Public Lands Information Center, so it's a good place to ask
+  about parks, trails and road conditions too. Entry is free.
+
+  On a nice day, walk the grounds outside along the Chena River to see an
+  old log cabin and sculptures.
 for_kids:
   short: Explore Alaska inside! Find each thing.
   steps:
@@ -35,5 +46,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [wildlife, museums]
-tags: [museum, culture, wildlife, rainy-day, free, kids, fairbanks]
-credit:
+tags: [morris thompson center, alaska native culture, dioramas, chena river, national parks passport, fairbanks]

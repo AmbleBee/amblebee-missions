@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 33
 name: Bellevue Botanical Garden
 mode: both
@@ -7,13 +7,28 @@ place:
   name: Bellevue Botanical Garden
   area: Wilburton Hill Park, Bellevue
   address: 12001 Main St, Bellevue, WA 98005
-  coords: [47.60800, -122.17800]  # APPROX: set at the visitor center before publishing
-short: Wander Bellevue Botanical Garden and cross the suspension bridge over the ravine.
+  coords: [47.60944, -122.17860]
+  website: https://bellevuebotanical.org
+short: Bellevue Botanical Garden. Cross the swaying ravine bridge and each find the bloom of the day.
 description: >
-  Wander the free garden's borders, the Japanese garden and the woodland trail,
-  and cross the suspension bridge over the ravine. Each find the bloom of the
-  day and photograph it. In winter, come back after dark for the garden's
-  holiday light show (that one is ticketed).
+  Wander the free garden's flower borders, the Japanese garden and the
+  woodland trail, and cross the suspension bridge over the ravine. Each pick
+  your "bloom of the day," photograph it up close, then show each other and
+  vote on the winner. The bonus photo: the two of you halfway across the
+  bridge, with the treetops below.
+about: >
+  The garden opened in 1992 and covers about 53 acres on Wilburton Hill.
+  Entry is free. Highlights include the Yao Japanese Garden, named for
+  Bellevue's sister city in Japan, and the Ravine Experience, a suspension
+  bridge that hangs over a wooded ravine.
+
+  The perennial border is at its best from late spring through summer, but
+  something is always blooming, and the woodland trail is lovely even in
+  the rain.
+
+  Each winter the garden hosts Garden d'Lights, a holiday show with hundreds
+  of thousands of lights shaped like flowers and plants. That one is
+  ticketed and runs in the evenings, so check the website for dates.
 for_kids:
   short: Garden hunt! Find each thing.
   steps:
@@ -29,4 +44,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [gardens, relaxing]
-tags: [garden, flowers, calm, bellevue]
+tags: [botanical garden, japanese garden, suspension bridge, garden dlights, holiday lights, bellevue]

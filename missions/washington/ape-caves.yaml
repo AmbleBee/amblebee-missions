@@ -1,20 +1,38 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 3
 name: Ape Caves
 mode: both
 who: [solo, friends, family]
 place:
   name: Ape Cave, Mount St. Helens National Volcanic Monument
-  area: South side of Mount St. Helens
-  coords: [46.10800, -122.21200]  # APPROX: set at the parking lot before publishing
-short: Explore a lava tube under Mount St. Helens. Bring two lights each.
+  area: Near Cougar, south side of Mount St. Helens
+  address: Forest Road 8303, Cougar, WA 98616
+  coords: [46.10840, -122.21151]
+  website: https://www.fs.usda.gov/r06/giffordpinchot/recreation/ape-cave-interpretive-site
+short: Ape Cave near Cougar, WA. Walk a lava tube under Mount St. Helens and find the Meatball.
 description: >
-  Bring warm layers and two good lights each, then head into one of the longest
-  lava tubes in North America. The lower cave is an easy walk; the upper cave
-  means scrambling over rock piles and a short lava ledge.
+  Bring warm layers and two lights each, then walk into one of the longest
+  lava tubes in North America. Find the Meatball, a round lava boulder
+  wedged in the ceiling, and get your photo under it. Then all turn your
+  lights off for one full minute and just listen to total darkness
+  underground.
+about: >
+  Ape Cave formed about 2,000 years ago, when lava from Mount St. Helens
+  drained out of a tube and left a tunnel more than two miles long. A logger
+  found it in 1947, and it's named for the "St. Helens Apes," a local
+  outdoors group who explored it in the 1950s.
+
+  The lower cave is the easy one: about three-quarters of a mile each way on
+  a mostly flat, sandy floor, and it's where you'll find the Meatball. The
+  upper cave is about a mile and a half of scrambling over rock piles,
+  including an eight-foot lava ledge, and you hike back above ground.
+
+  It stays around 42°F inside all year, so bring a jacket even in August.
+  Timed-entry reservations are needed in the busy season, and pets aren't
+  allowed in the cave.
 gear:
   - item: headlamps
-    rent: on-site      # lanterns rent at the cave; bring two lights each anyway
+    rent: on-site
 duration: half-day
 effort: moderate
 cost: $
@@ -24,4 +42,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal]
 themes: [caves, rocks-fossils]
-tags: [cave, volcano, adventure]
+tags: [ape cave, lava tube, mount st helens, the meatball, cougar wa, volcano]

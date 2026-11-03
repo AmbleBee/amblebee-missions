@@ -1,20 +1,36 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 40
 name: Artist Point at Mount Baker
 mode: both
 who: [solo, friends, family, kids]
 place:
   name: Artist Point
-  area: End of the Mount Baker Highway (SR 542)
-  coords: [48.84600, -121.69300]  # APPROX: set at the Artist Point parking lot before publishing
-short: Drive to Artist Point between Mount Baker and Mount Shuksan. Walk out for the alpine views.
+  area: End of the Mount Baker Highway (SR 542), east of Glacier, WA
+  coords: [48.84668, -121.69231]
+  website: https://www.fs.usda.gov/r06/mbs/recreation/artist-point-trailhead
+short: Artist Point at the end of the Mount Baker Highway. Stand between two giant peaks.
 description: >
   Drive to the very end of the Mount Baker Highway, where the road climbs
   above the trees to Artist Point, with Mount Baker on one side and jagged
-  Mount Shuksan on the other. Walk the short Artist Ridge trail, or hike out
-  toward Table Mountain if you want more. Find Picture Lake on the way back,
-  where Shuksan reflects in the water, and get the classic photo of you there. The last part of the road only opens from about midsummer to the
-  first snow; check WSDOT before you go. Parking takes a forest pass.
+  Mount Shuksan on the other. Walk the short Artist Ridge loop and find the
+  spot where you can see both peaks in one shot. On the way back, stop at
+  Picture Lake for the classic photo: the two of you with Shuksan reflected
+  in the water behind you.
+about: >
+  Artist Point sits about 5,100 feet up in the Heather Meadows area, at the
+  end of State Route 542. The last stretch of road is usually snowed in until
+  around mid-July and closes again with the first big snow in fall, so the
+  window is short. Check WSDOT before you go.
+
+  Artist Ridge is an easy loop of about a mile with views the whole way. For
+  more, the Table Mountain trail climbs steeply onto a flat-topped lava
+  plateau. Picture Lake is just down the road, and Mount Shuksan reflected
+  in it is one of the most photographed mountain views in the country. Go
+  early on a still morning for the best mirror.
+
+  Parking needs a Northwest Forest Pass or an Interagency (America the
+  Beautiful) pass. Patches of snow can linger on the trails well into
+  August.
 for_kids:
   short: Mountain hunt! Find each thing.
   steps:
@@ -32,4 +48,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
 themes: [views, hiking, mountains]
-tags: [mountains, views, hiking, alpine, north-cascades]
+tags: [artist point, mount baker, mount shuksan, picture lake, heather meadows, north-cascades]

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 59
 name: Wildlife Safari
 mode: both
@@ -7,16 +7,28 @@ place:
   name: Wildlife Safari
   area: Winston, south of Roseburg (off I-5)
   address: 1790 Safari Rd, Winston, OR 97496
-  coords: [43.12100, -123.41200]  # APPROX: set at the entrance before publishing
+  coords: [43.14094, -123.42723]
   website: https://wildlifesafari.net
-short: Drive through Wildlife Safari as giraffes and rhinos wander past. Each keep an animal count.
+short: Wildlife Safari in Winston. Drive past giraffes and rhinos and race to spot the most animals.
 description: >
-  Drive your own car slowly through 600 acres of open land where giraffes,
-  rhinos, bears, lions and herds of grazers roam right up to your windows.
-  It takes about an hour and a half. Each keep count of the animals you spot
-  and see who wins, then visit the free Safari Village for the cheetahs, a
-  big part of the park's work. Windows and tops stay up, so no convertibles,
-  motorcycles or pets in the drive.
+  Drive your own car slowly through Wildlife Safari while giraffes, rhinos,
+  bears and big herds wander right up to your windows. Each keep a count of
+  every animal you spot, and the loser buys lunch in Safari Village. The
+  photo to get: an animal framed in your side mirror. Then walk the village
+  to see the cheetahs up close.
+about: >
+  Wildlife Safari opened in 1972 and covers about 600 acres of rolling hills
+  in Southern Oregon. The drive-through loop takes about an hour and a half
+  at a slow crawl, and you can go around more than once.
+
+  The park is best known for its cheetahs: its breeding program is one of
+  the most successful in the country, with well over 200 cubs born here.
+  You'll find them in Safari Village, along with a restaurant and smaller
+  animal exhibits.
+
+  Windows stay up in the drive-through, so convertibles, soft-top vehicles,
+  motorcycles and pets can't go through. Check the website for vehicle
+  rules and options before you go.
 for_kids:
   short: Safari! Find each animal.
   steps:
@@ -34,4 +46,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [wildlife]
-tags: [animals, wildlife, drive-thru, safari, southern-oregon]
+discounts: [senior, military, first-responder]
+tags: [drive-thru safari, giraffes, rhinos, cheetahs, roseburg, southern-oregon]

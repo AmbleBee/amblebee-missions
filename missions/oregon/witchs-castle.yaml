@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 8
 name: The Witch's Castle
 mode: both
@@ -6,12 +6,32 @@ who: [solo, friends, family]
 place:
   name: Lower Macleay Park trailhead (to the Witch's Castle)
   area: Forest Park, Portland
-  coords: [45.53500, -122.71200]  # APPROX: set at the trailhead before publishing
-short: Walk Balch Creek up to the mossy stone ruin. Make up its spooky backstory.
+  address: 2960 NW Upshur St, Portland, OR 97210
+  coords: [45.53498, -122.71266]
+  website: https://www.portland.gov/parks/lower-macleay-park
+short: Walk Balch Creek in Portland's Forest Park to the mossy Witch's Castle ruin. Invent its story.
 description: >
-  Follow the Lower Macleay Trail along Balch Creek into Forest Park until you
-  reach the moss-covered stone ruin locals call the Witch's Castle. Sit for a
-  minute and each invent the story of who lived there.
+  Follow the Lower Macleay Trail up Balch Creek into Forest Park until the
+  trees open on a roofless stone ruin covered in moss: the Witch's Castle.
+  Sit inside for a minute and each invent the story of who lived there, then
+  compare. The photo to get: one of you framed in a stone window, ferns all
+  around.
+about: >
+  It's about a mile each way from the trailhead along Balch Creek, a gentle
+  climb under big firs and maples.
+
+  The "castle" was actually built as a park restroom and ranger station
+  around the 1950s. Storms damaged it, the park let it go, and the moss moved
+  in. Students from nearby Lincoln High are said to have given it its
+  nickname.
+
+  The real history is spookier than the name: Balch Creek is named for
+  Danford Balch, who claimed this land in the 1850s and was the first person
+  legally hanged in Oregon Territory, for shooting his son-in-law.
+
+  For a much shorter walk, start at the Upper Macleay parking lot on NW
+  Cornell Road and take the Wildwood Trail down to the ruin. The Upshur
+  Street lot at the main trailhead is small and fills up on weekends.
 duration: short
 effort: easy
 cost: free
@@ -21,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [conditions]
 themes: [hiking, forests, spooky]
-tags: [hiking, forest, spooky, portland]
+tags: [witchs castle, forest park, balch creek, lower macleay trail, stone ruin, portland]

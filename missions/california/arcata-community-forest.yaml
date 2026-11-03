@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 20
 name: Arcata Community Forest Redwoods
 mode: both
@@ -8,14 +8,25 @@ place:
   area: East Arcata
   coords: [40.86906, -124.07266]
   website: https://www.cityofarcata.org/197/Trail-Maps
-short: Hike into the redwoods from Arcata's Redwood Park. Find the biggest stump and stand inside it.
+short: Arcata Community Forest in Humboldt. Hike the redwoods and stand inside the biggest stump you find.
 description: >
-  Start at Redwood Park on the east edge of Arcata and walk into the town's
-  community forest, the first city-owned forest in California. The short
-  nature trail winds through a fern glade with markers about the old logging
-  days, and more than ten miles of trails go deeper into the redwoods. Find the
-  biggest old stump you can and get a photo of you inside or in
-  front of it. Then picnic back at the park.
+  Walk from Redwood Park into Arcata's community forest, through fern
+  glades under tall redwoods. Hunt for the biggest old-growth stump you can
+  find, and look for the square notches cut into its sides. Then get a photo
+  of you standing inside it or in front of it for scale. Finish with a
+  picnic back at the park.
+about: >
+  Arcata bought this forest in 1955, and it's known as the first city-owned
+  community forest in California. The giant stumps are from the original
+  old-growth redwoods logged in the late 1800s and early 1900s. The notches
+  were cut so loggers could stand on springboards high above the swollen
+  base of the tree. The redwoods around them today are second growth, and
+  the city still manages the forest for careful, sustainable timber
+  harvests.
+
+  There are more than ten miles of trails. The short nature trail near
+  Redwood Park has markers about the logging days. Watch for banana slugs on
+  damp days. They're bright yellow and can be longer than your hand.
 for_kids:
   short: Forest hunt! Find each thing.
   steps:
@@ -32,4 +43,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [hiking, forests]
-tags: [redwoods, forest, hiking, humboldt]
+tags: [arcata community forest, redwood park, coast redwoods, springboard notches, banana slugs, humboldt]

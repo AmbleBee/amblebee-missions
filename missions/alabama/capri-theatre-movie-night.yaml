@@ -1,4 +1,4 @@
-checked: 2026-10-26
+checked: 2026-11-03
 number: 2
 name: Movie Night at the Capri
 mode: date
@@ -6,16 +6,22 @@ place:
   name: Capri Theatre
   area: Cloverdale, Montgomery
   address: 1045 E Fairview Ave, Montgomery, AL 36106
-  coords: [32.352176, -86.290875]
+  coords: [32.35218, -86.29088]
   website: https://capritheatre.org
-short: Catch an indie film at a 1941 neighborhood movie house. Photo under the marquee.
+short: Capri Theatre in Montgomery's Cloverdale. A 1941 movie house, an indie film, a marquee photo.
 description: >
-  The Capri is a little single-screen theater in Cloverdale that opened in 1941 and is
-  still run by a nonprofit film society. It shows independent, foreign and classic films,
-  sometimes on real 35mm. Pick whatever is playing, even if neither of you has heard of it,
-  grab popcorn (they also pour beer and wine for grown-ups with ID), and settle in. Before
-  you go in, get a photo of the two of you under the glowing marquee. Afterward, each give
-  the film a star rating before you compare notes.
+  Pick whatever is playing at the Capri, even if neither of you has heard of
+  it, grab popcorn and settle into this little single-screen theater. Before
+  you go in, get a photo of the two of you under the glowing marquee.
+  Afterward, each give the film a star rating in secret, then reveal them
+  at the same time and compare notes.
+about: >
+  The Capri opened in 1941 as a neighborhood movie house in Cloverdale and
+  has been run by a nonprofit film society since the 1980s. It shows
+  independent, foreign and classic films, sometimes on real 35mm film.
+
+  The concession stand pours beer and wine for grown-ups with ID, along with
+  the popcorn.
 duration: short
 effort: easy
 cost: $$
@@ -25,5 +31,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
 themes: [history, movies]
-tags: [movies, cinema, historic, indie-film, rainy-day, montgomery]
-credit:
+tags: [capri theatre, historic movie theater, indie film, cloverdale, montgomery]

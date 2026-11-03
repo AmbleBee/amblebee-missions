@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 5
 name: Ferry to Bainbridge Island
 mode: both
@@ -7,13 +7,27 @@ place:
   name: Seattle Ferry Terminal (Colman Dock, Pier 52)
   area: Downtown Seattle waterfront
   address: 801 Alaskan Way, Seattle, WA 98104
-  coords: [47.60250, -122.33850]  # APPROX: set at the terminal entrance before publishing
-short: Ride the ferry to Bainbridge. Photo of the Seattle skyline from the back deck.
+  coords: [47.60285, -122.33787]
+  website: https://www.wsdot.com/ferries/vesselwatch/terminaldetail.aspx?terminalid=7
+short: Ferry from Seattle to Bainbridge Island. Photograph the skyline shrinking from the back deck.
 description: >
-  Walk on the ferry to Bainbridge Island and stand out on the deck as Seattle
-  shrinks behind you. On the island, wander the little town by the dock, grab a
-  coffee or an ice cream, and catch a ferry back, ideally around sunset for the
-  skyline lighting up.
+  Walk on the ferry to Bainbridge Island and head to the back deck as
+  Seattle shrinks behind you. The photo to get: the two of you with the
+  skyline and the boat's wake behind. On the island, wander the little town
+  by the dock, grab a coffee or an ice cream, and catch a ferry back around
+  sunset to watch the city light up.
+about: >
+  The crossing takes about 35 minutes on one of Washington State Ferries'
+  big boats, part of the largest ferry system in the country. On a clear day
+  you can see Mount Rainier to the south and the Olympic Mountains ahead.
+
+  Walk-on passengers only pay going west from Seattle; the ride back is
+  free. The town of Winslow is an easy walk up from the Bainbridge terminal,
+  with shops, cafés and the free Bainbridge Island Museum of Art close to
+  the dock.
+
+  Walking on is cheaper and simpler than driving, and you never wait in the
+  car line.
 for_kids:
   short: Big boat ride! Find each thing.
   steps:
@@ -30,4 +44,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [views, beach, boating]
-tags: [boat, views, island, seattle]
+tags: [bainbridge island, washington state ferries, colman dock, winslow, seattle skyline, seattle]

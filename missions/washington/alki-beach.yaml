@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 23
 name: Alki Beach Sunset
 mode: both
@@ -6,14 +6,33 @@ who: [solo, friends, family, kids]
 place:
   name: Alki Beach Park
   area: West Seattle
-  coords: [47.57900, -122.41000]  # APPROX: set at the Alki Statue of Liberty replica before publishing
-short: Walk Alki Beach at sunset, find the mini Statue of Liberty, and watch the ferries cross.
+  address: 2665 Alki Ave SW, Seattle, WA 98116
+  coords: [47.57936, -122.41063]
+  website: https://www.seattle.gov/parks/allparks/alki-beach-park
+  links:
+    - label: Alki history walking tour
+      url: https://loghousemuseum.org/alki-walking-tour/
+short: Alki Beach in West Seattle at sunset. Find the mini Statue of Liberty and count the ferries.
 description: >
-  Head to West Seattle's long city beach and walk the promenade as the sun
-  drops behind the Olympic Mountains across the water. Find the little Statue
-  of Liberty replica, watch the ferries go by, and grab fish and chips or ice
-  cream from a shop across the street. For a bonus, take the water taxi over
-  from downtown and get the skyline view from the boat.
+  Walk the Alki Beach promenade as the sun drops behind the Olympic Mountains
+  across the water. Find the little Statue of Liberty, count the ferries
+  crossing the Sound, and grab fish and chips or ice cream from across the
+  street. The photo to get: your silhouettes against the sunset at the
+  water's edge. Bonus: ride the water taxi over from downtown for the skyline
+  view from the boat.
+about: >
+  Alki is where Seattle began. The Denny Party landed on this beach in
+  November 1851, and a small stone monument on the promenade marks the
+  "Birthplace of Seattle."
+
+  The Statue of Liberty replica was first put up by the Boy Scouts in 1952.
+  The one you see today is a bronze replacement, set in a small plaza near
+  the beach.
+
+  The King County Water Taxi runs from downtown to Seacrest Park, about two
+  miles up the shore from the main beach. Walk the waterfront path or catch
+  the shuttle bus that meets the boat. Parking along Alki Avenue fills up
+  fast on sunny evenings.
 for_kids:
   short: Beach walk! Find each thing.
   steps:
@@ -30,4 +49,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [views, beach, sunsets]
-tags: [beach, sunset, views, seattle]
+tags: [alki beach, west seattle, statue of liberty replica, ferries, olympic mountains, water taxi, seattle]

@@ -1,4 +1,4 @@
-checked: 2026-10-26
+checked: 2026-11-03
 number: 3
 name: Under the Saturn V in Huntsville
 mode: both
@@ -7,16 +7,29 @@ place:
   name: U.S. Space & Rocket Center
   area: Cummings Research Park, Huntsville
   address: One Tranquility Base, Huntsville, AL 35805
-  coords: [34.711357, -86.655737]
+  coords: [34.71136, -86.65574]
   website: https://www.rocketcenter.com
-short: Walk the length of a real Saturn V, then ride the G-Force simulator together. Count down to liftoff.
+short: U.S. Space & Rocket Center in Huntsville. Walk under a real Saturn V, then ride G-Force together.
 description: >
-  Spend an afternoon at Huntsville's space museum, where a real Saturn V moon
-  rocket hangs over your heads for the full length of its hall. Walk from the
-  engines to the capsule end, then head out to Rocket Park and the shuttle
-  stack. Brave the G-Force Accelerator and Moon Shot rides together, and add a
-  planetarium show to sit back in the dark for a while. Get a photo of you beneath the huge F-1 engines. It's a big campus with a lot of
-  walking, so wear comfortable shoes.
+  Walk the full length of a real Saturn V moon rocket hanging over your
+  heads, from the giant engines all the way to the tiny capsule at the tip.
+  Get a photo of the two of you under the F-1 engines for scale, then brave
+  the G-Force Accelerator together and snap your faces right after. Finish
+  in Rocket Park and count down your own liftoff in front of the shuttle
+  stack.
+about: >
+  Huntsville is "Rocket City": Wernher von Braun's team designed the Saturn
+  V at nearby Marshall Space Flight Center, and this museum is NASA
+  Marshall's official visitor center. The Saturn V in the Davidson Center is
+  one of only three left, and it's a National Historic Landmark. It's over
+  360 feet long.
+
+  Outside, Rocket Park has rockets standing against the sky and Pathfinder,
+  a full-size space shuttle stack. Space Camp is based here too, so you'll
+  often see trainees in flight suits.
+
+  Add a planetarium show if you want to sit in the dark for a while. It's a
+  big campus with lots of walking, so wear comfortable shoes.
 steps:
   - You under the F-1 engines
   - Your faces right after the G-Force ride
@@ -31,5 +44,4 @@ travel: local
 check_ahead: [hours, tickets]
 discounts: [senior, military]
 themes: [stars, museums, vehicles]
-tags: [space, museum, rockets, simulators, nerdy, huntsville]
-credit:
+tags: [saturn v, space camp, rocket park, nasa marshall, g-force simulator, huntsville]

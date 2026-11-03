@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 59
 name: Cape Disappointment
 mode: both
@@ -6,17 +6,30 @@ who: [solo, friends, family, kids]
 place:
   name: Cape Disappointment State Park (Lewis and Clark Interpretive Center)
   area: Ilwaco, mouth of the Columbia River
-  coords: [46.27600, -124.05100]  # APPROX: set at the interpretive center parking before publishing
-  website: https://parks.wa.gov  # verify: link the Cape Disappointment park page
-short: Watch storm waves crash at Cape Disappointment, where Lewis and Clark reached the Pacific.
+  address: 244 Robert Gray Dr, Ilwaco, WA 98624
+  coords: [46.27866, -124.05297]
+  website: https://parks.wa.gov/find-parks/state-parks/cape-disappointment-state-park
+short: Cape Disappointment near Ilwaco. Storm waves, two lighthouses, and where Lewis and Clark ended.
 description: >
-  Stand on the cliffs where the Columbia River meets the Pacific, one of the
-  most dangerous river mouths in the world. Visit the interpretive center
-  where Lewis and Clark's journey ended, walk the trail to the Cape
-  Disappointment Lighthouse, and drive up to North Head Lighthouse for the
-  view down the long beach. Come in winter to watch the storm waves crash
-  over the jetty. Get a photo of you by a lighthouse, then grab
-  fish and chips in Ilwaco. Parking takes a Discover Pass.
+  Stand on the cliffs where the Columbia River crashes into the Pacific and
+  see the spot where Lewis and Clark's journey ended. Walk the trail out to
+  the Cape Disappointment Lighthouse, then drive up to North Head Lighthouse
+  for the view down the long beach. The photo to get: the two of you with a
+  lighthouse and the waves behind. Come in winter to watch storm waves blow
+  over the jetty, then warm up with fish and chips in Ilwaco.
+about: >
+  Lewis and Clark reached the Pacific here in November 1805, and the
+  interpretive center on the cliff tells the story of their trip. The cape
+  got its name in 1788, when the British trader John Meares sailed past
+  looking for a great river and missed it.
+
+  The bar where the river meets the ocean is so rough it's called the
+  Graveyard of the Pacific, with around 2,000 shipwrecks. The Coast Guard
+  trains its lifeboat crews here because the water is so dangerous.
+
+  Cape Disappointment Lighthouse dates to 1856, making it one of the oldest
+  on the West Coast. North Head, built in 1898, has the bigger views. Parking
+  needs a Discover Pass.
 for_kids:
   short: Lighthouse hunt! Find each thing.
   steps:
@@ -34,4 +47,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
 themes: [beach, history]
-tags: [lighthouse, ocean, history, storms, coast, southwest-washington]
+tags: [cape disappointment, lewis and clark, north head lighthouse, columbia river bar, storm watching, ilwaco, southwest-washington]

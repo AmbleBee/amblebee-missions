@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-03
 number: 1
 name: Tram Up to Dinner at Seven Glaciers
 mode: date
@@ -8,12 +8,23 @@ place:
   address: 1000 Arlberg Ave, Girdwood, AK 99587
   coords: [60.97056, -149.09720]
   website: https://www.alyeskaresort.com
-short: Ride the tram up Mount Alyeska for dinner 2,300 feet up, looking out at the glaciers.
+short: Alyeska Resort in Girdwood. Ride the tram up Mount Alyeska to dinner facing the glaciers.
 description: >
-  Ride the aerial tram up Mount Alyeska above Girdwood, then sit down for dinner at Seven
-  Glaciers, where the windows look out over hanging glaciers and Turnagain Arm. Go in
-  summer for evening light that lasts past dinner, or in winter for snow on everything.
-  Dinner needs a reservation, and the tram closes for a few weeks in spring and late fall.
+  Ride the aerial tram up Mount Alyeska above Girdwood and sit down to
+  dinner at Seven Glaciers, with windows looking out over hanging glaciers
+  and Turnagain Arm. Before you eat, step out on the mountain for the photo:
+  the two of you with the glaciers and the arm far below. Then each try to
+  count all seven glaciers from your table.
+about: >
+  The tram climbs to about 2,300 feet in a few minutes, and Seven Glaciers
+  is named for the glaciers you can see from the top. Girdwood is about 40
+  miles south of Anchorage along Turnagain Arm, one of the most beautiful
+  drives in Alaska. Watch for Dall sheep on the cliffs and, in summer,
+  beluga whales in the water.
+
+  Go in summer for evening light that lasts long past dinner, or in winter
+  for snow on everything. Dinner needs a reservation, and the tram closes
+  for a few weeks in spring and late fall for maintenance.
 duration: half-day
 effort: easy
 cost: $$$
@@ -23,6 +34,5 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [reservation, seasonal]
 discounts: [local, military]
-themes: [views, rocks-fossils, food]
-tags: [dinner, tram, glaciers, views]
-credit:
+themes: [views, mountains, food]
+tags: [alyeska aerial tram, seven glaciers, turnagain arm, mount alyeska, fine dining, girdwood]

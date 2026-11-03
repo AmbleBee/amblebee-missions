@@ -1,4 +1,4 @@
-checked: 2026-10-21
+checked: 2026-11-03
 number: 26
 name: Alcatraz Island
 mode: both
@@ -9,13 +9,28 @@ place:
   address: Pier 33, The Embarcadero, San Francisco, CA 94111
   coords: [37.80646, -122.40457]
   website: https://www.nps.gov/alca/planyourvisit/index.htm
-short: Take the ferry to Alcatraz. Tour the cellhouse and find the cell from the famous escape.
+short: Alcatraz Island in San Francisco. Tour the cellhouse and find the cells from the 1962 escape.
 description: >
-  Ride the ferry across the bay to the old federal prison island and take the
-  cellhouse audio tour, told by former guards and inmates. Find the cells from
-  the 1962 escape attempt, step into a cell for a photo, and look back at the
-  city skyline from the island. Bring a jacket; it's windy on the water. Tours
-  sell out, so book the ferry ahead.
+  Ride the ferry across the bay to the old prison island and take the
+  cellhouse audio tour, told by former guards and inmates. Find the cells
+  from the famous 1962 escape and spot the fake air vents they dug out with
+  spoons. The photo to get: one of you inside a cell, looking out through
+  the bars. Then step outside and look back at the city skyline from the
+  island.
+about: >
+  Alcatraz was a federal prison from 1934 to 1963 and held some of the
+  country's most notorious inmates, including Al Capone. In June 1962, Frank
+  Morris and brothers John and Clarence Anglin slipped out through tunnels
+  they'd dug behind their cells, leaving dummy heads made of plaster and
+  real hair in their beds. They were never found.
+
+  From 1969 to 1971, Native American activists occupied the island, and
+  their painted messages are still visible today. The lighthouse was the
+  first on the West Coast.
+
+  Tours often sell out, so book ahead through the official link on the
+  National Park Service site and avoid resellers. The walk up to the
+  cellhouse is steep, and it's windy on the water, so bring a jacket.
 for_kids:
   short: Prison island! Find each thing.
   steps:
@@ -33,4 +48,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [tickets]
 themes: [beach, boating, history]
-tags: [history, island, boat, san-francisco, rainy-day]
+tags: [alcatraz, cellhouse tour, 1962 escape, al capone, ferry, san-francisco]

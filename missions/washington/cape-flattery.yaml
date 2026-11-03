@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 30
 name: Cape Flattery
 mode: both
@@ -6,16 +6,32 @@ who: [solo, friends, family, kids]
 place:
   name: Cape Flattery trailhead, Makah Reservation
   area: Near Neah Bay, northwest tip of the Olympic Peninsula
-  coords: [48.38450, -124.71500]  # APPROX: set at the trailhead parking lot before publishing
+  coords: [48.38501, -124.71595]
   website: https://makah.com/attractions/recreation-permits/
-short: Hike the boardwalk to the far northwest tip of the lower 48. Look for whales and sea caves.
+  links:
+    - label: Washington Trails Association
+      url: https://www.wta.org/go-hiking/hikes/cape-flattery
+short: Cape Flattery near Neah Bay. Walk the boardwalk to the far northwest tip of the lower 48.
 description: >
-  Drive out to Neah Bay and walk the short boardwalk trail through the forest to
-  the cliffs at the most northwestern point of the lower 48. From the viewing
-  decks, look down into sea caves, out to Tatoosh Island and its lighthouse, and
-  watch for whales, sea lions and seabirds. This is Makah land: buy a Makah
-  Recreation Pass in Neah Bay first, stay on the trail, and stop by the Makah
-  Museum in town.
+  Walk the boardwalk trail through old cedar forest to the cliffs at the
+  most northwestern point of the lower 48. From the viewing decks, look down
+  into sea caves and out to Tatoosh Island and its lighthouse, and each keep
+  watch for whales, sea lions and puffins. The photo to get: the two of you
+  on the last deck with Tatoosh behind you, the farthest corner of the map.
+about: >
+  The trail is about three-quarters of a mile each way, mostly on cedar
+  planks and steps, ending at four lookout decks on the cliffs. It's on the
+  Makah Reservation, so buy a Makah Recreation Pass in Neah Bay before you
+  drive out, and stay on the trail.
+
+  Captain James Cook named the cape in 1778. The lighthouse on Tatoosh
+  Island has stood since 1857. Gray whales pass in spring and fall, and the
+  cliffs are busy with seabirds most of the year.
+
+  Save time for the Makah Museum in Neah Bay. It holds thousands of objects
+  from Ozette, a Makah village buried by a mudslide about 500 years ago and
+  uncovered in the 1970s, one of the most important finds of its kind in
+  North America.
 for_kids:
   short: Edge of the map! Find each thing.
   steps:
@@ -33,4 +49,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, hiking, beach, wildlife]
-tags: [coast, hiking, views, wildlife, olympic]
+tags: [cape flattery, neah bay, makah reservation, tatoosh island, sea caves, olympic peninsula]

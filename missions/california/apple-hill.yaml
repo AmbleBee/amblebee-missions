@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 46
 name: Apple Hill Orchards
 mode: both
@@ -8,14 +8,24 @@ place:
   area: Camino, east of Placerville
   coords: [38.73010, -120.73010]
   website: https://applehill.com
-short: Pick apples and split a warm apple pastry at Apple Hill's farms in the fall.
+short: Apple Hill near Placerville. Pick apples, watch cider pressed, and rate the warm farm-stand pastries.
 description: >
   Spend a fall morning driving between the family farms of Apple Hill in the
-  Sierra foothills. Pick your own apples, watch cider being pressed, and split
-  a warm apple fritter, cider donut or slice of apple pie. Each pick the farm
-  stand treat you'd come back for, and get a photo of you in the
-  orchard rows. Go early on a weekday, since fall weekends bring big traffic.
-  Most farms are busiest from September through November.
+  Sierra foothills. Pick your own apples, watch cider being pressed, and
+  split a warm apple fritter, a cider doughnut and a slice of pie from three
+  different farms. Rate each out of ten, and the winner is the farm you
+  come back to next year. The photo to get: the two of you in the orchard
+  rows with a full bag of apples.
+about: >
+  Apple Hill started in 1964, when a group of local ranchers banded together
+  after a blight wiped out the area's pear orchards and they replanted with
+  apples. Today there are more than 50 farms, along with wineries, Christmas
+  tree farms and bakeries, spread along the back roads around Camino.
+
+  Most farms are busiest from September through November. Fall weekends
+  bring heavy traffic on the main roads, so go early on a weekday if you can.
+  The Apple Hill website has a map of every farm and what each one is known
+  for.
 for_kids:
   short: Apple hunt! Find each thing.
   steps:
@@ -32,6 +42,5 @@ season: [fall]
 time_of_day: morning
 travel: day-trip
 check_ahead: [seasonal, hours]
-themes: [wildlife, food]
-tags: [apples, farms, fall, food, gold-country]
-credit:
+themes: [food]
+tags: [apple hill, u-pick apples, cider doughnuts, apple orchards, placerville, gold-country]

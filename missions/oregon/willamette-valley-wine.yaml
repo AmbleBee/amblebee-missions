@@ -1,16 +1,34 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 39
 name: Willamette Valley Wine Tasting
 mode: date
 place:
-  name: Dundee Hills wine country
-  area: Dundee, Willamette Valley
-  coords: [45.27790, -123.01010]  # APPROX: pick a winery and use its coords before publishing
-short: Taste pinot noir in the Dundee Hills. Pick a bottle to open on an anniversary.
+  name: Stoller Family Estate
+  area: Dayton, Dundee Hills
+  address: 16161 NE McDougall Rd, Dayton, OR 97114
+  coords: [45.24129, -123.06935]
+  website: https://www.stollerfamilyestate.com
+  links:
+    - label: More wineries in the Dundee Hills
+      url: https://www.google.com/maps/search/dundee+hills+winery
+short: Taste pinot noir at Stoller in the Dundee Hills. Buy a bottle to open on your anniversary.
 description: >
-  Spend a day in the Dundee Hills, tasting at two or three wineries with views
-  over the valley. Each pick your favorite pour, then buy one bottle together to
-  save for a special day. Pick a designated driver or book a tour.
+  Start at Stoller Family Estate and taste your way through the Dundee Hills,
+  two or three wineries with views over the valley. Each pick your favorite
+  pour, then buy one bottle together and write today's date on the label to
+  open on a special day. The photo to get: one of you on Stoller's tire swing
+  with the vineyard behind. Pick a designated driver or book a tour.
+about: >
+  The Dundee Hills are the heart of Oregon pinot noir. The grapes grow in
+  red volcanic soil called Jory, and the hills are dotted with tasting rooms
+  a few minutes apart, so it's easy to visit two or three in an afternoon.
+
+  Stoller sits on land the Stoller family farmed for decades before it
+  became a vineyard. Its winery was built to be unusually green, and the
+  big lawn and the tire swing on the oak tree make it a relaxed first stop.
+
+  Tastings often need a reservation, especially on weekends, so check each
+  winery's website before you go.
 duration: all-day
 effort: easy
 cost: $$$
@@ -20,4 +38,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [reservation, hours]
 themes: [views, food, drinks]
-tags: [wine, food, views, splurge]
+tags: [wine tasting, pinot noir, dundee hills, tire swing, dayton, splurge]

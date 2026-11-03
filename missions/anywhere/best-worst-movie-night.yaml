@@ -1,15 +1,25 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 32
 name: Best Worst Movie Night
 mode: both
 who: [friends, family]
-short: Find a famously bad movie neither of you has seen. Make popcorn and enjoy every terrible minute.
+short: So-bad-it's-good movie night. Pick a famously terrible film neither of you has seen and savor it.
 description: >
-  Hunt down a movie famous for being so bad it's good, one neither of you has
-  ever seen. Each pitch a candidate and vote. Make popcorn, dim the lights, and
-  keep a running list of the best terrible lines, plot holes and worst special
-  effects. Take a photo of you with your best "what did we just
-  watch" faces, then each rate it out of 10 for how good the bad was.
+  Hunt down a movie famous for being so bad it's good, one neither of you
+  has seen. Each pitch a candidate and vote. Make popcorn, dim the lights,
+  and keep a running list of the best terrible lines, plot holes and worst
+  special effects. Take a photo of your best "what did we just watch" faces
+  at the credits, then each rate it out of 10 for how good the bad was.
+about: >
+  A few classics to start with: The Room (2003), famous for its baffling
+  lines and rooftop scenes; Plan 9 from Outer Space (1959), with its paper
+  plate flying saucers; and Troll 2 (1990), a movie with no trolls in it.
+  The mission is named after Best Worst Movie, a documentary about Troll 2's
+  cast, which makes a great second feature.
+
+  For more fun, make a quick bingo card before you start: "bad wig,"
+  "dramatic slow-motion," "line nobody would ever say." First to five in a
+  row picks the next bad movie.
 duration: short
 effort: easy
 cost: free
@@ -18,4 +28,4 @@ season: any
 time_of_day: night
 travel: local
 themes: [movies, playful, relaxing]
-tags: [at-home, movies, cozy, playful, rainy-day]
+tags: [at-home, so bad its good, bad movie night, the room, troll 2, cozy]

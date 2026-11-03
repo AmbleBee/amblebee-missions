@@ -1,4 +1,4 @@
-checked: 2026-10-21
+checked: 2026-11-03
 number: 1
 name: Sunset Under Vulcan
 mode: date
@@ -8,12 +8,26 @@ place:
   address: 1701 Valley View Dr, Birmingham, AL 35209
   coords: [33.49118, -86.79531]
   website: https://visitvulcan.com
-short: Climb up to the giant iron Vulcan statue and watch the sun set over Birmingham.
+short: Vulcan Park in Birmingham. Climb to the giant iron statue's deck and watch the city lights come on.
 description: >
-  Vulcan, the world's largest cast-iron statue, stands on top of Red Mountain looking out
-  over Birmingham. Take the elevator or stairs up the tower to the observation deck for
-  the city view, then find a spot on the lawn as the sun goes down and the city lights
-  come on below.
+  Ride up the tower beneath Vulcan, the giant iron statue on top of Red
+  Mountain, and take in the view over Birmingham from the observation deck.
+  Then find a spot on the lawn as the sun goes down and the city lights come
+  on below. The photo to get: the two of you small at the bottom of the
+  frame, with Vulcan towering against the sunset sky.
+about: >
+  Vulcan is the largest cast-iron statue in the world. He was made from
+  local iron for the 1904 World's Fair in St. Louis to show off Birmingham's
+  steel and iron industry, and he's been the city's symbol ever since. He's
+  the Roman god of the forge, holding a spear point he just made.
+
+  Look at him from behind: his bare backside faces the suburb of Homewood,
+  a long-running local joke.
+
+  The small museum at the base tells the story of Birmingham's iron
+  industry. Check the hours before you go. The observation deck can close
+  before sunset in some seasons, but the park's lawn is still a great place
+  to watch it.
 duration: short
 effort: easy
 cost: $
@@ -23,5 +37,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours]
 themes: [views, sunsets]
-tags: [views, sunset, city-lights, statue]
-credit:
+tags: [vulcan statue, red mountain, observation deck, city lights, birmingham]

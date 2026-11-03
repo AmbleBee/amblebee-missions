@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 61
 name: Movie Night at the Blue Mouse
 mode: date
@@ -6,18 +6,23 @@ place:
   name: Blue Mouse Theatre
   area: Proctor District, Tacoma
   address: 2611 N Proctor St, Tacoma, WA 98407
-  coords: [47.27160, -122.51370]  # APPROX: set at the entrance before publishing
+  coords: [47.27162, -122.48875]
   website: https://www.bluemousetheatre.com
-short: Catch a movie at Tacoma's century-old Blue Mouse. Share popcorn, then a photo under the marquee.
+short: Blue Mouse Theatre in Tacoma's Proctor District. A 1920s movie house, shared popcorn, a marquee photo.
 description: >
-  See an evening show at the Blue Mouse, a little 1920s neighborhood theater
-  in Tacoma's Proctor District that bills itself as the oldest continuously
-  operating theater in Washington. Pick whatever's playing, or watch the
-  calendar for its special nights like silent films with live accompaniment
-  or a late-night Rocky Horror. Split a big popcorn and settle into the
-  small, old-fashioned auditorium. Get a photo of the two of you under the lit-up marquee after
-  the show. Afterward, stroll the few blocks of Proctor shops before heading
-  home.
+  Catch an evening show at the Blue Mouse, a little neighborhood movie house
+  that's been running since the 1920s. Pick whatever's playing, split one big
+  popcorn, and settle into the small, old-fashioned auditorium. After the
+  show, get a photo of the two of you under the lit-up marquee, then stroll
+  the few blocks of Proctor shops before heading home.
+about: >
+  The Blue Mouse opened in 1923 and bills itself as the oldest continuously
+  operating movie theater in Washington. In the 1990s a group of local
+  neighbors bought and restored it, and it's still community-run, with one
+  screen and a lot of personality.
+
+  Besides new releases, watch the calendar for special nights, like silent
+  films with live music or a late-night Rocky Horror Picture Show.
 steps:
   - The marquee with tonight's movie
   - Your shared popcorn
@@ -31,5 +36,4 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets]
 themes: [movies]
-tags: [movies, historic-theater, cinema, popcorn, rainy-day, proctor, tacoma]
-credit:
+tags: [blue mouse theatre, historic movie theater, proctor district, popcorn, tacoma]

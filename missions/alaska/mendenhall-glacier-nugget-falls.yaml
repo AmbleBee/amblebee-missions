@@ -1,4 +1,4 @@
-checked: 2026-10-26
+checked: 2026-11-03
 number: 2
 name: Mendenhall Glacier and Nugget Falls
 mode: adventure
@@ -7,17 +7,26 @@ place:
   name: Mendenhall Glacier Visitor Center
   area: Mendenhall Valley, Juneau
   address: 8510 Mendenhall Loop Rd, Juneau, AK 99801
-  coords: [58.416777, -134.546716]
+  coords: [58.41678, -134.54672]
   website: https://www.fs.usda.gov/r10/tongass/offices/mendenhall-glacier-visitor-center
-short: Walk the flat trail to a roaring waterfall beside a real glacier. Spot the blue ice!
+short: Mendenhall Glacier in Juneau. Walk the flat trail to a roaring waterfall beside the blue ice.
 description: >
-  Start at the visitor center for the big-window view of Mendenhall Glacier across the lake,
-  then walk the mostly flat Nugget Falls Trail out to the waterfall that crashes down right
-  beside the ice. On the way back, stroll the Steep Creek boardwalk and look for spawning
-  salmon, beavers and, in late summer, black bears fishing (stay on the boardwalk and follow
-  ranger directions). Get a family photo on the gravel beach with the waterfall and glacier
-  behind you. Visitors 16 and up need a small day pass for the visitor center area; kids are
-  free and the Nugget Falls Trail itself needs no pass.
+  Walk the mostly flat Nugget Falls Trail out to a waterfall that crashes
+  down right beside Mendenhall Glacier. On the gravel beach, get a family
+  photo with the falls and the blue ice behind you, and see who can spot the
+  bluest patch of ice. On the way back, walk the Steep Creek boardwalk and
+  look for spawning salmon, beavers and, in late summer, black bears fishing.
+about: >
+  Mendenhall Glacier flows about 13 miles down from the Juneau Icefield. It
+  has pulled back well over a mile since the visitor center opened in the
+  1960s. Old photos inside show where the ice used to reach, and it's
+  striking to compare them with the view out the big windows.
+
+  The Nugget Falls Trail is about two miles round trip. Black bears use the
+  Steep Creek area, so stay on the boardwalk and follow rangers' directions.
+
+  Visitors 16 and up need a small day pass for the visitor center area. Kids
+  are free, and the Nugget Falls Trail itself needs no pass.
 for_kids:
   short: Find the glacier and the giant waterfall!
   steps:
@@ -35,6 +44,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, conditions]
 discounts: [senior, military]
-themes: [hiking, waterfalls, rocks-fossils, wildlife]
-tags: [glacier, waterfall, wildlife, salmon, easy-hike, juneau]
-credit:
+themes: [hiking, waterfalls, mountains, wildlife]
+tags: [mendenhall glacier, nugget falls, steep creek, black bears, salmon, juneau]

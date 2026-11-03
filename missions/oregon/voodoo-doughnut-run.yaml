@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 1
 name: Voodoo Doughnut Run
 mode: both
@@ -7,16 +7,30 @@ place:
   name: Voodoo Doughnut
   area: Old Town, Portland
   address: 22 SW 3rd Ave, Portland, OR 97204
-  coords: [45.52266, -122.67306]  # APPROX: set at the entrance before publishing
-short: Get the strangest doughnut you can find. Rate it out of ten together.
+  coords: [45.52260, -122.67321]
+  website: https://voodoodoughnut.com
+short: Voodoo Doughnut in Old Town Portland. Pick the weirdest doughnut and rate it out of ten.
 description: >
-  Head to Voodoo Doughnut, wait in the line (it's part of it), and each pick
-  the weirdest doughnut on the menu. Find somewhere to sit, take a photo of
-  both before the first bite, and rate them out of ten.
+  Get in line at the original Voodoo Doughnut (the wait is part of it) and
+  each pick the strangest doughnut on the menu, no talking each other out of
+  it. Take a photo of both side by side in the pink box before the first
+  bite, then rate them out of ten. Bonus photo: the two of you under the
+  "Keep Portland Weird" sign around the corner.
+about: >
+  Voodoo Doughnut opened in this Old Town spot in 2003 and became one of
+  Portland's best-known stops, famous for its bright pink boxes and odd
+  creations. The two most famous are the Voodoo Doll, a raspberry-filled
+  doughnut shaped like a little person with a pretzel stake, and the Bacon
+  Maple Bar.
+
+  There are Voodoo shops in other cities now, but this one is the original.
+  The line is usually shortest on weekday mornings and longest on weekend
+  evenings.
 for_kids:
   short: Doughnut hunt! Pick the silliest doughnut.
   steps:
     - The long line
+    - The pink box
     - The silliest doughnut
     - Your first bite!
 duration: short
@@ -28,4 +42,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [food]
-tags: [food, sweets, portland]
+tags: [doughnuts, sweets, voodoo doll doughnut, bacon maple bar, old town portland, portland]
