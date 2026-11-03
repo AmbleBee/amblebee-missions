@@ -273,6 +273,21 @@ def checked_html(m):
     return f'<p class="checked">{icon(UI_ICON["check"], 16)}Checked {month}</p>\n    '
 
 
+def welcome_html(pack, pack_path, live, collections):
+    """A short "New to AmbleBee?" box on every mission page, for people who land there straight from Google
+    or a shared link and have never seen the rest of the site."""
+    more = (f'<a class="btn" href="{esc(pack_path)}">More in {esc(pack.get("name"))}</a>' if pack["id"] != "anywhere"
+            else '<a class="btn" href="/missions/">Every mission</a>')
+    return f"""<section class="welcome" aria-labelledby="welcome-title">
+  <h2 id="welcome-title">New to AmbleBee?</h2>
+  <p>AmbleBee hands you date and adventure ideas, one mission at a time: a real place or a fun plan, a little
+  challenge, and a few photos to take along the way. There are {live} live missions so far, and each one is checked
+  before it goes live.</p>
+  <div class="welcome-actions"><a class="btn primary" href="/">Open a mission</a>{more}</div>
+  {ideas_html(collections)}
+</section>"""
+
+
 def version_files(out):
     """Add ?v=<content hash> to script and stylesheet links, so a new file is fetched as soon as it's deployed."""
     names = ["style.css", "roadmap.css", "roadmap.js", "arrive.js", "until.js", "nav.js"]
@@ -447,6 +462,7 @@ def build_pages(out):
   <a class="btn" href="/">Open a different mission</a>
 </div>
 {also_html}
+{welcome_html(pack, pack_path, stats["live"], collections)}
 {nearby_html}
 </div>"""
         # "Multnomah Falls, Columbia River Gorge, Oregon": the place and the state are what people search for

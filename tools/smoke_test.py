@@ -583,6 +583,9 @@ def t_built_pages_load(site, catalog):
         page.wait_for_selector("h1")
     page = site.open(f"/missions/{mission['id']}/")
     assert mission["name"] in page.inner_text("h1")
+    welcome = page.locator(".welcome")   # first-time visitors from Google learn what AmbleBee is
+    assert "New to AmbleBee?" in welcome.inner_text() and welcome.locator('a[href="/"]').count() == 1
+    assert welcome.locator(".ideas a").count() >= 1
     checked = next((m for m in catalog["missions"] if m.get("checked")), None)
     if checked:   # the "Checked November 2026" line, on the mission's page and in the popup
         page = site.open(f"/missions/{checked['id']}/")
