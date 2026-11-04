@@ -8,15 +8,21 @@ place:
   address: 909 Robert D. Ray Dr, Des Moines, IA 50309
   coords: [41.59460, -93.60990]  # APPROX: set at the entrance before publishing
   website: https://dmbotanicalgarden.com
-short: Escape an Iowa winter night under the glowing tropical dome. Kiss under the palms.
+short: Dome After Dark at the Des Moines Botanical Garden. Trade winter for the glowing tropics.
 description: >
-  On Friday nights from January through March, the Botanical Garden keeps its
-  big glass conservatory dome open late and lights it up, so you can trade the
-  snow outside for warm, humid air and tropical plants. Grab a glass of wine or
-  a beer in the Garden Gateway, wander the paths slowly, and find the quietest
-  bench under the canopy. Get a photo of the two of you with the lit-up plants
-  all around. It runs only in winter; buy tickets ahead or at the door, or book
-  the Friday dinner at Flora that includes Dome After Dark tickets.
+  Trade the snow outside for warm, humid air and tropical plants under the
+  big glass dome, lit up after dark. Grab a glass of wine or a beer, wander
+  the paths slowly, and find the quietest bench under the canopy. Each pick
+  the plant you'd want in your living room. The photo to get: the two of you
+  with the lit-up plants all around.
+about: >
+  Dome After Dark has run on winter Friday nights, roughly January through
+  March, when the conservatory stays open late. The geodesic dome first
+  opened in the late 1970s and was renovated as part of the garden's
+  makeover in the 2010s.
+
+  Buy tickets ahead or at the door. The garden's restaurant, Flora, has
+  offered dinner packages that include Dome After Dark tickets.
 duration: short
 effort: easy
 cost: $$
@@ -27,5 +33,4 @@ travel: local
 check_ahead: [seasonal, tickets]
 discounts: [senior, military]
 themes: [gardens, romantic]
-tags: [garden, conservatory, winter, romantic, date-night, des-moines]
-credit:
+tags: [dome after dark, des moines botanical garden, conservatory date, winter date night, tropical dome, des-moines]

@@ -9,16 +9,22 @@ place:
   address: 1105 N University Ave, Ann Arbor, MI 48109
   coords: [42.27750, -83.73520]  # APPROX: set at the entrance before publishing
   website: https://lsa.umich.edu/ummnh
-short: Meet the dueling mastodons in Ann Arbor, then catch a planetarium show. Shoot up at the tusks.
+short: U-M Museum of Natural History in Ann Arbor. Meet the dueling mastodons, then the planetarium.
 description: >
-  Wander the free natural history museum inside U-M's bright Biological
-  Sciences Building, where a pair of full-size mastodon skeletons stands in
-  the atrium under two hanging prehistoric whales. Take your time in the
-  fossil galleries and the Michigan natural history exhibits, then grab a
-  ticket at the museum store for a show in the planetarium dome (shows run
-  Friday through Sunday). Get a photo looking straight up at the
-  mastodons from underneath their tusks. Campus parking is tight right now, so
-  plan to walk or bus in.
+  Walk into the bright atrium, where a pair of full-size mastodon skeletons
+  face off under two hanging prehistoric whales. Explore the fossil galleries
+  and Michigan nature exhibits, and each find the strangest creature in the
+  building. Then catch a show in the planetarium dome. The photo to get: you
+  looking straight up at the mastodons from under their tusks.
+about: >
+  The museum moved into the Biological Sciences Building in 2019. Its
+  mastodons are a male and female shown in a fight, and the mastodon is
+  Michigan's state fossil. The hanging skeletons are early whales that still
+  had small legs, found by a U-M scientist who studied how whales came from
+  land animals.
+
+  The museum is free; planetarium shows need a ticket and run on certain
+  days, so check the schedule. Campus parking is tight, so walk or bus in.
 steps:
   - The mastodons, from underneath
   - The weirdest fossil you can find
@@ -32,5 +38,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [rocks-fossils, stars, museums]
-tags: [museum, dinosaurs, fossils, planetarium, rainy-day, solo, ann-arbor]
-credit:
+tags: [umich natural history museum, mastodon skeletons, planetarium show, fossil whales, free museum, ann-arbor]

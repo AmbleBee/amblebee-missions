@@ -7,14 +7,22 @@ place:
   name: Brooklyn Bridge walkway (Brooklyn entrance)
   area: DUMBO, Brooklyn
   coords: [40.69960, -73.99030]  # APPROX: set at the Brooklyn-side pedestrian entrance before publishing
-short: Walk the Brooklyn Bridge from Brooklyn to Manhattan, skyline in front of you the whole way.
+short: Walk the Brooklyn Bridge from DUMBO into Manhattan, skyline ahead the whole way.
 description: >
-  Start on the Brooklyn side so the Manhattan skyline is ahead of you the whole
-  walk. Stop under the stone towers for a photo of you, look back
-  for the Statue of Liberty off to the south, and take your time; it's about a
-  mile across. Go at sunrise or early morning, before the crowds pack the
-  walkway, and stay out of the bike lane. Grab a coffee or bagel in DUMBO
-  before you start. It's free.
+  Start on the Brooklyn side so the Manhattan skyline is ahead of you the
+  whole walk. Stop under the stone towers, look back for the Statue of
+  Liberty off to the south, and each count the bridges you can see. The photo
+  to get: you under a stone tower with the cables fanning out above. Stay out
+  of the bike lane.
+about: >
+  The Brooklyn Bridge opened in 1883, the first steel-wire suspension bridge
+  in the world. When its engineer, Washington Roebling, got too sick to
+  visit the site, his wife Emily Warren Roebling carried his instructions
+  and oversaw much of the building. She was the first person to cross it.
+
+  In 1884, P.T. Barnum marched 21 elephants across to prove the bridge was
+  safe. It's about a mile across; go at sunrise or early morning before the
+  crowds, and grab a bagel in DUMBO before you start.
 for_kids:
   short: Bridge walk! Find each thing.
   steps:
@@ -31,4 +39,4 @@ season: any
 time_of_day: morning
 travel: local
 themes: [views, walks, architecture]
-tags: [walking, bridge, views, skyline, free, nyc]
+tags: [brooklyn bridge walk, dumbo, manhattan skyline, emily roebling, sunrise walk, nyc]

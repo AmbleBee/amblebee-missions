@@ -8,13 +8,22 @@ place:
   area: Belleview, St. Francois Mountains
   coords: [37.65300, -90.68800]  # APPROX: set at the main parking lot before publishing
   website: https://mostateparks.com/park/elephant-rocks-state-park
-short: Climb among giant pink granite boulders lined up like a herd of elephants. Name the biggest one.
+short: Elephant Rocks State Park in Missouri. Climb giant pink granite boulders lined up like elephants.
 description: >
   Walk the short paved Braille Trail loop to a "herd" of huge pink granite
   boulders, some as big as a house, lined up like circus elephants. Scramble
   around the smaller rocks, find the old quarry pond, and each name the biggest
   elephant. Get a photo of you standing on top of one. The rocks get
   slick when wet, so watch your footing and keep off the steep edges.
+about: >
+  The granite here formed more than a billion years ago, then slowly wore
+  into rounded boulders. The biggest, nicknamed Dumbo, is about 27 feet tall
+  and weighs hundreds of tons. Granite quarried nearby was used to build St.
+  Louis streets and the Eads Bridge.
+
+  The paved Braille Trail was built for visitors who are blind or have low
+  vision, with signs in braille. The rocks get slick when wet, so watch your
+  footing and keep off the steep edges.
 for_kids:
   short: Rock elephants! Find each thing.
   steps:
@@ -30,4 +39,4 @@ season: any
 time_of_day: daytime
 travel: day-trip
 themes: [rocks-fossils, thrills]
-tags: [rocks, climbing, geology, ozarks]
+tags: [elephant rocks state park, granite boulders, braille trail, rock scrambling, st francois mountains, ozarks]

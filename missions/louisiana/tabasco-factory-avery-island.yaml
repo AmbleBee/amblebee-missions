@@ -9,7 +9,7 @@ place:
   address: Hwy 329, Avery Island, LA 70513
   coords: [29.91320, -91.91000]  # APPROX: set at the visitor entrance before publishing
   website: https://www.tabasco.com/visit-avery-island/tabasco-tour
-short: Watch Tabasco get bottled, then dare each other at the hot-sauce tasting bar.
+short: Tabasco Factory on Avery Island. Watch the bottling line, then dare each other at the tasting bar.
 description: >
   Drive out onto Avery Island, the salt dome where the Tabasco family has made
   its pepper sauce since the 1860s, and take the self-guided factory tour through
@@ -19,6 +19,15 @@ description: >
   samples, and the loser tries the hottest one again. Get a group photo with the
   biggest Tabasco bottle you can find. Reserve tickets online, and stay for lunch at the
   restaurant on site if you're hungry.
+about: >
+  Edmund McIlhenny first made Tabasco sauce here in 1868, and his family
+  still runs the company. The peppers are mashed with salt and aged in oak
+  barrels for up to three years. Avery Island sits on top of a giant salt
+  dome, and salt from the island has long been part of the recipe.
+
+  Next door, Jungle Gardens has Bird City, a rookery started in the 1890s to
+  save snowy egrets when they were being hunted for hat feathers. Reserve
+  tickets online.
 steps:
   - The biggest Tabasco bottle you can find
   - Barrels of aging pepper mash
@@ -33,5 +42,4 @@ travel: drive
 check_ahead: [hours, tickets]
 discounts: [senior, military]
 themes: [food]
-tags: [food, factory-tour, hot-sauce, cajun-country, avery-island, new-iberia]
-credit:
+tags: [tabasco factory tour, avery island, hot sauce tasting, jungle gardens, cajun country, new-iberia]

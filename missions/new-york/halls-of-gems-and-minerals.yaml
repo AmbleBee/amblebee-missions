@@ -8,7 +8,7 @@ place:
   area: Central Park West at 79th St, Upper West Side
   coords: [40.78130, -73.97400]  # APPROX: set at the museum entrance before publishing
   website: https://www.amnh.org
-short: Find the giant amethyst geode in the Halls of Gems and Minerals. Each pick a gem you'd want.
+short: Halls of Gems and Minerals at the Natural History Museum. Find the giant amethyst geode.
 description: >
   Walk through the museum's glittering gem and mineral halls, past huge
   crystals, glowing minerals and a geode taller than you that you can walk
@@ -16,6 +16,14 @@ description: >
   a photo of you by the giant amethyst geode. The halls come with
   general admission; go on a weekday morning to beat the crowds, and stay for
   the dinosaurs and the blue whale if you have time.
+about: >
+  The halls reopened in 2021 after a big renovation. Look for the Star of
+  India, a huge blue sapphire that was stolen in a famous 1964 jewel heist
+  and later recovered. The giant amethyst geodes come from Uruguay and are
+  big enough to stand inside.
+
+  The halls come with general admission. Go on a weekday morning to beat the
+  crowds, and stay for the dinosaurs and the blue whale if you have time.
 for_kids:
   short: Gem hunt! Find each thing.
   steps:
@@ -33,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [rocks-fossils, museums, science]
-tags: [museum, gems, science, rainy-day, nyc]
+tags: [halls of gems and minerals, amnh, amethyst geode, star of india sapphire, natural history museum, nyc]

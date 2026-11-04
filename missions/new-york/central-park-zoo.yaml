@@ -8,7 +8,7 @@ place:
   area: Central Park at E 64th St and Fifth Ave
   coords: [40.76780, -73.97180]  # APPROX: set at the entrance before publishing
   website: https://centralparkzoo.com
-short: Visit the snow leopards, penguins and sea lions at the Central Park Zoo. Catch a sea lion feeding.
+short: Central Park Zoo. Visit the snow leopards, penguins and sea lions, and catch a feeding.
 description: >
   Walk through a small zoo tucked right into Central Park: sea lions in the
   center pool, penguins and puffins in the polar building, snow leopards, red
@@ -16,6 +16,14 @@ description: >
   feeding and get there early for a spot at the rail. Each pick your favorite
   animal and get a photo with it. On your way out, wait for the Delacorte
   Clock to play on the hour.
+about: >
+  Animals have lived in this corner of Central Park since the 1860s, when it
+  started as a small menagerie of donated animals. The zoo you see today was
+  rebuilt in the 1980s, and it starred in the animated movie Madagascar.
+
+  The Delacorte Clock, near the entrance, has bronze animals that dance
+  around it and play music on a regular schedule through the day. Check the
+  zoo's daily schedule for sea lion feedings.
 for_kids:
   short: Zoo hunt! Find each animal.
   steps:
@@ -33,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [wildlife]
-tags: [animals, zoo, central-park, nyc]
+tags: [central park zoo, sea lion feeding, snow leopards, delacorte clock, penguins, nyc]

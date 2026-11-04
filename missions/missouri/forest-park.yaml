@@ -8,14 +8,21 @@ place:
   area: Forest Park, St. Louis
   coords: [38.63860, -90.29480]  # APPROX: set at the top of Art Hill before publishing
   website: https://www.forestparkforever.org
-short: Spend a free day in Forest Park. Zoo, art museum, then the view from Art Hill.
+short: Forest Park in St. Louis. Spend a free day at the zoo and art museum, then the view from Art Hill.
 description: >
-  Forest Park is bigger than Central Park, and its big museums are free. Pick
-  two: the Saint Louis Zoo, the Art Museum on top of Art Hill, the Science
-  Center, or the History Museum. Then sit at the top of Art Hill and look down
-  over the Grand Basin's fountains, and each say which stop was your favorite.
-  In warm months, rent a paddleboat at the Boathouse. In winter, Art Hill is
-  the city's sledding hill.
+  Pick two of Forest Park's free museums: the Saint Louis Zoo, the Art
+  Museum on top of Art Hill, the Science Center or the History Museum. Then
+  sit at the top of Art Hill and look down over the Grand Basin's fountains,
+  and each say which stop was your favorite. The photo to get: you at the top
+  of Art Hill with the fountains below.
+about: >
+  Forest Park is bigger than New York's Central Park, and it hosted the 1904
+  World's Fair. The Art Museum is the only big fair building that was built
+  to last, and the zoo's walk-through bird cage was also made for the fair.
+
+  Most of the big museums and the zoo are free. In warm months, rent a
+  paddleboat at the Boathouse, and in winter Art Hill is the city's favorite
+  sledding hill.
 for_kids:
   short: Park day! Find each thing.
   steps:
@@ -33,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [wildlife, museums]
-tags: [park, museum, zoo, free, st-louis]
+tags: [forest park st louis, saint louis zoo, art hill, free museums, 1904 worlds fair, st-louis]

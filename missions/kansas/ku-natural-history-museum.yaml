@@ -9,7 +9,7 @@ place:
   address: 1345 Jayhawk Blvd, Lawrence, KS 66045
   coords: [38.95860, -95.24360]  # APPROX: set at the entrance before publishing
   website: https://biodiversity.ku.edu/visit
-short: Climb four floors of fossils and wildlife in a castle-like museum. Find the sea monster.
+short: KU Natural History Museum in Lawrence. Climb four floors of fossils and wildlife in a castle.
 description: >
   On the KU campus, Dyche Hall's carved stone castle holds four floors of
   animals, fossils and dioramas, starting with the giant Panorama of North
@@ -19,6 +19,16 @@ description: >
   can name. Get a photo of everyone pretending to be scared of the biggest
   fossil. Entry is by a suggested donation, and campus parking can be tight
   on weekdays, so check the museum's parking tips.
+about: >
+  The giant Panorama on the ground floor was first built for the 1893
+  World's Fair in Chicago by KU naturalist Lewis Lindsay Dyche, and it's one
+  of the oldest dioramas of its kind still on display. Dyche Hall itself
+  dates to 1903.
+
+  The museum also holds Comanche, a horse that survived the Battle of the
+  Little Bighorn in 1876. The fossil sea creatures come from when an ancient
+  ocean covered Kansas, full of giant marine reptiles. Entry is by suggested
+  donation, and campus parking can be tight on weekdays.
 for_kids:
   short: Museum hunt! Find each thing.
   steps:
@@ -36,5 +46,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [rocks-fossils, wildlife, museums]
-tags: [museum, fossils, animals, kids, rainy-day, free, university, lawrence]
-credit:
+tags: [ku natural history museum, dyche hall, panorama diorama, kansas fossils, comanche horse, lawrence]

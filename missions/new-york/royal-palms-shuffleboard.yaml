@@ -9,7 +9,7 @@ place:
   address: 514 Union St, Brooklyn, NY 11215
   coords: [40.67940, -73.98620]  # APPROX: set at the entrance before publishing
   website: https://www.royalpalmsshuffle.com  # verify
-short: Play shuffleboard at Royal Palms in Brooklyn. Loser buys the next round.
+short: Royal Palms Shuffleboard Club in Brooklyn. Play a best of three, and the loser buys the round.
 description: >
   Rent a court at a huge, Florida-themed shuffleboard club in an old Gowanus
   warehouse, with tiki drinks and a food truck parked inside. Learn the rules
@@ -17,6 +17,15 @@ description: >
   photo of you with your cues on the court. Weekend nights get
   packed, so reserve a court or go early. Evenings are 21 and up; check the
   age rules if you're bringing anyone younger.
+about: >
+  Royal Palms opened in 2014 in an old Gowanus warehouse and gave
+  shuffleboard a comeback. The Florida theme is a nod to the game's history:
+  shuffleboard took off in Florida's retirement communities in the early
+  1900s.
+
+  Tips: slide the disc smoothly instead of shoving it, and use your disc to
+  knock the other team's off the scoring triangle. Weekend nights get
+  packed, so reserve a court or go early.
 duration: short
 effort: easy
 cost: $$
@@ -26,4 +35,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours, reservation]
 themes: [drinks, games, playful]
-tags: [games, drinks, playful, competitive, brooklyn, nyc]
+tags: [royal palms shuffleboard, gowanus, shuffleboard club, tiki drinks, game night, nyc]

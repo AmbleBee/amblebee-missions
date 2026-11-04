@@ -8,7 +8,7 @@ place:
   address: 5904 York Rd, Baltimore, MD 21212
   coords: [39.36361, -76.61083]
   website: https://www.thesenatortheatre.com
-short: See a movie in a 1939 Art Deco palace. Sit dead center and share the popcorn.
+short: The Senator Theatre in Baltimore. See a movie in a 1939 Art Deco palace and share the popcorn.
 description: >
   The Senator is a round 1939 Art Deco movie palace on York Road, with a
   glowing neon marquee, a curved lobby, and a grand main
@@ -17,6 +17,14 @@ description: >
   go down, check out the walk of fame in the sidewalk out front. Get a photo of the
   two of you under the lit-up marquee after the show. Belvedere Square across
   the street is an easy spot for a bite before or after.
+about: >
+  The Senator opened in 1939, designed by theater architect John Eberson,
+  with a round auditorium and one of the most famous marquees in Baltimore.
+  Local filmmakers like John Waters and Barry Levinson have held premieres
+  here, and their names are in the walk of fame out front.
+
+  The theater nearly closed more than once and was saved by the community.
+  Belvedere Square across the street is an easy spot for a bite.
 steps:
   - The two of you under the neon marquee
   - The big screen before the lights go down
@@ -29,5 +37,4 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets]
 themes: [history, architecture, movies, shows]
-tags: [movies, art-deco, historic, theater, classic-films, baltimore]
-credit:
+tags: [senator theatre, art deco movie palace, classic film night, belvedere square, historic theater, baltimore]

@@ -9,7 +9,7 @@ place:
   address: 307 Milltown Rd, Taylors Falls, MN 55084
   coords: [45.39600, -92.65500]  # APPROX: set at the rental office before publishing
   website: https://www.taylorsfallscanoe.com
-short: Paddle past cliffs and sandbars from Taylors Falls to Osceola. Picnic on an island beach.
+short: Canoe the St. Croix from Taylors Falls, MN. Paddle past cliffs and picnic on an island beach.
 description: >
   Start the morning poking around the glacial potholes in Interstate State
   Park, giant holes the old river drilled into the rock. Then rent a canoe
@@ -20,6 +20,16 @@ description: >
   canoe with the cliffs behind you. Finish with burgers at the old drive-in
   in Taylors Falls. You'll need a Minnesota state park vehicle permit, and
   the outfitter sat out the 2026 season, so confirm it's running before you go.
+about: >
+  Interstate State Park, opened in 1895 by Minnesota and Wisconsin together,
+  was the first state park shared by two states. Its glacial potholes were
+  drilled into the rock by swirling meltwater and stones at the end of the
+  Ice Age; the deepest is around 60 feet.
+
+  The St. Croix was one of the first rivers protected as a National Wild and
+  Scenic River, in 1968. You'll need a Minnesota state park vehicle permit.
+  The outfitter sat out the 2026 season, so confirm it's running before you
+  go.
 steps:
   - The deepest glacial pothole
   - You in the canoe, cliffs behind
@@ -39,5 +49,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, reservation, conditions]
 themes: [lakes-rivers, boating, rocks-fossils, picnic]
-tags: [canoe, paddling, river, cliffs, picnic, st-croix, taylors-falls]
-credit:
+tags: [st croix river canoeing, taylors falls, glacial potholes, interstate state park, river picnic, st-croix]

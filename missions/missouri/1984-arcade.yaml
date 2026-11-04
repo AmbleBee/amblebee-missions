@@ -9,14 +9,19 @@ place:
   address: 400 S Jefferson Ave, Springfield, MO 65806  # verify: corner of Jefferson and Walnut
   coords: [37.20900, -93.28950]  # APPROX: set at the entrance before publishing
   website: https://www.1984arcade.com
-short: Pay one cover and play classic 80s arcade games all night. Set a high score together.
+short: 1984 Arcade in Springfield, MO. One cover, all-night classic 80s games. Set a high score.
 description: >
-  Step into an 80s time machine: dozens of original arcade cabinets, neon,
-  black lights and 80s music videos. One cover charge gets you unlimited play
-  on the video games (pinball takes quarters). Each pick the game you were best
-  at as a kid, go head to head on Pac-Man or Galaga, and try to get one of your
-  initials on the high-score board. Get a photo of you mid-game in
-  the neon. Open Wednesday through Saturday evenings.
+  Step into an 80s time machine: rows of original arcade cabinets, neon,
+  black lights and 80s music videos. Each pick the game you were best at as
+  a kid, go head to head on Pac-Man or Galaga, and try to get your initials
+  on the high-score board. The photo to get: you mid-game in the neon.
+about: >
+  One cover charge gets you unlimited play on the video games; pinball still
+  takes quarters, so bring some. It's open on certain evenings each week, so
+  check the hours.
+
+  Springfield has its own claim to fame: it's called the birthplace of Route
+  66, since the highway's name was chosen here in 1926.
 for_kids:
   short: Arcade night! Find each thing.
   steps:
@@ -34,4 +39,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours]
 themes: [games, quirky, playful]
-tags: [arcade, retro, games, playful, rainy-day, springfield]
+tags: [1984 arcade, retro arcade, 80s video games, pac-man, high score, springfield]

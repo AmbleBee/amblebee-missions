@@ -9,7 +9,7 @@ place:
   address: 701 Enterprise Blvd, Lake Charles, LA 70601
   coords: [30.22800, -93.20500]  # APPROX: set at the entrance before publishing
   website: https://mardigrasmuseum.org
-short: Wander a hall of sparkling Mardi Gras costumes. Try one on and ride the fake parade float.
+short: Mardi Gras Museum of Imperial Calcasieu in Lake Charles. Sparkling costumes and a parade float.
 description: >
   Southwest Louisiana throws its own Mardi Gras, and this museum in Lake
   Charles shows off the costumes: rooms of towering gowns and headpieces
@@ -19,6 +19,14 @@ description: >
   costume you'd actually dare to wear. Get a photo of yourself trying on a
   costume piece in front of the brightest display. The museum recently
   moved into a new building and isn't open every day, so check before you go.
+about: >
+  Lake Charles throws one of the biggest Mardi Gras celebrations in
+  Louisiana outside New Orleans, and this museum holds one of the largest
+  collections of Mardi Gras costumes anywhere. The local krewes spend all
+  year building them, and some weigh more than the people wearing them.
+
+  The museum moved after hurricanes damaged its old home, so check the
+  current address and hours before you go, since it isn't open every day.
 duration: short
 effort: easy
 cost: $$
@@ -29,5 +37,4 @@ travel: local
 check_ahead: [hours]
 discounts: [senior, military]
 themes: [museums, holidays, playful]
-tags: [museum, mardi-gras, costumes, culture, rainy-day, lake-charles]
-credit:
+tags: [mardi gras museum, lake charles mardi gras, krewe costumes, parade float, louisiana culture, lake-charles]

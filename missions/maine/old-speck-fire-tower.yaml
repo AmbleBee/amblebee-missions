@@ -9,18 +9,22 @@ place:
   address: ME-26, Newry, ME 04261  # main Grafton Notch trailhead lot, west side of Route 26, about 12 mi north of US-2
   coords: [44.58316, -70.95528]  # trailhead lot, from Maine Trail Finder
   website: https://www.maine.gov/graftonnotch
-short: Grind up Old Speck on the Appalachian Trail and climb the fire tower. Spot Katahdin.
+short: Old Speck in Grafton Notch, Maine. Climb the Appalachian Trail to the fire tower and spot Katahdin.
 description: >
-  Start at the Grafton Notch trailhead and climb Old Speck, one of Maine's
-  highest peaks, about seven and a half miles round trip and roughly 2,700 feet
-  of climbing on the Appalachian Trail; plan on four to seven hours. The bottom follows a brook through birch woods, then
-  the trail turns steep, rocky and rooty for the long push to the summit. Climb
-  the old fire tower, now an open observation tower, for a huge view over the Mahoosucs and western
-  mountains; on a clear day you can pick out the Presidentials and maybe
-  Katahdin. Get a photo at the top of the tower with the mountains all around.
-  Bold hikers can start up the Eyebrow Trail's iron rungs and ladders instead;
-  start early, pack plenty of water, and pay the small park day-use fee (cash or
-  check).
+  Climb Old Speck on the Appalachian Trail, following a brook through birch
+  woods before the long, steep, rocky push to the summit. Climb the old fire
+  tower for a huge view over the western mountains, and each try to spot
+  the Presidentials and maybe Katahdin far away. The photo to get: you at
+  the top of the tower with the mountains all around.
+about: >
+  Old Speck is one of the highest peaks in Maine, about 4,200 feet. The hike
+  is about seven and a half miles round trip with roughly 2,700 feet of
+  climbing; plan on four to seven hours.
+
+  Just south on the Appalachian Trail is Mahoosuc Notch, a boulder-filled
+  ravine famous as one of the hardest miles of the whole trail. Bold hikers
+  can start up the Eyebrow Trail's iron rungs and ladders. Start early and
+  pack plenty of water. The park day-use fee has been cash or check only.
 steps:
   - The brook near the bottom
   - The steepest part of the climb
@@ -34,5 +38,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions, seasonal]
 themes: [views, hiking, mountains]
-tags: [hiking, mountain, fire-tower, appalachian-trail, views, grafton-notch, newry]
-credit:
+tags: [old speck mountain, grafton notch state park, appalachian trail, fire tower hike, mahoosuc range, newry]

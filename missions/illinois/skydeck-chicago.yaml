@@ -9,12 +9,22 @@ place:
   address: 233 S Wacker Dr, Chicago, IL 60606
   coords: [41.87890, -87.63590]  # APPROX: set at the Skydeck entrance on Jackson Blvd before publishing
   website: https://theskydeck.com
-short: Step out into a glass box 103 floors up. Look straight down if you dare.
+short: Skydeck Chicago at Willis Tower. Step out into a glass box 103 floors up.
 description: >
-  Ride to the 103rd floor of Willis Tower and step into The Ledge, glass boxes
-  that stick out from the side of the building with nothing under your feet but
-  air. On a clear day you can see across the lake to other states. Go near
-  sunset to watch the city lights come on. Buy timed tickets ahead.
+  Ride to the 103rd floor of Willis Tower and step into The Ledge, glass
+  boxes that stick out from the side of the building with nothing under your
+  feet but air. Dare each other to lie down on the glass. On a clear day,
+  each try to spot a different state across the lake. The photo to get: you
+  standing on the glass with the city straight below.
+about: >
+  Willis Tower, first called the Sears Tower, opened in 1973 and was the
+  tallest building in the world for about 25 years. The Ledge, added in
+  2009, sits about 1,350 feet up, and its glass is thick enough to hold
+  several tons.
+
+  On a clear day you can see four states: Illinois, Indiana, Michigan and
+  Wisconsin. Go near sunset to watch the city lights come on, and buy timed
+  tickets ahead.
 for_kids:
   short: Sky high! Find each thing.
   steps:
@@ -31,4 +41,4 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets, conditions]
 themes: [views, sunsets, architecture, thrills]
-tags: [views, skyscraper, sunset, thrill, chicago]
+tags: [skydeck chicago, willis tower, the ledge glass box, sears tower, city views, chicago]

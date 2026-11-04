@@ -8,16 +8,22 @@ place:
   address: 622 46th Ave, Amana, IA 52203
   coords: [41.79900, -91.87000]  # APPROX: set at the entrance before publishing
   website: https://www.amanacolonies.com
-short: Stroll the old German villages, taste the local beer and wine, then share a family-style feast.
+short: Amana Colonies, Iowa. Stroll the old German villages, taste local beer and share a feast.
 description: >
-  The Amana Colonies are seven old German villages west of Iowa City, with
-  brick and stone buildings, a working woolen mill, bakeries and tasting
-  rooms. Start at the visitor center for a map, walk the Kolonieweg trail
-  around Lily Lake if the weather is good, then wander Main Amana's shops and
-  share a flight at the brewery or a winery. Finish with a big family-style
-  dinner, where the platters keep coming until you give up. Get a photo of
-  the two of you under the sign of the oldest building you can find. Pick a
-  driver before the tastings.
+  Wander Main Amana's brick and stone shops, the woolen mill and bakeries,
+  and walk the trail around Lily Lake if the weather is good. Share a flight
+  at the brewery or a winery, and each pick a favorite. Finish with a big
+  family-style dinner where the platters keep coming until you give up. The
+  photo to get: the two of you under the sign of the oldest building you can
+  find.
+about: >
+  German religious settlers founded the Amana Colonies in 1855 and lived
+  communally for almost 80 years. They shared everything, including their
+  meals, cooked in big community kitchens. In 1932 they voted to end
+  communal life, and the family-style restaurants carry on that tradition.
+
+  The seven villages are a National Historic Landmark, and the woolen mill
+  has been running since the 1850s. Pick a driver before the tastings.
 steps:
   - An old brick or stone building
   - Your tasting flight, side by side
@@ -31,5 +37,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, reservation]
 themes: [history, food, drinks, small-towns]
-tags: [small-town, german, history, brewery, wine, dinner, amana, iowa-city]
-credit:
+tags: [amana colonies, german village iowa, family-style dinner, amana woolen mill, brewery, iowa-city]

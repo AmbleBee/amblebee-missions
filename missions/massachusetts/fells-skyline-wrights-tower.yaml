@@ -9,15 +9,21 @@ place:
   address: South Border Rd, Medford, MA 02155
   coords: [42.43077, -71.10729]  # APPROX: Bellevue Pond pull-off (Hiking Project); set at the lot before publishing
   website: https://www.mass.gov/locations/middlesex-fells-reservation
-short: Scramble the white-blazed rocks of the Fells up to a stone tower. Find the Boston skyline.
+short: Middlesex Fells near Boston. Scramble the Skyline Trail up to Wright's Tower and the city view.
 description: >
-  From little Bellevue Pond, climb Pine Hill to Wright's Tower, a 1930s stone
-  lookout with a view of the Boston skyline across the treetops. Then pick up the
-  white blazes of the Skyline Trail, which passes the tower, and follow it over
-  ledges and rocky knobs, up and down short steep pitches the whole way (the
-  full loop is about 7 miles). The blazes are easy to lose, so bring a map or
-  offline trail app and do as much of the loop as you like. Take a photo of the skyline framed by the tower's stone window. Skip it
-  right after rain, when the rocks get slick.
+  From little Bellevue Pond, climb Pine Hill to Wright's Tower, a stone
+  lookout with a view of the Boston skyline across the treetops. Then follow
+  the white blazes of the Skyline Trail over ledges and rocky knobs, and see
+  who spots the next blaze first. The photo to get: the skyline framed by the
+  tower's stone window.
+about: >
+  The tower was built in the 1930s and named for Elizur Wright, a 1800s
+  reformer known as the father of life insurance, who also fought to protect
+  the Fells as a public park. "Fells" is an old word for rocky, hilly land.
+
+  The full Skyline loop is about 7 miles of short, steep pitches. The blazes
+  are easy to lose, so bring a map or offline trail app, and skip it right
+  after rain, when the rocks get slick.
 steps:
   - The skyline from Wright's Tower
   - A white blaze on bare rock
@@ -31,5 +37,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [conditions]
 themes: [views, hiking]
-tags: [hiking, skyline-trail, rock-scramble, views, skyline, solo, medford, boston]
-credit:
+tags: [middlesex fells, skyline trail, wrights tower, boston skyline view, rock scramble hike, boston]

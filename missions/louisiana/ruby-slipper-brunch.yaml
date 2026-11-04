@@ -8,12 +8,20 @@ place:
   area: Canal Street, New Orleans
   address: 1001 Canal St, New Orleans, LA 70112
   coords: [29.95610, -90.07320]  # APPROX: set at the entrance before publishing
-short: Brunch at the Ruby Slipper. Order one sweet and one savory and share both.
+short: Ruby Slipper brunch in New Orleans. Order one sweet and one savory and share both.
 description: >
-  Get brunch at the Ruby Slipper, a New Orleans favorite for Southern breakfast.
-  Order one sweet dish and one savory one (a Benedict and the bananas Foster
-  pain perdu are a good pair) and split them. Expect a wait on weekends; it's
-  part of the experience.
+  Get brunch at the Ruby Slipper, a New Orleans favorite for Southern
+  breakfast. Order one sweet dish and one savory one, like a Benedict and the
+  bananas Foster pain perdu, split them, and vote on which one wins. The
+  photo to get: both plates on the table before anyone takes a bite. Expect a
+  wait on weekends.
+about: >
+  The Ruby Slipper opened after Hurricane Katrina, and its name comes from
+  Dorothy's line "There's no place like home," a nod to people coming back
+  to the city. It's grown to several locations around the South.
+
+  Bananas Foster, the inspiration for the pain perdu, was invented in New
+  Orleans in the 1950s at Brennan's restaurant.
 duration: short
 effort: easy
 cost: $$
@@ -23,4 +31,4 @@ time_of_day: morning
 travel: local
 check_ahead: [hours]
 themes: [food]
-tags: [food, brunch, new-orleans]
+tags: [ruby slipper cafe, new orleans brunch, bananas foster, southern breakfast, canal street, new-orleans]

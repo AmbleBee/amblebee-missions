@@ -9,13 +9,20 @@ place:
   address: 1 Canal St, New Orleans, LA 70130  # verify against audubonnatureinstitute.org
   coords: [29.95060, -90.06270]  # APPROX: set at the entrance before publishing
   website: https://audubonnatureinstitute.org
-short: Walk through the Gulf of Mexico tunnel at Audubon Aquarium. Each find the strangest fish.
+short: Audubon Aquarium in New Orleans. Walk the Gulf tunnel and each find the strangest fish.
 description: >
   Explore the aquarium at the foot of Canal Street, from the Gulf of Mexico
   tank to the Amazon rainforest and the swamp. Walk the underwater tunnel with
   fish overhead, and each find the strangest creature in the building. Get a
   photo of you against the big tank. The Algiers ferry leaves right
   next door if you want to keep going.
+about: >
+  The aquarium opened in 1990 on the riverfront at the foot of Canal Street.
+  Its giant Gulf of Mexico tank recreates the base of an offshore oil
+  platform, where sharks, rays and huge fish gather in real life too.
+
+  It reopened after a big renovation in the 2020s with new exhibits. The
+  Algiers ferry leaves right next door if you want to keep exploring.
 for_kids:
   short: Aquarium hunt! Find each thing.
   steps:
@@ -33,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [wildlife]
-tags: [aquarium, animals, rainy-day, new-orleans]
+tags: [audubon aquarium, gulf of mexico tank, underwater tunnel, canal street, family day out, new-orleans]

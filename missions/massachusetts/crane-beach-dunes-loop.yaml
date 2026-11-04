@@ -9,7 +9,7 @@ place:
   address: 310 Argilla Rd, Ipswich, MA 01938
   coords: [42.68340, -70.76500]  # APPROX: set at the trailhead kiosk before publishing
   website: https://thetrustees.org/place/crane-beach-on-the-crane-estate/
-short: Trek the sand dunes behind Crane Beach, then walk the shoreline back. Group shot up top.
+short: Crane Beach in Ipswich. Trek the dune trails, then walk the shoreline back.
 description: >
   Skip the beach towel crowd and head for the trail kiosk at the east end of
   the parking lot. The marked trails wind through pitch pine and up over
@@ -19,6 +19,15 @@ description: >
   highest dune with the ocean behind you. Pack water and a picnic, and do a
   tick check afterward. Reserve a parking pass ahead on weekends, stay out of
   fenced dune areas, and leave dogs home from April through September.
+about: >
+  The Crane Estate belonged to plumbing-fixture millionaire Richard T. Crane
+  Jr., whose 1920s Great House still stands on Castle Hill above the beach.
+  The dunes behind the beach are among the biggest in New England, with
+  pitch pines growing out of the sand.
+
+  Greenhead flies can be fierce for a few weeks in midsummer, so check
+  before you go. Reserve a parking pass ahead on weekends, stay out of
+  fenced dune areas, and do a tick check afterward.
 steps:
   - The first big dune
   - Your crew on the highest dune, ocean behind you
@@ -32,5 +41,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, reservation, conditions]
 themes: [hiking, beach]
-tags: [hiking, dunes, beach, ocean, friends, ipswich, north-shore]
-credit:
+tags: [crane beach, dune trails, crane estate, castle hill, north shore beach, ipswich]

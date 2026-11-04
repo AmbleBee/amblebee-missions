@@ -8,13 +8,22 @@ place:
   area: The Lake, Central Park (enter near E 72nd St)
   coords: [40.77530, -73.96890]  # APPROX: set at the boat rental dock before publishing
   website: https://www.thecentralparkboathouse.com
-short: Row a boat across the Lake in Central Park. Take turns rowing and find Bow Bridge.
+short: Central Park rowboat from the Loeb Boathouse. Take turns rowing the Lake and find Bow Bridge.
 description: >
   Rent a rowboat at the Loeb Boathouse and row out onto the Lake, with the
   skyline poking up over the trees. Take turns at the oars, row under or past
   Bow Bridge, and find a quiet cove to just drift for a while. Get a photo of you in the boat with the bridge behind you. Boats hold up to four,
   rent first-come, first-served from April to October, and come back by early
   evening, so go earlier in the day. Weather can close the rentals.
+about: >
+  Central Park was designed by Frederick Law Olmsted and Calvert Vaux, who
+  won a design contest in 1858. The Lake was dug out of a swamp, and Bow
+  Bridge, built in 1862, is one of the oldest cast-iron bridges in the
+  country and a favorite spot for movie scenes and marriage proposals.
+
+  Boats hold up to four and rent first come, first served from spring to
+  fall. They come back by early evening, and weather can close the
+  rentals, so go earlier in the day.
 for_kids:
   short: Boat ride! Find each thing.
   steps:
@@ -32,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [seasonal, conditions]
 themes: [boating, romantic]
-tags: [boating, park, romantic, central-park, nyc]
+tags: [central park rowboat, loeb boathouse, bow bridge, the lake, row a boat nyc, nyc]

@@ -9,13 +9,20 @@ place:
   address: 2038 W State Hwy 86, Lampe, MO 65681
   coords: [36.51800, -93.45700]  # APPROX: set at the visitor center before publishing
   website: https://dogwoodcanyon.org
-short: Ride the open-air tram through Dogwood Canyon into bison and elk country. Feed the giant trout.
+short: Dogwood Canyon near Branson. Ride the tram into bison and elk country and feed the giant trout.
 description: >
-  Take the two-hour narrated tram tour through a canyon of bluffs, waterfalls
-  and creek crossings, out into the pasture where the bison and elk roam. Stop
-  at the little 1800s-style chapel and toss food to the huge trout at the Glory
-  Hole. Each guess how many bison you'll see before you spot the first one. Park
-  admission is separate, and tours sell out often, so book ahead.
+  Take the narrated tram tour through a canyon of bluffs, waterfalls and
+  creek crossings, out into the pasture where bison and elk roam. Each guess
+  how many bison you'll see before you spot the first one. Stop at the little
+  chapel and toss food to the huge trout at the Glory Hole. The photo to get:
+  you on the tram with the bison behind you.
+about: >
+  Dogwood Canyon was put together in the 1990s by Johnny Morris, the founder
+  of Bass Pro Shops, to protect a wild Ozarks canyon. The park is so big that
+  the tram crosses the state line into Arkansas and back.
+
+  Park admission is separate from the tram, and tours sell out often, so
+  book ahead.
 for_kids:
   short: Canyon safari! Find each thing.
   steps:
@@ -33,4 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, hours]
 themes: [waterfalls, wildlife]
-tags: [wildlife, bison, waterfall, ozarks, branson]
+tags: [dogwood canyon, wildlife tram tour, bison and elk, ozarks canyon, trout feeding, branson]

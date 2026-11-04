@@ -8,7 +8,7 @@ place:
   area: Washington Heights, northern Manhattan
   coords: [40.85950, -73.93300]  # APPROX: set at Margaret Corbin Circle before publishing
   website: https://www.forttryonparktrust.org
-short: Walk the Heather Garden in Fort Tryon Park. Then find the Hudson view from Linden Terrace.
+short: Fort Tryon Park in northern Manhattan. Walk the Heather Garden and find the Hudson view.
 description: >
   Take the A train to 190th St and ride the elevator straight up into the
   park. Wander the Heather Garden, which has something in bloom almost every
@@ -17,6 +17,16 @@ description: >
   bench and get a photo of you with the river behind you. Fall
   leaves here are some of the best in the city. It's free, and the Cloisters
   are right at the north end if you want to make a day of it.
+about: >
+  John D. Rockefeller Jr. gave this land to the city, and the park, designed
+  by the Olmsted Brothers firm, opened in 1935. During the Revolutionary
+  War, a fort stood here, and Margaret Corbin took over firing her husband's
+  cannon after he was killed in battle in 1776. She became the first woman
+  to receive a U.S. military pension.
+
+  The Heather Garden is one of the biggest free public gardens in the city.
+  The Cloisters are at the north end of the park, so pair it with
+  [[met-cloisters]] for a whole afternoon.
 for_kids:
   short: Park hunt! Find each thing.
   steps:
@@ -33,4 +43,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [views, forests, gardens]
-tags: [park, gardens, views, fall-colors, free, nyc]
+tags: [fort tryon park, heather garden, linden terrace, hudson river views, margaret corbin, nyc]

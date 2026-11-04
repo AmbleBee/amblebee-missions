@@ -8,13 +8,22 @@ place:
   area: Uptown, New Orleans
   coords: [29.93460, -90.12260]  # APPROX: set at the St. Charles Ave entrance before publishing
   website: https://audubonnatureinstitute.org
-short: Ride the streetcar to Audubon Park. Walk under the giant live oaks to the zoo.
+short: Audubon Park and Zoo in New Orleans. Ride the streetcar and walk under the giant live oaks.
 description: >
   Take the St. Charles streetcar Uptown and walk into Audubon Park under huge
   live oaks draped in Spanish moss. Loop the lagoon and look for the egrets
   crowding Bird Island, then continue to the Audubon Zoo, with its Louisiana
   swamp exhibit and white alligators. Each find the biggest oak and get a photo
   of you under it. The park is free; the zoo is ticketed.
+about: >
+  Audubon Park was designed by the Olmsted Brothers firm, the sons of the
+  designer of Central Park, and its land once hosted the 1884 World's Cotton
+  Centennial fair. The huge live oaks are centuries old, and one is called
+  the Tree of Life.
+
+  Bird Island, in the lagoon, is a rookery where egrets and herons nest by
+  the hundreds in spring. The zoo's Louisiana Swamp exhibit has rare white
+  alligators. The park is free; the zoo is ticketed.
 for_kids:
   short: Park and zoo! Find each thing.
   steps:
@@ -33,4 +42,4 @@ travel: local
 check_ahead: [hours, tickets]
 discounts: [military, senior]
 themes: [forests, wildlife, vehicles]
-tags: [park, trees, zoo, animals, streetcar, new-orleans]
+tags: [audubon park, audubon zoo, st charles streetcar, live oaks, bird island, new-orleans]

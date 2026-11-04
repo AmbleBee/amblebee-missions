@@ -9,17 +9,23 @@ place:
   address: 1115 Tunnel Creek Rd, Incline Village, NV 89451
   coords: [39.22900, -119.92800]  # APPROX: set at the shop before publishing
   website: https://www.flumetrailtahoe.com
-short: Mountain bike the cliffside Flume Trail high above Lake Tahoe. Lunch at Marlette Lake.
+short: Tahoe Flume Trail from Incline Village. Mountain bike the cliffside trail high above the lake.
 description: >
-  Rent mountain bikes at the shop in Incline Village, take their shuttle to
-  Spooner Lake, and ride about 14 miles back: a climb of over 1,000 feet to
-  quiet Marlette Lake, then the famous Flume Trail, a narrow singletrack cut into the granite cliffs with
-  Lake Tahoe glowing blue far below. Pack a picnic for Marlette and take your
-  time on the flume section; the first stretch is rocky and technical and the
-  drop-off is real, so walk anything that spooks you. Stop on a big boulder halfway along for the
-  photo of you with the whole lake behind. It's an intermediate to
-  advanced ride at 8,000 feet, so you should be fit, comfortable on dirt trails
-  and fine with heights. Book bikes and the shuttle ahead.
+  Rent mountain bikes, take the shuttle to Spooner Lake, and ride back:
+  first a climb to quiet Marlette Lake for a picnic, then the famous Flume
+  Trail, a narrow singletrack cut into the granite cliffs with Lake Tahoe
+  glowing blue far below. Each pick the best viewpoint along the way. The
+  photo to get: your crew on a big boulder halfway along with the whole lake
+  behind.
+about: >
+  In the 1870s, a wooden flume ran along this route carrying water and
+  timber toward the silver mines of Virginia City. Marlette Lake was dammed
+  to feed it. The trail follows the old flume's path.
+
+  It's about 14 miles at around 8,000 feet, an intermediate to advanced ride.
+  The first stretch of the flume section is rocky and technical, and the
+  drop-off is real, so walk anything that spooks you. Book bikes and the
+  shuttle ahead.
 steps:
   - Marlette Lake from your picnic spot
   - You with Tahoe behind
@@ -36,5 +42,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [reservation, seasonal, conditions]
 themes: [views, lakes-rivers, rocks-fossils, biking]
-tags: [mountain-biking, lake, views, cliffs, lake-tahoe, incline-village]
-credit:
+tags: [tahoe flume trail, mountain biking lake tahoe, marlette lake, incline village, cliffside trail, lake-tahoe]

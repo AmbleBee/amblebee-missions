@@ -9,13 +9,21 @@ place:
   address: 1200 S DuSable Lake Shore Dr, Chicago, IL 60605
   coords: [41.86760, -87.61400]  # APPROX: set at the main entrance before publishing
   website: https://www.sheddaquarium.org
-short: Meet the belugas at Shedd. Each find the fish that looks most like the other.
+short: Shedd Aquarium in Chicago. Meet the belugas, and each find the fish that looks most like the other.
 description: >
-  A grand old aquarium on the lakefront: a round coral reef tank with sharks and
-  sea turtles, an Amazon rainforest, and the Oceanarium with beluga whales and
-  sea otters in front of a wall of windows over Lake Michigan. Each find the
-  fish that looks most like the other one. Book ahead; Illinois residents get
-  free days.
+  Circle the round coral reef tank full of sharks and sea turtles, walk
+  through the Amazon rainforest, then sit in the Oceanarium with beluga
+  whales and sea otters in front of a wall of windows over Lake Michigan.
+  Each find the fish that looks most like the other one. The photo to get:
+  you in front of the belugas with the lake behind.
+about: >
+  Shedd opened in 1930 as the largest indoor aquarium in the world. Before
+  it opened, its seawater was brought in by railroad tank cars all the way
+  from Key West. The Oceanarium, built in 1991, was designed so its pools seem
+  to flow right into Lake Michigan behind them.
+
+  Book ahead, since it's one of the busiest museums in Chicago. Illinois
+  residents get free days.
 for_kids:
   short: Under the sea! Find each thing.
   steps:
@@ -33,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
 themes: [lakes-rivers, wildlife]
-tags: [aquarium, animals, lakefront, rainy-day, chicago]
+tags: [shedd aquarium, beluga whales, museum campus, caribbean reef tank, lake michigan views, chicago]

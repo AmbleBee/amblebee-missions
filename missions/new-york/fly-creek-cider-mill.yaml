@@ -9,7 +9,7 @@ place:
   address: 288 Goose St, Fly Creek, NY 13337
   coords: [42.71800, -74.98900]  # APPROX: set at the mill parking before publishing
   website: https://www.flycreekcidermill.com
-short: Race rubber ducks with the water pumps at Fly Creek Cider Mill, then taste the fresh cider.
+short: Fly Creek Cider Mill near Cooperstown. Race rubber ducks with water pumps, then taste fresh cider.
 description: >
   Visit a cider mill from 1856 in the hills of upstate New York, where the
   original water-powered press still squeezes fresh cider in the fall. Pick
@@ -19,6 +19,14 @@ description: >
   geese. Get a photo of you with your winning duck. The mill opens
   for the season around Mother's Day and closes just before Christmas. Pair
   it with a visit to Cooperstown.
+about: >
+  The mill was built in 1856, and its water-powered press still squeezes
+  fresh cider in the fall. It's one of the few water-powered cider mills
+  still working in the country.
+
+  The mill opens for the season around Mother's Day and closes just before
+  Christmas. Cooperstown, a few minutes away, is home to the National
+  Baseball Hall of Fame, opened in 1939.
 for_kids:
   short: Duck race! Do each thing.
   steps:
@@ -36,5 +44,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
 themes: [wildlife, history, drinks, playful]
-tags: [cider, apples, playful, history, farm, upstate-new-york]
+tags: [fly creek cider mill, duck races, fresh apple cider, cooperstown, water-powered mill, upstate-new-york]
 credit: Anonymous User

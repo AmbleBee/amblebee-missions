@@ -8,7 +8,7 @@ place:
   area: Financial District, Lower Manhattan
   address: 55 Water St, New York, NY 10041
   coords: [40.70320, -74.00940]  # APPROX: set at the Water St escalators before publishing
-short: Ride the escalators up to the Elevated Acre, a hidden lawn over the East River.
+short: The Elevated Acre in the Financial District. Ride the escalators to a hidden lawn over the river.
 description: >
   Find the escalators tucked between the towers at 55 Water Street and ride up
   to a secret one-acre park three stories above the street, with a lawn,
@@ -17,6 +17,14 @@ description: >
   watch the helicopters and ferries go by. Get a photo of you on the
   boardwalk with the river behind you. It's free, but it sometimes closes for
   private events.
+about: >
+  The Elevated Acre is a "privately owned public space," a park that a
+  building's owners built and keep open to everyone in exchange for being
+  allowed to build bigger. New York has hundreds of them, many easy to walk
+  past without noticing.
+
+  It's free, but it sometimes closes for private events, so check before you
+  go.
 for_kids:
   short: Secret park! Find each thing.
   steps:
@@ -34,4 +42,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [views]
-tags: [hidden-gem, park, views, free, financial-district, nyc]
+tags: [elevated acre, hidden park nyc, 55 water street, east river views, privately owned public space, nyc]

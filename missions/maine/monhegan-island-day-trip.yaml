@@ -8,18 +8,23 @@ place:
   address: 880 Port Clyde Rd, Port Clyde, ME 04855  # verify: company address, should match the dock
   coords: [43.92710, -69.26060]  # APPROX: set at the dock before publishing
   website: https://www.monheganboat.com
-short: Ferry out to a tiny island 10 miles at sea. Hike the cliffs and catch the last boat home.
+short: Monhegan Island day trip from Port Clyde, Maine. Ferry out, hike the cliffs, catch the last boat.
 description: >
   Take the morning ferry from Port Clyde out to Monhegan, a car-free fishing
-  island about an hour offshore with no paved roads and a village of
-  artists' studios. Climb up to the lighthouse for the view over the harbor,
-  walk through the mossy Cathedral Woods, and follow the cliff trails along
-  the back of the island to the high headlands at White Head and Burnt Head.
-  Pack a picnic or grab lunch in the village, then keep an eye on the clock
-  for the afternoon boat back. Get a photo of the two of you on the cliffs
-  with nothing but ocean behind you. The trails are rocky and steep in spots,
-  and same-day round trips only work when the boat runs more than once a day
-  (roughly mid-May to mid-October).
+  island about an hour offshore. Climb up to the lighthouse for the view over
+  the harbor, walk the mossy Cathedral Woods, and follow the cliff trails to
+  the high headlands at White Head and Burnt Head. Each pick your favorite
+  painting in the village studios. The photo to get: the two of you on the
+  cliffs with nothing but ocean behind you.
+about: >
+  Monhegan has drawn painters for more than a century, including Rockwell
+  Kent and three generations of the Wyeth family, and only a small number
+  of people live there year-round. The lighthouse dates to the 1850s.
+
+  Look for the rusting wreck of a tugboat on the rocks at Lobster Cove, which
+  ran aground in the 1940s. The trails are rocky and steep in spots, and
+  same-day round trips only work when the boat runs more than once a day,
+  roughly mid-May to mid-October.
 steps:
   - The harbor from the ferry deck
   - The lighthouse
@@ -33,5 +38,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal, conditions]
 themes: [hiking, beach, boating, rocks-fossils]
-tags: [island, ferry, hiking, cliffs, lighthouse, ocean, port-clyde, monhegan, midcoast]
-credit:
+tags: [monhegan island, port clyde ferry, cliff trails, cathedral woods, artist colony, midcoast]

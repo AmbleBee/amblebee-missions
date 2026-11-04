@@ -9,13 +9,20 @@ place:
   address: 516 S Kirkwood Rd, Kirkwood, MO 63122  # verify against the museum's site
   coords: [38.57540, -90.40680]  # APPROX: set at the entrance before publishing
   website: https://www.magichouse.org
-short: Make your hair stand up at the Magic House. Let the kids lead the way.
+short: The Magic House in Kirkwood, St. Louis. Make your hair stand up at the children's museum.
 description: >
   A family day at St. Louis's beloved hands-on children's museum. Touch the
   famous electrostatic ball and watch your hair stand on end, climb the
   three-story beanstalk, run a kid-sized town, and splash at the water
   exhibits. Let the kids pick the order, and get a photo of everyone's crazy
   hair. Timed tickets can sell out on busy days, so book ahead.
+about: >
+  The Magic House opened in 1979 in an old Victorian mansion in Kirkwood and
+  has grown into one of the biggest children's museums in the country. The
+  hair-raising ball is a Van de Graaff generator: it fills you with static
+  electricity, so every hair pushes away from the others.
+
+  Timed tickets can sell out on busy days, so book ahead.
 for_kids:
   short: Magic house! Find each thing.
   steps:
@@ -33,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [museums, science]
-tags: [kids, museum, hands-on, rainy-day, st-louis]
+tags: [the magic house, childrens museum st louis, static electricity ball, hands-on science, kirkwood, st-louis]

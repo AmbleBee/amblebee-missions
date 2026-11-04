@@ -7,11 +7,19 @@ place:
   name: Honey Island Swamp
   area: Pearl River, near Slidell
   coords: [30.31000, -89.73000]  # APPROX: pick a tour operator's dock and use its coords
-short: Take a swamp boat tour through the bayou. Spot an alligator and photograph it.
+short: Swamp boat tour in Honey Island Swamp near Slidell. Spot an alligator and photograph it.
 description: >
-  Ride a boat into the swamp through cypress trees draped in Spanish moss. Keep
-  your eyes on the water for alligators, turtles and herons, and try to get the
-  best gator photo. Warm months bring out the most gators.
+  Ride a boat into the swamp through cypress trees draped in Spanish moss.
+  Keep your eyes on the water for alligators, turtles and herons, and see who
+  spots the first gator. The photo to get: the best gator shot of the day.
+about: >
+  Honey Island Swamp is one of the least-changed river swamps in the
+  country, a huge protected area along the Pearl River. It also has its own
+  legend: the Honey Island Swamp Monster, a big, hairy creature some locals
+  claim to have seen since the 1960s. Ask your guide.
+
+  Warm months bring out the most gators; in winter they're slower and
+  harder to spot.
 for_kids:
   short: Swamp safari! Find each animal.
   steps:
@@ -29,4 +37,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [reservation]
 themes: [lakes-rivers, boating, wildlife]
-tags: [wildlife, swamp, boat, alligators]
+tags: [swamp tour, honey island swamp, bayou boat tour, alligators, pearl river, slidell]

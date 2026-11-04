@@ -9,7 +9,7 @@ place:
   address: 114 N Main St, Roswell, NM 88203
   coords: [33.39355, -104.52280]  # APPROX: set at the entrance before publishing
   website: https://www.roswellufomuseum.com
-short: Investigate the 1947 Roswell crash at the UFO museum. Decide for yourself. Snap an alien.
+short: International UFO Museum in Roswell. Investigate the 1947 crash and decide for yourself.
 description: >
   Spend an hour or two inside an old downtown movie theater turned UFO museum,
   reading the timeline, newspaper clippings and witness statements about the
@@ -17,6 +17,14 @@ description: >
   then make up your mind: weather balloon or something else? Get a photo with
   the alien-and-spaceship display that's the museum's star. Afterward, walk
   Main Street to spot the alien-shaped streetlights and storefront aliens.
+about: >
+  In July 1947, the Roswell Army Air Field announced it had recovered a
+  "flying disc," then said the next day it was a weather balloon. Decades
+  later, the Air Force said it was a secret balloon project for spying on
+  Soviet nuclear tests. Believers still aren't convinced.
+
+  The museum is in an old downtown movie theater, and the town leans in, with
+  alien-shaped streetlights and a big UFO festival every summer.
 steps:
   - The 1947 newspaper headline
   - The best piece of evidence you found
@@ -32,5 +40,4 @@ travel: local
 check_ahead: [hours]
 discounts: [senior, military, first-responder]
 themes: [museums, spooky, quirky]
-tags: [museum, ufo, quirky, roadside, rainy-day, roswell]
-credit:
+tags: [roswell ufo museum, 1947 roswell incident, alien museum, quirky roadside attraction, ufo festival, roswell]

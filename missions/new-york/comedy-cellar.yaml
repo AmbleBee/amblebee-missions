@@ -9,13 +9,21 @@ place:
   address: 117 MacDougal St, New York, NY 10012
   coords: [40.73020, -74.00060]  # APPROX: set at the entrance before publishing
   website: https://www.comedycellar.com
-short: Catch a late show at the Comedy Cellar. Big-name comics drop in unannounced.
+short: Comedy Cellar in Greenwich Village. Catch a late show where big-name comics drop in unannounced.
 description: >
   Squeeze into the tiny basement club in the Village where famous comics
-  regularly drop in unannounced to work on new material. Reserve ahead, show
-  up early, and expect a cover plus a two-drink minimum. Phones go away for the
-  whole show. Afterward, each pick your favorite joke and try to retell it over
-  a slice of pizza on MacDougal. The comedy is very adult.
+  regularly drop in unannounced to work on new material. Show up early, and
+  put your phones away for the whole show. Afterward, each pick your favorite
+  joke and try to retell it over a slice of pizza on MacDougal. The photo to
+  get: your crew under the Comedy Cellar sign outside.
+about: >
+  The Comedy Cellar opened in 1982 and became one of the most famous comedy
+  clubs in the world, a place where big names test new jokes in a tiny room.
+  Upstairs, the Olive Tree Cafe has a table where comics hang out between
+  sets.
+
+  Reserve ahead and expect a cover plus a two-drink minimum. The comedy is
+  very adult.
 duration: short
 effort: easy
 cost: $$
@@ -24,5 +32,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [reservation]
-themes: [drinks, shows, small-towns]
-tags: [comedy, nightlife, drinks, village, nyc]
+themes: [drinks, shows]
+tags: [comedy cellar, stand-up comedy nyc, greenwich village, macdougal street, late show, nyc]

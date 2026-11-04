@@ -11,16 +11,20 @@ place:
   links:
     - label: Catoctin Breeze Vineyard
       url: https://www.catoctinbreeze.com
-short: Scramble up to Wolf Rock and Chimney Rock, then toast the view at a mountain winery.
+short: Catoctin Mountain Park in Thurmont, MD. Scramble to Chimney Rock, then a winery tasting.
 description: >
-  From the Catoctin Mountain Park visitor center, hike the loop up to Wolf Rock,
-  a jumble of giant boulders split by deep cracks, and over to Chimney Rock,
-  where a rock outcrop looks out over the valley. It's about four miles with
-  some steep, rocky stretches, the steepest climbing in the park. Get a photo of
-  the two of you sitting on the edge at Chimney Rock. Then drive about ten
-  minutes to Catoctin Breeze Vineyard
-  for a tasting on the stone patio or in the upstairs lounge; book a table ahead.
-  The vineyard is 21 and up (no children) and closed some weekdays.
+  Hike the loop up to Wolf Rock, a jumble of giant boulders split by deep
+  cracks, and over to Chimney Rock, an outcrop looking out over the valley.
+  Each guess how many miles away the farthest hill is. The photo to get: the
+  two of you sitting at the edge of Chimney Rock. Then drive about ten
+  minutes to Catoctin Breeze Vineyard for a tasting on the stone patio.
+about: >
+  Catoctin Mountain Park was built in the 1930s as a place for city families
+  to get outdoors. Camp David, the presidential retreat, is hidden inside
+  the park, closed to the public and never shown on maps.
+
+  The loop is about four miles with the steepest climbing in the park. Book
+  a table at the vineyard ahead; it's 21 and up and closed some weekdays.
 steps:
   - The two of you in a crack in Wolf Rock
   - Sitting together at Chimney Rock
@@ -34,5 +38,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, reservation, conditions]
 themes: [views, hiking, drinks, romantic]
-tags: [hiking, views, wine, vineyard, romantic, catoctin, thurmont]
-credit:
+tags: [chimney rock catoctin, wolf rock, catoctin mountain park, catoctin breeze vineyard, hike and wine, thurmont]

@@ -9,16 +9,23 @@ place:
   address: KY-90, Corbin, KY 40701  # verify: small Eagle Falls lot just across the river bridge from the falls overlook
   coords: [36.83678, -84.34553]  # trailhead, from Hiking Project
   website: https://parks.ky.gov/corbin/parks/resort/cumberland-falls-state-resort-park
-short: Climb the cliffside trail to hidden Eagle Falls and look back at the big Cumberland Falls.
+short: Eagle Falls Trail at Cumberland Falls, KY. Climb to hidden Eagle Falls and look back at the big one.
 description: >
-  Drive across the river bridge from the busy main overlook and start up the
-  Eagle Falls Trail, which climbs the cliffs above the Cumberland River on stairs
-  and rocky ledges. It's only about a mile and a half, but steep in spots, and it
-  ends with a stair spur down to the base of Eagle Falls, a narrow ribbon dropping
-  into a rocky pool with the much bigger Cumberland Falls roaring in the
-  distance. Get a photo of yourself on the rocks at the base with both waterfalls
-  in view. The steps get slick when wet and the small lot fills on summer
-  weekends, so go early.
+  Drive across the river bridge from the busy main overlook and climb the
+  Eagle Falls Trail on stairs and rocky ledges above the Cumberland River.
+  Take the stair spur down to the base of Eagle Falls, a narrow ribbon
+  dropping into a rocky pool, with the much bigger Cumberland Falls roaring in
+  the distance. The photo to get: you on the rocks at the base with both
+  waterfalls in view.
+about: >
+  Cumberland Falls is called the "Niagara of the South," a wide curtain of
+  water about 68 feet tall. On clear nights around the full moon, its mist
+  makes a moonbow, a rainbow lit by moonlight, one of the only places in the
+  Western Hemisphere where that happens regularly.
+
+  The Eagle Falls Trail is about a mile and a half and steep in spots. The
+  steps get slick when wet, and the small lot fills on summer weekends, so
+  go early.
 duration: short
 effort: moderate
 cost: free
@@ -28,5 +35,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [hiking, waterfalls, rocks-fossils]
-tags: [hiking, waterfall, cliffs, cumberland-falls, corbin]
-credit:
+tags: [eagle falls trail, cumberland falls, moonbow, waterfall hike, daniel boone national forest, corbin]

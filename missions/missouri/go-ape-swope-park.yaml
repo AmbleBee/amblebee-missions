@@ -9,7 +9,7 @@ place:
   address: 7331 Oakwood Dr, Kansas City, MO 64132
   coords: [38.99800, -94.51000]  # APPROX: set at the Go Ape check-in before publishing
   website: https://goape.com/Locations/Missouri/Kansas-City
-short: Zip, swing and climb through the treetops at Go Ape. Race each other to the last zipline.
+short: Go Ape at Swope Park in Kansas City. Zip, swing and climb through the treetops.
 description: >
   Harness up and take on the Treetop Adventure course in Swope Park: rope
   bridges, wobbly ladders, a giant Tarzan swing and five ziplines, the longest
@@ -17,6 +17,14 @@ description: >
   crossing and get a photo coming off the last zip. Plan two to three hours,
   wear closed-toe shoes, and book ahead. Younger kids can do the lower Treetop
   Journey course instead.
+about: >
+  Go Ape started in England in 2002 and now runs treetop courses in forests
+  around the world. Here you're up to about 45 feet in the trees, clipped in
+  the whole time.
+
+  Swope Park is one of the biggest city parks in the country, given to
+  Kansas City in 1896 by Thomas Swope. The Kansas City Zoo is in the park too.
+  Plan two to three hours, wear closed-toe shoes, and book ahead.
 for_kids:
   short: Treetop adventure! Find each thing.
   steps:
@@ -33,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [reservation, seasonal]
 themes: [forests, thrills]
-tags: [zipline, ropes-course, adventure, forest, kansas-city]
+tags: [go ape kansas city, treetop adventure, zipline course, swope park, ropes course, kansas-city]

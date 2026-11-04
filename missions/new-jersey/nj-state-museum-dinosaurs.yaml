@@ -9,7 +9,7 @@ place:
   address: 205 W State St, Trenton, NJ 08608
   coords: [40.22070, -74.77150]  # APPROX: set at the entrance before publishing
   website: https://nj.gov/state/museum/
-short: Meet New Jersey's own dinosaur at the free state museum in Trenton. Find the biggest bones!
+short: New Jersey State Museum in Trenton. Meet the state dinosaur at this free museum.
 description: >
   Walk through the free state museum's natural history hall, where fossils and
   casts trace life in New Jersey from ancient seas to the Ice Age, including
@@ -18,6 +18,14 @@ description: >
   strangest sea creature. Get a photo of everyone standing under the tallest
   skeleton. The planetarium runs weekend shows for an extra fee if you want
   to add one. Expect a bag check at the door.
+about: >
+  Hadrosaurus, New Jersey's state dinosaur, was dug up in Haddonfield in
+  1858. It was one of the first nearly complete dinosaur skeletons ever
+  found, and in 1868 it became the first dinosaur skeleton ever mounted for
+  display, in nearby Philadelphia.
+
+  The museum is free, with a bag check at the door. The planetarium has
+  weekend shows for an extra fee if you want to add one.
 for_kids:
   short: Fossil hunt! Find each one.
   steps:
@@ -35,5 +43,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [rocks-fossils, museums]
-tags: [museum, dinosaurs, fossils, kids, free, rainy-day, trenton]
-credit:
+tags: [new jersey state museum, hadrosaurus, free dinosaur museum, trenton planetarium, family day out, trenton]

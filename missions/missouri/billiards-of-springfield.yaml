@@ -8,12 +8,19 @@ place:
   area: Downtown Springfield
   address: 541 E St Louis St, Springfield, MO 65806
   coords: [37.20850, -93.28470]  # APPROX: set at the entrance before publishing
-short: Shoot pool on real nine-foot tables at a classic pool hall. Loser buys the burgers.
+short: Billiards of Springfield. Shoot pool on nine-foot tables at a classic hall; loser buys burgers.
 description: >
   Grab a table at Springfield's longtime pool hall, with sixteen full-size
   nine-foot tables, and play a best-of-five. Loser buys the burgers, which
   locals swear are some of the best in town. If one of you is new to pool, the
   other has to teach a trick shot. Get a photo lining up the winning shot.
+about: >
+  Nine-foot tables are the size used in professional tournaments, bigger
+  than most bar tables, so long shots are harder than you expect.
+
+  Beginner tips: keep your bridge hand steady, look at the spot on the ball
+  you want to hit, and follow through smoothly instead of jabbing. Ask a
+  regular for a trick shot; most are happy to show off.
 duration: short
 effort: easy
 cost: $$
@@ -22,5 +29,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
-themes: [swimming, food, games]
-tags: [pool, games, food, rainy-day, springfield]
+themes: [food, games]
+tags: [billiards of springfield, pool hall, nine-foot tables, best of five, burgers, springfield]

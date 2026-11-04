@@ -9,14 +9,22 @@ place:
   address: 945 Magazine St, New Orleans, LA 70130
   coords: [29.94310, -90.07050]  # APPROX: set at the main entrance before publishing
   website: https://www.nationalww2museum.org
-short: Spend a day at the National WWII Museum. Each follow one real person's story through the war.
+short: National WWII Museum in New Orleans. Follow one real person's story through the war.
 description: >
-  Give yourselves most of a day for one of the best history museums in the
-  country. At the start, each get a dog tag card linking you to a real person
-  who lived through the war, and follow their story through the galleries.
-  Walk under the planes hanging in the big pavilion, and add the 4D film Beyond
-  All Boundaries if you can. Afterward, swap your person's story over lunch.
-  It's heavy in places; take breaks.
+  At the start, each get a dog tag card linking you to a real person who
+  lived through the war, and follow their story through the galleries. Walk
+  under the planes hanging in the big pavilion, and add the 4D film if you
+  can. Afterward, swap your person's story over lunch. The photo to get: you
+  under the planes in the pavilion. It's heavy in places; take breaks.
+about: >
+  The museum opened on June 6, 2000, the anniversary of D-Day, as the
+  National D-Day Museum, founded by historian Stephen Ambrose. Congress later
+  named it America's official WWII museum.
+
+  It's in New Orleans because the Higgins boats, the landing craft that
+  carried troops onto the beaches, were built here. General Eisenhower
+  credited their builder, Andrew Higgins, with helping win the war. Give it
+  most of a day.
 duration: all-day
 effort: easy
 cost: $$$
@@ -26,4 +34,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [history, museums, vehicles]
-tags: [history, museum, aviation, rainy-day, new-orleans]
+tags: [national wwii museum, d-day museum, higgins boats, warehouse district, history museum, new-orleans]

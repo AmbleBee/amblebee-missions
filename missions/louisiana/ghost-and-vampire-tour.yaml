@@ -7,13 +7,22 @@ place:
   name: French Quarter (most ghost tours start near Jackson Square)
   area: French Quarter, New Orleans
   coords: [29.95800, -90.06350]  # APPROX: pick one tour operator's meeting point before publishing
-short: Take a small-group, adults-only ghost and vampire tour of the French Quarter after dark.
+short: Adults-only ghost and vampire tour of the French Quarter after dark.
 description: >
   After dark, join a small-group, adults-only tour of the Quarter's haunted
   corners: the houses, courtyards and legends of ghosts, voodoo and vampires
   that New Orleans is famous for. Stick close at the creepiest stop, each pick
   the story that gave you chills, and see who's braver on the walk back to the
   car. Get one spooky photo under a gas lamp.
+about: >
+  New Orleans is often called one of the most haunted cities in America.
+  Tours usually include the LaLaurie Mansion, with one of the city's darkest
+  true stories, and tales of voodoo queen Marie Laveau. The vampire legends
+  grew bigger after Anne Rice's 1976 novel Interview with the Vampire, set
+  right here.
+
+  Adults-only tours can get gruesome, so pick one that matches your nerve.
+  Wear comfortable shoes; most tours walk for about two hours.
 duration: short
 effort: easy
 cost: $$
@@ -23,4 +32,4 @@ time_of_day: night
 travel: local
 check_ahead: [tickets]
 themes: [walks, history, spooky]
-tags: [ghosts, spooky, history, walking, night, new-orleans]
+tags: [new orleans ghost tour, vampire tour, haunted french quarter, lalaurie mansion, marie laveau, new-orleans]

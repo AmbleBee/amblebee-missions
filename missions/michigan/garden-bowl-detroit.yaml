@@ -9,7 +9,7 @@ place:
   address: 4140 Woodward Ave, Detroit, MI 48201
   coords: [42.35160, -83.06070]  # APPROX: set at the entrance before publishing
   website: https://majesticdetroit.com/garden-bowl/
-short: Bowl a few frames at a Detroit alley that's been rolling since 1913. Loser buys the snacks.
+short: Garden Bowl in Detroit. Bowl at an alley rolling since 1913, and the loser buys the snacks.
 description: >
   The Garden Bowl has been knocking down pins on Woodward since 1913, and it
   still has the feel of well-worn neighborhood lanes, with low lights and
@@ -18,6 +18,15 @@ description: >
   lowest score buys the snacks. Get a photo of everyone lined up at the ball
   return with your best strike pose. Book a lane online for weekend nights, and
   check the age rules if anyone in your group is under 21 late at night.
+about: >
+  The Garden Bowl opened in 1913 and is often called the oldest active
+  bowling alley in the country. It's part of the Majestic complex on
+  Woodward, along with the Majestic Theatre next door, a music venue that
+  opened as a movie house in 1915.
+
+  On some nights the lanes switch to glow-in-the-dark "cosmic" bowling. Book
+  a lane online for weekend nights, and check the age rules if anyone is
+  under 21 late at night.
 steps:
   - Your team at the ball return
   - The scoreboard after game one
@@ -31,5 +40,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours, reservation]
 themes: [history, games]
-tags: [bowling, historic, games, friends, rainy-day, midtown, detroit]
-credit:
+tags: [garden bowl, oldest bowling alley, majestic detroit, cosmic bowling, woodward avenue, detroit]

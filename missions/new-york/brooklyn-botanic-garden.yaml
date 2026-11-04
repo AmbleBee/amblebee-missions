@@ -9,14 +9,21 @@ place:
   address: 990 Washington Ave, Brooklyn, NY 11225
   coords: [40.66940, -73.96240]  # APPROX: set at the Washington Ave entrance before publishing
   website: https://www.bbg.org
-short: Wander the Brooklyn Botanic Garden. Find the koi in the Japanese pond garden.
+short: Brooklyn Botanic Garden. Wander the Japanese pond garden, the roses and the greenhouses.
 description: >
-  Spend a slow afternoon wandering 52 acres of gardens: the Japanese Hill and
-  Pond Garden with its red torii gate and koi, the rose garden, and the
-  greenhouses full of desert and tropical plants. Each pick your favorite spot
-  and take the other there. Come in spring for the cherry blossoms, the
-  garden's busiest and prettiest time. Weekdays from December to February are
-  pay what you wish; it's closed most Mondays.
+  Spend a slow afternoon wandering the gardens: the Japanese Hill-and-Pond
+  Garden with its red torii gate and koi, the rose garden, and greenhouses
+  full of desert and tropical plants. Each pick your favorite spot and take
+  the other there. The photo to get: you by the red gate with the pond
+  behind.
+about: >
+  The garden opened in 1910. Its Japanese Hill-and-Pond Garden was built in
+  the 1910s and is one of the oldest Japanese gardens in an American public
+  garden. In spring, the cherry trees bloom along the Cherry Esplanade, the
+  garden's busiest and prettiest time.
+
+  The garden has had pay-what-you-wish days in winter and is closed some
+  days, so check the hours before you go.
 for_kids:
   short: Garden hunt! Find each thing.
   steps:
@@ -34,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, seasonal]
 themes: [gardens, relaxing]
-tags: [gardens, flowers, calm, brooklyn, nyc]
+tags: [brooklyn botanic garden, japanese hill and pond garden, cherry blossoms, rose garden, prospect heights, nyc]

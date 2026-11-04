@@ -11,15 +11,22 @@ place:
   links:
     - label: Marengo Cave
       url: https://www.marengocave.com
-short: Paddle seven miles of the clear Blue River, then go underground at Marengo Cave.
+short: Blue River paddle in Milltown, Indiana, then go underground at Marengo Cave.
 description: >
-  Start your day at the outfitter in tiny Milltown, ride the bus up to the
-  launch, and paddle about seven miles of the Blue River back to town through
-  riffles, little rapids and deep green pools under limestone bluffs. Pull over
-  on a gravel bar for a packed lunch and get a photo of the two of you in your
-  boats with the bluffs behind you. Dry off and drive ten minutes to Marengo Cave
-  for a walking tour through its glittering formations, a cool 52 degrees all
-  year. Reserve the river trip ahead; it runs about April through October.
+  Ride the outfitter's bus up to the launch and paddle about seven miles of
+  the Blue River back to Milltown, through riffles and deep green pools
+  under limestone bluffs. Pull over on a gravel bar for a packed lunch and
+  each find the flattest skipping stone. The photo to get: the two of you in
+  your boats with the bluffs behind you. Then dry off and tour Marengo
+  Cave's glittering formations.
+about: >
+  The Blue River is one of Indiana's protected scenic rivers, known for its
+  clear water and the caves and springs along its banks.
+
+  Marengo Cave was found in 1883 by two kids, a brother and sister who
+  crawled into a sinkhole with candles. It's now a National Natural
+  Landmark and stays about 52 degrees all year, so bring a layer. Reserve the
+  river trip ahead; it runs roughly April through October.
 steps:
   - Your paddles raised at the launch
   - The two of you on a gravel bar for lunch
@@ -38,5 +45,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, reservation, conditions]
 themes: [lakes-rivers, boating, caves]
-tags: [kayaking, river, cave, southern-indiana, milltown, marengo]
-credit:
+tags: [blue river kayaking, marengo cave, southern indiana caves, canoe trip, limestone bluffs, milltown]

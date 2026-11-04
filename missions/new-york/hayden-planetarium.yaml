@@ -8,7 +8,7 @@ place:
   area: W 81st St at Central Park West, Upper West Side
   coords: [40.78160, -73.97330]  # APPROX: set at the Rose Center entrance before publishing
   website: https://www.amnh.org
-short: Lean back under the dome for the Hayden Planetarium space show. Then walk the cosmic pathway.
+short: Hayden Planetarium in NYC. Lean back for the space show, then walk the Cosmic Pathway.
 description: >
   Get timed tickets for the space show and lean back under the giant dome as
   it flies you out through the universe. Afterward, walk the spiral Cosmic
@@ -17,6 +17,14 @@ description: >
   sphere of the Rose Center behind you. The show needs a separate timed
   ticket, so book ahead. It's in the same museum as the gem halls, so you can
   do both in one day.
+about: >
+  The Rose Center opened in 2000, with the planetarium inside a giant glowing
+  sphere. Astrophysicist Neil deGrasse Tyson has long directed the
+  planetarium. When it opened, its exhibits famously left Pluto out of the
+  lineup of planets, years before scientists officially reclassified it.
+
+  The show needs a separate timed ticket, so book ahead. It's in the same
+  museum as the gem halls, so you can do both in one day.
 for_kids:
   short: Space hunt! Find each thing.
   steps:
@@ -34,4 +42,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [tickets]
 themes: [stars, museums, science]
-tags: [space, planetarium, science, museum, rainy-day, nyc]
+tags: [hayden planetarium, rose center, space show, cosmic pathway, natural history museum, nyc]

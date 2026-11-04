@@ -7,13 +7,21 @@ place:
   area: Pennway Point, near Crossroads, Kansas City
   coords: [39.08180, -94.59200]  # APPROX: set at the KC Wheel entrance before publishing
   website: https://kcwheel.com
-short: Ride the KC Wheel after dark and watch the skyline light up. Then a round of mini golf.
+short: KC Wheel at Pennway Point. Ride after dark as the Kansas City skyline lights up, then mini golf.
 description: >
   Book an evening ride on the 150-foot KC Wheel and float up over the city in
   your own warm, enclosed gondola, with Union Station, the Kauffman Center and
   the downtown towers lit up around you. Get a photo of the two of you with the
   skyline behind you at the top. Then play a round of mini golf next door;
   loser buys dessert. Tickets are for set times, so book ahead.
+about: >
+  The KC Wheel opened in 2022 at Pennway Point and stands about 150 feet
+  tall, with enclosed, heated and cooled gondolas, so it works in any season.
+  From the top, look for Union Station, which opened in 1914, and the curved
+  Kauffman Center for the Performing Arts.
+
+  Rides are for set times, so book ahead. A clear night after rain gives the
+  sharpest view.
 duration: short
 effort: easy
 cost: $$
@@ -23,4 +31,4 @@ time_of_day: night
 travel: local
 check_ahead: [tickets]
 themes: [views, games]
-tags: [views, night, city, mini-golf, kansas-city]
+tags: [kc wheel, pennway point, ferris wheel date, kansas city skyline, mini golf, kansas-city]

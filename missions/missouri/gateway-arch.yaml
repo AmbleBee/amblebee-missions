@@ -9,12 +9,22 @@ place:
   address: 11 N 4th St, St. Louis, MO 63102  # verify against gatewayarch.com
   coords: [38.62470, -90.18480]  # APPROX: set at the visitor entrance before publishing
   website: https://www.gatewayarch.com
-short: Ride the tiny tram to the top of the Gateway Arch. Then photograph it from below.
+short: Gateway Arch in St. Louis. Ride the tiny tram to the top, then photograph it from below.
 description: >
-  Take the little pod-shaped tram up inside the Arch and look out the windows at
-  the top over the Mississippi and the city. Back on the ground, walk out under
-  the legs and find your best angle: straight up from the base, or the whole
-  curve from across the park.
+  Squeeze into the little pod-shaped tram and ride up inside the Arch, then
+  look out the narrow windows at the top over the Mississippi and the city.
+  Back on the ground, walk out under the legs and each find your best angle.
+  The photo to get: straight up from the base, the Arch shrinking into the
+  sky.
+about: >
+  The Arch is 630 feet tall and 630 feet wide, the tallest monument in the
+  country. Architect Eero Saarinen designed it, and it was finished in 1965.
+  The tram pods hold five people and take about four minutes to reach the
+  top.
+
+  The grounds became Gateway Arch National Park in 2018, and the museum under
+  the Arch tells the story of the westward expansion. Buy tram tickets ahead,
+  especially on weekends.
 for_kids:
   short: Up the giant arch! Find each thing.
   steps:
@@ -31,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
 themes: [views, parks]
-tags: [landmark, views, national-park]
+tags: [gateway arch, tram to the top, gateway arch national park, eero saarinen, mississippi riverfront, st-louis]

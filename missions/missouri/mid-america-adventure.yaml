@@ -9,12 +9,20 @@ place:
   address: 4900 Six Flags Rd, Eureka, MO 63025  # verify: road name may change after the rebrand
   coords: [38.51400, -90.67600]  # APPROX: set at the main gate before publishing
   website: https://midamericaadventure.enchantedparks.com
-short: Ride the wooden coasters at Mid America Adventure. Each pick one ride the other must take.
+short: Mid America Adventure near St. Louis. Ride the wooden coasters; each pick a ride for the other.
 description: >
   Spend the day at St. Louis's big theme park, open since 1971. Ride the classic
   wooden coasters like the Screamin' Eagle and American Thunder, cool off on the
   rapids, and each pick one ride the other has to go on with you. Get a photo of you right after the scariest drop. The park runs spring through
   fall, with Halloween events in October.
+about: >
+  The park opened in 1971 as Six Flags Over Mid-America and took on a new
+  name after it changed owners. Its Screamin' Eagle wooden coaster, opened in
+  1976, was once the longest and fastest wooden coaster in the world.
+
+  The park runs spring through fall, with Halloween events in October. Check
+  the current name, hours and ticket site before you go, since things
+  changed with the rebrand.
 for_kids:
   short: Theme park day! Find each thing.
   steps:
@@ -32,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets, seasonal]
 themes: [thrills, playful]
-tags: [theme-park, rides, roller-coasters, playful, st-louis]
+tags: [mid america adventure, former six flags st louis, screamin eagle, wooden roller coasters, theme park, st-louis]

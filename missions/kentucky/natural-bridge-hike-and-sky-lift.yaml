@@ -9,17 +9,23 @@ place:
   address: 2135 Natural Bridge Rd, Slade, KY 40376  # verify
   coords: [37.77780, -83.68300]  # APPROX: set at the trailhead before publishing
   website: https://parks.ky.gov/explore/natural-bridge-state-resort-park-7796
-short: Hike up to a giant sandstone arch, walk across the top, and ride the chairlift down.
+short: Natural Bridge State Park in Kentucky. Hike to a giant sandstone arch and ride the chairlift down.
 description: >
-  Start near Hemlock Lodge and climb the Original Trail through hemlocks and
-  rock shelters to Natural Bridge, a huge sandstone arch you can walk right
-  across. Squeeze through the narrow rock slot of Fat Man's Squeeze beside the
-  arch, then follow the Laurel Ridge Trail out to Lover's Leap for the big view
-  over the gorge. Come down the
-  Balanced Rock Trail for a full loop, or hop on the Sky Lift chairlift for a
-  lazy ride back to the bottom. Get a photo of the group standing on top of
-  the arch. The trails are steep with lots of stairs; the lift only runs
-  seasonally, roughly spring through fall.
+  Climb the Original Trail through hemlocks and rock shelters to Natural
+  Bridge, a huge sandstone arch you can walk right across. Squeeze through
+  the narrow rock slot of Fat Man's Squeeze beside the arch, and see who gets
+  through without turning sideways. Follow the Laurel Ridge Trail to Lover's
+  Leap for the big view, then ride the Sky Lift back down. The photo to get:
+  your group standing on top of the arch.
+about: >
+  Natural Bridge is about 78 feet long and 65 feet high, carved over
+  millions of years as wind and water wore away softer rock beneath harder
+  sandstone. The Red River Gorge nearby has more than a hundred natural
+  arches.
+
+  The Sky Lift chairlift has been carrying visitors since the 1960s and runs
+  seasonally, roughly spring through fall. The trails are steep with lots of
+  stairs.
 steps:
   - Fat Man's Squeeze
   - The group on top of the arch
@@ -33,5 +39,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
 themes: [views, hiking, rocks-fossils, parks]
-tags: [hiking, arch, chairlift, views, state-park, red-river-gorge, slade, lexington-day-trip]
-credit:
+tags: [natural bridge state park, sandstone arch, sky lift chairlift, fat mans squeeze, red river gorge, lexington-day-trip]

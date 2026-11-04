@@ -9,14 +9,22 @@ place:
   address: 225 Madison Ave, New York, NY 10016
   coords: [40.74920, -73.98140]  # APPROX: set at the entrance before publishing
   website: https://www.themorgan.org
-short: Explore J.P. Morgan's private library, three floors of books under a painted ceiling.
+short: The Morgan Library in NYC. Explore J.P. Morgan's three floors of books under a painted ceiling.
 description: >
   Step into J.P. Morgan's private library, three stories of rare books behind
   carved walnut, with hidden staircases and a painted ceiling overhead. Look
-  for a Gutenberg Bible and original handwritten manuscripts, then see what's
-  in the special exhibitions. Each pick the book you'd steal if you could, and
-  get a photo of you in the East Room. It's closed Mondays. Free on
-  Friday evenings from 5 to 8, but reserve those tickets a week ahead.
+  for a Gutenberg Bible and original handwritten manuscripts, and each pick
+  the book you'd steal if you could. The photo to get: you in the East Room
+  with the shelves rising behind you.
+about: >
+  Banker J.P. Morgan built the library in the early 1900s to hold his
+  collection, and his son opened it to the public in 1924. It has more
+  Gutenberg Bibles than anywhere else in the world. Morgan's librarian,
+  Belle da Costa Greene, became one of the most respected experts on rare
+  books of her time.
+
+  The museum is closed some days and has had free evenings that need tickets
+  reserved ahead, so check the website.
 duration: short
 effort: easy
 cost: $$
@@ -25,5 +33,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [history, architecture, markets]
-tags: [library, history, books, architecture, rainy-day, nyc]
+themes: [history, architecture]
+tags: [morgan library, jp morgan library, gutenberg bible, rare books, murray hill, nyc]

@@ -9,7 +9,7 @@ place:
   address: 201 S 18th St, St. Louis, MO 63103  # verify against the aquarium's site
   coords: [38.62880, -90.20830]  # APPROX: set at the aquarium entrance before publishing
   website: https://www.stlouisaquarium.com
-short: Explore the aquarium in St. Louis's old train station. Then ride the 200-foot Wheel at dusk.
+short: St. Louis Aquarium at Union Station. Explore it, then ride the 200-foot Wheel at dusk.
 description: >
   Start inside historic Union Station, once the biggest train terminal in the
   country, with the aquarium's train-ride entrance, sharks and river animals.
@@ -17,6 +17,14 @@ description: >
   door around sunset and find the Arch from the top. Tickets are timed, so
   book ahead; combo tickets cover the Wheel too. Stop by the Grand Hall's light
   show before you leave.
+about: >
+  Union Station opened in 1894 and was once one of the biggest and busiest
+  train stations in the world. The aquarium and the Wheel both opened in
+  2019 as part of its comeback.
+
+  Inside the Grand Hall, a light show is projected onto the huge arched
+  ceiling in the evenings. Tickets are timed, and combo tickets cover the
+  Wheel too.
 for_kids:
   short: Aquarium trip! Find each thing.
   steps:
@@ -34,4 +42,4 @@ time_of_day: any
 travel: local
 check_ahead: [tickets]
 themes: [views, wildlife, history]
-tags: [aquarium, animals, views, history, rainy-day, st-louis]
+tags: [st louis aquarium, union station, st louis wheel, grand hall light show, family day out, st-louis]

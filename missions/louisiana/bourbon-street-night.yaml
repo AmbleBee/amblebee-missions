@@ -7,12 +7,21 @@ place:
   name: Bourbon Street, French Quarter
   area: French Quarter, New Orleans
   coords: [29.95830, -90.06570]  # APPROX: set at a spot on Bourbon Street before publishing
-short: Walk Bourbon Street at night. Follow the best live music you hear in for one song.
+short: Bourbon Street at night in New Orleans. Follow the best live music in for one song.
 description: >
-  Head to the French Quarter after dark and walk Bourbon Street with the music
-  spilling out of every door. Pick the bar with the best live band you hear and
-  go in for at least one song. Try one drink you've never had, stay together in
-  the crowds, and take a photo under the neon.
+  Head to the French Quarter after dark and walk Bourbon Street with music
+  spilling out of every door. Everyone gets one vote for the best live band
+  you hear, and the winner gets at least one song of your time inside. Try
+  one drink you've never had, and stick together in the crowds. The photo to
+  get: your crew under the neon signs.
+about: >
+  Bourbon Street is named for the French royal family, the House of Bourbon,
+  not the whiskey. The street was laid out in the early 1700s, and some of its
+  bars are in buildings more than 200 years old, like Lafitte's Blacksmith
+  Shop, often called one of the oldest bars in the country.
+
+  It gets wild late at night. Keep your phone and wallet close, and step off
+  onto Royal Street, one block over, for a quieter walk.
 duration: short
 effort: easy
 cost: $$
@@ -21,4 +30,4 @@ season: any
 time_of_day: night
 travel: local
 themes: [drinks, shows]
-tags: [nightlife, music, new-orleans]
+tags: [bourbon street, french quarter nightlife, live music, lafittes blacksmith shop, new orleans bars, new-orleans]

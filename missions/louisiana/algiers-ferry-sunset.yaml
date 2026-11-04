@@ -7,13 +7,22 @@ place:
   name: Canal Street Ferry Terminal
   area: Foot of Canal Street, New Orleans
   coords: [29.94940, -90.06190]  # APPROX: set at the ferry terminal before publishing
-short: Take the $2 ferry to Algiers Point and walk the levee at sunset. Skyline across the river.
+short: Algiers ferry at sunset in New Orleans. Cross the river and walk the levee at Algiers Point.
 description: >
-  Hop the little ferry at the foot of Canal Street for a five-minute ride
-  across the Mississippi to Algiers Point, a quiet old neighborhood of
-  shotgun houses. Climb up onto the levee, walk the river path, and watch the
-  sun go down behind the French Quarter skyline across the water. Get a photo of you with the city glowing behind you, then grab a drink at a
-  neighborhood bar before riding back. Check the last ferry time.
+  Hop the little ferry at the foot of Canal Street for a quick ride across
+  the Mississippi to Algiers Point, a quiet old neighborhood of shotgun
+  houses. Climb up onto the levee, walk the river path, and each count the
+  big ships passing. Watch the sun go down behind the city skyline across
+  the water. The photo to get: you with the city glowing behind you.
+about: >
+  A ferry has crossed the river here since the 1820s, one of the oldest
+  ferry runs in the country. Algiers Point is New Orleans's second-oldest
+  neighborhood, and the levee path has plaques honoring jazz musicians who
+  came from this side of the river.
+
+  The Mississippi here is deep and fast, with huge ships passing close by.
+  Grab a drink at a neighborhood bar before riding back, and check the last
+  ferry time.
 for_kids:
   short: Ferry ride! Find each thing.
   steps:
@@ -30,4 +39,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours]
 themes: [views, walks, lakes-rivers, boating, sunsets]
-tags: [river, ferry, sunset, views, walking, new-orleans]
+tags: [algiers ferry, algiers point, mississippi river levee, sunset skyline, canal street ferry, new-orleans]

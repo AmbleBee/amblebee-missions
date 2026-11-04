@@ -7,14 +7,20 @@ place:
   name: Meramec River outfitters near Steelville
   area: Steelville, Meramec River
   coords: [37.96800, -91.35500]  # APPROX: pick one outfitter's put-in and set its coords before publishing
-short: Rent a canoe, kayak or raft near Steelville and float the Meramec. Picnic on a gravel bar.
+short: Meramec River float near Steelville, MO. Canoe, kayak or raft, and picnic on a gravel bar.
 description: >
-  Pick an outfitter near Steelville, the "floating capital of Missouri," and
-  rent a canoe, kayak or raft for a few hours on the Meramec. They shuttle you
-  upstream and you drift back past bluffs and gravel bars. Stop on a gravel bar
-  for lunch and a swim, and get a photo of you in the boat. Wear
-  water shoes, bring sunscreen and a dry bag, and pack out every can. Check
-  river levels first; the outfitter will tell you if it's too high.
+  Rent a canoe, kayak or raft from an outfitter near Steelville. They shuttle
+  you upstream and you drift back past bluffs and gravel bars. Stop on a
+  gravel bar for lunch and a swim, and hold a skipping-stone contest. The
+  photo to get: your crew in the boats with a tall bluff behind you.
+about: >
+  Steelville calls itself the "Floating Capital of Missouri," and the
+  Meramec is one of the longest free-flowing rivers in the state, fed by
+  cold springs. Meramec Caverns, a few miles away, claims Jesse James once
+  hid out inside.
+
+  Wear water shoes, bring sunscreen and a dry bag, and pack out every can.
+  Check river levels first; the outfitter will tell you if it's too high.
 for_kids:
   short: River float! Find each thing.
   steps:
@@ -32,4 +38,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, conditions]
 themes: [lakes-rivers, boating]
-tags: [river, canoe, kayak, float-trip, ozarks]
+tags: [meramec river float trip, steelville canoe rental, ozark river, gravel bar picnic, kayak, ozarks]

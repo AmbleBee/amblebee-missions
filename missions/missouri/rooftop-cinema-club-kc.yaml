@@ -8,7 +8,7 @@ place:
   address: 2101 Broadway Blvd, Kansas City, MO 64108
   coords: [39.08620, -94.58950]  # APPROX: set at the 21st Street entrance before publishing
   website: https://rooftopcinemaclub.com/us/kansas-city
-short: Watch a movie under the sky on a Crossroads rooftop, headphones on, skyline behind the screen.
+short: Rooftop Cinema Club in Kansas City's Crossroads. A movie under the sky, skyline behind the screen.
 description: >
   Get to the rooftop early to grab a drink and watch the sun go down over the
   city, then settle in with wireless headphones for a movie under the open sky.
@@ -16,6 +16,14 @@ description: >
   the two of you with the screen and skyline behind you before it starts. It's
   a seasonal summer and fall venue, fully outdoors, so check the weather and
   bring a layer.
+about: >
+  Rooftop Cinema Club started in London in 2011 and spread to rooftops in
+  cities around the world. Everyone wears wireless headphones, so the
+  neighbors stay happy and you hear every word.
+
+  The Crossroads Arts District below is full of galleries, and on First
+  Fridays it fills with street art and food trucks. It's a summer and fall
+  venue, fully outdoors, so check the weather and bring a layer.
 duration: short
 effort: easy
 cost: $$
@@ -25,4 +33,4 @@ time_of_day: night
 travel: local
 check_ahead: [tickets, seasonal]
 themes: [views, movies]
-tags: [movies, rooftop, night, views, kansas-city]
+tags: [rooftop cinema club, outdoor movie date, crossroads arts district, skyline movie, headphone cinema, kansas-city]

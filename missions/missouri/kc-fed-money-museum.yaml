@@ -9,14 +9,22 @@ place:
   address: 1 Memorial Dr, Kansas City, MO 64198
   coords: [39.08320, -94.58550]  # APPROX: set at the entrance before publishing
   website: https://www.kansascityfed.org/money-museum/
-short: Go inside the Federal Reserve and try to lift a real gold bar. Who's strongest?
+short: Money Museum at the Kansas City Fed. Go inside the Federal Reserve and try to lift a gold bar.
 description: >
-  The Federal Reserve Bank of Kansas City runs a free, walk-in money museum
-  right across from the WWI Memorial. Go through the airport-style security,
-  then take turns trying to lift a real gold bar, check out the Truman coin
-  collection, and learn how to spot a counterfeit bill. Get a photo of each
-  person's face mid-lift. It's open weekdays only, grown-ups need a photo ID,
-  and no pocketknives. No photos of the security gear or the cash operations.
+  Go through the airport-style security, then take turns trying to lift a
+  real gold bar, check out the Truman coin collection, and learn how to spot
+  a counterfeit bill. Each guess how much the gold bar weighs before you
+  try. The photo to get: each person's face mid-lift.
+about: >
+  The Federal Reserve Bank of Kansas City is one of twelve regional banks
+  that make up the country's central bank. The museum is free and right
+  across from the WWI Museum and Memorial.
+
+  The gold bar weighs about as much as a big bag of dog food, and it's
+  heavier than it looks. Look for President Harry Truman's coin collection;
+  he was from nearby Independence. The museum has been open weekdays only.
+  Grown-ups need a photo ID, and no photos of the security gear or cash
+  operations.
 steps:
   - Everyone's gold-bar lifting face
   - The oldest coin you can find
@@ -38,5 +46,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [history, museums]
-tags: [museum, free, money, history, rainy-day, kansas-city]
-credit:
+tags: [kansas city fed money museum, lift a gold bar, federal reserve tour, free museum, truman coins, kansas-city]

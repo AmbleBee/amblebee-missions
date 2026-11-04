@@ -12,7 +12,7 @@ place:
   links:
     - label: World Bird Sanctuary
       url: https://worldbirdsanctuary.org
-short: Drive slowly through a park where bison and elk roam free. Then meet the owls next door.
+short: Lone Elk Park near St. Louis. Drive slowly through bison and elk, then meet the owls next door.
 description: >
   Roll down the windows and creep along the park road while you hunt for the
   herds of elk and bison that wander right up near the cars, plus deer and
@@ -22,6 +22,14 @@ description: >
   go back to the wild. Get a photo of a bison through your car window. No pets
   are allowed in Lone Elk Park, not even inside the car, and motorcycles
   aren't allowed either.
+about: >
+  During and after World War II, this land was used by the military, and the
+  original elk herd was lost. The park is named for a single bull elk that
+  was later found living here, and elk were brought back, along with bison.
+
+  The World Bird Sanctuary next door, founded in 1977, cares for eagles,
+  owls and hawks that can't return to the wild. No pets are allowed in Lone
+  Elk Park, not even in the car, and motorcycles aren't allowed either.
 for_kids:
   short: Spot the big animals and the birds!
   steps:
@@ -39,5 +47,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [wildlife, picnic]
-tags: [wildlife, bison, elk, birds, raptors, picnic, kids, st-louis, valley-park]
-credit:
+tags: [lone elk park, drive-thru bison and elk, world bird sanctuary, eagles and owls, wildlife drive, st-louis]

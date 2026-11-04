@@ -9,7 +9,7 @@ place:
   address: NY-73, Keene Valley, NY 12943  # no street number: lots on both sides of NY-73 just past Chapel Pond, about 1.5 mi past the Roaring Brook lot
   coords: [44.13849, -73.74377]  # from lakeplacid.com trail page map link
   website: https://www.lakeplacid.com/hiking/giant-mountain
-short: Grind up Giant's steep Ridge Trail in the Adirondacks. Summit photo at 4,627 feet.
+short: Giant Mountain in the Adirondacks. Climb the steep Ridge Trail for a High Peaks summit photo.
 description: >
   Start at the Ridge Trail near Chapel Pond and climb, because this trail
   barely lets up: bare-rock ledges, a lookout down onto Chapel Pond, then
@@ -19,6 +19,15 @@ description: >
   summit photo with the whole High Peaks skyline behind you. Start early: the
   small lots fill fast and parking along Route 73 isn't allowed, and in winter
   you'll need snowshoes and traction spikes.
+about: >
+  Giant rises to 4,627 feet, one of the 46 Adirondack High Peaks. Hikers who
+  climb all of them earn the title "Forty-Sixer," and Giant is a classic
+  early one. The Ridge Trail is about three miles each way with around 3,000
+  feet of climbing, much of it on open rock.
+
+  Giant's Washbowl, the little pond partway up, is a good first rest. Start
+  early, since the small lots fill fast and parking along Route 73 isn't
+  allowed. In winter you'll need snowshoes and traction spikes.
 steps:
   - Chapel Pond from the first ledges
   - The Giant's Washbowl
@@ -32,5 +41,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, hiking, mountains]
-tags: [hiking, mountains, high-peaks, adirondacks, views, keene-valley]
-credit:
+tags: [giant mountain, adirondack high peaks, ridge trail, giants washbowl, 46er hike, keene-valley]

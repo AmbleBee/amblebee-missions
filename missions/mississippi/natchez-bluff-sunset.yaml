@@ -7,11 +7,22 @@ place:
   area: Downtown Natchez, above Natchez Under-the-Hill
   coords: [31.55980, -91.40680]  # APPROX coords: bluff park on Broadway St
   website: https://www.visitnatchez.org
-short: Watch the sun set over the Mississippi from the bluff, then walk down Under-the-Hill.
+short: Natchez Bluff sunset over the Mississippi, then walk down to Natchez Under-the-Hill.
 description: >
-  Natchez sits high on a bluff over the Mississippi River. Find a bench along the bluff at
-  sunset and watch the river and the bridge to Louisiana go gold, then walk down Silver
-  Street to Natchez Under-the-Hill, the old riverboat landing, for dinner by the water.
+  Find a bench along the bluff at sunset and watch the river and the bridge
+  to Louisiana go gold. Each guess how many barges will pass before the sun
+  goes down. Then walk down Silver Street to Natchez Under-the-Hill, the old
+  riverboat landing, for dinner by the water. The photo to get: the two of
+  you on the bluff with the river glowing behind you.
+about: >
+  Natchez was founded in 1716, two years before New Orleans, making it the
+  oldest settlement on the Mississippi River. It has more pre-Civil War
+  mansions than almost anywhere, including Longwood, an eight-sided house
+  left unfinished when the war began.
+
+  Natchez Under-the-Hill was once one of the rowdiest landings on the river,
+  full of gamblers and boatmen, and Mark Twain wrote about it. Today it's a
+  quiet strip of restaurants and a saloon.
 duration: short
 effort: easy
 cost: free
@@ -20,5 +31,4 @@ season: any
 time_of_day: evening
 travel: day-trip
 themes: [lakes-rivers, sunsets, history]
-tags: [river, sunset, historic, free]
-credit:
+tags: [natchez bluff, mississippi river sunset, natchez under-the-hill, silver street, historic natchez, natchez]

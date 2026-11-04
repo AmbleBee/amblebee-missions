@@ -9,14 +9,21 @@ place:
   address: 660 N 4th St, Baton Rouge, LA 70802  # verify against louisianastatemuseum.org
   coords: [30.45500, -91.18700]  # APPROX: set at the museum entrance before publishing
   website: https://louisianastatemuseum.org/capitol-park-museum
-short: Tour Louisiana's story at the Capitol Park Museum. Then ride up the State Capitol tower.
+short: Capitol Park Museum in Baton Rouge, then ride up the tallest state capitol in the country.
 description: >
-  Spend a couple of hours with Louisiana's whole story in one building: Mardi
-  Gras, music legends, sugar cane, river life and the state's colorful
+  Spend a couple of hours with Louisiana's whole story in one building:
+  Mardi Gras, music legends, sugar cane, river life and the state's colorful
   politics. Each pick the exhibit you'd tell a friend about. Then walk across
-  to the art deco State Capitol, the tallest state capitol in the country, and
-  ride up to the observation deck for a view over the Mississippi. The first
-  Sunday of the month is free at the museum.
+  to the art deco State Capitol and ride up to the observation deck. The
+  photo to get: you with the Mississippi River far below.
+about: >
+  Governor Huey Long had the State Capitol built in about 14 months in the
+  early 1930s, and at about 450 feet it's still the tallest state capitol in
+  the country. Long was shot inside it in 1935 and is buried out front,
+  facing his building.
+
+  The observation deck has been free to visit. The museum has had free days
+  each month, so check the schedule.
 for_kids:
   short: Louisiana hunt! Find each thing.
   steps:
@@ -34,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [views, history, museums]
-tags: [history, museum, views, rainy-day, baton-rouge]
+tags: [capitol park museum, louisiana state capitol, huey long, observation deck, louisiana history, baton-rouge]

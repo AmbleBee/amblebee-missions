@@ -9,17 +9,23 @@ place:
   address: 8121 E Park Rd, Marshall, IN 47859
   coords: [39.88360, -87.20260]  # APPROX: set at the trailhead before publishing
   website: https://www.in.gov/dnr/state-parks/parks-lakes/turkey-run-state-park/
-short: Cross the suspension bridge and spend the day climbing ladders through mossy canyons.
+short: Turkey Run State Park in Indiana. Cross the suspension bridge and climb ladders through canyons.
 description: >
-  Cross the suspension bridge over Sugar Creek and spend the whole day
-  stringing together Turkey Run's rugged trails: squeeze through the narrow
-  sandstone canyons of Rocky Hollow and Bear Hollow, climb the wooden ladders
-  on Trail 3, then keep going to the Lusk home and the covered bridge. Expect
-  wet feet, slick rock and lots of up and down, so wear shoes with good grip
-  and pack lunch and plenty of water. Get a photo looking up from the bottom
-  of a ladder with the canyon walls on both sides. Skip Trail 3 after heavy
-  rain, when the creek beds can be impassable, and leave small kids and dogs
-  for the gentler trails.
+  Cross the suspension bridge over Sugar Creek and string together Turkey
+  Run's rugged trails: squeeze through the narrow sandstone canyons of Rocky
+  Hollow and Bear Hollow and climb the wooden ladders on Trail 3. Count the
+  ladders as you go and see who guesses the total closest. The photo to get:
+  looking up from the bottom of a ladder with the canyon walls on both
+  sides.
+about: >
+  Turkey Run opened in 1916 as Indiana's second state park. It's named for
+  the wild turkeys that once gathered in the sheltered canyons in winter.
+  Cool, shady hollows here still hold hemlock trees left over from the end of
+  the Ice Age, far south of where they usually grow.
+
+  Expect wet feet, slick rock and lots of up and down. Skip Trail 3 after
+  heavy rain, and leave small kids and dogs for the gentler trails. Save time
+  for the 1840s Lusk home and the old covered bridge.
 steps:
   - The suspension bridge over Sugar Creek
   - Looking up a ladder between the canyon walls
@@ -34,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [hiking, lakes-rivers, rocks-fossils, parks]
-tags: [hiking, canyons, ladders, creek, state-park, marshall, indianapolis-day-trip]
-credit:
+tags: [turkey run state park, trail 3 ladders, sandstone canyons, suspension bridge, sugar creek, indianapolis-day-trip]

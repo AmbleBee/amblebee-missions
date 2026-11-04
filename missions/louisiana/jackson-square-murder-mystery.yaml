@@ -7,13 +7,21 @@ place:
   name: Jackson Square
   area: French Quarter, New Orleans
   coords: [29.95740, -90.06290]  # APPROX: pick one hunt's start point before publishing
-short: Solve a self-guided murder mystery around Jackson Square. Clues, suspects and a race to the answer.
+short: Jackson Square murder mystery hunt in New Orleans. Follow clues, size up suspects, solve it.
 description: >
   Book a self-guided mystery hunt that turns the streets around Jackson Square
   into a crime scene. Follow clues on your phone from corner to corner, size up
   the suspects, and each make your guess before the big reveal. Loser buys
   the beignets. It takes about two hours of easy walking. Get a photo of
   you looking suspicious in front of the cathedral.
+about: >
+  Jackson Square was the city's old parade ground, renamed for Andrew
+  Jackson after the Battle of New Orleans in 1815. His statue stands in the
+  middle, with St. Louis Cathedral behind it.
+
+  Self-guided hunts send clues to your phone, so you can start whenever you
+  like and take breaks. Café du Monde, famous for beignets since the 1860s,
+  is right across the street for the loser to pay up.
 duration: short
 effort: easy
 cost: $$
@@ -23,4 +31,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [tickets]
 themes: [walks, spooky, games, playful]
-tags: [puzzles, mystery, walking, playful, new-orleans]
+tags: [murder mystery game, self-guided scavenger hunt, jackson square, cafe du monde, french quarter puzzle, new-orleans]

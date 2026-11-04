@@ -8,7 +8,7 @@ place:
   area: Central Park, near E 62nd St
   coords: [40.76780, -73.97450]  # APPROX: set at the rink entrance before publishing
   website: https://www.wollmanskatingrink.com  # verify
-short: Skate at Wollman Rink with the skyline over the trees. Link arms for one full lap.
+short: Wollman Rink in Central Park. Skate with the skyline over the trees and link arms for a lap.
 description: >
   Lace up at Wollman Rink in the south end of Central Park, with the hotels of
   Central Park South lit up over the trees. Link arms for at least one full
@@ -16,6 +16,14 @@ description: >
   the skyline behind you. Go on a weeknight or early on a weekday for a less
   crowded rink. Skating runs in the cold months, roughly late fall through
   winter; check this season's dates and book a time slot ahead.
+about: >
+  Wollman Rink opened in 1950 at the south end of Central Park, and it's
+  appeared in many movies. The buildings rising over the trees line Central
+  Park South, so the view is pure New York.
+
+  Skating runs in the cold months, roughly late fall through winter. Go on a
+  weeknight or early on a weekday for a less crowded rink, and book a time
+  slot ahead.
 for_kids:
   short: Skating fun! Find each thing.
   steps:
@@ -33,4 +41,4 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets, seasonal]
 themes: [romantic]
-tags: [ice-skating, winter, romantic, central-park, nyc]
+tags: [wollman rink, central park ice skating, winter in nyc, skating date, skyline views, nyc]

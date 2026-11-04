@@ -6,13 +6,22 @@ place:
   name: Jackson Square (most cocktail tours start nearby)
   area: French Quarter, New Orleans
   coords: [29.95740, -90.06290]  # APPROX: pick one tour operator's meeting point before publishing
-short: Take a guided cocktail walk through the French Quarter. Taste the Sazerac where it began.
+short: French Quarter cocktail walk in New Orleans. Taste the Sazerac where it began.
 description: >
   Join a guided cocktail tour through the Quarter's historic bars and learn the
   stories behind the drinks New Orleans gave the world: the Sazerac, the
   Ramos Gin Fizz, the Hurricane. Each pick your favorite pour of the night and
   the best story you heard. Get a photo of the two of you clinking glasses at
   the last stop. Eat first, pace yourselves, and take a ride home.
+about: >
+  New Orleans gave the world a lot of classic drinks. The Sazerac grew from
+  Antoine Peychaud's bitters in the 1800s and is now the city's official
+  cocktail. The Ramos Gin Fizz was famously shaken for minutes at a time by a
+  line of bartenders, and the Hurricane came from Pat O'Brien's in the 1940s.
+
+  If your tour passes the Hotel Monteleone, look for the Carousel Bar, which
+  slowly spins as you drink. Eat first, pace yourselves, and take a ride
+  home.
 duration: short
 effort: easy
 cost: $$$
@@ -22,4 +31,4 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets]
 themes: [walks, history, drinks]
-tags: [cocktails, history, tour, walking, new-orleans]
+tags: [new orleans cocktail tour, sazerac, ramos gin fizz, carousel bar, french quarter, new-orleans]
