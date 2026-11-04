@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 3
 name: Paddle and Scramble the Granite Dells
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Watson Lake Park
   area: Granite Dells, Prescott
   address: 3101 Watson Lake Park Rd, Prescott, AZ 86301
-  coords: [34.58250, -112.42000]  # APPROX: set at the south boat ramp before publishing
+  coords: [34.58697, -112.42340]
   website: https://prescott-az.gov/rec-services/recreation-areas-prescott/lakes/watson-lake/
   links:
     - label: Kayak rentals

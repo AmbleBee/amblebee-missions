@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 2
 name: Beer Brewed with Hot Spring Water
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Superior Bathhouse Brewery
   area: Bathhouse Row, Hot Springs
   address: 329 Central Ave, Hot Springs, AR 71901
-  coords: [34.51520, -93.05330]  # APPROX: set at the entrance before publishing
+  coords: [34.51488, -93.05349]
   website: https://superiorbathhouse.com
 short: Superior Bathhouse Brewery in Hot Springs. Split a flight brewed with hot spring water.
 description: >

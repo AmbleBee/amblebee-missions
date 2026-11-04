@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 3
 name: A Century of Handbags at ESSE
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: ESSE Purse Museum & Store
   area: SoMa, Little Rock
   address: 1510 Main St, Little Rock, AR 72202
-  coords: [34.73310, -92.27390]  # APPROX: set at the entrance before publishing
+  coords: [34.73395, -92.27324]
   website: https://essepursemuseum.com
 short: ESSE Purse Museum in Little Rock. A century of women's lives told through their handbags.
 description: >

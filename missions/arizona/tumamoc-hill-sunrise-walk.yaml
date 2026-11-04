@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-03
 number: 2
 name: Tumamoc Hill Walk
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Tumamoc Hill (Desert Laboratory) entrance
   area: West side, Tucson
   address: Tumamoc Hill Rd at W Anklam Rd, Tucson, AZ 85745
-  coords: [32.22370, -111.00180]  # APPROX: set at the trailhead before publishing
+  coords: [32.22599, -111.00102]
   website: https://desertlaboratory.arizona.edu/tumamoc-hill/walk-hill
 short: Tumamoc Hill in Tucson. Power-walk the paved climb with the locals for a view over the city.
 description: >
