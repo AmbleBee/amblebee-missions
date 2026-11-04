@@ -3,3 +3,7 @@ __pycache__/
 _amble-run/
 _site/
 build/
+_pins/
+_pins/**
+**/_pins/
+.venv/
