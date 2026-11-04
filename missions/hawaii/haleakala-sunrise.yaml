@@ -8,12 +8,23 @@ place:
   address: Haleakalā Hwy, Kula, HI 96790
   coords: [20.71480, -156.25020]
   website: https://www.nps.gov/hale/
-short: Watch the sun come up over the clouds from the top of Haleakalā. Bring a blanket.
+short: Haleakalā sunrise on Maui. Watch the sun come up over the clouds from 10,000 feet.
 description: >
-  Drive up the volcano in the dark and watch the sun rise over a sea of clouds from 10,000
-  feet. It is freezing at the top, even in summer, so bring a blanket to share and
-  something hot in a thermos. Sunrise needs a vehicle reservation booked ahead on
-  Recreation.gov.
+  Drive up the volcano in the dark and wait at the summit, wrapped in a
+  shared blanket with something hot in a thermos. Watch the sky change color
+  over a sea of clouds, and hold hands at the exact moment the sun breaks
+  the horizon. The photo to get: the two of you as silhouettes against the
+  sunrise, with the clouds below.
+about: >
+  Haleakalā means "House of the Sun." In Hawaiian legend, the demigod Māui
+  climbed up here and lassoed the sun to slow it down, so his mother would
+  have longer days to dry her kapa cloth.
+
+  The summit is about 10,000 feet up, and it's often near freezing before
+  dawn, even in summer, so dress in real winter layers. Watch for the rare
+  silversword plant, which grows almost nowhere else on Earth. Sunrise needs
+  a vehicle reservation booked ahead on Recreation.gov, on top of the park
+  entrance fee.
 duration: half-day
 effort: easy
 cost: $
@@ -23,5 +34,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
 themes: [views, rocks-fossils, parks, sunsets]
-tags: [sunrise, volcano, views, national-park]
-credit:
+tags: [haleakala sunrise, haleakala national park, above the clouds, silversword, maui, national-park]

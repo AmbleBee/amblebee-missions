@@ -1,14 +1,23 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 20
 name: Geocaching
 mode: both
 who: [solo, friends, family, kids]
-short: Try geocaching nearby. Find a hidden cache or two with the free app.
+short: Try geocaching. Find a hidden cache or two near you with the free app.
 description: >
-  Download a geocaching app and look for a few caches near you. Follow
-  the clues to find them, sign the logbook, and if there's a trinket
-  inside, trade it for something small you brought. Finding even one
-  counts.
+  Download a geocaching app and look for a few caches near you. Follow the
+  clues, find the hidden box, sign the logbook, and trade a little trinket
+  if there's one inside. See who spots each cache first. The photo to get:
+  you holding the cache, without showing where it was hidden.
+about: >
+  Geocaching started in May 2000, the day after GPS became accurate enough
+  for everyday use. The very first cache was hidden near Portland, Oregon,
+  and a plaque now marks the spot. Today there are millions of caches around
+  the world, so there's almost certainly one near you.
+
+  Rules of the game: put the cache back exactly where you found it, keep it
+  hidden from people walking by (they call them "muggles"), and if you take
+  a trinket, leave one of equal value.
 for_kids:
   short: Treasure hunt! Follow the map to a hidden box.
   steps:
@@ -24,4 +33,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [games]
-tags: [explore, treasure-hunt, outdoors]
+tags: [geocaching, treasure hunt app, outdoor scavenger hunt, gps game, family outing, outdoors]

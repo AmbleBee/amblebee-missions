@@ -1,12 +1,21 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 23
 name: New Food Truck
 mode: date
-short: Find a food truck you've never tried. Order something you can't pronounce.
+short: Food truck date. Find a truck you've never tried and order something you can't pronounce.
 description: >
-  Find a food truck or food cart pod and pick a truck neither of you
-  has tried, ideally a cuisine you rarely eat. Order a couple of things
-  to share and find somewhere nearby to sit.
+  Find a food truck or cart pod and pick a truck neither of you has tried,
+  ideally a cuisine you rarely eat. Each order one thing for the other
+  without asking, then find somewhere to sit and share. The photo to get:
+  the two of you with your food in front of the truck's painted side.
+about: >
+  The modern food truck boom took off around 2008, when a Korean taco truck
+  in Los Angeles started posting its location online and people chased it
+  around the city. Now many towns have food cart pods, where several trucks
+  park together.
+
+  The longest line is usually the best review. Bring some cash just in case,
+  and check the truck's social media for today's location and hours.
 duration: short
 effort: easy
 cost: $$
@@ -16,4 +25,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [food]
-tags: [food, local, explore]
+tags: [food truck date, food cart pod, street food, try new food, local, explore]

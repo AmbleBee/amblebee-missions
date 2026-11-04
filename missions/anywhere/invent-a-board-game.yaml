@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 58
 name: Invent a Board Game
 mode: both
 who: [friends, family, kids]
-short: Design a board game from scratch, playtest it, fix the boring parts, and name it.
+short: Invent a board game at home. Design it, playtest it, fix the boring parts and name it.
 description: >
   Pick a theme together: escape the volcano, a race across your town, the
   cat's revenge. Draw the board on a big sheet of paper or a flattened
@@ -13,6 +13,14 @@ description: >
   a name, and make a cover for the box lid. Get a photo of everyone holding
   up the finished game, then put it on the shelf next to the store-bought
   ones.
+about: >
+  Some famous games started this way. Monopoly came from The Landlord's
+  Game, invented in 1904 by Lizzie Magie, who designed it to show how
+  unfair renting could be.
+
+  Game designer tips: keep turns short, give losing players a way to catch
+  up, and add one surprise card that changes everything. If a rule causes an
+  argument, that's the one to fix.
 steps:
   - Drawing the board
   - The cards and pieces
@@ -35,5 +43,4 @@ season: any
 time_of_day: any
 travel: home
 themes: [games, make-something]
-tags: [game-night, craft, creative, rainy-day, home, build]
-credit:
+tags: [invent a board game, game design for kids, diy board game, family game night, craft, home]

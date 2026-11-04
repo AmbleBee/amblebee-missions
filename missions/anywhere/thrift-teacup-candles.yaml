@@ -3,15 +3,22 @@ number: 47
 name: Thrift Teacup Candles
 mode: both
 who: [friends, family]
-short: Thrift a weird teacup for each other, then pour a candle into it and light it tonight.
+short: DIY teacup candles. Thrift a weird teacup for each other, then pour a candle and light it tonight.
 description: >
-  Start at a thrift store, where each of you hunts down a teacup or mug for the
-  other (or the strangest one you can find for yourself if you're solo). Pick up soy wax flakes and pre-tabbed wicks
-  at a craft store on the way home. Melt the wax in a double boiler or in short
-  microwave bursts, add a few drops of scent if you like, then stand each wick in its cup with two
-  chopsticks or a clothespin and pour. Save a little wax for a top-up pour once
-  it shrinks, let everything set for a few hours, then trim the wicks short
-  and light them side by side with the lights down.
+  Start at a thrift store, where each of you hunts down a teacup or mug for
+  the other. Pick up soy wax flakes and pre-tabbed wicks on the way home.
+  Melt the wax, add a few drops of scent if you like, stand each wick in its
+  cup with two chopsticks or a clothespin, and pour. Let them set for a few
+  hours, trim the wicks short, and light them side by side with the lights
+  down. The photo to get: both candles glowing together.
+about: >
+  Soy wax is the easiest for beginners: it melts at a low temperature and
+  cleans up with warm soapy water. Melt it in a double boiler or in short
+  microwave bursts, and save a little for a second pour, since wax shrinks
+  as it cools and leaves a dip around the wick.
+
+  Leave some space at the top of the cup, use cups without cracks, and
+  never leave a burning candle alone.
 steps:
   - The teacup you picked out
   - The big reveal at the register
@@ -27,5 +34,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [markets, relaxing, make-something]
-tags: [crafts, thrifting, make-something, cozy, at-home]
-credit:
+tags: [diy teacup candles, thrift craft, soy candle making, cozy craft night, at-home, cozy]

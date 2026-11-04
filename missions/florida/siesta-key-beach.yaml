@@ -7,14 +7,20 @@ place:
   name: Siesta Beach
   area: Siesta Key, Sarasota
   coords: [27.26600, -82.55300]  # APPROX: set at the main beach parking before publishing
-short: Walk barefoot on Siesta Key's powder-white quartz sand, which stays cool even in the sun.
+short: Siesta Key Beach in Sarasota. Walk on powder-white quartz sand that stays cool in the sun.
 description: >
-  Spend a day at Siesta Beach, famous for sand made of almost pure quartz, so
-  soft and white it squeaks under your feet and stays cool even on hot days.
-  Wade into the calm, shallow Gulf water, build a sandcastle together, and
-  walk the shore looking for shells and dolphins offshore. On Sunday evenings,
-  look for the drum circle near the beach. Get a photo of you on
-  the white sand. Arrive early, since parking fills up.
+  Spend a day on sand so soft and white it squeaks under your feet. Wade
+  into the calm, shallow Gulf water, build the best sandcastle you can
+  together, and walk the shore looking for shells and dolphins offshore. The
+  photo to get: you on the white sand with the blue water behind you.
+about: >
+  Siesta Beach's sand is almost pure quartz, ground fine over thousands of
+  years, so it reflects the sun and stays cool even on hot days. It has been
+  named the best beach in America more than once on a well-known yearly
+  list.
+
+  On Sunday evenings, look for the drum circle near the beach, a local
+  tradition for decades. Arrive early, since parking fills up.
 for_kids:
   short: Beach day! Find each thing.
   steps:
@@ -31,5 +37,4 @@ season: any
 time_of_day: daytime
 travel: day-trip
 themes: [beach, swimming]
-tags: [beach, swimming, gulf-coast]
-credit:
+tags: [siesta key beach, white quartz sand, sarasota beach, drum circle, gulf beach, gulf-coast]

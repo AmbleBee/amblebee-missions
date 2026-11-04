@@ -7,13 +7,25 @@ place:
   area: Hermit Road, Grand Canyon South Rim
   coords: [36.07441, -112.15502]
   website: https://www.nps.gov/grca/planyourvisit/hermit-road.htm
-short: Ride the shuttle to Hopi Point and watch the sun set over the Grand Canyon.
+short: Hopi Point on the Grand Canyon's South Rim. Ride the shuttle out and watch the sunset together.
 description: >
-  Hopi Point sticks out into the canyon, so you can watch the light change on miles of
-  cliffs and catch glimpses of the Colorado River far below. From March through November,
-  ride the free Red Route shuttle from the Hermit Road Transfer Station (Hermit Road is
-  closed to cars); in winter you can drive yourself. Get there early to claim a spot on
-  the rim, and bring a jacket.
+  Ride the shuttle out Hermit Road to Hopi Point, find a spot on the rim and
+  watch the sunset light climb up miles of canyon walls. Each guess which
+  far-off butte will hold the last light, and see who's right. The photo to
+  get: the two of you as silhouettes on the rim against the glowing canyon.
+  Look for glimpses of the Colorado River far below.
+about: >
+  Hopi Point juts out into the canyon, so it has one of the widest views on
+  the South Rim, with the Colorado River showing in several places. Many of
+  the buttes have names like Isis Temple and Shiva Temple, given by
+  geologists in the 1880s who thought the rock towers looked like ancient
+  temples.
+
+  From March through November, Hermit Road is closed to private cars and the
+  free Red Route shuttle runs from the Hermit Road Transfer Station. Buses
+  keep running after sunset. In winter you can drive yourself. Get there
+  early to claim a spot, and bring a jacket; it cools off fast once the sun
+  is down.
 duration: short
 effort: easy
 cost: $
@@ -23,5 +35,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, rocks-fossils, parks, sunsets]
-tags: [sunset, national-park, views, canyon]
-credit:
+tags: [hopi point, grand canyon south rim, hermit road, colorado river, sunset, national-park]

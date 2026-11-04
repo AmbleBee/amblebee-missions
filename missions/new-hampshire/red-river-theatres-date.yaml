@@ -6,16 +6,22 @@ place:
   name: Red River Theatres
   area: Downtown, Concord
   address: 11 S Main St, Concord, NH 03301
-  coords: [43.203527, -71.535173]
+  coords: [43.20353, -71.53517]
   website: https://redrivertheatres.org
-short: Pick an indie film neither of you has heard of. Glass of wine, popcorn, then argue about it.
+short: Red River Theatres in Concord, NH. Pick an indie film neither of you knows, then debate it.
 description: >
-  Red River is downtown Concord's nonprofit arthouse cinema, showing indie,
-  foreign and classic films on three screens. Pick a movie neither of you knows
-  much about, grab popcorn and a beer or glass of wine from the Indie Cafe, and
-  settle into the stadium seats. Afterward, walk Main Street and each give the
-  film a score out of ten; whoever's further from the other's score buys
-  dessert. Get a photo of the two of you out front with your tickets.
+  Pick a movie neither of you knows much about, grab popcorn and a beer or
+  glass of wine from the café, and settle into the stadium seats. Afterward,
+  walk Main Street and each give the film a score out of ten; whoever's
+  further from the other's score buys dessert. The photo to get: the two of
+  you out front with your tickets.
+about: >
+  Red River is downtown Concord's nonprofit arthouse cinema, with three
+  screens showing independent, foreign and classic films. It's run with
+  help from members and volunteers, so buying a ticket supports it.
+
+  Downtown Concord's Main Street has cafés and dessert spots within a short
+  walk, which makes the after-movie debate easy.
 steps:
   - The two of you out front
   - Your tickets and popcorn
@@ -30,5 +36,4 @@ travel: local
 check_ahead: [tickets]
 discounts: [senior, military, student]
 themes: [movies, romantic]
-tags: [movies, arthouse, cinema, date-night, rainy-day, concord]
-credit:
+tags: [red river theatres, arthouse cinema, indie film, main street, concord]

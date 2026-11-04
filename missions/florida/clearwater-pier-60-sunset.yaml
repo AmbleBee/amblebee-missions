@@ -7,14 +7,20 @@ place:
   name: Pier 60, Clearwater Beach
   area: Clearwater Beach
   coords: [27.97700, -82.82900]  # APPROX: set at Pier 60 before publishing
-short: Watch the sun set over the Gulf from Clearwater Beach during the nightly Pier 60 festival.
+short: Sunsets at Pier 60 in Clearwater Beach. Watch the sun set over the Gulf at the nightly festival.
 description: >
-  Spend the evening at Clearwater Beach, with its soft white sand, then walk
-  to Pier 60 for Sunsets at Pier 60, a nightly festival with street
-  performers, artists and food vendors. As the sun drops into the Gulf, walk
-  out on the pier with everyone, or find a spot on the sand. Bring a blanket,
-  and stay for the sky to turn pink. Get a photo of you on the pier
-  with the sunset behind you.
+  Spend the evening on Clearwater Beach's soft white sand, then walk to Pier
+  60 for the nightly sunset festival, with street performers, artists and
+  food vendors. Each pick a performer to tip, and see whose pick draws the
+  bigger crowd. As the sun drops into the Gulf, walk out on the pier with
+  everyone. The photo to get: you on the pier with the sunset behind you.
+about: >
+  Clearwater Beach has been named one of the best beaches in the country
+  many times, known for its soft, sugar-white sand. Sunsets at Pier 60 has
+  run for decades and happens nearly every night, weather permitting.
+
+  Bring a blanket and some small bills for the performers, and stay after
+  the sun goes down for the sky to turn pink.
 for_kids:
   short: Beach sunset! Find each thing.
   steps:
@@ -30,6 +36,5 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: day-trip
-themes: [beach, sunsets, holidays]
-tags: [sunset, beach, pier, festival, tampa-bay]
-credit:
+themes: [beach, sunsets, shows]
+tags: [pier 60 sunset, clearwater beach, sunset festival, street performers, gulf sunset, tampa-bay]

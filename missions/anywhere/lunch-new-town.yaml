@@ -1,14 +1,23 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 13
 name: Lunch in Another Town
 mode: both
 who: [solo, friends, family]
-short: Drive to a nearby town you've never explored. Eat lunch somewhere local.
+short: Day trip to a nearby town you've never explored. Eat lunch somewhere local and walk Main Street.
 description: >
-  Pick a town or small city within about an hour that you don't know
-  well. Skip the chains and find a local spot for lunch, then take a
-  slow walk down its main street afterward. Pop into anything that
-  looks interesting on the way back to the car.
+  Pick a town or small city within about an hour that you don't know well.
+  Skip the chains, find a local spot for lunch, and ask your server what you
+  shouldn't miss in town. Then take a slow walk down Main Street, and each
+  find one thing you'd come back for. The photo to get: you on Main Street or
+  under the town's welcome sign.
+about: >
+  Small towns often save their best stuff for people who ask: a hidden
+  viewpoint, a bakery that sells out by noon, a museum in someone's old
+  house. Servers and shop owners are the best guides.
+
+  Check whether the town has a farmers market or festival on the day you go,
+  and look up its historic downtown, if it has one. Keep a list of the towns
+  you've explored, and pick a new direction each time.
 duration: half-day
 effort: easy
 cost: $$
@@ -17,4 +26,4 @@ season: any
 time_of_day: daytime
 travel: drive
 themes: [food, road-trips]
-tags: [food, road-trip, explore, local]
+tags: [small town day trip, main street, local lunch, explore nearby towns, road-trip, local]

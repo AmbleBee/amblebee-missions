@@ -9,7 +9,7 @@ place:
   address: 800 Stainback Hwy, Hilo, HI 96720
   coords: [19.65360, -155.07420]  # APPROX: set at the entrance before publishing
   website: https://parks.hawaiicounty.gov/divisions/pana-ewa-recreational-complex/pana-ewa-rainforest-zoo-gardens
-short: Wander a little zoo in a real rainforest. Spot a tortoise, then race to the playground.
+short: Pana'ewa Rainforest Zoo in Hilo. Wander a small, free zoo in a real rainforest.
 description: >
   Hilo's small county zoo sits right in a rainforest, with paved paths under
   giant trees, palms and orchids and around 80 kinds of animals, from giant
@@ -18,6 +18,13 @@ description: >
   picnic pavilions. If you come on a Saturday afternoon, plan around the
   petting zoo hour. Get a photo of the whole family under the biggest tree
   you can find. Bring a rain jacket: it's a rainforest for a reason.
+about: >
+  Pana'ewa is said to be the only zoo in the United States set in a natural
+  tropical rainforest. It's run by the county, admission is free, and the
+  paths wind under giant trees, palms and orchids.
+
+  Look for native Hawaiian birds like the nēnē, the state bird, a goose that
+  nearly went extinct. Bring a rain jacket; it's a rainforest for a reason.
 for_kids:
   short: Zoo in the rainforest! Find each thing.
   steps:
@@ -36,5 +43,4 @@ travel: local
 check_ahead: [hours]
 discounts: [local]
 themes: [forests, wildlife, gardens]
-tags: [zoo, animals, rainforest, gardens, playground, kids, hilo, big-island]
-credit:
+tags: [panaewa rainforest zoo, free zoo hilo, rainforest gardens, nene, kids day out, big-island]

@@ -8,7 +8,7 @@ place:
   area: Gainesville
   coords: [29.70700, -82.39400]  # APPROX: set at the park entrance before publishing
   website: https://www.floridastateparks.org/parks-and-trails/devils-millhopper-geological-state-park
-short: Walk down 132 steps into Devil's Millhopper, a giant sinkhole full of a hidden rainforest.
+short: Devil's Millhopper in Gainesville. Walk down into a giant sinkhole with a hidden rainforest.
 description: >
   Walk down a wooden staircase 120 feet into a giant bowl-shaped sinkhole,
   where little waterfalls trickle down the walls and the air turns cool and
@@ -16,6 +16,16 @@ description: >
   you'd expect in the mountains, and fossil shark teeth have been found in the
   walls. Count the steps together on the way down. Get a photo of you at the bottom looking up. It's a short visit, perfect with a day in
   Gainesville.
+about: >
+  The sinkhole formed when the roof of an underground cavern collapsed,
+  thousands of years ago. It's about 120 feet deep, and its funnel shape
+  reminded people of the hopper that fed grain into a mill. Fossil shark
+  teeth and the bones of extinct animals have been found in its walls.
+
+  It's a National Natural Landmark. The bottom stays cool and damp, so plants
+  grow there that you'd normally find much farther north. It's a short visit,
+  perfect with a day in Gainesville. Check that the staircase is open before
+  you go.
 for_kids:
   short: Sinkhole hunt! Find each thing.
   steps:
@@ -33,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [hiking, rocks-fossils, parks]
-tags: [geology, sinkhole, hiking, state-park, north-florida]
-credit:
+tags: [devils millhopper, sinkhole hike, gainesville state park, fossil shark teeth, geology, north-florida]

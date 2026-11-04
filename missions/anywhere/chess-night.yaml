@@ -1,9 +1,9 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 37
 name: Chess Night
 mode: both
 who: [friends, family, kids]
-short: Play a best-of-three chess match. If one of you is new, the other teaches as you go.
+short: Chess night at home. Play a best-of-three match, and teach as you go if one of you is new.
 description: >
   Set up a board, pour something good, and play a best-of-three chess match.
   If one of you is new to chess, play the first game as a lesson with the moves
@@ -11,6 +11,15 @@ description: >
   it up. Loser picks the snack for the rematch. Take a photo of you
   over the board right before checkmate. No board? Look for a café or park with
   chess tables.
+about: >
+  New to chess? A quick cheat sheet: the knight moves in an L and can jump
+  over pieces, pawns capture diagonally, and the goal is to trap the other
+  king so it can't escape. Lichess, a free website, has quick lessons and
+  puzzles if you want to practice between games.
+
+  Chess had a big comeback after The Queen's Gambit came out in 2020, so
+  many cafés, parks and libraries have boards out. A fast round with a
+  timer, like five minutes each, is a fun way to shake things up.
 for_kids:
   short: Chess night! Do each thing.
   steps:
@@ -27,4 +36,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [games, relaxing]
-tags: [at-home, games, strategy, cozy, rainy-day]
+tags: [at-home, chess night, learn chess, board game night, strategy, cozy]

@@ -9,12 +9,20 @@ place:
   address: 200 Santa Monica Pier, Santa Monica, CA 90401
   coords: [34.00920, -118.49720]  # APPROX: set at the pier entrance (Ocean Ave) before publishing
   website: https://www.santamonicapier.org
-short: Find the Route 66 "End of the Trail" sign. Ride the Ferris wheel at sunset.
+short: Santa Monica Pier. Find the Route 66 End of the Trail sign and ride the Ferris wheel at sunset.
 description: >
   Walk out onto the pier and find the "End of the Trail" sign, the symbolic
-  finish line of Route 66, for a photo. Ride the solar-powered Ferris wheel
-  around sunset and watch its lights come on over the water, play one midway
-  game each, and grab something fried. Finish with a walk down to the sand.
+  finish line of Route 66. Ride the Ferris wheel around sunset and watch its
+  lights come on over the water, then play one midway game each and loser
+  buys something fried. The photo to get: you under the Route 66 sign.
+  Finish with a walk down to the sand.
+about: >
+  The pier opened in 1909. Its old wooden carousel building, the Looff
+  Hippodrome, dates to 1916 and appeared in the movie The Sting. The Ferris
+  wheel runs on solar power, and its lights put on shows after dark.
+
+  Route 66 officially ended a little inland, but the "End of the Trail" sign
+  has made the pier the road's unofficial finish line since 2009.
 for_kids:
   short: Pier fun! Find each thing.
   steps:
@@ -32,4 +40,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours]
 themes: [beach, sunsets, history, thrills]
-tags: [beach, pier, rides, route-66, sunset, los-angeles]
+tags: [santa monica pier, route 66 end of the trail, pacific park ferris wheel, sunset pier, looff hippodrome, los-angeles]

@@ -8,12 +8,24 @@ place:
   address: 18300 W Alameda Pkwy, Morrison, CO 80465
   coords: [39.66621, -105.20734]
   website: https://www.redrocksonline.com
-short: Climb the Red Rocks bleachers at golden hour, or catch a show between the red walls.
+short: Red Rocks Amphitheatre near Denver. Climb the rows at golden hour, or catch a show.
 description: >
-  On days without a show the park and amphitheatre are free to walk around. Climb to the
-  top row as the sun drops and the rocks glow, then walk the Trading Post Trail. If you
-  can, come back for a concert under the stars, one of the most famous stages in the
-  world.
+  On a day without a show, climb all the way to the top row of Red Rocks as
+  the sun drops and the giant red walls start to glow. Race each other up
+  the last few rows, then sit and catch your breath with Denver spread out
+  below. The photo to get: the two of you on the top row with the stage and
+  the red rocks behind you. If you can, come back for a concert under the
+  stars.
+about: >
+  Red Rocks Amphitheatre sits between two huge sandstone formations, Ship
+  Rock and Creation Rock, which give it natural acoustics musicians rave
+  about. It was built in the 1930s and opened in 1941. The Beatles played
+  here in 1964, and U2's concert film here helped make it world famous.
+
+  It's at about 6,450 feet, so go easy on the stairs. The park is free to
+  visit on days without a show, though it closes early on concert days. The
+  Trading Post Trail is an easy loop among the rocks, and the visitor center
+  has the Colorado Music Hall of Fame.
 duration: short
 effort: moderate
 cost: free
@@ -23,5 +35,4 @@ time_of_day: evening
 travel: drive
 check_ahead: [hours, tickets]
 themes: [views, sunsets, shows]
-tags: [music, views, sunset]
-credit:
+tags: [red rocks amphitheatre, morrison, concert venue, golden hour, colorado music hall of fame, denver]

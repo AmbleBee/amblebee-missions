@@ -7,15 +7,24 @@ place:
   name: Manhattan Beach Pier (Roundhouse Aquarium at the end)
   area: Downtown Manhattan Beach
   address: 2 Manhattan Beach Blvd, Manhattan Beach, CA 90266
-  coords: [33.884307, -118.412011]
+  coords: [33.88431, -118.41201]
   website: https://roundhouseaquarium.org
-short: Walk to the end of Manhattan Beach Pier. Visit the tiny free aquarium at the tip.
+short: Manhattan Beach Pier near LA. Walk to the end and visit the tiny free aquarium at the tip.
 description: >
-  Walk the whole length of the pier, watching the surfers below and keeping an
-  eye out for dolphins. At the very end, step into the little Roundhouse
-  Aquarium for touch pools, sharks, an octopus and jellyfish. It's free, but a
-  small donation helps. No food or drinks inside, so finish your snacks
-  first. On the walk back, get a photo with the whole pier behind you.
+  Walk the whole length of the pier, watching the surfers below, and see
+  who spots a dolphin first. At the very end, step into the little
+  Roundhouse Aquarium for touch pools, sharks, an octopus and jellyfish.
+  On the walk back, get a photo of you with the whole pier and the
+  Roundhouse behind you.
+about: >
+  The concrete pier dates to 1920 and is one of the oldest of its kind on
+  the West Coast. The round building at the end has been rebuilt over the
+  years and now holds the Roundhouse Aquarium, run by a nonprofit. It's
+  free, but a small donation helps, and no food or drinks are allowed
+  inside.
+
+  Manhattan Beach is famous for beach volleyball. The Manhattan Beach Open
+  has been played on the sand by the pier since 1960.
 for_kids:
   short: Pier and fish hunt! Find each thing.
   steps:
@@ -33,4 +42,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [beach, wildlife]
-tags: [beach, pier, aquarium, ocean, los-angeles]
+tags: [manhattan beach pier, roundhouse aquarium, free aquarium, touch pool, surfing, los-angeles]

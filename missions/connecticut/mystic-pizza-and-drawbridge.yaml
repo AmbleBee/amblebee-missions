@@ -8,12 +8,23 @@ place:
   address: 56 W Main St, Mystic, CT 06355
   coords: [41.35455, -71.97166]
   website: https://www.mysticpizza.com/restaurants.html
-short: Share a slice at Mystic Pizza, then watch the old drawbridge lift for a boat.
+short: Mystic Pizza in Mystic, CT. Share a slice, then watch the old drawbridge lift for a boat.
 description: >
-  Grab a pie at the pizza place that gave a movie its name, then walk to the Mystic River
-  Bascule Bridge right down the street. The 1920s drawbridge still lifts for passing
-  boats, so linger by the water until it goes up and take a photo of the two of you with
-  it.
+  Share a pie at the pizza place that gave a movie its name, then walk down
+  the street to the Mystic River Bascule Bridge. The old drawbridge still
+  lifts for passing boats, so linger by the water until it goes up. Each
+  guess how long it'll stay up. The photo to get: the two of you with the
+  bridge raised behind you.
+about: >
+  Mystic Pizza opened in the 1970s, and a screenwriter who stopped in while
+  visiting the area gave its name to the 1988 movie Mystic Pizza, starring
+  a young Julia Roberts. Movie stills still hang on the walls.
+
+  The bascule bridge was finished in the early 1920s. Big concrete
+  counterweights swing down as the road tilts up, which is fun to watch up
+  close. It opens on a regular schedule in the boating season. Mystic
+  Seaport Museum, with its historic ships, is a short walk away if you want
+  to make a day of it.
 duration: short
 effort: easy
 cost: $$
@@ -23,5 +34,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours]
 themes: [lakes-rivers, food, movies]
-tags: [food, pizza, movie, waterfront]
-credit:
+tags: [mystic pizza, mystic river bascule bridge, drawbridge, julia roberts movie, mystic ct]

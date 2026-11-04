@@ -3,14 +3,21 @@ number: 55
 name: Track an Animal
 mode: both
 who: [solo, family, kids]
-short: The morning after rain, find animal tracks in the mud, follow them, and figure out who left them.
+short: Animal tracking after rain. Find tracks in the mud, follow them, and figure out who left them.
 description: >
-  Go out the morning after rain or a light snow to soft ground: a creek bank,
-  a muddy trail edge, or a sandy beach. When you spot a clear print, lay a coin
-  next to it for scale and photograph it from low down while the light is
-  still slanting. Follow the trail a little way to see whether it walked,
-  hopped, or bounded, and look for other clues like chewed pine cones, burrows,
-  or scat. Back home, try to name yourrt or animal with a tracks chart.
+  Go out the morning after rain or a light snow to soft ground: a creek
+  bank, a muddy trail edge or a sandy beach. When you spot a clear print, lay
+  a coin next to it for scale and photograph it from low down. Follow the
+  trail a little way to see whether it walked, hopped or bounded, and look
+  for other clues like chewed pine cones or burrows. Back home, each guess
+  the animal, then check a tracks chart.
+about: >
+  Quick clues: dog and coyote tracks usually show claw marks, while cat
+  tracks usually don't, because cats pull their claws in. Deer tracks look
+  like an upside-down heart, and raccoon tracks look like tiny human hands.
+
+  Early morning is best, when the light is low and slanting and the tracks
+  are fresh, before people and bikes walk over them.
 for_kids:
   short: Be a track detective!
   steps:
@@ -33,5 +40,4 @@ time_of_day: morning
 travel: local
 check_ahead: [conditions]
 themes: [wildlife]
-tags: [nature, wildlife, explore, detective, free]
-credit:
+tags: [animal tracking, animal footprints, nature detective, kids nature walk, wildlife, free]

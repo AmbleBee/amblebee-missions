@@ -2,11 +2,20 @@ checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you
 number: 17
 name: Take a Class Together
 mode: date
-short: Take a class neither of you has tried. Pottery, cooking, dance, anything.
+short: Take a class together. Pottery, cooking, dance, anything neither of you has tried.
 description: >
-  Book a one-time class in something neither of you has done before,
-  like pottery, cooking, dancing, or painting. Go in expecting to be
-  bad at it. The point is learning something new together.
+  Book a one-time class in something neither of you has done before, like
+  pottery, cooking, dancing or painting. Go in expecting to be bad at it;
+  the point is learning something new together. Each pick the moment you
+  were proudest of and the moment you were worst at. The photo to get: the
+  two of you with whatever you made, however it turned out.
+about: >
+  Good places to look: community colleges, parks and rec departments, art
+  centers, cooking stores, dance studios and outdoor shops often run
+  one-night or weekend classes for beginners. Pottery wheel and cooking
+  classes are popular date picks and fill up fast, so book ahead.
+
+  If you love it, keep going. If not, you've got a funny story.
 duration: short
 effort: easy
 cost: $$$
@@ -16,4 +25,4 @@ time_of_day: any
 travel: local
 check_ahead: [reservation]
 themes: [make-something]
-tags: [learning, creative, rainy-day]
+tags: [couples class, pottery class date, cooking class, dance class, learning, creative]

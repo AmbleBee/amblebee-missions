@@ -7,7 +7,7 @@ place:
   name: Indian River Lagoon (Titusville / Haulover Canal tours)
   area: Merritt Island, Space Coast
   coords: [28.73600, -80.75500]  # APPROX: set at your tour's launch site before publishing
-short: Paddle the Indian River Lagoon at night, where every stroke and fish lights up glowing blue.
+short: Bioluminescent kayak tour on the Indian River Lagoon. Every paddle stroke glows blue.
 description: >
   Join a guided night kayak tour on the Indian River Lagoon in summer, when
   tiny glowing plankton light up the water. Every paddle stroke swirls bright
@@ -16,6 +16,15 @@ description: >
   and watch it sparkle. It's hard to photograph, so just take it in together.
   Go on a dark, new-moon night. The glow is strongest roughly June through
   September; book ahead.
+about: >
+  In summer, the glow comes from tiny plankton called dinoflagellates that
+  flash blue-green when the water is disturbed. In cooler months, tours
+  sometimes find comb jellies, which glow too and don't sting.
+
+  The Indian River Lagoon is one of the most diverse estuaries in North
+  America, and manatees and dolphins live here year-round. The darker the
+  night, the brighter the glow, so pick a new-moon night. Photos rarely
+  capture it, so take it in together.
 for_kids:
   short: Glow night! Find each thing.
   steps:
@@ -38,5 +47,4 @@ time_of_day: night
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
 themes: [boating, wildlife, stars]
-tags: [bioluminescence, kayak, night, wildlife, space-coast]
-credit:
+tags: [bioluminescent kayaking, glowing water tour, indian river lagoon, night kayak, manatees, space-coast]

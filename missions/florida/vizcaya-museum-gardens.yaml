@@ -8,7 +8,7 @@ place:
   area: Coconut Grove, Miami
   coords: [25.74400, -80.21000]  # APPROX: set at the entrance before publishing
   website: https://vizcaya.org
-short: Tour Vizcaya, an Italian-style villa on Biscayne Bay, then get lost in its formal gardens.
+short: Vizcaya Museum and Gardens in Miami. Tour an Italian-style villa on the bay and its gardens.
 description: >
   Step into a 1916 winter estate built to look like an Italian Renaissance
   villa, right on the edge of Biscayne Bay, filled with antiques and ornate
@@ -16,6 +16,16 @@ description: >
   and a stone barge carved like a ship sitting in the bay. Each pick the room
   you'd claim. Get a photo of you on the terrace with the bay behind
   you. Buy timed tickets ahead.
+about: >
+  Vizcaya was the winter home of James Deering, a farm-machinery
+  millionaire. It was built in the 1910s by about a thousand workers, at a
+  time when that was roughly a tenth of Miami's whole population. The stone
+  barge in the bay is a breakwater carved like a ship to protect the house
+  from waves.
+
+  In 1987, Pope John Paul II and President Reagan met here. The gardens
+  include a secret garden and a maze, so leave time to get a little lost.
+  Buy timed tickets ahead.
 for_kids:
   short: Villa hunt! Find each thing.
   steps:
@@ -33,5 +43,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
 themes: [gardens, history, architecture]
-tags: [history, mansion, gardens, architecture, miami]
-credit:
+tags: [vizcaya museum and gardens, italian villa miami, james deering, biscayne bay, formal gardens, miami]

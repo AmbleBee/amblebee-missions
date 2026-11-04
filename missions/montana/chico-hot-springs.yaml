@@ -8,11 +8,23 @@ place:
   address: 163 Chico Rd, Pray, MT 59065
   coords: [45.33890, -110.69190]
   website: https://www.chicohotsprings.com
-short: Soak in the hot springs pool under the mountains, then have dinner in the old lodge.
+short: Chico Hot Springs near Pray, MT. Soak under the mountains, then dinner in the old lodge.
 description: >
-  Chico has been pulling hot spring water into its pools since 1900, in Paradise Valley
-  north of Yellowstone. Soak together outside, extra good on a cold night with steam
-  rising off the water, then dress up a little for dinner in the historic dining room.
+  Soak together in the outdoor hot spring pools in Paradise Valley,
+  especially good on a cold night with steam rising off the water and the
+  mountains dark around you. Each count shooting stars or snowflakes,
+  whichever the night brings. Then dress up a little for dinner in the
+  historic dining room. The photo to get: the two of you in the steamy pool
+  with the old lodge behind.
+about: >
+  Chico has been pulling hot spring water into its pools since 1900, when
+  Bill and Percie Knowles opened a hotel here. The lodge has kept much of
+  its old look, and it even has a ghost story: some guests say Percie never
+  left.
+
+  Paradise Valley follows the Yellowstone River north of Yellowstone
+  National Park, about half an hour from the park's north entrance. Dinner
+  reservations are a good idea, especially on weekends.
 duration: half-day
 effort: easy
 cost: $$$
@@ -22,5 +34,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [hours, reservation]
 themes: [mountains, swimming, food]
-tags: [hot-springs, soak, dinner, mountains]
-credit:
+tags: [chico hot springs, paradise valley, montana hot springs, historic lodge, yellowstone river, pray]

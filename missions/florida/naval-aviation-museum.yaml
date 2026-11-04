@@ -8,15 +8,21 @@ place:
   area: Naval Air Station Pensacola
   coords: [30.35000, -87.30400]  # APPROX: set at the museum before publishing
   website: https://navalaviationmuseum.org
-short: Walk among 150-plus historic Navy planes, including Blue Angels jets, at the Naval Aviation Museum.
+short: National Naval Aviation Museum in Pensacola. Walk among 150-plus Navy planes and Blue Angels.
 description: >
-  Visit one of the largest air and space museums in the world, free, on a
-  working Navy base. Walk among more than 150 restored aircraft, from wooden
-  biplanes to fighter jets, see four Blue Angels jets hanging in formation in
-  the atrium, and climb into a cockpit. Each pick the plane you'd fly. Get a
-  photo of you under the Blue Angels. Without a military ID, the
-  public can only get onto the base on weekends, 9 to 3, after screening at
-  the visitor center with a REAL ID or passport. Arrive early.
+  Walk among more than 150 restored aircraft, from wooden biplanes to
+  fighter jets, and see four Blue Angels jets hanging in formation in the
+  atrium. Climb into a cockpit, and each pick the plane you'd fly. The photo
+  to get: you under the Blue Angels.
+about: >
+  Pensacola is called the "Cradle of Naval Aviation." The Navy's first air
+  station opened here in 1914, and the Blue Angels have been based here since
+  the 1950s. In season, you can sometimes watch them practice over the base.
+
+  The museum is free and on a working Navy base. Without a military ID,
+  visitors have had to come on set days and hours and go through screening at
+  the visitor center with a REAL ID or passport, so check the museum's
+  website and arrive early.
 for_kids:
   short: Plane hunt! Find each thing.
   steps:
@@ -34,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [history, museums, vehicles]
-tags: [aviation, museum, military, free, rainy-day, pensacola]
-credit:
+tags: [national naval aviation museum, blue angels, nas pensacola, free aviation museum, navy planes, pensacola]

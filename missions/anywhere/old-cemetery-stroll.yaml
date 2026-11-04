@@ -1,8 +1,8 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 74
 name: Old Cemetery Stroll
 mode: date
-short: Walk the oldest cemetery in town quietly. Read the stones and find one life story.
+short: Old cemetery stroll. Walk your town's oldest cemetery, read the stones and find one life story.
 description: >
   Find your town's oldest cemetery (findagrave.com can help), often beside an old church or a big
   tree-lined one from the 1800s, and go in daylight. Walk quietly, stay on the
@@ -12,6 +12,15 @@ description: >
   stones. Each of you picks one name, and over coffee afterward you look the
   person up and trade what you learned. Get a photo of the carving you liked
   best.
+about: >
+  In the 1800s, many cemeteries were designed as parks, with winding paths
+  and big trees, before cities had public parks. People came to walk and
+  even picnic there.
+
+  Old stones have a language of their own: a willow means mourning, an
+  anchor means hope, a broken column means a life cut short, and a hand
+  pointing up means heaven. Be gentle with old stones, and never rub, clean
+  or lean on them.
 steps:
   - The cemetery gate
   - The oldest date you found
@@ -27,5 +36,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [walks, history, relaxing]
-tags: [history, walk, quiet, stories, free]
-credit:
+tags: [historic cemetery walk, old gravestones, local history, quiet walk, stories, free]

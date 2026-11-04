@@ -5,19 +5,26 @@ mode: both
 who: [solo, friends, family, kids]
 place:
   name: Mallory Square
-  area: Old Town, Key West 
+  area: Old Town, Key West
   address: Mallory Square Pier, 420 Wall St, Key West, FL 33040
-  coords: [24.559858, -81.807651]
+  coords: [24.55986, -81.80765]
   website: https://www.sunsetcelebration.org
-short: Watch street performers and the sunset at Key West's nightly Mallory Square celebration.
+short: Mallory Square in Key West. Join the nightly Sunset Celebration with street performers.
 description: >
-  Join the nightly Sunset Celebration at Mallory Square in Key West, where the
-  whole waterfront gathers to watch the sun drop into the Gulf. Street
-  performers juggle fire, tightrope walkers and trained cats put on shows,
-  and food carts sell conch fritters and key lime pie on a stick. Find a spot
-  at the edge of the dock, and when the sun touches the water, cheer with
-  everyone. Get a photo of you with the sunset behind you. Come an
-  hour early to see the performers.
+  Join the nightly Sunset Celebration at Mallory Square, where the whole
+  waterfront gathers to watch the sun drop into the Gulf. Come an hour early
+  for the fire jugglers, tightrope walkers and trained-cat shows, and grab
+  conch fritters or key lime pie on a stick. Find a spot at the edge of the
+  dock, and when the sun touches the water, cheer with everyone. The photo
+  to get: you with the sun right on the horizon behind you.
+about: >
+  The Sunset Celebration started in the 1960s, when travelers and hippies
+  began gathering on the dock each evening to cheer the sunset. It grew into
+  a nightly festival of street performers, artists and food carts, and it's
+  still free.
+
+  Key West sits at the southern end of the Overseas Highway, closer to Cuba
+  than to Miami. Performers work for tips, so bring some small bills.
 for_kids:
   short: Sunset party! Find each thing.
   steps:
@@ -34,5 +41,4 @@ season: any
 time_of_day: evening
 travel: day-trip
 themes: [lakes-rivers, sunsets, romantic]
-tags: [sunset, street-performers, waterfront, romantic, key-west]
-credit:
+tags: [mallory square, sunset celebration, street performers, key lime pie, waterfront sunset, key-west]

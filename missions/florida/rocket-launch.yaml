@@ -7,15 +7,24 @@ place:
   name: Space View Park
   area: Titusville, across the Indian River from the launch pads
   coords: [28.61400, -80.80700]  # APPROX: set at the park before publishing
-short: Watch a real rocket launch light up the sky from Titusville. Feel the rumble a minute later.
+short: Watch a rocket launch from Titusville. See the flame climb, then feel the rumble a moment later.
 description: >
-  Check the Space Coast launch schedule, then pick a launch and claim a spot
-  along the Indian River in Titusville, across the water from the launch pads.
-  Bring chairs, snacks and a radio or a livestream to hear the countdown.
-  When it lifts off, watch the bright flame climb, then wait for the rumble to
-  roll across the water a moment later. Night launches are the most dramatic.
-  Get a photo of you with the rocket trail in the sky. Launches
-  slip often, so have a backup plan.
+  Pick a launch from the Space Coast schedule and claim a spot along the
+  Indian River in Titusville, across the water from the pads. Bring chairs,
+  snacks and a livestream to hear the countdown, and count down out loud with
+  everyone. When it lifts off, count the seconds between seeing the flame and
+  feeling the rumble. The photo to get: you with the rocket trail in the
+  sky.
+about: >
+  The Space Coast is now the busiest launch site in the world, with launches
+  from Cape Canaveral and Kennedy Space Center sometimes several times a
+  week. During the Apollo era, huge crowds lined these same riverbanks to
+  watch the moon rockets go.
+
+  The rumble arrives late because sound travels much slower than light,
+  about a mile every five seconds, so you see the launch well before you hear
+  it. Night launches are the most dramatic. Launches slip often, so have a
+  backup plan.
 for_kids:
   short: Rocket launch! Find each thing.
   steps:
@@ -33,5 +42,4 @@ time_of_day: night
 travel: day-trip
 check_ahead: [conditions]
 themes: [stars]
-tags: [space, rockets, night, free, space-coast]
-credit:
+tags: [watch a rocket launch, space view park, titusville, spacex launch viewing, cape canaveral, space-coast]

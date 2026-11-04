@@ -1,15 +1,23 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 2
 name: Books and Coffee Swap
 mode: date
-short: Pick a book (under $10) and a coffee order for each other. Swap them at the café.
+short: Bookstore and coffee date. Pick a book and a coffee order for each other, then swap at the café.
 description: >
-  Head to a used or local bookstore with a café nearby, or one with a café
-  inside. Split up and each secretly pick a book under $10 you think the other
-  would love. Then, without asking, order the other person's coffee, tea or
-  snack: something you think they'd like, or something they'd never pick
-  themselves. Sit down, swap the books and the drinks, and explain your picks.
-  Get a photo of the two of you with your books and mugs.
+  Head to a used or local bookstore with a café inside or nearby. Split up
+  and each secretly pick a book under $10 you think the other would love.
+  Then, without asking, order the other person's coffee, tea or snack:
+  something you think they'd like, or something they'd never pick. Sit down,
+  swap the books and the drinks, and explain your picks. The photo to get:
+  the two of you with your books and mugs.
+about: >
+  Before you hand it over, write a short note inside the front cover with
+  today's date. Years from now, it's the best kind of bookmark.
+
+  Used bookstores are the easiest place to stay under $10, and many have a
+  dollar or bargain shelf. Some bookstores also do "blind date with a book,"
+  books wrapped in paper with a few hints written on the front. If you find
+  one, that's a fun pick too.
 duration: short
 effort: easy
 cost: $
@@ -19,5 +27,5 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [food, markets]
-tags: [books, coffee, gifts, rainy-day]
+tags: [bookstore date, coffee date, book swap, used books, cafe, gifts]
 credit: Jennifer F.

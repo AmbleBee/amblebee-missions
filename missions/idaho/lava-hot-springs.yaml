@@ -7,13 +7,21 @@ place:
   name: Lava Hot Springs Hot Pools
   area: Lava Hot Springs
   coords: [42.61900, -112.00900]  # APPROX: set at the hot pools entrance before publishing
-short: Soak in the natural hot pools at Lava Hot Springs. Work up to the hottest one.
+short: Lava Hot Springs, Idaho. Soak in the natural hot pools and work up to the hottest one.
 description: >
-  Soak in the town's natural mineral hot pools, each a different temperature.
-  Start in the warm one and dare each other up to the hottest pool you can
-  stand. Go on a cold winter evening, when steam rises off the water. In summer,
-  add a tube float down the Portneuf River through town. Bring a towel and
-  water; stay hydrated in the heat.
+  Soak in the town's natural mineral hot pools, each a different
+  temperature. Start in the warm one and dare each other up to the hottest
+  pool you can stand. Go on a cold winter evening, when steam rises off the
+  water. The photo to get: you in the steamy pool with the canyon walls
+  behind.
+about: >
+  The water comes out of the ground hot and naturally rich in minerals, and
+  unlike many hot springs it has almost no sulfur smell. The springs were
+  used by Shoshone and Bannock people long before the town existed, and
+  they're now run by the state.
+
+  In summer, add a tube float down the Portneuf River through town. Bring a
+  towel and water, and stay hydrated in the heat.
 for_kids:
   short: Hot pool day! Find each thing.
   steps:
@@ -30,4 +38,4 @@ time_of_day: any
 travel: day-trip
 check_ahead: [hours]
 themes: [swimming, relaxing, small-towns]
-tags: [hot-springs, relaxing, winter, small-town]
+tags: [lava hot springs, natural hot pools, mineral springs, winter soak, portneuf river tubing, small-town]

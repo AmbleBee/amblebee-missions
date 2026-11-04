@@ -1,9 +1,9 @@
-checked: 2026-10-26
+checked: 2026-11-03
 number: 59
 name: Cardboard Arcade
 mode: adventure
 who: [friends, family, kids]
-short: Build an arcade out of boxes, hand out tickets, and open a prize counter.
+short: Cardboard arcade at home. Build games from boxes, hand out tickets and open a prize counter.
 description: >
   Save boxes for a few days, then have everyone build one or two arcade
   games: a ball toss into holes worth different points, a string-and-hook
@@ -12,6 +12,15 @@ description: >
   a sign, open the doors, and invite neighbors or grandparents in as
   customers. Play every game, collect your tickets, and cash them in. The
   best photo is the first customer stepping up to play.
+about: >
+  The idea comes from Caine's Arcade, a 2012 short film about a 9-year-old
+  in East Los Angeles who built a whole arcade out of boxes in his dad's
+  auto parts shop. The film went viral, and it started the Global Cardboard
+  Challenge, held every fall.
+
+  Tips: cereal and shipping boxes work best, packing tape is stronger than
+  glue, and a strip of paper "tickets" from a pad or receipt roll makes it
+  feel real. Let the kids set the prices at the prize counter.
 steps:
   - Builders mid-tape
   - The arcade sign
@@ -34,5 +43,4 @@ season: any
 time_of_day: daytime
 travel: home
 themes: [games, make-something]
-tags: [build, craft, cardboard, rainy-day, home, games]
-credit:
+tags: [cardboard arcade, caines arcade, box crafts, kids build project, at-home, games]

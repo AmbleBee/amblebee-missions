@@ -7,15 +7,21 @@ place:
   name: FM 170 River Road (starting at Lajitas)
   area: Big Bend Ranch State Park, Lajitas to Presidio
   coords: [29.26200, -103.77600]  # APPROX: set at the Lajitas end before publishing
-short: Drive the River Road along the Rio Grande through Big Bend Ranch in the morning light.
+short: River Road (FM 170) from Lajitas. Drive along the Rio Grande through Big Bend Ranch.
 description: >
-  Drive El Camino del Rio, one of the most dramatic roads in Texas, winding
-  along the Rio Grande between Lajitas and Presidio, with Mexico just across
-  the river. In the morning light, the road climbs and dips through canyons
-  and over a steep grade called the Big Hill. Stop at the pullouts, walk down
-  to the river at a picnic area, and get a photo of you with the
-  canyon behind you. Fill up the tank first, carry water, and expect no cell
-  service. Pair it with the Terlingua ghost town mission.
+  Drive El Camino del Rio in the morning light, winding along the Rio Grande
+  between Lajitas and Presidio, with Mexico just across the river. Take
+  turns picking pullouts, then walk down to the river at a picnic area. At
+  the top of the Big Hill, stop and look back down the canyon. The photo to
+  get: you at the top of the Big Hill with the river far below.
+about: >
+  The River Road runs about 50 miles through Big Bend Ranch State Park,
+  Texas's biggest state park. The Big Hill is one of the steepest grades in
+  Texas, and the views from the top are the best on the drive. Near Lajitas,
+  look for an old movie set built for Westerns, right by the road.
+
+  Fill up the tank first, carry water, and don't count on cell service. If
+  you're staying in the area, pair it with [[terlingua-ghost-town]].
 for_kids:
   short: River drive! Find each thing.
   steps:
@@ -35,5 +41,4 @@ check_ahead: [conditions]
 caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
           Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 themes: [lakes-rivers, deserts, rocks-fossils, road-trips]
-tags: [scenic-drive, river, canyon, desert, big-bend]
-credit:
+tags: [river road fm 170, el camino del rio, rio grande, big hill, big bend ranch, big-bend]

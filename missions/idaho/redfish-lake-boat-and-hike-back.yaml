@@ -9,17 +9,23 @@ place:
   address: 401 Redfish Lodge Rd, Stanley, ID 83278
   coords: [44.14376, -114.91540]  # APPROX: set at the dock before publishing
   website: https://redfishlake.com
-short: Ride the hiker boat across Redfish Lake, then hike the ridge trail home. Photo at the inlet.
+short: Redfish Lake near Stanley. Ride the hiker boat across, then hike the ridge trail home.
 description: >
-  Catch the hiker shuttle boat from Redfish Lake Lodge across the lake to the
-  inlet trailhead, right at the foot of the Sawtooth peaks. Take the short side
-  trip to the Lily Ponds and the little waterfalls (about a mile and a half
-  round trip), then hike the trail back to the lodge, about five miles along the
-  glacial moraine above the lake, with switchbacks, around 1,000 feet of
-  climbing, and big views of the lake, the Sawtooths and the White Clouds. Get a
-  group photo on the beach at the inlet with the jagged peaks behind you. Boats
-  run from just before Memorial Day to mid-October and leave from the marina in
-  front of the lodge; finish with a cold drink on the lodge beach.
+  Catch the hiker shuttle boat from Redfish Lake Lodge across to the inlet
+  trailhead at the foot of the Sawtooth peaks. Take the short side trip to
+  the Lily Ponds and little waterfalls, then hike back to the lodge along
+  the ridge above the lake. Race the last stretch to the lodge beach, loser
+  buys the cold drinks. The photo to get: your crew on the beach at the inlet
+  with the jagged peaks behind you.
+about: >
+  Redfish Lake is named for the sockeye salmon that once turned the water
+  red when they spawned. They swim about 900 miles from the Pacific and
+  climb more than 6,000 feet to get here, one of the longest salmon
+  migrations on Earth. They nearly disappeared in the 1990s, and a breeding
+  program is helping bring them back.
+
+  The hike back is about five miles with some switchbacks and around 1,000
+  feet of climbing. Boats run from late spring to mid-fall.
 duration: half-day
 effort: moderate
 cost: $$
@@ -29,5 +35,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
 themes: [hiking, lakes-rivers, mountains, boating]
-tags: [hiking, lake, boat, mountains, sawtooths, stanley]
-credit:
+tags: [redfish lake, hiker shuttle boat, sawtooth mountains, lily ponds, sockeye salmon, stanley]

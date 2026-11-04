@@ -1,12 +1,20 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 11
 name: Garden Visit
 mode: date
-short: Wander a public or botanical garden. Find your favorite quiet spot.
+short: Botanical garden date. Wander a public garden and find your favorite quiet spot.
 description: >
-  Visit a public, botanical, or Japanese garden. Walk slowly, notice
-  what's blooming or changing with the season, and find a bench or
-  quiet corner you both like. Sit there for a bit before you leave.
+  Visit a public, botanical or Japanese garden and walk slowly. Each find
+  the plant with the funniest name on its label and read it out loud. Then
+  find a bench or quiet corner you both like and sit for a while. The photo
+  to get: the two of you in your favorite spot.
+about: >
+  Gardens change with the seasons, so the same one is worth visiting more
+  than once: blossoms in spring, roses in early summer, color in fall. Even
+  winter has its moments in a Japanese garden or a greenhouse.
+
+  Many public gardens are free, and paid ones often have a free day each
+  month, so check the website.
 duration: short
 effort: easy
 cost: $
@@ -16,4 +24,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [relaxing]
-tags: [nature, calm, seasonal, outdoors]
+tags: [botanical garden date, japanese garden, public garden, slow walk, calm, outdoors]

@@ -8,15 +8,21 @@ place:
   area: Northeast of Naples
   coords: [26.37500, -81.60400]  # APPROX: set at the visitor center before publishing
   website: https://corkscrew.audubon.org
-short: Walk the boardwalk through Corkscrew Swamp's ancient bald cypress forest early in the morning.
+short: Corkscrew Swamp Sanctuary near Naples. Walk the boardwalk through ancient bald cypress forest.
 description: >
-  Walk a 2.25-mile boardwalk through the largest old-growth bald cypress forest
-  left in North America, with trees 500 years old rising out of the swamp. Go
-  early, when the birds are most active: herons, owls, woodpeckers and maybe
-  a painted bunting. Look for alligators in the lettuce lakes, and bring
-  binoculars to find the ghost orchid if it's blooming. Stop and stay quiet
-  for a minute to hear the swamp. Get a photo of you under the
+  Walk the long boardwalk through an ancient bald cypress forest early in
+  the morning, when the birds are most active. Look for alligators in the
+  lettuce lakes, and keep a list of every bird you spot. Stop and stay quiet
+  for one full minute to hear the swamp. The photo to get: you under the
   giant cypress trees.
+about: >
+  Corkscrew protects the largest old-growth bald cypress forest left in
+  North America, with trees about 500 years old. The National Audubon
+  Society has protected it since the 1950s, and it's long been home to one of
+  the country's biggest nesting colonies of wood storks.
+
+  Bring binoculars: in some summers, a rare ghost orchid blooms high in a
+  cypress here. The boardwalk is about two and a quarter miles.
 for_kids:
   short: Swamp hunt! Find each thing.
   steps:
@@ -34,5 +40,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [hours]
 themes: [walks, lakes-rivers, forests, wildlife]
-tags: [swamp, birds, boardwalk, cypress, southwest-florida]
-credit:
+tags: [corkscrew swamp sanctuary, bald cypress forest, audubon boardwalk, birdwatching, ghost orchid, southwest-florida]

@@ -2,7 +2,7 @@ checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you
 number: 42
 name: Pass-the-Canvas Sip and Paint
 mode: date
-short: Pour your favorite drinks, then paint one canvas each and swap them back and forth.
+short: Sip and paint at home. Each start a canvas, then swap every ten minutes and keep going.
 description: >
   Set up a little painting night at home: a couple of small canvases, brushes
   and paints, and a drink each. Wine, a cocktail, a mocktail, juice or bubbly
@@ -11,6 +11,14 @@ description: >
   going on the other person's. Take a photo before every swap so you can see
   how each painting changed hands. Start with a photo of the two of you
   clinking glasses, and end with both finished paintings side by side.
+about: >
+  Paint-and-sip studios got popular in the 2010s, but swapping canvases
+  makes the home version even better. Neither painting turns out how anyone
+  planned, and that's the fun.
+
+  Tips: acrylic paint dries fast and cleans up with water, small canvases
+  or canvas boards are cheap at craft stores, and a paper plate makes a
+  great palette. Put down newspaper or an old sheet first.
 duration: short
 effort: easy
 cost: $
@@ -19,5 +27,5 @@ season: any
 time_of_day: any
 travel: home
 themes: [art, drinks, make-something]
-tags: [painting, art, drinks, at-home, creative]
+tags: [sip and paint at home, paint night date, canvas swap, art date, at-home, creative]
 credit: Kali W.

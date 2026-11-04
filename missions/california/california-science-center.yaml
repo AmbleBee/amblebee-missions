@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 16
 name: California Science Center and Endeavour
 mode: both
@@ -9,13 +9,21 @@ place:
   address: 700 Exposition Park Dr, Los Angeles, CA 90037
   coords: [34.01520, -118.28518]
   website: https://californiasciencecenter.org
-short: Stand under Space Shuttle Endeavour, upright and ready to launch. Then explore the science halls.
+short: California Science Center in LA. Stand under Space Shuttle Endeavour, ready to launch.
 description: >
-  See the real Space Shuttle Endeavour standing 20 stories tall in launch
-  position, with its orange fuel tank and rocket boosters attached. It's the
-  only complete shuttle stack on display anywhere. Then explore the free
-  science galleries and each find the exhibit that surprised you most. General
-  admission is free; the shuttle gallery uses timed reservations, so book ahead.
+  See the real Space Shuttle Endeavour standing upright in launch position,
+  with its giant orange fuel tank and rocket boosters attached. Stand at the
+  bottom and look up, and get your photo with the whole stack behind you.
+  Then explore the science galleries and each find the exhibit that
+  surprised you most.
+about: >
+  Endeavour flew 25 missions into space before it retired in 2011. In 2012
+  it was slowly towed through the streets of Los Angeles to get here, and
+  crowds lined the route.
+
+  It's the only complete shuttle stack (orbiter, fuel tank and boosters) on
+  display anywhere. General admission to the science center is free; the
+  shuttle gallery uses timed reservations, so book ahead.
 for_kids:
   short: Space hunt! Find each thing.
   steps:
@@ -34,4 +42,4 @@ travel: local
 check_ahead: [hours, reservation]
 discounts: [senior, student]
 themes: [stars, museums, science]
-tags: [space, science, museum, rainy-day, los-angeles]
+tags: [space shuttle endeavour, california science center, exposition park, free museum, los-angeles]

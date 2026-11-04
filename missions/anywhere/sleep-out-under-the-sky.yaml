@@ -3,7 +3,7 @@ number: 76
 name: Sleep Out Under the Sky
 mode: both
 who: [solo, family, kids]
-short: Sleep outside with no tent. Watch the sky all night and make coffee at sunrise.
+short: Sleep under the stars with no tent. Watch the sky all night and make coffee at sunrise.
 description: >
   After dinner, head to a legal spot, like a campground walk-in site, a
   friend's land with permission, or your own backyard (the best pick with
@@ -14,6 +14,14 @@ description: >
   come out, sleep when you can, and wake up for the sunrise. Get a photo of
   your bed laid out at dusk. Bring bug spray, keep food sealed or inside so you don’t draw visitors, 
   and do a tick check in the morning.
+about: >
+  Explorer Alastair Humphreys made the word "microadventure" popular for
+  exactly this: a short, simple adventure close to home that still feels
+  wild. One night outside without a tent counts.
+
+  Clear, dry nights near a new moon are best for stars, and the summer
+  months bring meteor showers. Dew soaks everything by morning, so a
+  waterproof bivy sack or a tarp under your pad helps.
 steps:
   - Your bed laid out at dusk
   - The sky after dark
@@ -39,5 +47,4 @@ time_of_day: night
 travel: local
 check_ahead: [conditions]
 themes: [stars, sunsets]
-tags: [camping, overnight, stars, sunrise, microadventure]
-credit:
+tags: [sleep under the stars, backyard camping, no tent camping, microadventure, stars, sunrise]

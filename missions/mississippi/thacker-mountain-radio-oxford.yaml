@@ -6,18 +6,25 @@ place:
   name: The Powerhouse Community Arts Center (Thacker Mountain Radio Hour)
   area: Oxford
   address: 413 S 14th St, Oxford, MS 38655
-  coords: [34.364455, -89.517446]
+  coords: [34.36445, -89.51745]
   website: https://www.thackermountain.com
-short: Sit in the live audience of Oxford's Thursday radio show. Dinner on the Square after.
+short: Thacker Mountain Radio Hour in Oxford, MS. Join the live audience, then dinner on the Square.
 description: >
-  Oxford's homegrown radio show tapes in front of a free live audience on
-  Thursday evenings: an hour of Southern authors reading from new books, mixed with
-  live bands and plenty of local banter. Show up a little early, grab a seat
-  together, and watch how a radio broadcast comes together. Get a photo of the
-  two of you with the stage behind you before the show starts. Afterward, walk
-  over to the Square for dinner and a browse through the bookstores if
-  they're still open. Shows run in spring and fall seasons, and the venue
-  sometimes moves, so check the schedule first.
+  Sit in the free live audience of Oxford's homegrown radio show: Southern
+  authors reading from new books, mixed with live bands and local banter.
+  Show up a little early, grab seats together, and watch a broadcast come
+  together. The photo to get: the two of you with the stage behind you
+  before the show starts. Afterward, walk to the Square for dinner and each
+  pick a book for the other at the bookstore.
+about: >
+  Thacker Mountain Radio has been taping in Oxford since the 1990s and airs
+  on Mississippi Public Broadcasting. It's usually recorded on Thursday
+  evenings during its spring and fall seasons.
+
+  Oxford is a book town: William Faulkner lived here, and his home, Rowan
+  Oak, is open to visit. Square Books on the town square is one of the most
+  loved independent bookstores in the South. The show's venue sometimes
+  moves, so check the schedule first.
 steps:
   - The two of you, stage behind you
   - The author at the mic
@@ -31,5 +38,4 @@ time_of_day: evening
 travel: local
 check_ahead: [seasonal, hours]
 themes: [markets, shows, romantic]
-tags: [live-radio, books, live-music, southern-culture, date-night, oxford]
-credit:
+tags: [thacker mountain radio, live radio show, square books, southern authors, rowan oak, oxford]

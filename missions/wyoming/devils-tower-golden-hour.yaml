@@ -7,13 +7,23 @@ place:
   area: Tower Trail, by the visitor center
   coords: [44.49025, -104.72023]
   website: https://www.nps.gov/deto/
-short: Walk the loop around Devils Tower at golden hour, then stay for the stars.
+short: Devils Tower, Wyoming. Walk the loop around the base at golden hour, then stay for stars.
 description: >
-  Walk the paved 1.3-mile Tower Trail around the base of Devils Tower as the evening
-  light turns the columns gold. The start is short and steep, then it's an easy loop
-  through the pines. The Tower is a sacred place for many tribes, so if you see prayer
-  cloths tied to the trees, leave them be. Stay after dark: it's a long way from city
-  lights.
+  Walk the Tower Trail around the base of Devils Tower as the evening light
+  turns the columns gold. Stop at the far side and each count the columns
+  you can see from one spot. The photo to get: the two of you with the
+  glowing tower behind you. Stay after dark; it's a long way from city
+  lights, and the stars are huge.
+about: >
+  Devils Tower became the very first national monument in 1906, named by
+  Theodore Roosevelt. It rises about 870 feet from its base, and its giant
+  columns formed as molten rock cooled and cracked underground. Movie fans
+  know it from Close Encounters of the Third Kind.
+
+  The Tower is sacred to many tribes; the Lakota call it Bear Lodge. If you
+  see prayer cloths tied to the trees, leave them be. The paved loop is
+  about 1.3 miles, short and steep at the start, then easy. Look for the
+  prairie dog town near the entrance.
 duration: short
 effort: easy
 cost: $$
@@ -23,5 +33,5 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
 themes: [walks, parks, stars, sunsets]
-tags: [sunset, stars, national-monument, walk]
+tags: [devils tower, tower trail, bear lodge, first national monument, close encounters, national-monument]
 credit:

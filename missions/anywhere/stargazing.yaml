@@ -4,7 +4,7 @@ number: 15
 name: Dark Sky Stargazing
 mode: both
 who: [solo, friends, family, kids]
-short: Find the darkest sky near you on a light pollution map. Lie back and find three constellations.
+short: Stargazing at the darkest sky near you. Lie back on a blanket and find three constellations.
 description: >
   Look up a light pollution map (lightpollutionmap.info works well) and find the
   darkest spot you can reasonably drive to. Pick a clear night with little or no
@@ -12,6 +12,15 @@ description: >
   eyes adjust for 20 minutes with phones away, then use a free sky app on its
   red night mode to find three constellations together. Try for a long-exposure
   photo of you under the stars.
+about: >
+  Your eyes take about 20 to 30 minutes to fully adjust to the dark, and
+  one glance at a bright phone screen resets the clock. That's why sky apps
+  have a red night mode.
+
+  The Milky Way is brightest in summer and early fall, away from city
+  lights and the moon. Some parks are certified International Dark Sky
+  Places, with some of the darkest skies you can reach. Check a light
+  pollution map for the nearest one.
 for_kids:
   short: Star hunt! Find each thing.
   steps:
@@ -29,4 +38,4 @@ time_of_day: night
 travel: drive
 check_ahead: [conditions]
 themes: [stars]
-tags: [stars, night, astronomy, dark-sky]
+tags: [stargazing, dark sky near me, constellations, milky way, light pollution map, astronomy]

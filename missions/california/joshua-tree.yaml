@@ -8,14 +8,22 @@ place:
   area: Park Boulevard, Joshua Tree National Park
   coords: [34.01082, -116.16818]
   website: https://www.nps.gov/jotr/planyourvisit/fees.htm
-short: Explore Joshua Tree's boulders and Skull Rock in the afternoon. Stay after dark for the stars.
+short: Joshua Tree National Park. Climb Hidden Valley's boulders, find Skull Rock, then stay for stars.
 description: >
-  Walk the Hidden Valley loop through the giant boulder piles and spiky Joshua
-  trees, then stop at Skull Rock for a photo. Each find the weirdest Joshua tree
-  you can. Stay through sunset and wait for full dark: it's a dark sky park,
-  and on a moonless night the Milky Way is incredible. There's no food or gas
-  in the park, so bring plenty of water, snacks and warm layers. Skip summer
-  afternoons; the heat is dangerous.
+  Walk the Hidden Valley loop through giant boulder piles and spiky Joshua
+  trees, then stop at Skull Rock and get your photo copying its face. Each
+  find the weirdest Joshua tree you can and give it a name. Stay through
+  sunset and wait for full dark. On a moonless night, the Milky Way is
+  incredible.
+about: >
+  Joshua trees aren't really trees; they're giant yuccas. Mormon settlers
+  are said to have named them in the 1850s because the branches looked like
+  the biblical Joshua raising his arms. The park sits where two deserts
+  meet, the higher Mojave and the lower Colorado.
+
+  Joshua Tree is an International Dark Sky Park. There's no food or gas
+  inside, so bring plenty of water, snacks and warm layers. Skip summer
+  afternoons, when the heat is dangerous.
 for_kids:
   short: Desert hunt! Find each thing.
   steps:
@@ -33,4 +41,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
 themes: [deserts, rocks-fossils, parks, stars]
-tags: [desert, national-park, stars, rocks, night]
+tags: [joshua tree national park, hidden valley, skull rock, dark sky park, milky way, desert]

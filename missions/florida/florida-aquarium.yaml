@@ -8,14 +8,20 @@ place:
   area: Channel District, Tampa
   coords: [27.94400, -82.44500]  # APPROX: set at the entrance before publishing
   website: https://www.flaquarium.org
-short: See sharks, sea turtles and otters at the Florida Aquarium, then walk the Tampa Riverwalk.
+short: The Florida Aquarium in Tampa. Sharks, sea turtles and otters, then the Tampa Riverwalk.
 description: >
-  Explore an aquarium under a giant glass shell on the Tampa waterfront,
-  walking from freshwater springs and mangroves to a coral reef tank full of
+  Walk from freshwater springs and mangroves to a coral reef tank full of
   sharks, rays and sea turtles. Watch the river otters play and touch a
-  stingray in the touch pool. Each pick the animal you'd want to be. Get a
-  photo of you in front of the giant coral reef window. It's a
-  great rainy-day plan.
+  stingray in the touch pool. Each pick the animal you'd want to be and do
+  your best impression. The photo to get: you in front of the giant coral
+  reef window. Afterward, walk the Tampa Riverwalk.
+about: >
+  The aquarium opened in 1995 under its big glass shell on the Tampa
+  waterfront. Behind the scenes, its scientists work to save Florida's coral
+  reefs, and they were the first to get Atlantic coral to spawn in a lab.
+
+  It's a great rainy-day plan. Check the daily schedule for feedings and
+  dive shows.
 for_kids:
   short: Aquarium hunt! Find each thing.
   steps:
@@ -33,5 +39,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
 themes: [wildlife]
-tags: [aquarium, sharks, animals, rainy-day, tampa]
-credit:
+tags: [florida aquarium, tampa aquarium, coral reef tank, stingray touch pool, tampa riverwalk, tampa]

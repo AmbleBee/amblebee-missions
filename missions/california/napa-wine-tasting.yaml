@@ -6,13 +6,21 @@ place:
   name: Downtown Napa
   area: Napa, Napa Valley
   coords: [38.29890, -122.28560]  # APPROX: set on First Street downtown before publishing
-short: Taste your way through Napa. Each pick your favorite pour and bring one bottle home.
+short: Napa Valley wine tasting. Taste your way through Napa and bring one bottle home.
 description: >
-  Spend a day in Napa Valley, starting with the tasting rooms you can walk
-  between downtown, then a winery or two out among the vineyards. Each pick your
-  favorite pour of the day, then buy one bottle together to save for a special
-  occasion. Most wineries want reservations and tasting fees add up fast, so
-  plan two or three stops, not six. Pick a designated driver or book a tour.
+  Start with the tasting rooms you can walk between in downtown Napa, then
+  head out among the vineyards for a winery or two. Each pick your favorite
+  pour of the day, then buy one bottle together and write today's date on
+  it, to open on a special occasion. The photo to get: the two of you
+  between the vine rows with your glasses raised.
+about: >
+  Napa became world famous in 1976 at the "Judgment of Paris," a blind
+  tasting where French judges picked California wines over famous French
+  ones. Both winners came from Napa.
+
+  Most wineries want reservations, and tasting fees add up fast, so plan two
+  or three stops, not six. Downtown tasting rooms are walkable, which makes
+  an easy start. Pick a designated driver or book a tour.
 duration: all-day
 effort: easy
 cost: $$$
@@ -22,4 +30,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, hours]
 themes: [views, food, drinks]
-tags: [wine, food, views, splurge]
+tags: [napa valley wine tasting, downtown napa, winery tour, judgment of paris, wine country, napa]

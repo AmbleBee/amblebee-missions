@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-03
 number: 44
 name: California State Railroad Museum
 mode: both
@@ -9,14 +9,24 @@ place:
   address: 111 I St, Sacramento, CA 95814
   coords: [38.58452, -121.50448]
   website: https://www.californiarailroad.museum
-short: Climb aboard giant locomotives at the California State Railroad Museum in Old Sacramento.
+short: California State Railroad Museum in Old Sacramento. Climb aboard giant steam locomotives.
 description: >
   Walk among huge restored steam locomotives and passenger cars, then climb
-  aboard a few, including a rocking sleeper car that feels like it's moving
-  through the night. Learn how the railroad was built over the Sierra, and
-  each pick the train you'd want to ride across the country. Get a photo of you in front of the biggest engine. Check the schedule for
-  excursion train rides along the river. Then walk the wooden sidewalks of Old
+  aboard a few, including a sleeping car that rocks and clatters like it's
+  rolling through the night. Each pick the train you'd want to ride across
+  the country and plan the trip out loud. The photo to get: you in front of
+  the biggest engine in the hall. Then walk the wooden sidewalks of Old
   Sacramento for saltwater taffy.
+about: >
+  The first transcontinental railroad started right here: the Central
+  Pacific broke ground in Sacramento in 1863, and its tracks met the Union
+  Pacific's in Utah in 1869. The museum tells the story of building the
+  line over the Sierra Nevada, mostly by thousands of Chinese workers.
+
+  Look for the Southern Pacific "cab-forward," a giant locomotive built with
+  the engineer's cab in front so crews wouldn't choke on smoke in the
+  mountain tunnels. On some weekends, excursion trains run along the river,
+  so check the schedule.
 for_kids:
   short: Train hunt! Find each thing.
   steps:
@@ -34,5 +44,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [history, museums, vehicles]
-tags: [trains, museum, history, rainy-day, sacramento]
-credit:
+tags: [california state railroad museum, steam locomotives, transcontinental railroad, old sacramento, sacramento]

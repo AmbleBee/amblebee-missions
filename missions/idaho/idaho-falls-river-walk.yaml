@@ -7,12 +7,21 @@ place:
   name: Idaho Falls Greenbelt (by the falls)
   area: Downtown Idaho Falls, Snake River
   coords: [43.49500, -112.04200]  # APPROX: set at the falls viewpoint before publishing
-short: Walk the river path along the falls in Idaho Falls. Stay until the lights come on.
+short: Idaho Falls Greenbelt. Walk the river path along the falls and stay until the lights come on.
 description: >
-  Walk the paved Greenbelt along the Snake River right through downtown, beside
-  the wide, rushing falls the city is named after. Cross the bridges, find a
-  bench facing the water, and each pick your favorite spot on the loop. Stay
-  into the evening when the lights reflect off the river. Free and easy.
+  Walk the paved Greenbelt along the Snake River right through downtown,
+  beside the wide, rushing falls the city is named after. Cross the bridges
+  and each pick your favorite spot on the loop, then sit on a bench facing
+  the water as the evening lights come on. The photo to get: you with the
+  falls and their reflected lights behind you.
+about: >
+  The town was first called Eagle Rock and was renamed Idaho Falls in 1891.
+  The wide falls you see today were shaped by a diversion dam built over the
+  natural rapids in the early 1900s, and they still help make power for the
+  city.
+
+  The Greenbelt loop runs a few miles on both sides of the river, flat and
+  easy. It's free and lovely at dusk.
 for_kids:
   short: River walk! Find each thing.
   steps:
@@ -28,4 +37,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [walks, waterfalls, lakes-rivers, sunsets]
-tags: [river, waterfall, walking, sunset, east-idaho]
+tags: [idaho falls greenbelt, snake river falls, river walk, evening lights, downtown idaho falls, east-idaho]

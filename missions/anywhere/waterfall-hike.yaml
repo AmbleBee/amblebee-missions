@@ -3,12 +3,20 @@ number: 14
 name: Waterfall Hike
 mode: both
 who: [solo, friends, family]
-short: Hike to a waterfall you haven't seen. Pack a snack for the top.
+short: Waterfall hike. Find a waterfall trail you haven't done and have a snack at the falls.
 description: >
-  Pick a waterfall trail you haven't done. Pack water and a snack,
-  take your time on the way up, and have your snack once you reach
-  the falls. Check trail conditions before you go, especially after
-  heavy rain.
+  Pick a waterfall trail you haven't done, pack water and a snack, and take
+  your time on the way up. At the falls, each guess how tall the waterfall
+  is, then look it up. Have your snack where you can feel the mist. The photo
+  to get: you with the whole waterfall behind you.
+about: >
+  Waterfalls usually run strongest in spring, during snowmelt and rainy
+  season, and many shrink to a trickle by late summer. Check recent trip
+  reports to see how it's flowing.
+
+  Rocks near waterfalls are slippery even when they look dry, and the top of
+  a waterfall is the most dangerous place on the trail. Stay behind fences
+  and off the rocks above the falls.
 duration: half-day
 effort: moderate
 cost: free
@@ -18,4 +26,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
 themes: [hiking, waterfalls]
-tags: [hiking, nature, waterfall, outdoors]
+tags: [waterfall hike, waterfall trail, hiking near me, day hike, waterfalls, outdoors]

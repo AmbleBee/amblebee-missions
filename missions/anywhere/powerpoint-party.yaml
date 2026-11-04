@@ -3,7 +3,7 @@ number: 60
 name: PowerPoint Party
 mode: adventure
 who: [friends, family]
-short: Everyone brings a 5-minute slideshow on something they love. Present, heckle, hand out awards.
+short: PowerPoint party night. Everyone presents a 5-minute slideshow on something they love.
 description: >
   A week ahead, each guest makes a short slideshow (five minutes, five to ten
   slides) on anything they love or have a strong opinion on: a ranking of
@@ -12,6 +12,14 @@ description: >
   front of the room. The audience gets one question per talk. Finish with
   silly awards like best chart, wildest thesis, and most convincing argument.
   Grab a photo of each presenter mid-point with their slide behind them.
+about: >
+  PowerPoint parties caught on in the early 2020s as a party game: friends
+  giving funny, passionate, completely unnecessary presentations to each
+  other. The sillier the topic, the better.
+
+  Topic ideas: ranking the snacks at your nearest gas station, why your dog
+  is a genius, a conspiracy theory about your town, or every hairstyle you've
+  ever had. Keep a timer running so nobody's talk takes over the night.
 steps:
   - The title slide
   - A presenter mid-point
@@ -26,5 +34,4 @@ season: any
 time_of_day: evening
 travel: home
 themes: [games, playful]
-tags: [party, group, game-night, home, playful, free]
-credit:
+tags: [powerpoint party, slideshow night, party game, group game night, home, playful]

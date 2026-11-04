@@ -3,12 +3,22 @@ number: 18
 name: Random Direction Drive
 mode: adventure
 who: [solo, friends, family]
-short: Flip a coin at each turn for 30 minutes. Explore wherever you land.
+short: Coin flip road trip. Let a coin pick every turn for 30 minutes, then explore wherever you land.
 description: >
-  Start driving and let a coin flip decide each turn for about 30
-  minutes, heads for left and tails for right, only taking turns when
-  it's safe and legal. When time's up, park and explore wherever you
-  ended up, even if it's somewhere ordinary.
+  Start driving and let a coin flip decide each turn for about 30 minutes,
+  heads for left and tails for right, only turning when it's safe and legal.
+  The passenger flips and calls it. When time's up, park and explore
+  wherever you ended up, even if it's somewhere ordinary, and find the best
+  thing within a five-minute walk. The photo to get: you at the spot where
+  the coin left you.
+about: >
+  The fun is that you'd never pick these places on purpose. Some of the best
+  finds are a diner, a park or a shop you've driven past a hundred times
+  without noticing.
+
+  Rules that help: the driver never flips, skip any turn that isn't safe or
+  legal and just flip again at the next one, and set a limit on how far from
+  home you're willing to end up.
 duration: half-day
 effort: easy
 cost: $
@@ -17,4 +27,4 @@ season: any
 time_of_day: daytime
 travel: drive
 themes: [road-trips]
-tags: [road-trip, explore, spontaneous]
+tags: [coin flip road trip, spontaneous drive, random adventure, explore your area, road-trip, explore]

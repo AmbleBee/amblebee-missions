@@ -8,15 +8,23 @@ place:
   area: Mill Valley, Marin County
   coords: [37.89200, -122.57200]  # APPROX: set at the main entrance before publishing
   website: https://www.nps.gov/muwo
-short: Walk the redwoods of Muir Woods first thing in the morning, while the forest is still quiet.
+short: Muir Woods near Mill Valley. Walk the redwoods first thing in the morning, while it's quiet.
 description: >
   Book the earliest parking reservation and walk into an old-growth redwood
-  forest just a few miles from the Golden Gate Bridge, while it's still misty
-  and quiet. Follow the boardwalk along Redwood Creek through Cathedral Grove,
-  where visitors are asked to stay silent, and listen to the forest together.
-  Get a photo of you looking up at the tallest trees. Driving in
-  needs a parking reservation (it sells out), and there's an entrance fee;
-  hikers and rideshare don't need one.
+  forest a few miles from the Golden Gate Bridge, while it's still misty and
+  quiet. Follow the boardwalk along Redwood Creek to Cathedral Grove, where
+  visitors are asked to stay silent, and stand together for one full minute
+  just listening. The photo to get: you looking straight up at the tallest
+  trees.
+about: >
+  In 1908, a local couple, William and Elizabeth Kent, donated the land to
+  save it from logging, and President Theodore Roosevelt made it a national
+  monument. They asked that it be named for naturalist John Muir. In 1945,
+  delegates founding the United Nations held a memorial for President
+  Franklin Roosevelt in Cathedral Grove.
+
+  The tallest trees here are about 250 feet. Driving in needs a parking
+  reservation, which sells out, and there's an entrance fee.
 for_kids:
   short: Redwood hunt! Find each thing.
   steps:
@@ -34,5 +42,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation]
 themes: [walks, forests, parks]
-tags: [redwoods, forest, walking, national-monument, bay-area]
-credit:
+tags: [muir woods, old-growth redwoods, cathedral grove, redwood creek, john muir, bay-area]

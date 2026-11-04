@@ -1,8 +1,8 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 38
 name: Letters to Future Us
 mode: date
-short: Each write a letter to open together in one year. Seal it, date it, and hide it somewhere safe.
+short: Letters to future us. Each write a letter to open together in one year, then hide them.
 description: >
   Sit down somewhere cozy with paper, envelopes and something warm to drink.
   Each write a letter to the two of you one year from now: what life looks
@@ -11,6 +11,15 @@ description: >
   "Open on" and the date a year from today on the front, and hide them
   together somewhere safe. Take a photo of the two of you holding the sealed
   envelopes, and set a reminder for next year.
+about: >
+  Ideas for what to put inside: your current favorite song, the prices of a
+  few things you buy all the time, where you think you'll be in a year, and
+  a question you want your future selves to answer. Tuck in a printed photo
+  or a ticket stub too.
+
+  Make it a tradition: each year on the date, open last year's letters and
+  write new ones. After a few years, you'll have a stack that tells your
+  story.
 duration: short
 effort: easy
 cost: free
@@ -19,4 +28,4 @@ season: any
 time_of_day: evening
 travel: home
 themes: [romantic, relaxing, make-something]
-tags: [writing, keepsake, cozy, at-home, romantic]
+tags: [letters to future self, couples time capsule, keepsake date, at-home, romantic, cozy]

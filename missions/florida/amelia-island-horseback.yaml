@@ -8,14 +8,20 @@ place:
   area: Amelia Island, north of Jacksonville
   coords: [30.51500, -81.44000]  # APPROX: set at the horseback ride meeting point before publishing
   website: https://www.floridastateparks.org/parks-and-trails/amelia-island-state-park
-short: Ride horses along the beach at Amelia Island, one of the few places in Florida you can.
+short: Horseback riding on the beach at Amelia Island, one of the few Florida beaches that allow it.
 description: >
-  Ride horseback on the beach at Amelia Island State Park, one of the few
-  places in Florida where you can. Follow a guide on a gentle trail ride
-  through maritime forest and out onto the sand, then walk the horses along
-  the edge of the surf. No experience needed. Watch for dolphins in the inlet
-  and shorebirds on the sand. Get a photo of you on horseback with
-  the ocean behind you. Book ahead, and check age and weight limits.
+  Follow a guide on a gentle trail ride through maritime forest and out
+  onto the sand, then walk the horses along the edge of the surf. No
+  experience needed. See who spots the first dolphin in the inlet. The photo
+  to get: you on horseback with the ocean behind you.
+about: >
+  Amelia Island is called the "Isle of Eight Flags," because eight different
+  flags, including French, Spanish and British, have flown over it. Fort
+  Clinch, a Civil War-era brick fort, sits at the island's north end and is
+  worth a stop.
+
+  Rides go out from Amelia Island State Park at the south end of the island.
+  Book ahead, and check the age and weight limits.
 duration: short
 effort: easy
 cost: $$$
@@ -25,5 +31,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation]
 themes: [beach, romantic]
-tags: [horseback, beach, romantic, northeast-florida]
-credit:
+tags: [amelia island horseback, beach horseback riding, horse ride on the beach, fort clinch, northeast-florida]

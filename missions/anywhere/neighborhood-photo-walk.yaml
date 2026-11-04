@@ -1,4 +1,4 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 25
 name: Neighborhood Photo Walk
 mode: both
@@ -7,6 +7,13 @@ short: A walk with a photo prompt at every step. Hold the shutter to move on.
 description: >
   Walk somewhere close to home and follow the prompts on the camera.
   Take as many or as few photos at each step as you like.
+about: >
+  This mission is all about noticing things you'd normally walk past. Go
+  slowly, look up at rooftops and down at sidewalks, and try a few angles
+  for each prompt.
+
+  Golden hour, the hour before sunset, makes everything look better, and an
+  overcast day is great for colors with no harsh shadows.
 steps:
   - Find a door you'd love to own.
   - Something that made you laugh.
@@ -28,4 +35,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [walks]
-tags: [walk, guided, photo]
+tags: [photo walk, neighborhood walk, photo scavenger hunt, guided walk, walk, photo]

@@ -6,16 +6,23 @@ who: [solo, friends, family, kids]
 place:
   name: Dr Pepper Museum
   area: Downtown Waco
-  coords: [31.555046, -97.129710]
+  coords: [31.55505, -97.12971]
   website: https://drpeppermuseum.com
-short: Visit the birthplace of Dr Pepper in Waco, then share a float at the old soda fountain.
+short: Dr Pepper Museum in Waco. See where the soda was born, then share a float at the soda fountain.
 description: >
-  Visit the 1906 bottling plant in Waco where Dr Pepper was invented, now a
-  museum full of old bottles, vintage ads, soda machines and the story of how
-  the drink began. Guess the 23 flavors together, then belly up to the
-  old-fashioned soda fountain for a Dr Pepper float or a fountain drink made
-  the old way. Get a photo of you raising a glass at the fountain.
-  A fun, cheap rainy-day stop.
+  Explore the old bottling plant full of vintage bottles, ads and soda
+  machines, and each try to guess as many of the "23 flavors" as you can.
+  Then belly up to the old-fashioned soda fountain for a Dr Pepper float or
+  a drink made the old way. The photo to get: you raising a glass at the
+  fountain.
+about: >
+  Pharmacist Charles Alderton created Dr Pepper at a Waco drugstore in 1885,
+  a year before Coca-Cola was invented, which makes it one of the oldest
+  major sodas in the country. The museum is in a 1906 bottling plant.
+
+  Look for the old "Drink a bite to eat at 10, 2 and 4" ads, from when the
+  company told people the best times of day to have a Dr Pepper. It's a fun,
+  inexpensive stop on a rainy day.
 for_kids:
   short: Soda hunt! Find each thing.
   steps:
@@ -33,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [history, museums, quirky]
-tags: [museum, quirky, soda, history, rainy-day, waco]
-credit:
+tags: [dr pepper museum, soda fountain, birthplace of dr pepper, quirky museum, downtown waco, waco]

@@ -9,15 +9,23 @@ place:
   address: Mt Tallac Trailhead Rd, off CA-89 across from Baldwin Beach, South Lake Tahoe, CA 96150
   coords: [38.92260, -120.06600]  # APPROX: set at the trailhead before publishing
   website: https://www.fs.usda.gov/main/ltbmu/home
-short: Climb Tahoe's big peak past two alpine lakes. Photo with the whole lake below you.
+short: Mount Tallac at South Lake Tahoe. Climb past alpine lakes to a summit over the whole lake.
 description: >
-  Mount Tallac is the peak that towers over the southwest shore of Lake Tahoe, and the trail
-  to the top is a full, steep day: roughly 10 miles round trip with over 3,000 feet of climbing.
-  Fill out the free self-serve Desolation Wilderness day permit at the trailhead, then climb
-  past Floating Island Lake and Cathedral Lake before the last rocky push up the ridge. From
-  the summit you can see nearly all of Lake Tahoe on one side and Desolation's granite and
-  lakes on the other. Get a summit photo with the lake stretched out below you. Start early,
-  carry plenty of water and layers, and turn around if storms build.
+  Climb the peak that towers over Lake Tahoe's southwest shore, past
+  Floating Island Lake and Cathedral Lake, then make the last rocky push up
+  the ridge. Each guess how much of the lake you'll see from the top before
+  you get there. From the summit, nearly all of Tahoe spreads out on one
+  side and Desolation Wilderness's granite and lakes on the other. The photo
+  to get: you at the summit with the whole lake below.
+about: >
+  Mount Tallac rises to about 9,700 feet. In late spring, snow lingers in
+  two crossing gullies on its face, making a giant cross you can see from
+  across the lake.
+
+  The trail is roughly 10 miles round trip with more than 3,000 feet of
+  climbing, a full and steep day. Fill out the free self-serve Desolation
+  Wilderness day permit at the trailhead. Start early, carry plenty of water
+  and layers, and turn around if storms build.
 steps:
   - Floating Island Lake
   - Looking back down at Fallen Leaf Lake
@@ -31,5 +39,4 @@ time_of_day: morning
 travel: local
 check_ahead: [conditions, seasonal]
 themes: [views, hiking, lakes-rivers]
-tags: [hiking, summit, alpine-lakes, views, wilderness, lake-tahoe, south-lake-tahoe]
-credit:
+tags: [mount tallac, lake tahoe hike, desolation wilderness, cathedral lake, summit views, south-lake-tahoe]

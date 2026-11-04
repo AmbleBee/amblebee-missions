@@ -6,17 +6,29 @@ who: [solo, friends, family, kids]
 place:
   name: Lava Beds National Monument Visitor Center
   area: Near Tulelake, Siskiyou County
-  coords: [41.714359, -121.509914]
+  coords: [41.71436, -121.50991]
   website: https://www.nps.gov/labe/index.htm
-short: Explore lava tube caves on your own at Lava Beds. Start with lit Mushpot, then go darker.
+short: Lava Beds National Monument near Tulelake. Explore lava tube caves on your own, lights off.
 description: >
-  Pick up a free caving permit at the visitor center, then explore lava tubes,
-  tunnels left behind by flowing lava, on your own. Start in Mushpot Cave
-  right next door, the only one with lights, then try Valentine Cave or the
-  huge boulder-filled Skull Cave. Turn off your lights for a minute and sit in
-  total darkness together. Bring at least two real lights each (not your
-  phone); the visitor center often lends flashlights. Wear sturdy shoes and
-  bring a jacket. Some caves close seasonally to protect bats.
+  Get a free caving permit at the visitor center, then explore lava tubes,
+  tunnels left behind by flowing lava, on your own. Start in Mushpot Cave,
+  the only one with lights, then try Valentine Cave or huge, boulder-filled
+  Skull Cave. Deep inside, turn off your lights for one full minute and sit
+  in total darkness together. The photo to get: you in the cave mouth,
+  looking back out at daylight.
+about: >
+  The monument has more than 800 lava tube caves, the most of anywhere in
+  the lower 48. The permit includes a quick check for white-nose syndrome,
+  a disease that kills bats, which is why some caves close in certain
+  seasons.
+
+  It's also an important historic place. In 1872 and 1873, during the Modoc
+  War, a small band of Modoc people led by Captain Jack held off the U.S.
+  Army for months from a natural fortress in the lava. You can walk the
+  trail at Captain Jack's Stronghold.
+
+  Bring at least two real lights each (not your phone); the visitor center
+  often lends flashlights. Wear sturdy shoes and bring a jacket.
 for_kids:
   short: Cave hunt! Find each thing.
   steps:
@@ -37,5 +49,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
 themes: [caves, parks]
-tags: [caves, lava-tubes, national-monument, adventure, far-north]
-credit:
+tags: [lava beds national monument, lava tubes, mushpot cave, modoc war, caving, far-north]

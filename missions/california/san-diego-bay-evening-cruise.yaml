@@ -7,15 +7,22 @@ place:
   name: Harbor cruise docks, North Harbor Drive
   area: Downtown San Diego waterfront
   coords: [32.71600, -117.17300]  # APPROX: set at the cruise dock before publishing
-short: Cruise San Diego Bay at dusk as the city skyline and the Coronado Bridge light up.
+short: San Diego Bay evening cruise. Watch the skyline and the Coronado Bridge light up from the water.
 description: >
   Board an evening harbor cruise or a dinner cruise from the downtown
   waterfront and glide around San Diego Bay as the sun sets. Pass the giant
-  Navy ships, the USS Midway and the sweeping Coronado Bridge, and watch for
-  sea lions lounging on the buoys. Then watch the skyline light up across the
-  water, and get a photo of you at the rail with the city lights
-  behind you. Several companies run cruises; book ahead for dinner cruises
-  and bring a jacket, since it's chilly on the water at night.
+  Navy ships, the USS Midway and the sweeping Coronado Bridge, and see who
+  spots the first sea lion lounging on a buoy. The photo to get: you at the
+  rail with the city lights behind you.
+about: >
+  San Diego is a Navy town. The USS Midway, now a museum on the waterfront,
+  was one of the longest-serving aircraft carriers of the 20th century, and
+  North Island, across the bay, is known as the birthplace of naval
+  aviation.
+
+  The Coronado Bridge opened in 1969. Its curve lets it rise high enough for
+  aircraft carriers to pass underneath. Several companies run cruises; book
+  ahead for dinner cruises and bring a jacket.
 for_kids:
   short: Harbor hunt! Find each thing.
   steps:
@@ -33,5 +40,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [tickets]
 themes: [views, boating, romantic]
-tags: [boat, cruise, skyline, night, romantic, san-diego]
-credit:
+tags: [san diego harbor cruise, sunset cruise, uss midway, coronado bridge, sea lions, san-diego]

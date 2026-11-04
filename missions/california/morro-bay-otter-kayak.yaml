@@ -7,15 +7,23 @@ place:
   name: Morro Bay Embarcadero (kayak rentals)
   area: Morro Bay
   coords: [35.37000, -120.85600]  # APPROX: set at a rental dock before publishing
-short: Paddle Morro Bay in the calm morning and watch sea otters float by under Morro Rock.
+short: Kayak Morro Bay in the calm morning and watch sea otters float by under Morro Rock.
 description: >
   Rent a double kayak on the Embarcadero and paddle out onto the calm bay in
-  the morning, before the afternoon wind picks up. Glide toward the giant
-  dome of Morro Rock and watch for sea otters floating on their backs and
-  cracking shells on their bellies, plus seals, pelicans and herons. Give the
-  otters plenty of room, at least five kayak lengths, and never paddle toward
-  them. Get a photo of you on the water with Morro Rock behind you.
-  Check the tides and book a rental ahead in summer.
+  the morning, before the wind picks up. Glide toward the giant dome of Morro
+  Rock and see who spots the first sea otter, floating on its back and
+  cracking shells on its belly. Give otters plenty of room and never paddle
+  toward them. The photo to get: you on the water with Morro Rock behind
+  you.
+about: >
+  Morro Rock is the plug of an ancient volcano, about 575 feet tall, the
+  last of a chain of old volcanic peaks called the Nine Sisters. Peregrine
+  falcons nest on it, and it's off-limits to climbers.
+
+  Southern sea otters were once hunted almost to extinction. People thought
+  they were gone until a small group turned up off Big Sur in the 1930s.
+  Stay at least five kayak lengths away, and back off if an otter looks up
+  at you. Check the tides, and book a rental ahead in summer.
 for_kids:
   short: Otter hunt! Find each thing.
   steps:
@@ -38,5 +46,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
 themes: [boating, wildlife]
-tags: [kayak, otters, wildlife, water, central-coast]
-credit:
+tags: [morro bay kayaking, sea otters, morro rock, embarcadero, wildlife paddle, central-coast]

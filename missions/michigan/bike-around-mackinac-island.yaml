@@ -11,11 +11,23 @@ place:
   links:
     - label: Bike Rentals
       url: https://www.mackinacbikes.com
-short: Ferry to car-free Mackinac Island, bike the 8-mile shore loop and share some fudge.
+short: Mackinac Island, Michigan. Bike the car-free 8-mile shore loop, then share fudge on Main Street.
 description: >
-  Cars aren't allowed on Mackinac Island, so you'll hear horses and bike bells instead of
-  traffic. Rent bikes (or a tandem) by the ferry dock and ride the flat 8-mile road around
-  the island's shore, then grab a slab of fudge on Main Street for the boat back.
+  Ride the ferry to Mackinac Island, where you'll hear horses and bike bells
+  instead of traffic. Rent bikes or a tandem by the dock and ride the flat
+  shore road all the way around the island, stopping at Arch Rock. Then
+  split a slab of fudge on Main Street, and each pick your favorite flavor.
+  The photo to get: the two of you with your bikes and the blue water of the
+  straits behind you.
+about: >
+  Cars have been banned on Mackinac Island since 1898, so the shore loop,
+  M-185, is the only state highway in Michigan without a single car on it.
+  It's about eight miles around.
+
+  The island's fudge shops are so famous that locals call tourists
+  "fudgies." Look for the Grand Hotel's huge front porch on the hill, and
+  Fort Mackinac above the harbor. Ferries and most shops run from spring
+  through fall.
 gear:
   - item: bikes
     rent: on-site
@@ -28,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, tickets]
 themes: [beach, boating, biking, food]
-tags: [biking, island, ferry, fudge]
-credit:
+tags: [mackinac island, bike around the island, m-185, mackinac fudge, arch rock, car-free island]

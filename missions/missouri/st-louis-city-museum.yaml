@@ -9,13 +9,23 @@ place:
   address: 750 N 16th St, St. Louis, MO 63103
   coords: [38.63387, -90.20094]
   website: https://www.citymuseum.org
-short: Crawl the caves, ride the 10-story slide, climb MonstroCity. Grown-ups play too.
+short: City Museum in St. Louis. Crawl the caves, ride the 10-story slide, climb MonstroCity.
 description: >
-  Spend the day exploring an old shoe warehouse turned into a giant climbable
-  maze: caves and tunnels, a 10-story slide, the outdoor MonstroCity jungle gym,
-  and in warmer months a rooftop Ferris wheel (go around sunset). Wear closed-toe
-  shoes and knee pads, bring a small flashlight for the caves, and get your
-  tickets online to skip the line. Take a photo at the bottom of the big slide.
+  Spend the day exploring an old shoe warehouse turned into a giant
+  climbable maze: caves and tunnels, a 10-story slide, and the outdoor
+  MonstroCity jungle gym. Everyone picks one tunnel the rest of the group
+  has to follow them through, no matter how tight. The photo to get: your
+  group at the bottom of the big slide. In warmer months, ride the rooftop
+  Ferris wheel around sunset.
+about: >
+  Artist Bob Cassilly and a crew of artists opened City Museum in 1997 in
+  the old International Shoe Company building. Almost everything is built
+  from salvaged pieces of the city: old bridges, chimneys, airplanes and
+  even a school bus hanging off the edge of the roof.
+
+  Wear closed-toe shoes and clothes you can crawl in (knee pads help), and
+  bring a small flashlight for the caves. Get tickets online to skip the
+  line.
 for_kids:
   short: Adventure castle! Find each thing.
   steps:
@@ -33,4 +43,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets, seasonal]
 themes: [museums, thrills, playful]
-tags: [playful, climbing, slides, museum, rainy-day-option]
+tags: [city museum st louis, monstrocity, 10-story slide, indoor playground, rooftop ferris wheel, st-louis]

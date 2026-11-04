@@ -12,7 +12,7 @@ place:
   links:
     - label: State historic site
       url: https://dnrhistoric.illinois.gov/experience/sites/central/dana-thomas-house.html
-short: Tour Frank Lloyd Wright's prairie house and count the art-glass windows. Find your favorite.
+short: Dana-Thomas House in Springfield. Tour Frank Lloyd Wright's prairie house and its art glass.
 description: >
   Book a guided tour of the Dana-Thomas House, a prairie-style home Frank Lloyd
   Wright designed for a Springfield socialite, still holding more than 100 pieces
@@ -22,6 +22,14 @@ description: >
   it from the sidewalk afterward, since photos are allowed only outside the
   house. The tour is free with donations welcome; reserve a spot ahead, and
   expect lots of stairs and narrow halls.
+about: >
+  Frank Lloyd Wright designed the house in the early 1900s for Susan
+  Lawrence Dana, a wealthy Springfield woman known for her parties. It still
+  holds the largest collection of Wright's original furniture and art glass
+  in any of his houses, mostly because it stayed in careful hands for decades.
+
+  The State of Illinois bought it in 1981 and restored it. Photos are only
+  allowed outside. Reserve a spot ahead, and expect stairs and narrow halls.
 steps:
   - The front of the house from across the street
   - Your favorite art-glass window, from outside
@@ -35,5 +43,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
 themes: [history, architecture]
-tags: [architecture, frank-lloyd-wright, history, house-tour, springfield]
-credit:
+tags: [dana-thomas house, frank lloyd wright, prairie style house, art glass windows, house tour, springfield]

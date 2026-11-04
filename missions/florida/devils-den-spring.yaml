@@ -8,14 +8,20 @@ place:
   area: Williston
   coords: [29.40700, -82.47600]  # APPROX: set at the entrance before publishing
   website: https://devilsden.com
-short: Snorkel inside a cave at Devil's Den, where sunbeams pour through a hole into a blue spring.
+short: Devil's Den in Williston. Snorkel inside a cave where sunbeams pour into a blue spring.
 description: >
   Climb down a wooden staircase into a dry cave and into a crystal-clear blue
   spring, with sunlight pouring in through a hole in the ceiling. Snorkel in
-  the 72-degree water and look down at rock ledges and ancient fossil beds
-  where Ice Age animals were found. When the sun lines up with the opening,
-  the beams light up the water. Get a photo of you in the light
-  beam. Reservations are required, and snorkel gear rents on-site.
+  the warm water and look down at rock ledges where Ice Age fossils were
+  found. Each try to float right in the middle of the sunbeam. The photo to
+  get: you in the light beam.
+about: >
+  On cold winter mornings, warm spring water rises out of the hole as steam,
+  which is said to look like smoke rising from the devil's den, hence the
+  name. Bones of Ice Age animals have been found in the cave.
+
+  The water stays around 72 degrees year-round. Reservations are required,
+  and snorkel gear rents on-site.
 for_kids:
   short: Cave swim! Find each thing.
   steps:
@@ -32,6 +38,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation]
-themes: [swimming, boating, caves]
-tags: [snorkeling, cave, springs, swimming, north-florida]
-credit:
+themes: [swimming, caves]
+tags: [devils den spring, cave snorkeling, underground spring, florida springs, williston, north-florida]

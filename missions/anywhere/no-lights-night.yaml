@@ -1,8 +1,8 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 28
 name: No Lights Night
 mode: date
-short: Turn off every screen and light, light candles, and spend the evening by candlelight.
+short: No-lights night at home. Phones away, candles lit, and an evening of games and talk.
 description: >
   Pick a night, put both phones in a drawer, and turn off the TV and every
   light in the house. Light a few candles (or lanterns) and spend the evening
@@ -10,6 +10,15 @@ description: >
   just talk. Make a simple snack before the lights go out. The one
   exception is the camera: take one photo of the two of you in the candlelight.
   Never leave candles burning unattended.
+about: >
+  Every March, people around the world switch off their lights for Earth
+  Hour, but you don't need an occasion. It's surprising how different home
+  feels by candlelight: quieter, slower, and easier to talk.
+
+  Ideas for the evening: read a chapter out loud, play cards, tell each other
+  stories from childhood, or plan a trip on paper. Use battery candles if you
+  have pets or kids around, and never leave real candles burning
+  unattended.
 duration: short
 effort: easy
 cost: free
@@ -17,5 +26,5 @@ setting: indoor
 season: any
 time_of_day: night
 travel: local
-themes: [markets, games, relaxing]
-tags: [at-home, cozy, unplugged, games, books, rainy-day]
+themes: [games, relaxing, romantic]
+tags: [at-home, candlelight date, unplugged night, no phones, cozy, games]

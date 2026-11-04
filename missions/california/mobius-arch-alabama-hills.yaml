@@ -6,20 +6,28 @@ who: [solo, friends, family, kids]
 place:
   name: Mobius Arch Trailhead, Alabama Hills
   area: Movie Road, near Lone Pine
-  coords: [36.611299, -118.124961]
+  coords: [36.61130, -118.12496]
   website: https://www.blm.gov/visit/mobius-arch-loop-trail
   links:
     - label: alltrails
       url: https://www.alltrails.com/trail/us/california/mobius-arch-loop-trail
-short: Hike to Mobius Arch at sunrise and frame Mount Whitney through the rock window.
+short: Mobius Arch in the Alabama Hills near Lone Pine. Frame Mount Whitney through it at sunrise.
 description: >
-  Drive Movie Road into the Alabama Hills, a maze of rounded orange boulders
-  where hundreds of Western movies were filmed, and hike the short loop to
-  Mobius Arch before sunrise. Watch the first light hit the peaks of the
-  Sierra, turning Mount Whitney, the tallest mountain in the lower 48, bright
-  pink, then line it up through the arch. Get a photo of you beside
-  the arch with Whitney behind it. Bring coffee and layers. Afterward, grab
-  breakfast in Lone Pine and stop at the Museum of Western Film History.
+  Drive Movie Road into the Alabama Hills, a maze of rounded orange
+  boulders, and hike the short loop to Mobius Arch before sunrise. Watch the
+  first light turn the Sierra peaks bright pink, then line up Mount Whitney
+  through the rock window. The photo to get: you beside the arch with
+  Whitney glowing in it. Bring coffee and layers for the wait.
+about: >
+  Hundreds of movies have been filmed in the Alabama Hills, from old
+  Westerns to Gunga Din, Iron Man and Django Unchained. The Museum of
+  Western Film History in Lone Pine has the story, plus a great stop for
+  breakfast nearby.
+
+  The hills got their odd name during the Civil War, when Southern-leaning
+  miners named their claims after a Confederate warship, the CSS Alabama.
+  Mount Whitney is the tallest mountain in the lower 48, at about 14,500
+  feet.
 for_kids:
   short: Rock hunt! Find each thing.
   steps:
@@ -37,5 +45,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
 themes: [hiking, rocks-fossils, sunsets, movies]
-tags: [sunrise, rocks, arch, hiking, movies, eastern-sierra]
-credit:
+tags: [mobius arch, alabama hills, mount whitney, movie road, sunrise hike, eastern-sierra]

@@ -1,12 +1,21 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 21
 name: Farm or Orchard Visit
 mode: date
-short: Visit a local farm or orchard. Pick something fresh to take home.
+short: U-pick farm or orchard date. Pick fresh fruit together and cook something with it at home.
 description: >
-  Find a local farm, orchard, or u-pick nearby. Wander the fields or
-  rows, pick some fruit or produce if they allow it, and bring
-  something home to eat or cook with together.
+  Find a local farm, orchard or u-pick nearby and wander the rows. Have a
+  contest: each find the single best berry, apple or peach in the field and
+  let the other judge it. Bring home enough to cook something together. The
+  photo to get: the two of you in the rows holding up your full baskets.
+about: >
+  What's ripe changes through the year: strawberries in early summer,
+  blueberries and cherries in midsummer, peaches late summer, and apples and
+  pumpkins in fall. Call ahead or check the farm's page the day you go,
+  since fields can get picked out fast.
+
+  Wear shoes that can get muddy, bring water and sunscreen, and bring some
+  cash, since small farm stands don't always take cards.
 duration: half-day
 effort: easy
 cost: $
@@ -16,4 +25,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, seasonal]
 themes: [food]
-tags: [food, local, seasonal, outdoors]
+tags: [u-pick farm, orchard date, fruit picking, local farm, seasonal, outdoors]

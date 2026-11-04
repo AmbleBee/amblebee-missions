@@ -1,9 +1,9 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 40
 name: Kite Flying Day
 mode: both
 who: [solo, friends, family, kids]
-short: Fly a kite on a breezy day in an open park or beach. See who can get theirs higher.
+short: Kite flying day. Fly a kite on a breezy day in an open park or beach; whose goes highest?
 description: >
   Pick a breezy day (about 5 to 15 mph is perfect), grab a kite, or build a
   simple one together from paper, sticks and string, and head to a big open
@@ -11,6 +11,15 @@ description: >
   and see whose kite flies highest or stays up longest. Bring a snack and
   stay a while. Get a photo of you with the kite high in the sky
   behind you.
+about: >
+  Kites were invented in China more than 2,000 years ago, and were used to
+  send signals and measure distances long before they were toys. Ben
+  Franklin famously flew one in a storm in 1752, which is exactly what not to
+  do: never fly near power lines or in stormy weather.
+
+  Launching tip: stand with your back to the wind, have a helper hold the
+  kite up a few steps away, and let the wind lift it as you let out line. A
+  long tail helps a homemade kite fly steady.
 for_kids:
   short: Kite day! Do each thing.
   steps:
@@ -31,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [conditions]
 themes: [beach, playful]
-tags: [kite, outdoors, playful, park, beach]
+tags: [kite flying, diy kite, windy day activity, park, beach, playful]

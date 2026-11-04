@@ -7,15 +7,25 @@ place:
   name: Smith Tower
   area: Pioneer Square, Seattle
   address: 506 2nd Ave, Seattle, WA 98104
-  coords: [47.601867,-122.331905]
+  coords: [47.60187, -122.33191]
   website: https://www.smithtower.com
-short: Ride the old brass elevator up Smith Tower for a cocktail on the 35th-floor observation deck.
+short: Smith Tower in Seattle. Ride the old brass elevator up for a drink on the 35th-floor deck.
 description: >
   Ride a hand-operated brass elevator up Seattle's oldest skyscraper to the
-  35th-floor Observatory, a Prohibition-style bar wrapped in an open-air deck.
-  Order a cocktail each, walk the deck all the way around for views of the
-  ferries, the stadiums and the Space Needle, and get a photo of you against the city at dusk. You'll need an admission ticket, and the bar
-  is first come, first served, so go on a weeknight for a quieter visit.
+  35th-floor Observatory, a Prohibition-style bar wrapped in an open-air
+  deck. Order a drink, walk the deck all the way around, and see who spots
+  a ferry, the stadiums and the Space Needle first. The photo to get: you
+  against the city at dusk.
+about: >
+  Smith Tower opened in 1914, built by typewriter maker Lyman C. Smith, and
+  it was the tallest building west of the Mississippi for years. Its
+  elevators are still run by operators, among the last of their kind on
+  the West Coast.
+
+  Inside the Observatory, look for the carved "Wishing Chair." Legend says
+  anyone single who sits in it will be married within a year. Admission
+  needs a ticket, and the bar is first come, first served, so a weeknight
+  is quieter.
 duration: short
 effort: easy
 cost: $$
@@ -25,4 +35,4 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets]
 themes: [views, drinks, architecture, history, romantic]
-tags: [cocktails, views, history, romantic, nightlife, seattle]
+tags: [smith tower observatory, pioneer square, rooftop bar seattle, historic skyscraper, wishing chair, seattle]

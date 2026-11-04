@@ -1,13 +1,22 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 22
 name: Flea Market Browse
 mode: date
-short: Browse a busy flea market. Find the strangest thing for sale.
+short: Flea market date. Each get a few dollars to buy the other the strangest gift you can find.
 description: >
-  Spend a morning or afternoon wandering a flea market or swap meet.
-  Take your time with the odd stalls, chat with sellers, and point out
-  the strangest thing you each find. Buy something small only if you
-  really love it.
+  Spend a morning or afternoon wandering a flea market or swap meet. Give
+  each other a tiny budget, a few dollars each, then split up and buy the
+  other the strangest or most perfect gift you can find. Meet back up and
+  unwrap them. The photo to get: the two of you holding up your gifts.
+about: >
+  Flea market tips: go early for the best finds, or late in the day when
+  sellers would rather haggle than pack up. A friendly "Would you take..."
+  is usually welcome. Bring small bills.
+
+  Some of the biggest flea markets in the country, like the Rose Bowl Flea
+  Market in Pasadena and Brimfield in Massachusetts, draw thousands of
+  sellers, but small local swap meets are often where the weirdest treasures
+  hide.
 duration: short
 effort: easy
 cost: $
@@ -17,4 +26,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [markets]
-tags: [shopping, vintage, explore]
+tags: [flea market date, swap meet, vintage finds, thrift gift challenge, shopping, explore]

@@ -8,12 +8,22 @@ place:
   address: 502 Sunset Blvd, Cape May, NJ 08204
   coords: [38.94438, -74.96984]
   website: https://www.sunsetbeachnj.com
-short: Hunt for Cape May diamonds on the beach, then watch the sun set over the bay.
+short: Sunset Beach in Cape May. Hunt for Cape May diamonds, then watch the sun set over the bay.
 description: >
-  At New Jersey's southern tip you can watch the sun set over the water. Hunt the beach
-  for little polished quartz pebbles called Cape May diamonds, spot the wreck of a
-  concrete ship just offshore, and stay for sunset. On summer evenings there's a short
-  flag-lowering ceremony for veterans.
+  Hunt the beach for little polished quartz pebbles called Cape May
+  diamonds, and see who finds the clearest one. Spot the wreck of a concrete
+  ship just offshore, then stay for the sun setting over the water. The
+  photo to get: the two of you holding up your best diamonds with the
+  sunset behind you.
+about: >
+  Cape May diamonds are bits of quartz that washed down the Delaware River
+  and got tumbled smooth by the waves. Polished, they really do sparkle.
+
+  The ship offshore is the SS Atlantus, one of a handful of concrete ships
+  built around World War I. It ran aground here in 1926, and what's left is
+  slowly sinking. On summer evenings, a flag-lowering ceremony honors
+  veterans, using flags that once covered their caskets. The Cape May
+  Lighthouse is just down the road.
 duration: short
 effort: easy
 cost: free
@@ -22,5 +32,4 @@ season: any
 time_of_day: evening
 travel: day-trip
 themes: [beach, sunsets, games]
-tags: [beach, sunset, treasure-hunt, free]
-credit:
+tags: [cape may diamonds, sunset beach, ss atlantus, concrete ship, cape may point, cape may]

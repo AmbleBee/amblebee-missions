@@ -6,17 +6,25 @@ who: [solo, friends, family, kids]
 place:
   name: Loggerhead Marinelife Center
   area: Juno Beach
-  coords: [26.884413, -80.056543]
+  coords: [26.88441, -80.05654]
   website: https://marinelife.org/program/guided-turtle-walk/
-short: Join a night turtle walk on Juno Beach and watch a giant loggerhead lay her eggs.
+short: Night turtle walk on Juno Beach. Watch a giant loggerhead lay her eggs under the stars.
 description: >
-  On a summer night, join a guided turtle walk from the Loggerhead Marinelife
-  Center, on one of the busiest sea turtle nesting beaches in the world.
-  Learn about sea turtles inside, then wait for scouts to find a nesting
-  mother on the dark beach. Walk out quietly with your group and watch a
-  giant loggerhead dig her nest and lay her eggs by red light. No flashlights
-  or flash photos are allowed, so just take it in together. Walks run in June
-  and July; registration opens May 1 and fills fast.
+  On a summer night, join a guided turtle walk from the Loggerhead
+  Marinelife Center. Wait while scouts search the dark beach for a nesting
+  mother, then walk out quietly and watch a giant loggerhead dig her nest
+  and lay her eggs. No photos or lights on the beach, so just take it in
+  together. The next morning, go back for your photo: you beside her
+  flipper tracks in the sand.
+about: >
+  The beaches around Juno and Jupiter are some of the busiest loggerhead
+  nesting beaches in the world. Mother turtles crawl ashore at night from
+  spring through fall, and the hatchlings find the ocean by the light of
+  the sky over the water. That's why lights and flash photos are off-limits.
+
+  The Loggerhead Marinelife Center also cares for injured sea turtles, and
+  you can see some of its patients during the day. Turtle walks run in June
+  and July, and registration fills fast, so sign up early.
 for_kids:
   short: Turtle night! Find each thing.
   steps:
@@ -34,5 +42,4 @@ time_of_day: night
 travel: day-trip
 check_ahead: [reservation, seasonal]
 themes: [beach, wildlife]
-tags: [sea-turtles, wildlife, night, beach, palm-beach]
-credit:
+tags: [juno beach turtle walk, loggerhead sea turtles, loggerhead marinelife center, turtle nesting, palm-beach]

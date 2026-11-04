@@ -8,14 +8,23 @@ place:
   area: Walt Disney World, Lake Buena Vista
   coords: [28.37470, -81.54940]  # APPROX: set at the World Showcase entrance before publishing
   website: https://disneyworld.disney.go.com/destinations/epcot/
-short: Walk around EPCOT's World Showcase and try one snack in every country. Stay for the fireworks.
+short: EPCOT's World Showcase at Disney World. Try one snack in every country, then the fireworks.
 description: >
-  Walk the loop of World Showcase at EPCOT, eleven pavilions built to look
-  like countries around the world. Make it a mission: share one small snack
-  or drink in every country, like a pretzel in Germany, a crêpe in France and
-  a churro in Mexico, and rate each one. Then grab a spot by the lagoon for
-  the nighttime fireworks show. Get a photo of you in front of your
-  favorite country. Park tickets are expensive; buy ahead and check park hours.
+  Walk the loop of World Showcase, eleven pavilions built to look like
+  countries around the world. Share one small snack or drink in every
+  country, like a pretzel in Germany, a crêpe in France and a churro in
+  Mexico, and rate each one out of ten. Then grab a spot by the lagoon for
+  the nighttime fireworks. The photo to get: you in front of the country
+  whose snack won.
+about: >
+  EPCOT opened in 1982. Walt Disney first imagined it as a real city of the
+  future, and World Showcase became a permanent world's fair instead. Many
+  of the people working in each pavilion actually come from that country, so
+  ask them for their favorite snack.
+
+  The giant silver ball at the front is Spaceship Earth. Park tickets are
+  expensive; buy ahead and check park hours. The loop is about a mile and a
+  quarter around.
 for_kids:
   short: World tour! Find each thing.
   steps:
@@ -32,6 +41,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [tickets, hours]
-themes: [food, thrills, holidays]
-tags: [theme-park, food, fireworks, travel, orlando]
-credit:
+themes: [food, thrills]
+tags: [epcot world showcase, eat around the world, disney world, epcot fireworks, food challenge, orlando]

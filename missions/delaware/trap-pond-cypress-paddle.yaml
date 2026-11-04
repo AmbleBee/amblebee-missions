@@ -9,14 +9,21 @@ place:
   address: 33587 Baldcypress Ln, Laurel, DE 19956  # verify
   coords: [38.52850, -75.48100]  # APPROX: set at the dock before publishing
   website: https://destateparks.com/PondsRivers/TrapPond
-short: Rent kayaks and weave through the northernmost wild bald cypress swamp in the country.
+short: Trap Pond State Park near Laurel, DE. Kayak through the northernmost wild bald cypress swamp.
 description: >
-  Trap Pond protects the northernmost natural stand of bald cypress trees in the US, and the
-  best way to see it is from the water. Rent kayaks or canoes at the park (or bring your own),
-  then follow the marked water trails out of the open pond and into the narrow, tea-colored
-  channels where the cypress knees poke up around you. Race to the far end of the pond,
-  then drift back slowly and look for turtles, herons and the occasional bald eagle. Get a
-  group photo of your boats lined up among the cypress trunks. Finish with a picnic on shore.
+  Rent kayaks or canoes and follow the marked water trails out of the open
+  pond and into the narrow, tea-colored channels where cypress knees poke up
+  around you. Race to the far end of the pond, then drift back slowly looking
+  for turtles, herons and the occasional bald eagle. The photo to get: your
+  boats lined up among the cypress trunks. Finish with a picnic on shore.
+about: >
+  Trap Pond protects the northernmost natural stand of bald cypress trees in
+  the country, a little piece of the Deep South in Delaware. The pond itself
+  was made in the 1700s to power a sawmill that cut the swamp's timber.
+
+  Nearby Trussum Pond is home to some of the oldest cypress trees in the
+  area, centuries old. The water is tea-colored from tannins in the leaves,
+  not dirt. Rentals are seasonal, so check before you go.
 gear:
   - item: kayak
     rent: on-site
@@ -31,5 +38,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, seasonal, conditions]
 themes: [lakes-rivers, boating, forests, parks, wildlife]
-tags: [kayaking, paddling, swamp, cypress, wildlife, state-park, laurel]
-credit:
+tags: [trap pond state park, bald cypress swamp, kayaking delaware, cypress knees, water trails, laurel]

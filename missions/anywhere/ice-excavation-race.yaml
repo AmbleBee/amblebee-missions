@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 65
 name: Ice Excavation Race
 mode: adventure
 who: [family, kids]
-short: Freeze treasure in ice overnight, then race to dig it out with warm water and salt.
+short: Ice excavation race. Freeze treasure in ice overnight, then race to dig it out.
 description: >
   The night before, freeze small toys, plastic dinosaurs, or coins in yogurt
   tubs, muffin tins, or a big bowl, adding water in layers so the treasure
@@ -12,6 +12,14 @@ description: >
   free your treasure first, or work as a team on one giant block. Sprinkle
   food coloring on the salt for colorful cracks. Get a photo of the first
   treasure held up dripping.
+about: >
+  Why salt works: it lowers the temperature water needs to freeze, so ice
+  with salt on it starts melting even when it's cold. Warm water speeds it
+  up more. That's the same reason trucks salt icy roads.
+
+  Freezing in layers takes a little planning, so start the afternoon
+  before. It's messy, so set up outside or in a bathtub, and a hot day makes
+  it go fast.
 steps:
   - The frozen blocks
   - The dig tools
@@ -34,5 +42,4 @@ season: [spring, summer]
 time_of_day: daytime
 travel: home
 themes: [science, games, playful]
-tags: [science, treasure-hunt, summer, party, home, messy]
-credit:
+tags: [ice excavation, frozen treasure, kids science, backyard activity, summer, messy]

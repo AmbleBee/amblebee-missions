@@ -8,12 +8,23 @@ place:
   address: 111 S Mickey Mantle Dr, Oklahoma City, OK 73104
   coords: [35.46522, -97.50917]
   website: https://www.bricktownwatertaxi.com
-short: Float the Bricktown Canal on a water taxi, then pick a spot on the canal for dinner.
+short: Bricktown Water Taxi in Oklahoma City. Float the canal, then pick a canal-side spot for dinner.
 description: >
-  Ride the Bricktown Water Taxi along the mile-long canal through Oklahoma City's old
-  warehouse district while the guide tells stories about the neighborhood. Afterward, walk
-  the canal and pick a patio for dinner by the water. Runs most of the year, with shorter
-  hours off-season.
+  Ride the water taxi along the canal through Oklahoma City's old warehouse
+  district while the guide tells stories about the neighborhood. Each pick
+  a restaurant patio from the boat, then walk back and vote on where to eat.
+  At the end of the canal, find the giant Land Run sculptures. The photo to
+  get: the two of you with the bronze horses and wagons charging behind
+  you.
+about: >
+  The canal opened in 1999 as part of a big project to bring downtown back to
+  life, and Bricktown's brick warehouses became restaurants, shops and a
+  ballpark.
+
+  The Centennial Land Run Monument, at the canal's south end, is one of the
+  biggest bronze sculptures in the world. It shows settlers racing to claim
+  land in the 1889 Land Run. The water taxis run most of the year, with
+  shorter hours off-season.
 duration: short
 effort: easy
 cost: $
@@ -23,5 +34,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
 themes: [lakes-rivers, boating, food]
-tags: [boat, canal, dinner, city]
-credit:
+tags: [bricktown water taxi, bricktown canal, land run monument, canal dining, okc, oklahoma city]

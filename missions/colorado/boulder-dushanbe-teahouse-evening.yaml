@@ -8,7 +8,7 @@ place:
   address: 1770 13th St, Boulder, CO 80302
   coords: [40.01560, -105.27670]  # APPROX: set at the entrance before publishing
   website: https://www.boulderteahouse.com
-short: Share a pot of tea under a hand-carved painted ceiling. Each pick a tea for the other.
+short: Boulder Dushanbe Teahouse. Share a pot of tea under a hand-carved, hand-painted ceiling.
 description: >
   Spend an evening inside Boulder's Dushanbe Teahouse, a building sent as a
   gift from Boulder's sister city in Tajikistan, with a hand-carved, painted
@@ -17,6 +17,15 @@ description: >
   or a dessert. Take your time and look up at the details between sips. Get a
   photo of the two of you with the teapot and the ceiling above you.
   Reserve a table ahead, and check for private-event closures before you go.
+about: >
+  The teahouse was a gift to Boulder from its sister city, Dushanbe,
+  Tajikistan. More than 40 artisans there carved and painted it by hand, then
+  it was shipped to Colorado in pieces and put back together. It opened in
+  1998.
+
+  No nails hold the ceiling's carved panels in the traditional way, and no
+  two panels are exactly alike. Look up between sips. Reserve a table ahead,
+  and check for private-event closures before you go.
 steps:
   - The painted ceiling right above your table
   - The tea you picked for each other
@@ -30,5 +39,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours, reservation]
 themes: [architecture, food, relaxing]
-tags: [tea, dinner, architecture, cozy, rainy-day, boulder]
-credit:
+tags: [dushanbe teahouse, boulder tea house, hand-carved ceiling, tajik art, cozy date, boulder]

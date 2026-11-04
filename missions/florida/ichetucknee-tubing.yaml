@@ -8,15 +8,20 @@ place:
   area: Fort White, North Florida
   coords: [29.94700, -82.78200]  # APPROX: set at the south entrance (Dampier's Landing) before publishing
   website: https://www.floridastateparks.org/parks-and-trails/ichetucknee-springs-state-park
-short: Float down the crystal-clear Ichetucknee River on a tube through untouched forest.
+short: Tubing the Ichetucknee in Fort White. Float a crystal-clear spring river through the forest.
 description: >
-  Rent tubes and float the Ichetucknee River, fed by springs so clear you can
-  watch the fish and swaying eelgrass below you. Drift lazily under cypress
-  trees and look for turtles, otters and wading birds. Link up and float
-  together, then ride the tram back. The water stays about 72 degrees, so it's
-  refreshing in summer. Get a photo of you floating. No food,
-  disposable bottles or alcohol on the river. Arrive early in summer, since
-  the park fills up.
+  Rent tubes and float the Ichetucknee River, fed by springs so clear you
+  can watch fish and swaying eelgrass below you. Drift under cypress trees,
+  link up and float together, and each keep a count of turtles. Then ride
+  the tram back. The photo to get: you floating with the clear water all
+  around.
+about: >
+  The Ichetucknee is fed by a chain of springs and stays about 72 degrees
+  all year. It's a National Natural Landmark, and the park limits how many
+  people can float each day to protect the eelgrass.
+
+  No food, disposable bottles or alcohol on the river. Tubing season mostly
+  runs in late spring and summer, and the park fills early on hot weekends.
 for_kids:
   short: River float! Find each thing.
   steps:
@@ -39,5 +44,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [lakes-rivers, swimming, boating]
-tags: [tubing, springs, river, swimming, north-florida]
-credit:
+tags: [ichetucknee tubing, spring river float, ichetucknee springs state park, crystal clear river, fort white, north-florida]

@@ -9,7 +9,7 @@ place:
   address: 1510 Main St, Little Rock, AR 72202
   coords: [34.73310, -92.27390]  # APPROX: set at the entrance before publishing
   website: https://essepursemuseum.com
-short: Walk a hundred years of women's lives through their purses. Pick the bag you'd have carried.
+short: ESSE Purse Museum in Little Rock. A century of women's lives told through their handbags.
 description: >
   Spend an unhurried hour at a small museum in Little Rock's SoMa district that
   tells the story of American women decade by decade through their handbags
@@ -17,6 +17,15 @@ description: >
   from beaded flapper bags to 80s statement pieces, and see what's in the rotating exhibit. Choose the one bag you'd have carried in each era. Get a
   photo of your favorite purse and its contents. Afterward, browse the shop or
   wander South Main for coffee.
+about: >
+  ESSE tells the story of American women decade by decade through the bags
+  they carried and what they kept inside them, from lipsticks and dance cards
+  to cigarette cases and pagers. It's one of only a handful of purse museums
+  in the world.
+
+  The museum is on South Main Street in the SoMa neighborhood, which has
+  cafés and shops within an easy walk. The photo to get: your favorite purse
+  and what's inside it.
 steps:
   - The oldest bag you can find
   - The bag from the decade you were born
@@ -31,5 +40,4 @@ travel: local
 check_ahead: [hours]
 discounts: [senior, military, student]
 themes: [history, museums, quirky]
-tags: [museum, history, fashion, quirky, rainy-day, soma, little-rock]
-credit:
+tags: [esse purse museum, handbag museum, womens history, quirky museum, soma, little-rock]

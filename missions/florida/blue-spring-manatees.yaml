@@ -8,15 +8,21 @@ place:
   area: Orange City, north of Orlando
   coords: [28.94700, -81.34000]  # APPROX: set at the spring run boardwalk before publishing
   website: https://www.floridastateparks.org/parks-and-trails/blue-spring-state-park
-short: Watch hundreds of manatees in the clear water of Blue Spring on a cold winter morning.
+short: Blue Spring State Park in Orange City. Watch hundreds of manatees on a cold winter morning.
 description: >
-  On a cold winter morning, hundreds of West Indian manatees crowd into the
-  72-degree water of Blue Spring to stay warm. Walk the boardwalk along the
-  spring run and look down into the clear water to watch them float, nap and
+  On a cold winter morning, walk the boardwalk along the spring run and look
+  down into the clear water, where hundreds of manatees float, nap and
   surface to breathe, sometimes with calves. Each count as many as you can,
-  and compare with the park's daily count. Get a photo of you
-  on the boardwalk. Manatee season runs mid-November to March, when swimming
-  is closed. Day-use reservations are now needed, so book ahead.
+  then compare with the park's official count of the day. The photo to get:
+  you at the boardwalk rail with manatees in the water below.
+about: >
+  The spring stays around 72 degrees all year, so when the river turns cold,
+  West Indian manatees crowd in to stay warm. Blue Spring is a protected
+  manatee refuge. Jacques Cousteau filmed the manatees here in the 1970s,
+  which helped spark efforts to protect them.
+
+  Manatee season runs roughly mid-November to March, when swimming is
+  closed. Day-use reservations are needed, so book ahead.
 for_kids:
   short: Manatee hunt! Find each thing.
   steps:
@@ -34,5 +40,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, seasonal]
 themes: [swimming, wildlife]
-tags: [manatees, wildlife, springs, winter, central-florida]
-credit:
+tags: [blue spring state park, manatee viewing, west indian manatees, florida springs, winter wildlife, central-florida]

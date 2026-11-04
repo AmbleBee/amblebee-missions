@@ -9,13 +9,21 @@ place:
   address: 6010 S 4300 W, Rexburg, ID 83440  # verify
   coords: [43.75400, -111.82100]  # APPROX: set at the entrance before publishing
   website: https://yellowstonebearworld.com
-short: Drive through Yellowstone Bear World. See bears, elk and bison right outside your window.
+short: Yellowstone Bear World near Rexburg. Drive through and see bears, elk and bison up close.
 description: >
   Drive slowly through the park with the windows up while black bears,
   grizzlies, elk, bison and wolves roam around your car. Go around as many times
   as you want. Each keep count of the bears you spot, then compare at the end.
   Admission includes a petting zoo and little rides. It's seasonal; check the
   dates.
+about: >
+  Bear World is a drive-through wildlife park, so the animals roam while you
+  stay in your car. It's one of the easiest ways to see grizzlies and black
+  bears up close, and spring visits sometimes include young cubs.
+
+  Keep windows up and stay in your car the whole way through. Yellowstone
+  National Park itself is about an hour and a half away. It's seasonal, so
+  check the dates.
 for_kids:
   short: Bear drive! Find each animal.
   steps:
@@ -33,4 +41,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
 themes: [wildlife]
-tags: [animals, wildlife, drive-thru, east-idaho]
+tags: [yellowstone bear world, drive-thru wildlife park, grizzly bears, bison, rexburg, east-idaho]

@@ -8,15 +8,25 @@ place:
   area: Frenchglen, Harney County
   coords: [42.82700, -118.91500]  # APPROX: set at the loop's start near Frenchglen before publishing
   website: https://www.blm.gov/visit/steens-mountain-cmpa
-short: Drive the Steens Mountain Loop to the summit. Look a mile straight down onto the Alvord.
+short: Steens Mountain Loop near Frenchglen. Drive to the summit and look a mile down onto the Alvord.
 description: >
-  Drive the highest road in Oregon, a 52-mile gravel loop climbing nearly to
-  the top of Steens Mountain. Stop at Kiger Gorge and the East Rim overlook,
-  where the mountain drops away a mile down to the Alvord Desert, and get a
-  photo of you on the edge. Watch for wild horses, pronghorn and
-  bighorn sheep. The upper road only opens in summer and early fall, after the
-  snow melts. Fill up the tank in Burns or Frenchglen, bring plenty of water,
-  expect no cell service, and carry a paper map.
+  Drive the highest road in Oregon, a gravel loop climbing nearly to the
+  top of Steens Mountain. Stop at Kiger Gorge, then walk out to the East Rim
+  overlook, where the mountain drops away about a mile straight down to the
+  Alvord Desert. The photo to get: you at the rim with the desert far below.
+  On the way, everyone keeps a count of wild horses, pronghorn and bighorn
+  sheep.
+about: >
+  Steens Mountain rises to about 9,700 feet. It's a giant block of the
+  Earth's crust tilted up along a fault, so the west side climbs slowly
+  while the east side is a sheer wall. Ice Age glaciers carved the huge
+  U-shaped gorges like Kiger Gorge.
+
+  Watch for Kiger mustangs, wild horses known for their Spanish-style
+  markings. The loop is about 52 miles, and the upper road only opens in
+  summer and early fall, after the snow melts. Fill up in Burns or
+  Frenchglen, bring plenty of water, and carry a paper map. Down below, the
+  Alvord itself is its own mission: [[alvord-desert]].
 for_kids:
   short: Mountain drive! Find each thing.
   steps:
@@ -39,4 +49,4 @@ check_ahead: [seasonal, conditions]
 caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
           Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 themes: [views, mountains, deserts, wildlife, road-trips]
-tags: [scenic-drive, mountains, views, wildlife, high-desert, eastern-oregon]
+tags: [steens mountain loop, kiger gorge, east rim overlook, kiger mustangs, frenchglen, eastern-oregon]

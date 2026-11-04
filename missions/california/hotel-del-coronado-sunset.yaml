@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 28
 name: Sunset at the Hotel del Coronado
 mode: date
@@ -8,13 +8,22 @@ place:
   address: 1500 Orange Ave, Coronado, CA 92118
   coords: [32.68047, -117.17755]
   website: https://www.hoteldel.com
-short: Walk the beach at the Hotel del Coronado at sunset, then toast with a drink at the Del.
+short: Hotel del Coronado near San Diego. Walk the beach at sunset, then toast at the Del.
 description: >
-  Dress up a little and head to the Del, the grand red-roofed hotel on the sand
-  since 1888. Walk the wide, flat beach out front as the sun sets, shoes in hand,
-  then wander the historic lobby and finish with a drink at the hotel. Get a
-  photo of the two of you on the beach with the red turrets glowing behind you.
-  In winter, the hotel's seaside ice rink makes it even better.
+  Dress up a little and walk the wide, flat beach in front of the Del as
+  the sun sets, shoes in hand. Then wander the grand old lobby and finish
+  with a drink at the hotel. Each make a toast to something from this year.
+  The photo to get: the two of you on the sand with the red turrets glowing
+  behind you.
+about: >
+  The Hotel del Coronado opened in 1888 and is one of the last great
+  wooden seaside resorts in the country. Marilyn Monroe filmed Some Like It
+  Hot here, and Wizard of Oz author L. Frank Baum spent winters in Coronado.
+  The hotel even has its own ghost story, about a guest named Kate Morgan
+  who checked in in 1892 and never checked out.
+
+  You don't need to stay at the hotel to walk the beach or have a drink. In
+  winter, a seaside ice rink makes it even better.
 duration: short
 effort: easy
 cost: $$
@@ -23,4 +32,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [beach, sunsets, history, drinks, playful]
-tags: [sunset, beach, history, drinks, dress-up, san-diego]
+tags: [hotel del coronado, coronado beach, sunset walk, historic hotel, dress up, san-diego]

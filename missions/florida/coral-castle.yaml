@@ -8,14 +8,22 @@ place:
   area: Homestead, south of Miami
   coords: [25.50000, -80.44400]  # APPROX: set at the entrance before publishing
   website: https://coralcastle.com
-short: Puzzle over Coral Castle, carved alone by one man from tons of coral rock. How did he do it?
+short: Coral Castle in Homestead. Puzzle over the stone garden one man carved alone from coral rock.
 description: >
-  Visit a mysterious garden of giant stone sculptures, a moon fountain, a
-  heart-shaped table and a nine-ton swinging gate, all carved out of coral
-  rock by one small man working alone and mostly at night in the early 1900s.
-  Nobody is sure exactly how he moved such huge stones. Listen to the
-  story, and each come up with your own theory. Get a photo of you
-  at the giant heart-shaped table, which he made for the girl who left him.
+  Wander a garden of giant stone sculptures, a moon fountain, a
+  heart-shaped table and a nine-ton gate, all carved from coral rock by one
+  small man working alone and mostly at night. Nobody is sure exactly how he
+  moved such huge stones. Listen to the story, and each come up with your own
+  theory. The photo to get: you at the giant heart-shaped table.
+about: >
+  Edward Leedskalnin came from Latvia, where his young fiancée called off
+  their wedding the day before. He spent about 28 years, starting in the
+  1920s, carving more than a thousand tons of coral rock, and he said he
+  built it all for her. He was only about five feet tall.
+
+  He even moved the whole thing, stone by stone, about ten miles to its
+  current spot in the 1930s. He never fully explained how; he only said he
+  knew the secrets of the pyramids.
 for_kids:
   short: Stone castle! Find each thing.
   steps:
@@ -33,5 +41,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [history, spooky, quirky]
-tags: [quirky, mystery, roadside, history, south-florida]
-credit:
+tags: [coral castle, edward leedskalnin, roadside mystery, carved stone garden, quirky museum, south-florida]

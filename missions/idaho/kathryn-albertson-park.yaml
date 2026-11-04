@@ -7,13 +7,21 @@ place:
   name: Kathryn Albertson Park
   area: Boise River, near downtown Boise
   coords: [43.60700, -116.21000]  # APPROX: set at the main parking lot before publishing
-short: Wander the quiet ponds and gazebos of Kathryn Albertson Park. Count the wildlife you spot.
+short: Kathryn Albertson Park in Boise. Wander the quiet ponds and gazebos and count the wildlife.
 description: >
   Walk the winding paths of a quiet wildlife park right by downtown Boise, with
   ponds, little bridges and gazebos. Count the ducks, geese, turtles and
   herons you spot, and find the prettiest gazebo for a photo of you.
   Then step out onto the Boise River Greenbelt for a longer walk or ride. It's
   free; no dogs or bikes inside the park.
+about: >
+  Grocery founder Joe Albertson gave the park to Boise in the late 1980s and
+  named it for his wife, Kathryn. It was designed as a quiet refuge for
+  wildlife in the middle of the city.
+
+  It's free. No dogs or bikes are allowed inside the park, which keeps it
+  calm for the animals. Early mornings and evenings are best for spotting
+  wildlife.
 for_kids:
   short: Pond hunt! Find each thing.
   steps:
@@ -30,4 +38,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [walks, wildlife, relaxing]
-tags: [park, wildlife, calm, walking, boise]
+tags: [kathryn albertson park, boise river greenbelt, wildlife park, gazebos, quiet walk, boise]

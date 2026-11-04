@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 25
 name: Emerald Bay and Vikingsholm
 mode: both
@@ -8,14 +8,26 @@ place:
   area: Highway 89, Lake Tahoe west shore
   coords: [38.95425, -120.11054]
   website: https://www.sierrastateparks.org/vikingsholm
-short: Look down on Emerald Bay and its little island, then hike down to the lakeside Viking castle.
+short: Emerald Bay at Lake Tahoe. Photograph Fannette Island, then hike down to Vikingsholm.
 description: >
-  Start at the overlook above Emerald Bay and photograph the green water with
-  tiny Fannette Island in the middle. Then take the steep one-mile trail down
-  to Vikingsholm, a 1920s Scandinavian-style mansion on the shore. In summer,
-  take the 30-minute tour inside. Picnic on the beach before the climb back up,
-  which is harder than the way down. The lot fills by mid-morning in summer,
-  and winter storms close the road around the bay.
+  Start at the overlook above Emerald Bay and photograph the green water
+  with tiny Fannette Island in the middle. Then take the steep trail down to
+  Vikingsholm, a 1920s Scandinavian-style mansion on the shore. From the
+  beach, each try to spot the little stone teahouse on top of the island.
+  Picnic on the sand before the climb back up, which is harder than the way
+  down.
+about: >
+  Vikingsholm was built in 1929 as a summer home for Lora Knight, in the
+  style of an old Scandinavian castle, with sod roofs, carved dragon heads
+  and hand-made furniture. Tours run in summer and take about half an hour.
+
+  Fannette Island is the only island in Lake Tahoe. Knight built the
+  teahouse at its peak and would have guests rowed out for tea. The island
+  is closed in late winter and spring while Canada geese nest there.
+
+  The trail is about a mile each way with a big drop down to the lake.
+  The parking lot fills by mid-morning in summer, and winter storms often
+  close Highway 89 around the bay.
 duration: half-day
 effort: moderate
 cost: $
@@ -25,4 +37,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
 themes: [hiking, lakes-rivers, mountains, history]
-tags: [lake, mountains, history, hiking, tahoe]
+tags: [emerald bay, vikingsholm, fannette island, lake tahoe, teahouse, tahoe]

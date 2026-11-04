@@ -6,18 +6,25 @@ who: [solo, friends, family, kids]
 place:
   name: John Pennekamp Coral Reef State Park
   area: Key Largo
-  coords: [25.124229, -80.407352]
+  coords: [25.12423, -80.40735]
   website: https://www.floridastateparks.org/parks-and-trails/john-pennekamp-coral-reef-state-park
-short: Snorkel the living coral reef at John Pennekamp in the Florida Keys, America's first undersea park.
+short: John Pennekamp in Key Largo. Snorkel a living coral reef in America's first undersea park.
 description: >
-  Take a morning snorkel boat from John Pennekamp, the first undersea park in
-  the country, out to the coral reef off Key Largo. Float over brain coral
-  and sea fans while parrotfish, angelfish and maybe a sea turtle swim
-  below. Each of you keep a count of the different fish you see. Some trips
-  stop at the bronze Christ of the Abyss statue, just under the surface, so
-  ask when you book if you want to see it. Look, don't touch: the coral is
-  alive and breaks easily. Get a photo of you on the boat in your snorkel
-  gear. Book the boat ahead; trips depend on wind and waves.
+  Take a morning snorkel boat out to the coral reef off Key Largo and float
+  over brain coral and sea fans while parrotfish, angelfish and maybe a sea
+  turtle swim below. Each keep a count of the different fish you see, and
+  compare on the boat ride back. The photo to get: you on the boat in your
+  snorkel gear, salty and grinning. Look, don't touch: the coral is alive
+  and breaks easily.
+about: >
+  John Pennekamp opened in 1963 as the first undersea park in the United
+  States. It's named for a Miami newspaper editor who fought to protect the
+  reef.
+
+  Some trips stop at Christ of the Abyss, a bronze statue standing just
+  under the surface on the reef, a copy of a famous one in Italy. Ask when
+  you book if you want to see it. Book the boat ahead; trips depend on wind
+  and waves.
 for_kids:
   short: Reef hunt! Find each thing.
   steps:
@@ -35,5 +42,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
 themes: [beach, boating, wildlife]
-tags: [snorkeling, reef, fish, ocean, florida-keys]
-credit:
+tags: [john pennekamp, key largo snorkeling, coral reef, christ of the abyss, snorkel boat, florida-keys]

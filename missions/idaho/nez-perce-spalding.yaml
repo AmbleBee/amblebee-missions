@@ -7,17 +7,26 @@ place:
   name: Nez Perce National Historical Park, Spalding Visitor Center
   area: Spalding, on the Clearwater River east of Lewiston
   address: 39063 US-95, Lapwai, ID 83540
-  coords: [46.447475, -116.822934]
+  coords: [46.44747, -116.82293]
   website: https://www.nps.gov/nepe
-short: Learn the Nez Perce story at the Spalding visitor center. Then walk down to the Clearwater River.
+short: Nez Perce National Historical Park near Lapwai. Learn the Nimiipuu story, then walk to the river.
 description: >
-  Start at the park's visitor center and museum, where the Nez Perce (Nimiipuu)
-  people tell their own history: life along these rivers for thousands of years,
-  the treaties, and the 1877 flight from the U.S. Army. Take your time, and each
-  pick one thing you learned that you want to remember. Then walk the grounds
-  down to the Clearwater River for a quiet moment and a photo of you
-  by the water. It's free. The visitor center keeps shorter hours in winter
-  (it has been closed Sundays and Mondays), so check before you go.
+  Start at the visitor center and museum, where the Nez Perce (Nimiipuu)
+  people tell their own history: life along these rivers for thousands of
+  years, the treaties, and the 1877 flight from the U.S. Army. Take your
+  time, and each pick one thing you learned that you want to remember and
+  share it. Then walk the grounds down to the Clearwater River for a quiet
+  moment and a photo of you by the water.
+about: >
+  The park isn't one place but dozens of sites across four states, and this
+  is its main visitor center. In 1877, several bands of Nez Perce fled more
+  than 1,100 miles toward Canada rather than be forced onto a smaller
+  reservation. They surrendered in Montana, just short of the border, where
+  Chief Joseph is remembered for saying, "I will fight no more forever."
+
+  The Spalding site is also where missionaries Henry and Eliza Spalding
+  set up a mission in the 1830s. Entry is free. The visitor center keeps
+  shorter hours in winter, so check before you go.
 for_kids:
   short: History hunt! Find each thing.
   steps:
@@ -35,4 +44,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [lakes-rivers, history, museums]
-tags: [history, culture, museum, river, nez-perce]
+tags: [nez perce national historical park, nimiipuu history, chief joseph, clearwater river, lapwai, nez-perce]

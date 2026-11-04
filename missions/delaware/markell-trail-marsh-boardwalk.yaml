@@ -9,17 +9,22 @@ place:
   address: 1400 Delmarva Ln, Wilmington, DE 19801
   coords: [39.72960, -75.55570]  # APPROX: set at the trailhead before publishing
   website: https://delawarenaturesociety.org/visit/dupont-environmental-education-center/
-short: Walk the boardwalk over a tidal marsh in the middle of the city. Count the herons.
+short: Markell Trail in Wilmington. Walk the boardwalk over a tidal marsh and count the herons.
 description: >
-  Start at the environmental center on the Wilmington Riverfront and head south
-  on the Jack A. Markell Trail, which begins with a long elevated boardwalk
-  across the freshwater tidal marsh of the Peterson Wildlife Refuge. Go slow
-  on the boardwalk and look for herons, turtles and maybe an eagle, then keep
-  going on the paved trail toward New Castle until you've done about two and
-  a half miles, and turn back. Get a photo looking down the boardwalk with the
-  marsh grass on both sides and the city skyline behind. It's an easy surface
-  but a good five miles round trip; bring water since the only restrooms are back
-  at the center.
+  Start at the environmental center on the Wilmington Riverfront and head
+  south on the Markell Trail's long elevated boardwalk across the tidal
+  marsh. Go slow and keep a count of herons, turtles and eagles; whoever spots
+  the most picks lunch. Keep going on the paved trail as far as you like, then
+  turn back. The photo to get: looking down the boardwalk with the marsh
+  grass on both sides and the city skyline behind.
+about: >
+  The boardwalk crosses the Russell W. Peterson Urban Wildlife Refuge, a
+  freshwater tidal marsh right next to downtown that rises and falls with the
+  tides. The trail is named for former Delaware governor Jack Markell and
+  connects Wilmington to historic New Castle, several miles south.
+
+  The surface is easy, but out-and-back distances add up fast. Bring water,
+  since the only restrooms are back at the center.
 steps:
   - The boardwalk stretching into the marsh
   - A bird you spotted
@@ -33,5 +38,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [conditions]
 themes: [walks, lakes-rivers, wildlife, biking]
-tags: [walking, boardwalk, marsh, wildlife, birding, rail-trail, wilmington]
-credit:
+tags: [jack markell trail, wilmington riverfront, marsh boardwalk, birdwatching, peterson wildlife refuge, wilmington]

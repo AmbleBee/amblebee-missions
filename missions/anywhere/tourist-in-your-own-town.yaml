@@ -3,13 +3,21 @@ number: 33
 name: Tourist in Your Own Town
 mode: both
 who: [solo, friends, family, kids]
-short: Visit the spot tourists always go to and locals never do. Take the cheesiest photo possible.
+short: Be a tourist in your own town. Visit the spot locals never go and take the cheesiest photo.
 description: >
   Pick the attraction in your own town that visitors always see and you've
   somehow never bothered with. Go full tourist: grab a map or brochure, read
   every plaque, buy the postcard, and ask someone to take your picture. Take
   the cheesiest tourist photo you can, then each name one thing you didn't know
   about your own town.
+about: >
+  Locals almost never visit the attractions in their own town, so the
+  famous spot you always skip is a whole new trip. Stop at the visitor
+  center too; they're full of free maps, brochures and people who love
+  telling you what to see.
+
+  Go all in: a fanny pack, a camera around your neck, a guidebook voice.
+  Then each name one thing you didn't know about your own town.
 for_kids:
   short: Tourist day! Find each thing.
   steps:
@@ -25,4 +33,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [walks, history, playful]
-tags: [local, playful, walking, history]
+tags: [tourist in your own town, local attractions, staycation idea, cheesy tourist photo, local, playful]

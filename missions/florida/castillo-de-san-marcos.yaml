@@ -8,14 +8,22 @@ place:
   area: St. Augustine
   coords: [29.89800, -81.31100]  # APPROX: set at the entrance before publishing
   website: https://www.nps.gov/casa
-short: Explore St. Augustine's 1600s Spanish stone fort and watch a cannon firing demo.
+short: Castillo de San Marcos in St. Augustine. Explore the 1600s Spanish fort and see a cannon firing.
 description: >
-  Walk into the oldest masonry fort in the continental U.S., built by the
-  Spanish in the late 1600s out of coquina, a stone made of tiny shells that
-  absorbed cannonballs instead of shattering. Explore the dark rooms, climb up
-  to the gun deck overlooking Matanzas Bay, and watch a cannon-firing
-  demonstration if one is scheduled. Each find the spot you'd guard. Get a
-  photo of you by a cannon on the wall.
+  Walk into a Spanish stone fort from the 1600s and explore its dark rooms,
+  then climb up to the gun deck overlooking Matanzas Bay. Watch a
+  cannon-firing demonstration if one is scheduled. Each find the spot you'd
+  guard and explain your strategy. The photo to get: you by a cannon on the
+  wall.
+about: >
+  The Spanish built the Castillo between 1672 and 1695, and it's the oldest
+  masonry fort in the continental U.S. It's made of coquina, a soft stone
+  made of tiny shells that absorbed cannonballs instead of shattering. It was
+  attacked several times but never taken by force.
+
+  St. Augustine, founded in 1565, is the oldest continuously inhabited city
+  founded by Europeans in the United States. The narrow streets of the old
+  town are a short walk away.
 for_kids:
   short: Fort hunt! Find each thing.
   steps:
@@ -33,5 +41,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [parks, history]
-tags: [history, fort, national-monument, st-augustine]
-credit:
+tags: [castillo de san marcos, spanish fort, cannon firing, coquina, oldest city, st-augustine]

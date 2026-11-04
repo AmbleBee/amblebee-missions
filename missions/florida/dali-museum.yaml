@@ -8,15 +8,21 @@ place:
   area: Downtown St. Petersburg
   coords: [27.76600, -82.63100]  # APPROX: set at the entrance before publishing
   website: https://thedali.org
-short: Find the melting clocks and hidden images in Salvador Dalí's paintings in St. Pete.
+short: The Dalí Museum in St. Pete. Find the melting clocks and hidden images in Dalí's paintings.
 description: >
-  Explore one of the largest collections of Salvador Dalí's surreal art, in a
-  building with a giant glass bubble bursting out of its concrete walls. Look
-  for melting clocks, long-legged elephants and hidden images in the huge
-  masterworks, and each find a painting with something hidden in it to show
-  the other. Climb the spiral staircase, try the virtual-reality Dalí
-  experience, and walk the garden. Get a photo of you with the
-  giant Dalí mustache sculpture. Buy timed tickets ahead.
+  Look for melting clocks, long-legged elephants and hidden images in the
+  huge masterworks, and each find a painting with something hidden in it to
+  show the other. Climb the spiral staircase and walk the garden. The photo
+  to get: you with the giant Dalí mustache sculpture.
+about: >
+  The collection began in 1942, when Ohio couple Reynolds and Eleanor Morse
+  bought their first Dalí painting. They became friends with the artist and
+  built one of the largest Dalí collections in the world. The museum's
+  building opened in 2011, with a giant bubble of glass triangles bursting
+  out of its concrete walls.
+
+  In The Hallucinogenic Toreador, look for the hidden faces of the Venus de
+  Milo. Buy timed tickets ahead.
 for_kids:
   short: Weird art hunt! Find each thing.
   steps:
@@ -34,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
 themes: [museums, art, quirky]
-tags: [art, museum, surreal, rainy-day, tampa-bay]
-credit:
+tags: [dali museum, salvador dali, surrealist art, melting clocks, st petersburg fl, tampa-bay]

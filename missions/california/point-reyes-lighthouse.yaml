@@ -8,15 +8,24 @@ place:
   area: Point Reyes National Seashore
   coords: [37.99600, -123.01800]  # APPROX: set at the lighthouse parking before publishing
   website: https://www.nps.gov/pore
-short: Walk down to the windswept Point Reyes Lighthouse, then watch elephant seals at Chimney Rock.
+short: Point Reyes Lighthouse and elephant seals. Walk down to the windswept light, then the seals.
 description: >
-  Drive out to the far tip of Point Reyes, one of the windiest, foggiest
-  places on the Pacific coast, and walk down the long staircase to the old
-  lighthouse perched on the cliffs. Then stop at the Elephant Seal Overlook
-  near Chimney Rock to watch the huge seals on the beach below; in winter,
-  you'll see bulls fighting and newborn pups. Watch for whales passing
-  offshore too, and get a photo of you on the windy cliff. Bring
-  binoculars and layers. The lighthouse stairs keep limited hours.
+  Drive out to the far tip of Point Reyes and walk down the long staircase
+  to the old lighthouse perched on the cliffs. Count the steps on the way
+  down and see who guesses closest. Then stop at the Elephant Seal Overlook
+  near Chimney Rock to watch the huge seals on the beach below. The photo to
+  get: you on the windy cliff with the lighthouse below.
+about: >
+  Point Reyes is one of the windiest and foggiest places on the Pacific
+  coast. The lighthouse went up in 1870, and its giant glass lens was made
+  in France. The staircase down to it has about 300 steps, and the climb back
+  up is the hard part.
+
+  Elephant seals came back to Point Reyes in the 1970s after being hunted
+  nearly to extinction. In winter you'll see bulls fighting and newborn
+  pups, and gray whales pass offshore. Bring binoculars and layers. On busy
+  winter weekends a shuttle may be required, and the lighthouse stairs keep
+  limited hours.
 for_kids:
   short: Coast hunt! Find each thing.
   steps:
@@ -34,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal, conditions]
 themes: [beach, wildlife]
-tags: [lighthouse, seals, wildlife, ocean, national-seashore, bay-area]
-credit:
+tags: [point reyes lighthouse, elephant seals, chimney rock, whale watching, national seashore, bay-area]

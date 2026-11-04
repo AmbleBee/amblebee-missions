@@ -8,11 +8,21 @@ place:
   address: 80 Compromise St, Annapolis, MD 21401
   coords: [38.97572, -76.48603]
   website: https://www.schoonerwoodwind.com
-short: Sail out of Annapolis on a wooden schooner. Help raise the sails if they let you.
+short: Schooner Woodwind in Annapolis. Sail the Chesapeake on a wooden schooner and take the wheel.
 description: >
-  Take a two-hour sail on the Chesapeake Bay aboard a classic wooden schooner from the
-  Annapolis waterfront; evening sails catch the sunset over the water. The crew often lets
-  passengers help raise the sails or take a turn at the wheel. Runs spring through fall.
+  Sail out of the Annapolis waterfront on a classic wooden schooner, and
+  pick an evening sail to catch the sunset over the bay. When the crew asks
+  for help, volunteer: raise the sails together or take a turn at the wheel.
+  The photo to get: the two of you at the bow with the sails full above
+  you.
+about: >
+  Annapolis calls itself the "Sailing Capital of the World," and from the
+  water you'll pass the U.S. Naval Academy and see why. The Woodwind
+  schooners are about 74 feet long, and a typical sail takes about two
+  hours out onto the Chesapeake Bay.
+
+  Sails run from spring through fall and depend on the weather. Bring a
+  layer, since it's cooler on the water, especially at sunset.
 duration: short
 effort: easy
 cost: $$$
@@ -22,5 +32,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [tickets, conditions]
 themes: [lakes-rivers, boating, sunsets]
-tags: [sailing, boat, sunset, bay]
-credit:
+tags: [schooner woodwind, annapolis sailing, chesapeake bay, sunset sail, naval academy, annapolis]

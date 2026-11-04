@@ -3,12 +3,20 @@ number: 7
 name: Zoo or Aquarium Day
 mode: both
 who: [friends, family, kids]
-short: Visit a zoo or aquarium. Snap a photo of whatever animal you love most.
+short: Zoo or aquarium day. Wander, photograph your favorite animals, and each crown a winner.
 description: >
-  Visit a zoo or aquarium, whichever you're in the mood for, and take
-  your time wandering. Whenever an animal catches your eye, take its
-  picture. Over a snack at the end, share which one was your favorite
-  and why.
+  Visit a zoo or aquarium, whichever you're in the mood for, and take your
+  time wandering. Whenever an animal catches your eye, take its picture.
+  Each keep a list of your top three, then over a snack at the end, reveal
+  them and crown the animal of the day. The photo to get: you with your
+  winning animal behind you.
+about: >
+  Zoos and aquariums accredited by the Association of Zoos and Aquariums
+  (AZA) meet high standards for animal care, and many help save endangered
+  species. Check the daily schedule for feedings and keeper talks, which are
+  often the best part of the day.
+
+  Animals are usually most active in the morning and on cooler days.
 for_kids:
   short: Animal hunt! Find each animal and take its picture.
   steps:
@@ -26,4 +34,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [tickets, hours]
 themes: [wildlife]
-tags: [animals, rainy-day-option]
+tags: [zoo day, aquarium day, family outing, animal photos, animals, rainy-day-option]

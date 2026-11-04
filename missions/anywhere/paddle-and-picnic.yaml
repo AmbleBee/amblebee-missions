@@ -1,9 +1,9 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 44
 name: Paddle and Picnic
 mode: both
 who: [friends, family, kids]
-short: Rent paddleboards, drift along the water, then pull up on shore for a picnic dinner.
+short: Paddleboard and picnic. Rent boards, drift along the water, then picnic on the shore.
 description: >
   Find a calm lake, bay or slow river with paddleboard rentals and pack a
   picnic dinner. Rent boards, paddle out together, and drift for a while,
@@ -11,6 +11,15 @@ description: >
   spread out the blanket, and eat with your feet in the sand. Get a photo of you on your boards, and another at the picnic. New to it? Start
   on your knees, and pick a calm, low-wind day. Wear life jackets, and check
   the weather and water conditions first.
+about: >
+  Stand-up paddling comes from Hawaii, where Waikiki surf instructors stood
+  on long boards with paddles to watch their students. It's much easier on
+  flat water than it looks.
+
+  Balance tips: start on your knees, stand up one foot at a time, keep your
+  feet hip-width apart and look at the horizon, not your feet. In most
+  places a paddleboard counts as a boat, so life jackets are required. Go in
+  the morning, when the wind is usually calmest.
 for_kids:
   short: Paddle day! Do each thing.
   steps:
@@ -33,5 +42,5 @@ time_of_day: any
 travel: local
 check_ahead: [seasonal, conditions]
 themes: [boating, picnic]
-tags: [paddleboard, picnic, water, outdoors]
+tags: [paddleboard rental, sup for beginners, lake picnic, calm water paddling, water, outdoors]
 credit: Angie C.

@@ -9,13 +9,22 @@ place:
   address: 2445 Old Penitentiary Rd, Boise, ID 83712
   coords: [43.60200, -116.16300]  # APPROX: set at the entrance before publishing
   website: https://history.idaho.gov/oldpen/
-short: Explore the cellhouses of the Old Idaho Penitentiary. Find solitary and the gallows.
+short: Old Idaho Penitentiary in Boise. Explore the cellhouses, solitary and the gallows.
 description: >
   Wander the sandstone cellhouses of a prison that held inmates for over a
   century, from the territorial days to 1973. Step into the cells, find the dark
   solitary block, and read the stories of the people locked up here. Each pick
   the strangest story you read. Get a photo framed by the old gate. Watch for
   evening and spooky events in October.
+about: >
+  The prison held more than 13,000 inmates from 1872 until 1973, when it
+  closed after riots. Inmates quarried the sandstone for its walls from the
+  hills nearby.
+
+  Its most famous stories include Harry Orchard, who killed a former governor
+  and later spent his days tending the prison's rose garden, and Lyda
+  Southard, nicknamed "Lady Bluebeard," who escaped in 1931. Watch for evening
+  and spooky events in October.
 duration: short
 effort: easy
 cost: $$
@@ -25,4 +34,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [history, spooky]
-tags: [history, prison, spooky, boise]
+tags: [old idaho penitentiary, historic prison tour, solitary confinement, haunted boise, east end, boise]

@@ -8,13 +8,21 @@ place:
   area: Payette Lake, McCall
   coords: [44.92800, -116.08400]  # APPROX: set at the park entrance before publishing
   website: https://parksandrecreation.idaho.gov/parks/ponderosa/
-short: Hike to Osprey Point over Payette Lake. Then ice cream in downtown McCall.
+short: Ponderosa State Park in McCall. Hike to Osprey Point over Payette Lake, then ice cream.
 description: >
   Drive the peninsula road through tall old ponderosa pines and hike out to
   Osprey Point, a rocky cliff above Payette Lake. Look for osprey and deer, and
   get a photo of you on the point with the lake below. Then head
   into little downtown McCall for ice cream on the shore. In winter the park
   grooms trails for snowshoeing and cross-country skiing.
+about: >
+  The park covers a peninsula sticking out into Payette Lake, with
+  old-growth ponderosa pines, some of them hundreds of years old. Their bark
+  smells like vanilla or butterscotch on a warm day; try sniffing one.
+
+  McCall's Winter Carnival each February fills town with giant snow
+  sculptures. In winter the park grooms trails for snowshoeing and
+  cross-country skiing.
 for_kids:
   short: Forest lake hunt! Find each thing.
   steps:
@@ -31,4 +39,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, hiking, lakes-rivers, forests]
-tags: [lake, forest, hiking, views, mccall]
+tags: [ponderosa state park, osprey point, payette lake, old growth ponderosa, mccall winter, mccall]

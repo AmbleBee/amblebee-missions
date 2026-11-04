@@ -8,14 +8,22 @@ place:
   area: Spring Hill, north of Tampa
   coords: [28.51700, -82.57300]  # APPROX: set at the entrance before publishing
   website: https://weekiwachee.com
-short: Watch real live mermaids perform underwater at Weeki Wachee's spring, a show since 1947.
+short: Weeki Wachee mermaid show in Spring Hill. Watch live mermaids perform underwater since 1947.
 description: >
   Sit in an underwater theater set into a deep, clear spring and watch the
-  famous Weeki Wachee mermaids perform, a show running since 1947. Watch them
-  swim, dance and even drink soda underwater while breathing from hidden
-  air hoses. Afterward, take the riverboat cruise to look for manatees, or
-  swim at the spring's beach in summer. Get a photo of you in front
-  of the mermaid theater. Check the show times when you arrive.
+  famous mermaids swim, dance and even drink soda underwater, breathing from
+  hidden air hoses. Each guess how long a mermaid can stay down between
+  breaths. Afterward, take the riverboat cruise to look for manatees. The
+  photo to get: you in front of the mermaid theater.
+about: >
+  Newton Perry, a former Navy diver, started the mermaid show in 1947 and
+  invented the trick of breathing from a hose so performers could stay
+  underwater. In the 1950s and 60s it was one of the most famous roadside
+  attractions in the country.
+
+  Weeki Wachee is so small it's known as the "City of Live Mermaids," with
+  only a handful of residents. In summer you can swim at the spring's beach.
+  Check the show times when you arrive.
 for_kids:
   short: Mermaid show! Find each thing.
   steps:
@@ -32,6 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [beach, swimming, quirky]
-tags: [mermaids, springs, classic-florida, quirky, gulf-coast]
-credit:
+themes: [swimming, quirky]
+tags: [weeki wachee mermaids, live mermaid show, florida springs, classic roadside attraction, spring hill, gulf-coast]

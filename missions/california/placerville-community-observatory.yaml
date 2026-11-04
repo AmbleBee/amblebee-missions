@@ -9,16 +9,22 @@ place:
   address: 6699 Campus Dr, Placerville, CA 95667
   coords: [38.72661, -120.86810]
   website: https://www.communityobservatory.com
-short: Look through big telescopes at a free public night at the Placerville Community Observatory.
+short: Community Observatory in Placerville. Look through big telescopes on a free public night.
 description: >
-  Catch one of the free public viewing nights at a hilltop observatory in the
-  Sierra foothills, where volunteer astronomers point big telescopes at
-  whatever's up that night: the rings of Saturn, craters on the Moon, star
-  clusters and distant galaxies. Take turns at each eyepiece, ask the
-  volunteers anything, and each pick the most amazing thing you saw. Dress
-  warm, since it gets cold after dark, and check the schedule, as viewing
-  nights depend on the calendar and clear skies. Entry is free; the college
-  charges a small parking fee.
+  Catch a free public viewing night at a hilltop observatory in the Sierra
+  foothills, where volunteer astronomers point big telescopes at whatever's
+  up: the rings of Saturn, craters on the Moon, star clusters and distant
+  galaxies. Take turns at each eyepiece, ask the volunteers anything, and
+  each pick the most amazing thing you saw. The photo to get: you beside the
+  biggest telescope, with the dome open to the sky.
+about: >
+  The observatory sits on the Folsom Lake College campus in the foothills,
+  above much of the valley's haze and city light. It's run by volunteers
+  who love showing people the sky, so don't be shy about asking questions.
+
+  Viewing nights depend on the calendar and clear skies, so check the
+  schedule the day of. Dress warm, since it gets cold after dark even in
+  summer. Entry is free; the college charges a small parking fee.
 for_kids:
   short: Space night! Find each thing.
   steps:
@@ -36,5 +42,4 @@ time_of_day: night
 travel: day-trip
 check_ahead: [hours, conditions]
 themes: [stars]
-tags: [stars, astronomy, telescope, night, free, sierra-foothills]
-credit:
+tags: [placerville community observatory, public telescope night, stargazing, free astronomy, sierra-foothills]

@@ -1,13 +1,23 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 10
 name: Historical Site or Center
 mode: date
-short: Visit a historical site or center. Learn one story you didn't know.
+short: Visit a local historical site or historic house. Each learn one story you didn't know.
 description: >
-  Visit a local history center, historic house, or landmark. Read the
-  plaques, talk to a docent if there is one, and find one story about
-  the place you didn't know before. Tell each other your favorite on
-  the way home.
+  Visit a local history center, historic house or landmark. Read the
+  plaques, ask a docent a question, and each hunt for one story about the
+  place you didn't know before. On the way home, tell each other your
+  favorite. The photo to get: the two of you in the oldest-looking doorway
+  you can find.
+about: >
+  Almost every town has more history than you'd think. The National Register
+  of Historic Places lists tens of thousands of buildings and sites across the
+  country, and the Historical Marker Database (hmdb.org) maps roadside
+  markers near you.
+
+  Docents and volunteers usually know the best stories that aren't on the
+  signs, so it's worth asking, "What's your favorite thing about this
+  place?"
 duration: short
 effort: easy
 cost: $
@@ -17,4 +27,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [history, make-something]
-tags: [history, culture, learning]
+tags: [historic house tour, local history, history museum, historical markers, culture, learning]

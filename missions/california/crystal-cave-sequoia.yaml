@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 35
 name: Crystal Cave Tour
 mode: both
@@ -8,15 +8,23 @@ place:
   area: Sequoia National Park
   coords: [36.58513, -118.82709]
   website: https://www.nps.gov/seki/planyourvisit/crystal-cave.htm
-short: Walk down to Crystal Cave in Sequoia and tour a glittering marble cave. Book tickets ahead.
+short: Crystal Cave in Sequoia National Park. Tour a glittering marble cave behind a spider-web gate.
 description: >
   Hike a steep half mile down through the forest to a giant spider-web gate,
   then follow a guide into a cool marble cave full of polished walls,
-  stalactites and shimmering formations. On the 50-minute tour, each find the
-  strangest shape you can and name it. Bring a jacket, since it's chilly
-  inside year-round. Tickets are sold online only, at least a day and a half
-  ahead (none at the cave), and tours run only from late spring through
-  early fall.
+  stalactites and shimmering formations. On the tour, each find the
+  strangest shape you can and give it a name. The photo to get: you at the
+  spider-web gate before you head in.
+about: >
+  Two park workers found Crystal Cave in 1918 while fishing nearby. It's
+  carved from marble, which is why the walls look polished and glittery,
+  and miles of passages have been mapped beyond the part you tour. The
+  spider-web gate was built in the 1940s with gaps wide enough for bats to
+  fly through.
+
+  It stays around 50°F inside all year, so bring a jacket. Tickets are sold
+  online only, well ahead (none at the cave), and tours run from late
+  spring through early fall.
 for_kids:
   short: Cave hunt! Find each thing.
   steps:
@@ -34,5 +42,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal]
 themes: [caves, forests, parks]
-tags: [cave, underground, national-park, tour, sequoia]
-credit:
+tags: [crystal cave, sequoia national park, marble cave, cave tour, spider web gate, sequoia]

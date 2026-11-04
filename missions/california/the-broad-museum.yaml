@@ -8,15 +8,24 @@ place:
   area: Grand Avenue, Downtown Los Angeles
   coords: [34.05450, -118.25050]  # APPROX: set at the entrance before publishing
   website: https://www.thebroad.org
-short: Explore The Broad's free contemporary art in downtown LA, from giant balloon dogs to mirror rooms.
+short: The Broad in downtown LA. Free contemporary art, from giant balloon sculptures to mirror rooms.
 description: >
-  Walk through one of LA's most fun art museums, free to enter, full of
-  contemporary art you can't stop looking at: giant shiny balloon sculptures,
-  a huge table and chairs that make you feel tiny, and bright pop art. Each
-  pick the piece you'd steal if you could. Reserve free timed tickets ahead.
-  If you can, also book the Infinity Mirror Room, where you stand in a
-  glittering room of endless lights for a minute. Then walk across the street
-  to see the silver curves of Walt Disney Concert Hall. Closed Mondays.
+  Walk through one of LA's most fun art museums, full of contemporary art
+  you can't stop looking at: giant shiny balloon sculptures, a huge table
+  and chairs that make you feel tiny, and bright pop art. Each pick the piece
+  you'd steal if you could and plan the heist out loud. The photo to get:
+  you under the giant table. Then walk across the street to see the silver
+  curves of Walt Disney Concert Hall.
+about: >
+  The Broad opened in 2015 to show the collection of Eli and Edythe Broad,
+  about 2,000 works of modern and contemporary art, with free general
+  admission. The building's white honeycomb shell is called "the veil."
+
+  Look for Jeff Koons's shiny balloon sculptures, Robert Therrien's giant
+  Under the Table, and Yayoi Kusama's Infinity Mirrored Room, where you stand
+  in a room of endless lights for about a minute. Reserve free timed
+  tickets ahead and book the mirror room separately. Check the hours, since
+  it's closed some days.
 for_kids:
   short: Art hunt! Find each thing.
   steps:
@@ -34,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, hours]
 themes: [museums, art]
-tags: [art, museum, free, rainy-day, los-angeles]
-credit:
+tags: [the broad, free art museum la, infinity mirror room, jeff koons, disney concert hall, los-angeles]

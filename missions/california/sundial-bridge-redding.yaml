@@ -7,14 +7,22 @@ place:
   name: Sundial Bridge, Turtle Bay
   area: Sacramento River, Redding
   coords: [40.59300, -122.37700]  # APPROX: set at the bridge's south end before publishing
-short: Walk across Redding's glowing glass Sundial Bridge at night, with the river rushing below.
+short: Sundial Bridge in Redding. Walk across the glowing glass bridge at night over the river.
 description: >
-  Walk out onto the Sundial Bridge, a white pedestrian bridge with a glass
-  deck and a giant leaning tower that works as a huge sundial. Come at dusk,
-  when the glass deck glows from underneath and the tower lights up over the
-  Sacramento River. Stand in the middle and look down through the glowing
-  deck, then walk the river trail a little way for the best photo of you with the whole bridge lit up behind you. It's free and open all
-  night.
+  Walk out onto the Sundial Bridge at dusk, when its glass deck glows from
+  underneath and the giant leaning tower lights up over the Sacramento
+  River. Stand in the middle and look down through the glowing deck, and
+  each guess how tall the tower is. Then walk the river trail a little way.
+  The photo to get: you with the whole bridge lit up behind you.
+about: >
+  Architect Santiago Calatrava designed the bridge, which opened in 2004.
+  Its tower, more than 200 feet tall, really does work as a giant sundial.
+  Its shadow tells the time, though it's only exactly right on the summer
+  solstice.
+
+  The bridge has no supports in the water, to protect the salmon that
+  spawn in the river below. It's free and open all night, and Turtle Bay
+  Exploration Park is right next to it.
 for_kids:
   short: Bridge hunt! Find each thing.
   steps:
@@ -31,5 +39,4 @@ season: any
 time_of_day: evening
 travel: day-trip
 themes: [lakes-rivers, architecture]
-tags: [bridge, night, river, architecture, free, redding]
-credit:
+tags: [sundial bridge, santiago calatrava, turtle bay, sacramento river, glass bridge at night, redding]

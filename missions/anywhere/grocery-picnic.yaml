@@ -1,13 +1,21 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 6
 name: $20 Grocery Picnic
 mode: date
-short: $20 each, split up in a grocery store, build a picnic. Find a park.
+short: Grocery store picnic challenge. $20 each, five minutes, no peeking. Then find a park.
 description: >
-  Go to a grocery store or market together, then split up. Each of you
-  gets $20 and five minutes to buy your half of a picnic, no peeking.
-  Meet at the register, find a park or patch of grass nearby, and
-  unpack to see what you ended up with.
+  Go to a grocery store together, then split up. Each of you gets $20 and
+  five minutes to buy your half of a picnic, no peeking. Meet at the
+  register, find a park or patch of grass nearby, and unpack to see what you
+  ended up with. Rate each other's picks out of ten. The photo to get: the
+  whole spread laid out on the grass before you dig in.
+about: >
+  The fun is in the surprises: two desserts and no main course is a win too.
+  If you want to make it harder, pick a theme first, like "picnic in Paris"
+  or "only foods that are orange."
+
+  Keep a blanket, napkins and a small knife in the car so you're always ready
+  for this one.
 duration: short
 effort: easy
 cost: $$
@@ -16,4 +24,4 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 themes: [picnic, food, playful]
-tags: [food, picnic, surprise, outdoors]
+tags: [grocery store picnic, picnic challenge, cheap date idea, surprise date, picnic, outdoors]

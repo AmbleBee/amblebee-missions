@@ -7,16 +7,25 @@ place:
   name: Galveston Island Historic Pleasure Pier
   area: Seawall Blvd, Galveston
   address: 2501 Seawall Blvd, Galveston, TX 77550
-  coords: [29.288000, -94.790417]
+  coords: [29.28800, -94.79042]
   website: https://www.pleasurepier.com
-short: Explore Galveston's Victorian Strand, then ride the rides on the Pleasure Pier over the Gulf.
+short: Galveston's Strand and Pleasure Pier. Watch taffy pulled, then ride a coaster over the Gulf.
 description: >
-  Start in Galveston's Strand district, rows of Victorian iron-front buildings
-  full of candy shops and antiques. Watch saltwater taffy being pulled, then
+  Start in the Strand district, rows of Victorian iron-front buildings full
+  of candy shops and antiques, and watch saltwater taffy being pulled. Then
   head to the Seawall and walk out on the Pleasure Pier, an amusement park
-  built over the Gulf of Mexico. Ride the roller coaster that swoops out over
-  the water, then walk the beach. Get a photo of you on the pier
-  with the waves below. The pier runs fewer days in the off-season.
+  built over the Gulf. Ride the coaster that swoops out over the water, and
+  everyone rates the scream factor. The photo to get: you on the pier with
+  the waves below.
+about: >
+  In the 1800s, the Strand was called the "Wall Street of the Southwest."
+  Then the Great Storm of 1900 struck, the deadliest natural disaster in
+  U.S. history. Afterward, Galveston built the Seawall and raised the whole
+  city.
+
+  A pier has stood on this spot since the 1940s; today's Pleasure Pier
+  opened in 2012. It runs fewer days in the off-season, so check before you
+  go.
 for_kids:
   short: Island fun! Find each thing.
   steps:
@@ -35,5 +44,4 @@ travel: day-trip
 check_ahead: [hours, seasonal]
 discounts: [military, senior]
 themes: [beach, history, thrills]
-tags: [beach, pier, rides, history, galveston]
-credit:
+tags: [galveston pleasure pier, the strand, saltwater taffy, seawall, 1900 storm, galveston]

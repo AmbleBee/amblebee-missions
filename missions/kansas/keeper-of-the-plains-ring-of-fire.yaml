@@ -8,11 +8,21 @@ place:
   address: 650 N Seneca St, Wichita, KS 67203
   coords: [37.69126, -97.34960]
   website: https://www.visitwichita.com
-short: Walk the river at dusk and watch the fire pots light up around the Keeper of the Plains.
+short: Keeper of the Plains in Wichita. Walk the river at dusk and watch the Ring of Fire light up.
 description: >
-  The giant steel Keeper of the Plains stands on a rock point where two rivers meet in
-  Wichita. At dusk, fire pots around its base are lit for a few minutes most nights. Walk
-  the river bridges, then sit by the water and watch the flames come up.
+  Walk the river bridges to the giant steel Keeper of the Plains, standing
+  on a rock point where two rivers meet. Find a spot by the water before
+  dusk and watch the fire pots around its base come up in flames. The photo
+  to get: the two of you with the Keeper and the flames glowing behind you.
+about: >
+  The Keeper of the Plains is a 44-foot steel sculpture by Kiowa-Comanche
+  artist Blackbear Bosin, put up in 1974. In 2007 it was raised onto a
+  30-foot rock at the point where the Big and Little Arkansas rivers meet,
+  with walking bridges and a plaza around it.
+
+  The "Ring of Fire" fire pots are lit for about 15 minutes most evenings,
+  weather permitting. Check the city's schedule for the time, since it
+  shifts with the seasons. It's free.
 duration: short
 effort: easy
 cost: free
@@ -22,5 +32,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours]
 themes: [lakes-rivers, art]
-tags: [river, fire, art, free]
-credit:
+tags: [keeper of the plains, ring of fire, arkansas river, blackbear bosin, river walk, wichita]

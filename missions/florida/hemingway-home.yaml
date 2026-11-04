@@ -7,15 +7,25 @@ place:
   name: Ernest Hemingway Home and Museum
   area: Whitehead St, Key West
   address: 907 Whitehead St, Key West, FL 33040
-  coords: [24.551101, -81.800822]
+  coords: [24.55110, -81.80082]
   website: https://www.hemingwayhome.com
-short: Tour Hemingway's Key West home and meet the six-toed cats that still live there.
+short: Hemingway Home in Key West. Tour the writer's house and meet the six-toed cats.
 description: >
-  Tour the Spanish Colonial house where Ernest Hemingway lived and wrote in the
-  1930s, with his writing studio, his giant pool (the first in Key West) and
-  his treasures from around the world. Meet the dozens of cats that roam the
-  house and garden, many with six toes, descended from Hemingway's own cat.
-  Each count the toes on as many cats as you can. Get a photo of you with a cat on the porch. Bring cash in case.
+  Tour the house where Ernest Hemingway lived and wrote in the 1930s, with
+  his writing studio, his big pool and treasures from his travels. Meet the
+  dozens of cats that roam the house and gardens, many with six toes. Each
+  count the toes on as many cats as you can, and see who finds the most.
+  The photo to get: you with a cat on the porch.
+about: >
+  Hemingway lived here from 1931 to 1939 and wrote some of his best-known
+  work in the studio out back. The pool was the first in Key West. The
+  story goes that it cost so much that Hemingway pressed a penny into the
+  wet concrete, saying they'd taken his last one. Look for it near the pool.
+
+  About 60 cats live on the grounds, and many are polydactyl, with extra
+  toes. They're said to descend from a six-toed cat named Snow White, given
+  to Hemingway by a ship's captain. The museum has been cash only at times,
+  so bring some just in case.
 for_kids:
   short: Cat hunt! Find each thing.
   steps:
@@ -33,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [wildlife, history, museums]
-tags: [history, museum, cats, writers, key-west]
-credit:
+tags: [hemingway home, six-toed cats, ernest hemingway, polydactyl cats, writers house, key-west]

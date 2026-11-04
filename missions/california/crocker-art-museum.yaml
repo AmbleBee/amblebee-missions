@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-03
 number: 31
 name: Crocker Art Museum
 mode: both
@@ -9,16 +9,24 @@ place:
   address: 216 O St, Sacramento, CA 95814
   coords: [38.57718, -121.50647]
   website: https://crockerart.org
-short: Explore the Crocker in Sacramento. Each pick the painting you'd hang above your couch.
+short: Crocker Art Museum in Sacramento. Each pick the painting you'd hang above your couch.
 description: >
-  Wander one of the oldest art museums in the West, where a grand 1870s
-  Victorian mansion and gallery connect to a bright modern wing. See
-  California landscapes and Gold Rush-era paintings, wild contemporary art
-  and ceramics, and the ornate ballroom of the original house. Each pick the
-  piece you'd hang above your couch and explain why, and get a photo of
-  you on the historic staircase. Go on a Thursday, when it stays open
-  until 9, and walk over to Old Sacramento for dinner after. Closed Mondays and
-  Tuesdays.
+  Wander from a grand 1870s Victorian mansion and gallery into a bright
+  modern wing. See California landscapes and Gold Rush-era paintings, wild
+  contemporary art and ceramics, and the ornate ballroom of the original
+  house. Each pick the piece you'd hang above your couch and explain why.
+  The photo to get: you on the historic staircase. Afterward, walk over to
+  Old Sacramento for dinner.
+about: >
+  The Crocker opened to the public in 1885 and is the oldest public art
+  museum in the West. Judge Edwin B. Crocker and his wife Margaret built the
+  gallery next to their home to hold the art they collected in Europe.
+  Edwin's brother Charles was one of the "Big Four" who built the Central
+  Pacific Railroad.
+
+  The modern wing opened in 2010 and more than doubled the museum's size.
+  The museum stays open late one evening a week, a good time for a date.
+  Check the website for hours, since it's closed on some weekdays.
 for_kids:
   short: Art hunt! Find each thing.
   steps:
@@ -37,5 +45,4 @@ travel: day-trip
 check_ahead: [hours]
 discounts: [military, student, senior]
 themes: [history, museums, art]
-tags: [art, museum, history, rainy-day, sacramento]
-credit:
+tags: [crocker art museum, california art, victorian mansion, ballroom, sacramento]

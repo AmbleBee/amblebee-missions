@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 33
 name: General Sherman and Moro Rock
 mode: both
@@ -8,15 +8,25 @@ place:
   area: Giant Forest, Sequoia National Park
   coords: [36.58464, -118.74982]
   website: https://www.nps.gov/seki/index.htm
-short: Stand under General Sherman, the biggest tree on Earth, then climb Moro Rock for the view.
+short: Sequoia National Park. Stand under General Sherman, the biggest tree on Earth, then climb Moro Rock.
 description: >
-  Start early and walk the paved path down to General Sherman, the largest
-  living tree on Earth by volume, before the crowds arrive. Stand at its base,
-  look straight up, and get a photo of you looking tiny against
-  the trunk. Then drive or shuttle over to Moro Rock and climb the 350-plus
-  carved stone steps to the top of the granite dome for a huge view over the
-  Great Western Divide. Each guess how old Sherman is before you read the sign.
-  There's a park entrance fee, and roads can close in winter snow.
+  Start early and walk the path down to General Sherman, the largest living
+  tree on Earth, before the crowds arrive. Each guess how old it is before
+  you read the sign, and closest wins. The photo to get: you at the base
+  looking tiny against the trunk. Then head over to Moro Rock and climb the
+  carved stone steps to the top of the granite dome for a huge view over
+  the mountains.
+about: >
+  General Sherman is about 275 feet tall and somewhere around 2,200 years
+  old. It isn't the tallest or widest tree, but it has more wood than any
+  other living tree on Earth. A settler named it in 1879 after the Civil War
+  general.
+
+  The path to the tree is paved but steep on the way back up. Moro Rock's
+  stairway has more than 350 steps with railings, built into the granite in
+  the 1930s, and climbs to about 6,700 feet. In summer a free shuttle
+  connects the stops. There's a park entrance fee, and winter snow can close
+  roads.
 for_kids:
   short: Giant tree hunt! Find each thing.
   steps:
@@ -34,5 +44,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [conditions, seasonal]
 themes: [views, hiking, forests, parks]
-tags: [trees, sequoias, hiking, views, national-park, sequoia]
-credit:
+tags: [general sherman tree, giant sequoias, moro rock, giant forest, sequoia national park, sequoia]

@@ -3,7 +3,7 @@ number: 68
 name: Stop-Motion Movie
 mode: both
 who: [friends, family, kids]
-short: Make a tiny stop-motion movie with toys, then throw a premiere with popcorn.
+short: Make a stop-motion movie at home with toys, then throw a premiere with popcorn.
 description: >
   Pick a small story (the toast escapes, the dinosaur has a bad day) and build
   a tabletop set with a cereal-box backdrop and a desk lamp. Prop your phone
@@ -12,6 +12,15 @@ description: >
   flat scene is the easiest start, and LEGO or clay works great. Add a title
   card, then dim the lights, make popcorn and hold a premiere on the biggest
   screen you have. Get a behind-the-scenes photo of the set with the crew.
+about: >
+  Stop-motion is how classics like Wallace & Gromit and The Nightmare Before
+  Christmas were made, one tiny move and one photo at a time. Big movies use
+  around 24 frames for every second of film. For a home movie, about 12
+  frames a second still looks great and takes half the work.
+
+  Tips: keep the lights steady (close the curtains so the sun doesn't
+  flicker), tape your phone and set down, and move each character only a
+  little between shots.
 steps:
   - The set, ready for filming
   - Hands moving a character
@@ -34,5 +43,4 @@ season: any
 time_of_day: any
 travel: home
 themes: [make-something]
-tags: [movie-making, creative, toys, rainy-day, home]
-credit:
+tags: [stop motion movie, lego stop motion, kids film project, movie night premiere, creative, home]

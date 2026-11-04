@@ -1,12 +1,20 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 24
 name: Hidden Garden or Patio
 mode: date
-short: Find a hidden garden or tucked-away patio. Stay for a drink.
+short: Find a hidden patio or courtyard garden in your town. Stay for a drink in your secret spot.
 description: >
-  Look for a hidden spot nearby, like a tucked-away café patio, a
-  courtyard garden, or a quiet pocket park most people walk past. Settle
-  in with a drink or a snack and enjoy having found somewhere new.
+  Go hunting for a hidden spot nearby: a tucked-away café patio, a courtyard
+  garden behind a building, or a quiet pocket park most people walk past.
+  Settle in with a drink or a snack and claim it as your secret spot. The
+  photo to get: the two of you in your hidden spot, toasting the find.
+about: >
+  How to find one: ask a barista or bartender where they go to get away,
+  look down alleys and through archways, and check the back of old
+  buildings and hotels. Bigger cities often have public plazas and rooftop
+  gardens hidden inside office buildings, open to anyone.
+
+  Once you've found one, keep it in your back pocket for a bad day.
 duration: short
 effort: easy
 cost: $
@@ -15,4 +23,4 @@ season: [spring, summer, fall]
 time_of_day: any
 travel: local
 themes: [relaxing]
-tags: [calm, explore, local, outdoors]
+tags: [hidden patio, secret garden, courtyard cafe, pocket park, hidden gems, explore]

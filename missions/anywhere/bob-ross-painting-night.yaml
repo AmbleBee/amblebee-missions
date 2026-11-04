@@ -1,16 +1,25 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03  
 number: 30
 name: Bob Ross Painting Night
 mode: both
 who: [solo, friends, family, kids]
-short: Pick a Bob Ross episode and paint along. Happy little trees, side by side.
+short: Bob Ross paint-along night at home. Pick an episode and paint happy little trees side by side.
 description: >
-  Pick a Bob Ross episode (many are free on the official Bob Ross YouTube
-  channel) and paint along together, with paints, cheap acrylics, or even
-  colored pencils if that's what you have. Pause and rewind as often as you
-  need; nobody keeps up with Bob. When you're done, hold your paintings up side
-  by side for a photo, then each name the other's painting. Bonus points for a
-  happy little tree.
+  Pick a Bob Ross episode and paint along together, with cheap acrylics,
+  watercolors or even colored pencils if that's what you have. Pause and
+  rewind as often as you need; nobody keeps up with Bob. When you're done,
+  hold your paintings up side by side for a photo, then each give the
+  other's painting a title. Bonus points for a happy little tree.
+about: >
+  The Joy of Painting ran on public TV from 1983 to 1994, more than 400
+  episodes, each about half an hour. Many full episodes are free on the
+  official Bob Ross YouTube channel.
+
+  Bob painted "wet-on-wet" with oil paints, blending new colors into wet
+  ones, which is how he finished a whole landscape in one episode. Acrylics
+  dry faster and won't blend quite the same, so pick an episode with a
+  simple scene. The first one ever, "A Walk in the Woods," is a good start.
+  It's supposed to look different from his. That's half the fun.
 for_kids:
   short: Painting night! Make each thing.
   steps:
@@ -24,6 +33,6 @@ cost: $
 setting: indoor
 season: any
 time_of_day: evening
-travel: local
+travel: home
 themes: [art, relaxing, make-something]
-tags: [at-home, art, painting, cozy, rainy-day]
+tags: [at-home, bob ross, joy of painting, paint along, happy little trees, cozy]

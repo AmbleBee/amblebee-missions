@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 53
 name: Dog Park Name Game
 mode: both
 who: [solo, friends, family, kids]
-short: Sit by a busy dog park and guess each dog's name before the owner calls it.
+short: Dog park name game. Sit by a busy dog park and guess each dog's name before the owner calls it.
 description: >
   Grab a coffee and settle on a bench just outside a busy dog park on a
   weekend morning or after work. Before an owner calls out, guess each dog's
@@ -11,6 +11,14 @@ description: >
   regulars as characters: the mayor, the troublemaker, the one who only wants
   the stick. Stay outside the fence, keep snacks and kids
   out of the park, and only pet or photograph a dog after its owner says yes. Crown an MVP before you go.
+about: >
+  Some names come up over and over: Luna, Bella, Charlie, Max and Cooper
+  usually top the lists of most popular dog names, so they're safe guesses.
+  Bonus points for spotting a dog with a human name like Steve or Gary.
+
+  Stay outside the fence, keep snacks and kids out of the park, and only pet
+  or photograph a dog after its owner says yes. Weekend mornings and right
+  after work are usually the busiest times.
 for_kids:
   short: Guess the dog names!
   steps:
@@ -32,5 +40,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [wildlife, games]
-tags: [dogs, animals, games, people-watching, free]
-credit:
+tags: [dog park, guess the dog name, people watching, free activity, dogs, games]

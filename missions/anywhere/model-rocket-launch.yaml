@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 56
 name: Model Rocket Launch
 mode: both
 who: [solo, friends, family, kids]
-short: Build a model rocket, count down together, and chase the parachute across the field.
+short: Model rocket launch. Build a kit, count down together, and chase the parachute.
 description: >
   Pick up a beginner model rocket launch set (Estes-style kits are sold at
   hobby and craft stores, big-box toy aisles, and online) plus a pack of
@@ -15,6 +15,16 @@ description: >
   15 feet back, count down out loud together, and take turns on the button.
   Chase the parachute after every flight, give each launch a name, and use
   burst mode for liftoff.
+about: >
+  Model rocketry took off in the late 1950s, when companies started selling
+  safe, pre-made engines, so kids didn't have to mix their own fuel. Small
+  rockets fly a few hundred feet, and bigger engines can send them much
+  higher, which is why they need bigger fields.
+
+  The National Association of Rocketry publishes a simple safety code worth
+  reading before your first launch, and many areas have rocket clubs that
+  hold launch days anyone can join. The photo to get: the liftoff, using
+  burst mode.
 for_kids:
   short: Blast off a rocket!
   steps:
@@ -37,5 +47,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [conditions]
 themes: [stars, science, make-something]
-tags: [rockets, science, build, outdoors, field]
-credit:
+tags: [model rocket launch, estes rockets, kids science project, rocket kit, outdoors, field]

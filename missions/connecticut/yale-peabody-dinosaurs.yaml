@@ -9,14 +9,22 @@ place:
   address: 170 Whitney Ave, New Haven, CT 06511
   coords: [41.31580, -72.92100]  # APPROX: set at the entrance before publishing
   website: https://peabody.yale.edu
-short: Meet a Brontosaurus and a Triceratops at a free natural history museum. Roar for the photo!
+short: Yale Peabody Museum in New Haven. A free dinosaur hall with a giant Brontosaurus.
 description: >
-  The Yale Peabody Museum reopened after a big renovation and admission is now always free.
-  Head straight for the dinosaur fossils, including the giant Brontosaurus, a Stegosaurus and a huge Triceratops
-  skull, then let the kids pick the next gallery: minerals and gems, animals or whatever
-  catches their eye. Make it a scavenger hunt and see who can find the smallest thing on display.
-  Get a family photo doing your best dinosaur roar in front of the biggest skeleton. No tickets
-  are needed for regular visits; it's closed Mondays.
+  Head straight for the dinosaur hall, with its giant Brontosaurus, a
+  Stegosaurus and a huge Triceratops skull, then let the kids pick the next
+  gallery: minerals and gems, animals or whatever catches their eye. Make it
+  a scavenger hunt and see who finds the smallest thing on display. The
+  photo to get: the family doing its best dinosaur roar in front of the
+  biggest skeleton.
+about: >
+  The Peabody was founded in 1866, and its Brontosaurus has stood here since
+  1931. Yale scientist Othniel Marsh named Brontosaurus in the 1870s. Look
+  up at The Age of Reptiles, a huge mural along the wall of the dinosaur
+  hall, painted in the 1940s.
+
+  The museum reopened in 2024 after a big renovation, and admission is now
+  free. Check the hours before you go, since it's closed some days.
 for_kids:
   short: Dinosaur hunt! Can you find them all?
   steps:
@@ -34,5 +42,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [rocks-fossils, museums, science]
-tags: [museum, dinosaurs, science, rainy-day, kids, new-haven]
-credit:
+tags: [yale peabody museum, free dinosaur museum, brontosaurus, age of reptiles mural, family day out, new-haven]

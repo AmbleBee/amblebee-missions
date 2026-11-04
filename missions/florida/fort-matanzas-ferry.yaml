@@ -8,14 +8,21 @@ place:
   area: Rattlesnake Island, south of St. Augustine
   coords: [29.71500, -81.23900]  # APPROX: set at the visitor center dock before publishing
   website: https://www.nps.gov/foma
-short: Take the free little ferry to Fort Matanzas, a tiny Spanish watchtower fort on the river.
+short: Fort Matanzas near St. Augustine. Take the free little ferry to a tiny Spanish watchtower fort.
 description: >
   Ride a small, free park ferry across the Matanzas River to a tiny Spanish
-  fort from 1742 that guarded the back door to St. Augustine. A ranger gives
-  a short talk about the soldiers who lived here, then climb the ladder to the
-  top for the view of the inlet and marshes. Watch for dolphins and pelicans
-  on the ride. Get a photo of you at the fort. The ferry is first
-  come, first served and runs Thursday through Monday only.
+  fort that guarded the back door to St. Augustine. A ranger gives a short
+  talk about the soldiers who lived here, then climb up for the view of the
+  inlet and marshes. Each keep watch for dolphins and pelicans on the ride.
+  The photo to get: you at the top of the fort.
+about: >
+  The Spanish built Fort Matanzas from coquina, a stone made of shells,
+  around 1740 to 1742. "Matanzas" means "slaughters" in Spanish, after a
+  grim event nearby in 1565, when Spanish soldiers killed hundreds of French
+  soldiers who had surrendered.
+
+  The ferry is first come, first served and doesn't run every day, so check
+  the schedule before you go.
 for_kids:
   short: Fort trip! Find each thing.
   steps:
@@ -33,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
 themes: [boating, parks, history]
-tags: [history, fort, boat, free, national-monument, st-augustine]
-credit:
+tags: [fort matanzas, free ferry, spanish fort, matanzas river, rangers talk, st-augustine]

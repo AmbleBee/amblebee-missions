@@ -7,18 +7,23 @@ place:
   name: Museum of Texas Tech University
   area: Texas Tech campus, Lubbock
   address: 3301 4th St, Lubbock, TX 79415
-  coords: [33.590757, -101.885778]
+  coords: [33.59076, -101.88578]
   website: https://www.depts.ttu.edu/museumttu/
-short: Hunt for dinosaurs at the free Texas Tech museum. Find the biggest skeleton in the building.
+short: Museum of Texas Tech in Lubbock. Go on a free dinosaur hunt and find the biggest skeleton.
 description: >
-  Spend an easy, free afternoon at the Museum of Texas Tech University on the
-  edge of campus in Lubbock. Start with the T. rex and Triceratops skeleton casts
-  that have greeted visitors near the entrance, find the mammoth in the Ice
-  Age room, wander the West Texas history halls, and let the kids pick which
-  skeleton is the scariest. If the Moody Planetarium has a show on while you're there,
-  it's worth checking the schedule. Get a photo of the whole family standing
-  in front of the biggest dinosaur you can find. The museum is closed Mondays
-  and over university breaks, so check before you go.
+  Start with the dinosaur skeleton casts near the entrance, find the
+  mammoth in the Ice Age room, and wander the West Texas history halls.
+  Let the kids lead the hunt and vote on which skeleton is the scariest.
+  The photo to get: the whole family standing in front of the biggest
+  dinosaur you can find.
+about: >
+  The museum is free and sits on the edge of the Texas Tech campus. Its
+  collection reaches far beyond dinosaurs, with art, natural history and
+  the story of the people who lived on the Southern Plains.
+
+  If the Moody Planetarium has a show while you're there, it's worth
+  adding. The museum is closed some days and over university breaks, so
+  check the hours before you go.
 for_kids:
   short: Go on a dinosaur hunt!
   steps:
@@ -36,5 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [rocks-fossils, museums]
-tags: [museum, dinosaurs, fossils, free, rainy-day, kids, lubbock]
-credit:
+tags: [museum of texas tech, free dinosaur museum, mammoth, moody planetarium, family day out, lubbock]

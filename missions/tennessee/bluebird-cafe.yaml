@@ -8,11 +8,22 @@ place:
   address: 4104 Hillsboro Pike, Nashville, TN 37215
   coords: [36.10216, -86.81696]
   website: https://bluebirdcafe.com
-short: Hear songwriters play the hits they wrote, up close, at Nashville's tiny Bluebird Cafe.
+short: The Bluebird Cafe in Nashville. Hear songwriters play the hits they wrote, up close.
 description: >
-  The Bluebird is a tiny strip-mall room where songwriters sit in a circle and trade
-  songs, often ones that became big country hits. It only holds about 90 people, so it's
-  quiet and close. Reservations go fast online, so book as soon as the shows are released.
+  Squeeze into the tiny Bluebird, where songwriters sit in a circle and
+  trade songs, often ones that became big country hits. Before the show,
+  each guess which famous song will come up, and see if either of you is
+  right. Listen quietly; that's the rule here. The photo to get: the two of
+  you outside under the Bluebird sign.
+about: >
+  The Bluebird opened in 1982 in a strip mall and became the most famous
+  listening room in Nashville. Garth Brooks was discovered here, and so was
+  a teenage Taylor Swift. The "in the round" shows, with writers taking turns
+  around a circle, made it famous.
+
+  It holds only about 90 people, and talking during songs is famously
+  frowned on. Reservations go fast online, so book as soon as shows are
+  released.
 duration: short
 effort: easy
 cost: $$
@@ -22,5 +33,4 @@ time_of_day: evening
 travel: local
 check_ahead: [reservation]
 themes: [shows]
-tags: [music, songwriters, listening-room]
-credit:
+tags: [bluebird cafe, nashville songwriters, listening room, in the round, country music, nashville]

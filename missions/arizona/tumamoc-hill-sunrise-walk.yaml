@@ -9,14 +9,23 @@ place:
   address: Tumamoc Hill Rd at W Anklam Rd, Tucson, AZ 85745
   coords: [32.22370, -111.00180]  # APPROX: set at the trailhead before publishing
   website: https://desertlaboratory.arizona.edu/tumamoc-hill/walk-hill
-short: Power-walk the paved road up Tumamoc Hill with the locals. Photo of Tucson from the top.
+short: Tumamoc Hill in Tucson. Power-walk the paved climb with the locals for a view over the city.
 description: >
-  Tumamoc Hill is a desert research preserve where all of Tucson seems to walk the steady,
-  paved climb before work. It is about a mile and a half up with a few steep stretches, so
-  set your own pace and say good morning to everyone passing. Up top, catch your breath
-  at the overlook among the saguaros and look out over downtown, the university and the Santa Catalinas.
-  Get a photo of the city spread out below you from the overlook. Stay on the pavement and inside the overlook cables,
-  park on Anklam Rd (not the hospital lots), leave dogs and bikes at home, and go early in the warm months.
+  Join half of Tucson on the steady, paved climb up Tumamoc Hill before work.
+  Set your own pace, say good morning to everyone passing, and try to beat
+  your time on the way down. Up top, catch your breath at the overlook among
+  the saguaros and pick out downtown, the university and the Santa Catalina
+  Mountains. The photo to get: you with the city spread out below.
+about: >
+  Tumamoc Hill is home to the Desert Laboratory, founded in 1903, one of the
+  oldest desert research stations in the world. People lived up here long
+  before that: the hilltop has remains of a village and rock terraces built
+  about 2,500 years ago.
+
+  The walk is about a mile and a half up with a few steep stretches. Stay on
+  the pavement and inside the overlook cables, park on Anklam Road (not the
+  hospital lots), leave dogs and bikes at home, and go early in the warm
+  months.
 steps:
   - A saguaro along the road
   - The steepest stretch, looking back down
@@ -30,5 +39,4 @@ time_of_day: morning
 travel: local
 check_ahead: [conditions]
 themes: [views, hiking, walks, deserts, sunsets]
-tags: [hiking, walking, desert, saguaro, views, sunrise, tucson]
-credit:
+tags: [tumamoc hill, tucson walk, desert laboratory, saguaros, sunrise walk, tucson]

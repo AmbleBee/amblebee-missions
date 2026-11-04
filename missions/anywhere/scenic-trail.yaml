@@ -3,12 +3,21 @@ number: 19
 name: Scenic Trail Hike
 mode: both
 who: [solo, friends, family]
-short: Hike a trail with a viewpoint. Stop and take in the view at the top.
+short: Viewpoint hike. Pick a trail with a big view and take it in at the top.
 description: >
-  Pick a trail known for its view, like a ridge, overlook, or summit.
-  Bring water and a snack, take breaks whenever you want, and spend a
-  few minutes at the viewpoint before heading back down. Check
-  conditions before you go.
+  Pick a trail known for its view, like a ridge, overlook or summit. Bring
+  water and a snack, and take breaks whenever you want. At the top, each
+  point out the farthest thing you can see and guess how far away it is.
+  The photo to get: you at the viewpoint with the view stretching out behind
+  you.
+about: >
+  Trail apps and websites can filter hikes by "views," length and
+  elevation gain, which helps you pick one that fits your group. Read
+  recent trip reports for mud, snow or closures before you go.
+
+  Pack the basics even for a short hike: water, a snack, a layer, a light
+  and a charged phone. Start early on hot days, and tell someone where
+  you're headed.
 duration: half-day
 effort: moderate
 cost: free
@@ -18,4 +27,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
 themes: [views, hiking]
-tags: [hiking, nature, views, outdoors]
+tags: [viewpoint hike, scenic trail, overlook hike, summit views, hiking, outdoors]

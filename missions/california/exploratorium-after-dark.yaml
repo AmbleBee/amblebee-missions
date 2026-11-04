@@ -9,17 +9,24 @@ place:
   coords: [37.80115, -122.39875]
   website: https://www.exploratorium.edu
   links:
-    - label: Reduced Rate Informaiton
+    - label: Reduced rate information
       url: https://www.exploratorium.edu/visit/reduced-rates
-short: Play with hundreds of science exhibits at the Exploratorium's adults-only After Dark night.
+short: Exploratorium After Dark in San Francisco. Play with science exhibits on adults-only night.
 description: >
-  Go to the Exploratorium's After Dark night, when the hands-on science museum
-  on the Embarcadero is just for adults (18 and up), with a bar and special
-  themed programs. Play with hundreds of exhibits: optical illusions, giant
-  bubbles, a pitch-black crawl-through Tactile Dome (book that separately),
-  and machines that make your voice weird. Each find the exhibit that blows
-  your mind and show it to the other. Get a photo of you in one of
-  the illusions. Check the schedule and buy tickets ahead.
+  Go to the Exploratorium's After Dark night, when the hands-on science
+  museum on the Embarcadero is just for adults, with a bar and themed
+  programs. Play with optical illusions, giant bubbles and machines that
+  make your voice weird. Each find the exhibit that blows your mind and show
+  it to everyone else. The photo to get: you inside one of the illusions.
+about: >
+  Physicist Frank Oppenheimer, the younger brother of J. Robert
+  Oppenheimer, founded the Exploratorium in 1969 as a museum where you learn
+  by touching everything. It moved to Pier 15 in 2013.
+
+  Don't miss the Tactile Dome, a pitch-black maze you crawl through by feel
+  alone. It's been there since 1971 and needs its own ticket, so book it
+  separately. After Dark is 18 and up and runs on a regular weekly evening.
+  Check the schedule and buy tickets ahead.
 duration: short
 effort: easy
 cost: $$
@@ -30,5 +37,4 @@ travel: day-trip
 check_ahead: [tickets]
 discounts: [educator, military]
 themes: [museums, science, drinks]
-tags: [science, museum, nightlife, interactive, san-francisco]
-credit:
+tags: [exploratorium, after dark, tactile dome, science museum, adults night, san-francisco]

@@ -1,9 +1,9 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 45
 name: Holiday Window Art
 mode: both
 who: [friends, family, kids]
-short: Get chalk window markers and each decorate a window for the next holiday. Rate each other out of 10.
+short: Holiday window art at home. Each decorate a window with chalk markers, then score each other.
 description: >
   Pick up a pack of liquid chalk window markers and choose whatever holiday is
   coming up next. Each of you claims a window, or half of a big one, and draws
@@ -13,6 +13,14 @@ description: >
   Then do the big reveal and rate each other's work out of 10, with one thing
   you loved about it. Take a photo of each window, and a group shot with your art and your scores. Leave it up through the holiday and
   wipe it off with a damp cloth after.
+about: >
+  Liquid chalk markers are made for glass and wipe off with a damp cloth.
+  Test a small corner first, since they can stain frosted glass, window tint
+  film and old painted frames.
+
+  Tips: sketch your idea on paper first, draw the outlines before you fill
+  in color, and remember that people outside see it backward, so write any
+  words from the outside or skip words entirely.
 for_kids:
   short: Window art! Do each thing.
   steps:
@@ -29,4 +37,4 @@ season: any
 time_of_day: any
 travel: home
 themes: [art, games, holidays, playful, make-something]
-tags: [art, holiday, at-home, playful, creative, competitive]
+tags: [window painting, holiday decorating, chalk markers, family craft, at-home, competitive]

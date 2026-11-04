@@ -8,15 +8,21 @@ place:
   area: Merritt Island, Space Coast
   coords: [28.52400, -80.68300]  # APPROX: set at the entrance before publishing
   website: https://www.kennedyspacecenter.com
-short: Stand under the real Space Shuttle Atlantis and a Saturn V rocket at Kennedy Space Center.
+short: Kennedy Space Center on the Space Coast. Stand under Space Shuttle Atlantis and a Saturn V.
 description: >
-  Spend the day where America launches into space. See the real Space Shuttle
-  Atlantis, tilted as if it's in orbit, walk under a giant Saturn V moon
-  rocket, and take the bus tour out past the launch pads and the huge Vehicle
-  Assembly Building. Try the shuttle launch simulator together and each pick
-  the mission you'd sign up for. Get a photo of you in front of
-  Atlantis. Buy tickets ahead, and check the launch schedule; you might catch
-  a real one.
+  See the real Space Shuttle Atlantis, tilted as if it's in orbit, walk under
+  a giant Saturn V moon rocket, and take the bus tour out past the launch
+  pads. Try the shuttle launch simulator together and each pick the mission
+  you'd sign up for. The photo to get: you in front of Atlantis.
+about: >
+  Atlantis flew the last space shuttle mission in 2011 and is displayed with
+  its payload bay doors open, as if it just left the space station. The
+  Vehicle Assembly Building, which you pass on the bus tour, is one of the
+  biggest buildings in the world by volume, and its painted American flag
+  is huge.
+
+  Check the launch schedule before you go; you might catch a real launch.
+  Buy tickets ahead.
 for_kids:
   short: Space hunt! Find each thing.
   steps:
@@ -34,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
 themes: [stars, museums]
-tags: [space, nasa, rockets, museum, space-coast]
-credit:
+tags: [kennedy space center, space shuttle atlantis, saturn v, rocket launch, nasa visitor complex, space-coast]

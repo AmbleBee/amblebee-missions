@@ -7,15 +7,23 @@ place:
   name: Salvation Mountain
   area: Near Niland, east of the Salton Sea
   coords: [33.25400, -115.47300]  # APPROX: set at the parking area before publishing
-short: See Salvation Mountain, a hill painted in rainbow colors in the middle of the desert.
+short: Salvation Mountain near Niland. A hill painted in rainbow colors in the middle of the desert.
 description: >
-  Drive out past the Salton Sea to a hillside that one man covered over decades
-  in adobe, straw and thousands of gallons of donated paint: rainbow stripes,
-  flowers, a waterfall and giant painted words. Follow the yellow brick path
-  (stay on it to protect the paint), explore the painted rooms built from
-  hay bales, tree branches and old cars, and get a photo of you in
-  front of the colors. It's free, but bring a can of latex paint or a small
-  donation to help keep it going. Go in the cooler months and bring water.
+  Drive out past the Salton Sea to a hillside covered in rainbow stripes,
+  flowers, a painted waterfall and giant words. Follow the yellow brick path
+  (stay on it to protect the paint), explore the painted rooms built from hay
+  bales, branches and old cars, and each pick your favorite painted detail.
+  The photo to get: you in front of the colors.
+about: >
+  One man, Leonard Knight, spent about 30 years building Salvation Mountain
+  out of adobe, straw and thousands of gallons of donated paint, starting in
+  the 1980s. His message, "God Is Love," is painted across the top.
+  Volunteers have kept it going since he died in 2014. It appeared in the
+  movie Into the Wild.
+
+  It's free, but bring a can of latex paint or a small donation to help.
+  Next door is Slab City, an off-grid community. Go in the cooler months and
+  bring water.
 for_kids:
   short: Rainbow hunt! Find each thing.
   steps:
@@ -33,5 +41,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [deserts, art, quirky]
-tags: [art, quirky, roadside, desert, colorful, salton-sea]
-credit:
+tags: [salvation mountain, leonard knight, folk art, salton sea, slab city, roadside art]

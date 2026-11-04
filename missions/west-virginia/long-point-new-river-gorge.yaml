@@ -5,16 +5,28 @@ mode: date
 place:
   name: Long Point Trail
   area: Newton Rd, Fayetteville
-  coords: [38.041846, -81.078119]
+  coords: [38.04185, -81.07812]
   website: https://www.nps.gov/places/long-point-trail.htm
   links:
     - label: alltrails
       url: https://www.alltrails.com/trail/us/west-virginia/long-point-via-fayetteville-trail
-short: Hike to Long Point for the best view of the New River Gorge Bridge. Pack a picnic.
+short: Long Point Trail in Fayetteville, WV. Hike to the best view of the New River Gorge Bridge.
 description: >
-  An easy-going three mile round trip through the woods ends on a rock point with a huge
-  view of the New River Gorge Bridge spanning the canyon. Pack a picnic and stay for the
-  late afternoon light. The edges are unfenced, so keep back from the drop.
+  Walk the easy trail through the woods to a rock point with a huge view of
+  the New River Gorge Bridge spanning the canyon. Spread out a picnic and
+  stay for the late afternoon light. Each guess how high the bridge is above
+  the river before you look it up. The photo to get: the two of you on the
+  point with the bridge behind you.
+about: >
+  The New River Gorge Bridge opened in 1977 as the longest single-span steel
+  arch bridge in the world, and it's still one of the longest. The road
+  deck is nearly 900 feet above the river. Before it opened, crossing the
+  gorge took about 40 minutes on winding roads; now it takes less than one.
+
+  On Bridge Day each October, the bridge closes to cars and BASE jumpers
+  leap off it. The gorge became a national park in 2020. The trail is about
+  three miles round trip, and the point's edges are unfenced, so keep back
+  from the drop.
 duration: short
 effort: moderate
 cost: free
@@ -24,5 +36,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, hiking, parks, architecture]
-tags: [hike, bridge, views, national-park]
-credit:
+tags: [long point trail, new river gorge bridge, new river gorge national park, picnic hike, fayetteville wv, national-park]

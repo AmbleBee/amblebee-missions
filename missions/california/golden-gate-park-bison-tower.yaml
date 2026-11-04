@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 4
 name: "Golden Gate Park: Tower and Bison"
 mode: both
@@ -9,15 +9,25 @@ place:
   address: 50 Hagiwara Tea Garden Dr, San Francisco, CA 94118
   coords: [37.77135, -122.46812]
   website: https://www.famsf.org/visit/de-young
-short: Ride up the free de Young tower, then wander Golden Gate Park west to find the bison.
+short: Golden Gate Park in San Francisco. Ride up the free de Young tower, then go find the bison herd.
 description: >
-  Start at the de Young and take the elevator up the glass-walled observation
-  tower. It's free, even without a museum ticket, and looks out over the city,
-  the park and the bay. Then walk west through the park along JFK Drive, past
-  lakes and meadows, to the Bison Paddock near Spreckels Lake, where a small
-  herd has lived since the 1890s. It's a long walk (well over two miles each
-  way), so pick just one if you'd rather, or rent bikes. Get a photo with the
-  bison behind you.
+  Start at the de Young and ride the elevator up its glass-walled tower for
+  a free view over the city, the park and the bay. Each point out one place
+  you'd want to go next. Then walk or bike west through the park past lakes
+  and meadows to the Bison Paddock, where a small herd lives in the middle
+  of the city. The photo to get: you at the fence with the shaggy bison
+  behind you.
+about: >
+  Bison have lived in Golden Gate Park since the 1890s, when the park
+  brought them in to help save the species from dying out. The paddock is
+  near Spreckels Lake, well over two miles west of the de Young, so rent
+  bikes or pick just one stop if you'd rather. Much of JFK Drive is now
+  closed to cars, which makes it an easy ride.
+
+  The de Young's tower is free, even without a museum ticket. The building's
+  copper skin was designed to slowly turn green as it weathers, so it
+  blends into the trees. Golden Gate Park is bigger than New York's Central
+  Park.
 for_kids:
   short: Park explorer! Find each thing.
   steps:
@@ -35,4 +45,4 @@ travel: local
 check_ahead: [hours]
 discounts: [senior, student]
 themes: [views, walks, wildlife]
-tags: [park, views, animals, walking, san-francisco]
+tags: [golden gate park, bison paddock, de young tower, free views, jfk drive, san-francisco]

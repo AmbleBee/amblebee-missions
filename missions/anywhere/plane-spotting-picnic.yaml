@@ -3,7 +3,7 @@ number: 62
 name: Plane Spotting Picnic
 mode: both
 who: [friends, family, kids]
-short: Picnic under an airport's landing path. Guess where each plane came from, then check.
+short: Plane spotting picnic under an airport landing path. Guess where each plane came from.
 description: >
   Find a public park, viewing area, or legal parking spot under the approach
   path of your nearest airport, where planes come in low. Spread out a
@@ -13,6 +13,14 @@ description: >
   origin. Bring ear protection for little ones, stay outside any fences, and
   check the wind, since it decides which runway they land on. Get the shot
   of a plane right overhead with everyone pointing up.
+about: >
+  Planes land and take off into the wind, so the wind decides which
+  direction they come in from and which spot is best that day. Flight
+  tracking apps show each plane's route, airline and type.
+
+  Plane spotting is a real hobby with fans all over the world. Some airports
+  even have official viewing areas, and a few restaurants are famous for
+  planes landing right overhead. Bring ear protection for little ones.
 steps:
   - The picnic spread under the flight path
   - A plane right overhead
@@ -36,5 +44,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
 themes: [picnic, vehicles]
-tags: [planes, airport, picnic, free, outdoors, aviation]
-credit:
+tags: [plane spotting, airport picnic, flight tracker game, aviation for kids, free, outdoors]

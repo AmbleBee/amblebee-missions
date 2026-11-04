@@ -8,15 +8,23 @@ place:
   area: Death Valley National Park, near Furnace Creek
   coords: [36.42000, -116.81000]  # APPROX: set at the Zabriskie Point parking before publishing
   website: https://www.nps.gov/deva
-short: Watch sunrise light up the golden badlands at Zabriskie Point. Then stand at Badwater Basin.
+short: Zabriskie Point sunrise in Death Valley. Watch the badlands glow, then walk Badwater Basin.
 description: >
   Get to Zabriskie Point before dawn and walk up to the overlook as the first
-  light turns the folded, golden badlands pink and orange, with the Panamint
-  Mountains glowing across the valley. Bring coffee and a blanket, since desert
-  mornings are cold. Afterward, drive down to Badwater Basin, the lowest
-  point in North America, and walk out onto the white salt flats. Get a photo
-  of you at the sea-level sign high on the cliff above. Go from
-  fall to spring; summer heat here is dangerous.
+  light turns the folded, golden badlands pink and orange. Bring coffee and a
+  blanket, since desert mornings are cold. Afterward, drive down to Badwater
+  Basin and walk out onto the white salt flats, and each look up at the cliff
+  to spot the tiny "sea level" sign high above you. The photo to get: you on
+  the salt with that sign far overhead.
+about: >
+  Zabriskie Point is named for Christian Zabriskie, who ran the borax company
+  famous for its 20-mule-team wagons. Badwater Basin, about 280 feet below
+  sea level, is the lowest point in North America. The hottest air
+  temperature ever recorded on Earth was measured nearby at Furnace Creek.
+
+  The salt flats form a honeycomb of white crust; walk out past the busy
+  first stretch to find the cleanest patterns. Go from fall to spring, since
+  summer heat here is dangerous.
 for_kids:
   short: Desert hunt! Find each thing.
   steps:
@@ -34,5 +42,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, deserts, parks, sunsets]
-tags: [sunrise, desert, national-park, views, death-valley]
-credit:
+tags: [zabriskie point, death valley sunrise, badwater basin, salt flats, lowest point, death-valley]

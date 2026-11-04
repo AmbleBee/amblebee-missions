@@ -11,14 +11,22 @@ place:
   links:
     - label: alltrails
       url: https://www.alltrails.com/trail/us/missouri/taum-sauk-missouris-highpoint-trail
-short: Stand on Missouri's highest point, then hike the loop down to the state's tallest waterfall.
+short: Taum Sauk Mountain near Ironton. Stand on Missouri's highest point, then hike to its tallest falls.
 description: >
-  Walk the short paved path to the top of Taum Sauk Mountain, at 1,772 feet the
-  highest point in Missouri, for a summit photo. Then take the three-mile loop
-  down across open rocky glades to Mina Sauk Falls, which tumbles in steps down
-  the mountainside. The falls run best after rain and can be a trickle in dry
-  spells. The trail is rocky and steep in places; wear real shoes and bring
-  water.
+  Walk the short paved path to the top of Taum Sauk Mountain, the highest
+  point in Missouri, and get your summit photo by the marker. Then take the
+  loop down across open rocky glades to Mina Sauk Falls, which tumbles in
+  steps down the mountainside. Each guess how tall the falls are before you
+  read the sign, and closest gets to pick the dinner spot.
+about: >
+  The summit is 1,772 feet, low by mountain standards, but the St. Francois
+  Mountains are some of the oldest exposed rock in North America, worn down
+  from ancient volcanoes more than a billion years old.
+
+  Mina Sauk Falls drops about 130 feet in a series of ledges, the tallest
+  waterfall in Missouri. It runs best after rain and can be a trickle in
+  dry spells. The loop is about three miles, rocky and steep in places, and
+  part of it follows the Ozark Trail. Wear real shoes and bring water.
 duration: half-day
 effort: moderate
 cost: free
@@ -28,4 +36,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, hiking, waterfalls]
-tags: [hiking, waterfall, summit, views, ozarks]
+tags: [taum sauk mountain, mina sauk falls, missouri high point, st francois mountains, ozark trail, ozarks]

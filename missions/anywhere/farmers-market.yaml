@@ -1,13 +1,21 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 12
 name: Farmers Market Morning
 mode: date
-short: Stroll a farmers market. Try something you've never eaten before.
+short: Farmers market date. Stroll the stalls and each try something you've never eaten before.
 description: >
   Head to a farmers market in the morning, coffee in hand. Wander the
-  stalls, sample what's offered, and each try at least one thing
-  you've never eaten. Pick up something to cook together later if
-  anything catches your eye.
+  stalls and each pick one thing the other has never eaten, then try them
+  together. Pick up ingredients for a meal to cook later. The photo to get:
+  the two of you with the strangest fruit or vegetable you found.
+about: >
+  Go early for the best selection, or near closing for deals. Ask the
+  growers what's best right now; they love that question, and they'll often
+  tell you how to cook it.
+
+  Bring a bag and some small bills, since not every stall takes cards. Most
+  markets run on a weekly schedule, often in spring through fall, with some
+  open year-round.
 duration: short
 effort: easy
 cost: $
@@ -17,4 +25,4 @@ time_of_day: morning
 travel: local
 check_ahead: [hours, seasonal]
 themes: [food]
-tags: [food, local, seasonal, outdoors]
+tags: [farmers market date, local produce, try new foods, saturday market, seasonal, outdoors]

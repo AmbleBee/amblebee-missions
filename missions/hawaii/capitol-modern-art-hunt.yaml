@@ -9,7 +9,7 @@ place:
   address: 250 S Hotel St, Honolulu, HI 96813
   coords: [21.30793, -157.85863]  # APPROX: set at the entrance before publishing
   website: https://capitolmodern.org
-short: Hunt the galleries for your favorite island art, then roam the sculpture garden. Free!
+short: Capitol Modern in Honolulu. A free art hunt through Hawaiʻi's state art collection.
 description: >
   Climb to the second-floor galleries of the downtown building that houses
   Hawaiʻi's state art collection, made up of work by artists of the islands.
@@ -19,6 +19,14 @@ description: >
   the piece the kids voted best. Admission is free; it's open only a few days a
   week, so check the schedule, and look on the events calendar for Super
   Saturday, a free family art-making day.
+about: >
+  In 1967, Hawaiʻi became the first state to set aside a share of the money
+  for new public buildings to buy art, and that's how much of this
+  collection was built. Everything here is by artists of the islands.
+
+  The museum is in a 1920s Spanish Mission-style building downtown. Admission
+  is free, but it's open only a few days a week, so check the schedule. Look
+  on the events calendar for free family art-making days.
 for_kids:
   short: Find art made in Hawaiʻi!
   steps:
@@ -36,5 +44,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [museums, art]
-tags: [art, museum, free, rainy-day, kids, honolulu, oahu]
-credit:
+tags: [capitol modern, hawaii state art museum, free museum honolulu, sculpture garden, family art hunt, honolulu]

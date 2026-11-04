@@ -8,12 +8,19 @@ place:
   area: Athol, north of Coeur d'Alene
   coords: [47.90700, -116.70700]  # APPROX: set at the main entrance before publishing
   website: https://www.silverwoodthemepark.com
-short: Ride the wooden coasters at Silverwood. Each pick one ride the other has to go on.
+short: Silverwood near Coeur d'Alene. Ride the wooden coasters; each pick a ride the other must ride.
 description: >
   Spend the day at the Northwest's biggest theme park. Ride the wooden coasters,
   cool off at the water park next door, and each pick one ride the other has to
   go on with you. Get a photo right after the scariest drop. Open in summer,
   with weekend Halloween nights in the fall.
+about: >
+  Silverwood is the biggest theme park in the Pacific Northwest. It opened
+  in 1988 on what had been a small airfield, and it has a real
+  steam train that loops through the woods.
+
+  The wooden coasters are the stars, and Boulder Beach water park is next
+  door. In the fall, the park turns into Scarywood for Halloween nights.
 for_kids:
   short: Theme park day! Find each thing.
   steps:
@@ -31,4 +38,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets, seasonal]
 themes: [thrills, playful]
-tags: [theme-park, rides, roller-coasters, playful, north-idaho]
+tags: [silverwood theme park, wooden roller coasters, boulder beach, scarywood, steam train, north-idaho]

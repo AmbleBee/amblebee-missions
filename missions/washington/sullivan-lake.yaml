@@ -8,16 +8,22 @@ place:
   area: Colville National Forest, near Metaline Falls
   coords: [48.84040, -117.28520]  # trailhead coords from WTA; confirm before publishing
   website: https://www.wta.org/go-hiking/hikes/sullivan-lake
-short: Hike the shore of Sullivan Lake in the Colville forest. Look up for bighorn sheep.
+short: Sullivan Lake near Metaline Falls, WA. Hike the shore and look up for bighorn sheep.
 description: >
-  Drive up to the far northeast corner of the state, past Metaline Falls, to a
-  long, clear mountain lake ringed by forest. Hike the trail along the shore
-  as far as you like (the full trip is about 8 miles), and scan the steep
-  slopes of Hall Mountain for one of eastern Washington's biggest herds of
-  bighorn sheep. Find a beach to skip rocks, and get a photo of you
-  with the lake behind you. The second half of October is best, when the
-  larches turn gold. It's remote, so fill up on gas and expect no cell
-  service.
+  Hike the trail along the shore of a long, clear mountain lake ringed by
+  forest, as far as you like. Scan the steep slopes of Hall Mountain, and
+  whoever spots the first bighorn sheep picks the lunch beach. Then find a
+  flat stone and have a rock-skipping contest. The photo to get: you with
+  the lake behind you.
+about: >
+  Sullivan Lake is in the far northeast corner of Washington, in the
+  Colville National Forest. Hall Mountain above it is home to one of eastern
+  Washington's biggest herds of bighorn sheep.
+
+  The full shoreline trail is about 8 miles round trip. The second half of
+  October is the prettiest time, when the larches on the slopes turn gold;
+  they're conifers that lose their needles each fall. It's remote, so fill
+  up on gas and expect no cell service.
 for_kids:
   short: Lake hunt! Find each thing.
   steps:
@@ -37,4 +43,4 @@ check_ahead: [conditions]
 caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
           Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
 themes: [hiking, lakes-rivers, forests, wildlife]
-tags: [lake, hiking, wildlife, fall-colors, colville-forest, northeast-washington]
+tags: [sullivan lake, colville national forest, bighorn sheep, golden larches, metaline falls, northeast-washington]

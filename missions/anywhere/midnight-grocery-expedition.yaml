@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 51
 name: Midnight Grocery Expedition
 mode: both
 who: [solo, friends]
-short: Wander a quiet late-night supermarket aisle by aisle. Find the weirdest thing in the store.
+short: Late-night grocery store adventure. Walk every aisle and find the weirdest thing in the store.
 description: >
   Head to a 24-hour or late-closing supermarket after 10 pm, when the aisles
   are nearly empty, and walk every single one slowly. Each of you has three
@@ -12,6 +12,15 @@ description: >
   Buy only those three things each. Try the edible ones in the parking lot or
   back home, and decide whose weird pick wins. Going solo? Hunt all
   three for yourself and crown your own champion.
+about: >
+  Late at night, the store is a different place: quiet aisles, stockers
+  rolling out new shelves, and music you can actually hear. Big 24-hour
+  supermarkets have the most aisles to explore, and international and
+  bulk sections are where the strangest finds hide.
+
+  Park near the entrance, be friendly to the night crew (they're working),
+  and set a budget for your three finds. The photo to get: your three weird
+  picks lined up on the car hood.
 steps:
   - An empty aisle all to yourselves
   - The strangest product in the store
@@ -26,5 +35,4 @@ time_of_day: night
 travel: local
 check_ahead: [hours]
 themes: [food, playful]
-tags: [food, late-night, explore, playful, cheap]
-credit:
+tags: [late night grocery run, weird food challenge, cheap night out, 24-hour store, late-night, playful]

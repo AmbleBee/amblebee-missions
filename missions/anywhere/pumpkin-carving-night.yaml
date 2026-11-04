@@ -3,7 +3,7 @@ number: 36
 name: Pumpkin Patch to Pumpkin Night
 mode: both
 who: [friends, family, kids]
-short: Hit a pumpkin patch and corn maze, find the coolest pumpkin, then carve or paint it at home.
+short: Pumpkin patch, corn maze and carving night. Find the coolest pumpkin, then carve it at home.
 description: >
   Make a whole fall day of it. Pick a pumpkin patch with a corn maze, grab a
   warm drink (apple cider, tea or hot cocoa) and a treat, and get lost in the
@@ -13,6 +13,15 @@ description: >
   without showing each other until you're done, and roast the seeds. Turn off
   the lights for the big reveal and get a photo of you with your
   glowing pumpkins. Check the patch's hours, tickets and parking first.
+about: >
+  Jack-o'-lanterns started in Ireland and Britain, where people carved
+  scary faces into turnips and potatoes. When the tradition came to
+  America, pumpkins turned out to be much easier to carve.
+
+  Carving tips: cut the lid at an angle so it doesn't fall in, scrape the
+  front wall thin before carving the face, and let grown-ups do the cutting
+  while kids draw the design and scoop. Roast the seeds with a little oil
+  and salt in a low oven until golden.
 for_kids:
   short: Pumpkin day! Do each thing.
   steps:
@@ -30,5 +39,5 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets, seasonal]
 themes: [spooky, holidays, make-something]
-tags: [pumpkins, corn-maze, halloween, seasonal, crafts, fall]
+tags: [pumpkin patch, corn maze, pumpkin carving, halloween activity, roasted pumpkin seeds, fall]
 credit: Kali W.

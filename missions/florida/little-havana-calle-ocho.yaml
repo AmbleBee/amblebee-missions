@@ -7,17 +7,25 @@ place:
   name: Domino Park (Máximo Gómez Park), Calle Ocho
   area: Little Havana, Miami
   address: 1444 SW 8th St, Miami, FL 33135
-  coords: [25.765629, -80.219340]
+  coords: [25.76563, -80.21934]
   website: https://www.miami.gov/Parks-Public-Places/Parks-Directory/Domino-Park
-short: Sip a cafecito on Calle Ocho, watch the domino games, and try a fresh guava pastry.
+short: Calle Ocho in Little Havana, Miami. Sip a cafecito, watch the domino games, find the roosters.
 description: >
-  Walk Calle Ocho, the heart of Miami's Cuban community. Stop at a ventanita
-  (walk-up coffee window) for a tiny, sweet cafecito, then watch the older
-  regulars slap down tiles at Domino Park. Try a guava pastelito and a Cuban
-  sandwich, watch cigars being rolled by hand, and look for the colorful
-  rooster statues along the street. In the evening, music spills out of the
-  bars and people dance. Get a photo of you under one of the
-  painted roosters.
+  Walk Calle Ocho, the heart of Miami's Cuban community. Order a tiny, sweet
+  cafecito from a walk-up coffee window, then watch the regulars slap down
+  tiles at Domino Park. Try a guava pastelito, watch cigars being rolled by
+  hand, and each count the painted rooster statues along the street. The
+  photo to get: you under the most colorful rooster you find.
+about: >
+  Domino Park's official name is Máximo Gómez Park, after a hero of Cuba's
+  fight for independence. Most of the players are longtime regulars, so
+  watch from the edge and enjoy the trash talk.
+
+  The rooster statues are a public art project, each painted by a different
+  artist. Look down too: the sidewalk Walk of Fame has stars for Latin music
+  legends like Celia Cruz and Gloria Estefan. In the evening, live music
+  spills out of the bars, and every March the street turns into one of the
+  biggest block parties in the country, the Calle Ocho Festival.
 for_kids:
   short: Calle Ocho hunt! Find each thing.
   steps:
@@ -34,5 +42,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [food]
-tags: [food, culture, coffee, cuban, miami]
-credit:
+tags: [calle ocho, little havana, domino park, cuban coffee, rooster statues, miami]

@@ -8,11 +8,22 @@ place:
   address: 3489 Observatory Pl, Cincinnati, OH 45208
   coords: [39.13893, -84.42258]
   website: https://www.cincinnatiobservatory.org
-short: Look through a 180-year-old telescope at the planets on an observatory date night.
+short: Cincinnati Observatory. Look at the planets through a telescope from the 1840s.
 description: >
-  The Cincinnati Observatory still lets visitors look through its historic telescopes, one
-  of them from 1845. Book an evening program, look at the Moon and planets through the old
-  brass lenses, and pick a star to name after each other on the way home.
+  Book an evening program and look at the Moon and planets through the old
+  brass telescopes, one of them from 1845. Take turns at the eyepiece and
+  each describe what you see before the other looks. On the way home, each
+  pick a star to name after the other. The photo to get: the two of you
+  under the open dome with the old telescope.
+about: >
+  The Cincinnati Observatory calls itself the birthplace of American
+  astronomy. It was founded in 1842, and former President John Quincy Adams
+  laid the cornerstone, in one of his last public speeches.
+
+  The observatory moved up to Mount Lookout in the 1870s to get away from
+  the city's smoke. Its 1845 telescope is one of the oldest working
+  telescopes in the world that the public can still look through. Programs
+  depend on the weather, so check before you go.
 duration: short
 effort: easy
 cost: $$
@@ -22,5 +33,4 @@ time_of_day: night
 travel: local
 check_ahead: [reservation, conditions]
 themes: [stars, science]
-tags: [stars, telescope, science, night]
-credit:
+tags: [cincinnati observatory, historic telescope, stargazing date, mount lookout, astronomy night, cincinnati]

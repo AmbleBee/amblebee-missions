@@ -7,16 +7,25 @@ place:
   name: Morikami Museum and Japanese Gardens
   area: Delray Beach
   address: 4000 Morikami Park Rd, Delray Beach, FL 33446
-  coords: [26.429233, -80.156348]
+  coords: [26.42923, -80.15635]
   website: https://morikami.org
-short: Walk the quiet paths of the Morikami Japanese Gardens in Delray Beach. Feed the koi.
+short: Morikami Japanese Gardens in Delray Beach. Walk the quiet paths and feed the giant koi.
 description: >
-  Walk a mile of winding paths through six Japanese garden styles around a
-  big lake, with stone lanterns, waterfalls, bamboo groves and a bonsai
-  collection. Stop at the rock garden and sit quietly for a few minutes
-  together. Feed the giant koi, then visit the museum about the Japanese
-  farming colony that once lived here. Have lunch at the café overlooking the
-  lake. Get a photo of you on one of the bridges. Closed Mondays.
+  Walk the winding paths through six styles of Japanese garden around a big
+  lake, with stone lanterns, waterfalls, bamboo groves and a bonsai
+  collection. Stop at the rock garden and sit quietly for a few minutes,
+  then feed the giant koi and see who can get the biggest one to come over.
+  The photo to get: you on one of the bridges with the lake behind.
+about: >
+  In the early 1900s, a group of young Japanese farmers started a farming
+  colony here called Yamato. Most of them eventually left, but George
+  Morikami stayed, farmed his whole life, and donated his land so it could
+  become a park. The museum tells the colony's story.
+
+  The gardens are called Roji-en, "Garden of the Drops of Dew," and each
+  section is inspired by a different period of Japanese garden design. The
+  café overlooks the lake and is a nice spot for lunch. Check the website
+  for hours, since it's closed some days.
 for_kids:
   short: Garden hunt! Find each thing.
   steps:
@@ -34,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [gardens, museums, relaxing]
-tags: [gardens, japanese, calm, museum, palm-beach]
-credit:
+tags: [morikami japanese gardens, koi pond, bonsai, yamato colony, delray beach, palm-beach]

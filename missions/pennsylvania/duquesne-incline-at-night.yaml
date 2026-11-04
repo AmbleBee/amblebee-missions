@@ -8,12 +8,23 @@ place:
   address: 1197 W Carson St, Pittsburgh, PA 15219
   coords: [40.44014, -80.01730]
   website: https://www.duquesneincline.org
-short: Ride the 1870s incline up Mount Washington at night and see Pittsburgh light up below.
+short: Duquesne Incline in Pittsburgh. Ride the 1870s cable car up and see the city light up below.
 description: >
-  Ride the old wooden incline car up the side of Mount Washington after dark. At the top,
-  the overlook shows downtown Pittsburgh lit up where the three rivers meet, one of the
-  best city views in the country. Walk along Grandview Avenue to the other overlooks
-  before riding back down. (Requires exact cash fare upon arrival)
+  Ride the old wooden incline car up the side of Mount Washington after
+  dark. At the top, the overlook shows downtown Pittsburgh lit up where the
+  three rivers meet. Each count the bridges you can see from the deck. The
+  photo to get: the two of you at the railing with the glowing city behind
+  you. Then walk Grandview Avenue to the other overlooks before riding back
+  down.
+about: >
+  The Duquesne Incline opened in 1877, when inclines carried people and
+  freight up the steep hills from the mills below. It's one of only two left
+  in the city, and it still runs its original wooden cars. A neighborhood
+  group saved it from closing in the 1960s. Peek into the machine room at
+  the top to see the gears turn.
+
+  Pittsburgh has more than 400 bridges, more than almost any city in the
+  world. The fare has been cash only, so bring small bills.
 duration: short
 effort: easy
 cost: $
@@ -23,5 +34,4 @@ time_of_day: night
 travel: local
 check_ahead: [hours]
 themes: [views, history]
-tags: [views, city-lights, historic, incline]
-credit:
+tags: [duquesne incline, mount washington overlook, pittsburgh skyline, three rivers, grandview avenue, pittsburgh]

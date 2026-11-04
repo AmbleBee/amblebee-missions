@@ -7,13 +7,21 @@ place:
   name: Venice Canals Historic District
   area: Venice, Los Angeles
   coords: [33.98420, -118.46660]  # APPROX: set at a canal bridge (Dell Ave) before publishing
-short: Wander the Venice Canals over the little bridges. Each pick the house you'd live in.
+short: Venice Canals in LA. Wander the little bridges and each pick the house you'd live in.
 description: >
   Leave the noise of the boardwalk behind and wander the quiet canals a few
-  blocks inland: arched footbridges, ducks, little rowboats and every style of
-  house right on the water. Each pick the house you'd move into and say why,
-  and find the best bridge for a photo of you. Then walk back to
-  Venice Beach for the sunset. These are people's front yards, so keep it quiet.
+  blocks inland: arched footbridges, ducks, little rowboats and every style
+  of house right on the water. Each pick the house you'd move into and say
+  why. The photo to get: you on the prettiest bridge. Then walk back to
+  Venice Beach for the sunset.
+about: >
+  Developer Abbot Kinney built "Venice of America" in 1905, with canals,
+  gondolas and Italian-style buildings. Most of the canals were filled in
+  and paved over in 1929 to make room for cars. The few that survived were
+  restored in the 1990s.
+
+  These are people's front yards, so keep it quiet and stay on the public
+  walkways.
 for_kids:
   short: Canal walk! Find each thing.
   steps:
@@ -30,4 +38,4 @@ season: any
 time_of_day: any
 travel: local
 themes: [walks, quirky]
-tags: [walking, water, neighborhood, quirky, los-angeles]
+tags: [venice canals, venice beach, abbot kinney, canal walk, historic district, los-angeles]

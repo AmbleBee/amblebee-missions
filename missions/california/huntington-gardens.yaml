@@ -9,14 +9,24 @@ place:
   address: 1151 Oxford Rd, San Marino, CA 91108
   coords: [34.12901, -118.11358]
   website: https://www.huntington.org/plan-your-visit
-short: Each pick a garden at the Huntington and lead the other through it. Desert, Japanese, Chinese?
+short: The Huntington in San Marino. Each pick a garden and lead your group on a tour of it.
 description: >
-  Spend a slow half-day at the Huntington. Look at the map, and each secretly
-  pick one garden "world" to lead the other through: the spiky Desert Garden,
-  the Japanese Garden with its moon bridge, the Chinese Garden's pavilions and
-  lake, or the Rose Garden. Give your best tour-guide pitch for why yours is the
-  best. Finish in the art galleries to find The Blue Boy, and get a photo of
-  you in your favorite spot of the day.
+  Look at the map and each secretly pick one garden to lead everyone
+  through: the spiky Desert Garden, the Japanese Garden with its moon
+  bridge, the Chinese Garden's pavilions and lake, or the Rose Garden. Give
+  your best tour-guide pitch for why yours is the best. Finish in the art
+  galleries to find The Blue Boy. The photo to get: you in your favorite
+  spot of the day.
+about: >
+  Railroad tycoon Henry E. Huntington founded the Huntington in 1919 on his
+  estate. Today the gardens cover more than 120 acres, and the library holds
+  treasures like a Gutenberg Bible.
+
+  The Blue Boy, painted by Thomas Gainsborough around 1770, was bought in
+  1921 for a record price and is the museum's most famous painting. The
+  Desert Garden is one of the oldest and biggest collections of cactus and
+  succulents in the world, and the Chinese Garden is called Liu Fang Yuan,
+  the Garden of Flowing Fragrance. Tickets are timed, so book ahead.
 for_kids:
   short: Garden explorer! Find each thing.
   steps:
@@ -35,4 +45,4 @@ travel: local
 check_ahead: [hours, tickets]
 discounts: [senior, military, student]
 themes: [gardens, art, relaxing]
-tags: [garden, art, calm, splurge, los-angeles]
+tags: [huntington library, botanical gardens, the blue boy, japanese garden, desert garden, los-angeles]

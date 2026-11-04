@@ -8,15 +8,22 @@ place:
   area: Biscayne National Park, Homestead
   coords: [25.46300, -80.33500]  # APPROX: set at the visitor center before publishing
   website: https://www.nps.gov/bisc
-short: Paddle the clear, shallow water of Biscayne National Park through the mangroves in the morning.
+short: Biscayne National Park near Homestead. Paddle the clear, shallow water along the mangroves.
 description: >
-  Ninety-five percent of Biscayne National Park is water, so paddle it. Rent
-  a canoe or kayak at Convoy Point in the calm morning and paddle the
-  shoreline along the mangroves, looking down into the clear, shallow water
-  for fish, sea stars and maybe a manatee. Watch the pelicans dive, and stop
-  for a snack on the water with the Miami skyline far in the distance. Get a
-  photo of you in the boat. Check the wind before going, and ask
-  about the park's island boat trips too.
+  Rent a canoe or kayak at Convoy Point in the calm morning and paddle
+  along the mangroves, looking down into the clear, shallow water for fish,
+  sea stars and maybe a manatee. Keep a count of every diving pelican you
+  see. Stop for a snack on the water with the Miami skyline far in the
+  distance. The photo to get: you in the boat among the mangroves.
+about: >
+  About 95 percent of Biscayne National Park is underwater, which makes it
+  one of the few national parks you really need a boat to see. It protects
+  part of the only living coral reef in the continental U.S., along with
+  mangrove shorelines and dozens of little islands.
+
+  Ask at the visitor center about the park's island boat trips, to places
+  like Boca Chita Key and its little lighthouse. Check the wind before you
+  paddle.
 for_kids:
   short: Bay hunt! Find each thing.
   steps:
@@ -39,5 +46,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [conditions, hours]
 themes: [lakes-rivers, boating, parks]
-tags: [kayak, national-park, mangroves, water, south-florida]
-credit:
+tags: [biscayne national park, kayaking mangroves, convoy point, miami skyline, clear water paddling, south-florida]

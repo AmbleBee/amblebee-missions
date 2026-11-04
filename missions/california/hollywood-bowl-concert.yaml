@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 58
 name: Concert at the Hollywood Bowl
 mode: both
@@ -8,15 +8,24 @@ place:
   area: Cahuenga Pass, Hollywood
   coords: [34.11313, -118.33861]
   website: https://www.hollywoodbowl.com
-short: Picnic under the stars at a Hollywood Bowl concert. Pack wine, cheese and a blanket.
+short: Hollywood Bowl in LA. Picnic under the stars before a summer concert in the hills.
 description: >
-  Pick a concert, anything from the LA Phil to a movie-with-orchestra night or
-  a big headliner, and go to the famous outdoor amphitheater in the
-  Hollywood Hills. Get there early to picnic: pack wine, cheese and snacks
-  (you can bring your own food) and eat at one of the picnic areas or your
-  seats. Watch the shell light up as the sun goes down, and get a photo of you with the stage glowing behind you. Bring a blanket and a
-  jacket. The season runs through summer; buy tickets ahead and take the Bowl
-  shuttle.
+  Pick a concert, anything from the LA Phil to a movie-with-orchestra night
+  or a big headliner, and get there early to picnic. Pack your favorite
+  snacks and a blanket, and eat at a picnic area or your seats as the sun
+  goes down. The photo to get: you with the shell glowing behind you once
+  the lights come up. Then each pick your favorite song of the night on the
+  way out.
+about: >
+  The Hollywood Bowl opened in 1922 in a natural bowl in the hills and seats
+  about 17,500 people, which makes it one of the biggest outdoor music
+  venues in the country. Its stacked white arches are one of the most famous
+  sights in LA.
+
+  You can bring your own food. Whether you can bring wine depends on the
+  event, so check before you go. Bring a jacket, since it cools off after
+  dark. The season runs through summer. Buy tickets ahead and take the Bowl
+  shuttle or park-and-ride; parking near the Bowl is slow to leave.
 duration: short
 effort: easy
 cost: $$$
@@ -26,5 +35,4 @@ time_of_day: night
 travel: day-trip
 check_ahead: [tickets, seasonal]
 themes: [picnic, shows, romantic]
-tags: [music, concert, picnic, romantic, night, los-angeles]
-credit:
+tags: [hollywood bowl, outdoor concert, la phil, picnic concert, summer music, los-angeles]

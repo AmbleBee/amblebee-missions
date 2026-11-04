@@ -8,12 +8,23 @@ place:
   address: 3422 Chateau Rd, Medora, ND 58645
   coords: [46.91540, -103.54506]
   website: https://medora.com
-short: Eat steak cooked on a pitchfork, then watch the Medora Musical in the Badlands.
+short: Medora, ND. Eat a steak cooked on a pitchfork, then see the Medora Musical in the Badlands.
 description: >
-  In summer, Medora cooks steaks on pitchforks over a fire on a bluff above the Badlands,
-  then serves dinner with a view. Walk down to the outdoor amphitheatre for the Medora
-  Musical, a song-and-dance Western show with the Badlands as the backdrop. Runs June to
-  early September.
+  Start with the Pitchfork Steak Fondue: steaks speared on pitchforks and
+  cooked over a fire on a bluff above the Badlands, served with a view. Then
+  head down to the outdoor amphitheatre for the Medora Musical, a
+  song-and-dance Western show with the Badlands as the backdrop. Each pick
+  your favorite song and hum it on the way out. The photo to get: the two of
+  you with the Badlands glowing at sunset.
+about: >
+  The Medora Musical has run every summer since 1965. Businessman Harold
+  Schafer helped bring the little cow town back to life in the 1960s, and
+  the show is still a Medora tradition.
+
+  Theodore Roosevelt ranched near here in the 1880s and later said he never
+  would have been president without his years in North Dakota. Theodore
+  Roosevelt National Park is right next to town, so add a drive through it
+  before dinner. The show and fondue run from June to early September.
 duration: half-day
 effort: easy
 cost: $$$
@@ -23,5 +34,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [tickets, seasonal]
 themes: [rocks-fossils, food, shows]
-tags: [show, dinner, badlands, western]
-credit:
+tags: [medora musical, pitchfork steak fondue, north dakota badlands, theodore roosevelt national park, western show, medora]

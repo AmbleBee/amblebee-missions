@@ -1,8 +1,8 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 46
 name: Draw That Memory
 mode: date
-short: Each spend 5 minutes drawing a memory of the two of you. Then guess what the other one drew.
+short: Draw that memory date night. Each draw a memory of the two of you, then guess the other's.
 description: >
   Grab two pieces of paper and something to draw with. Each of you secretly
   picks a memory from your relationship (your first date, a trip, an inside
@@ -12,6 +12,12 @@ description: >
   going as long as you're laughing. At the end, pick your favorite drawing of
   the night, and get a photo of the two of you holding it up. Keep it
   somewhere you'll see it.
+about: >
+  It plays like Pictionary, but every answer is a story only the two of you
+  know. Bad drawings make it better: stick figures and arrows are fine.
+
+  Write the date on the back of each drawing and keep them in a folder or a
+  jar. After a year, you'll have a little picture book of your relationship.
 duration: short
 effort: easy
 cost: free
@@ -20,5 +26,4 @@ season: any
 time_of_day: evening
 travel: home
 themes: [games, romantic, make-something]
-tags: [drawing, memories, game, at-home, romantic]
-credit:
+tags: [at-home, drawing game, date night at home, relationship memories, pictionary for couples, romantic]

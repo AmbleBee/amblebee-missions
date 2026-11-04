@@ -9,13 +9,20 @@ place:
   address: 6060 Wilshire Blvd, Los Angeles, CA 90036
   coords: [34.06240, -118.36110]  # APPROX: set at the entrance before publishing
   website: https://www.petersen.org
-short: Tour the Petersen's car galleries and the Vault below. Each pick your dream garage of three.
+short: Petersen Automotive Museum in LA. Tour the galleries and the Vault, and pick your dream garage.
 description: >
-  Explore three floors of car history and LA car culture, then add the Vault,
-  the basement full of rare classics, supercars, movie cars and head-of-state
-  limousines. Each pick the three cars for your dream garage as you go, then
-  compare lists over lunch. Take a photo with the wild red-and-steel building
-  outside.
+  Explore three floors of car history and LA car culture, then add the
+  Vault, the basement full of rare classics, supercars, movie cars and
+  presidential limousines. Each pick three cars for your dream garage as you
+  go, then compare lists over lunch. The photo to get: you in front of the
+  wild red-and-steel building outside.
+about: >
+  The museum was founded in 1994 by Robert Petersen, the publisher of Hot
+  Rod magazine. In 2015 it got its famous makeover: curving ribbons of
+  stainless steel wrapped over a bright red building.
+
+  The Vault holds hundreds of cars that rarely go on display, and it needs
+  its own tour ticket, so book it with your admission.
 for_kids:
   short: Car hunt! Find each car.
   steps:
@@ -33,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [museums, vehicles]
-tags: [cars, museum, rainy-day, los-angeles]
+tags: [petersen automotive museum, the vault, movie cars, car museum, museum row, los-angeles]

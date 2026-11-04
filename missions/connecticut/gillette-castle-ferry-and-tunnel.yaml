@@ -12,7 +12,7 @@ place:
   links:
     - label: Chester-Hadlyme Ferry
       url: https://portal.ct.gov/DOT/Traveler/ferries/Chester-Hadlyme-Ferry
-short: Ride the little river ferry to a stone castle, then walk through a dark old train tunnel.
+short: Gillette Castle in East Haddam. Ride the tiny river ferry to a stone castle and a dark tunnel.
 description: >
   Drive onto the tiny Chester-Hadlyme car ferry for a short ride across the
   Connecticut River, with the stone castle watching from the cliff above.
@@ -24,6 +24,16 @@ description: >
   tunnel mouth. Castle tours are limited and seasonal,
   so book ahead, and check that the ferry is running (it runs April through
   November and sometimes stops for repairs).
+about: >
+  The castle belonged to actor William Gillette, who played Sherlock Holmes
+  on stage more than a thousand times and gave Holmes his famous curved
+  pipe. He built the castle from 1914 to 1919, with hand-carved wooden
+  door latches, hidden mirrors to spy on his guests, and a small railroad he
+  drove around the grounds.
+
+  The Chester-Hadlyme Ferry has crossed the river since the 1700s, making it
+  one of the oldest ferry crossings in the country. It runs from spring
+  through fall and sometimes pauses for repairs. Castle tours are seasonal.
 for_kids:
   short: Ride a ferry to a real castle!
   steps:
@@ -41,5 +51,4 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets, seasonal]
 themes: [hiking, boating, caves, history, architecture]
-tags: [castle, ferry, trails, tunnel, history, kids, east-haddam]
-credit:
+tags: [gillette castle, chester hadlyme ferry, sherlock holmes actor, train trail tunnel, family day trip, east-haddam]

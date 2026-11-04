@@ -1,12 +1,21 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 1
 name: Coffee Walk Somewhere New
 mode: date
-short: Grab coffee, then walk a street you've never been down.
+short: Coffee walk date. Try a new coffee shop, then wander a street you've never walked.
 description: >
-  Pick a coffee shop neither of you has tried. Get your drinks to go
-  and wander a nearby neighborhood or street you've never walked.
-  No destination, just see what you find.
+  Pick a coffee shop neither of you has tried and get your drinks to go.
+  Then wander a nearby street you've never walked, taking turns choosing
+  left or right at each corner. No destination, just see what you find. Each
+  spot the most interesting front door along the way. The photo to get: the
+  two of you with your coffees in front of the best door.
+about: >
+  This works in almost any town. Older neighborhoods near downtown are great
+  for doors, porches, murals and little shops. If you get stuck choosing a
+  direction, flip a coin.
+
+  Make it a habit: try a new shop and a new street each time, and keep a
+  list of your favorites so you can come back.
 duration: short
 effort: easy
 cost: $
@@ -15,4 +24,4 @@ season: any
 time_of_day: morning
 travel: local
 themes: [walks, food]
-tags: [coffee, walk, explore]
+tags: [coffee date, neighborhood walk, explore your town, local coffee shop, walking date]

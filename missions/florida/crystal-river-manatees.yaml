@@ -7,15 +7,22 @@ place:
   name: Kings Bay and Three Sisters Springs
   area: Crystal River
   coords: [28.88800, -82.58900]  # APPROX: set at your tour operator's dock before publishing
-short: Float quietly next to wild manatees on a winter morning swim in Crystal River.
+short: Swim with manatees in Crystal River on a winter morning tour. Float quietly as they drift by.
 description: >
-  Crystal River is the only place in the U.S. where you can legally swim with
-  wild manatees. On a winter morning, take a guided tour, slip into the water
-  in a wetsuit, and float quietly as the gentle giants drift by in the clear
-  springs. Follow the "passive observation" rules: no chasing, touching or
-  diving down. Get a photo of you in your wetsuits on the boat.
-  Rules are strict and may tighten, so book with a licensed operator. The
-  best manatee season runs roughly November through March.
+  On a winter morning, take a guided tour, slip into the clear springs in a
+  wetsuit, and float quietly as gentle manatees drift by. Follow the
+  "passive observation" rules: no chasing, touching or diving down. Back on
+  the boat, each describe your closest encounter. The photo to get: you in
+  your wetsuits on the boat, still dripping.
+about: >
+  Crystal River is the only place in the U.S. where you can legally swim
+  with wild manatees. A national wildlife refuge was created here in 1983 to
+  protect them, and the manatee population has recovered enough to be moved
+  from endangered to threatened.
+
+  Manatees' closest living relatives are elephants. They gather in the
+  warm springs from roughly November through March. Rules are strict and may
+  tighten, so book with a licensed operator.
 for_kids:
   short: Manatee swim! Find each thing.
   steps:
@@ -36,5 +43,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, seasonal]
 themes: [beach, swimming, wildlife]
-tags: [manatees, swimming, wildlife, springs, gulf-coast]
-credit:
+tags: [swim with manatees, crystal river, three sisters springs, kings bay, manatee tour, gulf-coast]

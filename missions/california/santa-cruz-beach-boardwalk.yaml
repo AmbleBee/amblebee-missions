@@ -8,15 +8,21 @@ place:
   area: Main Beach, Santa Cruz
   coords: [36.96400, -122.01800]  # APPROX: set at the main entrance before publishing
   website: https://beachboardwalk.com
-short: Ride the 1924 Giant Dipper at the Santa Cruz Beach Boardwalk, then grab a caramel apple.
+short: Santa Cruz Beach Boardwalk. Ride the 1924 Giant Dipper, then grab a caramel apple on the sand.
 description: >
-  Spend a day at California's classic seaside amusement park, right on the
-  sand. Ride the Giant Dipper, a wooden roller coaster from 1924, and the
-  century-old Looff carousel, where you can still try to grab the brass ring.
-  Win each other a prize at the games, share a caramel apple or salt water
-  taffy, and walk out on the wharf to see the sea lions under it. Get a photo
-  of you on the beach with the coaster behind you. Rides run daily
-  in summer and mostly on weekends the rest of the year.
+  Ride the Giant Dipper, a wooden roller coaster from 1924, then hop on the
+  old carousel and try to grab the brass ring as you go around. Win each
+  other a prize at the games, share a caramel apple or saltwater taffy, and
+  walk out on the wharf to see the sea lions underneath. The photo to get:
+  you on the beach with the coaster behind you.
+about: >
+  The Boardwalk opened in 1907 and is the oldest surviving amusement park in
+  California. The Giant Dipper and the 1911 Looff carousel are both National
+  Historic Landmarks, and the carousel is one of the few left where you can
+  still try for the brass ring. Movie fans may know the Boardwalk from The
+  Lost Boys.
+
+  Rides run daily in summer and mostly on weekends the rest of the year.
 for_kids:
   short: Boardwalk fun! Find each thing.
   steps:
@@ -34,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
 themes: [beach, thrills, playful]
-tags: [amusement-park, beach, rides, playful, santa-cruz]
-credit:
+tags: [santa cruz beach boardwalk, giant dipper, looff carousel, brass ring, beach amusement park, santa-cruz]

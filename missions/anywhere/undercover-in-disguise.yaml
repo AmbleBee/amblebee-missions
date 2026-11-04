@@ -3,7 +3,7 @@ number: 52
 name: Undercover in Disguise
 mode: both
 who: [friends, family]
-short: Dress each other in disguises, invent secret identities, and stay in character all afternoon.
+short: Undercover disguise day. Dress each other up, invent secret identities, stay in character.
 description: >
   Each of you builds a disguise and a cover story for the other: a fake
   mustache or wig, sunglasses, a thrifted coat, plus a name, a job, and one
@@ -12,6 +12,14 @@ description: >
   Hand each other one sealed "top secret" card with a small task, like "find a
   red door" or "learn the barista's favorite drink." Keep the missions about yourselves, not about following strangers. Take a stakeout photo from behind a
   newspaper.
+about: >
+  The best disguises are simple: a hat, glasses, a scarf and a new way of
+  walking go a long way. Thrift stores and costume shops are great for
+  props.
+
+  Keep the missions about your own group, not strangers, and be friendly
+  and in on the joke when you order or chat. The fun is in staying in
+  character, not in fooling anyone.
 steps:
   - Before and after the disguise
   - Your alter egos' coffee order
@@ -25,5 +33,4 @@ season: any
 time_of_day: daytime
 travel: local
 themes: [playful]
-tags: [playful, dress-up, role-play, silly, downtown]
-credit:
+tags: [disguise day, secret identity game, spy game, role play adventure, playful, silly]

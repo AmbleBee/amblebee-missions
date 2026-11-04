@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 1
 name: Echo Park Swan Boats
 mode: both
@@ -10,15 +10,26 @@ place:
   coords: [34.07329, -118.25992]
   website: https://recreation.parks.lacity.gov/aquatic/lake/echo-park-lake
   links:
-    - label: Boat Rentals
+    - label: Boat rentals
       url: https://wheelfunrentals.com/ca/los-angeles/echo-park/
-short: Rent a swan boat on Echo Park Lake. Pedal past the fountain with the skyline behind you.
+short: Swan boats on Echo Park Lake in LA. Pedal past the fountain and the lotus beds, skyline behind.
 description: >
   Rent one of the big swan pedal boats and take a slow loop around Echo Park
-  Lake, past the fountain and the lotus beds, with the downtown skyline rising
-  behind the palms. Take turns pedaling and taking photos, and get one of the
-  whole swan with the skyline behind it. In summer the lotus beds are in bloom.
-  Snacks are allowed on board; book ahead on weekends.
+  Lake, past the fountain and the lotus beds, with the downtown skyline
+  rising behind the palm trees. Take turns pedaling and taking photos, and
+  get the classic shot: your whole swan with the skyline behind it. Then
+  each pick a spot on the shore where you'd have a picnic next time.
+about: >
+  Echo Park Lake started as a reservoir in the 1800s and has been a park
+  lake for over a century. It's famous for its lotus beds, which bloom in
+  summer and have their own festival each July. The "Lady of the Lake"
+  statue near the shore dates to the 1930s.
+
+  Movie fans may recognize it: Jack Nicholson rows across this lake in
+  Chinatown (1974).
+
+  Snacks are allowed on board. Book ahead on weekends, when the boats go
+  fast.
 for_kids:
   short: Swan boat ride! Find each thing.
   steps:
@@ -36,4 +47,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours, reservation]
 themes: [lakes-rivers, boating, playful]
-tags: [boat, lake, playful, park, los-angeles]
+tags: [echo park lake, swan boats, pedal boats, lotus festival, downtown la skyline, los-angeles]

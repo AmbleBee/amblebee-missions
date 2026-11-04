@@ -7,16 +7,25 @@ place:
   name: The Met Cloisters
   area: Fort Tryon Park, northern Manhattan
   address: 99 Margaret Corbin Dr, New York, NY 10040
-  coords: [40.865194, -73.931222]
+  coords: [40.86519, -73.93122]
   website: https://www.metmuseum.org/visit/visit-the-cloisters
-short: Step into medieval Europe at the Met Cloisters. Find the unicorn tapestries.
+short: The Met Cloisters in northern Manhattan. Step into medieval Europe and find the unicorn.
 description: >
   Ride up to the top of Manhattan to a museum built from pieces of real
-  medieval monasteries, set high above the Hudson. Walk the cloister gardens,
-  find the famous Unicorn Tapestries, and each pick the strangest creature you
-  can spot in the art. Get a photo of you in one of the arched
-  walkways. Pair it with the Fort Tryon Park mission next door. New York State
-  residents can pay what they wish; check the hours before you go.
+  medieval monasteries, high above the Hudson. Walk the cloister gardens,
+  find the famous Unicorn Tapestries, and each pick the strangest creature
+  you can spot in the art, then show each other. The photo to get: you in
+  one of the arched stone walkways with the garden behind you.
+about: >
+  The Cloisters opened in 1938, paid for by John D. Rockefeller Jr. Its
+  courtyards and chapels were built around real stones from monasteries and
+  churches in France and Spain. Rockefeller even bought the cliffs across
+  the Hudson so the view would stay wild.
+
+  The Unicorn Tapestries were woven around 1500, and the gardens grow plants
+  that people in the Middle Ages used for food, medicine and magic. New York
+  State residents can pay what they wish. It's in Fort Tryon Park, so pair it
+  with [[fort-tryon-park]] for a whole afternoon.
 duration: half-day
 effort: easy
 cost: $$
@@ -27,4 +36,4 @@ travel: local
 check_ahead: [hours]
 discounts: [senior, student]
 themes: [gardens, history, museums, art]
-tags: [museum, art, history, gardens, medieval, nyc]
+tags: [met cloisters, unicorn tapestries, medieval art, fort tryon park, hudson river views, nyc]

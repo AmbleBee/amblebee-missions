@@ -7,7 +7,7 @@ place:
   name: Water Taxi stop, Las Olas
   area: Fort Lauderdale
   coords: [26.11900, -80.10800]  # APPROX: set at the Las Olas water taxi stop before publishing
-short: Ride the Fort Lauderdale water taxi through the canals at sunset, past giant yachts and mansions.
+short: Fort Lauderdale water taxi at sunset. Cruise the canals past giant yachts and mansions.
 description: >
   Buy a day pass for the water taxi and ride it through the canals of the
   "Venice of America," past giant yachts and waterfront mansions, while the
@@ -15,6 +15,14 @@ description: >
   dinner, then catch a ride back as the sun sets and the waterfront lights
   come on. Each pick the house you'd buy. Get a photo of you on the
   top deck at sunset.
+about: >
+  Fort Lauderdale calls itself the "Venice of America," with well over a
+  hundred miles of canals and waterways. It's one of the yachting capitals of
+  the world, and each fall it hosts one of the biggest boat shows on Earth.
+
+  The captains are known for their stories about who lives in the giant
+  houses, so sit near the front. A day pass lets you hop on and off, so you
+  can stop for dinner on Las Olas and ride back after dark.
 for_kids:
   short: Canal ride! Find each thing.
   steps:
@@ -31,5 +39,4 @@ season: any
 time_of_day: evening
 travel: day-trip
 themes: [lakes-rivers, boating, sunsets]
-tags: [boat, canals, sunset, fort-lauderdale]
-credit:
+tags: [fort lauderdale water taxi, venice of america canals, sunset boat ride, las olas, yacht spotting, fort-lauderdale]

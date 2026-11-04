@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 52
 name: Hearst Castle Tour
 mode: both
@@ -8,15 +8,24 @@ place:
   area: San Simeon, Central Coast
   coords: [35.65046, -121.18637]
   website: https://hearstcastle.org
-short: Tour William Randolph Hearst's hilltop castle in San Simeon. Find the Neptune Pool.
+short: Hearst Castle in San Simeon. Tour the hilltop palace and find the famous Neptune Pool.
 description: >
-  Ride the bus up the hill to the over-the-top estate newspaper tycoon William
-  Randolph Hearst built above the coast, packed with art and treasures from
-  around the world. On the Grand Rooms tour, walk through the giant dining
-  hall and theater, then see the blue-and-gold-tiled indoor Roman Pool and the
-  famous outdoor Neptune Pool. Each pick the room you'd move into. Get a photo
-  of you by the Neptune Pool. Reserve tour tickets ahead. Afterward,
-  stop at the elephant seal viewing point just up Highway 1.
+  Ride the bus up the hill to the over-the-top estate newspaper tycoon
+  William Randolph Hearst built above the coast, packed with art and
+  treasures from around the world. Walk through the giant dining hall, then
+  see the gold-tiled indoor Roman Pool and the famous outdoor Neptune Pool.
+  Each pick the room you'd move into. The photo to get: you by the Neptune
+  Pool. On the drive, watch the hills for zebras.
+about: >
+  Architect Julia Morgan designed the estate, and work went on from 1919
+  until 1947. Hearst called it La Cuesta Encantada, "the Enchanted Hill,"
+  and hosted Hollywood stars here. His family gave it to the state in the
+  1950s.
+
+  Hearst kept a private zoo on the hill, and zebras descended from it still
+  graze the ranchland along Highway 1. Just up the coast, the elephant seal
+  viewing area at Piedras Blancas is a great free stop. Reserve tour
+  tickets ahead.
 for_kids:
   short: Castle hunt! Find each thing.
   steps:
@@ -34,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
 themes: [history, architecture]
-tags: [history, castle, architecture, tour, central-coast]
-credit:
+tags: [hearst castle, neptune pool, julia morgan, san simeon, elephant seals, central-coast]

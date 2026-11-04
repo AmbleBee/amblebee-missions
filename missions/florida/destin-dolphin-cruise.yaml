@@ -7,14 +7,21 @@ place:
   name: Destin Harbor Boardwalk
   area: Destin
   coords: [30.39300, -86.51000]  # APPROX: set at the boardwalk docks before publishing
-short: Take a sunset dolphin cruise out of Destin Harbor and count the dolphins around the boat.
+short: Destin sunset dolphin cruise. Head out from the harbor and count dolphins in the wake.
 description: >
   Board a sunset cruise from the Destin Harbor Boardwalk and head out past
-  Crab Island into the emerald water of Choctawhatchee Bay and the Gulf,
-  where wild bottlenose dolphins often play in the boat's wake. Count the
-  dolphins together, then watch the sun go down over the water. Walk the
-  boardwalk for seafood when you get back. Get a photo of you at the
-  rail at sunset. Several companies run cruises; book ahead in summer.
+  Crab Island into the emerald water, where wild bottlenose dolphins often
+  play in the boat's wake. Each keep a dolphin count and see who spots more.
+  Then watch the sun go down over the water. The photo to get: you at the
+  rail at sunset.
+about: >
+  Destin calls itself "the World's Luckiest Fishing Village," and its harbor
+  is full of fishing boats and seafood spots. Crab Island, which you'll pass,
+  is a shallow sandbar where boats anchor on summer days and people wade in
+  the water.
+
+  Feeding or swimming with wild dolphins is against federal law, so enjoy
+  them from the boat. Several companies run cruises; book ahead in summer.
 for_kids:
   short: Dolphin hunt! Find each thing.
   steps:
@@ -32,5 +39,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [reservation]
 themes: [boating, wildlife, sunsets]
-tags: [dolphins, boat, sunset, panhandle]
-credit:
+tags: [destin dolphin cruise, sunset cruise, crab island, bottlenose dolphins, destin harbor, panhandle]

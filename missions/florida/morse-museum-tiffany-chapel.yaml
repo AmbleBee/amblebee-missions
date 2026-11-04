@@ -9,15 +9,22 @@ place:
   address: 445 N Park Ave, Winter Park, FL 32789
   coords: [28.60000, -81.35090]  # APPROX: set at the entrance before publishing
   website: https://www.morsemuseum.org
-short: Wander a small museum full of glowing Tiffany glass and sit in his jeweled chapel.
+short: Morse Museum in Winter Park. Glowing Tiffany glass and a jeweled chapel from 1893.
 description: >
-  The Morse holds the world's biggest collection of Louis Comfort Tiffany's work: leaded-glass
-  windows and lamps, jewelry, pottery and the whole glittering chapel interior he built for the
-  1893 Chicago World's Fair. Take it slow, sit in the chapel for a few quiet minutes, and pick
-  the one window you would take home if you could. Then step outside and stroll Park Avenue for a
-  coffee in the shade of Central Park. Galleries may not allow photos, so
-  get your shot out front with the museum sign before you go in. Admission is cheap, and
-  Friday evenings from November through April are free.
+  Wander rooms of glowing leaded-glass windows, lamps and jewelry, then sit
+  in the jeweled Tiffany chapel for a few quiet minutes. Each pick the one
+  window you'd take home if you could. The photo to get: you out front with
+  the museum sign, since photos aren't allowed in some galleries. Then
+  stroll Park Avenue for coffee.
+about: >
+  The Morse holds the world's biggest collection of work by Louis Comfort
+  Tiffany. Its chapel was built for the 1893 World's Fair in Chicago. Many
+  pieces were saved from Tiffany's Long Island estate after a fire in 1957 by
+  the museum's founders, Jeannette and Hugh McKean, and the chapel was put
+  back together here in 1999.
+
+  Admission is cheap, and the museum has had free evenings in the cooler
+  months, so check the schedule.
 duration: short
 effort: easy
 cost: $
@@ -28,5 +35,4 @@ travel: local
 check_ahead: [hours]
 discounts: [senior, student]
 themes: [museums, art]
-tags: [museum, art, stained-glass, tiffany, rainy-day, winter-park, orlando]
-credit:
+tags: [morse museum, tiffany glass, tiffany chapel, park avenue winter park, stained glass, winter-park]

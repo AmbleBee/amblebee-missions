@@ -6,16 +6,25 @@ who: [solo, friends, family, kids]
 place:
   name: Dock Street, Cedar Key
   area: Cedar Key, Nature Coast
-  coords: [29.137170, -83.032850]
+  coords: [29.13717, -83.03285]
   website: https://www.cedarkey.org
-short: Wander Cedar Key, an old fishing village on stilts over the Gulf. Try the clam chowder.
+short: Cedar Key on Florida's Nature Coast. Wander the old fishing village on stilts and eat clams.
 description: >
-  Visit Cedar Key, a tiny island fishing village that feels like old Florida,
-  with weathered buildings on stilts over the water, no chain stores and
-  colorful bikes and golf carts everywhere. Walk Dock Street, eat clam
-  chowder and local farm-raised clams overlooking the Gulf, and browse the
-  art galleries. Watch the pelicans on the pilings, and stay to see the sky
-  change over the little islands. Get a photo of you on the dock.
+  Wander Cedar Key, a tiny island fishing village that still feels like old
+  Florida, with weathered buildings on stilts over the water and golf carts
+  everywhere. Walk Dock Street, eat clam chowder overlooking the Gulf, and
+  each count the pelicans on the pilings, then stay to watch the sky change
+  over the little islands at sunset. The photo to get: you on the dock with
+  the stilt buildings behind you.
+about: >
+  Cedar Key was once a busy port. In the 1860s it was the end of Florida's
+  first railroad across the state, and later its cedar trees were cut for
+  pencils until a hurricane wrecked the mills in 1896. Naturalist John Muir
+  ended his famous thousand-mile walk here in 1867.
+
+  When net fishing was banned in the 1990s, local fishermen learned to farm
+  clams instead, and Cedar Key is now one of the biggest clam producers in
+  the country. That's why the chowder is so good.
 for_kids:
   short: Village hunt! Find each thing.
   steps:
@@ -32,5 +41,4 @@ season: any
 time_of_day: daytime
 travel: day-trip
 themes: [food, small-towns]
-tags: [small-town, seafood, old-florida, nature-coast]
-credit:
+tags: [cedar key, old florida, dock street, clam chowder, fishing village, nature-coast]

@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 57
 name: Kitchen Scrap Dye Day
 mode: both
 who: [friends, family]
-short: Save onion skins and avocado pits for a week, then turn them into dye and see what colors you get.
+short: Kitchen scrap dye day. Turn onion skins and avocado pits into natural dye for bandanas.
 description: >
   For a week, save yellow and red onion skins, avocado pits and skins, and
   the outer leaves of a red cabbage. On dye day, simmer each scrap in its own
@@ -13,6 +13,16 @@ description: >
   before they go in. Let them steep, pull them out, and guess which scrap
   made which color: onion goes golden, avocado goes peachy pink. Hang
   everything in a row to dry and pick a favorite.
+about: >
+  People dyed cloth with plants for thousands of years before chemical dyes
+  came along. Avocado pits and skins give a surprising pink because of
+  their tannins, and onion skins give gold and orange.
+
+  Red cabbage is the science-experiment one: its color changes with acid and
+  base, so a splash of vinegar turns it pinker and a pinch of baking soda
+  turns it blue or green. For colors that last longer, soak the cloth in
+  water with a little alum (from the spice aisle) before dyeing. The photo
+  to get: everything hanging in a row to dry, from palest to brightest.
 steps:
   - The week's saved scraps
   - The dye pots on the stove
@@ -27,5 +37,4 @@ season: any
 time_of_day: daytime
 travel: home
 themes: [science, make-something]
-tags: [craft, dye, science, kitchen, rainy-day, home]
-credit:
+tags: [natural dye, onion skin dye, avocado pit dye, kitchen science, craft, home]

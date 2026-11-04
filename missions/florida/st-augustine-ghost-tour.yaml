@@ -7,7 +7,7 @@ place:
   name: St. Augustine Historic District (St. George Street)
   area: St. Augustine
   coords: [29.89600, -81.31400]  # APPROX: set at your tour's meeting point before publishing
-short: Walk the lantern-lit streets of America's oldest city on a ghost tour after dark.
+short: St. Augustine ghost tour. Walk the lantern-lit streets of America's oldest city after dark.
 description: >
   Take a guided ghost tour through the narrow streets of St. Augustine, the
   oldest city in the U.S., founded in 1565. Follow a lantern-carrying guide
@@ -15,6 +15,15 @@ description: >
   of spooky stories. Some tours ride a trolley or take you into a haunted
   building. Each pick the scariest story. Get a photo of you on a
   dark old street. Several companies run tours nightly; book ahead.
+about: >
+  St. Augustine was founded by the Spanish in 1565, which makes it the oldest
+  continuously inhabited city in the U.S. founded by Europeans. More than four
+  centuries of fires, wars and fevers left plenty of ghost stories.
+
+  Popular stops include the old Huguenot Cemetery, the Castillo, and the St.
+  Augustine Lighthouse, said to be one of the most haunted lighthouses in the
+  country. Tours range from family-friendly to genuinely scary, so pick the
+  right one for your group.
 for_kids:
   short: Ghost walk! Find each thing.
   steps:
@@ -32,5 +41,4 @@ time_of_day: night
 travel: day-trip
 check_ahead: [reservation]
 themes: [history, spooky]
-tags: [ghosts, history, spooky, night, st-augustine]
-credit:
+tags: [st augustine ghost tour, haunted st augustine, lantern tour, oldest city, haunted lighthouse, st-augustine]

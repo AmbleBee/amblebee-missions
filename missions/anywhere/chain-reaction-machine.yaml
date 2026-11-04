@@ -1,9 +1,9 @@
-checked: 2026-10-26
+checked: 2026-11-03
 number: 61
 name: Chain Reaction Machine
 mode: both
 who: [friends, family, kids]
-short: Build a Rube Goldberg machine across the room to do one silly job. Film the final run.
+short: Build a Rube Goldberg machine at home to do one silly job. Film the run that finally works.
 description: >
   Pick a silly final job for your machine: ring a bell, drop a ball into a
   cup, knock a hat onto someone's head. Raid the house for parts like
@@ -11,6 +11,16 @@ description: >
   Build a chain of steps across the room, test each one on its own, then link
   them. Most runs will fail at first, and fixing them is the fun part. When
   it finally works start to finish, film the whole run in one take.
+about: >
+  Rube Goldberg was a cartoonist famous for drawing ridiculous machines that
+  took dozens of steps to do something simple, like wiping your mouth with a
+  napkin. His name became the word for any overly complicated contraption.
+  He even won a Pulitzer Prize for his cartoons.
+
+  Tips: tape your ramps and tracks down so they don't shift between runs,
+  and build from the end backward so the final job always works. For ideas,
+  look up OK Go's "This Too Shall Pass" music video, one giant chain reaction
+  filmed in a single take.
 steps:
   - The build across the floor
   - Your favorite step up close
@@ -33,5 +43,4 @@ season: any
 time_of_day: any
 travel: home
 themes: [science, make-something]
-tags: [build, science, engineering, rainy-day, home, video]
-credit:
+tags: [rube goldberg machine, chain reaction, kids engineering, stem at home, at-home, video]

@@ -8,7 +8,7 @@ place:
   area: Chipley
   coords: [30.72500, -85.53000]  # APPROX: set at the park entrance before publishing
   website: https://www.floridastateparks.org/parks-and-trails/falling-waters-state-park
-short: See Florida's tallest waterfall drop 73 feet into a mysterious sinkhole at Falling Waters.
+short: Falling Waters State Park in Chipley. See Florida's tallest waterfall drop into a sinkhole.
 description: >
   Walk the boardwalk through a forest of sinkholes to Florida's tallest
   waterfall, a 73-foot ribbon of water plunging into a deep cylindrical
@@ -16,6 +16,15 @@ description: >
   goes. Look down into the other sinkholes along the trail, too. Each guess
   where the water goes. Get a photo of you on the overlook. The
   falls are strongest after rain; in dry spells they can slow to a trickle.
+about: >
+  The waterfall drops about 73 feet into a narrow sinkhole and disappears
+  into a cave below. Nobody knows exactly where the water ends up. The park
+  has some odd history too: in 1919, someone drilled one of Florida's first
+  oil wells here, and found nothing.
+
+  The falls are strongest after rain; in dry spells they can slow to a
+  trickle, so check recent conditions. The boardwalk passes several other
+  sinkholes on the way.
 for_kids:
   short: Waterfall hunt! Find each thing.
   steps:
@@ -33,5 +42,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [waterfalls, rocks-fossils, parks]
-tags: [waterfall, sinkhole, state-park, panhandle]
-credit:
+tags: [falling waters state park, tallest waterfall in florida, sinkhole waterfall, chipley, boardwalk, panhandle]

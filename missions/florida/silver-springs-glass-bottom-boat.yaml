@@ -8,7 +8,7 @@ place:
   area: Ocala
   coords: [29.21500, -82.05300]  # APPROX: set at the glass-bottom boat dock before publishing
   website: https://www.floridastateparks.org/parks-and-trails/silver-springs-state-park
-short: Ride the famous glass-bottom boats over the giant springs at Silver Springs.
+short: Silver Springs in Ocala. Ride the famous glass-bottom boats over giant spring vents.
 description: >
   Take a ride on the glass-bottom boats at Silver Springs, offered here since
   the 1870s, and look straight down through the floor into the deep, clear
@@ -17,6 +17,15 @@ description: >
   released here in the 1930s. Each spot something at the bottom to show the
   other. Get a photo of you on the boat. Check the boat schedule
   when you arrive.
+about: >
+  Glass-bottom boats were invented right here in the 1870s, when someone put
+  a glass window in the bottom of a rowboat. Silver Springs became one of
+  Florida's first big tourist attractions, and several Tarzan movies were
+  filmed along the river.
+
+  The wild rhesus monkeys are descendants of a few monkeys that a tour boat
+  operator let loose on an island in the 1930s. Watch them from the boat;
+  they're wild and shouldn't be approached or fed.
 for_kids:
   short: Glass boat! Find each thing.
   steps:
@@ -34,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [swimming, boating, wildlife]
-tags: [springs, boat, classic-florida, wildlife, central-florida]
-credit:
+tags: [silver springs glass bottom boat, ocala springs, wild monkeys, classic florida, spring vents, central-florida]

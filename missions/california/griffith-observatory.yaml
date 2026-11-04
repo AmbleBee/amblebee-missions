@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 7
 name: Griffith Observatory
 mode: both
@@ -9,13 +9,24 @@ place:
   address: 2800 E Observatory Rd, Los Angeles, CA 90027
   coords: [34.11849, -118.30038]
   website: https://griffithobservatory.org
-short: Watch the sunset over LA from Griffith Observatory. Look through a real telescope after dark.
+short: Griffith Observatory in LA. Watch the sunset over the city, then look through a real telescope.
 description: >
-  Get to the observatory in the late afternoon and explore the exhibits (it's
-  free). Find a spot on the terrace for sunset over the city with the Hollywood
-  sign behind you, then stay as the lights come on. On clear evenings the
-  public telescopes are free to look through. Parking at the top fills fast,
-  so take the DASH bus or park lower down and walk up. Closed Mondays.
+  Get to the observatory in the late afternoon and explore the free
+  exhibits. Find a spot on the terrace for sunset over the city with the
+  Hollywood sign in view, then stay as the lights come on. The photo to
+  get: you at the railing with the glowing city behind you. On clear
+  evenings, each take a turn at the public telescope and describe what you
+  saw.
+about: >
+  The observatory opened in 1934 on land given to the city by Griffith J.
+  Griffith, who wanted everyone to be able to look through a telescope for
+  free. Its Zeiss telescope has been looked through by more people than any
+  other in the world.
+
+  Movie fans know it from Rebel Without a Cause (look for the James Dean
+  bust on the lawn) and La La Land. Parking at the top fills fast, so take
+  the DASH bus or park lower and walk up. Check the website for hours, since
+  it's closed one day a week.
 for_kids:
   short: Space explorer! Find each thing.
   steps:
@@ -33,4 +44,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours, conditions]
 themes: [views, stars, sunsets, science]
-tags: [stars, views, sunset, science, los-angeles]
+tags: [griffith observatory, griffith park, free telescope, hollywood sign view, city lights, los-angeles]

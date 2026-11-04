@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 50
 name: One-Shot Quest for Two
 mode: both
 who: [friends]
-short: One of you runs the story, one plays the hero. Roll dice, draw the map, save the day.
+short: One-shot tabletop RPG night. One runs the story, one plays the hero. Roll dice, save the day.
 description: >
   Find a free one-page roleplaying game or a short two-player adventure online,
   so nobody has to study a rulebook. One of you is the storyteller and the
@@ -11,6 +11,14 @@ description: >
   playlist, set out snacks, and sketch the map on paper as the story goes.
   Roll for the big moments, let the dice surprise you, and give the villain
   a ridiculous voice. Snap the final roll that decides how it all ends.
+about: >
+  Tabletop roleplaying took off with Dungeons & Dragons in 1974, but you
+  don't need thick rulebooks. One-page games like Lasers & Feelings and
+  Honey Heist fit all the rules on a single sheet, and many are free online.
+
+  Storyteller tips: say "yes, and..." to the hero's wild ideas, keep the
+  danger moving, and end on a big moment. A good one-shot fits in about two
+  hours.
 steps:
   - Your hero's character sheet
   - The map as it grows
@@ -24,5 +32,4 @@ season: any
 time_of_day: evening
 travel: home
 themes: [games, make-something]
-tags: [games, storytelling, creative, at-home, rainy-day]
-credit:
+tags: [one-shot rpg, tabletop roleplaying, dnd for beginners, two player rpg, storytelling, at-home]

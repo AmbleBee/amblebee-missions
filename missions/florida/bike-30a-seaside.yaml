@@ -7,14 +7,22 @@ place:
   name: Seaside town center
   area: Scenic Highway 30A, Walton County
   coords: [30.32100, -86.14000]  # APPROX: set at the Seaside town center before publishing
-short: Bike the path along 30A through pastel beach towns, and grab lunch at Seaside's Airstream row.
+short: Bike Scenic 30A to Seaside. Ride past pastel beach towns and lunch at the Airstream row.
 description: >
   Rent beach cruisers and ride the paved path along Scenic Highway 30A, past
-  pastel beach towns, coastal dune lakes and pine forests. Stop in Seaside,
-  the little town where The Truman Show was filmed, for lunch from the row of
-  vintage Airstream food trailers. Ride on to Grayton Beach, swim in the
-  emerald Gulf, and look for the rare coastal dune lakes. Get a photo of
-  you on your bikes in Seaside's town square.
+  pastel beach towns, dune lakes and pine forests. Stop in Seaside for lunch
+  from the row of vintage Airstream food trailers; everyone orders from a
+  different one and shares. Ride on to Grayton Beach for a swim in the
+  emerald Gulf. The photo to get: you on your bikes in Seaside's town square.
+about: >
+  Seaside was built starting in the 1980s as a planned beach town, with
+  pastel cottages, picket fences and porches close to the sidewalk. It's
+  where The Truman Show was filmed.
+
+  The coastal dune lakes along 30A are rare. They're found in only a handful
+  of places in the world, and sometimes they break through the sand and
+  flow into the Gulf. The bike path, the Timpoochee Trail, runs about 19
+  miles along the road.
 for_kids:
   short: Bike ride! Find each thing.
   steps:
@@ -34,5 +42,4 @@ season: any
 time_of_day: daytime
 travel: day-trip
 themes: [beach, biking, food]
-tags: [biking, beach-towns, food, panhandle]
-credit:
+tags: [30a bike path, seaside florida, airstream food trucks, coastal dune lakes, truman show town, panhandle]

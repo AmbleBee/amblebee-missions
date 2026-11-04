@@ -8,14 +8,19 @@ place:
   area: High Springs
   coords: [29.83600, -82.70000]  # APPROX: set at the entrance before publishing
   website: https://ginniespringsoutdoors.com
-short: Swim in the impossibly blue springs at Ginnie Springs, then float the Santa Fe River.
+short: Ginnie Springs in High Springs. Swim in impossibly blue springs, then tube the Santa Fe River.
 description: >
-  Spend the day swimming in a series of shockingly blue, crystal-clear
-  springs in the woods, staying about 72 degrees all year. Swim over the
-  Devil's Eye spring vent, watch cave divers disappear below, and float in an
-  inner tube down the Santa Fe River between springs. Bring snorkel masks to
-  see the fish. Get a photo of you on the dock over the blue water.
-  It's privately owned, with an entry fee; go on a weekday to avoid the big
+  Swim in a series of shockingly blue, crystal-clear springs in the woods,
+  then float an inner tube down the Santa Fe River between them. Swim over
+  the Devil's Eye spring vent and see who can spot a cave diver disappearing
+  below first. Bring snorkel masks to see the fish. The photo to get: you on
+  the dock over the blue water.
+about: >
+  Ginnie Springs is famous among divers around the world for its underwater
+  caves and clear water. Jacques Cousteau is often quoted praising its
+  visibility. The springs stay about 72 degrees all year.
+
+  It's privately owned, with an entry fee. Go on a weekday to avoid the big
   weekend party crowds.
 for_kids:
   short: Blue spring! Find each thing.
@@ -34,5 +39,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [swimming, boating]
-tags: [springs, swimming, tubing, north-florida]
-credit:
+tags: [ginnie springs, blue springs swimming, santa fe river tubing, devils eye spring, cave diving, north-florida]

@@ -7,7 +7,7 @@ place:
   name: Bowman's Beach, Sanibel Island
   area: Sanibel Island
   coords: [26.46000, -82.16100]  # APPROX: set at the Bowman's Beach parking before publishing
-short: Do the Sanibel Stoop at sunrise. See who can find the best shell on Bowman's Beach.
+short: Shelling on Sanibel Island. Do the Sanibel Stoop at sunrise and find the best shell.
 description: >
   Get to the beach at low tide in the early morning, when Sanibel's famous
   shells wash up in piles along the shoreline. Do the "Sanibel Stoop" and
@@ -17,6 +17,16 @@ description: >
   Ding Darling refuge for roseate spoonbills. Get a photo of you
   with your best shells. The island has mostly recovered from recent
   hurricanes.
+about: >
+  Most barrier islands run north to south, but Sanibel curves east to west,
+  so it catches shells washing in from the Gulf like a scoop. The rarest find
+  is a junonia, a spotted shell that can make the local news when someone
+  finds one.
+
+  Taking any shell with a living creature inside is against the law here.
+  The Wildlife Drive at the J.N. "Ding" Darling refuge is named for a famous
+  cartoonist who fought to protect wildlife. The island has largely
+  rebuilt after Hurricane Ian in 2022.
 for_kids:
   short: Shell hunt! Find each thing.
   steps:
@@ -34,5 +44,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
 themes: [beach, wildlife, sunsets]
-tags: [beach, shells, wildlife, sunrise, southwest-florida]
-credit:
+tags: [sanibel shelling, sanibel stoop, bowmans beach, junonia shell, ding darling refuge, southwest-florida]

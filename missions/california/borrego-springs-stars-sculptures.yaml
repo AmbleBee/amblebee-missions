@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-03
 number: 39
 name: Borrego Springs Sculptures and Stars
 mode: both
@@ -7,15 +7,24 @@ place:
   name: Borrego Springs (Christmas Circle)
   area: Christmas Circle Community Park, Borrego Springs, CA 92004
   coords: [33.25655, -116.37441]
-short: Find the giant metal dragon in the Borrego desert at sunset, then stay for a dark sky full of stars.
+short: Borrego Springs metal sculptures at sunset, then a dark desert sky full of stars.
 description: >
-  Drive the desert roads around Borrego Springs to find more than 100 giant
-  metal sculptures standing out in the sand: dinosaurs, horses, a
-  mammoth and a 350-foot serpent that crosses the road. Find the serpent as
-  the light fades. Then stay after dark, since Borrego Springs is an official
-  International Dark Sky Community, with some of the darkest skies in
-  Southern California. Lie back on a blanket and count shooting stars. Go in
-  the cooler months, avoid the full moon, and bring layers and water.
+  Drive the desert roads around Borrego Springs hunting for giant metal
+  sculptures standing out in the sand: dinosaurs, horses, a mammoth and a
+  huge serpent that seems to swim under the road. Find the serpent as the
+  light fades and get your photo with its head against the sunset. Then
+  stay after dark, lie back on a blanket, and each count shooting stars.
+  Whoever sees the most picks the snack on the drive home.
+about: >
+  The sculptures, more than 100 of them, are by artist Ricardo Breceda and
+  stand on open land around town known as Galleta Meadows. They're free to
+  visit, and pick-up maps are usually available in town. The serpent is
+  about 350 feet long.
+
+  Borrego Springs is surrounded by Anza-Borrego Desert State Park, the
+  biggest state park in California, and it was the state's first
+  International Dark Sky Community. Go in the cooler months, avoid the full
+  moon for the best stars, and bring layers and plenty of water.
 for_kids:
   short: Desert night! Find each thing.
   steps:
@@ -33,5 +42,4 @@ time_of_day: night
 travel: day-trip
 check_ahead: [conditions]
 themes: [deserts, stars, art]
-tags: [stars, dark-sky, art, desert, night, anza-borrego]
-credit:
+tags: [ricardo breceda sculptures, galleta meadows, dark sky, stargazing, borrego springs, anza-borrego]

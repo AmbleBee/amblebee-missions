@@ -1,4 +1,4 @@
-checked: 2026-10-25
+checked: 2026-11-03
 number: 23
 name: "Big Sur: Bixby Bridge to McWay Falls"
 mode: both
@@ -8,14 +8,27 @@ place:
   area: Big Sur coast, south of Carmel
   address: 39020 Coast Rd, Monterey, CA 93940
   coords: [36.37265, -121.90318]
-short: Drive Highway 1 through Big Sur. Photograph Bixby Bridge, then the waterfall onto the beach.
+short: Drive Highway 1 through Big Sur. Photograph Bixby Bridge, then McWay Falls pouring onto the beach.
 description: >
   Drive south from Carmel on Highway 1 and pull over at Bixby Bridge for the
-  classic photo of the arch over the canyon. Keep going down the coast, stopping
-  at whatever pullout makes you both say wow, to Julia Pfeiffer Burns State
-  Park, where McWay Falls drops straight onto a little beach. Only stop in real
-  pullouts and never walk along the highway. Winter storms can close sections,
-  so check road conditions first, and fill up before you go.
+  classic photo of the arch over the canyon. Keep going down the coast and
+  take turns calling the pullouts: each of you gets to stop the car once for
+  any view that makes you say wow. End at Julia Pfeiffer Burns State Park,
+  where McWay Falls drops straight onto a little beach, and get your photo
+  at the overlook with the falls behind you.
+about: >
+  Bixby Bridge opened in 1932 and rises about 280 feet above the creek,
+  which makes it one of the most photographed bridges in California. The
+  best view is from the pullout on the north side.
+
+  McWay Falls is one of only a few waterfalls in California that fall right
+  onto the beach, about 80 feet down. The beach itself is closed, but the
+  short overlook trail gets you the view.
+
+  Only stop in real pullouts and never walk along the highway. There are few
+  gas stations in Big Sur, so fill up in Carmel. Winter storms and
+  landslides can close sections of Highway 1 for months, so check Caltrans
+  QuickMap before you go.
 for_kids:
   short: Coast drive! Find each thing.
   steps:
@@ -32,4 +45,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [views, waterfalls, beach, road-trips]
-tags: [scenic-drive, coast, waterfall, views, road-trip]
+tags: [bixby bridge, mcway falls, highway 1, julia pfeiffer burns, scenic drive, big-sur]

@@ -9,7 +9,7 @@ place:
   address: 711 N Franklin St, Tampa, FL 33602
   coords: [27.95030, -82.45840]  # APPROX: set at the entrance before publishing
   website: https://tampatheatre.org
-short: Catch a film in Tampa's 1926 movie palace. Get there early for the Wurlitzer!
+short: Tampa Theatre, a 1926 movie palace. Catch a film and get there early for the Wurlitzer.
 description: >
   Grab tickets for whatever's on at the Tampa Theatre, a 1926 movie palace
   downtown with a ceiling made to look like a starry night sky over a
@@ -19,6 +19,15 @@ description: >
   the next movie night. Get a photo of your crew under the stars before the
   lights go down. The lineup mixes classics, indies and special events, so
   check the calendar first.
+about: >
+  Architect John Eberson designed the Tampa Theatre as an "atmospheric"
+  movie palace, with twinkling stars in a ceiling made to look like a night
+  sky over a Mediterranean courtyard. In the 1970s, it was about to be torn
+  down until the community rallied to save it.
+
+  There's a ghost story too: a longtime projectionist named Fink Finley is
+  said to still be keeping an eye on the place. Check the calendar, since
+  the lineup mixes classics, indies and special events.
 steps:
   - Your crew under the starry ceiling
   - The Mighty Wurlitzer and the organist
@@ -32,5 +41,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
 themes: [history, movies, shows]
-tags: [movies, historic, theater, classic-films, rainy-day, downtown, tampa]
-credit:
+tags: [tampa theatre, movie palace, mighty wurlitzer organ, atmospheric theater, classic films, tampa]

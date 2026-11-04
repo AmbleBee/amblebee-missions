@@ -1,16 +1,25 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 39
 name: Blind Taste Test Night
 mode: both
 who: [friends, family, kids]
-short: Blindfold each other and taste-test chips, sodas or chocolate. Guess the brand, keep score.
+short: Blind taste test night at home. Blindfold each other, taste chips or sodas, and guess the brands.
 description: >
-  Pick a category, like potato chips, sodas, chocolate bars or salsas, and buy
-  three to five brands each, including at least one cheap store brand. Take
+  Pick a category, like potato chips, sodas, chocolate bars or salsas, and
+  buy three to five brands, including at least one cheap store brand. Take
   turns blindfolding each other and serving small tastes in a random order.
-  Guess which brand is which, rank your favorites, and keep score on a sheet of
-  paper. Reveal the answers at the end and find out whether the fancy one
-  actually wins. Get a photo of the blindfolded taster mid-bite.
+  Guess which brand is which, rank your favorites, and keep score. Reveal the
+  answers at the end and find out if the fancy one actually wins. The photo
+  to get: the blindfolded taster mid-bite.
+about: >
+  The most famous blind taste test is the Pepsi Challenge, which started in
+  the 1970s and had shoppers sip two unlabeled colas. You're running your
+  own version.
+
+  Tips: write a number on the bottom of each cup or plate so the server
+  doesn't forget which is which, and keep water and plain crackers around
+  to reset your taste between rounds. Sodas and chocolate work best with
+  three brands. Chips and salsa can handle five.
 for_kids:
   short: Taste test! Do each thing.
   steps:
@@ -27,4 +36,4 @@ season: any
 time_of_day: evening
 travel: home
 themes: [food, games, playful]
-tags: [food, games, playful, at-home, competitive]
+tags: [at-home, blind taste test, snack taste test, guess the brand, date night at home, competitive]

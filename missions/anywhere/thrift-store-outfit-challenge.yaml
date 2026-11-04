@@ -3,7 +3,7 @@ number: 34
 name: Blind Thrift Outfit Challenge
 mode: both
 who: [friends, family]
-short: Thrift an outfit with your eyes closed. Someone else says "stop," and you get what you grab.
+short: Thrift store outfit challenge. Pick each piece with your eyes closed, then wear it out.
 description: >
   Head to a thrift store and take turns. One of you closes your eyes while the
   other walks you slowly down a rack of shirts and says "stop." Whatever your
@@ -13,6 +13,13 @@ description: >
   outfits and wear them out for a themed date, day or night. Get a
   full-length photo of you in your thrifted best, and donate back
   anything you won't wear again.
+about: >
+  Thrift stores restock all the time, so every visit is different. Many
+  have sale days or colored-tag discounts, and some of the best finds hide
+  in the back racks and costume sections.
+
+  Wash everything before you wear it, set a small budget for the whole
+  outfit, and donate back anything you won't wear again.
 duration: short
 effort: easy
 cost: $$
@@ -21,5 +28,5 @@ season: any
 time_of_day: any
 travel: local
 themes: [markets, playful]
-tags: [thrifting, shopping, playful, dress-up]
+tags: [thrift store challenge, blind outfit challenge, thrifting game, goodwill challenge, playful, dress-up]
 credit: Kali W.

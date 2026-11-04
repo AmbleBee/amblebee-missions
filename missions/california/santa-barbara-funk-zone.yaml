@@ -6,14 +6,21 @@ place:
   name: The Funk Zone
   area: Near Stearns Wharf, Santa Barbara
   coords: [34.41400, -119.68800]  # APPROX: set at the center of the Funk Zone before publishing
-short: Walk between the tasting rooms and street art of Santa Barbara's Funk Zone at golden hour.
+short: Santa Barbara's Funk Zone. Walk the tasting rooms and murals at golden hour.
 description: >
-  Wander the Funk Zone, a few blocks of old warehouses near the beach that are
-  now packed with wine tasting rooms, small breweries, galleries and colorful
-  murals. Visit two or three tasting rooms and each pick a glass for the
-  other, find your favorite mural for a photo of the two of you, then walk out
-  onto Stearns Wharf as the light goes golden. End with dinner by the water.
-  Everything is walkable, so leave the car parked.
+  Wander the Funk Zone, a few blocks of old warehouses near the beach now
+  packed with tasting rooms, small breweries, galleries and murals. Visit two
+  or three tasting rooms, and at each one pick a glass for the other. Find
+  your favorite mural for a photo of the two of you, then walk out onto
+  Stearns Wharf as the light goes golden. End with dinner by the water.
+about: >
+  The Funk Zone was once Santa Barbara's industrial and fishing area, full
+  of boat shops and warehouses, and artists and winemakers moved in over the
+  last few decades. Many tasting rooms here pour wine from the Santa Ynez
+  Valley and Santa Rita Hills, inland from town.
+
+  Stearns Wharf dates to 1872, making it one of the oldest working wooden
+  wharves in California. Everything is walkable, so leave the car parked.
 duration: half-day
 effort: easy
 cost: $$$
@@ -23,5 +30,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [hours]
 themes: [walks, beach, art, drinks, romantic]
-tags: [wine, art, walking, romantic, beach, santa-barbara]
-credit:
+tags: [funk zone, santa barbara wine walk, urban wine trail, stearns wharf, street murals, santa-barbara]

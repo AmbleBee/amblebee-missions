@@ -8,15 +8,23 @@ place:
   address: 2117 E 7th Ave, Tampa, FL 33605
   coords: [27.96000, -82.43800]  # APPROX: set at the restaurant entrance before publishing
   website: https://www.columbiarestaurant.com
-short: Watch cigars rolled by hand in Ybor City, then dinner and flamenco at Florida's oldest restaurant.
+short: Ybor City in Tampa. Watch cigars rolled by hand, then dinner and flamenco at the Columbia.
 description: >
   Spend an evening in Ybor City, Tampa's historic Cuban, Spanish and Italian
-  neighborhood, once the cigar capital of the world. Watch cigars being
-  rolled by hand in a shop on 7th Avenue, and look for the wild chickens that
-  roam the streets. Then have dinner at the Columbia Restaurant, the oldest
-  restaurant in Florida, opened in 1905, with its tiled courtyards and a
-  flamenco show on many nights. Order the 1905 salad and share it. Get a
-  photo of the two of you in the tiled dining room. Reserve ahead.
+  neighborhood. Watch cigars being rolled by hand on 7th Avenue, and see who
+  spots the first wild chicken strutting down the sidewalk. Then have dinner
+  at the Columbia Restaurant, with its tiled courtyards and a flamenco show
+  on many nights. Order the 1905 Salad, tossed at the table, and share it.
+  The photo to get: the two of you in the tiled dining room.
+about: >
+  Vicente Martinez Ybor moved his cigar factories here in the 1880s, and
+  Ybor City became the cigar capital of the world, with tens of thousands of
+  workers from Cuba, Spain and Italy. Cuban patriot José Martí gave speeches
+  here to raise support for Cuba's independence.
+
+  The Columbia opened in 1905 and is the oldest restaurant in Florida, still
+  run by the same family. The wild chickens are protected and have roamed
+  Ybor for generations. Reserve ahead.
 duration: short
 effort: easy
 cost: $$$
@@ -26,5 +34,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [reservation]
 themes: [history, food, romantic]
-tags: [dinner, history, flamenco, romantic, tampa]
-credit:
+tags: [ybor city, columbia restaurant, hand-rolled cigars, flamenco dinner show, ybor chickens, tampa]

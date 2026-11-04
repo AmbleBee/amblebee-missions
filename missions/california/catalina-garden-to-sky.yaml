@@ -12,16 +12,23 @@ place:
   links:
     - label: Ferry to Avalon
       url: https://www.catalinaexpress.com
-short: Ferry to Catalina, walk up the canyon and climb to the ridge over Avalon Bay. Kiss at the top.
+short: Catalina Island. Ferry to Avalon and hike from the Wrigley garden up to the ridge.
 description: >
-  Catch a morning boat to Avalon on Catalina Island and walk up Avalon Canyon
-  to the Wrigley Memorial and Botanic Garden. Wander the cactus and island
-  plants, climb up to the memorial's observation deck, then take the Garden to Sky trail up to
-  the ridge for a sweeping view over Avalon Bay, the round Casino building and
-  the mainland. Keep an eye out for the little island fox. Get a photo of
-  you on the ridge with the harbor far below. Walk back down for a
-  late lunch on the waterfront before the boat home. Book the ferry ahead, buy garden
-  tickets, and register for the free hiking permit before you go.
+  Catch a morning boat to Avalon and walk up the canyon to the Wrigley
+  Memorial and Botanic Garden. Wander the cactus and island plants, climb to
+  the memorial's deck, then take the Garden to Sky trail up to the ridge for a
+  sweeping view over Avalon Bay and the mainland. Everyone keeps watch for the
+  little island fox. The photo to get: your crew on the ridge with the
+  harbor far below.
+about: >
+  Chewing gum maker William Wrigley Jr. bought most of the island in 1919,
+  and the memorial in the canyon honors him. The round white building on the
+  harbor is the Casino, built in 1929, a ballroom, never a gambling hall.
+
+  The island fox lives only on California's Channel Islands. Catalina even
+  has bison, descended from a small herd brought over for a movie in the
+  1920s. Book the ferry ahead, buy garden tickets, and register for the free
+  hiking permit before you go.
 steps:
   - The view from the ferry deck as the island gets closer
   - You on top of the memorial
@@ -37,5 +44,4 @@ travel: day-trip
 check_ahead: [tickets, reservation, conditions]
 discounts: [senior, student, military]
 themes: [views, hiking, beach, boating, gardens]
-tags: [island, ferry, hiking, garden, ocean-views, catalina, avalon, los-angeles]
-credit:
+tags: [catalina island, avalon, wrigley memorial, garden to sky trail, island fox, los-angeles]

@@ -6,13 +6,24 @@ place:
   name: Leopold's Ice Cream
   area: Broughton St, Savannah
   address: 212 E Broughton St, Savannah, GA 31401
-  coords: [32.078370, -81.089339]
+  coords: [32.07837, -81.08934]
   website: https://www.leopoldsicecream.com
-short: Get a scoop at Leopold's, then stroll the squares to the Forsyth Park fountain.
+short: Leopold's Ice Cream in Savannah. Get a scoop, then stroll the squares to the Forsyth Park fountain.
 description: >
-  Leopold's has been scooping in Savannah for over a century. Take your cones south
-  through the oak-shaded squares to the big white fountain in Forsyth Park, then find a
-  bench under the Spanish moss and trade a bite of each other's flavor.
+  Get a scoop at Leopold's, then take your cones south through the
+  oak-shaded squares to the big white fountain in Forsyth Park. Find a bench
+  under the Spanish moss and trade bites of each other's flavor. Each guess
+  the other's next flavor pick. The photo to get: the two of you with your
+  cones in front of the fountain.
+about: >
+  Leopold's was opened in 1919 by three brothers from Greece. Stratton
+  Leopold, the son of one of them, became a Hollywood movie producer and
+  reopened the shop in 2004, decorated with props and posters from his
+  films. Their best-known flavor is Tutti Frutti.
+
+  Savannah's squares come from the town plan James Oglethorpe laid out in
+  1733; 22 of them survive. The Forsyth Park fountain dates to 1858. The
+  line at Leopold's can be long on summer evenings, but it moves.
 duration: short
 effort: easy
 cost: $
@@ -21,5 +32,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [walks, history, food]
-tags: [ice-cream, walk, historic, squares]
-credit:
+tags: [leopolds ice cream, forsyth park fountain, savannah squares, spanish moss, historic district, savannah]

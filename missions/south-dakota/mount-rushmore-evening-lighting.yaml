@@ -8,12 +8,20 @@ place:
   address: 13000 SD-244, Keystone, SD 57751
   coords: [43.87627, -103.45478]
   website: https://www.nps.gov/moru/
-short: Watch Mount Rushmore light up at dusk at the evening ceremony in the amphitheater.
+short: Mount Rushmore near Keystone. Watch the faces light up at dusk at the evening ceremony.
 description: >
-  On summer evenings, rangers hold a short program in the amphitheater below the carving,
-  then the faces are lit up against the dark sky. Walk the Avenue of Flags before it
-  starts and find a seat together. The memorial is lit every night, but the ceremony runs
-  late May through September.
+  Walk the Avenue of Flags before the evening program, find your home state's
+  flag, and grab seats together in the amphitheater. Rangers lead a short
+  program, then the faces light up against the dark sky. The photo to get:
+  the two of you with the lit-up carving behind you.
+about: >
+  Sculptor Gutzon Borglum and about 400 workers carved Mount Rushmore from
+  1927 to 1941, mostly with dynamite. Each face is about 60 feet tall, and
+  no workers died during the carving.
+
+  The memorial is lit every night, but the evening ceremony runs from late
+  May through September. There's no entrance fee, but there is a parking
+  fee, and national park passes don't cover it.
 duration: short
 effort: easy
 cost: $
@@ -23,5 +31,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [seasonal]
 themes: [parks, history]
-tags: [national-memorial, night, history]
-credit:
+tags: [mount rushmore, evening lighting ceremony, avenue of flags, black hills, keystone, national-memorial]

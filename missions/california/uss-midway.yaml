@@ -9,12 +9,20 @@ place:
   address: 910 N Harbor Dr, San Diego, CA 92101
   coords: [32.71370, -117.17510]  # APPROX: set at the boarding entrance before publishing
   website: https://www.midway.org
-short: Explore a real aircraft carrier. Sit in a cockpit up on the flight deck.
+short: USS Midway Museum in San Diego. Explore a real aircraft carrier and sit in a cockpit.
 description: >
-  Climb aboard the USS Midway and explore an aircraft carrier from the hangar
-  deck to the flight deck, where dozens of planes and helicopters are parked.
-  Climb into a cockpit, take the tour up into the ship's island, and each pick
-  the plane you'd fly. Wear good shoes; you'll be climbing steep ship ladders.
+  Climb aboard the USS Midway and explore an aircraft carrier from the
+  hangar deck to the flight deck, where dozens of planes and helicopters are
+  parked. Climb into a cockpit, take the tour up into the ship's island, and
+  each pick the plane you'd fly. The photo to get: you in a pilot's seat on
+  the flight deck.
+about: >
+  The Midway was commissioned in 1945, just after World War II ended, and
+  served for 47 years, through Vietnam and the Gulf War, before becoming a
+  museum in 2004. More than 200,000 sailors served aboard her.
+
+  Many of the volunteer docents served on carriers themselves, so ask them
+  for stories. Wear good shoes, since you'll climb steep ship ladders.
   Afterward, walk the waterfront toward Seaport Village.
 for_kids:
   short: Giant ship! Find each thing.
@@ -33,4 +41,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [history, museums, vehicles]
-tags: [history, ships, aviation, museum, rainy-day, san-diego]
+tags: [uss midway museum, aircraft carrier tour, flight deck, naval history, cockpit, san-diego]

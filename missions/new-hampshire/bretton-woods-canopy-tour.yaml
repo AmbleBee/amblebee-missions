@@ -6,18 +6,25 @@ place:
   name: Bretton Woods Canopy Tour (Base Lodge Guest Services)
   area: Bretton Woods, White Mountains
   address: 99 Ski Area Rd, Bretton Woods, NH 03575
-  coords: [44.259388, -71.459943]
+  coords: [44.25939, -71.45994]
   website: https://www.brettonwoods.com/experiences/canopy-tour/
-short: Gondola up, then zipline, rappel and cross sky bridges down the mountain. Warm up by a fire after.
+short: Bretton Woods Canopy Tour in the White Mountains. Zipline, rappel and cross sky bridges.
 description: >
-  Ride the gondola up the mountain, then work your way back down with a guide
-  through nine ziplines, two sky bridges and three rappels, with Mount
-  Washington across the valley. You'll do short hikes between lines and brake
-  with a gloved hand, so wear sturdy closed-toe shoes. Get a photo of your
-  partner launching off the longest line. Afterward, warm up with a drink by
-  the fire at the grand old hotel across the road. Reservations are required,
-  the season and days change through the year, and riders must be 12 or
-  older and between 90 and 250 pounds.
+  Ride the gondola up the mountain, then work your way back down with a
+  guide through ziplines, sky bridges and rappels, with Mount Washington
+  across the valley. Before the longest line, each predict who'll scream
+  first. The photo to get: your partner launching off the longest line.
+  Afterward, warm up with a drink by the fire at the grand old hotel across
+  the road.
+about: >
+  The tour has nine ziplines, two sky bridges and three rappels, with short
+  hikes in between. You brake with a gloved hand, so wear sturdy closed-toe
+  shoes. Riders must be 12 or older and within the posted weight limits.
+
+  The hotel across the road is the Omni Mount Washington, opened in 1902. In
+  1944 it hosted the Bretton Woods Conference, where world leaders created
+  the International Monetary Fund and the World Bank. Reservations are
+  required, and the season changes through the year.
 steps:
   - The view from the gondola
   - Your partner mid-zip
@@ -32,5 +39,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
 themes: [mountains, thrills]
-tags: [zipline, canopy-tour, gondola, mountains, thrill, date, bretton-woods, white-mountains]
-credit:
+tags: [bretton woods canopy tour, ziplining, white mountains, mount washington hotel, gondola, bretton-woods]

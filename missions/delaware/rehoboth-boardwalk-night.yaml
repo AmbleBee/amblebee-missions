@@ -8,11 +8,22 @@ place:
   address: Rehoboth Ave & Boardwalk, Rehoboth Beach, DE 19971
   coords: [38.71660, -75.07600]
   website: https://www.beach-fun.com
-short: Fries, taffy and the boardwalk after dark. Win each other something at the arcade.
+short: Rehoboth Beach boardwalk at night. Fries, saltwater taffy, and win each other an arcade prize.
 description: >
-  Walk the mile-long Rehoboth boardwalk in the evening with a bucket of boardwalk fries
-  and a bag of saltwater taffy. In summer the old-school rides and arcades are open; try
-  to win each other a prize. End with your shoes off on the sand.
+  Walk the Rehoboth boardwalk in the evening with a bucket of boardwalk fries
+  and a bag of saltwater taffy. In summer, hit the old-school rides and
+  arcades and try to win each other a prize, no matter how many tries it
+  takes. End with your shoes off on the sand. The photo to get: the two of
+  you under the boardwalk lights with your prize.
+about: >
+  Rehoboth Beach started in 1873 as a Methodist camp meeting by the sea.
+  Today it's called "the Nation's Summer Capital" because so many people
+  from Washington, D.C., vacation here.
+
+  The boardwalk is about a mile long. Look for Dolle's, a saltwater taffy
+  shop with a famous sign that's been on the boardwalk since the 1920s, and
+  Funland, a small family amusement park that's been running since the
+  1960s. Rides and many shops are seasonal, so summer evenings are best.
 duration: short
 effort: easy
 cost: $
@@ -21,5 +32,4 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: day-trip
 themes: [walks, beach, food, games]
-tags: [beach, boardwalk, arcade, sweets]
-credit:
+tags: [rehoboth beach boardwalk, boardwalk fries, saltwater taffy, funland, arcade, delaware beaches]

@@ -7,15 +7,24 @@ place:
   name: South Tufa Area, Mono Lake
   area: Near Lee Vining, Eastern Sierra
   coords: [37.93900, -119.02700]  # APPROX: set at the South Tufa parking before publishing
-short: Walk among the strange tufa towers of Mono Lake at sunset as they glow orange.
+short: Mono Lake South Tufa near Lee Vining. Walk the strange tufa towers as they glow at sunset.
 description: >
   Walk the short trail at South Tufa, where knobby limestone towers rise out
-  of an ancient, salty lake older than almost any in North America. Come for
-  sunset, when the towers glow orange and pink and their reflections fill the
-  still water. Look closely at the shore for tiny brine shrimp and swarms of
-  alkali flies, and taste a drop of the lake water (it's saltier than the
-  ocean). Get a photo of you between the towers. There's a small
-  day-use fee at South Tufa.
+  of an ancient, salty lake. Come for sunset, when the towers glow orange and
+  pink and their reflections fill the still water. Each find the
+  strangest-shaped tower and give it a name, and look for tiny brine shrimp
+  near the shore. The photo to get: you between the towers in the last
+  light.
+about: >
+  Mono Lake is hundreds of thousands of years old, one of the oldest lakes in
+  North America. The tufa towers formed underwater, where spring water met
+  the salty lake. They were uncovered after Los Angeles began diverting the
+  streams that feed the lake in 1941. A long fight to save it, started in the
+  1970s, helped the water start rising again.
+
+  The lake is saltier than the ocean and very alkaline; dip a finger and feel
+  how slippery it is. Mark Twain wrote about the swarms of alkali flies in
+  Roughing It. There's a small day-use fee at South Tufa.
 for_kids:
   short: Tufa hunt! Find each thing.
   steps:
@@ -33,5 +42,4 @@ time_of_day: evening
 travel: day-trip
 check_ahead: [conditions]
 themes: [lakes-rivers, rocks-fossils, sunsets]
-tags: [sunset, lake, geology, photography, eastern-sierra]
-credit:
+tags: [mono lake, south tufa, tufa towers, brine shrimp, lee vining, eastern-sierra]

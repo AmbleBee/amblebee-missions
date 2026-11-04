@@ -1,9 +1,9 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 29
 name: Cook Something New
 mode: both
 who: [friends, family]
-short: Pick a dish you've never made, shop for it together, cook it with good music and rate it.
+short: Cook something new at home. Pick a dish you've never made, shop together, cook it and rate it.
 description: >
   Choose a meal neither of you would ever normally make: a cuisine you've never
   cooked, a recipe that looks a little too ambitious, or a dish from a place you
@@ -11,6 +11,15 @@ description: >
   love, and cook it side by side. Plate it like a restaurant, take a photo of
   the finished dish, then each rate it out of 10 and decide whether it earns a
   spot in your regular rotation.
+about: >
+  Tips for pulling off an ambitious dish: read the whole recipe before you
+  shop, and chop and measure everything before you turn on the stove. Chefs
+  call it mise en place, French for "everything in its place." Recipes with
+  around ten ingredients or fewer are the sweet spot for a first try.
+
+  Make it a theme: cook a dish from somewhere you want to travel, and pick
+  music from that place to match. If it flops, order takeout and laugh
+  about it; that counts as a memory too.
 duration: short
 effort: easy
 cost: $$
@@ -19,4 +28,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [food, shows, make-something]
-tags: [at-home, cooking, food, music, rainy-day]
+tags: [at-home, cooking date, new recipe, cook together, cooking challenge, music]

@@ -9,13 +9,19 @@ place:
   address: 2001 N Clark St, Chicago, IL 60614
   coords: [41.92110, -87.63400]  # APPROX: set at the West Gate on Clark St before publishing
   website: https://www.lpzoo.org
-short: Wander one of the oldest zoos in the country. It's free, every day of the year.
+short: Lincoln Park Zoo in Chicago. A free zoo in the city, open every day of the year.
 description: >
-  A free zoo in the middle of the city, open every day since 1868, with the
-  skyline peeking over the trees. Visit the gorillas, lions, polar bears and
-  penguins, then walk the boardwalk around the nature pond next door. Each pick
-  your favorite animal and get a photo of the other next to it. Parking is
-  paid, so take the bus or bike if you can. In winter it lights up for ZooLights.
+  Wander a free zoo in the middle of the city, with the skyline peeking over
+  the trees. Visit the gorillas, lions and penguins, then walk the boardwalk
+  around the nature pond next door. Each pick your favorite animal and take
+  a photo of the other next to it, copying its pose.
+about: >
+  The zoo opened in 1868, when Central Park in New York sent Chicago a pair
+  of swans, and it's one of the oldest zoos in the country. It's also one of
+  the few big zoos that has always been free.
+
+  In winter it lights up for ZooLights, a holiday light show. Parking is
+  paid, so take the bus or bike if you can.
 for_kids:
   short: Zoo hunt! Find each thing.
   steps:
@@ -33,4 +39,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [wildlife, holidays]
-tags: [zoo, animals, free, holiday-lights, chicago]
+tags: [lincoln park zoo, free zoo chicago, zoolights, gorillas, nature boardwalk, chicago]

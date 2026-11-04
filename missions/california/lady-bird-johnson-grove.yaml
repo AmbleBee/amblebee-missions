@@ -11,15 +11,22 @@ place:
   links:
     - label: alltrails
       url: https://www.alltrails.com/trail/us/california/lady-bird-grove-trail
-short: Walk among old-growth redwoods hundreds of feet tall. Lie on the ground and look straight up.
+short: Lady Bird Johnson Grove near Orick. Walk the old-growth redwoods, then lie down and look up.
 description: >
-  Drive three miles up Bald Hills Road and walk the easy loop through a grove of
-  ancient redwoods that were never logged. Only a tiny share of the world's
-  old-growth redwood forest is left, and much of it is right here. Find the
-  biggest tree on the loop, stand at its base for a photo that shows how small
-  you are, then lie back and look straight up its trunk. Go early or late if
-  there's fog for the most magical light. The lot is too small for RVs or
-  trailers.
+  Drive up Bald Hills Road and walk the easy loop through a grove of ancient
+  redwoods that were never logged. Find the biggest tree on the loop and get
+  a photo of you at its base, tiny against the trunk. Then lie back on the
+  ground, look straight up, and each guess how tall it is. Go early or late
+  if there's fog for the most magical light.
+about: >
+  More than 90 percent of the world's original old-growth redwood forest
+  was logged, and much of what's left is protected right here. The grove is
+  named for First Lady Lady Bird Johnson, who championed protecting
+  America's wild places. It was dedicated in 1969, with President Nixon and
+  former President Johnson both there.
+
+  The loop is about a mile and a half on a gentle trail. The parking lot is
+  too small for RVs or trailers.
 for_kids:
   short: Giant tree hunt! Find each thing.
   steps:
@@ -37,4 +44,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [forests, parks]
-tags: [redwoods, old-growth, forest, national-park, humboldt]
+tags: [lady bird johnson grove, old-growth redwoods, redwood national park, bald hills road, orick, humboldt]

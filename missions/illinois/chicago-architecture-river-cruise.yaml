@@ -8,11 +8,22 @@ place:
   address: 112 E Wacker Dr, Chicago, IL 60601
   coords: [41.88724, -87.62369]
   website: https://www.architecture.org
-short: Float through downtown Chicago on the river. Each pick the building you'd live in.
+short: Chicago Architecture Center river cruise. Float past the skyscrapers and pick the one you'd live in.
 description: >
-  Ride down the Chicago River between the skyscrapers while a guide tells the stories
-  behind them. Each of you quietly picks the building you'd live in and reveals it at the
-  end. The cruises run spring through fall and need a ticket.
+  Ride down the Chicago River between the skyscrapers while a guide tells
+  the stories behind them. Each of you quietly picks the building you'd
+  live in and reveals it at the end, with your reasons. The photo to get:
+  the two of you on the top deck with the towers rising on both sides.
+about: >
+  After the Great Chicago Fire of 1871, the city rebuilt fast and became the
+  birthplace of the skyscraper. The river cruise passes more than a century
+  of famous buildings, from early towers to the twin "corncob" towers of
+  Marina City and Willis Tower.
+
+  The river itself is a story too: engineers reversed its flow in 1900 so it
+  would carry the city's waste away from Lake Michigan. The cruises run from
+  spring through fall, about an hour and a half, and need a ticket. Bring a
+  layer; it's breezy on the water.
 duration: short
 effort: easy
 cost: $$$
@@ -22,5 +33,4 @@ time_of_day: any
 travel: local
 check_ahead: [tickets]
 themes: [boating, architecture]
-tags: [boat, architecture, city]
-credit:
+tags: [chicago architecture river cruise, chicago river, skyscrapers, marina city, riverwalk, chicago]

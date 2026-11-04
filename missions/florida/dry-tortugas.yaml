@@ -8,15 +8,22 @@ place:
   area: Key West
   coords: [24.56000, -81.79900]  # APPROX: set at the ferry terminal before publishing
   website: https://www.drytortugas.com
-short: Take the early ferry 70 miles out to Fort Jefferson in Dry Tortugas National Park.
+short: Dry Tortugas National Park. Ferry 70 miles from Key West to Fort Jefferson and snorkel the moat.
 description: >
-  Catch the early-morning ferry from Key West, 70 miles out across open water
-  to the Dry Tortugas, a cluster of tiny islands and one of the most remote
-  national parks in the country. Explore Fort Jefferson, a giant brick fort
-  from the 1800s rising out of the turquoise water, then snorkel right off
-  the beach along the moat wall to see coral, fish and maybe a nurse shark.
-  Get a photo of you on top of the fort walls. The ferry includes
-  breakfast, lunch and snorkel gear; book weeks ahead.
+  Catch the early-morning ferry from Key West across open water to the Dry
+  Tortugas. Explore Fort Jefferson, a giant brick fort rising out of the
+  turquoise water, then snorkel off the beach along the moat wall to see
+  coral, fish and maybe a nurse shark. Each keep a list of the fish you can
+  name. The photo to get: you on top of the fort walls with the sea all
+  around.
+about: >
+  Ponce de León named the islands in 1513: "tortugas" for the sea turtles he
+  found, and "dry" because there's no fresh water. Fort Jefferson was built
+  from the 1840s to the 1870s with about 16 million bricks and was never
+  finished. It's the largest brick masonry structure in the Americas. Dr.
+  Samuel Mudd, convicted after Lincoln's assassination, was imprisoned here.
+
+  The ferry includes breakfast, lunch and snorkel gear. Book weeks ahead.
 for_kids:
   short: Fort hunt! Find each thing.
   steps:
@@ -34,5 +41,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
 themes: [boating, parks, history]
-tags: [national-park, fort, snorkeling, boat, history, florida-keys]
-credit:
+tags: [dry tortugas national park, fort jefferson, key west ferry, snorkeling, remote national park, florida-keys]

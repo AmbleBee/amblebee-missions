@@ -3,7 +3,7 @@ number: 75
 name: Spider-Eye Safari
 mode: both
 who: [friends, family, kids]
-short: Hold a light by your eyes on a warm night. The tiny sparkles in the grass are spiders!
+short: Spider eye safari. Hold a light by your eyes at night and find the sparkles in the grass.
 description: >
   On a warm night, put on a headlamp or hold a flashlight level with your
   eyes and sweep it slowly over the lawn or a garden bed. Those tiny blue-green
@@ -12,6 +12,14 @@ description: >
   the biggest spider and any other eyeshine. Look closely but don't touch,
   and leave every spider where it is. Get a photo of the headlamp crew ready
   to set out.
+about: >
+  Wolf spiders have a mirror-like layer behind their eyes, like cats do,
+  that bounces light back. That's why they shine when a light is right next
+  to your eyes. Holding the light anywhere else doesn't work nearly as
+  well.
+
+  Wolf spiders are hunters, not web-builders, and mothers carry their babies
+  on their backs. They're shy and harmless to people when left alone.
 steps:
   - The headlamp crew
   - The yard in the dark
@@ -36,5 +44,4 @@ season: [spring, summer, fall]
 time_of_day: night
 travel: home
 themes: [wildlife]
-tags: [night, nature, bugs, backyard, free]
-credit:
+tags: [spider eye shine, wolf spiders, night nature walk, backyard science, night, free]

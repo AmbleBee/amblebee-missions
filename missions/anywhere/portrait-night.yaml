@@ -2,12 +2,21 @@ checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you
 number: 4
 name: Portrait Night
 mode: date
-short: Draw or paint each other. 20 minutes, no erasing. Title and sign it.
+short: Portrait night at home. Draw each other in 20 minutes, no erasing, then title and sign it.
 description: >
   Sit across from each other with paper and whatever you have: pencils,
-  markers, or paint. Set a 20-minute timer and draw each other, no
-  erasing allowed. When time's up, give your portrait a title, sign
-  and date it, and do a dramatic gallery reveal. Keep both.
+  markers or paint. Set a 20-minute timer and draw each other, no erasing
+  allowed. When time's up, give your portrait a title, sign and date it,
+  and do a dramatic gallery reveal. The photo to get: each of you holding
+  up the portrait of yourself, next to your face.
+about: >
+  Try a warm-up round of blind contour drawing: draw each other without
+  looking at your paper, in one continuous line, for one minute. The results
+  are hilarious, and it loosens up your hand for the real one.
+
+  You don't have to be good at drawing. The funnier the portrait, the better
+  the story. Keep them, and do it again in a year to see how you've
+  "improved."
 duration: short
 effort: easy
 cost: free
@@ -16,4 +25,4 @@ season: any
 time_of_day: evening
 travel: home
 themes: [art, make-something]
-tags: [art, creative, rainy-day, home, keepsake]
+tags: [portrait drawing date, draw each other, art night at home, blind contour drawing, keepsake, home]

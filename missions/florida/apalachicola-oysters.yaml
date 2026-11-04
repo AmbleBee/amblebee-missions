@@ -6,16 +6,22 @@ place:
   name: Downtown Apalachicola waterfront
   area: Apalachicola, Forgotten Coast
   coords: [29.72500, -84.98300]  # APPROX: set on the downtown waterfront before publishing
-short: Slurp Gulf oysters in old Apalachicola, then walk the waterfront at sunset.
+short: Apalachicola oysters on the Forgotten Coast. Slurp Gulf oysters, then a sunset waterfront walk.
 description: >
-  Spend an afternoon and evening in Apalachicola, a sleepy old cotton and
-  oyster port on Florida's Forgotten Coast. Walk the historic downtown with
-  its brick buildings and shrimp boats, then order a dozen Gulf oysters,
-  raw and baked, at a waterfront oyster bar. Each try one topping you've never
-  had, and rate them. The bay's famous wild oysters came back in 2026 after a
-  five-year closure, but only in a short, limited season (roughly October to
-  February), so ask whether they're wild or farmed. Walk the riverfront at
-  sunset and get a photo of the two of you with the shrimp boats.
+  Walk the historic downtown of an old cotton and oyster port, with its
+  brick buildings and shrimp boats, then order a dozen oysters, raw and
+  baked, at a waterfront oyster bar. Each try one topping you've never had
+  and rate them. Walk the riverfront at sunset. The photo to get: the two of
+  you with the shrimp boats behind you.
+about: >
+  Apalachicola Bay once produced most of Florida's oysters. The wild harvest
+  was closed for five years to let the beds recover, and it came back in 2026
+  with only a short, limited season (roughly October to February), so ask
+  whether your oysters are wild or farmed.
+
+  The town has a surprising claim to fame: in the 1840s, local doctor John
+  Gorrie invented a machine to make ice and cool rooms for fever patients, an
+  early step toward air conditioning. A small museum tells his story.
 duration: short
 effort: easy
 cost: $$
@@ -24,5 +30,4 @@ season: any
 time_of_day: evening
 travel: day-trip
 themes: [food, romantic, small-towns]
-tags: [oysters, seafood, small-town, romantic, panhandle]
-credit:
+tags: [apalachicola oysters, forgotten coast, oyster bar, shrimp boats, small town florida, panhandle]

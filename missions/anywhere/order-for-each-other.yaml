@@ -1,9 +1,9 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 43
 name: Order for Each Other
 mode: both
 who: [friends, family, kids]
-short: At a favorite local spot, order something for the other person they'd never pick themselves.
+short: Order for each other at a local spot. Pick something they'd never choose, then rate it.
 description: >
   Head to one of your local haunts, like a favorite café, bakery, taco stand or
   little shop, and make one rule: each of you picks something for the other
@@ -12,6 +12,14 @@ description: >
   honestly, and explain why you picked what you did. Rate each pick out of 10,
   and get a photo of you holding the surprise picks. Bring a
   friend or the kids and everyone picks for someone else.
+about: >
+  Good picks are surprising but not mean: a pastry with a flavor they've
+  never tried, a drink in a color they'd never order, a spicy level one
+  notch above their usual. If you're stuck, ask the staff for the most
+  underrated thing on the menu.
+
+  It works anywhere with a counter: bakeries, taco stands, bubble tea shops,
+  candy stores. Keep score over time and see who's the better picker.
 for_kids:
   short: Surprise pick! Do each thing.
   steps:
@@ -29,5 +37,5 @@ time_of_day: any
 travel: local
 check_ahead: [hours]
 themes: [food, playful, make-something]
-tags: [food, surprise, local, try-something-new]
+tags: [order for each other, food surprise, try something new, local cafe, family game, local]
 credit: Nikki D.

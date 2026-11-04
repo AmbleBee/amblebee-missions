@@ -7,7 +7,7 @@ place:
   name: Tampa Riverwalk (Curtis Hixon Park)
   area: Downtown Tampa
   coords: [27.94900, -82.46200]  # APPROX: set at Curtis Hixon Park before publishing
-short: Walk or bike the Tampa Riverwalk past the silver minarets of the old Tampa Bay Hotel.
+short: Tampa Riverwalk. Walk or bike downtown past the silver minarets of the old Tampa Bay Hotel.
 description: >
   Walk or rent bikes for the 2.6-mile Tampa Riverwalk along the Hillsborough
   River through downtown. Pass parks, museums and waterfront restaurants, and
@@ -16,6 +16,15 @@ description: >
   food hall, and each pick a different counter for lunch. Get a photo of
   you with the minarets behind you. Come at night to see the bridges
   lit up.
+about: >
+  The silver minarets belong to the old Tampa Bay Hotel, built by railroad
+  tycoon Henry Plant in 1891. Teddy Roosevelt and his Rough Riders stayed
+  here in 1898 before shipping out to Cuba. Today it's the University of
+  Tampa, with a small museum inside.
+
+  Armature Works was built in 1910 to house and fix the city's streetcars. The
+  Riverwalk is about two and a half miles long. Each January, the river
+  fills with boats for Gasparilla, a giant pirate-themed festival.
 for_kids:
   short: River walk! Find each thing.
   steps:
@@ -32,5 +41,4 @@ season: any
 time_of_day: daytime
 travel: day-trip
 themes: [walks, lakes-rivers, food]
-tags: [walking, river, food-hall, city, free, tampa]
-credit:
+tags: [tampa riverwalk, tampa bay hotel minarets, armature works food hall, hillsborough river, downtown walk, tampa]

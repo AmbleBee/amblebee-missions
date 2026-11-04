@@ -9,13 +9,22 @@ place:
   address: N Michigan Ave & E Wacker Dr, Chicago, IL 60601
   coords: [41.88850, -87.62450]  # APPROX: set at the DuSable Bridge before publishing
   website: https://www.themagnificentmile.com
-short: Walk Michigan Avenue from the river to the lake. Stop wherever looks good.
+short: Walk the Magnificent Mile in Chicago, from the river to Oak Street Beach.
 description: >
   Start on the DuSable Bridge over the Chicago River and walk north along
-  Michigan Avenue: the old Wrigley Building and Tribune Tower, the castle-like
-  Water Tower that survived the Great Fire, and window after window of shops.
-  Keep going to Oak Street Beach, where the city meets the lake. Each pick one
-  stop along the way, a shop, a snack or a view.
+  Michigan Avenue, past the Wrigley Building and Tribune Tower, the castle-like
+  Water Tower, and window after window of shops. At Tribune Tower, see how
+  many famous stones you can find set into the walls. Keep going to Oak
+  Street Beach, where the city meets the lake. The photo to get: you in front
+  of the old Water Tower.
+about: >
+  The Water Tower was built in 1869 and was one of the few buildings to
+  survive the Great Chicago Fire of 1871. Tribune Tower has more than a
+  hundred stones and bricks from famous places set into its walls, including
+  pieces of the Great Wall of China and the Parthenon.
+
+  A real estate developer gave the street its "Magnificent Mile" nickname in
+  the 1940s. Each holiday season it lights up with millions of lights.
 steps:
   - The river from the bridge
   - The old Water Tower
@@ -30,4 +39,4 @@ season: any
 time_of_day: any
 travel: local
 themes: [walks, architecture, markets]
-tags: [walking, architecture, shopping, city, chicago]
+tags: [magnificent mile, michigan avenue, chicago water tower, tribune tower stones, oak street beach, chicago]

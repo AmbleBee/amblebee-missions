@@ -8,14 +8,22 @@ place:
   area: Chino Canyon, Palm Springs
   coords: [33.83700, -116.61400]  # APPROX: set at the Valley Station parking before publishing
   website: https://pstramway.com
-short: Ride the rotating Palm Springs tram from the desert floor up into pine forest.
+short: Palm Springs Aerial Tramway. Ride the rotating tram from the desert floor up into pine forest.
 description: >
-  Ride the world's largest rotating tram car, which spins slowly as it climbs
-  more than 8,500 feet up the cliffs of Chino Canyon, from palm trees to pine
-  forest in about ten minutes. At the top it's often 30 to 40 degrees cooler,
-  and in winter there can be snow. Walk the trails at Mountain Station, find
-  a viewpoint over the whole Coachella Valley, and get a photo of you with the desert far below. Bring a jacket. The tram closes for a few
-  weeks each fall for maintenance.
+  Ride the rotating tram car up the cliffs of Chino Canyon, from palm trees
+  to pine forest in about ten minutes, and each guess how much colder it'll
+  be at the top. Walk the trails at Mountain Station and find a viewpoint
+  over the whole Coachella Valley. The photo to get: you with the desert far
+  below. Bring a jacket; in winter there can be snow.
+about: >
+  The tramway opened in 1963, and its cars, added in 2000, are the largest
+  rotating tram cars in the world. They turn slowly as they climb, so
+  everyone gets the view. You start at about 2,600 feet and end at about
+  8,500.
+
+  Up top it's often 30 to 40 degrees cooler than Palm Springs, and you're at
+  the edge of Mount San Jacinto State Park's wilderness, with miles of
+  trails. The tram closes for a few weeks each fall for maintenance.
 for_kids:
   short: Sky ride! Find each thing.
   steps:
@@ -33,5 +41,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
 themes: [views, mountains, deserts]
-tags: [tram, mountains, views, desert, palm-springs]
-credit:
+tags: [palm springs aerial tramway, rotating tram, mount san jacinto, coachella valley views, desert to pines, palm-springs]

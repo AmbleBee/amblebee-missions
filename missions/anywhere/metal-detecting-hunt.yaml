@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 73
 name: Metal Detecting Hunt
 mode: both
 who: [solo, friends, family, kids]
-short: Borrow or rent a metal detector and hunt for lost treasure. Junk jar versus treasure jar!
+short: Metal detecting treasure hunt. Borrow a detector and fill a junk jar and a treasure jar.
 description: >
   Borrow, rent or buy a beginner metal detector and bring a hand trowel and a
   pouch. Hunt only where digging is allowed: a friend's yard or field with the
@@ -14,6 +14,15 @@ description: >
   broken glass is common. Most beeps are nails and pull tabs, so keep a junk
   jar and a treasure jar and give points for the oldest find. Get a photo of
   your first real find in your palm.
+about: >
+  Most beeps will be pull tabs, bottle caps and nails, so the treasure jar
+  is something to earn. Coins are the most common real finds, and an old
+  coin with a date on it is a great prize.
+
+  Know the rules: digging is illegal in national parks and on historic sites,
+  and many local parks and beaches need a permit. Detecting clubs often
+  welcome beginners and know the good, legal spots. Always fill in your
+  holes and carry out the trash you dig up.
 steps:
   - The detector, ready to sweep
   - Digging at the beep
@@ -36,5 +45,4 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 themes: [games]
-tags: [treasure-hunt, metal-detecting, explore, outdoors]
-credit:
+tags: [metal detecting for beginners, treasure hunt, family outing, junk jar, explore, outdoors]

@@ -8,14 +8,22 @@ place:
   area: South of Tallahassee
   coords: [30.23500, -84.30300]  # APPROX: set at the boat dock before publishing
   website: https://www.floridastateparks.org/parks-and-trails/edward-ball-wakulla-springs-state-park
-short: Ride the river boat at Wakulla Springs past alligators and anhingas in the morning mist.
+short: Wakulla Springs near Tallahassee. Ride the river boat past alligators in the morning mist.
 description: >
-  Take the ranger-led river boat tour at one of the largest and deepest
-  freshwater springs in the world, cruising two miles down the Wakulla River
-  under moss-draped cypress trees. Count the alligators, manatees, turtles and
-  birds like anhingas and purple gallinules. Old Tarzan movies were filmed here.
-  Then have lunch in the 1937 Spanish-style lodge, and swim in the spring in
-  summer. Get a photo of you on the boat. Tours are by reservation.
+  Take the ranger-led river boat tour down the Wakulla River under
+  moss-draped cypress trees, and each keep a count of alligators, manatees,
+  turtles and birds; whoever's count is highest picks lunch. Then eat in the
+  old Spanish-style lodge, and swim in the spring in summer. The photo to
+  get: you on the boat with the cypress trees behind.
+about: >
+  Wakulla is one of the largest and deepest freshwater springs in the world,
+  well over 100 feet deep, and divers have found mastodon bones at the
+  bottom. Old Tarzan movies and Creature from the Black Lagoon were filmed
+  here.
+
+  The lodge was built in 1937 by financier Edward Ball and still has its
+  original painted ceilings. Boat tours run by reservation and depend on
+  water clarity and weather.
 for_kids:
   short: River tour! Find each thing.
   steps:
@@ -33,5 +41,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
 themes: [swimming, boating, parks, wildlife]
-tags: [springs, boat, wildlife, state-park, big-bend-coast]
-credit:
+tags: [wakulla springs, river boat tour, creature from the black lagoon, anhingas, historic lodge, big-bend-coast]

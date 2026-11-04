@@ -1,4 +1,4 @@
-checked: 2026-10-22
+checked: 2026-11-03
 number: 34
 name: Forestiere Underground Gardens
 mode: both
@@ -9,15 +9,23 @@ place:
   address: 5021 W Shaw Ave, Fresno, CA 93722
   coords: [36.80769, -119.88195]
   website: https://undergroundgardens.com
-short: Tour a hand-dug underground home in Fresno, with fruit trees growing up through skylights.
+short: Forestiere Underground Gardens in Fresno. Tour a hand-dug home with trees growing to skylights.
 description: >
-  Walk through the tunnels, rooms and courtyards that one man, Baldassare
-  Forestiere, dug by hand under Fresno over 40 years to escape the summer
-  heat. Fruit trees grow down in the pits and reach up through openings to
-  the sunlight, some of them over a hundred years old. Take the one-hour
-  guided tour, and each pick the room you'd want as your bedroom. Get a photo
-  of you under one of the skylights. Tours are seasonal and book
-  up, so reserve ahead and arrive early.
+  Walk through the tunnels, rooms and courtyards one man dug by hand under
+  Fresno to escape the summer heat. Fruit trees grow down in the pits and
+  reach up through openings to the sunlight. On the guided tour, each pick
+  the room you'd want as your bedroom and explain why. The photo to get: you
+  under one of the skylights, with leaves overhead.
+about: >
+  Baldassare Forestiere came from Sicily around 1901, bought land that
+  turned out to be too hard for farming, and started digging instead. Over
+  about 40 years he carved out underground rooms, a chapel, a fishpond and
+  courtyards, using only hand tools. Down below, it stays much cooler than
+  the Fresno summer above.
+
+  Some of his citrus trees are still alive and fruiting more than a century
+  later. The gardens are a California Historical Landmark. Tours are
+  seasonal and book up, so reserve ahead.
 for_kids:
   short: Underground hunt! Find each thing.
   steps:
@@ -36,5 +44,4 @@ travel: day-trip
 check_ahead: [reservation, seasonal]
 discounts: [military, student, senior]
 themes: [caves, gardens, history, quirky]
-tags: [quirky, underground, history, gardens, central-valley]
-credit:
+tags: [forestiere underground gardens, hand-dug tunnels, underground garden, quirky history, fresno, central-valley]

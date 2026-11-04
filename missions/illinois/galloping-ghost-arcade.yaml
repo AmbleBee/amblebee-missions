@@ -9,7 +9,7 @@ place:
   address: 9415 Ogden Ave, Brookfield, IL 60513
   coords: [41.82330, -87.84420]  # APPROX: set at the entrance before publishing
   website: https://www.gallopingghostarcade.com
-short: Pay once, play hundreds of arcade games free. Find the weirdest cabinet in the place.
+short: Galloping Ghost Arcade near Chicago. Pay once and play hundreds of arcade games on free play.
 description: >
   Out in suburban Brookfield, one door fee unlocks a huge, dim, packed arcade
   with hundreds and hundreds of cabinets all set to free play, from 80s classics to
@@ -19,6 +19,14 @@ description: >
   argued about most. Get a photo of the group lit up by the screens. The
   sister pinball hall, Galloping Ghost Pinball, a short walk down Ogden Ave,
   has its own separate fee.
+about: >
+  Galloping Ghost opened in 2010 and has grown into one of the biggest
+  arcades in the country, with hundreds of cabinets. The owners even make
+  their own arcade games, which you can play here.
+
+  Look for the rare Japanese machines and the games you've never heard of;
+  that's where the weirdest finds are. The sister pinball hall down the
+  street has its own separate fee.
 duration: short
 effort: easy
 cost: $$
@@ -28,5 +36,4 @@ time_of_day: any
 travel: drive
 check_ahead: [hours]
 themes: [games, quirky, playful]
-tags: [arcade, retro, games, playful, competitive, rainy-day, brookfield, chicago-suburbs]
-credit:
+tags: [galloping ghost arcade, retro arcade, free play arcade, brookfield, competitive, chicago-suburbs]

@@ -9,12 +9,22 @@ place:
   address: 8039 Beach Blvd, Buena Park, CA 90620
   coords: [33.84421, -117.00041]
   website: https://www.knotts.com
-short: Ride GhostRider at Knott's, explore the old ghost town, and split a boysenberry pie.
+short: Knott's Berry Farm in Buena Park. Ride GhostRider, explore Ghost Town, split boysenberry pie.
 description: >
-  Spend the day at the park that started as a berry stand. Ride the GhostRider
-  wooden coaster, wander the old Ghost Town, pan for gold, and each pick one ride
-  the other has to go on with you. Finish with a slice of boysenberry pie and a
-  photo in the Ghost Town. Prices change by date, so buy online and pick a
+  Spend the day at the park that started as a berry stand. Ride the
+  GhostRider wooden coaster, wander the old Ghost Town and pan for gold, and
+  each pick one ride everyone else has to go on with you. Finish with a
+  slice of boysenberry pie. The photo to get: your group on the wooden
+  sidewalks of Ghost Town.
+about: >
+  Walter and Cordelia Knott started with a roadside berry stand in the
+  1920s and helped make the boysenberry famous. Cordelia's fried chicken
+  dinners drew lines so long that Walter built Ghost Town in 1940 to keep
+  waiting customers busy. That's why Knott's is often called America's first
+  theme park.
+
+  GhostRider, opened in 1998, is one of the longest wooden coasters on the
+  West Coast. Ticket prices change by date, so buy online and pick a
   quieter weekday.
 for_kids:
   short: Theme park day! Find each thing.
@@ -33,4 +43,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [food, thrills, playful]
-tags: [theme-park, rides, playful, food, splurge]
+tags: [knotts berry farm, ghostrider coaster, ghost town, boysenberry pie, theme park, buena park]

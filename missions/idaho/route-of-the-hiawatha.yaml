@@ -8,7 +8,7 @@ place:
   area: I-90 exit 0, Idaho-Montana border
   coords: [47.45600, -115.69700]  # APPROX: set at Lookout Pass before publishing (the ride starts at East Portal, just over the line in Montana)
   website: https://ridethehiawatha.com
-short: Ride an old railroad through 10 tunnels and over 7 trestles. Lights on for the 1.7-mile tunnel.
+short: Route of the Hiawatha bike trail. Ride 10 tunnels and 7 trestles on an old mountain railroad.
 description: >
   Bike 15 miles downhill along an old mountain railroad, through ten tunnels and
   across seven sky-high trestles. It starts with the Taft Tunnel, 1.7 miles long,
@@ -16,6 +16,15 @@ description: >
   highest trestle for a photo of you with the valley far below, then
   ride the shuttle back up. Helmets and lights are required. Rent bikes at
   Lookout Pass and book ahead; it's a summer-only trail.
+about: >
+  The trail follows the old Milwaukee Road railroad line, finished in 1909,
+  where the famous Hiawatha passenger trains once ran over the Bitterroot
+  Mountains. The railroad shut down in 1980, and the route opened as a bike
+  trail in 1998.
+
+  It's a gentle downhill grade almost the whole way, so it's easy for kids.
+  The Taft Tunnel at the start is nearly two miles long, pitch black, cold and
+  wet. Helmets and lights are required, and the trail is open in summer only.
 for_kids:
   short: Bike adventure! Find each thing.
   steps:
@@ -33,4 +42,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, seasonal]
 themes: [mountains, caves, biking]
-tags: [biking, tunnels, trestles, mountains, north-idaho]
+tags: [route of the hiawatha, rail trail biking, taft tunnel, train trestles, lookout pass, north-idaho]

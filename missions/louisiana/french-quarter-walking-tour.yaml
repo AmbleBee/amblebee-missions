@@ -8,13 +8,24 @@ place:
   name: Jackson Square
   area: French Quarter, New Orleans
   coords: [29.95740, -90.06290]  # APPROX: set at the square's main gate before publishing
-short: Take a daytime history walk through the French Quarter. Find your favorite iron balcony.
+short: French Quarter history walk in New Orleans. Find your favorite iron balcony.
 description: >
   Join a guided daytime walking tour of the French Quarter's history and
-  architecture. Many start around Jackson Square. Learn why the "French"
-  Quarter mostly looks Spanish, peek into hidden courtyards, and each pick
-  your favorite iron-lace balcony along the way. Remember the one story
-  you'll retell, and get a photo in front of St. Louis Cathedral.
+  architecture; many start around Jackson Square. Peek into hidden
+  courtyards, and each pick your favorite iron-lace balcony along the way.
+  At the end, each share the one story you'll retell at home. The photo to
+  get: you in front of St. Louis Cathedral.
+about: >
+  Here's the twist most tours mention: the "French" Quarter mostly looks
+  Spanish. Two huge fires in 1788 and 1794 burned most of the French-era
+  buildings, and the city was rebuilt while Spain ruled it, with courtyards,
+  stucco walls and iron balconies.
+
+  St. Louis Cathedral is one of the oldest cathedrals in the country. The
+  red-brick Pontalba Buildings along the sides of Jackson Square went up in
+  the 1840s and are often called the oldest apartment buildings in the
+  United States. Look for the initials "AP" worked into their iron railings,
+  for the baroness who built them.
 duration: short
 effort: easy
 cost: $$
@@ -24,4 +35,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [tickets]
 themes: [walks, history, architecture]
-tags: [history, architecture, tour, walking, new-orleans]
+tags: [french quarter walking tour, jackson square, st louis cathedral, iron balconies, pontalba buildings, new-orleans]

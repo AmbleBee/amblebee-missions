@@ -7,14 +7,22 @@ place:
   name: Airboat operators along the Tamiami Trail
   area: Everglades, west of Miami
   coords: [25.76000, -80.55000]  # APPROX: set at your chosen operator's dock before publishing
-short: Skim across the Everglades sawgrass on a roaring airboat and look for alligators.
+short: Everglades airboat ride west of Miami. Skim across the sawgrass and look for alligators.
 description: >
   Climb aboard an airboat and skim across the shallow sawgrass marsh of the
-  Everglades, the giant fan roaring behind you. The captain slows down in the
-  quiet spots to point out alligators, turtles and birds, then speeds up
-  again for the thrill. Ear protection is provided. Get a photo of you on the airboat with the grass stretching out behind you. Several
-  family-run operators are along the Tamiami Trail; pick one with good
-  reviews and smaller boats if you can.
+  Everglades, the giant fan roaring behind you. The captain slows down in
+  the quiet spots to point out alligators, turtles and birds. Each keep a
+  gator count and see who spots more. The photo to get: you on the airboat
+  with the grass stretching to the horizon.
+about: >
+  The Everglades is often called the "River of Grass," after the 1947 book
+  by Marjory Stoneman Douglas. It's really a very wide, very slow river,
+  flowing south toward Florida Bay. It's also one of the only places in the
+  world where alligators and crocodiles live side by side.
+
+  Airboats aren't allowed in most of Everglades National Park, so rides run
+  from family-owned operators along the Tamiami Trail. Pick one with good
+  reviews and smaller boats if you can. Ear protection is provided.
 for_kids:
   short: Airboat ride! Find each thing.
   steps:
@@ -32,5 +40,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation]
 themes: [lakes-rivers, boating, wildlife, thrills]
-tags: [airboat, everglades, alligators, thrill, south-florida]
-credit:
+tags: [everglades airboat tour, river of grass, alligators, tamiami trail, sawgrass marsh, south-florida]

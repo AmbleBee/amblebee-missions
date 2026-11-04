@@ -6,15 +6,24 @@ who: [solo, friends, family, kids]
 place:
   name: Ruby Beach, Olympic National Park
   area: Olympic Coast, south of Forks
-  coords: [47.710054, -124.413704]
+  coords: [47.71005, -124.41370]
   website: https://www.nps.gov/places/000/ruby-beach.htm
-short: Walk down to Ruby Beach. Climb over the driftwood and photograph the sea stacks.
+short: Ruby Beach on the Olympic coast. Climb over driftwood and photograph the sea stacks.
 description: >
-  Take the short path down from Highway 101 to one of the wildest beaches on the
-  coast: giant bleached driftwood logs, sea stacks rising out of the surf, and
-  tide pools at low tide. Each build a tiny rock stack or find the best piece of
-  driftwood to sit on, and get a photo with Abbey Island behind you. Watch the
-  waves and never climb on logs in the surf; they roll.
+  Take the short path down from Highway 101 to one of the wildest beaches on
+  the coast: giant bleached driftwood, sea stacks rising out of the surf, and
+  tide pools at low tide. Each hunt for the reddest pebble or patch of sand
+  you can find. The photo to get: you on a big driftwood log with Abbey
+  Island behind you.
+about: >
+  Ruby Beach is named for the reddish sand, colored by tiny garnet crystals.
+  Look offshore on a clear day for Destruction Island and its old
+  lighthouse.
+
+  Driftwood logs here can weigh tons. Never climb on logs that are in the
+  surf, since a wave can roll them. Check the tide tables before you go;
+  low tide is best for tide pools. Please leave rocks where they are, and
+  don't build rock stacks.
 for_kids:
   short: Beach hunt! Find each thing.
   steps:
@@ -32,4 +41,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [beach]
-tags: [beach, coast, sea-stacks, tide-pools, olympic]
+tags: [ruby beach, sea stacks, driftwood, tide pools, olympic national park, olympic]

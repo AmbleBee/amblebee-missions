@@ -8,13 +8,21 @@ place:
   area: US-20/26/93, near Arco
   coords: [43.46100, -113.56300]  # APPROX: set at the visitor center before publishing
   website: https://www.nps.gov/crmo
-short: Climb a cinder cone and walk into a lava tube at Craters of the Moon. Bring a flashlight.
+short: Craters of the Moon near Arco. Climb a cinder cone and walk into a lava tube.
 description: >
-  Drive the loop road through a black, otherworldly lava field, climb Inferno
-  Cone for the view over the volcanic plain, then walk into the lava tubes at
-  the Caves Area. Get your free cave permit at the visitor center first and
-  bring a good flashlight each. Each find the strangest lava shape you can and
-  photograph it. Summer afternoons on black rock get very hot; go early.
+  Drive the loop road through a black, otherworldly lava field, climb
+  Inferno Cone for the view over the volcanic plain, then walk into the lava
+  tubes at the Caves Area with a good flashlight each. Each find the
+  strangest lava shape you can and give it a name. The photo to get: you on
+  top of Inferno Cone with the lava field stretching away.
+about: >
+  The lava here erupted from a long crack in the Earth called the Great
+  Rift, between about 15,000 and 2,000 years ago. Apollo astronauts trained
+  here in 1969 to study volcanic rock before going to the moon.
+
+  Get a free cave permit at the visitor center first. It's also an
+  International Dark Sky Park, so the stars are incredible. Summer
+  afternoons on black rock get very hot, so go early.
 for_kids:
   short: Moon hunt! Find each thing.
   steps:
@@ -32,4 +40,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [seasonal, conditions]
 themes: [caves, rocks-fossils, parks]
-tags: [volcano, caves, national-park, geology]
+tags: [craters of the moon, lava tubes, inferno cone, apollo astronaut training, dark sky park, geology]

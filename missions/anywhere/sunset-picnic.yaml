@@ -2,12 +2,20 @@ checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you
 number: 5
 name: Sunset Picnic
 mode: date
-short: Pack a simple picnic. Find a west-facing spot 30 min before sunset.
+short: Sunset picnic date. Pack a simple picnic and find a west-facing spot before sunset.
 description: >
-  Pack something easy: bread, cheese, fruit, a drink, and a blanket.
-  Find a park, hill, or waterfront with a clear view west and get there
-  about half an hour before sunset. Each of you brings one surprise
-  snack the other doesn't know about. Stay until the first star.
+  Pack something easy, like bread, cheese, fruit and a drink, plus a
+  blanket. Find a park, hill or waterfront with a clear view west and get
+  there about half an hour before sunset. Each of you brings one surprise
+  snack the other doesn't know about. The photo to get: the two of you on
+  the blanket with the sky glowing behind. Stay until the first star.
+about: >
+  Look up the exact sunset time for your town, since it shifts a little
+  every day. The best colors often come 10 to 20 minutes after the sun goes
+  down, so stay put.
+
+  Keep a picnic kit ready in the car: a blanket, napkins, a small knife and
+  a cutting board. Then a sunset picnic is only a quick store stop away.
 duration: short
 effort: easy
 cost: $
@@ -16,4 +24,4 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: local
 themes: [sunsets, food]
-tags: [food, nature, sunset, outdoors]
+tags: [sunset picnic, picnic date, golden hour, west facing view, food, outdoors]

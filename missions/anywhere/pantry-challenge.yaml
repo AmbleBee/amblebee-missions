@@ -2,11 +2,20 @@ checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you
 number: 3
 name: Pantry Challenge
 mode: date
-short: Each pick 3 random ingredients at home. Make a meal using all 6.
+short: Pantry challenge date at home. Each pick 3 secret ingredients, then cook one meal with all 6.
 description: >
-  No shopping allowed. Each of you secretly picks three ingredients
-  from the fridge or pantry. Reveal them, then cook one dish (or a
-  small meal) together that uses all six. Name it and rate it.
+  No shopping allowed. Each of you secretly picks three ingredients from the
+  fridge or pantry. Reveal them, then cook one dish or a small meal together
+  that uses all six. Give it a fancy restaurant name and rate it. The photo
+  to get: the finished dish, plated like it's on a TV cooking show.
+about: >
+  It's like a cooking competition show, but you're on the same team. Rescue
+  tricks for strange combinations: a squeeze of lemon, a pinch of salt or
+  something crunchy on top fixes a lot, and a fried egg makes almost anything
+  a meal.
+
+  Keep a list of your best inventions. Some of the best family recipes
+  started exactly this way.
 duration: short
 effort: easy
 cost: free
@@ -15,4 +24,4 @@ season: any
 time_of_day: evening
 travel: home
 themes: [food, make-something]
-tags: [food, cooking, rainy-day, home]
+tags: [pantry challenge, cook with what you have, cooking date, mystery ingredients, home, rainy-day]

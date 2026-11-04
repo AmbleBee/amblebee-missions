@@ -6,13 +6,23 @@ place:
   name: Indiana Dunes State Park
   area: Chesterton
   address: 1600 N 25 E First Floor, Chesterton, IN 46304
-  coords: [41.662465, -87.063138]
+  coords: [41.66246, -87.06314]
   website: https://www.in.gov/dnr/state-parks/parks-lakes/indiana-dunes-state-park/
-short: Climb a dune, then watch the sun set over Lake Michigan from the beach.
+short: Indiana Dunes State Park near Chesterton. Take the 3 Dune Challenge, then watch the sunset.
 description: >
-  Climb one of the big dunes for a look at the lake, then head down to the beach for
-  sunset; on a clear evening you can see the Chicago skyline across the water. The Dunes
-  Pavilion by the beach has food and a rooftop for a drink after.
+  Take on the 3 Dune Challenge together, climbing the park's three tallest
+  sand dunes one after another. Then head down to the beach for sunset over
+  Lake Michigan. On a clear evening, you can see the Chicago skyline across
+  the water. The photo to get: the two of you on top of the last dune,
+  windblown and proud.
+about: >
+  The 3 Dune Challenge climbs Mount Jackson, Mount Holden and Mount Tom,
+  more than 550 feet of climbing in about a mile and a half, much of it in
+  soft sand. Mount Tom is the tallest dune in the park, about 190 feet high.
+
+  Indiana Dunes State Park opened in 1925. It's surrounded by Indiana Dunes
+  National Park, which became a national park in 2019. The Dunes Pavilion by
+  the beach, first built in 1930, has food and a rooftop for a drink after.
 duration: short
 effort: moderate
 cost: $
@@ -22,5 +32,4 @@ time_of_day: evening
 travel: drive
 check_ahead: [hours]
 themes: [beach, lakes-rivers, sunsets]
-tags: [beach, sunset, dunes, lake]
-credit:
+tags: [indiana dunes state park, 3 dune challenge, lake michigan sunset, mount tom dune, chesterton, indiana dunes]

@@ -9,13 +9,20 @@ place:
   address: 5700 S DuSable Lake Shore Dr, Chicago, IL 60637
   coords: [41.79060, -87.58310]  # APPROX: set at the main entrance before publishing
   website: https://www.msichicago.org
-short: Walk through a real WWII submarine and a working coal mine under one roof.
+short: Griffin Museum of Science and Industry in Chicago. Walk through a real U-boat and a coal mine.
 description: >
-  A giant museum full of things you can climb into: a captured World War II
-  U-boat, a coal mine you ride down into, a Boeing 727, a model railroad that
-  fills a room, and a tornado you can stand next to. Each pick the one exhibit
-  you'd want to take home. Some exhibits need an extra timed ticket, and
-  Illinois residents get free days.
+  Climb into a captured World War II U-boat, ride down into a coal mine,
+  step into a Boeing 727, and stand next to an indoor tornado. Each pick the
+  one exhibit you'd take home if you could. The photo to get: you beside the
+  giant U-505 submarine.
+about: >
+  The museum is in the Palace of Fine Arts, one of the only big buildings
+  left from Chicago's 1893 World's Fair. It opened as a museum in 1933, and
+  the coal mine exhibit has been here since the start.
+
+  The U-505 was captured at sea by the U.S. Navy in 1944. It's the only
+  German submarine of its kind in the United States. Some exhibits need an
+  extra timed ticket, and Illinois residents get free days.
 for_kids:
   short: Science hunt! Find each thing.
   steps:
@@ -33,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [museums, science, vehicles]
-tags: [museum, science, trains, rainy-day, chicago]
+tags: [museum of science and industry, u-505 submarine, coal mine exhibit, hyde park, science museum, chicago]

@@ -12,7 +12,7 @@ place:
   links:
     - label: Ferry tickets
       url: https://www.cumberlandislandferry.com
-short: Ferry to a wild island. Find the mansion ruins, the wild horses and an empty beach.
+short: Cumberland Island from St. Marys. Ferry to a wild island of horses, mansion ruins and empty beach.
 description: >
   Take the morning ferry from St. Marys to Cumberland Island, a national seashore with no
   stores, no cars for visitors and wild horses grazing under the live oaks. Walk the shaded
@@ -20,6 +20,16 @@ description: >
   walk the sand together. It adds up to several miles on foot, so pack a lunch, water, bug
   spray and sunscreen, since there's nowhere to buy anything once you're there. Get a photo of you in front of the Dungeness ruins (with a horse in the frame if you're lucky),
   and keep well back from the horses. Book the ferry ahead and don't miss the last boat back.
+about: >
+  In the 1880s, Thomas Carnegie, brother of steel tycoon Andrew Carnegie,
+  built a giant mansion called Dungeness here. It burned in 1959, leaving
+  the haunting ruins you see today. The island became a national seashore in
+  1972, and the ferry limits how many people visit each day.
+
+  More than a hundred wild horses roam the island, descended from horses
+  left by earlier residents. Keep well back from them; they're wild. It
+  adds up to several miles on foot, so pack a lunch, water, bug spray and
+  sunscreen, and don't miss the last boat back.
 duration: all-day
 effort: moderate
 cost: $$$
@@ -30,5 +40,4 @@ travel: drive
 check_ahead: [reservation, tickets, conditions]
 discounts: [senior, military]
 themes: [beach, boating, wildlife, history]
-tags: [island, wild-horses, beach, ruins, ferry, national-seashore, st-marys]
-credit:
+tags: [cumberland island, wild horses, dungeness ruins, national seashore, st marys ferry, st-marys]

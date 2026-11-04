@@ -8,14 +8,20 @@ place:
   area: Apopka, north of Orlando
   coords: [28.71200, -81.46000]  # APPROX: set at the canoe rental before publishing
   website: https://www.floridastateparks.org/parks-and-trails/wekiwa-springs-state-park
-short: Paddle the clear Wekiwa River from the spring through quiet wild Florida.
+short: Wekiwa Springs near Apopka. Paddle the clear spring river through wild Florida, then swim.
 description: >
-  Rent a canoe or kayak at the spring and paddle down the Wekiwa River, a
-  clear, spring-fed river winding through cypress swamps and palm hammocks.
-  Watch for turtles stacked on logs, wading birds, otters and alligators
-  sunning on the banks. Then swim in the cool, 72-degree spring basin. Get a
-  photo of you in the boat. The park often fills up on weekends,
-  so arrive right when it opens.
+  Rent a canoe or kayak at the spring and paddle down the clear, spring-fed
+  Wekiwa River, winding through cypress swamps and palm hammocks. Keep a
+  count of turtles stacked on logs, and see who spots the first alligator
+  sunning on the bank. Then swim in the cool spring basin. The photo to get:
+  you in the boat on the clear water.
+about: >
+  "Wekiwa" comes from a Creek word for a spring of water. The river it feeds,
+  the Wekiva, is a National Wild and Scenic River, one of the few in
+  Florida. The park is home to black bears, deer and otters.
+
+  The spring stays around 72 degrees all year. The park often fills up on
+  weekends, so arrive right when it opens.
 for_kids:
   short: River hunt! Find each thing.
   steps:
@@ -38,5 +44,4 @@ time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
 themes: [lakes-rivers, swimming, boating, wildlife]
-tags: [kayak, springs, river, swimming, wildlife, central-florida]
-credit:
+tags: [wekiwa springs kayaking, wekiva river, spring swimming, apopka, wild florida, central-florida]

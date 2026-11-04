@@ -3,13 +3,20 @@ number: 31
 name: Split Coloring Page
 mode: both
 who: [friends, family, kids]
-short: Tear a coloring page in half. Each color your half without peeking, then put it back together.
+short: Split coloring page game. Tear a page in half, each color your side, then put it back together.
 description: >
   Pick a coloring page from a book or print one out, and tear it down the
   middle. Each take one half and color it however you like, without peeking at
   the other's side or saying what colors you're using. When you're both done,
   line the halves up, reveal the mash-up, and take a photo of the finished
   picture held together. Then guess what the other was going for.
+about: >
+  It's a cousin of a game artists in the 1920s called "exquisite corpse,"
+  where each person drew part of a picture without seeing the rest. The
+  mismatched results were the whole point.
+
+  Try a free printable coloring page of an animal or a city scene. For a
+  harder round, each color with only three crayons, chosen in secret.
 for_kids:
   short: Coloring surprise! Do each thing.
   steps:
@@ -26,4 +33,4 @@ season: any
 time_of_day: any
 travel: local
 themes: [art, playful]
-tags: [at-home, art, coloring, playful, rainy-day]
+tags: [coloring game, exquisite corpse, art game for kids, coloring night, at-home, playful]

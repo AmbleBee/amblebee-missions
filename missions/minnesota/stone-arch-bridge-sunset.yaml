@@ -6,13 +6,24 @@ place:
   name: Stone Arch Bridge
   area: St. Anthony Falls, Minneapolis
   address: 1 Portland Ave, Minneapolis, MN 55401
-  coords: [44.980687, -93.254106]
+  coords: [44.98069, -93.25411]
   website: https://www.nps.gov/miss/planyourvisit/stonarch.htm
-short: Walk the old stone railroad bridge over the Mississippi at sunset and watch the falls.
+short: Stone Arch Bridge in Minneapolis. Walk over the Mississippi at sunset and watch the falls.
 description: >
-  The 1880s Stone Arch Bridge is now a walking and biking bridge across the Mississippi,
-  with the best view of St. Anthony Falls and the old flour mills. Walk across at sunset
-  as the city lights come on, then wander the Mill Ruins Park paths below.
+  Walk across the old Stone Arch Bridge at sunset, with St. Anthony Falls
+  rushing below and the old flour mills along the river. Stop in the middle
+  and each pick the spot on the skyline you'd most like to see from up close.
+  The photo to get: the two of you on the bridge with the falls and the
+  glowing city behind you. Then wander the Mill Ruins Park paths below.
+about: >
+  Railroad builder James J. Hill had the bridge built in 1883, and it's the
+  only arched stone bridge across the Mississippi River. Trains used it for
+  about a century; now it's for people on foot and bikes.
+
+  St. Anthony Falls is the only major natural waterfall on the Mississippi,
+  and its power made Minneapolis the flour-milling capital of the world.
+  The Mill City Museum, built inside the ruins of a burned-out mill, tells
+  the story. Look for the glowing Gold Medal Flour sign across the river.
 duration: short
 effort: easy
 cost: free
@@ -22,5 +33,4 @@ time_of_day: evening
 travel: local
 check_ahead: [conditions]
 themes: [lakes-rivers, sunsets, architecture]
-tags: [bridge, river, sunset, free]
-credit:
+tags: [stone arch bridge, st anthony falls, mississippi river, mill ruins park, mill city, minneapolis]

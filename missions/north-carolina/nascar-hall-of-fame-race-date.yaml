@@ -6,16 +6,24 @@ place:
   name: NASCAR Hall of Fame
   area: Uptown Charlotte
   address: 400 E M.L.K. Jr Blvd, Charlotte, NC 28202
-  coords: [35.221130, -80.843956]
+  coords: [35.22113, -80.84396]
   website: https://www.nascarhall.com
-short: Race each other in the NASCAR Hall of Fame simulators. Loser picks up dinner.
+short: NASCAR Hall of Fame in Charlotte. Race each other in the simulators; the loser buys dinner.
 description: >
   Get the ticket package with unlimited simulator rides and make it a
   rivalry. Walk Glory Road, the banked ramp lined with famous race cars, try
-  the pit-stop challenge to see who changes a tire faster, then strap into the
-  iRacing simulators side by side and race head to head. Best of three, and
-  the loser buys dinner in Uptown afterward. Get a photo of the two of you on
-  the banked curve of Glory Road.
+  the pit-stop challenge to see who changes a tire faster, then strap into
+  the racing simulators side by side and race head to head. Best of three,
+  and the loser buys dinner in Uptown. The photo to get: the two of you on
+  the steep banked curve of Glory Road.
+about: >
+  The Hall of Fame opened in Uptown Charlotte in 2010, in the heart of
+  stock car country; many NASCAR teams are based in the Charlotte area.
+  Glory Road's curves are built at the same steep angles as real tracks, so
+  you can feel how hard they lean, and it's harder to stand on than it looks.
+
+  The Hall of Honor, a round room in the middle, holds the inductees' stories
+  and is worth a quiet walk-through between races.
 steps:
   - Your favorite car on Glory Road
   - The pit-stop challenge mid-swap
@@ -30,5 +38,4 @@ travel: local
 check_ahead: [hours, tickets]
 discounts: [senior]
 themes: [museums, vehicles, games, playful]
-tags: [racing, museum, simulator, competitive, playful, rainy-day, charlotte]
-credit:
+tags: [nascar hall of fame, racing simulators, glory road, pit stop challenge, uptown charlotte, charlotte]

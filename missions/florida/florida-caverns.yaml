@@ -8,7 +8,7 @@ place:
   area: Marianna
   coords: [30.81500, -85.23100]  # APPROX: set at the visitor center before publishing
   website: https://www.floridastateparks.org/parks-and-trails/florida-caverns-state-park
-short: Tour Florida's only public dry cave at Florida Caverns, full of stalactites and flowstone.
+short: Florida Caverns State Park in Marianna. Tour Florida's only walk-through cave.
 description: >
   Take a guided ranger tour through Florida's only cave open to the public for
   walking tours, under the Panhandle hills. Duck through narrow passages
@@ -17,6 +17,15 @@ description: >
   Get a photo of you in one of the big rooms. Tours run daily but
   sell out on weekends, so arrive early or reserve online. It's cool and
   damp inside, so bring a light jacket.
+about: >
+  In the 1930s, workers from the Civilian Conservation Corps dug out some of
+  the cave's passages by hand to make room for tours, and the park opened in
+  1942. The formations formed over thousands of years as rainwater dripped
+  through the limestone.
+
+  It's cool and damp inside year-round, so bring a light jacket. Tours sell
+  out on weekends, so arrive early or reserve online. The Chipola River
+  runs through the park, with a spring-fed swimming area.
 for_kids:
   short: Cave hunt! Find each thing.
   steps:
@@ -34,5 +43,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
 themes: [caves, parks]
-tags: [cave, underground, state-park, tour, panhandle]
-credit:
+tags: [florida caverns state park, cave tour florida, stalactites, marianna, chipola river, panhandle]

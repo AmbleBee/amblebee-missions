@@ -1,9 +1,9 @@
-checked: 2026-10-29
+checked: 2026-11-03
 number: 72
 name: Discovery Flight
 mode: both
 who: [solo, family]
-short: Book a discovery flight and take the controls of a small plane. Find your house from above.
+short: Book a discovery flight at a local airport and take the controls of a small plane.
 description: >
   Call a flight school at your nearest small airport and ask for a discovery
   or intro flight. An instructor walks you around the plane, then you climb
@@ -12,6 +12,15 @@ description: >
   On many planes a second person can ride in back, so ask when you book. For
   ages 8 to 17, check whether a local EAA chapter offers free Young Eagles
   flights. Get a photo of your hands on the controls.
+about: >
+  A discovery flight is a short intro lesson that most flight schools offer.
+  It's usually in a small plane like a Cessna 172, the most-built airplane
+  in history. The time you fly can even be logged toward a pilot's license
+  if you catch the bug.
+
+  The EAA's Young Eagles program has given free first flights to millions of
+  kids since the 1990s, flown by volunteer pilots. Flights depend on the
+  weather, so have a backup day in mind.
 steps:
   - The preflight walkaround
   - You in the pilot's seat
@@ -28,5 +37,4 @@ travel: local
 check_ahead: [reservation, conditions]
 caution: "Don't handle the camera while you're flying; hand it to your instructor or a passenger. Flying carries inherent risks."
 themes: [views, vehicles]
-tags: [flying, aviation, splurge, bucket-list, views]
-credit:
+tags: [discovery flight, intro flight lesson, fly a plane, young eagles, flight school, bucket-list]

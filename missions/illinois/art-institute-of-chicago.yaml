@@ -9,13 +9,21 @@ place:
   address: 111 S Michigan Ave, Chicago, IL 60603
   coords: [41.87960, -87.62370]  # APPROX: set at the Michigan Ave entrance (the lions) before publishing
   website: https://www.artic.edu
-short: Say hi to the lions out front, then each find a painting the other has to see.
+short: Art Institute of Chicago. Say hi to the lions, then each find a painting the other must see.
 description: >
-  One of the great art museums of the world, guarded by two bronze lions on
-  Michigan Avenue. Inside are Seurat's dotted Sunday afternoon, Hopper's
-  Nighthawks, American Gothic and the tiny Thorne Miniature Rooms. Split up for
-  twenty minutes, each find one piece the other has to see, then trade tours.
-  Illinois residents get free days; check the museum's site.
+  Say hi to the two bronze lions on Michigan Avenue, then head inside to
+  find Seurat's dotted Sunday afternoon, Hopper's Nighthawks and American
+  Gothic. Split up for twenty minutes, each find one piece the other has to
+  see, then trade tours. The photo to get: you between the lions out front.
+about: >
+  The museum was founded in 1879, and its lions have guarded the entrance
+  since 1894. They wear wreaths at Christmas and sometimes giant helmets when
+  a Chicago team makes the playoffs.
+
+  Don't miss the Thorne Miniature Rooms, tiny, detailed model rooms from
+  different eras, and A Sunday on La Grande Jatte, famous from Ferris
+  Bueller's Day Off. Illinois residents get free days, so check the
+  museum's site.
 steps:
   - The lions out front
   - The painting you picked
@@ -29,4 +37,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [museums, art]
-tags: [art, museum, rainy-day, chicago]
+tags: [art institute of chicago, nighthawks, american gothic, thorne miniature rooms, michigan avenue lions, chicago]

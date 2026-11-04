@@ -8,13 +8,23 @@ place:
   address: 200 Kancamagus Hwy, North Woodstock, NH 03262
   coords: [44.03565, -71.67718]
   website: https://www.visitwhitemountains.com/the-kancamagus-highway
-short: Drive the Kancamagus through the White Mountains. Stop at a waterfall and a big overlook.
+short: Kancamagus Highway in the White Mountains. Drive it, stop at a waterfall and a big overlook.
 description: >
-  The Kancamagus runs about 34 miles through the White Mountains with no gas stations or
-  shops, just forest, rivers and overlooks. Start at the White Mountains Visitors Center
-  in Lincoln, then stop at a waterfall like Sabbaday Falls and the high overlooks near
-  Kancamagus Pass. Best in fall color. Parking at the stops needs a forest recreation
-  pass.
+  Drive the Kancamagus through the White Mountains, with nothing but forest,
+  rivers and overlooks for about 34 miles. Take turns being navigator and
+  pick one stop each: a waterfall like Sabbaday Falls, a swimming hole at
+  the Lower Falls, or the high overlooks near Kancamagus Pass. The photo to
+  get: the two of you at the biggest overlook with the mountains rolling
+  away behind you.
+about: >
+  The highway is named for Kancamagus, a leader of the Pennacook people in
+  the late 1600s. It opened as a through road in 1959 and is a National
+  Scenic Byway, with no gas stations or shops the whole way, so fill up in
+  Lincoln or Conway.
+
+  It's most famous in early October, when the fall color peaks and traffic
+  gets heavy. Sabbaday Falls is a short, easy walk. Parking at the stops
+  needs a White Mountain National Forest recreation pass.
 duration: half-day
 effort: easy
 cost: $
@@ -24,5 +34,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [waterfalls, mountains, forests, road-trips]
-tags: [scenic-drive, fall-color, waterfalls, mountains]
-credit:
+tags: [kancamagus highway, white mountains, fall foliage drive, sabbaday falls, scenic byway, new hampshire]

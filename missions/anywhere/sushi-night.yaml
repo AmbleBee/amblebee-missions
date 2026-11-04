@@ -3,7 +3,7 @@ number: 41
 name: Sushi Night, Something New
 mode: both
 who: [solo, friends, family]
-short: Go out for sushi and each order a roll or dish you've never tried. Rate everything out of 10.
+short: Sushi night. Each order a roll or dish you've never tried and rate every bite out of 10.
 description: >
   Find a sushi spot, ideally one neither of you has been to, and make a rule:
   each of you has to order at least one roll or dish you've never had before.
@@ -12,6 +12,15 @@ description: >
   napkin or in your phone. At the end, crown the best and worst bites of the
   night, and get a photo of you with the winning plate. Not a raw
   fish fan? Cooked rolls, tempura and veggie rolls count too.
+about: >
+  A quick guide: nigiri is a slice of fish on a little block of rice, maki
+  is a roll cut into pieces, and a hand roll is a cone of seaweed you eat
+  with your hands. Uni is sea urchin, and unagi is grilled freshwater eel
+  with a sweet sauce.
+
+  Tips from sushi chefs: dip nigiri fish-side down so the rice doesn't fall
+  apart, and go easy on the soy sauce. Feeling brave? Ask for "omakase,"
+  which means "I'll leave it to you," and let the chef choose.
 duration: short
 effort: easy
 cost: $$
@@ -20,5 +29,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [food, make-something]
-tags: [food, sushi, try-something-new, dinner, rating]
-credit:
+tags: [sushi night, try new sushi, sushi rating game, omakase, dinner, try-something-new]

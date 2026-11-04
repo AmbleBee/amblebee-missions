@@ -8,14 +8,21 @@ place:
   area: Dunedin
   coords: [28.07000, -82.82900]  # APPROX: set at the park entrance before publishing
   website: https://www.floridastateparks.org/parks-and-trails/honeymoon-island-state-park
-short: Walk the beach and osprey trail on Honeymoon Island in the morning. Look for nesting ospreys.
+short: Honeymoon Island near Dunedin. Walk the beach and the Osprey Trail, and spot nesting ospreys.
 description: >
-  Spend a morning on Honeymoon Island, a barrier island with miles of
-  undeveloped beach on the Gulf. Walk the Osprey Trail through virgin slash
-  pines, where ospreys and bald eagles nest, then hunt for shells on the
-  quiet north beach. If you have time, take the ferry to Caladesi Island, often
-  ranked one of the best beaches in America. Get a photo of you on
-  the beach with the Gulf behind you. Check for nesting-season trail closures.
+  Spend a morning on a barrier island with miles of undeveloped Gulf beach.
+  Walk the Osprey Trail through slash pines where ospreys and bald eagles
+  nest, and see who spots the first nest. Then hunt for shells on the quiet
+  north beach and each find the best one. The photo to get: you on the
+  beach with the Gulf behind you.
+about: >
+  The island was once called Hog Island. A hurricane in 1921 split it in two,
+  creating Honeymoon Island and Caladesi Island. In the late 1930s, a
+  developer built cottages and ran a contest offering free honeymoons here,
+  and the new name stuck.
+
+  A ferry runs to Caladesi Island, often ranked among the best beaches in
+  America. Check for nesting-season trail closures.
 for_kids:
   short: Island hunt! Find each thing.
   steps:
@@ -32,5 +39,4 @@ season: any
 time_of_day: morning
 travel: day-trip
 themes: [hiking, beach, parks, wildlife]
-tags: [beach, birds, hiking, state-park, tampa-bay]
-credit:
+tags: [honeymoon island state park, osprey trail, shelling, caladesi island, barrier island beach, tampa-bay]

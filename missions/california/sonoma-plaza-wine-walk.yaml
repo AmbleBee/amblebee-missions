@@ -6,15 +6,22 @@ place:
   name: Sonoma Plaza
   area: Downtown Sonoma
   coords: [38.29300, -122.45800]  # APPROX: set at the plaza before publishing
-short: Walk between the tasting rooms around Sonoma's historic plaza. Each pick a glass for the other.
+short: Sonoma Plaza wine walk. Stroll the historic plaza's tasting rooms and pick a glass for each other.
 description: >
-  Leave the car parked and spend an afternoon walking around Sonoma's
-  shady historic plaza, ringed by more than two dozen tasting rooms, cafés and
-  old adobe buildings, including the last of California's Spanish missions.
-  Visit two or three tasting rooms, and at each one pick a glass for the other
-  person to try. Pack or buy a picnic and eat it on the plaza lawn, and get a
-  photo of the two of you by the duck pond. No driving needed between tastings,
-  but plan your ride home.
+  Leave the car parked and spend an afternoon around Sonoma's shady
+  historic plaza, ringed by tasting rooms, cafés and old adobe buildings.
+  Visit two or three tasting rooms, and at each one pick a glass for the
+  other to try. Pack or buy a picnic and eat it on the plaza lawn. The
+  photo to get: the two of you by the duck pond.
+about: >
+  Sonoma Plaza is full of California history. Mission San Francisco
+  Solano, on one corner, was the last of the 21 California missions, founded
+  in 1823. In 1846, a group of settlers raised the first Bear Flag right on
+  the plaza and declared the short-lived California Republic. The bear is
+  still on the state flag.
+
+  There are more than two dozen tasting rooms within a short walk. No
+  driving is needed between tastings, but plan your ride home.
 duration: half-day
 effort: easy
 cost: $$$
@@ -24,5 +31,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [walks, picnic, drinks, romantic]
-tags: [wine, walking, romantic, picnic, wine-country]
-credit:
+tags: [sonoma plaza, wine walk, bear flag revolt, mission san francisco solano, picnic, wine-country]

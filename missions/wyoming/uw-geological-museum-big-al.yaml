@@ -1,4 +1,4 @@
-checked: 2026-10-26
+checked: 2026-11-03
 number: 3
 name: Meet Big Al in Laramie
 mode: adventure
@@ -7,18 +7,23 @@ place:
   name: University of Wyoming Geological Museum
   area: UW campus, Laramie
   address: 1000 E University Ave, Laramie, WY 82071
-  coords: [41.313996, -105.583202]
+  coords: [41.31400, -105.58320]
   website: https://www.uwyo.edu/geomuseum/
-short: Toss a pinecone at the copper T. rex, then go inside to meet Big Al and a 75-foot giant.
+short: UW Geological Museum in Laramie. Toss a pinecone at the copper T. rex, then meet Big Al.
 description: >
-  Spend a slow hour or two at the free University of Wyoming Geological Museum.
-  Out front, the life-size copper T. rex greets you, and campus legend says
-  landing a pinecone in its mouth brings an A on your next final, so give it a
-  try. Inside, find Big Al, the most complete Allosaurus ever found and a
-  Wyoming-born fan favorite, then stand under the 75-foot Apatosaurus and
-  wander the rocks and fossils from across the state's deep past. Get a photo of
-  yourself next to the copper T. rex on the way out. Check the museum's page for
-  parking on campus before you go.
+  Start out front at the life-size copper T. rex. Campus legend says landing
+  a pinecone in its mouth brings an A on your next final, so give it a few
+  tries. Inside, find Big Al, then stand under the 75-foot Apatosaurus and
+  wander the rocks and fossils from Wyoming's deep past. The photo to get:
+  you next to the copper T. rex, pinecone in hand.
+about: >
+  Big Al is one of the most complete Allosaurus skeletons ever found. It was
+  dug up in Wyoming in 1991, and it showed injuries and infections the
+  dinosaur lived with, which made it famous among scientists.
+
+  Wyoming is one of the richest places in the world for dinosaur fossils,
+  and the museum is free. Check the museum's page for parking on campus
+  before you go.
 duration: short
 effort: easy
 cost: free
@@ -28,5 +33,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [rocks-fossils, museums]
-tags: [museum, dinosaurs, fossils, free, solo, rainy-day, laramie]
-credit:
+tags: [uw geological museum, big al allosaurus, copper t rex, free dinosaur museum, university of wyoming, laramie]

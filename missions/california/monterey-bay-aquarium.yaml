@@ -9,13 +9,22 @@ place:
   address: 886 Cannery Row, Monterey, CA 93940
   coords: [36.61820, -121.90170]  # APPROX: set at the entrance before publishing
   website: https://www.montereybayaquarium.org
-short: Watch the sea otters and stand under the kelp forest at Monterey Bay Aquarium.
+short: Monterey Bay Aquarium on Cannery Row. Watch the sea otters and stand under the kelp forest.
 description: >
-  Spend the day at one of the best aquariums anywhere, built on the site of an
-  old sardine cannery. Catch a sea otter feeding, stand in front of the
-  towering kelp forest, and sit by the giant open-ocean window. Each pick your
-  favorite creature of the day. Afterward, walk Cannery Row and look out over
-  the bay for wild otters and sea lions.
+  Catch a sea otter feeding, stand in front of the towering kelp forest, and
+  sit by the giant open-ocean window as tuna and sharks glide past. Each
+  pick your favorite creature of the day and do your best impression of it.
+  The photo to get: you silhouetted against the open-ocean window.
+  Afterward, walk Cannery Row and look out over the bay for wild otters.
+about: >
+  The aquarium opened in 1984 inside an old sardine cannery on the street
+  John Steinbeck made famous in his novel Cannery Row. Its kelp forest
+  exhibit, about three stories tall, was the first living kelp forest ever
+  shown in an aquarium.
+
+  The aquarium also rescues stranded sea otter pups. Its resident otters
+  help raise them so they can go back to the wild. Buy tickets online to
+  skip the line.
 for_kids:
   short: Ocean hunt! Find each animal.
   steps:
@@ -33,4 +42,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
 themes: [beach, wildlife]
-tags: [aquarium, animals, ocean, rainy-day, splurge]
+tags: [monterey bay aquarium, sea otters, kelp forest, cannery row, open ocean exhibit, monterey]

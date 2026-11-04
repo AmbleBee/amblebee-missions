@@ -1,13 +1,21 @@
-checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
+checked: 2026-11-03
 number: 9
 name: Museum Visit
 mode: date
-short: Visit a museum. Each find one piece you'd hang at home, if you could.
+short: Museum date. Wander an art or science museum and each find the piece you'd take home.
 description: >
-  Pick an art, science, or any museum that sounds interesting and take
-  your time wandering. Along the way, each of you can keep an eye out
-  for the one piece you'd love to have at home. Share your picks over
-  a coffee afterward.
+  Pick an art, science or any museum that sounds interesting and take your
+  time wandering. Each of you keeps an eye out for the one piece you'd love
+  to have at home, then lead the other to it and explain why. The photo to
+  get: the two of you next to your picks. Trade stories over coffee after.
+about: >
+  Many museums have free days or evenings each month, and some are always
+  free. Smithsonian magazine's Museum Day each fall offers free tickets to
+  hundreds of museums, and the Blue Star Museums program offers free entry to
+  military families in summer.
+
+  Most museums allow photos without flash, but check the signs, since some
+  special exhibits don't.
 duration: half-day
 effort: easy
 cost: $$
@@ -16,5 +24,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
-themes: [art, make-something]
-tags: [art, culture, learning, rainy-day]
+themes: [art, museums]
+tags: [museum date, art museum, science museum, free museum days, culture, learning]

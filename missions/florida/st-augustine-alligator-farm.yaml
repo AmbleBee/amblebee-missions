@@ -8,7 +8,7 @@ place:
   area: Anastasia Island, St. Augustine
   coords: [29.88200, -81.28900]  # APPROX: set at the entrance before publishing
   website: https://www.alligatorfarm.com
-short: See every crocodilian species on Earth at the St. Augustine Alligator Farm. Find Maximo.
+short: St. Augustine Alligator Farm. See every crocodilian species on Earth and the rare white gators.
 description: >
   Visit one of Florida's oldest attractions, open since 1893 and home to every
   living species of crocodile, alligator and caiman. Find the giant saltwater
@@ -16,6 +16,17 @@ description: >
   walk the boardwalk over the rookery, where wild herons, egrets and roseate
   spoonbills nest right above the alligators. Each pick your favorite. Get a
   photo of you on the boardwalk over the gators.
+about: >
+  The Alligator Farm opened in 1893, one of Florida's oldest attractions,
+  and it's the only place in the world with every living species of
+  crocodile, alligator and caiman. Look for Gomek, a giant saltwater
+  crocodile from New Guinea who was a star here in the 1990s; he's preserved
+  on display.
+
+  Every spring, wild wading birds nest in the trees over the alligator
+  ponds, since the gators keep tree-climbing raccoons away from the eggs.
+  It's one of the best spots in Florida to photograph roseate spoonbills up
+  close.
 for_kids:
   short: Croc hunt! Find each thing.
   steps:
@@ -33,5 +44,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
 themes: [wildlife]
-tags: [alligators, crocodiles, birds, zoo, st-augustine]
-credit:
+tags: [st augustine alligator farm, crocodiles, white alligators, bird rookery, roseate spoonbills, st-augustine]

@@ -8,12 +8,22 @@ place:
   address: 1 Vendue Range, Charleston, SC 29401
   coords: [32.77810, -79.92530]
   website: https://www.charleston-sc.gov
-short: Walk past Rainbow Row to the Pineapple Fountain, then share a pier swing at dusk.
+short: Charleston Waterfront Park. Walk past Rainbow Row, then share a pier swing at dusk.
 description: >
-  Walk down East Bay Street past the pastel houses of Rainbow Row, then into Waterfront
-  Park. Dip your fingers in the Pineapple Fountain, Charleston's symbol of welcome, and
-  end on the long pier where shaded porch swings face the harbor. Stay until the lights
-  come on.
+  Walk down East Bay Street past the pastel houses of Rainbow Row, and each
+  pick the color you'd paint your front door. Head into Waterfront Park, dip
+  your fingers in the Pineapple Fountain, and end on the long pier where
+  shaded porch swings face the harbor. The photo to get: the two of you on a
+  swing with the harbor behind you. Stay until the lights come on.
+about: >
+  Rainbow Row is a stretch of colorful 1700s houses along East Bay Street.
+  They were run down by the early 1900s, and the pastel colors came with
+  their restoration in the 1930s.
+
+  The pineapple is a Southern symbol of welcome, which is why it became
+  Charleston's most famous fountain. Waterfront Park opened in 1990 on old
+  wharf land, and the pier swings are first come, first served, so sunset
+  ones go fast.
 duration: short
 effort: easy
 cost: free
@@ -22,5 +32,4 @@ season: any
 time_of_day: evening
 travel: local
 themes: [walks, lakes-rivers]
-tags: [waterfront, swings, walk, free]
-credit:
+tags: [charleston waterfront park, pineapple fountain, rainbow row, pier swings, charleston harbor, charleston]

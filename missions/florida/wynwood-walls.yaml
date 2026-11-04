@@ -7,7 +7,7 @@ place:
   name: Wynwood Walls
   area: Wynwood, Miami
   coords: [25.80100, -80.19900]  # APPROX: set at the Wynwood Walls entrance before publishing
-short: Wander Miami's Wynwood Walls and the blocks of giant murals around it. Find your favorite wall.
+short: Wynwood Walls in Miami. Wander blocks of giant murals and each find your favorite wall.
 description: >
   Explore Wynwood, a neighborhood of old warehouses covered from top to bottom
   in huge, colorful murals by artists from around the world. Start at the
@@ -16,6 +16,15 @@ description: >
   pick your favorite wall, and get a photo of you in front of it.
   Grab Cuban coffee or ice cream along the way. Go in the morning to beat the
   heat and the crowds.
+about: >
+  Wynwood was a quiet neighborhood of warehouses until 2009, when developer
+  Tony Goldman invited artists to paint the walls. Today it's one of the
+  biggest outdoor street-art districts in the world.
+
+  New murals go up all the time, especially during Art Basel Miami Beach
+  every December. The Wynwood Walls itself has a ticketed entry, but the
+  streets around it are free to explore. Go in the morning to beat the heat
+  and crowds.
 for_kids:
   short: Mural hunt! Find each thing.
   steps:
@@ -33,5 +42,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [walks, art]
-tags: [art, street-art, murals, walking, miami]
-credit:
+tags: [wynwood walls, miami street art, murals, art basel, wynwood art district, miami]
