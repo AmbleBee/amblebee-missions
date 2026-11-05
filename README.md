@@ -35,6 +35,14 @@ python tools/smoke_test.py
 
 The same tests run on every push and pull request, in Chromium, Firefox and WebKit (Safari's engine). A failure in any of them stops the deploy. To try another engine here, install it and run `SMOKE_ENGINE=firefox python tools/smoke_test.py`.
 
+### Mission management
+
+```bash
+python tools/mission_management
+```
+
+Opens AmbleBee Mission Management at the link it prints: how balanced each pack is (indoor vs outdoor, cost, date vs adventure, themes), a gap finder for the packs furthest off, every mission with when it was last edited, and an editor for every mission field. Saving writes the YAML in `missions/` directly, runs the same checks as `tools/check_missions.py` first, and only changes the lines you edited. Commit and push as usual. The target bands live at the top of `tools/mission_management/coverage.py`.
+
 Want to add a mission? See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License

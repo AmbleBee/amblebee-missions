@@ -1,0 +1,1118 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mission Management</title>
+<!-- Served by `python tools/mission_management`; it loads its data from that server. -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='36 2 18 18'%3E%3Cellipse cx='45' cy='14' rx='5.5' ry='4' fill='%23E8B54A'/%3E%3Cpath d='M44 10.4 v7.2 M47 10.8 v6.4' stroke='%235A3E2B' stroke-width='1.6'/%3E%3Ccircle cx='50' cy='13.6' r='2.4' fill='%235A3E2B'/%3E%3C/svg%3E">
+<style>
+@font-face { font-family: "Fraunces Variable"; src: url("fonts/fraunces.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+@font-face { font-family: "Caveat"; src: url("fonts/caveat-700.woff2") format("woff2"); font-weight: 700; font-display: swap; }
+@font-face { font-family: "Nunito Variable"; src: url("fonts/nunito.woff2") format("woff2"); font-weight: 200 1000; font-display: swap; }
+
+:root {
+  color-scheme: light;
+  --oat: #EFE7D8; --linen: #FAF5EC; --paper: #FFFDF8; --line: #E4D9C6; --line-strong: #D9CDB6;
+  --ink: #4A3323; --ink-2: #6E5543; --ink-3: #8C7663;
+  --sage: #566B48; --sage-tint: #E3EAD6; --honey: #D8A65A; --honey-tint: #F6E6C6; --honey-deep: #946628;
+  --a: #2a78d6; --a-soft: #9ec5f4; --b: #eb6834; --b-soft: #f6b08f; --mid: #cfc6b6;
+  --band: rgba(86, 107, 72, .16); --band-edge: #566B48;
+  --zone: rgba(86, 140, 72, .30); --zone-edge: #3F7A3A; --pin-in: #2F6B2C; --pin-out: #D9531E;
+  --heat-0: #FAF5EC; --heat-1: #cde2fb; --heat-2: #86b6ef; --heat-3: #3987e5; --heat-4: #1c5cab; --heat-5: #0d366b;
+  --sage-deep: #566B48; --fill: #566B48; --fill-hover: #4D6141; --fill-shadow: #445638; --walnut: #5A3E2B; --walnut-soft: #7A5A42;
+  --bad: #B3402A; --bad-tint: #F8E1DA;
+  --display: "Fraunces Variable", "Fraunces", Georgia, serif;
+  --hand: "Caveat", "Segoe Print", cursive;
+  --body: "Nunito Variable", "Nunito", "Segoe UI", system-ui, sans-serif;
+  --shadow: 0 8px 20px rgba(90, 62, 43, .10);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    color-scheme: dark;
+    --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
+    --ink: #F3E9DC; --ink-2: #D7C8B6; --ink-3: #AE9E8B;
+    --sage: #9AAE85; --sage-tint: #34402B; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
+    --a: #3987e5; --a-soft: #1c5cab; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
+    --band: rgba(154, 174, 133, .18); --band-edge: #9AAE85;
+    --zone: rgba(120, 190, 110, .28); --zone-edge: #8FD08A; --pin-in: #8FD08A; --pin-out: #F08A55;
+    --heat-0: #2A231D; --heat-1: #104281; --heat-2: #1c5cab; --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #9ec5f4;
+    --sage-deep: #9AAE85; --fill: #4F6443; --fill-hover: #5A704B; --fill-shadow: #39492F; --walnut: #E9D9C6; --walnut-soft: #CDB9A3;
+    --bad: #F08A73; --bad-tint: #4A2620;
+    --shadow: 0 8px 20px rgba(0, 0, 0, .3);
+  }
+}
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
+  --ink: #F3E9DC; --ink-2: #D7C8B6; --ink-3: #AE9E8B;
+  --sage: #9AAE85; --sage-tint: #34402B; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
+  --a: #3987e5; --a-soft: #1c5cab; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
+  --band: rgba(154, 174, 133, .18); --band-edge: #9AAE85;
+  --zone: rgba(120, 190, 110, .28); --zone-edge: #8FD08A; --pin-in: #8FD08A; --pin-out: #F08A55;
+  --heat-0: #2A231D; --heat-1: #104281; --heat-2: #1c5cab; --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #9ec5f4;
+  --sage-deep: #9AAE85; --fill: #4F6443; --fill-hover: #5A704B; --fill-shadow: #39492F; --walnut: #E9D9C6; --walnut-soft: #CDB9A3;
+  --bad: #F08A73; --bad-tint: #4A2620;
+  --shadow: 0 8px 20px rgba(0, 0, 0, .3);
+}
+
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--oat); color: var(--ink); font: 15px/1.5 var(--body); }
+main { max-width: 1200px; margin: 0 auto; padding: 24px 16px 64px; }
+h1, h2, h3 { font-family: var(--display); font-variation-settings: "SOFT" 100; font-weight: 600; margin: 0; line-height: 1.2; }
+h1 { font-size: 30px; }
+h2 { font-size: 21px; margin-bottom: 4px; }
+h3 { font-size: 16px; }
+.sub { color: var(--ink-2); margin: 2px 0 0; font-size: 14px; }
+.note { background: var(--honey-tint); border-radius: 10px; padding: 8px 12px; margin-top: 12px; font-size: 14px; }
+
+.controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin: 18px 0 8px;
+  position: sticky; top: 0; z-index: 5; background: var(--oat); padding: 10px 0; border-bottom: 1px solid var(--line); }
+.controls label { font-size: 14px; color: var(--ink-2); display: flex; gap: 6px; align-items: center; }
+select, input[type=search] { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line-strong);
+  border-radius: 8px; padding: 5px 9px; }
+input[type=search] { min-width: 200px; }
+button.link { font: inherit; background: none; border: 0; color: var(--sage); cursor: pointer; padding: 0; text-decoration: underline; }
+button.theme-btn { font: inherit; font-size: 13px; background: var(--paper); color: var(--ink-2); border: 1px solid var(--line-strong);
+  border-radius: 999px; padding: 4px 10px; cursor: pointer; margin-left: auto; }
+
+.card { background: var(--paper); border-radius: 18px; padding: 20px; margin-top: 20px; box-shadow: 0 2px 0 var(--line), 0 6px 14px rgba(90, 62, 43, .06); }
+.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 12px; margin-top: 12px; }
+.tile { background: var(--paper); border-radius: 16px; padding: 12px 16px; box-shadow: 0 2px 0 var(--line); }
+.tile .k { color: var(--ink-2); font-size: 13px; }
+.tile .v { font-family: var(--display); font-size: 28px; font-weight: 600; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.tile .v small { font-family: var(--body); font-size: 13px; color: var(--ink-3); font-weight: 400; }
+
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font-weight: 700; color: var(--ink-2); font-size: 13px; border-bottom: 1px solid var(--line-strong); padding: 6px 8px; white-space: nowrap; }
+td { border-bottom: 1px solid var(--line); padding: 6px 8px; vertical-align: middle; }
+td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+tr.click { cursor: pointer; }
+tr.click:hover td { background: var(--linen); }
+.scroll { overflow-x: auto; }
+th.sortable { cursor: pointer; user-select: none; }
+th.sortable:hover { color: var(--ink); }
+th .arrow { color: var(--sage); }
+
+.fix { display: inline-block; background: var(--honey-tint); color: var(--ink); border-radius: 999px; padding: 1px 9px; margin: 2px 4px 2px 0; font-size: 13px; white-space: nowrap; }
+.chip { display: inline-block; border-radius: 999px; padding: 0 8px; font-size: 12px; border: 1px solid var(--line-strong); color: var(--ink-2); margin: 1px 3px 1px 0; white-space: nowrap; }
+.chip.draft { background: var(--honey-tint); border-color: transparent; color: var(--ink); }
+.chip.live { background: var(--sage-tint); border-color: transparent; color: var(--ink); }
+.chip.new { border-style: dashed; }
+.muted { color: var(--ink-3); }
+.ok { color: var(--sage); font-weight: 700; }
+
+/* score bar */
+.score { display: flex; align-items: center; gap: 8px; }
+.score .bar { height: 8px; border-radius: 0 4px 4px 0; background: var(--b); min-width: 2px; }
+
+/* balance small multiples */
+.legend { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 13px; color: var(--ink-2); margin: 6px 0 10px; }
+.legend i { display: inline-block; width: 12px; height: 12px; border-radius: 3px; vertical-align: -2px; margin-right: 5px; }
+.legend i.band { background: var(--band); outline: 1.5px solid var(--band-edge); outline-offset: -1.5px; }
+.balance { display: grid; grid-template-columns: 130px repeat(3, minmax(160px, 1fr)); gap: 0 16px; align-items: center; }
+.balance .hd { font-size: 13px; font-weight: 700; color: var(--ink-2); padding-bottom: 6px; border-bottom: 1px solid var(--line-strong); }
+.balance .nm { font-size: 13px; padding: 5px 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; cursor: pointer; }
+.balance .nm:hover { color: var(--sage); }
+.balance .nm .n { color: var(--ink-3); font-variant-numeric: tabular-nums; }
+.balance .small { opacity: .55; }
+.stack { position: relative; height: 14px; display: flex; gap: 2px; }
+.stack span { height: 100%; }
+.stack span:first-child { border-radius: 4px 0 0 4px; }
+.stack span:last-child { border-radius: 0 4px 4px 0; }
+.stack .bandbox { position: absolute; top: -3px; bottom: -3px; background: var(--band); border-left: 1.5px solid var(--band-edge);
+  border-right: 1.5px solid var(--band-edge); pointer-events: none; }
+.stack .marker { position: absolute; top: -5px; bottom: -5px; width: 2px; background: var(--ink); border-radius: 1px; pointer-events: none; }
+/* balance gauges: a track, the green target zone, and a pin for where the pack sits */
+.gcell { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+.gauge { position: relative; flex: 1; height: 14px; }
+.gauge .track { position: absolute; inset: 0; background: var(--line); border-radius: 7px; }
+.gauge .zone { position: absolute; top: -5px; bottom: -5px; background: var(--zone); border-left: 3px solid var(--zone-edge);
+  border-right: 3px solid var(--zone-edge); pointer-events: none; }
+.gauge .pin { position: absolute; top: 50%; width: 18px; height: 18px; margin: -9px 0 0 -9px; border-radius: 50%;
+  background: var(--pin-in); box-shadow: 0 0 0 3px var(--paper), 0 1px 3px rgba(0, 0, 0, .25); pointer-events: none; }
+.gauge.out .pin { background: var(--pin-out); }
+.gval { width: 52px; font-weight: 800; font-variant-numeric: tabular-nums; font-size: 14px; white-space: nowrap; }
+.gval .ic { font-size: 12px; margin-left: 3px; }
+.gval .ic.in { color: var(--pin-in); }
+.gval .ic.out { color: var(--pin-out); }
+.gends { display: flex; justify-content: space-between; font-size: 12px; font-weight: 600; color: var(--ink-3); margin: 3px 62px 0 0; }
+.gauge.big { height: 22px; }
+.gauge.big .track { border-radius: 11px; }
+.gauge.big .zone { top: -7px; bottom: -7px; }
+.gauge.big .pin { width: 26px; height: 26px; margin: -13px 0 0 -13px; }
+.legend i.zone { background: var(--zone); box-shadow: inset 3px 0 0 var(--zone-edge), inset -3px 0 0 var(--zone-edge); width: 22px; }
+.legend i.pin { border-radius: 50%; }
+.divider { grid-column: 1 / -1; font-size: 12px; color: var(--ink-3); padding: 12px 0 2px; }
+
+/* heatmap */
+.heat { border-collapse: separate; border-spacing: 2px; font-size: 12px; width: auto; }
+.heat th { border: 0; padding: 0 0 4px; height: 128px; vertical-align: bottom; font-weight: 600; }
+.heat th.rot div { writing-mode: vertical-rl; transform: rotate(180deg); white-space: nowrap; max-height: 124px; overflow: hidden; color: var(--ink-2); }
+.heat td { border: 0; padding: 0; width: 18px; height: 18px; border-radius: 3px; text-align: center; }
+.heat td.rowname { width: auto; text-align: left; padding-right: 8px; white-space: nowrap; font-size: 13px; cursor: pointer; }
+.heat td.rowname:hover { color: var(--sage); }
+.heat td.zero { background: var(--heat-0); box-shadow: inset 0 0 0 1px var(--line-strong); }
+.heat td.used { font-variant-numeric: tabular-nums; color: var(--ink-2); width: 44px; text-align: right; padding-left: 6px; }
+
+/* single pack */
+.dims { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+.dim h3 { margin-bottom: 2px; }
+.dim .big { font-family: var(--display); font-size: 32px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.dim .gauge { margin: 18px 0 4px; }
+.dim .counts { font-size: 13px; color: var(--ink-2); }
+.themebars { display: grid; grid-template-columns: 190px 1fr 40px; gap: 4px 10px; align-items: center; font-size: 13px; }
+.themebars .tb { height: 12px; background: var(--a); border-radius: 0 4px 4px 0; min-width: 2px; }
+.themebars .tb.lean { background: var(--b); }
+.themebars .tc { text-align: right; font-variant-numeric: tabular-nums; color: var(--ink-2); }
+
+/* ---- site header & buttons (from site/style.css) ---- */
+.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: flex-start; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); margin-right: auto; }
+.brand span { font: 600 1.55rem/1 var(--display); font-variation-settings: "SOFT" 100; }
+.brand em { font-style: normal; color: var(--sage-deep); }
+.top nav { display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.top nav a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 14px; border-radius: 22px;
+  font-weight: 700; color: var(--walnut); text-decoration: none; }
+.top nav a:hover { background: var(--linen); }
+.hand { font: 700 1.45rem/1.15 var(--hand); color: var(--sage-deep); margin: 6px 0 0; }
+.btn { appearance: none; border: 0; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center;
+  justify-content: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 28px;
+  font: 800 1rem var(--body); color: var(--ink); background: var(--paper); box-shadow: inset 0 0 0 2.5px var(--sage); }
+.btn:hover { background: var(--linen); }
+.btn.primary { background: var(--fill); color: #FFFDF8; box-shadow: 0 5px 0 var(--fill-shadow); }
+.btn.primary:hover { background: var(--fill-hover); color: #FFFDF8; }
+.btn.primary:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--fill-shadow); }
+.btn.small { min-height: 40px; padding: 0 16px; font-size: .92rem; }
+.btn.tiny { min-height: 32px; padding: 0 12px; font-size: .85rem; box-shadow: inset 0 0 0 2px var(--line-strong); }
+.btn:disabled { opacity: .55; cursor: default; }
+.btn.danger { box-shadow: inset 0 0 0 2.5px var(--bad); }
+
+/* ---- editor ---- */
+dialog.sheet { margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; width: min(760px, 100vw); max-width: 100vw; border: 0;
+  padding: 0; background: var(--oat); color: var(--ink); box-shadow: -10px 0 30px rgba(0, 0, 0, .18); }
+dialog.sheet::backdrop { background: rgba(40, 28, 20, .35); }
+dialog.small { border: 0; border-radius: 20px; padding: 22px; width: min(460px, calc(100vw - 32px)); background: var(--paper); color: var(--ink); box-shadow: var(--shadow); }
+dialog.small::backdrop { background: rgba(40, 28, 20, .35); }
+.sheet-inner { display: flex; flex-direction: column; height: 100%; }
+.sheet-head { padding: 18px 22px 12px; border-bottom: 2px dashed var(--line-strong); display: flex; gap: 12px; align-items: start; }
+.sheet-head h2 { font-size: 24px; }
+.sheet-head .path { font-size: 13px; color: var(--ink-3); font-family: ui-monospace, monospace; }
+.sheet-body { overflow-y: auto; padding: 4px 22px 30px; flex: 1; }
+.sheet-foot { padding: 12px 22px 16px; border-top: 1px solid var(--line-strong); background: var(--paper); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+.sheet-foot .msg { font-size: 14px; flex: 1 1 200px; }
+.sheet-foot .msg:empty { display: none; }
+.sheet-foot #edCancel { margin-left: auto; }
+.x { appearance: none; border: 0; background: none; color: var(--ink-2); font-size: 28px; line-height: 1; cursor: pointer; margin-left: auto; padding: 0 4px; }
+fieldset { border: 0; margin: 18px 0 0; padding: 16px 18px; background: var(--paper); border-radius: 16px; box-shadow: 0 2px 0 var(--line); }
+legend { float: left; width: 100%; padding: 0; margin-bottom: 8px; font: 600 18px/1.2 var(--display); font-variation-settings: "SOFT" 100; }
+legend + * { clear: both; }
+.f { display: grid; gap: 4px; margin-top: 10px; }
+.f > label, .lbl { font-weight: 800; font-size: 14px; color: var(--walnut); display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
+.f .help { font-size: 13px; color: var(--ink-3); font-weight: 400; }
+.count { font-size: 12px; color: var(--ink-3); font-weight: 600; font-variant-numeric: tabular-nums; }
+.count.over { color: var(--bad); }
+.count.aim { color: var(--honey-deep); }
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 0 12px; }
+.sheet input[type=text], .sheet input[type=url], .sheet input[type=number], .sheet input[type=date], .sheet select, .sheet textarea,
+dialog.small input, dialog.small select {
+  font: inherit; color: var(--ink); background: var(--linen); border: 1.5px solid var(--line-strong); border-radius: 12px;
+  padding: 8px 11px; width: 100%; min-height: 42px; }
+.sheet textarea { min-height: 110px; resize: vertical; line-height: 1.5; }
+.sheet input:focus, .sheet select:focus, .sheet textarea:focus, dialog.small input:focus, dialog.small select:focus {
+  outline: 2.5px solid var(--sage); outline-offset: 1px; border-color: transparent; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chipbox { position: relative; }
+.chipbox input { position: absolute; opacity: 0; pointer-events: none; }
+.chipbox span { display: inline-flex; align-items: center; min-height: 34px; padding: 0 13px; border-radius: 999px; cursor: pointer;
+  background: var(--linen); box-shadow: inset 0 0 0 1.5px var(--line-strong); font-size: 14px; font-weight: 700; color: var(--ink-2); user-select: none; }
+.chipbox input:checked + span { background: var(--sage-tint); box-shadow: inset 0 0 0 2px var(--sage); color: var(--ink); }
+.chipbox input:checked + span::before { content: "✓"; margin-right: 5px; color: var(--sage-deep); }
+.chipbox input:focus-visible + span { outline: 2.5px solid var(--sage); outline-offset: 2px; }
+.chipbox input:disabled + span { opacity: .45; cursor: default; }
+.seg { display: inline-flex; background: var(--linen); border-radius: 999px; padding: 3px; box-shadow: inset 0 0 0 1.5px var(--line-strong); flex-wrap: wrap; }
+.seg label { position: relative; }
+.seg input { position: absolute; opacity: 0; }
+.seg span { display: inline-flex; min-height: 34px; align-items: center; padding: 0 14px; border-radius: 999px; cursor: pointer; font-weight: 700; font-size: 14px; color: var(--ink-2); }
+.seg input:checked + span { background: var(--fill); color: #FFFDF8; }
+.seg input:focus-visible + span { outline: 2.5px solid var(--sage); }
+.group-name { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); font-weight: 800; margin: 10px 0 5px; }
+.listrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 6px; align-items: center; }
+.listrow.two { grid-template-columns: 1fr 1.6fr auto; }
+.listrow.gear { grid-template-columns: 1.4fr 1fr auto; }
+.rm { appearance: none; border: 0; background: none; color: var(--ink-3); cursor: pointer; font-size: 20px; padding: 4px 8px; border-radius: 8px; }
+.rm:hover { background: var(--bad-tint); color: var(--bad); }
+.toggle { display: flex; gap: 10px; align-items: center; font-weight: 700; }
+.toggle input { width: 20px; height: 20px; accent-color: var(--fill); }
+.alert { border-radius: 14px; padding: 10px 14px; margin-top: 14px; font-size: 14px; }
+.alert.bad { background: var(--bad-tint); }
+.alert.warn { background: var(--honey-tint); }
+.alert.good { background: var(--sage-tint); }
+.alert ul { margin: 6px 0 0; padding-left: 20px; }
+.alert code { font-size: 13px; }
+.maplink { font-size: 13px; color: var(--sage-deep); font-weight: 700; }
+#toast { position: fixed; left: 50%; bottom: 24px; transform: translateX(-50%) translateY(20px); opacity: 0; transition: .2s; z-index: 50;
+  background: var(--ink); color: var(--paper); padding: 10px 18px; border-radius: 999px; font-weight: 700; pointer-events: none; }
+#toast.show { opacity: 1; transform: translateX(-50%); }
+tr.click:focus-visible td { outline: 2px solid var(--sage); }
+@media (max-width: 720px) {
+  .brand span { font-size: 1.25rem; }
+  .sheet-head, .sheet-body, .sheet-foot { padding-left: 14px; padding-right: 14px; }
+  fieldset { padding: 14px; }
+  .listrow.two, .listrow.gear { grid-template-columns: 1fr auto; }
+  .listrow.two > :nth-child(2), .listrow.gear > :nth-child(2) { grid-column: 1; }
+}
+
+#tip { position: fixed; pointer-events: none; z-index: 20; background: var(--paper); color: var(--ink); border: 1px solid var(--line-strong);
+  border-radius: 8px; padding: 6px 10px; font-size: 13px; box-shadow: var(--shadow); opacity: 0; transition: opacity .08s; max-width: 280px; }
+#tip b { font-weight: 700; }
+
+@media (max-width: 720px) {
+  .balance { grid-template-columns: 96px repeat(3, minmax(140px, 1fr)); gap: 0 8px; }
+  input[type=search] { min-width: 0; width: 100%; }
+  .themebars { grid-template-columns: 130px 1fr 32px; }
+  h1 { font-size: 24px; }
+}
+</style>
+</head>
+<body>
+<main>
+  <header class="top">
+    <a class="brand" href="#" aria-label="AmbleBee Mission Management">
+      <svg aria-hidden="true" width="52" height="44" viewBox="0 0 52 44">
+        <path d="M6 40 h30" stroke="#7A5A42" stroke-width="3" stroke-linecap="round"/>
+        <path d="M9 40 C9 30 11 22 21 13 C31 22 33 30 33 40z" fill="#D8A65A"/>
+        <path d="M11.5 32 h19 M10 36 h22 M13.5 27 h15 M16.5 22 h9" stroke="#B5853F" stroke-width="2" stroke-linecap="round"/>
+        <path d="M17 40 v-4 a4 4 0 0 1 8 0 v4z" fill="#5A3E2B"/>
+        <path d="M30 10 q6 -8 12 -3" fill="none" stroke="#7A5A42" stroke-width="1.6" stroke-dasharray="1.5 3.5" stroke-linecap="round"/>
+        <ellipse cx="43" cy="9" rx="4" ry="2.6" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.2" transform="rotate(-25 43 9)"/>
+        <ellipse cx="45" cy="14" rx="5.5" ry="4" fill="#E8B54A"/>
+        <path d="M44 10.4 v7.2 M47 10.8 v6.4" stroke="#5A3E2B" stroke-width="1.6"/>
+        <circle cx="50" cy="13.6" r="2.4" fill="#5A3E2B"/>
+      </svg>
+      <span>AmbleBee <em>Mission Management</em></span>
+    </a>
+    <nav>
+      <a href="#overview">Overview</a>
+      <a href="#missionsCard">Missions</a>
+      <button class="btn small primary" id="newBtn" type="button">+ New mission</button>
+    </nav>
+  </header>
+  <p class="hand tagline">Behind the hive: keep every pack well-rounded.</p>
+  <p class="sub" id="generated"></p>
+  <div id="note"></div>
+
+  <div class="controls">
+    <label>Pack <select id="pack"></select></label>
+    <label><input type="checkbox" id="drafts"> Include drafts</label>
+    <label id="orderWrap">Order states by
+      <select id="order">
+        <option value="score">Biggest gap first</option>
+        <option value="size">Most missions first</option>
+        <option value="name">Name</option>
+      </select>
+    </label>
+    <button class="theme-btn" id="themeBtn" type="button">Light / dark</button>
+  </div>
+
+  <div id="overview"></div>
+  <div class="tiles" id="tiles"></div>
+  <div id="view"><p class="sub" style="margin-top:20px">Loading missions…</p></div>
+
+  <section class="card" id="missionsCard">
+    <h2>Missions</h2>
+    <p class="sub">Everything you've written, with the last time each file changed. Click a column to sort, click a mission to edit it.</p>
+    <div class="controls" style="position:static;border:0;padding:6px 0;margin:8px 0">
+      <label>Sort
+        <select id="msort">
+          <option value="edited:desc">Last edited, newest first</option>
+          <option value="edited:asc">Last edited, oldest first</option>
+          <option value="added:desc">Added, newest first</option>
+          <option value="added:asc">Added, oldest first</option>
+          <option value="checked:asc">Checked, oldest first</option>
+          <option value="name:asc">Name</option>
+          <option value="pack:asc">Pack</option>
+        </select>
+      </label>
+      <input type="search" id="q" placeholder="Search name, theme, id…">
+      <span class="muted" id="mcount"></span>
+    </div>
+    <div class="scroll"><table id="mtable"></table></div>
+  </section>
+</main>
+<div id="tip" role="tooltip"></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<dialog class="sheet" id="editor" aria-labelledby="edTitle">
+  <form class="sheet-inner" id="edForm" novalidate>
+    <div class="sheet-head">
+      <div>
+        <h2 id="edTitle">Mission</h2>
+        <div class="path" id="edPath"></div>
+      </div>
+      <button class="x" type="button" id="edClose" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body" id="edBody"></div>
+    <div class="sheet-foot">
+      <div class="msg" id="edMsg"></div>
+      <button class="btn small" type="button" id="edCancel">Close</button>
+      <button class="btn small primary" type="submit" id="edSave">Save mission</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="small" id="newDlg" aria-labelledby="newTitle">
+  <form method="dialog" id="newForm">
+    <h2 id="newTitle">New mission</h2>
+    <p class="sub">It starts as a draft, so nothing goes live until you check it and publish.</p>
+    <div class="f"><label for="nPack">Pack</label><select id="nPack"></select></div>
+    <div class="f"><label for="nName">Mission name</label><input type="text" id="nName" required placeholder="Sunset at Cape Kiwanda"></div>
+    <div class="f"><label for="nId">File name (the permanent id) <span class="help">lowercase-with-dashes</span></label><input type="text" id="nId" required pattern="[a-z0-9][a-z0-9-]*"></div>
+    <div class="alert bad" id="nErr" hidden></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+      <button class="btn small" value="cancel" formnovalidate>Cancel</button>
+      <button class="btn small primary" id="nGo" value="go">Start writing</button>
+    </div>
+  </form>
+</dialog>
+
+<script>
+const KEY = new URLSearchParams(location.search).get('key') || '';
+let D = null, THEME_KEYS = [];
+async function api(path, opts = {}) {
+  const r = await fetch(path, { ...opts, headers: { 'X-Amble-Key': KEY, ...(opts.body ? { 'Content-Type': 'application/json' } : {}) } });
+  let body = {};
+  try { body = await r.json(); } catch (e) {}
+  return { status: r.status, ok: r.ok, body };
+}
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const pct = x => Math.round(x * 100) + '%';
+const packName = id => D.packs[id] || id;
+const shortName = id => packName(id).replace(/^Amble /, '');
+
+const PAGE = 100;
+const state = { shown: PAGE, pack: 'all', drafts: true,
+  order: 'score', msort: 'edited:desc', q: '' };
+try { const t = localStorage.getItem('amble-mm-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
+
+// ---------- scoring (targets come from coverage.py) ----------
+function shareA(dim, ms) {
+  if (!ms.length) return 0;
+  let a = 0;
+  for (const m of ms) {
+    if (dim === 'setting') a += m.setting === 'indoor' ? 1 : m.setting === 'either' ? .5 : 0;
+    else if (dim === 'cost') a += (m.cost === 'free' || m.cost === '$') ? 1 : 0;
+    else a += m.mode === 'date' ? 1 : m.mode === 'both' ? .5 : 0;
+  }
+  return a / ms.length;
+}
+function toFix(dim, ms) {
+  const t = D.targets[dim], n = ms.length, s = shareA(dim, ms), a = s * n;
+  if (s < t.low) return [t.side_a, Math.ceil((t.low * n - a) / (1 - t.low) - 1e-9)];
+  if (s > t.high) return [t.side_b, Math.ceil((a - t.high * n) / t.high - 1e-9)];
+  return [null, 0];
+}
+function report(ms) {
+  const r = { n: ms.length, dims: {}, score: 0 };
+  for (const dim of Object.keys(D.targets)) {
+    const t = D.targets[dim], s = shareA(dim, ms);
+    const off = Math.max(0, t.low - s, s - t.high);
+    const [side, need] = toFix(dim, ms);
+    r.dims[dim] = { share: s, off, side, need };
+    r.score += off;
+  }
+  const tc = themeCounts(ms);
+  let top = null, topN = 0;
+  for (const k of THEME_KEYS) if (tc[k] > topN) { top = k; topN = tc[k]; }
+  const topShare = ms.length ? topN / ms.length : 0;
+  r.themes = { counts: tc, used: THEME_KEYS.filter(k => tc[k]).length, top, topShare,
+    missing: THEME_KEYS.filter(k => !tc[k]), off: Math.max(0, topShare - D.topThemeMax) };
+  r.score = Math.round((r.score + r.themes.off) * 100);
+  return r;
+}
+function themeCounts(ms) {
+  const c = {}; THEME_KEYS.forEach(k => c[k] = 0);
+  for (const m of ms) for (const t of m.themes) if (t in c) c[t]++;
+  return c;
+}
+const count = (ms, key, val) => ms.filter(m => m[key] === val).length;
+
+// ---------- data slices ----------
+function missionsNow() { return D.missions.filter(m => state.drafts || !m.draft); }
+function byPack(ms) {
+  const g = {}; Object.keys(D.packs).forEach(p => g[p] = []);
+  for (const m of ms) (g[m.pack] ||= []).push(m);
+  return g;
+}
+function statePacks(ms) {
+  const g = byPack(ms);
+  const rows = Object.entries(g).filter(([p]) => !D.nonState.includes(p))
+    .map(([p, list]) => ({ id: p, ms: list, rep: report(list), small: list.length < D.minMissions }));
+  const by = { score: (a, b) => (a.small - b.small) || (b.rep.score - a.rep.score) || (b.ms.length - a.ms.length),
+               size: (a, b) => b.ms.length - a.ms.length || shortName(a.id).localeCompare(shortName(b.id)),
+               name: (a, b) => shortName(a.id).localeCompare(shortName(b.id)) };
+  return rows.sort(by[state.order]);
+}
+
+// ---------- tooltip ----------
+const tip = $('#tip');
+document.addEventListener('mousemove', e => {
+  const el = e.target.closest('[data-tip]');
+  if (!el) { tip.style.opacity = 0; return; }
+  tip.innerHTML = el.dataset.tip;
+  const w = tip.offsetWidth, h = tip.offsetHeight;
+  tip.style.left = Math.min(e.clientX + 14, innerWidth - w - 8) + 'px';
+  tip.style.top = (e.clientY + 16 + h > innerHeight ? e.clientY - h - 10 : e.clientY + 16) + 'px';
+  tip.style.opacity = 1;
+});
+
+// ---------- balance gauges ----------
+// left end = none of side A (all side B), right end = all side A; the green zone is the target band
+function gauge(dim, ms, rep, packLabel, big = false) {
+  const t = D.targets[dim], d = rep.dims[dim], inside = !d.off;
+  const counts = parts(dim, ms).map(([n, , l]) => `${l} ${n}`).join(' · ');
+  const verdict = inside ? 'inside the green zone' : `outside the green zone: add about ${d.need} ${d.side}`;
+  const tip = `<b>${esc(packLabel)}</b><br>${counts}<br>${pct(d.share)} ${esc(t.side_a)}, aim ${pct(t.low)}–${pct(t.high)}<br>${verdict}`;
+  return `<div class="gcell" data-tip="${esc(tip)}">
+    <div class="gauge ${inside ? 'in' : 'out'} ${big ? 'big' : ''}" role="img" aria-label="${esc(`${packLabel}: ${pct(d.share)} ${t.side_a}, target ${pct(t.low)} to ${pct(t.high)}, ${verdict}`)}">
+      <div class="track"></div><div class="zone" style="left:${t.low * 100}%;width:${(t.high - t.low) * 100}%"></div>
+      <div class="pin" style="left:${Math.min(100, Math.max(0, d.share * 100))}%"></div></div>
+    <div class="gval">${pct(d.share)}<span class="ic ${inside ? 'in' : 'out'}" aria-hidden="true">${inside ? '✓' : '!'}</span></div></div>`;
+}
+function gaugeEnds(dim) {
+  const t = D.targets[dim];
+  return `<div class="gends"><span>← all ${esc(t.side_b)}</span><span>all ${esc(t.side_a)} →</span></div>`;
+}
+// ---------- stacked bars ----------
+// parts: [[count, color, label]...]; band in share-of-A terms; share = the marker position
+function stack(parts, total, dim, rep, packLabel) {
+  const t = D.targets[dim], d = rep.dims[dim];
+  const segs = parts.filter(p => p[0] > 0).map(([n, col, label]) =>
+    `<span style="flex:${n};background:${col}" data-tip="<b>${esc(packLabel)}</b><br>${esc(label)}: ${n} of ${total} (${pct(n / total)})"></span>`).join('');
+  const band = `<div class="bandbox" style="left:${t.low * 100}%;width:${(t.high - t.low) * 100}%"></div>`;
+  const marker = `<div class="marker" style="left:calc(${d.share * 100}% - 1px)"></div>`;
+  const label = `${packLabel}: ${t.label} ${pct(d.share)}, target ${pct(t.low)} to ${pct(t.high)}`;
+  return `<div class="stack" role="img" aria-label="${esc(label)}">${segs || '<span style="flex:1;background:var(--line)"></span>'}${band}${marker}</div>`;
+}
+function parts(dim, ms) {
+  if (dim === 'setting') return [[count(ms, 'setting', 'indoor'), 'var(--a)', 'Indoor'], [count(ms, 'setting', 'either'), 'var(--mid)', 'Either'], [count(ms, 'setting', 'outdoor'), 'var(--b)', 'Outdoor']];
+  if (dim === 'cost') return [[count(ms, 'cost', 'free'), 'var(--a)', 'Free'], [count(ms, 'cost', '$'), 'var(--a-soft)', '$ (under $20 for two)'], [count(ms, 'cost', '$$'), 'var(--b-soft)', '$$ ($20–60)'], [count(ms, 'cost', '$$$'), 'var(--b)', '$$$ (over $60)']];
+  return [[count(ms, 'mode', 'date'), 'var(--a)', 'Date only'], [count(ms, 'mode', 'both'), 'var(--mid)', 'Both'], [count(ms, 'mode', 'adventure'), 'var(--b)', 'Adventure only']];
+}
+const LEGENDS = {
+  setting: [['var(--a)', 'Indoor'], ['var(--mid)', 'Either'], ['var(--b)', 'Outdoor']],
+  cost: [['var(--a)', 'Free'], ['var(--a-soft)', '$'], ['var(--b-soft)', '$$'], ['var(--b)', '$$$']],
+  mode: [['var(--a)', 'Date'], ['var(--mid)', 'Both'], ['var(--b)', 'Adventure']],
+};
+const DIM_TITLE = { setting: 'Indoor vs outdoor', cost: 'Cheap vs pricier', mode: 'Date vs adventure' };
+function legend(dim) {
+  return LEGENDS[dim].map(([c, l]) => `<span><i style="background:${c}"></i>${l}</span>`).join('');
+}
+
+function fixChips(rep) {
+  const out = [];
+  for (const [dim, d] of Object.entries(rep.dims)) if (d.need) out.push(`<span class="fix">+${d.need} ${esc(d.side)}</span>`);
+  if (rep.themes.off) out.push(`<span class="fix">less ${esc(D.themes[rep.themes.top])}</span>`);
+  return out.join('') || '<span class="ok">In balance</span>';
+}
+
+// ---------- views ----------
+function renderTiles(ms) {
+  const rows = statePacks(ms);
+  const ranked = rows.filter(r => !r.small);
+  const gaps = ranked.filter(r => r.rep.score > 0).length;
+  const scope = state.pack === 'all' ? ms : ms.filter(m => m.pack === state.pack);
+  const live = scope.filter(m => !m.draft).length;
+  const tiles = [
+    ['Missions', scope.length, state.drafts ? `${live} live` : 'live only'],
+    ['Drafts', scope.filter(m => m.draft).length, state.drafts ? 'counted' : 'hidden'],
+  ];
+  if (state.pack === 'all') {
+    tiles.push(['States with 10+', ranked.length, `of ${rows.length}`]);
+    tiles.push(['States with a gap', gaps, 'outside a band']);
+  } else {
+    const r = report(scope);
+    tiles.push(['Themes used', r.themes.used, `of ${THEME_KEYS.length}`]);
+    tiles.push(['Gap score', r.score, scope.length < D.minMissions ? 'too few to judge' : 'pts outside bands']);
+  }
+  $('#tiles').innerHTML = tiles.map(([k, v, s]) =>
+    `<div class="tile"><div class="k">${k}</div><div class="v">${v} <small>${s}</small></div></div>`).join('');
+}
+
+function renderAll(ms) {
+  const rows = statePacks(ms);
+  const ranked = rows.filter(r => !r.small);
+  const gapRows = [...ranked].sort((a, b) => b.rep.score - a.rep.score);
+  const maxScore = Math.max(1, ...gapRows.map(r => r.rep.score));
+
+  const gapHtml = `
+  <section class="card">
+    <h2>Gap finder</h2>
+    <p class="sub">States with ${D.minMissions}+ missions, ranked by how far they sit outside the target bands
+      (points = percentage points outside, summed). The chips say roughly how many missions would bring each back in. Click a row to open it.</p>
+    <div class="scroll"><table>
+      <thead><tr><th>State</th><th class="num">Missions</th><th>Gap</th><th>Indoor</th><th>Cheap</th><th>Date</th><th>Top theme</th><th>To fix</th></tr></thead>
+      <tbody>${gapRows.map(r => {
+        const d = r.rep.dims, flag = (dim) => d[dim].off ? ' style="color:var(--b);font-weight:700"' : '';
+        return `<tr class="click" data-pack="${r.id}">
+          <td>${esc(shortName(r.id))}</td><td class="num">${r.ms.length}</td>
+          <td><div class="score"><div class="bar" style="width:${r.rep.score / maxScore * 90}px;${r.rep.score ? '' : 'background:var(--line)'}"></div><span class="muted">${r.rep.score}</span></div></td>
+          <td${flag('setting')}>${pct(d.setting.share)}</td><td${flag('cost')}>${pct(d.cost.share)}</td><td${flag('mode')}>${pct(d.mode.share)}</td>
+          <td${r.rep.themes.off ? ' style="color:var(--b);font-weight:700"' : ''}>${esc(D.themes[r.rep.themes.top] || '–')} ${pct(r.rep.themes.topShare)}</td>
+          <td>${fixChips(r.rep)}</td></tr>`;
+      }).join('') || '<tr><td colspan="8" class="muted">No state has 10 missions yet with these filters.</td></tr>'}</tbody>
+    </table></div>
+    <p class="sub" style="margin-top:10px">Too small to judge (under ${D.minMissions}): ${rows.filter(r => r.small).length} states. They're still in the charts below, faded.</p>
+  </section>`;
+
+  const anywhere = byPack(ms).anywhere || [];
+    const line = (r) => {
+    const label = shortName(r.id);
+    const cells = Object.keys(D.targets).map(dim => {
+      return `<div class="${r.small ? 'small' : ''}">${r.ms.length ? gauge(dim, r.ms, r.rep, label) : ''}</div>`;
+    }).join('');
+    return `<div class="nm ${r.small ? 'small' : ''}" data-pack="${r.id}" title="Open ${esc(packName(r.id))}">${esc(label)} <span class="n">${r.ms.length}</span></div>${cells}`;
+  };
+  const balanceHtml = `
+  <section class="card">
+    <h2>Balance by state</h2>
+    <p class="sub">Aim for the dot to land between the green lines. A green dot is balanced; an orange dot (with a !) is outside
+      the zone. Hover a bar for the counts. "Either" and "both" missions count half each way. Faded states have under ${D.minMissions} missions.</p>
+    <div class="scroll"><div class="balance" style="margin-top:12px;min-width:560px">
+      <div class="hd">State</div>
+      ${Object.keys(D.targets).map(d => `<div class="hd">${DIM_TITLE[d]}${gaugeEnds(d)}</div>`).join('')}
+      ${anywhere.length ? `${line({ id: 'anywhere', ms: anywhere, rep: report(anywhere), small: false })}<div class="divider">States</div>` : ''}
+      ${rows.map(line).join('')}
+    </div></div>
+    <div class="legend" style="margin-top:14px"><span><i class="zone"></i>Balanced zone</span><span><i class="pin" style="background:var(--pin-in)"></i>Inside ✓</span><span><i class="pin" style="background:var(--pin-out)"></i>Outside !</span></div>
+  </section>`;
+
+  const heatRows = rows.filter(r => r.ms.length);
+  const STEPS = [1, 2, 4, 8, 14];   // 1 · 2-3 · 4-7 · 8-13 · 14+
+  const step = c => c === 0 ? 0 : STEPS.filter(x => c >= x).length;
+  const heatHtml = `
+  <section class="card">
+    <h2>Theme coverage</h2>
+    <p class="sub">How many missions each state has per theme. Empty outlined squares are themes the state doesn't have yet.
+      Not every state needs every theme (no deserts in Vermont), but empty columns across your big states are worth a look.</p>
+    <div class="legend">${['1', '2–3', '4–7', '8–13', '14+'].map((l, i) => `<span><i style="background:var(--heat-${i + 1})"></i>${l}</span>`).join('')}
+      <span><i style="background:var(--heat-0);box-shadow:inset 0 0 0 1px var(--line-strong)"></i>none</span></div>
+    <div class="scroll"><table class="heat">
+      <thead><tr><th></th>${THEME_KEYS.map(k => `<th class="rot"><div>${esc(D.themes[k])}</div></th>`).join('')}<th class="rot"><div>Themes used</div></th></tr></thead>
+      <tbody>${heatRows.map(r => `<tr><td class="rowname ${r.small ? 'muted' : ''}" data-pack="${r.id}">${esc(shortName(r.id))}</td>${THEME_KEYS.map(k => {
+        const c = r.rep.themes.counts[k], s = step(c);
+        return `<td class="${c ? '' : 'zero'}" style="${c ? `background:var(--heat-${s})` : ''}" data-tip="<b>${esc(shortName(r.id))}</b> · ${esc(D.themes[k])}<br>${c} mission${c === 1 ? '' : 's'}"></td>`;
+      }).join('')}<td class="used">${r.rep.themes.used}/${THEME_KEYS.length}</td></tr>`).join('')}</tbody>
+    </table></div>
+  </section>`;
+
+  $('#view').innerHTML = gapHtml + balanceHtml + heatHtml;
+}
+
+function renderPack(ms) {
+  const list = ms.filter(m => m.pack === state.pack);
+  const rep = report(list);
+  const name = packName(state.pack);
+  const small = list.length < D.minMissions;
+  const dims = Object.entries(D.targets).map(([dim, t]) => {
+    const d = rep.dims[dim];
+    const verdict = !list.length ? '' : small ? '<span class="muted">Too few missions to judge</span>'
+      : d.off ? `<span class="fix">Add about ${d.need} ${esc(d.side)}</span>` : '<span class="ok">✓ Inside the green zone</span>';
+    const counts = parts(dim, list).map(([n], i) => `${LEGENDS[dim][i][1]} ${n}`).join(' · ');
+    return `<div class="dim">
+      <h3>${DIM_TITLE[dim]}</h3>
+      <div class="big">${pct(d.share)} <span class="sub" style="font-family:var(--body);font-size:14px">${esc(t.side_a)}, aim ${pct(t.low)}–${pct(t.high)}</span></div>
+      ${list.length ? gauge(dim, list, rep, shortName(state.pack), true) + gaugeEnds(dim) : ''}
+      <div class="counts">${counts}</div>
+      <div style="margin-top:6px">${verdict}</div></div>`;
+  }).join('');
+
+  const tc = rep.themes.counts;
+  const used = THEME_KEYS.filter(k => tc[k]).sort((a, b) => tc[b] - tc[a]);
+  const maxT = Math.max(1, ...used.map(k => tc[k]));
+  const leanCut = D.topThemeMax * list.length;
+  const themeHtml = used.map(k => `<div>${esc(D.themes[k])}</div>
+    <div><div class="tb ${tc[k] > leanCut ? 'lean' : ''}" style="width:${tc[k] / maxT * 100}%" data-tip="<b>${esc(D.themes[k])}</b><br>${tc[k]} of ${list.length} missions (${pct(tc[k] / Math.max(1, list.length))})"></div></div>
+    <div class="tc">${tc[k]}</div>`).join('');
+
+  $('#view').innerHTML = `
+  <section class="card">
+    <h2>${esc(name)}</h2>
+    <p class="sub">${list.length} missions${state.drafts ? ` (${list.filter(m => !m.draft).length} live, ${list.filter(m => m.draft).length} drafts)` : ', live only'}.
+      <button class="link" data-pack="all">Back to all states</button></p>
+    <div class="dims" style="margin-top:14px">${dims}</div>
+  </section>
+  <section class="card">
+    <h2>Themes</h2>
+    <p class="sub">${rep.themes.used} of ${THEME_KEYS.length} themes used.
+      ${rep.themes.off && !small ? `<b style="color:var(--b)">${esc(D.themes[rep.themes.top])}</b> is on more than ${pct(D.topThemeMax)} of this pack (orange bars).` : ''}</p>
+    <div class="themebars" style="margin-top:12px">${themeHtml || '<div class="muted">No missions yet.</div>'}</div>
+    ${rep.themes.missing.length ? `<h3 style="margin-top:16px">No missions yet</h3>
+      <p style="margin:6px 0 0">${rep.themes.missing.map(k => `<span class="chip">${esc(D.themes[k])}</span>`).join('')}</p>` : ''}
+  </section>`;
+}
+
+// ---------- mission table ----------
+const COLS = [
+  ['number', '#', 'num'], ['name', 'Mission'], ['pack', 'Pack'], ['mode', 'Mode'], ['setting', 'Setting'], ['cost', 'Cost'],
+  ['themes', 'Themes'], ['draft', 'Status'], ['checked', 'Checked'], ['added', 'Added'], ['edited', 'Last edited'],
+];
+function renderTable(ms) {
+  let list = state.pack === 'all' ? ms : ms.filter(m => m.pack === state.pack);
+  const q = state.q.trim().toLowerCase();
+  if (q) list = list.filter(m => [m.name, m.id, m.pack, packName(m.pack), ...m.themes, ...m.themes.map(t => D.themes[t])]
+    .some(s => String(s || '').toLowerCase().includes(q)));
+  const [key, dir] = state.msort.split(':');
+  const val = m => key === 'pack' ? shortName(m.pack) + ' ' + String(m.number).padStart(4, '0') : key === 'themes' ? m.themes.join(',') : m[key];
+  list = [...list].sort((a, b) => {
+    const x = val(a), y = val(b);
+    if (x == null || x === '') return 1;           // blanks (never checked) always last
+    if (y == null || y === '') return -1;
+    const c = typeof x === 'number' ? x - y : String(x).localeCompare(String(y));
+    return (dir === 'asc' ? c : -c) || a.name.localeCompare(b.name);
+  });
+  $('#mcount').textContent = `${list.length} missions`;
+  const total = list.length;
+  list = list.slice(0, state.shown);
+  const head = `<thead><tr>${COLS.map(([k, l, c]) => `<th class="sortable ${c || ''}" data-sort="${k}">${l}${key === k ? ` <span class="arrow">${dir === 'asc' ? '↑' : '↓'}</span>` : ''}</th>`).join('')}</tr></thead>`;
+  const body = list.map(m => `<tr class="click" tabindex="0" data-edit="${m.pack}/${m.id}" title="Edit ${esc(m.name)}">
+    <td class="num muted">${m.number ?? ''}</td>
+    <td>${esc(m.name)}<div class="muted" style="font-size:12px">${esc(m.id)}</div></td>
+    <td>${esc(shortName(m.pack))}</td><td>${esc(m.mode)}</td><td>${esc(m.setting)}</td><td>${esc(m.cost)}</td>
+    <td>${m.themes.map(t => `<span class="chip">${esc(D.themes[t] || t)}</span>`).join('')}</td>
+    <td><span class="chip ${m.draft ? 'draft' : 'live'}">${m.draft ? 'Draft' : 'Live'}</span></td>
+    <td class="num ${m.checked ? '' : 'muted'}">${m.checked || '–'}</td>
+    <td class="num">${m.added || ''}</td>
+    <td class="num">${m.edited || ''}${m.uncommitted ? ' <span class="chip new" title="Changed but not committed yet">unsaved</span>' : ''}</td>
+  </tr>`).join('');
+  const more = total > list.length ? `<tfoot><tr><td colspan="${COLS.length}" style="border:0;padding-top:12px">Showing ${list.length} of ${total}.
+    <button class="link" id="more">Show ${Math.min(PAGE, total - list.length)} more</button> · <button class="link" id="allrows">Show all</button></td></tr></tfoot>` : '';
+  $('#mtable').innerHTML = head + `<tbody>${body}</tbody>` + more;
+}
+
+// ---------- wiring ----------
+function render() {
+  const ms = missionsNow();
+  $('#orderWrap').style.display = state.pack === 'all' ? '' : 'none';
+  renderTiles(ms);
+  state.pack === 'all' ? renderAll(ms) : renderPack(ms);
+  renderTable(ms);
+}
+function setPack(p) { state.pack = p; state.shown = PAGE; $('#pack').value = p; render(); scrollTo({ top: 0, behavior: 'smooth' }); }
+
+async function loadData() {
+  const r = await api('/api/data');
+  if (!r.ok) { $('#view').innerHTML = `<div class="card"><h2>Couldn't load missions</h2><p>${esc(r.body.error || "The manager isn't answering. Is it still running?")}</p></div>`; return false; }
+  D = r.body; THEME_KEYS = Object.keys(D.themes);
+  $('#generated').textContent = `${D.missions.length} mission files, read just now.`;
+  $('#note').innerHTML = D.note ? `<div class="note">${esc(D.note)}</div>` : '';
+  const opts = Object.keys(D.packs).sort((a, b) => (a === 'anywhere' ? -1 : b === 'anywhere' ? 1 : shortName(a).localeCompare(shortName(b))));
+  $('#pack').innerHTML = `<option value="all">All states</option>` + opts.map(p =>
+  `<option value="${p}">${esc(shortName(p))} (${D.missions.filter(m => m.pack === p).length})</option>`).join('');
+  if (!(state.pack in D.packs) && state.pack !== 'all') state.pack = 'all';
+  $('#pack').value = state.pack;
+  $('#drafts').checked = state.drafts;
+  return true;
+}
+$('#pack').onchange = e => setPack(e.target.value);
+$('#drafts').onchange = e => { state.drafts = e.target.checked; render(); };
+$('#order').onchange = e => { state.order = e.target.value; render(); };
+$('#msort').onchange = e => { state.msort = e.target.value; render(); };
+$('#q').oninput = e => { state.q = e.target.value; state.shown = PAGE; renderTable(missionsNow()); };
+document.addEventListener('click', e => {
+  const ed = e.target.closest('[data-edit]');
+  if (ed) { const [pk, id] = ed.dataset.edit.split('/'); return openEditor(pk, id); }
+  if (e.target.id === 'more') { state.shown += PAGE; return renderTable(missionsNow()); }
+  if (e.target.id === 'allrows') { state.shown = Infinity; return renderTable(missionsNow()); }
+  const p = e.target.closest('[data-pack]');
+  if (p) return setPack(p.dataset.pack);
+  const th = e.target.closest('th[data-sort]');
+  if (th) {
+    const k = th.dataset.sort, [key, dir] = state.msort.split(':');
+    const def = ['edited', 'added'].includes(k) ? 'desc' : 'asc';
+    state.msort = `${k}:${key === k ? (dir === 'asc' ? 'desc' : 'asc') : def}`;
+    const opt = [...$('#msort').options].find(o => o.value === state.msort);
+    $('#msort').value = opt ? state.msort : '';
+    renderTable(missionsNow());
+  }
+});
+$('#themeBtn').onclick = () => {
+  const cur = document.documentElement.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.dataset.theme = next;
+  try { localStorage.setItem('amble-mm-theme', next); } catch (e) {}
+};
+// ================= mission editor =================
+const DEFAULTS = { cost: '$', setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', routine: false };
+// the keys this form owns; anything else in a file is passed through untouched
+const MANAGED = ['draft', 'checked', 'number', 'name', 'mode', 'who', 'place', 'short', 'description', 'about', 'steps',
+  'for_kids', 'gear', 'duration', 'effort', 'cost', 'setting', 'season', 'time_of_day', 'travel', 'check_ahead',
+  'discounts', 'routine', 'caution', 'caution_until', 'themes', 'tags', 'credit'];
+const LABELS = {
+  mode: { date: 'Date', both: 'Both', adventure: 'Adventure' },
+  duration: { short: 'Short (1–3 hrs)', 'half-day': 'Half day', 'all-day': 'All day' },
+  effort: { easy: 'Easy', moderate: 'Moderate', hard: 'Hard' },
+  cost: { free: 'Free', '$': '$ (under $20 for two)', '$$': '$$ ($20–60)', '$$$': '$$$ (over $60)' },
+  setting: { indoor: 'Indoor', either: 'Either', outdoor: 'Outdoor' },
+  time_of_day: { any: 'Any time', morning: 'Morning', daytime: 'Daytime', evening: 'Evening', night: 'Night' },
+  travel: { home: 'At home', local: 'Local', drive: 'A drive', 'day-trip': 'Day trip' },
+  rent: { 'on-site': 'Rent on-site', nearby: 'Rent nearby', no: 'Bring your own' },
+};
+const ORDERS = {   // the order options show in (the schema lists are sorted alphabetically)
+  mode: ['date', 'both', 'adventure'], duration: ['short', 'half-day', 'all-day'], effort: ['easy', 'moderate', 'hard'],
+  cost: ['free', '$', '$$', '$$$'], setting: ['indoor', 'either', 'outdoor'],
+  time_of_day: ['any', 'morning', 'daytime', 'evening', 'night'], travel: ['home', 'local', 'drive', 'day-trip'],
+  who: ['solo', 'friends', 'family', 'kids'], season: ['spring', 'summer', 'fall', 'winter'],
+};
+const ed = { pack: null, id: null, isNew: false, version: null, orig: {}, m: {}, dirty: false, dropComments: false };
+const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+const opt = (key, v) => (LABELS[key] && LABELS[key][v]) || v;
+const isAnywhere = () => ed.pack === 'anywhere';
+
+function toast(text) {
+  const t = $('#toast'); t.textContent = text; t.classList.add('show');
+  clearTimeout(toast.t); toast.t = setTimeout(() => t.classList.remove('show'), 2600);
+}
+function setMsg(html, kind = '') { $('#edMsg').innerHTML = html ? `<span class="${kind}">${html}</span>` : ''; }
+function nextNumber(pack) {
+  const nums = D.missions.filter(m => m.pack === pack && Number.isInteger(m.number)).map(m => m.number);
+  return nums.length ? Math.max(...nums) + 1 : 1;
+}
+
+// ---------- small builders ----------
+const field = (id, label, input, help = '', count = '') =>
+  `<div class="f"><label for="${id}">${label}${count ? ` <span class="count" data-count="${id}"></span>` : (help ? ` <span class="help">${help}</span>` : '')}</label>${input}${count && help ? `<div class="help">${help}</div>` : ''}</div>`;
+const text = (id, v, attrs = '') => `<input type="text" id="${id}" value="${esc(v ?? '')}" ${attrs}>`;
+const select = (id, key, v, values) => `<select id="${id}">${(values || ORDERS[key] || D.schema.allowed[key])
+  .map(x => `<option value="${esc(x)}" ${x === v ? 'selected' : ''}>${esc(opt(key, x))}</option>`).join('')}</select>`;
+const seg = (name, key, v) => `<div class="seg" role="radiogroup">${ORDERS[key].map(x =>
+  `<label><input type="radio" name="${name}" value="${x}" ${x === v ? 'checked' : ''}><span>${esc(opt(key, x))}</span></label>`).join('')}</div>`;
+const chips = (name, values, chosen, labels = {}) => `<div class="chips">${values.map(x =>
+  `<label class="chipbox"><input type="checkbox" name="${name}" value="${esc(x)}" ${chosen.includes(x) ? 'checked' : ''}><span>${esc(labels[x] || x)}</span></label>`).join('')}</div>`;
+const listRows = (name, items, placeholder) => `<div data-list="${name}">${(items.length ? items : ['']).map(v =>
+  `<div class="listrow"><input type="text" data-item="${name}" value="${esc(v)}" placeholder="${esc(placeholder)}"><button type="button" class="rm" data-rm aria-label="Remove">×</button></div>`).join('')}</div>
+  <button type="button" class="btn tiny" data-add="${name}" style="margin-top:8px">+ Add another</button>`;
+
+function linkRow(l = {}) {
+  return `<div class="listrow two" data-link><input type="text" data-k="label" value="${esc(l.label || '')}" placeholder="Button text (Bike rentals)" maxlength="${D.schema.limits.linkLabel}">
+    <input type="url" data-k="url" value="${esc(l.url || '')}" placeholder="https://…"><button type="button" class="rm" data-rm aria-label="Remove link">×</button></div>`;
+}
+function gearRow(g = {}) {
+  const rent = isAnywhere() ? '' : `<select data-k="rent"><option value="">Rent?</option>${D.schema.rent.map(r =>
+    `<option value="${r}" ${g.rent === r ? 'selected' : ''}>${opt('rent', r)}</option>`).join('')}</select>`;
+  return `<div class="listrow ${isAnywhere() ? '' : 'gear'}" data-gear><select data-k="item"><option value="">Pick gear…</option>${D.schema.gear.map(x =>
+    `<option ${g.item === x ? 'selected' : ''}>${x}</option>`).join('')}</select>${rent}<button type="button" class="rm" data-rm aria-label="Remove gear">×</button></div>`;
+}
+
+// ---------- the form ----------
+function renderForm(info = {}) {
+  const m = ed.m, L = D.schema.limits, place = m.place || {}, kids = m.for_kids || {};
+  const who = Array.isArray(m.who) ? m.who : [];
+  const season = Array.isArray(m.season) ? m.season : [];
+  const themes = Array.isArray(m.themes) ? m.themes : [];
+  const extra = Object.keys(ed.orig).filter(k => !MANAGED.includes(k));
+  const coords = Array.isArray(place.coords) ? place.coords : ['', ''];
+  const alerts = [];
+  if (info.duplicates && info.duplicates.length) alerts.push(`<div class="alert warn"><b>This file has some fields written twice</b> (${info.duplicates.map(esc).join(', ')}).
+    YAML only uses the last copy, which is what the website shows and what you see here. Saving keeps just that copy.</div>`);
+  if (info.comments && info.comments.length) alerts.push(`<div class="alert warn"><b>This file has notes in it</b> that the form can't show:
+    <ul>${info.comments.map(c => `<li><code>${esc(c)}</code></li>`).join('')}</ul>They stay as long as you don't change the line they're on; if you do, you'll be asked first.</div>`);
+
+  $('#edBody').innerHTML = `${alerts.join('')}
+  <fieldset><legend>Status</legend>
+    <label class="toggle"><input type="checkbox" id="fDraft" ${m.draft ? 'checked' : ''}> Draft: hidden from the website</label>
+    <div class="row">${field('fChecked', 'Checked on', `<div style="display:flex;gap:8px"><input type="date" id="fChecked" value="${esc(m.checked || '')}"><button type="button" class="btn tiny" id="fToday">Today</button></div>`,
+      'the day you last checked the place, hours and pin')}</div>
+    <p class="help" style="margin:8px 0 0">A live mission needs a checked date. Untick draft once the pin and address are right.</p>
+  </fieldset>
+
+  <fieldset><legend>Basics</legend>
+    <div class="row" style="grid-template-columns:3fr 1fr">${field('fName', 'Name', text('fName', m.name, 'required'))}
+      ${field('fNumber', 'Number', `<input type="number" id="fNumber" min="0" step="1" value="${esc(m.number ?? '')}">`, `next free: ${nextNumber(ed.pack) - (ed.isNew ? 0 : 0)}`)}</div>
+    <div class="f"><span class="lbl">Mode</span>${seg('fMode', 'mode', m.mode || 'both')}</div>
+    <div class="f"><span class="lbl">Who else can come <span class="help">leave empty for date-only missions</span></span>${chips('fWho', ORDERS.who, who)}</div>
+    ${field('fCredit', 'Credit', text('fCredit', m.credit, `maxlength="${L.credit}" placeholder="Sam R."`), 'shown as "Suggested by …"; just the name')}
+  </fieldset>
+
+  ${isAnywhere() ? '' : `<fieldset id="placeSet"><legend>Place</legend>
+    <div class="row">${field('pName', 'Place name', text('pName', place.name))}${field('pArea', 'Area', text('pArea', place.area, 'placeholder="Old Town, Portland"'))}</div>
+    ${field('pAddress', 'Address', text('pAddress', place.address), 'leave out for trailheads and viewpoints')}
+    <div class="f"><label for="pLat">Pin <span class="help">the entrance, dock or trailhead · paste "lat, lng" into either box</span></label>
+      <div class="row"><input type="text" inputmode="decimal" id="pLat" value="${esc(coords[0] ?? '')}" placeholder="Latitude 45.52266">
+      <input type="text" inputmode="decimal" id="pLng" value="${esc(coords[1] ?? '')}" placeholder="Longitude -122.67306"></div>
+      <a class="maplink" id="pMap" target="_blank" rel="noopener noreferrer" href="#">Check this pin on a map ↗</a></div>
+    ${field('pWebsite', 'Website', `<input type="url" id="pWebsite" value="${esc(place.website || '')}" placeholder="https://…">`)}
+    <div class="f"><span class="lbl">Extra links <span class="help">up to ${L.links} more buttons</span></span>
+      <div id="links">${(place.links || []).map(linkRow).join('')}</div>
+      <button type="button" class="btn tiny" id="addLink" style="margin-top:8px;justify-self:start">+ Add a link</button></div>
+  </fieldset>`}
+
+  <fieldset><legend>Words</legend>
+    ${field('fShort', 'Short line', text('fShort', m.short), 'the camera screen', 1)}
+    ${field('fDesc', 'Description', `<textarea id="fDesc" rows="6">${esc(m.description || '')}</textarea>`, 'what to do and what to photograph; aim for about 400', 1)}
+    ${field('fAbout', 'About this place', `<textarea id="fAbout" rows="8">${esc(m.about || '')}</textarea>`, 'website only: history, numbers, tips. A blank line starts a new paragraph. Link a mission with [[its-file-name]].', 1)}
+  </fieldset>
+
+  <fieldset><legend>Photo prompts</legend>
+    <p class="help" style="margin:0">Optional: one camera screen each, for a guided mission.</p>
+    ${listRows('steps', Array.isArray(m.steps) ? m.steps : [], 'A photo prompt')}
+  </fieldset>
+
+  <fieldset id="kidsSet" ${who.includes('kids') ? '' : 'hidden'}><legend>For kids</legend>
+    <p class="help" style="margin:0">Needed because kids can come: one simple sentence and simple photo prompts.</p>
+    ${field('kShort', 'Kids’ short line', text('kShort', kids.short, 'placeholder="Find the giant waterfall!"'))}
+    <div class="f"><span class="lbl">Kids’ prompts</span>${listRows('kidsteps', Array.isArray(kids.steps) ? kids.steps : [], 'Something red')}</div>
+  </fieldset>
+
+  <fieldset><legend>Details</legend>
+    <div class="row">${field('fDuration', 'Duration', select('fDuration', 'duration', m.duration || 'short'))}
+      ${field('fEffort', 'Effort', select('fEffort', 'effort', m.effort || 'easy'))}
+      ${field('fCost', 'Cost', select('fCost', 'cost', m.cost ?? DEFAULTS.cost))}</div>
+    <div class="row">${field('fSetting', 'Setting', select('fSetting', 'setting', m.setting ?? DEFAULTS.setting))}
+      ${field('fTime', 'Time of day', select('fTime', 'time_of_day', m.time_of_day ?? DEFAULTS.time_of_day))}
+      ${field('fTravel', 'Travel', select('fTravel', 'travel', m.travel ?? DEFAULTS.travel))}</div>
+    <div class="f"><span class="lbl">Season <span class="help">none ticked = any season</span></span>${chips('fSeason', ORDERS.season, season)}</div>
+    <div class="f"><span class="lbl">Check ahead</span>${chips('fCheck', D.schema.lists.check_ahead, m.check_ahead || [])}</div>
+    <div class="f"><span class="lbl">Discounts the place offers</span>${chips('fDisc', D.schema.lists.discounts, m.discounts || [])}</div>
+    <label class="toggle" style="margin-top:12px"><input type="checkbox" id="fRoutine" ${m.routine ? 'checked' : ''}> Repeatable routine</label>
+  </fieldset>
+
+  <fieldset><legend>Gear</legend>
+    <p class="help" style="margin:0">Only gear you truly can't do it without that many households don't own.</p>
+    <div id="gear">${(m.gear || []).map(gearRow).join('')}</div>
+    <button type="button" class="btn tiny" id="addGear" style="margin-top:8px">+ Add gear</button>
+  </fieldset>
+
+  <fieldset><legend>Caution</legend>
+    ${field('fCaution', 'Caution', text('fCaution', m.caution, 'placeholder="No cell service here. Download offline maps before you go."'), 'yellow box on the website ticket; aim for under 120', 1)}
+    <div class="row">${field('fCautionUntil', 'Hide it after', `<input type="date" id="fCautionUntil" value="${esc(m.caution_until || '')}">`, 'for temporary things like closures')}</div>
+  </fieldset>
+
+  <fieldset><legend>Themes <span class="count" id="themeCount"></span></legend>
+    <p class="help" style="margin:0">Pick up to ${D.themesMax} that really fit. These are the website's filter chips.</p>
+    ${Object.entries(D.themeGroups).map(([g, keys]) => `<div class="group-name">${g}</div>${chips('fTheme', keys, themes, D.themes)}`).join('')}
+    <div class="alert warn" id="romanticWarn" hidden>Romantic is a date filter, but this mission is adventure-only. Drop romantic, or make the mode date or both.</div>
+  </fieldset>
+
+  <fieldset><legend>Tags</legend>
+    ${field('fTags', 'Search keywords', text('fTags', (m.tags || []).join(', '), 'placeholder="hot springs, soaking, old-growth"'), 'separate with commas')}
+  </fieldset>
+  ${extra.length ? `<p class="help" style="margin-top:14px">Also in this file and kept exactly as is: ${extra.map(k => `<code>${esc(k)}</code>`).join(', ')}.</p>` : ''}`;
+  refreshLive();
+}
+
+// counters, theme cap, kids section, map link
+function refreshLive() {
+  const L = D.schema.limits;
+  const counts = { fShort: [L.short], fDesc: [L.description, 400], fAbout: [L.about], fCaution: [L.caution, 120] };
+  for (const [id, [max, aim]] of Object.entries(counts)) {
+    const el = document.getElementById(id), c = document.querySelector(`[data-count="${id}"]`);
+    if (!el || !c) continue;
+    const n = el.value.split(/\s+/).join(' ').trim().length;
+    c.textContent = `${n} / ${max}`;
+    c.className = 'count' + (n > max ? ' over' : aim && n > aim ? ' aim' : '');
+  }
+  const picked = [...document.querySelectorAll('input[name=fTheme]:checked')];
+  document.querySelectorAll('input[name=fTheme]').forEach(i => { i.disabled = !i.checked && picked.length >= D.themesMax; });
+  const tc = $('#themeCount'); if (tc) tc.textContent = `${picked.length} / ${D.themesMax}`;
+  const mode = (document.querySelector('input[name=fMode]:checked') || {}).value;
+  const rw = $('#romanticWarn'); if (rw) rw.hidden = !(mode === 'adventure' && picked.some(i => i.value === 'romantic'));
+  const kids = [...document.querySelectorAll('input[name=fWho]:checked')].some(i => i.value === 'kids');
+  const ks = $('#kidsSet'); if (ks) ks.hidden = !kids;
+  const lat = parseFloat(($('#pLat') || {}).value), lng = parseFloat(($('#pLng') || {}).value), map = $('#pMap');
+  if (map) {
+    const okPin = Number.isFinite(lat) && Number.isFinite(lng);
+    map.hidden = !okPin;
+    if (okPin) map.href = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=17/${lat}/${lng}`;
+  }
+  const al = $('#addLink'); if (al) al.hidden = document.querySelectorAll('[data-link]').length >= L.links;
+}
+
+// read the form back into a mission object (unmanaged keys come along untouched)
+function collect() {
+  const v = id => (document.getElementById(id) || {}).value ?? '';
+  const checked = name => [...document.querySelectorAll(`input[name=${name}]:checked`)].map(i => i.value);
+  const items = name => [...document.querySelectorAll(`[data-item=${name}]`)].map(i => i.value.trim()).filter(Boolean);
+  const out = { ...ed.orig };
+  MANAGED.forEach(k => delete out[k]);
+  const set = (k, val) => {
+    const empty = val === '' || val == null || (Array.isArray(val) && !val.length) || (typeof val === 'object' && !Array.isArray(val) && !Object.keys(val).length);
+    // leave a default value out if the file didn't spell it out already (keeps diffs small)
+    const isDefault = k in DEFAULTS && JSON.stringify(val) === JSON.stringify(DEFAULTS[k]);
+    if (empty && !(k in ed.orig)) return;
+    if (isDefault && !(k in ed.orig) && !ed.isNew) return;
+    if (k === 'routine' && val === false && !(k in ed.orig)) return;
+    out[k] = val;
+  };
+  if ($('#fDraft').checked) out.draft = true; else if (ed.orig.draft === false) out.draft = false;
+  set('checked', v('fChecked'));
+  const num = v('fNumber').trim();
+  set('number', num === '' ? '' : (Number.isInteger(+num) ? +num : num));
+  set('name', v('fName').trim());
+  set('mode', (document.querySelector('input[name=fMode]:checked') || {}).value);
+  set('who', ORDERS.who.filter(w => checked('fWho').includes(w)));
+  if (!isAnywhere()) {
+    const place = { ...(ed.orig.place || {}) };
+    ['name', 'area', 'address', 'coords', 'website', 'links'].forEach(k => delete place[k]);
+    const pv = { name: v('pName').trim(), area: v('pArea').trim(), address: v('pAddress').trim(), website: v('pWebsite').trim() };
+    const lat = v('pLat').trim(), lng = v('pLng').trim();
+    if (lat || lng) pv.coords = [Number(lat), Number(lng)];
+    const links = [...document.querySelectorAll('[data-link]')].map(r => ({ label: r.querySelector('[data-k=label]').value.trim(), url: r.querySelector('[data-k=url]').value.trim() }))
+      .filter(l => l.label || l.url);
+    if (links.length) pv.links = links;
+    Object.assign(place, Object.fromEntries(Object.entries(pv).filter(([, x]) => x !== '')));
+    set('place', place);
+  } else if (ed.orig.place) out.place = ed.orig.place;   // let the checks explain it rather than silently dropping it
+  set('short', v('fShort').trim());
+  set('description', v('fDesc'));
+  set('about', v('fAbout'));
+  set('steps', items('steps'));
+  const kids = checked('fWho').includes('kids');
+  if (kids || ed.orig.for_kids) {
+    const fk = {}; const ks = v('kShort').trim(), kst = items('kidsteps');
+    if (ks) fk.short = ks; if (kst.length) fk.steps = kst;
+    set('for_kids', fk);
+  }
+  set('gear', [...document.querySelectorAll('[data-gear]')].map(r => {
+    const g = { item: r.querySelector('[data-k=item]').value };
+    const rent = r.querySelector('[data-k=rent]'); if (rent && rent.value) g.rent = rent.value;
+    return g;
+  }).filter(g => g.item));
+  set('duration', v('fDuration')); set('effort', v('fEffort')); set('cost', v('fCost'));
+  set('setting', v('fSetting'));
+  const season = ORDERS.season.filter(s => checked('fSeason').includes(s));
+  set('season', season.length ? season : 'any');
+  set('time_of_day', v('fTime')); set('travel', v('fTravel'));
+  set('check_ahead', checked('fCheck')); set('discounts', checked('fDisc'));
+  set('routine', $('#fRoutine').checked);
+  set('caution', v('fCaution').trim()); set('caution_until', v('fCautionUntil'));
+  set('themes', THEME_KEYS.filter(t => checked('fTheme').includes(t)));
+  set('tags', v('fTags').split(',').map(t => t.trim()).filter(Boolean));
+  set('credit', v('fCredit').trim());
+  return out;
+}
+
+// ---------- open / save ----------
+function showSheet() {
+  const d = $('#editor');
+  if (!d.open) d.showModal();
+  $('#edBody').scrollTop = 0;
+}
+async function openEditor(pack, id) {
+  ed.pack = pack; ed.id = id; ed.isNew = false; ed.dirty = false; ed.dropComments = false;
+  $('#edTitle').textContent = 'Loading…'; $('#edPath').textContent = `missions/${pack}/${id}.yaml`;
+  $('#edBody').innerHTML = ''; setMsg('');
+  showSheet();
+  const r = await api(`/api/mission?pack=${encodeURIComponent(pack)}&id=${encodeURIComponent(id)}`);
+  if (!r.ok) { $('#edTitle').textContent = 'Couldn’t open it'; $('#edBody').innerHTML = `<div class="alert bad">${esc(r.body.error || 'Error')}</div>`; return; }
+  ed.version = r.body.version; ed.orig = r.body.data; ed.m = JSON.parse(JSON.stringify(r.body.data));
+  $('#edTitle').textContent = ed.m.name || id;
+  $('#edPath').textContent = `${r.body.path} · ${packName(pack)}`;
+  renderForm(r.body);
+}
+function startNew(pack, id, name) {
+  ed.pack = pack; ed.id = id; ed.isNew = true; ed.version = null; ed.orig = {}; ed.dirty = true; ed.dropComments = false;
+  ed.m = { draft: true, number: nextNumber(pack), name, mode: 'both', duration: 'short', effort: 'easy', cost: '$',
+    setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', themes: [], tags: [] };
+  $('#edTitle').textContent = name || 'New mission';
+  $('#edPath').textContent = `missions/${pack}/${id}.yaml · new · ${packName(pack)}`;
+  setMsg('Not saved yet.');
+  showSheet(); renderForm();
+}
+async function saveMission(e) {
+  e && e.preventDefault();
+  const data = collect();
+  $('#edSave').disabled = true; setMsg('Checking and saving…');
+  const r = await api('/api/mission', { method: 'POST', body: JSON.stringify({ pack: ed.pack, id: ed.id, isNew: ed.isNew,
+    version: ed.version, data, dropComments: ed.dropComments }) });
+  $('#edSave').disabled = false;
+  const b = r.body;
+  if (r.ok) {
+    ed.dirty = false; ed.dropComments = false;
+    if (b.unchanged) { setMsg('No changes to save.'); return; }
+    const was = ed.isNew;
+    await loadData(); render();
+    await openEditor(ed.pack, ed.id);          // reload what's on disk now (and its new version)
+    setMsg(`Saved to <code>${esc(b.path)}</code>. Commit when you’re ready.`, 'ok');
+    toast(was ? 'Mission created' : 'Mission saved');
+    return;
+  }
+  if (b.lost) {
+    setMsg(`<div class="alert warn" style="margin:0"><b>${esc(b.error)}</b><ul>${b.lost.map(c => `<li><code>${esc(c)}</code></li>`).join('')}</ul>
+      <button type="button" class="btn tiny" id="dropAndSave" style="margin-top:8px">Save anyway, without these notes</button></div>`);
+    return;
+  }
+  if (b.problems) {
+    setMsg(`<div class="alert bad" style="margin:0"><b>${esc(b.error)}</b><ul>${b.problems.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`);
+    return;
+  }
+  setMsg(`<div class="alert bad" style="margin:0">${esc(b.error || 'Something went wrong; nothing was saved.')}
+    ${b.stale ? '<br><button type="button" class="btn tiny" id="reloadMission" style="margin-top:8px">Reopen the latest version</button>' : ''}</div>`);
+}
+function closeEditor() {
+  if (ed.dirty && !confirm('Close without saving your changes?')) return;
+  ed.dirty = false; $('#editor').close();
+}
+
+// ---------- wiring ----------
+$('#edForm').addEventListener('submit', saveMission);
+$('#edClose').onclick = closeEditor;
+$('#edCancel').onclick = closeEditor;
+$('#editor').addEventListener('cancel', e => { e.preventDefault(); closeEditor(); });
+$('#edForm').addEventListener('input', e => {
+  ed.dirty = true;
+  // paste "lat, lng" into either pin box
+  if ((e.target.id === 'pLat' || e.target.id === 'pLng') && e.target.value.includes(',')) {
+    const [a, b] = e.target.value.split(',').map(x => x.trim());
+    if (a && b && Number.isFinite(+a) && Number.isFinite(+b)) { $('#pLat').value = a; $('#pLng').value = b; }
+  }
+  refreshLive();
+});
+$('#edForm').addEventListener('change', () => { ed.dirty = true; refreshLive(); });
+$('#edForm').addEventListener('click', e => {
+  const t = e.target;
+  if (t.matches('[data-rm]')) { t.closest('.listrow').remove(); ed.dirty = true; refreshLive(); }
+  else if (t.matches('[data-add]')) {
+    const name = t.dataset.add, box = document.querySelector(`[data-list=${name}]`);
+    box.insertAdjacentHTML('beforeend', `<div class="listrow"><input type="text" data-item="${name}" placeholder="${name === 'kidsteps' ? 'Something red' : 'A photo prompt'}"><button type="button" class="rm" data-rm aria-label="Remove">×</button></div>`);
+    box.lastElementChild.querySelector('input').focus();
+  }
+  else if (t.id === 'addLink') { $('#links').insertAdjacentHTML('beforeend', linkRow()); refreshLive(); }
+  else if (t.id === 'addGear') { $('#gear').insertAdjacentHTML('beforeend', gearRow()); }
+  else if (t.id === 'fToday') { $('#fChecked').value = today(); ed.dirty = true; }
+  else if (t.id === 'dropAndSave') { ed.dropComments = true; saveMission(); }
+  else if (t.id === 'reloadMission') { ed.dirty = false; openEditor(ed.pack, ed.id); }
+});
+$('#mtable').addEventListener('keydown', e => {
+  const row = e.target.closest('[data-edit]');
+  if (row && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); row.click(); }
+});
+window.addEventListener('beforeunload', e => { if (ed.dirty && $('#editor').open) { e.preventDefault(); e.returnValue = ''; } });
+
+// new mission dialog
+const slug = s => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').replace(/['’]/g, '').replace(/[^a-z0-9]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 60);
+let idTouched = false;
+$('#newBtn').onclick = () => {
+  if (!D) return;
+  const packs = Object.keys(D.packs).filter(p => p !== 'general').sort((a, b) => a === 'anywhere' ? -1 : b === 'anywhere' ? 1 : shortName(a).localeCompare(shortName(b)));
+  $('#nPack').innerHTML = packs.map(p => `<option value="${p}">${esc(packName(p))}</option>`).join('');
+  $('#nPack').value = state.pack !== 'all' && packs.includes(state.pack) ? state.pack : 'oregon';
+  $('#nName').value = ''; $('#nId').value = ''; $('#nErr').hidden = true; idTouched = false;
+  $('#newDlg').showModal(); $('#nName').focus();
+};
+$('#nName').oninput = () => { if (!idTouched) $('#nId').value = slug($('#nName').value); };
+$('#nId').oninput = () => { idTouched = true; };
+$('#newForm').addEventListener('submit', e => {
+  if (e.submitter && e.submitter.value === 'cancel') return;
+  const id = $('#nId').value.trim(), name = $('#nName').value.trim(), pack = $('#nPack').value;
+  const err = !name ? 'Give the mission a name.' : !/^[a-z0-9][a-z0-9-]*$/.test(id) ? 'The file name can only use lowercase letters, numbers and dashes.'
+    : D.missions.some(m => m.id === id) ? `There's already a mission called ${id}. Ids are unique across all packs.` : '';
+  if (err) { e.preventDefault(); $('#nErr').textContent = err; $('#nErr').hidden = false; return; }
+  startNew(pack, id, name);
+});
+
+loadData().then(ok => ok && render());
+</script>
+</body>
+</html>

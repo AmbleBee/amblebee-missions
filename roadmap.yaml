@@ -64,7 +64,22 @@
     - Upload photos from your phone with a QR code, no app needed
     - Flip through the photos and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own
     - Every finished mission becomes a memory, with its photos and a note
+
+- title: Seasonal Themes
+  status: next
+  tag: website
+  when: Planning since Nov 4, 2026
+  summary: Special looks for the website around holidays and seasons, shown only for a short window each time. The rest of the year the site stays its plain self, and a switch in the footer turns the seasonal look off if you'd rather not see it.
  
+- title: Testing Mission Management
+  status: doing
+  tag: missions
+  summary: Putting the new mission workshop through real use, editing missions and adding new ones, and filling the gaps it finds first.
+  items:
+    - More free and cheap missions for Louisiana, Missouri, New York and Pennsylvania
+    - A few more indoor, rainy-day missions for Idaho
+    - Smoothing out anything that feels clunky along the way
+
 - title: Exact Map Pins for Every Place
   status: doing
   progress: live
@@ -72,6 +87,18 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Mission Management
+  status: done
+  date: 2026-11-05
+  tag: missions
+  summary: A behind-the-scenes workshop for keeping every state's missions well-rounded, so no state ends up all hikes, all pricey, or all one kind of day out.
+  items:
+    - A balance check for every state, with indoor vs outdoor, cheap vs pricier, date vs adventure, and which themes each state covers
+    - A gap finder that points out the states furthest off balance, and roughly how many new missions would even them out
+    - Every mission in one list, with when it was added, last changed and last checked, so the oldest ones get a fresh look first
+    - Edit any mission from the browser, from its name and description down to its themes, map pin and photo prompts
+    - Every change runs through the same checks as the website before it's saved, and new missions start as drafts until they're checked
+
 - title: The Big Website Tune-Up, Part 3
   status: done
   date: 2026-11-02
