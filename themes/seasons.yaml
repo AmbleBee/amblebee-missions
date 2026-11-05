@@ -1,0 +1,32 @@
+# Seasonal looks for amblebee.com: which theme shows when.
+#
+# Optional, like the whole themes/ folder: without it the site is plain all year.
+# Edit, push, done. tools/build_themes.py checks this file on every build and says plainly what's wrong.
+#
+# Each entry:
+#   theme:    the folder in themes/ (fall -> themes/fall/theme.css)          (required)
+#   name:     what the footer calls it ("the Fall & Thanksgiving look")     (required)
+#   from, to: month and day, MM-DD in quotes. Repeats every year.            (required)
+#             "to" can be in the next year: from "12-01" to "01-01" works.
+#   message:  one friendly line shown in the footer while it's on            (optional)
+#   flurry:   true for a shower of falling leaves or snow when someone arrives   (optional, default false)
+#             or refreshes. It falls down the page (behind the content) and is gone
+#             once it reaches the footer. Skipped for reduced-motion visitors.
+#
+# Dates follow each visitor's own calendar. Two looks can't overlap.
+# Visitors can turn the look off in the footer. To try a theme any day, run bash tools/preview.sh
+# and use the "Theme preview" picker in the corner (it only shows on localhost).
+
+- theme: fall
+  name: Fall & Thanksgiving
+  from: "11-01"
+  to: "11-30"
+  message: Happy fall from the hive! It's cozy season, so grab something warm and go somewhere new.
+  flurry: true
+
+- theme: winter
+  name: Winter
+  from: "12-01"
+  to: "01-01"
+  message: Happy holidays from the hive! Bundle up and go see the lights.
+  flurry: true

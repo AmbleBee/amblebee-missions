@@ -1,0 +1,37 @@
+/* Shared by every theme: the footer switch, and the preview picker that only shows on localhost.
+   The theme files themselves only change colors and add a few decorations. */
+
+.season-switch { font-size: .95rem; }
+.season-switch button {
+  appearance: none; border: 0; background: none; padding: 0; cursor: pointer;
+  font: inherit; font-weight: 800; color: var(--foot-link); text-decoration: underline; text-underline-offset: 3px;
+}
+.season-switch button:disabled { cursor: default; text-decoration: none; opacity: .75; }
+
+.season-preview {
+  position: fixed; left: 12px; bottom: 12px; z-index: 60;
+  background: var(--paper); color: var(--ink); border-radius: 14px; padding: 8px 12px;
+  box-shadow: 0 0 0 2px var(--honey), var(--shadow); font: 700 .85rem var(--body);
+}
+.season-preview select { font: inherit; margin-left: 6px; color: var(--ink); background: var(--linen);
+  border: 1.5px solid var(--line-strong); border-radius: 8px; padding: 2px 6px; }
+
+/* the arrival flurry (seasons with flurry: true). season.js adds the pieces and moves them down the page;
+   each theme decides what they look like. It's laid over the whole page, not the screen, so it stays put
+   when you scroll. z-index -1 puts it behind cards, buttons and text. */
+.season-flurry { position: absolute; top: 0; left: 0; width: 100%; height: 0; overflow: visible; pointer-events: none; z-index: -1; }
+.season-flurry span {
+  position: absolute; top: 0; left: 0; width: var(--size); height: var(--size); opacity: var(--alpha);
+  background: center / contain no-repeat; will-change: transform;
+}
+@media (prefers-reduced-motion: reduce) { .season-flurry { display: none; } }
+
+/* decorations never take space or block clicks */
+html[data-season] body::before { pointer-events: none; }
+html[data-season] .brand { position: relative; }
+html[data-season] .foot { position: relative; }          /* so a theme can sit things on the footer's top edge */
+html[data-season] .env.flip::before, html[data-season] .env.flap::before, html[data-season] .env.card-out::before,
+html[data-season] .env.fade::before { opacity: 0; }       /* the envelope's snow or leaves slip away as it opens */
+html[data-season] .brand::after { pointer-events: none; }
+@media print { html[data-season] body::before, html[data-season] .brand::after, html[data-season] .foot::before,
+  html[data-season] .foot::after, html[data-season] .env::before, .season-preview, .season-flurry { display: none; } }
