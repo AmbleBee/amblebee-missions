@@ -98,6 +98,25 @@
     - Every mission in one list, with when it was added, last changed and last checked, so the oldest ones get a fresh look first
     - Edit any mission from the browser, from its name and description down to its themes, map pin and photo prompts
     - Every change runs through the same checks as the website before it's saved, and new missions start as drafts until they're checked
+    - A YAML view for editing a mission's file directly, notes and all, that points to the exact line if something's off
+    - Every save shows exactly which lines will change before anything is written
+    - '"Checked today, publish" takes a checked draft live in one step'
+    - A "Needs attention" list for pins still to verify, missions not checked in six months, expired cautions and anything failing a check, plus quick filters by status, attention and theme
+    - Saves take a couple of seconds instead of ten or more
+
+- title: Fresher Picks and Fact-Checked Places
+  status: done
+  date: 2026-11-05
+  tag: website
+  summary: Opening missions feels fresh every time, returning visitors skip the intro, and the story behind each place got a careful second look.
+  items:
+    - '"Open a mission" now deals missions like a shuffled deck: nothing comes up twice until every match has had its turn, and changing your filters starts a fresh deck'
+    - With a ZIP code set, the places near you still come up first
+    - The "New to AmbleBee?" box steps aside once you've been here before, remembered only in your own browser
+    - Every mission waiting in drafts now has its "About this place" story ready for the day it goes live
+    - We checked the trickiest facts in those stories against real sources and fixed the ones that had changed, like a museum's name, a park's reservation rules and a farm that's open all year
+    - Find AmbleBee on Pinterest, Bluesky and X, linked at the bottom of every page
+    - Five missions went back to drafts until their map pins are double-checked, and a new check makes sure no mission goes live with an unchecked pin
 
 - title: The Big Website Tune-Up, Part 3
   status: done

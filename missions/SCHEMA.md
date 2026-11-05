@@ -67,6 +67,7 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 | `about` | The background that makes the place interesting: history, numbers, practical tips (parking, permits, best season). **Website only**: shown on the mission's own page under "About this place" (where Google reads it), left out of catalog.json so the camera and the Hive never get it. Write `about: >` with the text indented below; a blank line starts a new paragraph. 1500 characters max. To link to another mission, write its file name in double brackets, like `[[wallowa-lake-tramway]]`: the page shows the mission's name as a link (plain text while that mission is a draft), and the check catches typos. Links only work in `about`. [none] |
 | `steps` | Prompts for a guided mission, one camera screen each [none] |
 | `place` | **Required in every state pack** (Amble Oregon, Amble Texas...), **left out in Amble Anywhere**; the checker enforces both. Fields: `name`, `area`, `address`, `coords: [lat, lon]` (required in state packs: the entrance, dock or trailhead, 5 decimals; used for Near you and distances), optional `website`, optional `links` (up to 3 extra buttons: a list of `label` + `url`, labels 25 characters max, e.g. `- label: Bike rentals` / `url: https://...`). Map links are never stored; the Hive builds them from the address or coords. |
+| `gear` | Gear the mission really can't be done without, that many households don't own: a list of `item` (from the gear list below) plus, in state packs, `rent`: `on-site` (the place rents it), `nearby` (a shop close by does) or `"no"` (bring your own; keep the quotes, since a plain `no` reads as false). Amble Anywhere missions leave `rent` out. See **Gear** below. [none] |
 | `cost` | `free`, `$` (under $20 for two), `$$` ($20-60), `$$$` (over $60) [`$`] |
 | `setting` | `indoor`, `outdoor`, `either` [`either`] |
 | `season` | `any` or a list of `spring`, `summer`, `fall`, `winter` [`any`] |
@@ -82,6 +83,31 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 | `themes` | Up to 6 themes from the fixed list (see **Themes** below), e.g. `[views, hiking]`. They're the "What kind of mission" filter chips on the website. **Optional for now**: missions without the line pass the check and publish as usual, while themes get filled in. [none] |
 | `tags` | Free-form keywords, used by search (`[cemetery, epitaphs]`). Anything goes, but words that are a theme belong in `themes`, and words that repeat a field don't need to be tags at all (`free` is `cost`, `rainy-day` is `setting: indoor`, `kids` is `who`). [none] |
 | `credit` | Name of the person who suggested the mission, shown small under the title as "Suggested by …". Only for missions from contributors who asked to be credited; leave it blank or leave the line out otherwise (nothing shows; older missions without the line need no changes). A name only: no links or email addresses, 40 characters max. [none] |
+
+## Gear
+
+```yaml
+gear:
+  - item: headlamps
+    rent: on-site
+```
+
+- Only list gear you truly can't do the mission without and that a typical household might not own. Everyday things (a blanket, a flashlight, a water bottle, a cooler) go in the description.
+- Gear the place provides as part of the ticket (a tour boat, a ride) isn't listed at all.
+- Seasonal gear (snowshoes only in winter) isn't modeled yet; keep it in the description.
+- `check_missions.py` fails a gear `item` that isn't on the list, or a `rent` other than `on-site`, `nearby` or `"no"`.
+
+| Group | Items |
+|---|---|
+| Water | `kayak`, `canoe`, `paddleboard`, `life-jackets`, `wetsuit`, `river-tube`, `fishing-gear` |
+| Camping | `tent`, `sleeping-bags`, `camp-stove`, `hammock` |
+| Snow | `snowshoes`, `skis`, `snowboard`, `sled`, `traction-spikes` |
+| Wheels | `bikes`, `roller-skates` |
+| Cooking | `grill` |
+| Sky and nature | `telescope`, `binoculars` |
+| Climbing and caves | `climbing-gear`, `headlamps` |
+| Games and sport | `golf-clubs`, `disc-golf-discs`, `tennis-rackets`, `kite` |
+| Getting there | `high-clearance-vehicle` (rough forest roads) |
 
 ## Themes (added 2026-10-29)
 

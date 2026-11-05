@@ -51,18 +51,50 @@ function playOpen(env, done) {
   timers.push(setTimeout(() => env.classList.add("card-out"), 860));
   timers.push(setTimeout(finish, 1500));
 }
+// Missions are dealt like a shuffled deck: nothing comes up twice until every match has come up once,
+// then it reshuffles. The deck lives in sessionStorage (this tab only, gone when it closes, never sent
+// anywhere) and starts fresh when the filters, ZIP or who's coming change.
+const DECK_KEY = "amble-deck";
+const shuffled = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+function deckFor(f) {
+  const { hour, ...rest } = f;     // the hour only matters through the pool itself
+  return JSON.stringify([rest, S.zip || "", S.unit]);
+}
+function dealOrder(p, f) {
+  if (!S.here) return shuffled(p.map((m) => m.full_id));
+  // with a ZIP set, most cards are real places nearby; the rest are do-anywhere ideas
+  const reach = f.within != null ? f.within * M_PER[S.unit] : NEARBY_M;
+  const near = shuffled(p.filter((m) => { const d = distM(m); return d != null && d <= reach; }).map((m) => m.full_id));
+  const nearSet = new Set(near);
+  const rest = shuffled(p.filter((m) => !nearSet.has(m.full_id)).map((m) => m.full_id));
+  const out = [];
+  while (near.length || rest.length) out.push((near.length && (!rest.length || Math.random() < NEARBY_SHARE) ? near : rest).shift());
+  return out;
+}
+let memDeck = null;      // used when the browser won't keep sessionStorage
+function loadDeck() { try { return JSON.parse(sessionStorage.getItem(DECK_KEY)) || memDeck; } catch (e) { return memDeck; } }
+function saveDeck(d) { memDeck = d; try { sessionStorage.setItem(DECK_KEY, JSON.stringify(d)); } catch (e) { /* in-memory it is */ } }
 function pickMission() {
   const p = pool();
   if (!p.length) return null;
-  const choices = p.length > 1 && S.current ? p.filter((m) => m.full_id !== S.current.full_id) : p;
-  const pick = (from) => from[Math.floor(Math.random() * from.length)];
-  if (!S.here) return pick(choices);
-  // with a ZIP set, most picks are real places nearby; the rest are do-anywhere ideas
-  const f = readFilters();
-  const reach = f.within != null ? f.within * M_PER[S.unit] : NEARBY_M;
-  const near = choices.filter((m) => { const d = distM(m); return d != null && d <= reach; });
-  const rest = choices.filter((m) => !near.includes(m));
-  return pick(near.length && (!rest.length || Math.random() < NEARBY_SHARE) ? near : rest);
+  const f = readFilters(), key = deckFor(f);
+  const byId = new Map(p.map((m) => [m.full_id, m]));
+  let d = loadDeck();
+  if (!d || d.key !== key || !Array.isArray(d.order)) d = { key, order: dealOrder(p, f), pos: 0 };
+  else {      // missions that joined the pool since the deal (a "go now" hour ticking over) go in at the bottom
+    const dealt = new Set(d.order);
+    d.order.push(...shuffled(p.map((m) => m.full_id).filter((id) => !dealt.has(id))));
+  }
+  let m = null;
+  for (let tries = 0; tries < 2 && !m; tries++) {
+    while (d.pos < d.order.length && !m) {
+      const next = byId.get(d.order[d.pos++]);
+      if (next && (p.length === 1 || !S.current || next.full_id !== S.current.full_id)) m = next;
+    }
+    if (!m) d = { key, order: dealOrder(p, f), pos: 0 };      // went through them all: reshuffle
+  }
+  saveDeck(d);
+  return m || p[0];
 }
 function renderTeaser() {
   const n = pool().length;
@@ -119,6 +151,7 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   // counted once, when the mission itself is on screen (not the sealed envelope, not a redraw)
   if (!sealed && !animate && S.countedOpen !== m.full_id) {
     S.countedOpen = m.full_id;
+    writePref("used", "1");    // a returning visitor: mission pages skip the "New to AmbleBee?" box
     if (window.ambleTrack) window.ambleTrack("mission_open", { mission_id: m.full_id, pack: m.pack, how: from });
   }
   document.body.classList.add("revealing");

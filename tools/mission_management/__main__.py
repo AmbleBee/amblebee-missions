@@ -471,8 +471,8 @@ def main():
         if ts_name:
             print(f"                  http://{ts_name}:{port}/?key={KEY}")
     if Path("/.dockerenv").exists():
-        print("  Running in a container, so the links above may not reach it from outside.")
-        print(f"  Through the editor's port proxy: <your editor's address>/proxy/{port}/?key={KEY}")
+        print(f"  Running in Docker: other devices only reach it if the container publishes port {port}")
+        print(f"  (ports: - \"{port}:{port}\"). Then use the host's address, or an editor proxy at /proxy/{port}/.")
     print("Saving writes straight into missions/. Commit and push when you're happy. Ctrl+C to stop.")
     try:
         server.serve_forever()

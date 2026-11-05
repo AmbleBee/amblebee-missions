@@ -737,6 +737,8 @@ a.card:hover { color: inherit; }
 /* ---- skip link target, footer links, the Safety, Privacy and Contact pages ---- */
 main:focus { outline: none; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 4px 18px; font-weight: 700; }
+.foot-social { display: flex; flex-wrap: wrap; gap: 4px 14px; align-items: baseline; }
+.foot-social a { font-weight: 700; }
 .info { max-width: 720px; }
 .info h2 { font-size: 1.45rem; margin: 1.6rem 0 .4rem; }
 .info p, .info ul { margin: 0 0 .8rem; }

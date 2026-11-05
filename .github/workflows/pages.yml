@@ -29,6 +29,8 @@ jobs:
         run: pip install pyyaml==6.0.1
       - name: Check missions
         run: python tools/check_missions.py
+      - name: Test the mission checker
+        run: python tools/test_checker.py
       - name: Check roadmap
         run: python tools/build_roadmap.py
       - name: Check packs
