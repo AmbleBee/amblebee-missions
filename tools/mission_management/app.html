@@ -210,6 +210,11 @@ legend + * { clear: both; }
 .f { display: grid; gap: 4px; margin-top: 10px; }
 .f > label, .lbl { font-weight: 800; font-size: 14px; color: var(--walnut); display: flex; justify-content: space-between; gap: 8px; align-items: baseline; }
 .f .help { font-size: 13px; color: var(--ink-3); font-weight: 400; }
+/* a field that differs from the file on disk, while editing */
+.changed { background: var(--sage-tint); box-shadow: inset 4px 0 0 var(--sage); border-radius: 12px; padding: 6px 10px 8px 14px; margin-left: -14px; margin-right: -10px; }
+.changed > label::after, .changed > .lbl::after { content: "changed"; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
+  color: #FFFDF8; background: var(--sage); border-radius: 999px; padding: 1px 8px; margin-left: auto; }
+label.toggle.changed { display: flex; }
 .count { font-size: 12px; color: var(--ink-3); font-weight: 600; font-variant-numeric: tabular-nums; }
 .count.over { color: var(--bad); }
 .count.aim { color: var(--honey-deep); }
@@ -1036,7 +1041,49 @@ function renderForm(info = {}) {
     ${field('fTags', 'Search keywords', text('fTags', (m.tags || []).join(', '), 'placeholder="hot springs, soaking, old-growth"'), 'separate with commas')}
   </fieldset>
   ${extra.length ? `<p class="help" style="margin-top:14px">Also in this file and kept exactly as is: ${extra.map(k => `<code>${esc(k)}</code>`).join(', ')}.</p>` : ''}`;
+  ed.snapshot = fieldValues();
   refreshLive();
+}
+
+// ---------- which fields changed (compared with the form as it was opened) ----------
+// Every input belongs to one "field": a box by id, a chip/radio group by name, or a list (photo prompts, links, gear).
+function fieldValues() {
+  const out = {}, form = $('#edBody');
+  form.querySelectorAll('input[id], select[id], textarea[id]').forEach(el => {
+    if (el.closest('[data-link], [data-gear], [data-list]')) return;
+    out['#' + el.id] = el.type === 'checkbox' ? String(el.checked) : el.value.trim();
+  });
+  form.querySelectorAll('input[name][type=checkbox], input[name][type=radio]').forEach(el => {
+    const k = 'name:' + el.name;
+    out[k] = [...form.querySelectorAll(`input[name="${el.name}"]:checked`)].map(i => i.value).sort().join('|');
+  });
+  form.querySelectorAll('[data-list]').forEach(box => {
+    out['list:' + box.dataset.list] = [...box.querySelectorAll('[data-item]')].map(i => i.value.trim()).filter(Boolean).join('\n');
+  });
+  const rows = sel => [...form.querySelectorAll(sel)].map(r => [...r.querySelectorAll('[data-k]')].map(i => i.value.trim()).join('\t'))
+    .filter(x => x.replace(/\t/g, '')).join('\n');
+  if ($('#links')) out['links'] = rows('[data-link]');
+  if ($('#gear')) out['gear'] = rows('[data-gear]');
+  return out;
+}
+function fieldBox(key) {
+  const form = $('#edBody');
+  let el = key.startsWith('#') ? form.querySelector(key)
+    : key.startsWith('name:') ? form.querySelector(`input[name="${key.slice(5)}"]`)
+    : key.startsWith('list:') ? form.querySelector(`[data-list="${key.slice(5)}"]`)
+    : form.querySelector('#' + key);
+  if (!el) return null;
+  if (key === '#pLat' || key === '#pLng') return el.closest('.f');          // the pin is one field
+  return el.closest('label.toggle') || el.closest('.f') || el.closest('fieldset');
+}
+function markChanges() {
+  if (!ed.snapshot) return;
+  const now = fieldValues(), changed = new Set();
+  for (const k of new Set([...Object.keys(now), ...Object.keys(ed.snapshot)])) {
+    if ((now[k] ?? '') !== (ed.snapshot[k] ?? '')) { const b = fieldBox(k); if (b) changed.add(b); }
+  }
+  $('#edBody').querySelectorAll('.changed').forEach(b => { if (!changed.has(b)) b.classList.remove('changed'); });
+  changed.forEach(b => b.classList.add('changed'));
 }
 
 // counters, theme cap, kids section, map link
@@ -1064,6 +1111,7 @@ function refreshLive() {
     if (okPin) map.href = `https://www.openstreetmap.org/?mlat=${lat}&mlon=${lng}#map=17/${lat}/${lng}`;
   }
   const al = $('#addLink'); if (al) al.hidden = document.querySelectorAll('[data-link]').length >= L.links;
+  markChanges();
 }
 
 // read the form back into a mission object (unmanaged keys come along untouched)
@@ -1406,8 +1454,8 @@ $('#edForm').addEventListener('click', e => {
     box.lastElementChild.querySelector('input').focus();
   }
   else if (t.id === 'addLink') { $('#links').insertAdjacentHTML('beforeend', linkRow()); refreshLive(); }
-  else if (t.id === 'addGear') { $('#gear').insertAdjacentHTML('beforeend', gearRow()); }
-  else if (t.id === 'fToday') { $('#fChecked').value = today(); ed.dirty = true; }
+  else if (t.id === 'addGear') { $('#gear').insertAdjacentHTML('beforeend', gearRow()); markChanges(); }
+  else if (t.id === 'fToday') { $('#fChecked').value = today(); ed.dirty = true; markChanges(); }
   else if (t.id === 'reloadMission') { ed.dirty = false; openEditor(ed.pack, ed.id); }
 });
 $('#mtable').addEventListener('keydown', e => {

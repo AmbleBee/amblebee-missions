@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 10
 name: 1984 Arcade
 mode: both
@@ -6,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: 1984 Arcade
   area: Downtown Springfield
-  address: 400 S Jefferson Ave, Springfield, MO 65806  # verify: corner of Jefferson and Walnut
-  coords: [37.20900, -93.28950]  # APPROX: set at the entrance before publishing
+  address: 400 S Jefferson Ave, Springfield, MO 65806
+  coords: [37.20670, -93.28986]
   website: https://www.1984arcade.com
 short: 1984 Arcade in Springfield, MO. One cover, all-night classic 80s games. Set a high score.
 description: >
@@ -16,12 +16,21 @@ description: >
   a kid, go head to head on Pac-Man or Galaga, and try to get your initials
   on the high-score board. The photo to get: you mid-game in the neon.
 about: >
-  One cover charge gets you unlimited play on the video games; pinball still
-  takes quarters, so bring some. It's open on certain evenings each week, so
-  check the hours.
+  1984 Arcade has been Springfield’s retro arcade since 2005. It started
+  with a TRON and an Asteroids cabinet that co-owner Devin Durham bought for
+  his brother. Now nearly 100 classic machines fill a century-old brick
+  building downtown that began as a hotel and later housed nuns.
 
-  Springfield has its own claim to fame: it's called the birthplace of Route
-  66, since the highway's name was chosen here in 1926.
+  One cover charge gets you free play on every video game all night, from
+  Pac-Man, Galaga and Donkey Kong to TRON and Pong. The pinball machines and
+  the claw machine still take quarters. Head down to the basement for a
+  recreation of the haunted library from Ghostbusters, and check the
+  high-score wall to see whose initials you’re up against. It’s alcohol-free
+  and family-friendly, and anyone 15 or under needs an adult along.
+
+  There’s a sister arcade, 1984 Branson, at the Shoppes at Branson Meadows.
+  And while you’re downtown: Springfield calls itself the birthplace of
+  Route 66, because the highway got its number here in 1926.
 for_kids:
   short: Arcade night! Find each thing.
   steps:

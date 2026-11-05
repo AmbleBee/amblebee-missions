@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 6
 name: San Diego Zoo
 mode: both
@@ -7,7 +7,7 @@ place:
   name: San Diego Zoo
   area: Balboa Park, San Diego
   address: 2920 Zoo Dr, San Diego, CA 92101
-  coords: [32.73540, -117.14900]  # APPROX: set at the main entrance before publishing
+  coords: [32.73612, -117.14920]
   website: https://zoo.sandiegozoo.org
 short: San Diego Zoo in Balboa Park. Ride the Skyfari and find the animal most like each other.
 description: >

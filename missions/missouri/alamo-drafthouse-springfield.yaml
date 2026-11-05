@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 12
 name: Alamo Drafthouse Movie Night
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends]
 place:
   name: Alamo Drafthouse Cinema Springfield
   area: Springfield
-  coords: [37.14000, -93.29300]  # APPROX (rough guess): find the theater and set its coords before publishing
+  address: 4005 South Ave, Springfield, MO 65807
+  coords: [37.14191, -93.29411]
   website: https://drafthouse.com/springfield
 short: Alamo Drafthouse in Springfield, MO. Pick a special screening and order dinner to your seat.
 description: >
@@ -16,13 +17,20 @@ description: >
   strict no-talking, no-phones rule, and debate the movie on the drive home.
   Get a photo with the poster before you go in.
 about: >
-  Alamo Drafthouse started in Austin, Texas, in 1997 and became famous for
-  dinner served to your seat and its strict rule: no talking or texting
-  during the movie, or you get one warning and then you're out.
+  Alamo Drafthouse Springfield moved into the old Campbell 16 on South
+  Avenue in 2017 and turned the 16-screen theater, first opened in 1996,
+  into a dine-in cinema with food and drinks brought to your seat. The chain
+  started in Austin, Texas, in 1997, and Sony Pictures bought it in 2024.
 
-  Special screenings, like quote-alongs and themed parties, are where the
-  Alamo shines. You order by writing on a slip of paper so the servers don't
-  interrupt the movie.
+  Alamo is famous for its no-talking, no-texting rule. In 2011 it turned an
+  angry voicemail from a moviegoer kicked out for texting into a “Don’t talk
+  or text” ad that went viral. Since early 2026 you order through the Alamo
+  app on a dimmed screen instead of the old paper cards, but talking and
+  scrolling are still off-limits.
+
+  The nights worth planning around are the special screenings: quote-alongs,
+  sing-alongs and themed Movie Parties with props, plus the custom pre-show
+  clips Alamo plays before the movie instead of ads.
 duration: short
 effort: easy
 cost: $$

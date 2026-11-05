@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 7
 name: Lincoln Park Zoo
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Lincoln Park Zoo
   area: Lincoln Park, Chicago
   address: 2001 N Clark St, Chicago, IL 60614
-  coords: [41.92110, -87.63400]  # APPROX: set at the West Gate on Clark St before publishing
+  coords: [41.92197, -87.63233]
   website: https://www.lpzoo.org
 short: Lincoln Park Zoo in Chicago. A free zoo in the city, open every day of the year.
 description: >

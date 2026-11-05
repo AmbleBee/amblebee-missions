@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 2
 name: KU Natural History Museum
 mode: adventure
@@ -6,8 +6,8 @@ who: [family, kids]
 place:
   name: KU Natural History Museum (Dyche Hall)
   area: KU campus, Lawrence
-  address: 1345 Jayhawk Blvd, Lawrence, KS 66045
-  coords: [38.95860, -95.24360]  # APPROX: set at the entrance before publishing
+  address: Dyche Hall, 1345 Jayhawk Blvd, Lawrence, KS 66045
+  coords: [38.95846, -95.24350]
   website: https://biodiversity.ku.edu/visit
 short: KU Natural History Museum in Lawrence. Climb four floors of fossils and wildlife in a castle.
 description: >

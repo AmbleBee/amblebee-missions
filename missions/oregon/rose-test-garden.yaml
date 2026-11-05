@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 15
 name: International Rose Test Garden
 mode: date
@@ -6,7 +6,8 @@ place:
   name: International Rose Test Garden
   area: Washington Park, Portland
   address: 400 SW Kingston Ave, Portland, OR 97205
-  coords: [45.51900, -122.70600]  # APPROX: set at the garden entrance before publishing
+  coords: [45.51911, -122.70596]
+  website: https://www.portland.gov/parks/washington-park-international-rose-test-garden
 short: Wander the rose garden. Each pick the rose you'd name after the other.
 description: >
   Stroll the terraces of thousands of roses with the city and, on a clear day,

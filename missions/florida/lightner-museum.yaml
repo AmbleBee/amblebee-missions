@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 41
 name: Lightner Museum
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family]
 place:
   name: Lightner Museum
   area: Downtown St. Augustine
-  coords: [29.89200, -81.31500]  # APPROX: set at the entrance before publishing
+  address: 75 King St, St. Augustine, FL 32084
+  coords: [29.89096, -81.31360]
   website: https://lightnermuseum.org
 short: Lightner Museum in St. Augustine. A Gilded Age hotel whose giant indoor pool is now a café.
 description: >
@@ -31,6 +32,7 @@ setting: indoor
 season: any
 time_of_day: daytime
 travel: day-trip
-check_ahead: [hours]
+check_ahead: [hours, tickets]
+discounts: [military, senior, student]
 themes: [history, museums]
 tags: [lightner museum, alcazar hotel, henry flagler, gilded age, flagler college, st-augustine]

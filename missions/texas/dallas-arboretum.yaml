@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 30
 name: Dallas Arboretum
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Dallas Arboretum and Botanical Garden
   area: White Rock Lake, Dallas
-  coords: [32.82300, -96.71600]  # APPROX: set at the main entrance before publishing
+  address: 8525 Garland Rd, Dallas, TX 75218
+  coords: [32.82387, -96.71488]
   website: https://www.dallasarboretum.org
 short: Wander the Dallas Arboretum on White Rock Lake. Find the giant pumpkin village in fall.
 description: >

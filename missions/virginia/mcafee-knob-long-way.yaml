@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 3
 name: McAfee Knob the Long Way
 mode: adventure
@@ -7,7 +7,7 @@ place:
   name: Catawba Greenway trailhead (Catawba Sustainability Center)
   area: Catawba Valley, near Roanoke
   address: 5075 Catawba Creek Rd, Catawba, VA 24070
-  coords: [37.38120, -80.10570]  # APPROX: set at the trailhead before publishing
+  coords: [37.38547, -80.10271]
   website: https://greenways.org/trails/catawba-greenway/
 short: Hike 10 miles up to McAfee Knob's famous rock ledge. Strike your best pose out on the edge.
 description: >
@@ -20,9 +20,25 @@ description: >
   outcrops near the top. Get a photo of yourself standing out on the knob with the
   valley behind you, keeping well back from the edge.
 about: >
-  The Catawba Sustainability Center's lot is day-use only with no overnight
-  parking. On busy weekends you can also use the seasonal McAfee Shuttle (March
-  to November, Friday to Sunday) to the main Route 311 trailhead.
+  McAfee Knob sits at 3,197 feet on Catawba Mountain, a flat ledge of rock
+  that juts out over the Catawba Valley about 1,600 feet below. It's often
+  called the most photographed spot on the whole Appalachian Trail, and it's
+  named for James McAfee, a Scots-Irish settler who came to the valley in
+  the late 1730s. Along with Dragon's Tooth and Tinker Cliffs, which you can
+  see to the north from the ledge, it makes up Virginia's "Triple Crown" of
+  hikes.
+
+  The long way starts on the Catawba Greenway, which volunteers built by
+  hand and opened in 2021. It crosses the Catawba Sustainability Center, a
+  377-acre farm that supplied the old Catawba Sanatorium in the early 1900s
+  and has belonged to Virginia Tech since 1988, then follows the old Route
+  311 roadbed up to the Appalachian Trail. You skip the crowded main lot and
+  never cross the busy highway.
+
+  The center's lot has about 25 spaces and is day-use only. Camping and
+  fires aren't allowed on the knob itself, and dogs need a leash. On busy
+  weekends from spring through fall, a shuttle also runs from the I-81 exit
+  140 park-and-ride to the main trailhead.
 duration: all-day
 effort: hard
 cost: free
