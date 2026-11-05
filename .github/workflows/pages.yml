@@ -31,6 +31,8 @@ jobs:
         run: python tools/check_missions.py
       - name: Check roadmap
         run: python tools/build_roadmap.py
+      - name: Check seasonal themes
+        run: python tools/build_themes.py   # does nothing until there's a themes/ folder
       - name: Check packs
         run: python tools/check_packs.py --strict
       - name: Check map pins
@@ -49,6 +51,7 @@ jobs:
           python tools/build_roadmap.py --out _site/roadmap.json
           python tools/build_icons.py --out _site/icons.json
           python tools/build_pages.py --out _site
+          python tools/build_themes.py --out _site   # optional seasonal looks from themes/; skipped if it's not there
           cp data/zips.json data/cities.json _site/
       - name: Install the test browsers
         run: |
