@@ -26,12 +26,14 @@ import datetime
 import difflib
 import hashlib
 import http.server
+import ipaddress
 import json
 import os
 import re
 import secrets
 import shutil
 import socket
+import subprocess
 import sys
 import tempfile
 import urllib.parse
@@ -400,13 +402,32 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self._send(code, out)
 
 
-def lan_ip():
+def route_ip(target):
+    """This computer's address on the network that would carry traffic to `target` (nothing is sent)."""
     try:
         with socket.socket(socket.AF_INET, socket.SOCK_DGRAM) as s:
-            s.connect(("10.255.255.255", 1))     # picks the outgoing interface; nothing is sent
+            s.connect((target, 1))
             return s.getsockname()[0]
     except OSError:
         return None
+
+
+def lan_ip():
+    return route_ip("10.255.255.255")
+
+
+def tailscale_links():
+    """(Tailscale IP, MagicDNS name) when Tailscale is running here, else (None, None)."""
+    ip = route_ip("100.100.100.100")        # Tailscale's own resolver; only routes via Tailscale when it's up
+    if not ip or not ipaddress.ip_address(ip) in ipaddress.ip_network("100.64.0.0/10"):
+        return None, None
+    name = None
+    try:
+        out = subprocess.run(["tailscale", "status", "--json"], capture_output=True, text=True, timeout=3)
+        name = (json.loads(out.stdout).get("Self") or {}).get("DNSName", "").rstrip(".") or None
+    except (OSError, ValueError, subprocess.SubprocessError):
+        pass
+    return ip, name
 
 
 def main():
@@ -425,8 +446,13 @@ def main():
     print("AmbleBee Mission Management")
     print(f"  This computer:  http://localhost:{port}/?key={KEY}")
     ip = lan_ip()
-    if ip and not ip.startswith("127."):
-        print(f"  Other devices:  http://{ip}:{port}/?key={KEY}")
+    ts_ip, ts_name = tailscale_links()
+    if ip and not ip.startswith("127.") and ip != ts_ip:
+        print(f"  Same Wi-Fi:     http://{ip}:{port}/?key={KEY}")
+    if ts_ip:
+        print(f"  Tailscale:      http://{ts_ip}:{port}/?key={KEY}")
+        if ts_name:
+            print(f"                  http://{ts_name}:{port}/?key={KEY}")
     print("Saving writes straight into missions/. Commit and push when you're happy. Ctrl+C to stop.")
     try:
         server.serve_forever()
