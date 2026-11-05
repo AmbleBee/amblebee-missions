@@ -351,28 +351,39 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(raw)
 
+    def _route(self):
+        """The path without any prefix a proxy added (code-server serves this at /proxy/<port>/ or
+        /absproxy/<port>/), so the manager works both directly and through an editor's port proxy."""
+        path = urllib.parse.urlparse(self.path).path
+        for marker in ("/api/", "/fonts/"):
+            at = path.find(marker)
+            if at > 0:
+                return path[at:]
+        return "/" if path.endswith("/") else path
+
     def _authed(self):
         return secrets.compare_digest(self.headers.get("X-Amble-Key", ""), KEY)
 
     def do_GET(self):
         url = urllib.parse.urlparse(self.path)
         q = urllib.parse.parse_qs(url.query)
-        if url.path == "/":
+        path = self._route()
+        if path == "/":
             if not secrets.compare_digest((q.get("key") or [""])[0], KEY):
                 return self._send(403, b"<p style='font-family:sans-serif'>Open the link printed in the terminal "
                                        b"(it has a key that changes every run).</p>", "text/html; charset=utf-8")
             return self._send(200, (HERE / "app.html").read_bytes(), "text/html; charset=utf-8")
-        if url.path.startswith("/fonts/"):
-            f = ROOT / "site" / "fonts" / Path(url.path).name
+        if path.startswith("/fonts/"):
+            f = ROOT / "site" / "fonts" / Path(path).name
             if f.suffix == ".woff2" and f.exists():
                 return self._send(200, f.read_bytes(), "font/woff2")
             return self._send(404, {"error": "no such font"})
         if not self._authed():
             return self._send(403, {"error": "Missing or wrong key. Open the link printed in the terminal."})
         try:
-            if url.path == "/api/data":
+            if path == "/api/data":
                 return self._send(200, dashboard_data())
-            if url.path == "/api/mission":
+            if path == "/api/mission":
                 pack, mid = (q.get("pack") or [""])[0], (q.get("id") or [""])[0]
                 if not lib.ID_RE.match(mid) or not lib.ID_RE.match(pack) or not mission_path(pack, mid).exists():
                     return self._send(404, {"error": "No such mission."})
@@ -384,14 +395,15 @@ class Handler(http.server.BaseHTTPRequestHandler):
     def do_POST(self):
         if not self._authed():
             return self._send(403, {"error": "Missing or wrong key. Open the link printed in the terminal."})
-        if self.path not in ("/api/mission", "/api/preview", "/api/parse") or \
+        path = self._route()
+        if path not in ("/api/mission", "/api/preview", "/api/parse") or \
                 "application/json" not in self.headers.get("Content-Type", ""):
             return self._send(404, {"error": "Not found"})
         try:
             body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
-            if self.path == "/api/preview":          # what a save would change, without writing anything
+            if path == "/api/preview":          # what a save would change, without writing anything
                 code, out, _, _ = prepare(body)
-            elif self.path == "/api/parse":          # the YAML editor's text, read back for the form
+            elif path == "/api/parse":          # the YAML editor's text, read back for the form
                 data, err = parse_yaml(str(body.get("yaml") or ""))
                 code, out = 200, ({"data": for_form(data), "duplicates": [d[0] for d in lib.duplicate_fields(str(body.get("yaml")))]}
                                   if data is not None else err)   # a typo isn't an HTTP error; the editor shows it
@@ -453,6 +465,9 @@ def main():
         print(f"  Tailscale:      http://{ts_ip}:{port}/?key={KEY}")
         if ts_name:
             print(f"                  http://{ts_name}:{port}/?key={KEY}")
+    if Path("/.dockerenv").exists():
+        print("  Running in a container, so the links above may not reach it from outside.")
+        print(f"  Through the editor's port proxy: <your editor's address>/proxy/{port}/?key={KEY}")
     print("Saving writes straight into missions/. Commit and push when you're happy. Ctrl+C to stop.")
     try:
         server.serve_forever()

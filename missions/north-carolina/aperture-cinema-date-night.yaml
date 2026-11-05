@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 3
 name: Art House Movie Night at a/perture
 mode: date
@@ -6,7 +6,7 @@ place:
   name: a/perture cinema
   area: Downtown Winston-Salem
   address: 311 W 4th St, Winston-Salem, NC 27101
-  coords: [36.09850, -80.24650]  # APPROX: set at the entrance before publishing
+  coords: [36.09817, -80.24755]
   website: https://aperturecinema.com
 short: Pick a film you've never heard of at a/perture. Grab popcorn, then debate it.
 description: >
@@ -35,4 +35,3 @@ travel: local
 check_ahead: [hours, tickets]
 themes: [drinks, movies, relaxing]
 tags: [movies, cinema, indie-film, wine, cozy, rainy-day, winston-salem]
-credit:

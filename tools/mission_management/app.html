@@ -814,7 +814,7 @@ function render() {
 function setPack(p) { state.pack = p; state.shown = PAGE; $('#pack').value = p; render(); scrollTo({ top: 0, behavior: 'smooth' }); }
 
 async function loadData() {
-  const r = await api('/api/data');
+  const r = await api('api/data');
   if (!r.ok) { $('#view').innerHTML = `<div class="card"><h2>Couldn't load missions</h2><p>${esc(r.body.error || "The manager isn't answering. Is it still running?")}</p></div>`; return false; }
   D = r.body; THEME_KEYS = Object.keys(D.themes);
   $('#generated').textContent = `${D.missions.length} mission files, read just now.`;
@@ -1161,7 +1161,7 @@ async function openEditor(pack, id, keepMode = false) {
   $('#edTitle').textContent = 'Loading…'; $('#edPath').textContent = `missions/${pack}/${id}.yaml`;
   $('#edBody').innerHTML = ''; setMsg(''); setMode('form');
   showSheet();
-  const r = await api(`/api/mission?pack=${encodeURIComponent(pack)}&id=${encodeURIComponent(id)}`);
+  const r = await api(`api/mission?pack=${encodeURIComponent(pack)}&id=${encodeURIComponent(id)}`);
   if (!r.ok) { $('#edTitle').textContent = 'Couldn’t open it'; $('#edBody').innerHTML = `<div class="alert bad">${esc(r.body.error || 'Error')}</div>`; return; }
   ed.version = r.body.version; ed.orig = r.body.data; ed.m = JSON.parse(JSON.stringify(r.body.data)); ed.text = r.body.text;
   $('#edTitle').textContent = ed.m.name || id;
@@ -1203,7 +1203,7 @@ async function saveMission(e, why = '') {
   e && e.preventDefault();
   const body = saveBody();
   $('#edSave').disabled = true; setMsg('Working out what changes…');
-  const r = await api('/api/preview', { method: 'POST', body: JSON.stringify(body) });
+  const r = await api('api/preview', { method: 'POST', body: JSON.stringify(body) });
   $('#edSave').disabled = false;
   const b = r.body;
   if (!r.ok) {
@@ -1246,7 +1246,7 @@ async function confirmSave() {
   const published = $('#diffSave').textContent === 'Publish';
   $('#diffSave').disabled = true;
   const body = { ...pending, dropComments: !!($('#dropOk') || {}).checked };
-  const r = await api('/api/mission', { method: 'POST', body: JSON.stringify(body) });
+  const r = await api('api/mission', { method: 'POST', body: JSON.stringify(body) });
   $('#diffSave').disabled = false;
   const b = r.body;
   $('#diffDlg').close(); pending = null;
@@ -1297,7 +1297,7 @@ function yamlStatus(problem, line) {
 }
 async function checkYaml() {
   const text = $('#yamlText').value;
-  const r = await api('/api/parse', { method: 'POST', body: JSON.stringify({ yaml: text }) });
+  const r = await api('api/parse', { method: 'POST', body: JSON.stringify({ yaml: text }) });
   if (text !== $('#yamlText').value) return null;   // typed more since; a newer check is on its way
   if (!r.ok || r.body.error) { yamlStatus((r.body.problems || [r.body.error || "Couldn't check it"])[0], r.body.line); return null; }
   const d = r.body.duplicates || [];
@@ -1314,7 +1314,7 @@ function gotoLine(n) {
 async function switchMode(to) {
   if (to === ed.mode) return;
   if (to === 'yaml') {                       // the form, written out as the file it would save
-    const r = await api('/api/preview', { method: 'POST', body: JSON.stringify({ ...saveBody(), check: false }) });
+    const r = await api('api/preview', { method: 'POST', body: JSON.stringify({ ...saveBody(), check: false }) });
     if (!r.ok || typeof r.body.text !== 'string') { setMode('form'); setMsg(`<span class="bad">${esc(r.body.error || "Couldn't switch to YAML.")}</span>`); return; }
     $('#yamlText').value = r.body.text; setMode('yaml'); yamlStatus(true); $('#yamlText').scrollTop = 0; syncGutter(); $('#yamlText').focus();
     return;
