@@ -1073,6 +1073,11 @@ function collect() {
   const items = name => [...document.querySelectorAll(`[data-item=${name}]`)].map(i => i.value.trim()).filter(Boolean);
   const out = { ...ed.orig };
   MANAGED.forEach(k => delete out[k]);
+  // ticked choices in the order the file already had them (new ones at the end), so an untouched list stays put
+  const keepOrder = (k, picked) => {
+    const before = Array.isArray(ed.orig[k]) ? ed.orig[k] : [];
+    return [...before.filter(x => picked.includes(x)), ...picked.filter(x => !before.includes(x))];
+  };
   const set = (k, val) => {
     const empty = val === '' || val == null || (Array.isArray(val) && !val.length) || (typeof val === 'object' && !Array.isArray(val) && !Object.keys(val).length);
     // leave a default value out if the file didn't spell it out already (keeps diffs small)
@@ -1088,7 +1093,7 @@ function collect() {
   set('number', num === '' ? '' : (Number.isInteger(+num) ? +num : num));
   set('name', v('fName').trim());
   set('mode', (document.querySelector('input[name=fMode]:checked') || {}).value);
-  set('who', ORDERS.who.filter(w => checked('fWho').includes(w)));
+  set('who', keepOrder('who', ORDERS.who.filter(w => checked('fWho').includes(w))));
   if (!isAnywhere()) {
     const place = { ...(ed.orig.place || {}) };
     ['name', 'area', 'address', 'coords', 'website', 'links'].forEach(k => delete place[k]);
@@ -1111,20 +1116,26 @@ function collect() {
     if (ks) fk.short = ks; if (kst.length) fk.steps = kst;
     set('for_kids', fk);
   }
+  const oldGear = Array.isArray(ed.orig.gear) ? ed.orig.gear : [];
   set('gear', [...document.querySelectorAll('[data-gear]')].map(r => {
     const g = { item: r.querySelector('[data-k=item]').value };
-    const rent = r.querySelector('[data-k=rent]'); if (rent && rent.value) g.rent = rent.value;
+    const rent = r.querySelector('[data-k=rent]');
+    if (rent) { if (rent.value) g.rent = rent.value; }
+    else {   // Amble Anywhere has no rent menu; keep whatever the file already says
+      const was = oldGear.find(o => o && o.item === g.item);
+      if (was && 'rent' in was) g.rent = was.rent;
+    }
     return g;
   }).filter(g => g.item));
   set('duration', v('fDuration')); set('effort', v('fEffort')); set('cost', v('fCost'));
   set('setting', v('fSetting'));
   const season = ORDERS.season.filter(s => checked('fSeason').includes(s));
-  set('season', season.length ? season : 'any');
+  set('season', season.length ? keepOrder('season', season) : 'any');
   set('time_of_day', v('fTime')); set('travel', v('fTravel'));
-  set('check_ahead', checked('fCheck')); set('discounts', checked('fDisc'));
+  set('check_ahead', keepOrder('check_ahead', checked('fCheck'))); set('discounts', keepOrder('discounts', checked('fDisc')));
   set('routine', $('#fRoutine').checked);
   set('caution', v('fCaution').trim()); set('caution_until', v('fCautionUntil'));
-  set('themes', THEME_KEYS.filter(t => checked('fTheme').includes(t)));
+  set('themes', keepOrder('themes', THEME_KEYS.filter(t => checked('fTheme').includes(t))));
   set('tags', v('fTags').split(',').map(t => t.trim()).filter(Boolean));
   set('credit', v('fCredit').trim());
   return out;

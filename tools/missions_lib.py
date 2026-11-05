@@ -139,7 +139,12 @@ def expired_cautions(missions, today=None):
     return out
 
 
-class _DuplicateFinder(yaml.SafeLoader):
+# libyaml's C parser reads YAML several times faster and gives the same results; PyYAML falls back to
+# its pure-Python reader where it wasn't built with libyaml
+_Loader = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
+
+
+class _DuplicateFinder(_Loader):
     """A YAML reader that notes every field written twice in the same block, instead of quietly keeping the last."""
 
     def __init__(self, stream):
@@ -171,7 +176,7 @@ def duplicate_fields(text):
 
 def _read(path):
     with open(path, encoding="utf-8") as f:
-        return yaml.safe_load(f) or {}
+        return yaml.load(f, Loader=_Loader) or {}
 
 
 def load_catalog(root):

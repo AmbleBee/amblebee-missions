@@ -155,7 +155,7 @@ def file_facts(path):
         text = path.read_text(encoding="utf-8")
         draft_notes = set(comments_in(chunks(text)[1].get("draft", [])))   # the draft line's own note is the "Draft" badge
         approx = any(VERIFY_NOTE.search(c) for c in comments_in(text.splitlines()) if c not in draft_notes)
-        _files[path] = (key, (yaml.safe_load(text) or {}, bool(lib.duplicate_fields(text)), approx))
+        _files[path] = (key, (yaml.load(text, Loader=lib._Loader) or {}, bool(lib.duplicate_fields(text)), approx))
     return _files[path][1]
 
 
@@ -221,7 +221,9 @@ def clean(data, old):
             v = [l for l in v if isinstance(l, dict) and (l.get("label") or l.get("url"))]
         if k == "gear" and isinstance(v, list):
             v = [g for g in v if isinstance(g, dict) and g.get("item")]
-        if _empty(v) and not (k in old and _empty(old[k]) and v == old[k]):
+        if _empty(v):
+            if k in old and _empty(old[k]):
+                out[k] = old[k]      # an empty line already in the file (like `credit:`) stays as it was
             continue
         out[k] = v
     return out
@@ -309,7 +311,7 @@ def prepare(body):
             # publishing: the note on the draft line ("delete this line once it's checked") is meant to go
             draft_notes = comments_in(chunks(base)[1].get("draft", []))
             lost = [c for c in lost if c not in draft_notes]
-    if not is_new and text == original:
+    if not is_new and text.rstrip("\n") == original.rstrip("\n"):   # only a missing line break at the end
         return 200, {"unchanged": True, "diff": [], "lost": [], "problems": [], "text": text}, path, None
     diff = list(difflib.unified_diff(original.splitlines(), text.splitlines(),
                                      "before" if original else "new file", "after", lineterm="", n=2))[2:]
@@ -348,8 +350,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self.send_header("Content-Length", str(len(raw)))
         self.send_header("Cache-Control", "no-store")
         self.send_header("Referrer-Policy", "no-referrer")
-        self.end_headers()
-        self.wfile.write(raw)
+        try:
+            self.end_headers()
+            self.wfile.write(raw)
+        except (BrokenPipeError, ConnectionResetError):
+            pass     # the browser stopped waiting (a reload or a closed tab); nothing to do
 
     def _route(self):
         """The path without any prefix a proxy added (code-server serves this at /proxy/<port>/ or
