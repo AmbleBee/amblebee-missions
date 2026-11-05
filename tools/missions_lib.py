@@ -139,6 +139,36 @@ def expired_cautions(missions, today=None):
     return out
 
 
+class _DuplicateFinder(yaml.SafeLoader):
+    """A YAML reader that notes every field written twice in the same block, instead of quietly keeping the last."""
+
+    def __init__(self, stream):
+        super().__init__(stream)
+        self.duplicates = []
+
+    def construct_mapping(self, node, deep=False):
+        seen = {}
+        for key_node, _ in node.value:
+            key = self.construct_object(key_node, deep=deep)
+            line = key_node.start_mark.line + 1
+            if isinstance(key, (str, int, float, bool)) and key in seen:
+                self.duplicates.append((str(key), seen[key], line))
+            seen.setdefault(key, line)
+        return super().construct_mapping(node, deep)
+
+
+def duplicate_fields(text):
+    """[(field, first_line, repeated_line)] for every field written twice in one block (at any depth)."""
+    loader = _DuplicateFinder(text)
+    try:
+        loader.get_single_data()
+    except yaml.YAMLError:
+        return []      # not valid YAML; the normal reader reports that
+    finally:
+        loader.dispose()
+    return loader.duplicates
+
+
 def _read(path):
     with open(path, encoding="utf-8") as f:
         return yaml.safe_load(f) or {}
@@ -220,6 +250,13 @@ def check_catalog(root):
         if folder.name != "general" and not (folder / "pack.yaml").exists():
             problems.append(f"{folder.name}/: no pack.yaml, so this pack would show as \"{folder.name.title()}\" "
                             f"instead of \"Amble {folder.name.replace('-', ' ').title()}\". Copy pack.yaml from another pack folder and edit it.")
+
+    # a field written twice: YAML silently keeps only the last copy, so the first one is easy to miss
+    for m in missions:
+        where = Path(m["file"]).relative_to(root)
+        for field, first, again in duplicate_fields(Path(m["file"]).read_text(encoding="utf-8")):
+            problems.append(f"{where}: '{field}' is written twice (lines {first} and {again}); YAML only keeps the "
+                            "last one, so delete the copy you don't want")
 
     seen_ids, seen_numbers = {}, {}
     for m in missions:

@@ -41,7 +41,7 @@ The same tests run on every push and pull request, in Chromium, Firefox and WebK
 python tools/mission_management
 ```
 
-Opens AmbleBee Mission Management at the link it prints: how balanced each pack is (indoor vs outdoor, cost, date vs adventure, themes), a gap finder for the packs furthest off, every mission with when it was last edited, and an editor for every mission field. Saving writes the YAML in `missions/` directly, runs the same checks as `tools/check_missions.py` first, and only changes the lines you edited. Commit and push as usual. The target bands live at the top of `tools/mission_management/coverage.py`.
+Opens AmbleBee Mission Management at the link it prints: how balanced each pack is (indoor vs outdoor, cost, date vs adventure, themes), a gap finder for the packs furthest off, every mission with when it was last edited, and an editor for every mission field, with a YAML view for notes and anything the form doesn't cover. A "Needs attention" list flags drafts, pins still to verify, missions not checked in six months, expired cautions, missing themes, fields written twice and anything failing a check, and the mission list filters by status, attention and theme. Every save first shows exactly which lines will change; it runs the same checks as `tools/check_missions.py` and only changes the lines you edited. "Checked today, publish" takes a draft live in one step. Commit and push as usual. The target bands live at the top of `tools/mission_management/coverage.py`.
 
 Want to add a mission? See [CONTRIBUTING.md](CONTRIBUTING.md).
 

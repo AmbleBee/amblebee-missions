@@ -273,6 +273,59 @@ tr.click:focus-visible td { outline: 2px solid var(--sage); }
   .themebars { grid-template-columns: 130px 1fr 32px; }
   h1 { font-size: 24px; }
 }
+
+[hidden] { display: none !important; }
+
+/* ---------- needs attention ---------- */
+.attn { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+.attn button { appearance: none; border: 0; cursor: pointer; font: inherit; display: inline-flex; gap: 8px; align-items: center;
+  min-height: 38px; padding: 0 14px; border-radius: 999px; background: var(--linen); color: var(--ink); box-shadow: inset 0 0 0 1.5px var(--line-strong); font-weight: 700; font-size: 14px; }
+.attn button .n { background: var(--paper); border-radius: 999px; padding: 0 8px; font-variant-numeric: tabular-nums; }
+.attn button.hot { background: var(--bad-tint); box-shadow: inset 0 0 0 1.5px var(--bad); }
+.attn button[aria-pressed=true] { background: var(--fill); color: #FFFDF8; box-shadow: none; }
+.attn button[aria-pressed=true] .n { background: var(--fill-shadow); }
+.attn button:disabled { opacity: .45; cursor: default; }
+.chip.issue { background: var(--honey-tint); border-color: transparent; color: var(--ink); }
+.chip.issue.hot { background: var(--bad-tint); }
+.filters { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
+.filters select { max-width: 220px; }
+
+/* ---------- editor: form / YAML switch, code box, diff ---------- */
+.modeswitch { margin-top: 8px; }
+.modeswitch .seg span { min-height: 30px; padding: 0 12px; font-size: 13px; }
+.code { display: grid; grid-template-columns: auto 1fr; border-radius: 12px; overflow: hidden; margin-top: 14px;
+  box-shadow: inset 0 0 0 1.5px var(--line-strong); background: var(--linen); height: calc(100dvh - 300px); min-height: 320px; }
+.code .gutter { padding: 12px 8px 12px 10px; text-align: right; color: var(--ink-3); user-select: none; overflow: hidden;
+  font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--oat); }
+.code .gutter .gl { will-change: transform; }
+.code .gutter div.err { color: #FFFDF8; background: var(--bad); border-radius: 4px; padding: 0 4px; margin-right: -4px; }
+.sheet .code textarea { border: 0; box-shadow: none; background: transparent; resize: none; height: 100%; min-height: 0; margin: 0;
+  padding: 12px; font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow: auto; tab-size: 2; color: var(--ink); border-radius: 0; }
+.sheet .code textarea:focus { outline: none; box-shadow: none; }
+.code:focus-within { box-shadow: inset 0 0 0 2px var(--sage); }
+.yamlstatus { font-size: 13px; margin-top: 8px; min-height: 20px; }
+.yamlstatus .ok { color: var(--sage-deep); font-weight: 700; }
+.yamlstatus .bad { color: var(--bad); font-weight: 700; }
+dialog.diff { width: min(820px, calc(100vw - 32px)); max-height: calc(100dvh - 40px); display: none; flex-direction: column; padding: 0; }
+dialog.diff[open] { display: flex; }
+dialog.diff .dh { padding: 20px 22px 6px; }
+dialog.diff .db { overflow: auto; padding: 0 22px; flex: 1; }
+dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-content: flex-end; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--line-strong); }
+.difflines { margin-top: 12px; border-radius: 12px; overflow: auto; background: var(--linen); box-shadow: inset 0 0 0 1.5px var(--line-strong);
+  font: 12.5px/1.55 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; padding: 8px 0; }
+.difflines div { white-space: pre-wrap; word-break: break-word; padding: 0 12px 0 28px; text-indent: -16px; min-height: 1.55em; }
+.difflines .add { background: rgba(86, 140, 72, .20); }
+.difflines .add::before { content: "+ "; color: var(--sage-deep); font-weight: 700; }
+.difflines .del { background: rgba(217, 83, 30, .16); text-decoration: line-through; text-decoration-color: rgba(179, 64, 42, .5); }
+.difflines .del::before { content: "− "; color: var(--bad); font-weight: 700; display: inline-block; text-decoration: none; }
+.difflines .ctx { color: var(--ink-3); }
+.difflines .ctx::before { content: "  "; }
+.difflines .hunk { color: var(--ink-3); font-style: italic; padding-top: 6px; }
+.difflines .hunk + .hunk, .difflines .ctx + .hunk, .difflines .add + .hunk, .difflines .del + .hunk { border-top: 1px dashed var(--line-strong); margin-top: 6px; }
+.btn.publish { background: var(--honey-tint); box-shadow: inset 0 0 0 2px var(--honey); }
+@media (max-width: 720px) {
+  .code { height: calc(100dvh - 330px); }
+}
 </style>
 </head>
 <body>
@@ -319,10 +372,22 @@ tr.click:focus-visible td { outline: 2px solid var(--sage); }
   <div class="tiles" id="tiles"></div>
   <div id="view"><p class="sub" style="margin-top:20px">Loading missions…</p></div>
 
+  <section class="card" id="attnCard" hidden>
+    <h2>Needs attention</h2>
+    <p class="sub" id="attnSub"></p>
+    <div class="attn" id="attn"></div>
+  </section>
+
   <section class="card" id="missionsCard">
     <h2>Missions</h2>
     <p class="sub">Everything you've written, with the last time each file changed. Click a column to sort, click a mission to edit it.</p>
-    <div class="controls" style="position:static;border:0;padding:6px 0;margin:8px 0">
+    <div class="controls filters" style="position:static;border:0;padding:6px 0;margin:8px 0 0">
+      <label>Status <select id="fStatus"><option value="">All</option><option value="live">Live</option><option value="draft">Drafts</option></select></label>
+      <label>Needs <select id="fIssue"><option value="">Anything or nothing</option><option value="*">Any attention</option></select></label>
+      <label>Theme <select id="fThemeSel"><option value="">Any theme</option></select></label>
+      <button class="link" id="clearFilters" type="button" hidden>Clear filters</button>
+    </div>
+    <div class="controls" style="position:static;border:0;padding:6px 0;margin:0 0 8px">
       <label>Sort
         <select id="msort">
           <option value="edited:desc">Last edited, newest first</option>
@@ -349,16 +414,37 @@ tr.click:focus-visible td { outline: 2px solid var(--sage); }
       <div>
         <h2 id="edTitle">Mission</h2>
         <div class="path" id="edPath"></div>
+        <div class="modeswitch"><div class="seg" role="radiogroup" aria-label="Edit with">
+          <label><input type="radio" name="edMode" value="form" checked><span>Form</span></label>
+          <label><input type="radio" name="edMode" value="yaml"><span>YAML</span></label>
+        </div></div>
       </div>
       <button class="x" type="button" id="edClose" aria-label="Close">×</button>
     </div>
     <div class="sheet-body" id="edBody"></div>
+    <div class="sheet-body" id="yamlBody" hidden>
+      <div id="yamlAttn"></div>
+      <p class="help" style="margin:12px 0 0">The file itself, exactly as it's saved. Use it for notes (<code># like this</code>) and anything the form doesn't cover. Tab indents two spaces.</p>
+      <div class="code"><div class="gutter" id="yamlGutter" aria-hidden="true"></div>
+        <textarea id="yamlText" spellcheck="false" autocapitalize="off" autocomplete="off" aria-label="Mission YAML"></textarea></div>
+      <div class="yamlstatus" id="yamlStatus" aria-live="polite"></div>
+    </div>
     <div class="sheet-foot">
       <div class="msg" id="edMsg"></div>
       <button class="btn small" type="button" id="edCancel">Close</button>
-      <button class="btn small primary" type="submit" id="edSave">Save mission</button>
+      <button class="btn small publish" type="button" id="edPublish" hidden title="Sets checked to today, removes draft, then shows you the change">Checked today, publish</button>
+      <button class="btn small primary" type="submit" id="edSave">Review and save</button>
     </div>
   </form>
+</dialog>
+
+<dialog class="small diff" id="diffDlg" aria-labelledby="diffTitle">
+  <div class="dh"><h2 id="diffTitle">Check your changes</h2><p class="sub" id="diffSub"></p></div>
+  <div class="db" id="diffBody"></div>
+  <div class="df">
+    <button class="btn small" type="button" id="diffBack">Keep editing</button>
+    <button class="btn small primary" type="button" id="diffSave">Save these changes</button>
+  </div>
 </dialog>
 
 <dialog class="small" id="newDlg" aria-labelledby="newTitle">
@@ -393,7 +479,8 @@ const shortName = id => packName(id).replace(/^Amble /, '');
 
 const PAGE = 100;
 const state = { shown: PAGE, pack: 'all', drafts: true,
-  order: 'score', msort: 'edited:desc', q: '' };
+  order: 'score', msort: 'edited:desc', q: '', status: '', issue: '', theme: '' };
+const HOT = ['fails-check', 'doubled', 'caution-expired'];   // these block or mislead; the rest are reminders
 try { const t = localStorage.getItem('amble-mm-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
 
 // ---------- scoring (targets come from coverage.py) ----------
@@ -658,8 +745,31 @@ const COLS = [
   ['number', '#', 'num'], ['name', 'Mission'], ['pack', 'Pack'], ['mode', 'Mode'], ['setting', 'Setting'], ['cost', 'Cost'],
   ['themes', 'Themes'], ['draft', 'Status'], ['checked', 'Checked'], ['added', 'Added'], ['edited', 'Last edited'],
 ];
+// ---------- needs attention ----------
+function inPack(ms) { return state.pack === 'all' ? ms : ms.filter(m => m.pack === state.pack); }
+function renderAttention(ms) {
+  const list = inPack(ms), A = D.attention;
+  const n = code => list.filter(m => m.issues.includes(code)).length;
+  const any = list.filter(m => m.issues.some(i => i !== 'draft')).length;
+  $('#attnCard').hidden = false;
+  $('#attnSub').textContent = `${any} of ${list.length} missions${state.pack === 'all' ? '' : ` in ${packName(state.pack)}`} have something to look at` +
+    (state.drafts ? '' : ' (drafts hidden)') + '. Click one to list just those missions.';
+  $('#attn').innerHTML = Object.keys(A).map(code => {
+    const c = n(code);
+    return `<button type="button" data-issue="${code}" aria-pressed="${state.issue === code}" class="${HOT.includes(code) && c ? 'hot' : ''}"
+      title="${esc(A[code].help)}" ${c ? '' : 'disabled'}>${esc(A[code].label)} <span class="n">${c}</span></button>`;
+  }).join('');
+}
+const badges = m => m.issues.filter(i => i !== 'draft').map(i =>
+  `<span class="chip issue ${HOT.includes(i) ? 'hot' : ''}" title="${esc(D.attention[i].help)}">${esc(D.attention[i].label)}</span>`).join('');
+function filtersActive() { return !!(state.status || state.issue || state.theme || state.q); }
+
 function renderTable(ms) {
-  let list = state.pack === 'all' ? ms : ms.filter(m => m.pack === state.pack);
+  let list = inPack(ms);
+  if (state.status) list = list.filter(m => state.status === 'draft' ? m.draft : !m.draft);
+  if (state.issue) list = list.filter(m => state.issue === '*' ? m.issues.some(i => i !== 'draft') : m.issues.includes(state.issue));
+  if (state.theme) list = list.filter(m => m.themes.includes(state.theme));
+  $('#clearFilters').hidden = !filtersActive();
   const q = state.q.trim().toLowerCase();
   if (q) list = list.filter(m => [m.name, m.id, m.pack, packName(m.pack), ...m.themes, ...m.themes.map(t => D.themes[t])]
     .some(s => String(s || '').toLowerCase().includes(q)));
@@ -672,7 +782,7 @@ function renderTable(ms) {
     const c = typeof x === 'number' ? x - y : String(x).localeCompare(String(y));
     return (dir === 'asc' ? c : -c) || a.name.localeCompare(b.name);
   });
-  $('#mcount').textContent = `${list.length} missions`;
+  $('#mcount').textContent = `${list.length} mission${list.length === 1 ? '' : 's'}`;
   const total = list.length;
   list = list.slice(0, state.shown);
   const head = `<thead><tr>${COLS.map(([k, l, c]) => `<th class="sortable ${c || ''}" data-sort="${k}">${l}${key === k ? ` <span class="arrow">${dir === 'asc' ? '↑' : '↓'}</span>` : ''}</th>`).join('')}</tr></thead>`;
@@ -681,14 +791,15 @@ function renderTable(ms) {
     <td>${esc(m.name)}<div class="muted" style="font-size:12px">${esc(m.id)}</div></td>
     <td>${esc(shortName(m.pack))}</td><td>${esc(m.mode)}</td><td>${esc(m.setting)}</td><td>${esc(m.cost)}</td>
     <td>${m.themes.map(t => `<span class="chip">${esc(D.themes[t] || t)}</span>`).join('')}</td>
-    <td><span class="chip ${m.draft ? 'draft' : 'live'}">${m.draft ? 'Draft' : 'Live'}</span></td>
+    <td><span class="chip ${m.draft ? 'draft' : 'live'}">${m.draft ? 'Draft' : 'Live'}</span>${badges(m)}</td>
     <td class="num ${m.checked ? '' : 'muted'}">${m.checked || '–'}</td>
     <td class="num">${m.added || ''}</td>
     <td class="num">${m.edited || ''}${m.uncommitted ? ' <span class="chip new" title="Changed but not committed yet">unsaved</span>' : ''}</td>
   </tr>`).join('');
   const more = total > list.length ? `<tfoot><tr><td colspan="${COLS.length}" style="border:0;padding-top:12px">Showing ${list.length} of ${total}.
     <button class="link" id="more">Show ${Math.min(PAGE, total - list.length)} more</button> · <button class="link" id="allrows">Show all</button></td></tr></tfoot>` : '';
-  $('#mtable').innerHTML = head + `<tbody>${body}</tbody>` + more;
+  const none = total ? '' : `<tbody><tr><td colspan="${COLS.length}" class="muted" style="padding:16px 8px">No missions match.${filtersActive() ? ' <button class="link" data-clear>Clear filters</button>' : ''}</td></tr></tbody>`;
+  $('#mtable').innerHTML = head + `<tbody>${body}</tbody>` + none + more;
 }
 
 // ---------- wiring ----------
@@ -697,6 +808,7 @@ function render() {
   $('#orderWrap').style.display = state.pack === 'all' ? '' : 'none';
   renderTiles(ms);
   state.pack === 'all' ? renderAll(ms) : renderPack(ms);
+  renderAttention(ms);
   renderTable(ms);
 }
 function setPack(p) { state.pack = p; state.shown = PAGE; $('#pack').value = p; render(); scrollTo({ top: 0, behavior: 'smooth' }); }
@@ -713,6 +825,11 @@ async function loadData() {
   if (!(state.pack in D.packs) && state.pack !== 'all') state.pack = 'all';
   $('#pack').value = state.pack;
   $('#drafts').checked = state.drafts;
+  $('#fIssue').innerHTML = `<option value="">Anything or nothing</option><option value="*">Any attention</option>` +
+    Object.entries(D.attention).map(([k, a]) => `<option value="${k}">${esc(a.label)}</option>`).join('');
+  $('#fThemeSel').innerHTML = `<option value="">Any theme</option>` + [...THEME_KEYS].sort((a, b) => D.themes[a].localeCompare(D.themes[b]))
+    .map(k => `<option value="${k}">${esc(D.themes[k])}</option>`).join('');
+  $('#fStatus').value = state.status; $('#fIssue').value = state.issue; $('#fThemeSel').value = state.theme;
   return true;
 }
 $('#pack').onchange = e => setPack(e.target.value);
@@ -720,9 +837,28 @@ $('#drafts').onchange = e => { state.drafts = e.target.checked; render(); };
 $('#order').onchange = e => { state.order = e.target.value; render(); };
 $('#msort').onchange = e => { state.msort = e.target.value; render(); };
 $('#q').oninput = e => { state.q = e.target.value; state.shown = PAGE; renderTable(missionsNow()); };
+function setFilter(k, v) { state[k] = v; state.shown = PAGE; renderAttention(missionsNow()); renderTable(missionsNow()); }
+$('#fStatus').onchange = e => setFilter('status', e.target.value);
+$('#fIssue').onchange = e => setFilter('issue', e.target.value);
+$('#fThemeSel').onchange = e => setFilter('theme', e.target.value);
+function clearFilters() {
+  Object.assign(state, { status: '', issue: '', theme: '', q: '' });
+  $('#fStatus').value = $('#fIssue').value = $('#fThemeSel').value = $('#q').value = '';
+  setFilter('shown', PAGE);
+}
+$('#clearFilters').onclick = clearFilters;
 document.addEventListener('click', e => {
   const ed = e.target.closest('[data-edit]');
   if (ed) { const [pk, id] = ed.dataset.edit.split('/'); return openEditor(pk, id); }
+  const iss = e.target.closest('[data-issue]');
+  if (iss) {
+    const code = iss.dataset.issue === state.issue ? '' : iss.dataset.issue;
+    if (code === 'draft' && !state.drafts) { state.drafts = true; $('#drafts').checked = true; }
+    $('#fIssue').value = code; setFilter('issue', code);
+    if (code) $('#missionsCard').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    return;
+  }
+  if (e.target.matches('[data-clear]')) return clearFilters();
   if (e.target.id === 'more') { state.shown += PAGE; return renderTable(missionsNow()); }
   if (e.target.id === 'allrows') { state.shown = Infinity; return renderTable(missionsNow()); }
   const p = e.target.closest('[data-pack]');
@@ -1000,61 +1136,220 @@ function showSheet() {
   if (!d.open) d.showModal();
   $('#edBody').scrollTop = 0;
 }
-async function openEditor(pack, id) {
-  ed.pack = pack; ed.id = id; ed.isNew = false; ed.dirty = false; ed.dropComments = false;
+// what the dashboard says about this mission, shown at the top of the editor
+function attnHtml() {
+  const row = D.missions.find(m => m.pack === ed.pack && m.id === ed.id);
+  if (!row || ed.isNew) return '';
+  const out = [];
+  if (row.problems) out.push(`<div class="alert bad"><b>This mission fails a check</b>, so the site won't build until it's fixed:
+    <ul>${row.problems.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`);
+  const soft = row.issues.filter(i => !['fails-check', 'doubled', 'draft'].includes(i));
+  if (soft.length) out.push(`<div class="alert warn"><b>Needs attention:</b><ul>${soft.map(i => `<li><b>${esc(D.attention[i].label)}.</b> ${esc(D.attention[i].help)}</li>`).join('')}</ul></div>`);
+  return out.join('');
+}
+function setPublishBtn(isDraft) { $('#edPublish').hidden = !isDraft; }
+function setMode(mode) {
+  ed.mode = mode;
+  document.querySelectorAll('input[name=edMode]').forEach(i => { i.checked = i.value === mode; });
+  $('#edBody').hidden = mode !== 'form';
+  $('#yamlBody').hidden = mode !== 'yaml';
+  if (mode === 'yaml') yamlLines();
+}
+async function openEditor(pack, id, keepMode = false) {
+  const mode = keepMode ? ed.mode : 'form';
+  Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '' });
   $('#edTitle').textContent = 'Loading…'; $('#edPath').textContent = `missions/${pack}/${id}.yaml`;
-  $('#edBody').innerHTML = ''; setMsg('');
+  $('#edBody').innerHTML = ''; setMsg(''); setMode('form');
   showSheet();
   const r = await api(`/api/mission?pack=${encodeURIComponent(pack)}&id=${encodeURIComponent(id)}`);
   if (!r.ok) { $('#edTitle').textContent = 'Couldn’t open it'; $('#edBody').innerHTML = `<div class="alert bad">${esc(r.body.error || 'Error')}</div>`; return; }
-  ed.version = r.body.version; ed.orig = r.body.data; ed.m = JSON.parse(JSON.stringify(r.body.data));
+  ed.version = r.body.version; ed.orig = r.body.data; ed.m = JSON.parse(JSON.stringify(r.body.data)); ed.text = r.body.text;
   $('#edTitle').textContent = ed.m.name || id;
   $('#edPath').textContent = `${r.body.path} · ${packName(pack)}`;
+  setPublishBtn(!!ed.m.draft);
   renderForm(r.body);
+  $('#edBody').insertAdjacentHTML('afterbegin', attnHtml());
+  $('#yamlText').value = r.body.text; yamlStatus('');
+  $('#yamlAttn').innerHTML = attnHtml();
+  setMode(mode);
 }
 function startNew(pack, id, name) {
-  ed.pack = pack; ed.id = id; ed.isNew = true; ed.version = null; ed.orig = {}; ed.dirty = true; ed.dropComments = false;
+  Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '' });
   ed.m = { draft: true, number: nextNumber(pack), name, mode: 'both', duration: 'short', effort: 'easy', cost: '$',
     setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', themes: [], tags: [] };
   $('#edTitle').textContent = name || 'New mission';
   $('#edPath').textContent = `missions/${pack}/${id}.yaml · new · ${packName(pack)}`;
-  setMsg('Not saved yet.');
-  showSheet(); renderForm();
+  setMsg('Not saved yet.'); setPublishBtn(true);
+  $('#yamlAttn').innerHTML = ''; yamlStatus('');
+  setMode('form'); showSheet(); renderForm();
 }
-async function saveMission(e) {
+
+// the request both "review" and "save" send, so what you saw is exactly what gets written
+function saveBody() {
+  const b = { pack: ed.pack, id: ed.id, isNew: ed.isNew, version: ed.version };
+  if (ed.mode === 'yaml') b.yaml = $('#yamlText').value;
+  else { b.data = collect(); if (ed.base) b.base = ed.base; }
+  return b;
+}
+function diffHtml(lines) {
+  return `<div class="difflines">${lines.map(l => {
+    if (l.startsWith('@@')) { const m = l.match(/\+(\d+)/); return `<div class="hunk">around line ${m ? m[1] : ''}</div>`; }
+    const cls = l[0] === '+' ? 'add' : l[0] === '-' ? 'del' : 'ctx';
+    return `<div class="${cls}">${esc(l.slice(1))}</div>`;
+  }).join('')}</div>`;
+}
+let pending = null;
+async function saveMission(e, why = '') {
   e && e.preventDefault();
-  const data = collect();
-  $('#edSave').disabled = true; setMsg('Checking and saving…');
-  const r = await api('/api/mission', { method: 'POST', body: JSON.stringify({ pack: ed.pack, id: ed.id, isNew: ed.isNew,
-    version: ed.version, data, dropComments: ed.dropComments }) });
+  const body = saveBody();
+  $('#edSave').disabled = true; setMsg('Working out what changes…');
+  const r = await api('/api/preview', { method: 'POST', body: JSON.stringify(body) });
   $('#edSave').disabled = false;
   const b = r.body;
+  if (!r.ok) {
+    setMsg(`<div class="alert bad" style="margin:0">${esc(b.error || 'Something went wrong; nothing was saved.')}
+      ${b.stale ? '<br><button type="button" class="btn tiny" id="reloadMission" style="margin-top:8px">Reopen the latest version</button>' : ''}</div>`);
+    return;
+  }
+  if (b.error) {                               // the YAML doesn't read yet
+    setMsg(`<span class="bad">Not saved: ${esc((b.problems || [b.error])[0])}</span>`);
+    yamlStatus((b.problems || [b.error])[0], b.line);
+    return;
+  }
+  if (b.unchanged) { setMsg('No changes to save.'); return; }
+  setMsg('');
+  pending = body;
+  const live = !/^draft:\s*true/m.test(b.text);
+  const publishing = live && !ed.isNew && /^draft:\s*true/m.test(ed.text);
+  const approx = live ? b.text.split('\n').filter(l => /#.*\b(approx|verify|placeholder)/i.test(l)) : [];
+  const parts = [];
+  if (b.problems.length) parts.push(`<div class="alert bad"><b>This can't be saved yet</b>; it would fail the mission checks:
+    <ul>${b.problems.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`);
+  if (approx.length) parts.push(`<div class="alert warn"><b>This mission will be live, but the file still has a note saying the pin needs checking:</b>
+    <ul>${approx.map(l => `<li><code>${esc(l.trim())}</code></li>`).join('')}</ul>If you've checked it, delete the note in YAML view, or save anyway.</div>`);
+  if (b.lost.length) parts.push(`<div class="alert warn"><b>These notes are on lines you changed, so they'd be removed:</b>
+    <ul>${b.lost.map(c => `<li><code>${esc(c)}</code></li>`).join('')}</ul>
+    <label class="toggle" style="margin-top:6px"><input type="checkbox" id="dropOk"> Remove them</label>
+    <div class="help">To keep one, switch to YAML and put it back where you want it.</div></div>`);
+  $('#diffSub').innerHTML = `${why ? esc(why) + ' ' : ''}<code>missions/${esc(ed.pack)}/${esc(ed.id)}.yaml</code>${ed.isNew ? ' (new file)' : ''}:
+    green lines are added, red lines are removed. Nothing is written until you save.`;
+  $('#diffBody').innerHTML = parts.join('') + diffHtml(b.diff);
+  const canSave = () => !b.problems.length && (!b.lost.length || !!($('#dropOk') || {}).checked);
+  $('#diffSave').disabled = !canSave();
+  $('#diffSave').textContent = publishing ? 'Publish' : ed.isNew ? 'Create mission' : 'Save these changes';
+  const dk = $('#dropOk'); if (dk) dk.onchange = () => { $('#diffSave').disabled = !canSave(); };
+  $('#diffDlg').showModal();
+  (b.problems.length ? $('#diffBack') : $('#diffSave').disabled ? $('#dropOk') : $('#diffSave')).focus();
+}
+async function confirmSave() {
+  if (!pending) return;
+  const published = $('#diffSave').textContent === 'Publish';
+  $('#diffSave').disabled = true;
+  const body = { ...pending, dropComments: !!($('#dropOk') || {}).checked };
+  const r = await api('/api/mission', { method: 'POST', body: JSON.stringify(body) });
+  $('#diffSave').disabled = false;
+  const b = r.body;
+  $('#diffDlg').close(); pending = null;
   if (r.ok) {
-    ed.dirty = false; ed.dropComments = false;
+    ed.dirty = false;
     if (b.unchanged) { setMsg('No changes to save.'); return; }
     const was = ed.isNew;
     await loadData(); render();
-    await openEditor(ed.pack, ed.id);          // reload what's on disk now (and its new version)
+    await openEditor(ed.pack, ed.id, true);          // reload what's on disk now (and its new version)
     setMsg(`Saved to <code>${esc(b.path)}</code>. Commit when you’re ready.`, 'ok');
-    toast(was ? 'Mission created' : 'Mission saved');
-    return;
-  }
-  if (b.lost) {
-    setMsg(`<div class="alert warn" style="margin:0"><b>${esc(b.error)}</b><ul>${b.lost.map(c => `<li><code>${esc(c)}</code></li>`).join('')}</ul>
-      <button type="button" class="btn tiny" id="dropAndSave" style="margin-top:8px">Save anyway, without these notes</button></div>`);
-    return;
-  }
-  if (b.problems) {
-    setMsg(`<div class="alert bad" style="margin:0"><b>${esc(b.error)}</b><ul>${b.problems.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`);
+    toast(was ? 'Mission created' : published ? 'Mission published' : 'Mission saved');
     return;
   }
   setMsg(`<div class="alert bad" style="margin:0">${esc(b.error || 'Something went wrong; nothing was saved.')}
+    ${(b.problems || []).length ? `<ul>${b.problems.map(p => `<li>${esc(p)}</li>`).join('')}</ul>` : ''}
     ${b.stale ? '<br><button type="button" class="btn tiny" id="reloadMission" style="margin-top:8px">Reopen the latest version</button>' : ''}</div>`);
 }
 function closeEditor() {
   if (ed.dirty && !confirm('Close without saving your changes?')) return;
   ed.dirty = false; $('#editor').close();
 }
+
+// ---------- one-click publish: checked today, no draft line, then the usual review ----------
+function publishYaml(t) {
+  const out = t.replace(/^draft:.*(\r?\n|$)/m, '');
+  if (/^checked:.*$/m.test(out)) return out.replace(/^checked:.*$/m, `checked: ${today()}`);
+  return /^number:/m.test(out) ? out.replace(/^number:/m, `checked: ${today()}\nnumber:`) : `checked: ${today()}\n` + out;
+}
+function publish() {
+  if (ed.mode === 'yaml') { $('#yamlText').value = publishYaml($('#yamlText').value); yamlLines(); }
+  else { $('#fDraft').checked = false; $('#fChecked').value = today(); }
+  ed.dirty = true;
+  saveMission(null, 'Publishing: checked is set to today and the draft line is gone.');
+}
+
+// ---------- YAML mode ----------
+function yamlLines(errLine = yamlLines.err) {
+  yamlLines.err = errLine;
+  const n = $('#yamlText').value.split('\n').length;
+  $('#yamlGutter').innerHTML = `<div class="gl">${Array.from({ length: n }, (_, i) => `<div${i + 1 === errLine ? ' class="err"' : ''}>${i + 1}</div>`).join('')}</div>`;
+  syncGutter();
+}
+function syncGutter() { const g = $('#yamlGutter .gl'); if (g) g.style.transform = `translateY(${-$('#yamlText').scrollTop}px)`; }
+function yamlStatus(problem, line) {
+  $('#yamlStatus').innerHTML = !problem ? '' : problem === true ? '<span class="ok">✓ Reads fine</span>'
+    : `<span class="bad">${esc(problem)}</span>${line ? ` <button type="button" class="link" data-goto="${line}">Go to line ${line}</button>` : ''}`;
+  yamlLines(problem && problem !== true ? line : null);
+}
+async function checkYaml() {
+  const text = $('#yamlText').value;
+  const r = await api('/api/parse', { method: 'POST', body: JSON.stringify({ yaml: text }) });
+  if (text !== $('#yamlText').value) return null;   // typed more since; a newer check is on its way
+  if (!r.ok || r.body.error) { yamlStatus((r.body.problems || [r.body.error || "Couldn't check it"])[0], r.body.line); return null; }
+  const d = r.body.duplicates || [];
+  yamlStatus(d.length ? `${d.map(x => `'${x}'`).join(', ')} written twice; YAML only keeps the last one, so delete the copy you don't want` : true);
+  return r.body;
+}
+function gotoLine(n) {
+  const ta = $('#yamlText'), lines = ta.value.split('\n');
+  const at = lines.slice(0, n - 1).reduce((a, l) => a + l.length + 1, 0);
+  ta.focus(); ta.setSelectionRange(at, at + (lines[n - 1] || '').length);
+  ta.scrollTop = Math.max(0, (n - 4) * parseFloat(getComputedStyle(ta).lineHeight));
+  syncGutter();
+}
+async function switchMode(to) {
+  if (to === ed.mode) return;
+  if (to === 'yaml') {                       // the form, written out as the file it would save
+    const r = await api('/api/preview', { method: 'POST', body: JSON.stringify({ ...saveBody(), check: false }) });
+    if (!r.ok || typeof r.body.text !== 'string') { setMode('form'); setMsg(`<span class="bad">${esc(r.body.error || "Couldn't switch to YAML.")}</span>`); return; }
+    $('#yamlText').value = r.body.text; setMode('yaml'); yamlStatus(true); $('#yamlText').scrollTop = 0; syncGutter(); $('#yamlText').focus();
+    return;
+  }
+  const parsed = await checkYaml();           // back to the form: only once the YAML reads
+  if (!parsed) { setMode('yaml'); setMsg('<span class="bad">Fix the YAML first; the form needs it to read.</span>'); return; }
+  setMsg('');
+  ed.base = $('#yamlText').value;            // keeps the notes you typed in YAML when the form saves
+  ed.orig = parsed.data; ed.m = JSON.parse(JSON.stringify(parsed.data));
+  renderForm({ duplicates: parsed.duplicates });
+  $('#edBody').insertAdjacentHTML('afterbegin', attnHtml());
+  setMode('form');
+}
+$('#yamlText').addEventListener('scroll', syncGutter);
+$('#yamlText').addEventListener('input', () => {
+  ed.dirty = true; yamlLines();
+  clearTimeout(checkYaml.t); checkYaml.t = setTimeout(checkYaml, 450);
+});
+$('#yamlText').addEventListener('keydown', e => {
+  if (e.key !== 'Tab' || e.ctrlKey || e.metaKey || e.altKey) return;
+  e.preventDefault();
+  const ta = e.target, a = ta.selectionStart, v = ta.value;
+  if (e.shiftKey) {                          // Shift+Tab: take up to two spaces off the start of this line
+    const ls = v.lastIndexOf('\n', a - 1) + 1, cut = v.slice(ls, ls + 2).match(/^ */)[0].length;
+    if (!cut) return;
+    ta.setSelectionRange(ls, ls + cut);
+    if (!document.execCommand('delete')) ta.setRangeText('', ls, ls + cut, 'end');
+  } else if (!document.execCommand('insertText', false, '  ')) ta.setRangeText('  ', a, ta.selectionEnd, 'end');
+  ta.dispatchEvent(new Event('input'));
+});
+document.querySelectorAll('input[name=edMode]').forEach(i => i.addEventListener('change', () => switchMode(i.value)));
+$('#edPublish').onclick = publish;
+$('#diffBack').onclick = () => { $('#diffDlg').close(); pending = null; };
+$('#diffSave').onclick = confirmSave;
+$('#yamlBody').addEventListener('click', e => { const g = e.target.closest('[data-goto]'); if (g) gotoLine(+g.dataset.goto); });
 
 // ---------- map pins ----------
 // Google Maps copies "45.573321524917056, -122.41112560365704"; "(lat, lng)" works too
@@ -1102,7 +1397,6 @@ $('#edForm').addEventListener('click', e => {
   else if (t.id === 'addLink') { $('#links').insertAdjacentHTML('beforeend', linkRow()); refreshLive(); }
   else if (t.id === 'addGear') { $('#gear').insertAdjacentHTML('beforeend', gearRow()); }
   else if (t.id === 'fToday') { $('#fChecked').value = today(); ed.dirty = true; }
-  else if (t.id === 'dropAndSave') { ed.dropComments = true; saveMission(); }
   else if (t.id === 'reloadMission') { ed.dirty = false; openEditor(ed.pack, ed.id); }
 });
 $('#mtable').addEventListener('keydown', e => {
