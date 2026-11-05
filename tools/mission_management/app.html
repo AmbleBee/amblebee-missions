@@ -838,9 +838,10 @@ function renderForm(info = {}) {
   ${isAnywhere() ? '' : `<fieldset id="placeSet"><legend>Place</legend>
     <div class="row">${field('pName', 'Place name', text('pName', place.name))}${field('pArea', 'Area', text('pArea', place.area, 'placeholder="Old Town, Portland"'))}</div>
     ${field('pAddress', 'Address', text('pAddress', place.address), 'leave out for trailheads and viewpoints')}
-    <div class="f"><label for="pLat">Pin <span class="help">the entrance, dock or trailhead · paste "lat, lng" into either box</span></label>
+    <div class="f"><label for="pLat">Pin <span class="help">the entrance, dock or trailhead</span></label>
       <div class="row"><input type="text" inputmode="decimal" id="pLat" value="${esc(coords[0] ?? '')}" placeholder="Latitude 45.52266">
       <input type="text" inputmode="decimal" id="pLng" value="${esc(coords[1] ?? '')}" placeholder="Longitude -122.67306"></div>
+      <p class="help" style="margin:2px 0 0">Paste a whole coordinate pair from Google Maps (like <code>45.573321524917056, -122.41112560365704</code>) into either box and it fills both, trimmed to 5 decimals (about a meter). Double-check the pin on the map before saving.</p>
       <a class="maplink" id="pMap" target="_blank" rel="noopener noreferrer" href="#">Check this pin on a map ↗</a></div>
     ${field('pWebsite', 'Website', `<input type="url" id="pWebsite" value="${esc(place.website || '')}" placeholder="https://…">`)}
     <div class="f"><span class="lbl">Extra links <span class="help">up to ${L.links} more buttons</span></span>
@@ -1055,6 +1056,23 @@ function closeEditor() {
   ed.dirty = false; $('#editor').close();
 }
 
+// ---------- map pins ----------
+// Google Maps copies "45.573321524917056, -122.41112560365704"; "(lat, lng)" works too
+const PIN_DECIMALS = 5;   // about 1 m, what SCHEMA.md asks for
+function parsePin(text) {
+  const m = String(text).match(/(-?\d{1,3}(?:\.\d+)?)\s*,\s*(-?\d{1,3}(?:\.\d+)?)/);
+  if (!m) return null;
+  const lat = +m[1], lng = +m[2];
+  if (!(Math.abs(lat) <= 90 && Math.abs(lng) <= 180)) return null;
+  return [lat, lng].map(x => x.toFixed(PIN_DECIMALS));
+}
+function trimCoord(v) {
+  const t = String(v).trim();
+  return /^-?\d{1,3}\.\d{6,}$/.test(t) ? (+t).toFixed(PIN_DECIMALS) : t;
+}
+function setPin([lat, lng]) {
+  $('#pLat').value = lat; $('#pLng').value = lng; ed.dirty = true; refreshLive();
+}
 // ---------- wiring ----------
 $('#edForm').addEventListener('submit', saveMission);
 $('#edClose').onclick = closeEditor;
@@ -1064,12 +1082,15 @@ $('#edForm').addEventListener('input', e => {
   ed.dirty = true;
   // paste "lat, lng" into either pin box
   if ((e.target.id === 'pLat' || e.target.id === 'pLng') && e.target.value.includes(',')) {
-    const [a, b] = e.target.value.split(',').map(x => x.trim());
-    if (a && b && Number.isFinite(+a) && Number.isFinite(+b)) { $('#pLat').value = a; $('#pLng').value = b; }
+    const pin = parsePin(e.target.value);
+    if (pin) setPin(pin);
   }
   refreshLive();
 });
-$('#edForm').addEventListener('change', () => { ed.dirty = true; refreshLive(); });
+$('#edForm').addEventListener('change', e => {
+  if (e.target.id === 'pLat' || e.target.id === 'pLng') e.target.value = trimCoord(e.target.value);
+  ed.dirty = true; refreshLive();
+});
 $('#edForm').addEventListener('click', e => {
   const t = e.target;
   if (t.matches('[data-rm]')) { t.closest('.listrow').remove(); ed.dirty = true; refreshLive(); }
