@@ -97,6 +97,15 @@ THEMES = {
 }
 THEMES_MAX = 6          # more than this and a mission shows up under every chip, which makes filtering useless
 THEMES_REQUIRED = False  # flip to True once every mission has themes; until then a missing themes line is fine
+# A note like "# APPROX: set at the entrance before publishing" means the pin isn't checked yet. Drafts can have
+# them. Flip to True once no live mission has one, and a live mission with such a note fails the check.
+PIN_NOTES_BLOCK_LIVE = True
+PIN_NOTE = re.compile(r"#.*?\b(approx|verify|placeholder|confirm before)", re.I)
+
+
+def pin_notes(text):
+    """Lines with a "check this before publishing" note, e.g. `coords: [...]  # APPROX: ...`."""
+    return [(n, line.strip()) for n, line in enumerate(text.splitlines(), 1) if PIN_NOTE.search(line)]
 
 RENT = {"on-site", "nearby", "no"}
 PLACE_KEYS = {"name", "area", "address", "coords", "website", "links"}
@@ -259,9 +268,14 @@ def check_catalog(root):
     # a field written twice: YAML silently keeps only the last copy, so the first one is easy to miss
     for m in missions:
         where = Path(m["file"]).relative_to(root)
-        for field, first, again in duplicate_fields(Path(m["file"]).read_text(encoding="utf-8")):
+        text = Path(m["file"]).read_text(encoding="utf-8")
+        for field, first, again in duplicate_fields(text):
             problems.append(f"{where}: '{field}' is written twice (lines {first} and {again}); YAML only keeps the "
                             "last one, so delete the copy you don't want")
+        if PIN_NOTES_BLOCK_LIVE and not m.get("draft"):
+            for n, line in pin_notes(text):
+                problems.append(f"{where}: line {n} still says the pin needs checking ({line[:70]}); check it and "
+                                "delete the note, or make the mission a draft again")
 
     seen_ids, seen_numbers = {}, {}
     for m in missions:
@@ -431,6 +445,8 @@ def check_catalog(root):
         for g in m.get("gear") or []:
             if not isinstance(g, dict) or g.get("item") not in GEAR:
                 problems.append(f"{where}: gear item {g.get('item') if isinstance(g, dict) else g!r} isn't in the gear list (SCHEMA.md)")
+            elif "rent" in g and g["rent"] is False:      # YAML reads a bare `no` as false
+                problems.append(f"{where}: gear rent needs quotes: write rent: \"no\" (a plain no reads as false)")
             elif "rent" in g and g["rent"] not in RENT:
                 problems.append(f"{where}: gear rent '{g['rent']}' should be one of {sorted(RENT)}")
     # [[mission-id]] in about links to another mission's page; it must name a real mission, and links only work in about

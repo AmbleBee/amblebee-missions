@@ -564,6 +564,12 @@ def t_footer_is_dark_on_short_pages_too(site, catalog):
     box = page.locator(".foot").bounding_box()
     assert box["y"] + box["height"] >= 1599, "the footer should reach the bottom of a short page"
     assert page.evaluate("getComputedStyle(document.querySelector('.foot')).backgroundColor") == "rgb(74, 51, 35)"
+    for path in ("/contact/", "/", "/roadmap.html"):      # Follow along: the AmbleBeeHQ accounts, in a new tab
+        social = site.open(path).locator(".foot .foot-social a")
+        assert social.count() == 3, f"{path}: the footer should link Pinterest, Bluesky and X"
+        for i in range(3):
+            link = social.nth(i)
+            assert link.get_attribute("target") == "_blank" and "AmbleBee on" in (link.get_attribute("aria-label") or "")
 
 
 def t_idea_pages_gather_missions_and_link_both_ways(site, catalog):
@@ -615,6 +621,15 @@ def t_built_pages_load(site, catalog):
     welcome = page.locator(".welcome")   # first-time visitors from Google learn what AmbleBee is
     assert "New to AmbleBee?" in welcome.inner_text() and welcome.locator('a[href="/"]').count() == 1
     assert welcome.locator(".ideas a").count() >= 1
+    page.evaluate("localStorage.setItem('amble.used', '1')")      # opened a mission before: no intro
+    page.reload()
+    assert page.locator(".welcome").count() == 0, "returning visitors shouldn't see the New to AmbleBee box"
+    page = site.open(f"/missions/{mission['id']}/")
+    for _ in range(3):                                            # a few pages in, without opening a mission
+        page.reload()
+    assert page.locator(".welcome").count() == 0, "the intro should go after a few pages"
+    raw = page.evaluate("fetch(location.href).then((r) => r.text())")
+    assert "New to AmbleBee?" in raw, "search engines still get the box in the page itself"
     checked = next((m for m in catalog["missions"] if m.get("checked")), None)
     if checked:   # the "Checked November 2026" line, on the mission's page and in the popup
         page = site.open(f"/missions/{checked['id']}/")
