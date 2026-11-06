@@ -374,20 +374,21 @@ def prepare(body):
         if base != original and parse_yaml(base)[1]:
             base = original
         data = clean(body.get("data") or {}, old)
-        try:
-            text, lost = dump_mission(data, base or None)
-        except ValueError as e:
-            return 500, {"error": str(e)}, None, None
+        remove = [str(c) for c in (body.get("removeComments") or []) if isinstance(c, str)]
         if base and "draft" in (yaml.safe_load(base) or {}) and "draft" not in data:
             # publishing: the note on the draft line ("delete this line once it's checked") is meant to go
-            draft_notes = comments_in(chunks(base)[1].get("draft", []))
-            lost = [c for c in lost if c not in draft_notes]
+            remove += [c for c in comments_in(chunks(base)[1].get("draft", [])) if c not in remove]
+        try:
+            text, removing = dump_mission(data, base or None, remove)   # every other note is kept
+        except ValueError as e:
+            return 500, {"error": str(e)}, None, None
     if not is_new and text.rstrip("\n") == original.rstrip("\n"):   # only a missing line break at the end
         return 200, {"unchanged": True, "diff": [], "lost": [], "problems": [], "text": text}, path, None
     diff = list(difflib.unified_diff(original.splitlines(), text.splitlines(),
                                      "before" if original else "new file", "after", lineterm="", n=2))[2:]
     problems = validate(pack, mid, text) if body.get("check", True) else []   # switching to YAML just needs the text
-    return 200, {"diff": diff, "lost": lost, "problems": problems, "text": text}, path, text
+    return 200, {"diff": diff, "lost": lost, "removing": removing if "yaml" not in body else [],
+                 "problems": problems, "text": text}, path, text
 
 
 def save(body):
@@ -722,7 +723,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 code, out, _, _ = prepare(body)
             elif path == "/api/parse":          # the YAML editor's text, read back for the form
                 data, err = parse_yaml(str(body.get("yaml") or ""))
-                code, out = 200, ({"data": for_form(data), "duplicates": [d[0] for d in lib.duplicate_fields(str(body.get("yaml")))]}
+                code, out = 200, ({"data": for_form(data), "duplicates": [d[0] for d in lib.duplicate_fields(str(body.get("yaml")))],
+                                   "comments": comments_in(str(body.get("yaml") or "").splitlines())}
                                   if data is not None else err)   # a typo isn't an HTTP error; the editor shows it
             else:
                 code, out = save(body)

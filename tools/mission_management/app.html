@@ -1256,6 +1256,25 @@ function gearRow(g = {}) {
 }
 
 // ---------- the form ----------
+// the file's # notes: kept through every save, removed one at a time only when you say so
+function notesHtml() {
+  const gone = new Set(ed.rmNotes || []);
+  return `<b>Notes in this file</b> <span class="muted" style="font-weight:400">(# comments the form can't show). They're kept when you save,
+    even on lines you change; remove one with its button.</span>
+    <ul style="list-style:none;padding:0;margin:8px 0 0">${ed.notes.map((c, i) => `<li style="display:flex;gap:10px;align-items:center;padding:3px 0">
+      <code style="${gone.has(i) ? 'text-decoration:line-through;opacity:.55' : ''}">${esc(c)}</code>
+      <button type="button" class="${gone.has(i) ? 'link' : 'btn tiny'}" data-rmnote="${i}" style="margin-left:auto;white-space:nowrap">${gone.has(i) ? 'Keep it' : 'Remove'}</button></li>`).join('')}</ul>
+    ${gone.size ? `<div class="help" style="margin-top:4px">${gone.size} note${gone.size === 1 ? '' : 's'} will be removed when you save.</div>` : ''}`;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-rmnote]');
+  if (!b) return;
+  const i = +b.dataset.rmnote, set = new Set(ed.rmNotes || []);
+  set.has(i) ? set.delete(i) : set.add(i);
+  ed.rmNotes = [...set].sort((a, c) => a - c);
+  ed.dirty = true;
+  $('#notesBox').innerHTML = notesHtml();
+});
 function renderForm(info = {}) {
   const m = ed.m, L = D.schema.limits, place = m.place || {}, kids = m.for_kids || {};
   const who = Array.isArray(m.who) ? m.who : [];
@@ -1266,8 +1285,8 @@ function renderForm(info = {}) {
   const alerts = [];
   if (info.duplicates && info.duplicates.length) alerts.push(`<div class="alert warn"><b>This file has some fields written twice</b> (${info.duplicates.map(esc).join(', ')}).
     YAML only uses the last copy, which is what the website shows and what you see here. Saving keeps just that copy.</div>`);
-  if (info.comments && info.comments.length) alerts.push(`<div class="alert warn"><b>This file has notes in it</b> that the form can't show:
-    <ul>${info.comments.map(c => `<li><code>${esc(c)}</code></li>`).join('')}</ul>They stay as long as you don't change the line they're on; if you do, you'll be asked first.</div>`);
+  ed.notes = info.comments || [];
+  if (ed.notes.length) alerts.push(`<div class="alert warn" id="notesBox">${notesHtml()}</div>`);
 
   $('#edBody').innerHTML = `${alerts.join('')}
   <fieldset><legend>Status</legend>
@@ -1505,7 +1524,7 @@ function collect() {
 // ---------- open / save ----------
 function showSheet() {
   const d = $('#editor');
-  if (!d.open) d.showModal();
+  if (!d.open) { editNav = navList.slice(); d.showModal(); }   // the list the arrows walk, frozen until you close
   $('#edBody').scrollTop = 0;
 }
 // what the dashboard says about this mission, shown at the top of the editor
@@ -1534,7 +1553,7 @@ function setMode(mode) {
 }
 async function openEditor(pack, id, keepMode = false) {
   const mode = keepMode ? ed.mode : 'form';
-  Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '' });
+  Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '', rmNotes: [] });
   $('#edTitle').textContent = 'Loading…'; $('#edPath').textContent = `missions/${pack}/${id}.yaml`;
   $('#edBody').innerHTML = ''; setMsg(''); setMode('form');
   showSheet();
@@ -1553,7 +1572,7 @@ async function openEditor(pack, id, keepMode = false) {
   checkMissionLinks(pack, id);
 }
 function startNew(pack, id, name) {
-  Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '' });
+  Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '', rmNotes: [] });
   ed.m = { draft: true, number: nextNumber(pack), name, mode: 'both', duration: 'short', effort: 'easy', cost: '$',
     setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', themes: [], tags: [] };
   $('#edTitle').textContent = name || 'New mission';
@@ -1567,7 +1586,10 @@ function startNew(pack, id, name) {
 function saveBody() {
   const b = { pack: ed.pack, id: ed.id, isNew: ed.isNew, version: ed.version };
   if (ed.mode === 'yaml') b.yaml = $('#yamlText').value;
-  else { b.data = collect(); if (ed.base) b.base = ed.base; }
+  else {
+    b.data = collect(); if (ed.base) b.base = ed.base;
+    if ((ed.rmNotes || []).length) b.removeComments = ed.rmNotes.map(i => ed.notes[i]);
+  }
   return b;
 }
 function diffHtml(lines) {
@@ -1606,6 +1628,9 @@ async function saveMission(e, why = '') {
     <ul>${b.problems.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`);
   if (approx.length) parts.push(`<div class="alert warn"><b>This mission will be live, but the file still has a note saying the pin needs checking:</b>
     <ul>${approx.map(l => `<li><code>${esc(l.trim())}</code></li>`).join('')}</ul>If you've checked it, delete the note in YAML view, or save anyway.</div>`);
+  if ((b.removing || []).length) parts.push(`<div class="alert warn"><b>${b.removing.length === 1 ? 'This note' : 'These notes'} will be removed</b>
+    ${b.removing.some(c => (ed.rmNotes || []).every(i => ed.notes[i] !== c)) ? '(publishing also removes the note on the draft line)' : '(you chose to remove them)'}:
+    <ul>${b.removing.map(c => `<li><code>${esc(c)}</code></li>`).join('')}</ul></div>`);
   if (b.lost.length) parts.push(`<div class="alert warn"><b>These notes are on lines you changed, so they'd be removed:</b>
     <ul>${b.lost.map(c => `<li><code>${esc(c)}</code></li>`).join('')}</ul>
     <label class="toggle" style="margin-top:6px"><input type="checkbox" id="dropOk"> Remove them</label>
@@ -1632,11 +1657,14 @@ async function confirmSave() {
   if (r.ok) {
     ed.dirty = false;
     if (b.unchanged) { setMsg('No changes to save.'); return; }
-    const was = ed.isNew;
-    await loadData(); render();
-    await openEditor(ed.pack, ed.id, true);          // reload what's on disk now (and its new version)
-    setMsg(`Saved to <code>${esc(b.path)}</code>. Commit when you’re ready.`, 'ok');
+    const was = ed.isNew, pack = ed.pack, id = ed.id;
+    ed.isNew = false;
     toast(was ? 'Mission created' : published ? 'Mission published' : 'Mission saved');
+    await loadData(); render();
+    // refresh the editor with what's on disk now (and its new version), unless you've closed it or moved on
+    if (!$('#editor').open || ed.pack !== pack || ed.id !== id) return;
+    await openEditor(pack, id, true);
+    setMsg(`Saved to <code>${esc(b.path)}</code>. Commit when you’re ready.`, 'ok');
     return;
   }
   setMsg(`<div class="alert bad" style="margin:0">${esc(b.error || 'Something went wrong; nothing was saved.')}
@@ -1703,7 +1731,8 @@ async function switchMode(to) {
   setMsg('');
   ed.base = $('#yamlText').value;            // keeps the notes you typed in YAML when the form saves
   ed.orig = parsed.data; ed.m = JSON.parse(JSON.stringify(parsed.data));
-  renderForm({ duplicates: parsed.duplicates });
+  ed.rmNotes = [];                            // the YAML you typed is the truth now, notes included
+  renderForm({ duplicates: parsed.duplicates, comments: parsed.comments });
   $('#edBody').insertAdjacentHTML('afterbegin', attnHtml());
   setMode('form');
 }
@@ -2338,10 +2367,13 @@ $('#ideaList').addEventListener('change', e => {
 document.querySelectorAll('[data-tabbtn]').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tabbtn)));
 
 // ---------- previous / next mission in the editor (follows the Missions list as filtered and sorted) ----------
-let navList = [];
-function stepIndex() { return ed.isNew ? -1 : navList.findIndex(m => m.pack === ed.pack && m.id === ed.id); }
+let navList = [];       // the Missions list as it is now
+let editNav = null;     // the same list as it was when the editor opened; saves that change a filter don't touch it
+$('#editor').addEventListener('close', () => { editNav = null; });
+const stepList = () => editNav || navList;
+function stepIndex() { return ed.isNew ? -1 : stepList().findIndex(m => m.pack === ed.pack && m.id === ed.id); }
 function stepUi() {
-  const i = stepIndex(), n = navList.length;
+  const i = stepIndex(), n = stepList().length;
   document.querySelectorAll('[data-steppos]').forEach(el => { el.textContent = i < 0 ? (ed.isNew ? 'new' : 'not in list') : `${i + 1} of ${n}`; });
   document.querySelectorAll('[data-step]').forEach(b => {
     const d = +b.dataset.step;
@@ -2351,7 +2383,7 @@ function stepUi() {
 document.addEventListener('click', e => {
   const b = e.target.closest('[data-step]');
   if (!b || b.disabled) return;
-  const i = stepIndex(), next = navList[i + (+b.dataset.step)];
+  const i = stepIndex(), next = stepList()[i + (+b.dataset.step)];
   if (!next) return;
   if (ed.dirty && !confirm('You have unsaved changes to this mission. Leave it without saving?')) return;
   ed.dirty = false;

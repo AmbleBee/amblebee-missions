@@ -7,9 +7,11 @@ wrapping included, so a save only touches the lines you edited. Changed or new f
 the house style: the usual key order, short lists in [square brackets], description and about as
 folded `>` blocks wrapped at 76 characters, coords with 5 decimals.
 
-`lost` lists any comments that sat on lines being rewritten or removed; the manager asks before
-dropping them. The result is always read back and compared to `data`, so a save can't quietly
-change something you didn't mean to.
+Comments (# notes) are kept: a note on a line you changed stays with that field (on the same line when
+the new value fits on one line, otherwise on its own line right after it), and a note on a field you
+removed moves to the field before it. A note only goes away when it's named in `remove` (the editor's
+per-note Remove buttons). `lost` is what was in `remove`, for the review screen. The result is always
+read back and compared to `data`, so a save can't quietly change something you didn't mean to.
 """
 import datetime
 import json
@@ -193,6 +195,78 @@ def comments_in(lines):
     return out
 
 
+INLINE = re.compile(r"\s#\s.*$")
+
+
+def _inline(line):
+    """The trailing ` # note` on a line, or None (a # inside quotes doesn't count)."""
+    m = INLINE.search(line)
+    if m and line[:m.start()].count('"') % 2 == 0 and line[:m.start()].count("'") % 2 == 0:
+        return m.group(0).strip()
+    return None
+
+
+def strip_comments(text, remove):
+    """text without the named comments, one occurrence each. A comment on its own line loses the line; one at
+    the end of a line is cut off it. # signs inside description/about text are never touched."""
+    todo = list(remove or [])
+    if not todo:
+        return text, []
+    out, done, in_block = [], [], False
+    for line in text.splitlines():
+        s = line.strip()
+        if re.match(r"^[A-Za-z_]+:\s*[>|]", line):
+            in_block = True
+            out.append(line)
+            continue
+        if in_block and (line.startswith(" ") or not s):
+            out.append(line)
+            continue
+        in_block = False
+        if s.startswith("#") and s in todo:
+            todo.remove(s)
+            done.append(s)
+            continue
+        c = _inline(line) if not s.startswith("#") else None
+        if c and c in todo:
+            todo.remove(c)
+            done.append(c)
+            line = line[:INLINE.search(line).start()].rstrip()
+        out.append(line)
+    return "\n".join(out) + ("\n" if text.endswith("\n") else ""), done
+
+
+def _carry(old_lines, new_lines):
+    """new_lines with the notes from old_lines brought along. A note at the end of a line goes back on the
+    matching line of the new block (same key at the same depth, like place > coords) when that line is a
+    one-line value; every other note follows the new block on its own line."""
+    notes = comments_in(old_lines)
+    if not notes:
+        return new_lines
+    lines = list(new_lines)
+    key_at = re.compile(r"^(\s*)(?:- )?([A-Za-z_][A-Za-z0-9_]*):")
+    in_block = False
+    for old in old_lines:
+        if re.match(r"^[A-Za-z_]+:\s*[>|]", old):
+            in_block = True
+            continue
+        if in_block and (old.startswith(" ") or not old.strip()):
+            continue
+        in_block = False
+        note = None if old.strip().startswith("#") else _inline(old)
+        m = key_at.match(old)
+        if not note or not m or note not in notes:
+            continue
+        for i, new in enumerate(lines):
+            n = key_at.match(new)
+            if n and n.group(1) == m.group(1) and n.group(2) == m.group(2) \
+                    and not new.rstrip().endswith((">", "|")) and _inline(new) is None:
+                lines[i] = f"{new}  {note}"
+                notes.remove(note)
+                break
+    return lines + notes            # at the left edge: always ends a folded block, never joins its text
+
+
 def _place_new_key(order, key):
     """Where a new key goes: after the last existing key that comes before it in ORDER."""
     rank = {k: i for i, k in enumerate(ORDER)}
@@ -204,28 +278,35 @@ def _place_new_key(order, key):
     order.insert(pos, key)
 
 
-def dump_mission(data, original=None):
-    """(text, lost_comments). Unchanged keys keep their original lines exactly."""
-    header, parts, order, old = [], {}, [], {}
+def dump_mission(data, original=None, remove=()):
+    """(text, removed_comments). Unchanged keys keep their original lines exactly; notes are kept unless named
+    in `remove`."""
+    header, parts, order, old, removed = [], {}, [], {}, []
     if original:
+        original, removed = strip_comments(original, remove)
         header, parts, order, _ = chunks(original)
         old = yaml.safe_load(original) or {}
+    was = list(order)
     order = [k for k in order if k in data]
     for k in [k for k in ORDER if k in data] + [k for k in data if k not in ORDER]:
         if k not in order:
             _place_new_key(order, k)
 
-    lines, lost = list(header), []
+    # notes on fields that are gone ride along with the nearest earlier field that's still there
+    orphans = {}
+    for i, k in enumerate(was):
+        if k not in data and comments_in(parts[k]):
+            host = next((h for h in reversed(was[:i]) if h in data), None)
+            orphans.setdefault(host, []).extend(comments_in(parts[k]))
+
+    lines = list(header) + orphans.get(None, [])
     for k in order:
         if k in parts and k in old and same_data(old[k], data[k]):
             lines += parts[k]
         else:
-            lines += render_key(k, data[k])
-            lost += comments_in(parts.get(k, []))
-    for k in parts:
-        if k not in data:
-            lost += comments_in(parts[k])
+            lines += _carry(parts.get(k, []), render_key(k, data[k]))
+        lines += orphans.get(k, [])
     text = "\n".join(lines).rstrip("\n") + "\n"
     if not same_data(yaml.safe_load(text) or {}, data):
         raise ValueError("couldn't write this mission without changing something else; nothing was saved")
-    return text, lost
+    return text, removed

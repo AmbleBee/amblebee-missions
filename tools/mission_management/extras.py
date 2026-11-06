@@ -351,11 +351,13 @@ def duplicates(missions):
     for m in ms:
         place = m.get("place") or {}
         c = place.get("coords")
-        rows.append((m["id"], _norm(m.get("name")), _norm(place.get("name")),
-                     c if isinstance(c, list) and len(c) == 2 and all(isinstance(v, (int, float)) for v in c) else None))
+        n = _norm(m.get("name"))
+        rows.append((m["id"], n, _norm(place.get("name")),
+                     c if isinstance(c, list) and len(c) == 2 and all(isinstance(v, (int, float)) for v in c) else None,
+                     len(n), set(n.split())))
     out = []
-    for i, (ia, na, pa, ca) in enumerate(rows):
-        for ib, nb, pb, cb in rows[i + 1:]:
+    for i, (ia, na, pa, ca, la, wa) in enumerate(rows):
+        for ib, nb, pb, cb, lb, wb in rows[i + 1:]:
             if frozenset((ia, ib)) in ok:
                 continue
             why = None
@@ -365,7 +367,8 @@ def duplicates(missions):
                     why = f"pins {round(d)} m apart"
             if not why and pa and pa == pb:
                 why = "same place name"
-            if not why and na and nb:
+            # titles: only worth comparing when they share a word and their lengths could reach NAME_ALIKE
+            if not why and na and nb and wa & wb and min(la, lb) / max(la, lb) >= NAME_ALIKE / (2 - NAME_ALIKE):
                 sm = difflib.SequenceMatcher(None, na, nb)
                 if sm.real_quick_ratio() >= NAME_ALIKE and sm.quick_ratio() >= NAME_ALIKE and sm.ratio() >= NAME_ALIKE:
                     why = "nearly the same title"
