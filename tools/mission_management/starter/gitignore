@@ -1,0 +1,25 @@
+# Made by the AmbleBee mission manager. Only the missions and what checks them go to GitHub;
+# everything else in this folder stays on your computer.
+#
+# Ignore everything at the top level...
+/*
+# ...except these:
+!/missions/
+!/tools/
+!/.github/
+!/README.md
+!/LICENSE
+!/.gitignore
+
+# Never pushed, even inside the folders above:
+/tools/mission_management/
+mission_management/
+mission-ideas.yaml
+releases/
+scoring.yaml
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
+
+# Want another file or folder on GitHub (icons/, a CONTRIBUTING.md)? Add a line like: !/icons/

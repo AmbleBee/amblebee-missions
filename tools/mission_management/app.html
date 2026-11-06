@@ -16,12 +16,12 @@
   --oat: #EFE7D8; --linen: #FAF5EC; --paper: #FFFDF8; --line: #E4D9C6; --line-strong: #D9CDB6;
   --ink: #4A3323; --ink-2: #6E5543; --ink-3: #8C7663;
   --sage: #566B48; --sage-tint: #E3EAD6; --honey: #D8A65A; --honey-tint: #F6E6C6; --honey-deep: #946628;
-  --a: #2a78d6; --a-soft: #9ec5f4; --b: #eb6834; --b-soft: #f6b08f; --mid: #cfc6b6;
+  --a: #2a78d6; --a-soft: #9ec5f4; --a-tint: #e3eefb; --b: #eb6834; --b-soft: #f6b08f; --mid: #cfc6b6;
   --band: rgba(86, 107, 72, .16); --band-edge: #566B48;
   --zone: rgba(86, 140, 72, .30); --zone-edge: #3F7A3A; --pin-in: #2F6B2C; --pin-out: #D9531E;
   --heat-0: #FAF5EC; --heat-1: #cde2fb; --heat-2: #86b6ef; --heat-3: #3987e5; --heat-4: #1c5cab; --heat-5: #0d366b;
   --sage-deep: #566B48; --fill: #566B48; --fill-hover: #4D6141; --fill-shadow: #445638; --walnut: #5A3E2B; --walnut-soft: #7A5A42;
-  --bad: #B3402A; --bad-tint: #F8E1DA;
+  --bad: #B3402A; --bad-tint: #F8E1DA; --ok-link: #6E4FB8; --ok-link-tint: #EDE6F8;
   --display: "Fraunces Variable", "Fraunces", Georgia, serif;
   --hand: "Caveat", "Segoe Print", cursive;
   --body: "Nunito Variable", "Nunito", "Segoe UI", system-ui, sans-serif;
@@ -33,12 +33,12 @@
     --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
     --ink: #F3E9DC; --ink-2: #D7C8B6; --ink-3: #AE9E8B;
     --sage: #9AAE85; --sage-tint: #34402B; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
-    --a: #3987e5; --a-soft: #1c5cab; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
+    --a: #3987e5; --a-soft: #1c5cab; --a-tint: #1d3350; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
     --band: rgba(154, 174, 133, .18); --band-edge: #9AAE85;
     --zone: rgba(120, 190, 110, .28); --zone-edge: #8FD08A; --pin-in: #8FD08A; --pin-out: #F08A55;
     --heat-0: #2A231D; --heat-1: #104281; --heat-2: #1c5cab; --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #9ec5f4;
     --sage-deep: #9AAE85; --fill: #4F6443; --fill-hover: #5A704B; --fill-shadow: #39492F; --walnut: #E9D9C6; --walnut-soft: #CDB9A3;
-    --bad: #F08A73; --bad-tint: #4A2620;
+    --bad: #F08A73; --bad-tint: #4A2620; --ok-link: #B49BF0; --ok-link-tint: #2E2545;
     --shadow: 0 8px 20px rgba(0, 0, 0, .3);
   }
 }
@@ -47,12 +47,12 @@
   --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
   --ink: #F3E9DC; --ink-2: #D7C8B6; --ink-3: #AE9E8B;
   --sage: #9AAE85; --sage-tint: #34402B; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
-  --a: #3987e5; --a-soft: #1c5cab; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
+  --a: #3987e5; --a-soft: #1c5cab; --a-tint: #1d3350; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
   --band: rgba(154, 174, 133, .18); --band-edge: #9AAE85;
   --zone: rgba(120, 190, 110, .28); --zone-edge: #8FD08A; --pin-in: #8FD08A; --pin-out: #F08A55;
   --heat-0: #2A231D; --heat-1: #104281; --heat-2: #1c5cab; --heat-3: #2a78d6; --heat-4: #5598e7; --heat-5: #9ec5f4;
   --sage-deep: #9AAE85; --fill: #4F6443; --fill-hover: #5A704B; --fill-shadow: #39492F; --walnut: #E9D9C6; --walnut-soft: #CDB9A3;
-  --bad: #F08A73; --bad-tint: #4A2620;
+  --bad: #F08A73; --bad-tint: #4A2620; --ok-link: #B49BF0; --ok-link-tint: #2E2545;
   --shadow: 0 8px 20px rgba(0, 0, 0, .3);
 }
 
@@ -202,7 +202,7 @@ dialog.small::backdrop { background: rgba(40, 28, 20, .35); }
 .sheet-foot { padding: 12px 22px 16px; border-top: 1px solid var(--line-strong); background: var(--paper); display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
 .sheet-foot .msg { font-size: 14px; flex: 1 1 200px; }
 .sheet-foot .msg:empty { display: none; }
-.sheet-foot #edCancel { margin-left: auto; }
+.sheet-foot #edCancel { margin-left: 0; }
 .x { appearance: none; border: 0; background: none; color: var(--ink-2); font-size: 28px; line-height: 1; cursor: pointer; margin-left: auto; padding: 0 4px; }
 fieldset { border: 0; margin: 18px 0 0; padding: 16px 18px; background: var(--paper); border-radius: 16px; box-shadow: 0 2px 0 var(--line); }
 legend { float: left; width: 100%; padding: 0; margin-bottom: 8px; font: 600 18px/1.2 var(--display); font-variation-settings: "SOFT" 100; }
@@ -243,7 +243,7 @@ dialog.small input, dialog.small select {
 .seg input:focus-visible + span { outline: 2.5px solid var(--sage); }
 .group-name { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); font-weight: 800; margin: 10px 0 5px; }
 .listrow { display: grid; grid-template-columns: 1fr auto; gap: 8px; margin-top: 6px; align-items: center; }
-.listrow.two { grid-template-columns: 1fr 1.6fr auto; }
+.listrow.two { grid-template-columns: 1fr 1.6fr auto auto; }
 .listrow.gear { grid-template-columns: 1.4fr 1fr auto; }
 .rm { appearance: none; border: 0; background: none; color: var(--ink-3); cursor: pointer; font-size: 20px; padding: 4px 8px; border-radius: 8px; }
 .rm:hover { background: var(--bad-tint); color: var(--bad); }
@@ -331,10 +331,138 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
 @media (max-width: 720px) {
   .code { height: calc(100dvh - 330px); }
 }
+dialog.small.wide { width: min(760px, calc(100vw - 32px)); }
+.setup input, .setup select, dialog.small textarea {
+  font: inherit; color: var(--ink); background: var(--linen); border: 1.5px solid var(--line-strong); border-radius: 12px;
+  padding: 8px 11px; width: 100%; min-height: 42px; }
+.setup input:focus { outline: 2.5px solid var(--sage); outline-offset: 1px; border-color: transparent; }
+.setup ul, .alert ul.files { margin: 8px 0 0; padding-left: 20px; }
+.setup li code, .files code { font-size: 13px; }
+.notjudged { font-size: 13px; color: var(--ink-3); }
+.scan h3 { margin: 16px 0 4px; }
+.scanlist { list-style: none; padding: 0; margin: 4px 0 0; }
+.scanlist li { padding: 7px 0; border-top: 1px solid var(--line); font-size: 14px; display: flex; gap: 10px; align-items: baseline; }
+.scanlist li .btn { white-space: nowrap; flex-shrink: 0; }
+.scanlist li .where { flex: 0 0 auto; font-family: ui-monospace, monospace; font-size: 12.5px; color: var(--ink-2); }
+pre.scanout { white-space: pre-wrap; font-size: 12.5px; max-height: 260px; overflow: auto; background: var(--linen);
+  padding: 8px 10px; border-radius: 10px; margin: 6px 0 0; }
+.sgrid { display: grid; grid-template-columns: minmax(0, 1fr) 84px 84px; gap: 6px 10px; align-items: center; margin-top: 8px; }
+.sgrid .hd { font-size: 12px; color: var(--ink-3); font-weight: 700; }
+.sgrid input { min-height: 36px !important; padding: 4px 8px !important; }
+.prow { display: grid; grid-template-columns: minmax(110px, 1.3fr) repeat(7, minmax(70px, 1fr)) 32px; gap: 6px; align-items: center; margin-top: 6px; }
+.prow select { min-height: 36px !important; padding: 4px 6px !important; font-size: 13px; }
+.prow.hd { font-size: 12px; color: var(--ink-3); font-weight: 700; }
+.navbtns { display: flex; flex-wrap: wrap; gap: 8px; }
+/* nothing shows until the data, the first draw and the fonts are all ready; then it fades in at once */
+main { transition: opacity .25s ease; }
+body.booting main { opacity: 0; visibility: hidden; }
+#boot { position: fixed; inset: 0; display: grid; place-content: center; justify-items: center; gap: 14px; pointer-events: none;
+  opacity: 0; animation: bootin .3s ease forwards; }
+@keyframes bootin { to { opacity: 1; } }
+#boot p { margin: 0; font-family: var(--display); font-size: 20px; color: var(--walnut, #7A5A42); }
+#boot .dots span { animation: bootdot 1.4s infinite; opacity: 0; }
+#boot .dots span:nth-child(2) { animation-delay: .2s; } #boot .dots span:nth-child(3) { animation-delay: .4s; }
+@keyframes bootdot { 0%, 20% { opacity: 0; } 40%, 100% { opacity: 1; } }
+body:not(.booting) #boot { display: none; }
+#boot svg { animation: bootbob 1.6s ease-in-out infinite; }
+@keyframes bootbob { 50% { transform: translateY(-5px); } }
+@media (prefers-reduced-motion: reduce) { main { transition: none; } #boot, #boot svg, #boot .dots span { animation: none; opacity: 1; } }
+.urlrow { display: flex; gap: 8px; align-items: center; }
+.urlrow input { flex: 1 1 auto; min-width: 0; }
+[data-checkurl] { white-space: nowrap; flex-shrink: 0; }
+.urlnote { font-size: 13px; margin-top: 4px; min-height: 0; }
+.urlnote:empty { display: none; }
+.sheet input.link-ok { border-color: var(--ok-link) !important; background: var(--ok-link-tint) !important; }
+.sheet input.link-bad { border-color: var(--bad) !important; background: var(--bad-tint) !important; }
+.sheet input.link-unk { border-color: var(--honey) !important; background: var(--honey-tint) !important; }
+.sheet input.link-wait { border-style: dashed !important; }
+.urlnote.ok { color: var(--ok-link); font-weight: 700; } .urlnote.bad { color: var(--bad); } .urlnote.unk { color: var(--honey-deep); }
+.listrow.two .urlnote { grid-column: 1 / -1; margin-top: 0; }
+.linkbox { border-radius: 14px; padding: 10px 14px; margin-top: 14px; font-size: 14px; background: var(--linen); }
+.linkbox ul { list-style: none; margin: 6px 0 0; padding: 0; }
+.linkbox li { display: flex; gap: 8px; align-items: baseline; padding: 3px 0; }
+.linkbox .st { font-weight: 800; white-space: nowrap; }
+.linkbox .st.ok { color: var(--sage); } .linkbox .st.broken { color: var(--bad); } .linkbox .st.moved, .linkbox .st.unknown { color: var(--honey-deep); }
+.linkbox .u { word-break: break-all; color: var(--ink-2); }
+.topbar { position: sticky; top: 0; z-index: 6; background: var(--oat); margin: 0 -16px; padding: 10px 16px 0; border-bottom: 1px solid var(--line); }
+.topbar .controls { position: static; border: 0; margin: 8px 0 0; padding: 4px 0; background: none; }
+.tabs { display: flex; gap: 4px; margin-top: 6px; }
+.tabs button { appearance: none; border: 0; background: none; font: inherit; font-weight: 800; font-size: 15px; color: var(--ink-2); cursor: pointer;
+  padding: 10px 16px 9px; border-bottom: 3px solid transparent; border-radius: 10px 10px 0 0; }
+.tabs button:hover { background: var(--linen); color: var(--ink); }
+.tabs button[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--sage); }
+.tabs .n { font-weight: 700; color: var(--ink-3); font-size: 13px; margin-left: 4px; }
+.tab-off { display: none !important; }
+.stepnav { display: inline-flex; align-items: center; gap: 6px; }
+.stepnav .btn { min-width: 44px; justify-content: center; font-size: 1.1rem; padding: 0 12px; }
+.stepnav .pos { font-size: 13px; color: var(--ink-3); min-width: 64px; text-align: center; font-variant-numeric: tabular-nums; }
+.sheet-head .stepnav { margin-top: 8px; }
+.sheet-foot .stepnav { margin-right: auto; }
+.chipbox.sugg input:not(:checked) + span { background: var(--a-tint); box-shadow: inset 0 0 0 2px var(--a); color: var(--ink); }
+.chipbox.sugg input:not(:checked) + span::after { content: "suggested"; margin-left: 6px; font-size: 11px; font-weight: 800; color: var(--a); }
+.themekey { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font-size: 13px; color: var(--ink-2); margin: 6px 0 2px; }
+.themekey i { display: inline-block; width: 22px; height: 14px; border-radius: 999px; vertical-align: -2px; margin-right: 5px; }
+.themekey .k-sugg { background: var(--a-tint); box-shadow: inset 0 0 0 2px var(--a); }
+.themekey .k-pick { background: var(--sage-tint); box-shadow: inset 0 0 0 2px var(--sage); }
+.packbar { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+td.pick, th.pick { width: 28px; text-align: center; }
+td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
+#bulkBar { position: sticky; bottom: 12px; z-index: 5; display: flex; flex-wrap: wrap; gap: 10px; align-items: center; background: var(--paper);
+  border-radius: 16px; padding: 10px 14px; margin-top: 12px; box-shadow: 0 0 0 2px var(--honey), 0 8px 20px rgba(40, 28, 20, .18); }
+.bulkthemes { display: flex; flex-wrap: wrap; gap: 4px; max-height: 170px; overflow: auto; margin-top: 8px; }
+.bulkthemes .chipbox span { min-height: 28px; font-size: 12.5px; padding: 0 10px; }
+.difffile { margin-top: 10px; }
+.difffile h4 { margin: 0 0 4px; font-size: 13px; font-family: ui-monospace, monospace; }
+.difffile pre { margin: 0; font-size: 12px; background: var(--linen); border-radius: 8px; padding: 6px 8px; white-space: pre-wrap; }
+.idea { display: grid; grid-template-columns: 22px 1fr auto auto; gap: 8px; align-items: center; padding: 7px 0; border-top: 1px solid var(--line); }
+.idea.done .t { text-decoration: line-through; color: var(--ink-3); }
+.idea .meta { font-size: 12px; color: var(--ink-3); }
+.ideaadd { display: grid; grid-template-columns: 1fr 160px auto; gap: 8px; margin-top: 10px; align-items: center; }
+.pv { display: grid; gap: 18px; margin-top: 12px; }
+.pv h3 { margin: 0 0 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-3); }
+.pv-ticket { background: #fffaf0; color: #3b2a1e; border-radius: 16px; padding: 16px 18px; box-shadow: inset 0 0 0 1.5px #e3d3b8; }
+.pv-ticket .t { font-family: var(--display, serif); font-size: 22px; font-weight: 700; margin: 0; }
+.pv-ticket .meta { font-size: 13px; color: #7a6450; margin-top: 2px; }
+.pv-ticket p { margin: 8px 0 0; line-height: 1.5; font-size: 14.5px; }
+.pv-ticket .chips2 span { display: inline-block; font-size: 12px; border-radius: 999px; background: #f1e4cb; padding: 1px 9px; margin: 8px 4px 0 0; }
+.pv-ticket .warn { background: #fff1b8; border-radius: 10px; padding: 6px 10px; font-size: 13px; margin-top: 10px; }
+.pv-ticket .about { border-top: 1px dashed #e3d3b8; margin-top: 12px; padding-top: 8px; font-size: 13.5px; color: #5a4636; }
+/* the Hive's mission ticket, after ui-mockups/Reveal (shared scrapbook), scaled to fit here */
+.pv-hivebg { background: #EFE7D8; border-radius: 18px; padding: 18px; }
+.hv { display: flex; filter: drop-shadow(0 8px 12px rgba(90, 62, 43, .18)); color: #5A3E2B; font-family: var(--body, sans-serif); }
+.hv-stub { width: 104px; flex-shrink: 0; background: #5F7550; border-radius: 20px 0 0 20px; color: #FFFDF8; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 6px; padding: 18px 0;
+  -webkit-mask: radial-gradient(circle at 100% 0, transparent 11px, #000 12px) top/100% 51% no-repeat, radial-gradient(circle at 100% 100%, transparent 11px, #000 12px) bottom/100% 51% no-repeat;
+          mask: radial-gradient(circle at 100% 0, transparent 11px, #000 12px) top/100% 51% no-repeat, radial-gradient(circle at 100% 100%, transparent 11px, #000 12px) bottom/100% 51% no-repeat; }
+.hv-stub .lbl { font-weight: 700; font-size: 12px; opacity: .9; }
+.hv-stub .num { font-family: var(--display, serif); font-weight: 600; font-size: 32px; line-height: 1; }
+.hv-body { flex: 1 1 0; min-width: 0; background: #FFFDF8; border-radius: 0 20px 20px 0; padding: 22px 26px 20px 24px; border-left: 3px dashed #D9CDB6;
+  -webkit-mask: radial-gradient(circle at 0 0, transparent 11px, #000 12px) top/100% 51% no-repeat, radial-gradient(circle at 0 100%, transparent 11px, #000 12px) bottom/100% 51% no-repeat;
+          mask: radial-gradient(circle at 0 0, transparent 11px, #000 12px) top/100% 51% no-repeat, radial-gradient(circle at 0 100%, transparent 11px, #000 12px) bottom/100% 51% no-repeat; }
+.hv-body h4 { margin: 0; font-family: var(--display, serif); font-weight: 600; font-size: 30px; line-height: 1.06; color: #4A3323; }
+.hv-short { margin: 10px 0 0; font-weight: 700; font-size: 16px; line-height: 1.35; color: #5A3E2B; }
+.hv-desc { margin: 8px 0 0; font-weight: 500; font-size: 14px; line-height: 1.55; color: #7A5A42; }
+.hv-chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 14px; }
+.hv-chips span { border-radius: 14px; padding: 5px 11px; font-weight: 700; font-size: 13px; background: #F1E5D2; color: #5A3E2B; }
+.hv-chips .out { background: #E3EAD6; color: #3F5235; }
+.hv-chips .when { background: #F6E6C6; }
+.hv-src { margin: 14px 0 0; padding-top: 10px; border-top: 2px dashed #E4D9C6; display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px;
+  font-weight: 600; font-size: 13px; color: #7A5A42; }
+.hv-src b { color: #4A3323; }
+.hv-src code { margin-left: auto; font-weight: 700; font-size: 12px; background: #F1E5D2; border-radius: 7px; padding: 2px 8px; color: #5A3E2B; }
 </style>
 </head>
-<body>
+<body class="booting">
+<div id="boot"><svg width="64" height="54" viewBox="0 0 52 44">
+  <path d="M6 40 h30" stroke="#7A5A42" stroke-width="3" stroke-linecap="round"/>
+  <path d="M9 40 C9 30 11 22 21 13 C31 22 33 30 33 40z" fill="#D8A65A"/>
+  <path d="M11.5 32 h19 M10 36 h22 M13.5 27 h15 M16.5 22 h9" stroke="#B5853F" stroke-width="2" stroke-linecap="round"/>
+  <path d="M17 40 v-4 a4 4 0 0 1 8 0 v4z" fill="#5A3E2B"/>
+  <ellipse cx="45" cy="14" rx="5.5" ry="4" fill="#E8B54A"/><path d="M44 10.4 v7.2 M47 10.8 v6.4" stroke="#5A3E2B" stroke-width="1.6"/>
+  <circle cx="50" cy="13.6" r="2.4" fill="#5A3E2B"/></svg>
+  <p role="status">Loading, please be patient<span class="dots"><span>.</span><span>.</span><span>.</span></span></p></div>
 <main>
+  <div class="topbar" id="topbar">
   <header class="top">
     <a class="brand" href="#" aria-label="AmbleBee Mission Management">
       <svg aria-hidden="true" width="52" height="44" viewBox="0 0 52 44">
@@ -351,19 +479,19 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
       <span>AmbleBee <em>Mission Management</em></span>
     </a>
     <nav>
-      <a href="#overview">Overview</a>
-      <a href="#missionsCard">Missions</a>
-      <button class="btn small primary" id="newBtn" type="button">+ New mission</button>
+      <span class="navbtns">
+        <button class="btn small" id="scanBtn" type="button" title="Run every check the build runs, over the whole repo">Scan for problems</button>
+        <button class="btn small" id="ideasBtn" type="button" title="A scratch list of mission ideas, kept on this computer only">Ideas</button>
+        <button class="btn small" id="settingsBtn" type="button" title="What counts as balanced (your own scoring.yaml)">Settings</button>
+        <button class="btn small" id="newPackBtn" type="button">+ New pack</button>
+        <button class="btn small primary" id="newBtn" type="button">+ New mission</button>
+      </span>
     </nav>
   </header>
-  <p class="hand tagline">Behind the hive: keep every pack well-rounded.</p>
-  <p class="sub" id="generated"></p>
-  <div id="note"></div>
-
-  <div class="controls">
+  <div class="controls" id="mainControls">
     <label>Pack <select id="pack"></select></label>
     <label><input type="checkbox" id="drafts"> Include drafts</label>
-    <label id="orderWrap">Order states by
+    <label id="orderWrap">Order packs by
       <select id="order">
         <option value="score">Biggest gap first</option>
         <option value="size">Most missions first</option>
@@ -372,18 +500,28 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
     </label>
     <button class="theme-btn" id="themeBtn" type="button">Light / dark</button>
   </div>
+  <div class="tabs" role="tablist" id="tabs" aria-label="Sections">
+    <button type="button" role="tab" data-tabbtn="missions" aria-selected="true">Missions <span class="n" id="tabN"></span></button>
+    <button type="button" role="tab" data-tabbtn="balance" aria-selected="false">Balance</button>
+    <button type="button" role="tab" data-tabbtn="themes" aria-selected="false">Themes</button>
+  </div>
+  </div>
+  <p class="hand tagline">Behind the hive: keep every pack well-rounded.</p>
+  <p class="sub" id="generated"></p>
+  <div id="note"></div>
+
 
   <div id="overview"></div>
   <div class="tiles" id="tiles"></div>
   <div id="view"><p class="sub" style="margin-top:20px">Loading missions…</p></div>
 
-  <section class="card" id="attnCard" hidden>
+  <section class="card" id="attnCard" data-tab="missions" hidden>
     <h2>Needs attention</h2>
     <p class="sub" id="attnSub"></p>
     <div class="attn" id="attn"></div>
   </section>
 
-  <section class="card" id="missionsCard">
+  <section class="card" id="missionsCard" data-tab="missions">
     <h2>Missions</h2>
     <p class="sub">Everything you've written, with the last time each file changed. Click a column to sort, click a mission to edit it.</p>
     <div class="controls filters" style="position:static;border:0;padding:6px 0;margin:8px 0 0">
@@ -406,8 +544,21 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
       </label>
       <input type="search" id="q" placeholder="Search name, theme, id…">
       <span class="muted" id="mcount"></span>
+      <span style="margin-left:auto;display:inline-flex;gap:10px;align-items:center">
+        <span class="muted" id="linkRun" style="font-size:13px"></span>
+        <button class="btn tiny" type="button" id="linkAll" title="Check every mission's website and extra links in the background">Check all links</button></span>
     </div>
     <div class="scroll"><table id="mtable"></table></div>
+    <div id="bulkBar" hidden>
+      <b id="bulkCount"></b>
+      <select id="bulkAction" aria-label="What to change">
+        <option value="">Change them…</option><option value="add_themes">Add themes</option><option value="remove_themes">Remove themes</option>
+        <option value="draft">Make drafts (hide from the site)</option><option value="checked_today">Mark checked today (and publish drafts)</option>
+      </select>
+      <button class="btn small primary" type="button" id="bulkGo" disabled>Review changes</button>
+      <button class="link" type="button" id="bulkClear">Clear selection</button>
+      <div class="bulkthemes" id="bulkThemes" hidden style="flex-basis:100%"></div>
+    </div>
   </section>
 </main>
 <div id="tip" role="tooltip"></div>
@@ -419,6 +570,9 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
       <div>
         <h2 id="edTitle">Mission</h2>
         <div class="path" id="edPath"></div>
+        <div class="stepnav" data-stepnav><button class="btn tiny" type="button" data-step="-1" title="Previous mission in the list" aria-label="Previous mission">←</button>
+          <span class="pos" data-steppos></span><button class="btn tiny" type="button" data-step="1" title="Next mission in the list" aria-label="Next mission">→</button></div>
+        <button class="link" type="button" id="edReveal" style="font-size:13px" title="Open this file's folder in your file browser, to send or back it up">Show in folder</button>
         <div class="modeswitch"><div class="seg" role="radiogroup" aria-label="Edit with">
           <label><input type="radio" name="edMode" value="form" checked><span>Form</span></label>
           <label><input type="radio" name="edMode" value="yaml"><span>YAML</span></label>
@@ -435,8 +589,11 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
       <div class="yamlstatus" id="yamlStatus" aria-live="polite"></div>
     </div>
     <div class="sheet-foot">
+      <div class="stepnav" data-stepnav><button class="btn tiny" type="button" data-step="-1" title="Previous mission in the list" aria-label="Previous mission">←</button>
+        <span class="pos" data-steppos></span><button class="btn tiny" type="button" data-step="1" title="Next mission in the list" aria-label="Next mission">→</button></div>
       <div class="msg" id="edMsg"></div>
       <button class="btn small" type="button" id="edCancel">Close</button>
+      <button class="btn small" type="button" id="edPreview" title="How it will look on the website and the Hive">Preview</button>
       <button class="btn small publish" type="button" id="edPublish" hidden title="Sets checked to today, removes draft, then shows you the change">Checked today, publish</button>
       <button class="btn small primary" type="submit" id="edSave">Review and save</button>
     </div>
@@ -458,13 +615,101 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
     <p class="sub">It starts as a draft, so nothing goes live until you check it and publish.</p>
     <div class="f"><label for="nPack">Pack</label><select id="nPack"></select></div>
     <div class="f"><label for="nName">Mission name</label><input type="text" id="nName" required placeholder="Sunset at Cape Kiwanda"></div>
-    <div class="f"><label for="nId">File name (the permanent id) <span class="help">lowercase-with-dashes</span></label><input type="text" id="nId" required pattern="[a-z0-9][a-z0-9-]*"></div>
+    <div class="f"><label for="nId">File name (the permanent id) <span class="help">lowercase-with-dashes</span></label><input type="text" id="nId" required pattern="[a-z0-9][a-z0-9\-]*"></div>
     <div class="alert bad" id="nErr" hidden></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
       <button class="btn small" value="cancel" formnovalidate>Cancel</button>
       <button class="btn small primary" id="nGo" value="go">Start writing</button>
     </div>
   </form>
+</dialog>
+
+<dialog class="small" id="packDlg" aria-labelledby="packTitle">
+  <form method="dialog" id="packForm">
+    <h2 id="packTitle">New pack</h2>
+    <p class="sub" id="packSub">A pack is any set of missions people can add or skip on their own: a state, a city, or a theme
+      like Oregon Waterfalls or Cozy Nights In.</p>
+    <div class="f"><label for="pkName">Pack name <span class="help">40 characters max</span></label><input type="text" id="pkName" maxlength="40" placeholder="Oregon Waterfalls"></div>
+    <div class="f"><label for="pkId">Folder name (permanent) <span class="help">lowercase-with-dashes</span></label><input type="text" id="pkId" pattern="[a-z0-9][a-z0-9\-]*"></div>
+    <div class="f"><label for="pkRegion">Where it applies <span class="help">a state, a city, or Anywhere</span></label><input type="text" id="pkRegion" maxlength="40" placeholder="Oregon"></div>
+    <div class="f"><label for="pkDesc">Description <span class="help">one or two sentences</span></label><input type="text" id="pkDesc" maxlength="200" placeholder="Every waterfall worth the walk, from the Gorge to the Cascades."></div>
+    <div class="f" id="pkIconWrap"><label for="pkIcon">Icon</label><select id="pkIcon"></select></div>
+    <div class="f"><label for="pkPlaces">Do missions need a real place?</label>
+      <select id="pkPlaces">
+        <option value="required">Yes: every mission is a real spot with a map pin</option>
+        <option value="optional" selected>Sometimes: some are places, some aren't</option>
+        <option value="none">No: missions work anywhere (at home, any town)</option>
+      </select></div>
+    <div class="alert bad" id="pkErr" hidden></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+      <button class="btn small" value="cancel" formnovalidate>Cancel</button>
+      <button class="btn small primary" value="go">Make the pack</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="small wide" id="setDlg" aria-labelledby="setTitle">
+  <form method="dialog" id="setForm">
+    <h2 id="setTitle">Settings: what counts as balanced</h2>
+    <p class="sub">These are yours: they live in <code id="setFile">scoring.yaml</code> next to the manager, git never sees them,
+      and they only change how this dashboard judges packs, never the missions themselves. Shares are percentages of a pack's missions;
+      "either" and "both" count half each way.</p>
+    <div id="setBody"></div>
+    <div class="alert warn" id="setNote" hidden></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap">
+      <button class="btn small" type="button" id="setReset" style="margin-right:auto">Reset to defaults</button>
+      <button class="btn small" value="cancel" formnovalidate>Cancel</button>
+      <button class="btn small primary" value="go">Save settings</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="small wide" id="pvDlg" aria-labelledby="pvTitle">
+  <h2 id="pvTitle">Preview</h2>
+  <p class="sub" id="pvSub">From what's in the form right now, saved or not.</p>
+  <div class="pv" id="pvBody"></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn small primary" type="button" id="pvClose">Close</button></div>
+</dialog>
+
+<dialog class="small wide" id="bulkDlg" aria-labelledby="bulkTitle">
+  <h2 id="bulkTitle">Check before saving</h2>
+  <div class="alert warn" id="bulkWarn"></div>
+  <div id="bulkBody" style="max-height:52vh;overflow:auto"></div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+    <button class="btn small" type="button" id="bulkBack">Cancel</button>
+    <button class="btn small primary" type="button" id="bulkSave">Save</button>
+  </div>
+</dialog>
+
+<dialog class="small wide" id="ideasDlg" aria-labelledby="ideasTitle">
+  <h2 id="ideasTitle">Ideas</h2>
+  <p class="sub">A scratch list for "maybe a mission someday." It lives in <code>mission-ideas.yaml</code> in the repo, which git ignores,
+    so nothing here gets pushed. Saved as you go.</p>
+  <div class="ideaadd setup"><input type="text" id="ideaText" maxlength="300" placeholder="Newport lighthouse at dusk?">
+    <select id="ideaPack" aria-label="Pack"></select><button class="btn small primary" type="button" id="ideaAdd">Add</button></div>
+  <label style="display:block;margin-top:10px;font-size:14px"><input type="checkbox" id="ideaShowDone"> Show done ones</label>
+  <div id="ideaList"></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn small primary" type="button" id="ideasClose">Close</button></div>
+</dialog>
+
+<dialog class="small" id="relDlg" aria-labelledby="relTitle">
+  <h2 id="relTitle">Release a pack</h2>
+  <div id="relBody"></div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap">
+    <button class="btn small" type="button" id="relShow" hidden>Show in folder</button>
+    <a class="btn small" id="relDownload" hidden>Download zip</a>
+    <button class="btn small primary" type="button" id="relClose">Close</button>
+  </div>
+</dialog>
+
+<dialog class="small wide" id="scanDlg" aria-labelledby="scanTitle">
+  <h2 id="scanTitle">Scan for problems</h2>
+  <p class="sub">Every check the build runs, over every mission and pack. Click a mission to open it.</p>
+  <div class="scan" id="scanBody"></div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+    <button class="btn small" type="button" id="scanAgain">Scan again</button>
+    <button class="btn small primary" type="button" id="scanClose">Close</button>
+  </div>
 </dialog>
 
 <script>
@@ -483,34 +728,56 @@ const packName = id => D.packs[id] || id;
 const shortName = id => packName(id).replace(/^Amble /, '');
 
 const PAGE = 100;
-const state = { shown: PAGE, pack: 'all', drafts: true,
+const state = { shown: PAGE, pack: 'all', drafts: true, tab: 'missions',
   order: 'score', msort: 'edited:desc', q: '', status: '', issue: '', theme: '' };
-const HOT = ['fails-check', 'doubled', 'caution-expired'];   // these block or mislead; the rest are reminders
+const KEEP = ['pack', 'drafts', 'tab', 'order', 'msort', 'q', 'status', 'issue', 'theme'];   // remembered between visits
+try { Object.assign(state, Object.fromEntries(Object.entries(JSON.parse(localStorage.getItem('amble-mm-state') || '{}')).filter(([k]) => KEEP.includes(k)))); } catch (e) {}
+function keepState() { try { localStorage.setItem('amble-mm-state', JSON.stringify(Object.fromEntries(KEEP.map(k => [k, state[k]])))); } catch (e) {} }
+function applyTab() {
+  document.querySelectorAll('[data-tab]').forEach(el => el.classList.toggle('tab-off', el.dataset.tab !== 'all' && el.dataset.tab !== state.tab));
+  document.querySelectorAll('[data-tabbtn]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tabbtn === state.tab)));
+  $('#orderWrap').style.display = state.pack === 'all' && state.tab === 'balance' ? '' : 'none';
+}
+function setTab(t) { state.tab = t; applyTab(); keepState(); scrollTo({ top: 0 }); }
+const HOT = ['fails-check', 'doubled', 'caution-expired', 'link-broken'];   // these block or mislead; the rest are reminders
 try { const t = localStorage.getItem('amble-mm-theme'); if (t) document.documentElement.dataset.theme = t; } catch (e) {}
 
-// ---------- scoring (targets come from coverage.py) ----------
+// ---------- scoring (bands come from scoring.yaml, per pack) ----------
+const DIMS = () => D.settings.show;            // the bars chosen in Settings, in order
+const ALL_DIMS = () => Object.keys(D.dims);
+function rulesFor(pid) {
+  if (D.rules[pid]) return D.rules[pid];
+  return { dims: Object.fromEntries(DIMS().map(k => [k, { ...D.dims[k], ...D.settings.balance[k] }])),
+           top_theme_max: D.settings.top_theme_max, gap_finder: pid !== 'general' };
+}
 function shareA(dim, ms) {
   if (!ms.length) return 0;
   let a = 0;
   for (const m of ms) {
     if (dim === 'setting') a += m.setting === 'indoor' ? 1 : m.setting === 'either' ? .5 : 0;
     else if (dim === 'cost') a += (m.cost === 'free' || m.cost === '$') ? 1 : 0;
+    else if (dim === 'season') a += winterOk(m) ? 1 : 0;
+    else if (dim === 'time') a += (m.time === 'evening' || m.time === 'night') ? 1 : (m.time === 'any' || !m.time) ? .5 : 0;
     else a += m.mode === 'date' ? 1 : m.mode === 'both' ? .5 : 0;
   }
   return a / ms.length;
 }
-function toFix(dim, ms) {
-  const t = D.targets[dim], n = ms.length, s = shareA(dim, ms), a = s * n;
+const winterOk = m => !m.season || m.season === 'any' || (Array.isArray(m.season) && m.season.includes('winter'));
+const warmOnly = m => !winterOk(m);
+function toFix(dim, ms, t) {
+  const n = ms.length, s = shareA(dim, ms), a = s * n;
   if (s < t.low) return [t.side_a, Math.ceil((t.low * n - a) / (1 - t.low) - 1e-9)];
   if (s > t.high) return [t.side_b, Math.ceil((a - t.high * n) / t.high - 1e-9)];
   return [null, 0];
 }
-function report(ms) {
-  const r = { n: ms.length, dims: {}, score: 0 };
-  for (const dim of Object.keys(D.targets)) {
-    const t = D.targets[dim], s = shareA(dim, ms);
+function report(ms, pid) {
+  const R = rulesFor(pid);
+  const r = { n: ms.length, dims: {}, score: 0, rule: R };
+  for (const dim of DIMS()) {
+    const t = R.dims[dim], s = shareA(dim, ms);
+    if (!t) { r.dims[dim] = { share: s, off: 0, side: null, need: 0, skip: true }; continue; }
     const off = Math.max(0, t.low - s, s - t.high);
-    const [side, need] = toFix(dim, ms);
+    const [side, need] = toFix(dim, ms, t);
     r.dims[dim] = { share: s, off, side, need };
     r.score += off;
   }
@@ -519,7 +786,7 @@ function report(ms) {
   for (const k of THEME_KEYS) if (tc[k] > topN) { top = k; topN = tc[k]; }
   const topShare = ms.length ? topN / ms.length : 0;
   r.themes = { counts: tc, used: THEME_KEYS.filter(k => tc[k]).length, top, topShare,
-    missing: THEME_KEYS.filter(k => !tc[k]), off: Math.max(0, topShare - D.topThemeMax) };
+    missing: THEME_KEYS.filter(k => !tc[k]), off: R.top_theme_max == null ? 0 : Math.max(0, topShare - R.top_theme_max) };
   r.score = Math.round((r.score + r.themes.off) * 100);
   return r;
 }
@@ -537,10 +804,10 @@ function byPack(ms) {
   for (const m of ms) (g[m.pack] ||= []).push(m);
   return g;
 }
-function statePacks(ms) {
+function packRows(ms) {
   const g = byPack(ms);
-  const rows = Object.entries(g).filter(([p]) => !D.nonState.includes(p))
-    .map(([p, list]) => ({ id: p, ms: list, rep: report(list), small: list.length < D.minMissions }));
+  const rows = Object.entries(g).filter(([p, list]) => p !== 'general' || list.length)
+    .map(([p, list]) => ({ id: p, ms: list, rep: report(list, p), small: list.length < D.minMissions }));
   const by = { score: (a, b) => (a.small - b.small) || (b.rep.score - a.rep.score) || (b.ms.length - a.ms.length),
                size: (a, b) => b.ms.length - a.ms.length || shortName(a.id).localeCompare(shortName(b.id)),
                name: (a, b) => shortName(a.id).localeCompare(shortName(b.id)) };
@@ -562,7 +829,8 @@ document.addEventListener('mousemove', e => {
 // ---------- balance gauges ----------
 // left end = none of side A (all side B), right end = all side A; the green zone is the target band
 function gauge(dim, ms, rep, packLabel, big = false) {
-  const t = D.targets[dim], d = rep.dims[dim], inside = !d.off;
+  const t = rep.rule.dims[dim], d = rep.dims[dim], inside = !d.off;
+  if (!t) return `<div class="gcell notjudged" title="Turned off for this pack in Settings">not judged</div>`;
   const counts = parts(dim, ms).map(([n, , l]) => `${l} ${n}`).join(' · ');
   const verdict = inside ? 'inside the green zone' : `outside the green zone: add about ${d.need} ${d.side}`;
   const tip = `<b>${esc(packLabel)}</b><br>${counts}<br>${pct(d.share)} ${esc(t.side_a)}, aim ${pct(t.low)}–${pct(t.high)}<br>${verdict}`;
@@ -573,13 +841,13 @@ function gauge(dim, ms, rep, packLabel, big = false) {
     <div class="gval">${pct(d.share)}<span class="ic ${inside ? 'in' : 'out'}" aria-hidden="true">${inside ? '✓' : '!'}</span></div></div>`;
 }
 function gaugeEnds(dim) {
-  const t = D.targets[dim];
+  const t = D.dims[dim];
   return `<div class="gends"><span>← all ${esc(t.side_b)}</span><span>all ${esc(t.side_a)} →</span></div>`;
 }
 // ---------- stacked bars ----------
 // parts: [[count, color, label]...]; band in share-of-A terms; share = the marker position
 function stack(parts, total, dim, rep, packLabel) {
-  const t = D.targets[dim], d = rep.dims[dim];
+  const t = rep.rule.dims[dim] || { low: 0, high: 0, label: D.dims[dim].label }, d = rep.dims[dim];
   const segs = parts.filter(p => p[0] > 0).map(([n, col, label]) =>
     `<span style="flex:${n};background:${col}" data-tip="<b>${esc(packLabel)}</b><br>${esc(label)}: ${n} of ${total} (${pct(n / total)})"></span>`).join('');
   const band = `<div class="bandbox" style="left:${t.low * 100}%;width:${(t.high - t.low) * 100}%"></div>`;
@@ -590,14 +858,24 @@ function stack(parts, total, dim, rep, packLabel) {
 function parts(dim, ms) {
   if (dim === 'setting') return [[count(ms, 'setting', 'indoor'), 'var(--a)', 'Indoor'], [count(ms, 'setting', 'either'), 'var(--mid)', 'Either'], [count(ms, 'setting', 'outdoor'), 'var(--b)', 'Outdoor']];
   if (dim === 'cost') return [[count(ms, 'cost', 'free'), 'var(--a)', 'Free'], [count(ms, 'cost', '$'), 'var(--a-soft)', '$ (under $20 for two)'], [count(ms, 'cost', '$$'), 'var(--b-soft)', '$$ ($20–60)'], [count(ms, 'cost', '$$$'), 'var(--b)', '$$$ (over $60)']];
+  if (dim === 'season') return [[ms.filter(m => !m.season || m.season === 'any').length, 'var(--a)', 'Any season'],
+    [ms.filter(m => Array.isArray(m.season) && m.season.includes('winter')).length, 'var(--a-soft)', 'Includes winter'],
+    [ms.filter(warmOnly).length, 'var(--b)', 'Warm seasons only']];
+  if (dim === 'time') return [[ms.filter(m => m.time === 'evening' || m.time === 'night').length, 'var(--a)', 'Evening or night'],
+    [ms.filter(m => m.time === 'any' || !m.time).length, 'var(--mid)', 'Any time'],
+    [ms.filter(m => m.time === 'morning' || m.time === 'daytime').length, 'var(--b)', 'Morning or daytime']];
   return [[count(ms, 'mode', 'date'), 'var(--a)', 'Date only'], [count(ms, 'mode', 'both'), 'var(--mid)', 'Both'], [count(ms, 'mode', 'adventure'), 'var(--b)', 'Adventure only']];
 }
 const LEGENDS = {
   setting: [['var(--a)', 'Indoor'], ['var(--mid)', 'Either'], ['var(--b)', 'Outdoor']],
   cost: [['var(--a)', 'Free'], ['var(--a-soft)', '$'], ['var(--b-soft)', '$$'], ['var(--b)', '$$$']],
   mode: [['var(--a)', 'Date'], ['var(--mid)', 'Both'], ['var(--b)', 'Adventure']],
+  season: [['var(--a)', 'Any season'], ['var(--a-soft)', 'Has winter'], ['var(--b)', 'Warm only']],
+  time: [['var(--a)', 'Evening/night'], ['var(--mid)', 'Any time'], ['var(--b)', 'Day']],
 };
-const DIM_TITLE = { setting: 'Indoor vs outdoor', cost: 'Cheap vs pricier', mode: 'Date vs adventure' };
+const DIM_TITLE = { setting: 'Indoor vs outdoor', cost: 'Cheap vs pricier', mode: 'Date vs adventure',
+  season: 'Winter vs warm-season', time: 'Evening vs daytime' };
+const DIM_SHORT = { setting: 'Indoor', cost: 'Cheap', mode: 'Date', season: 'Winter', time: 'Evening' };
 function legend(dim) {
   return LEGENDS[dim].map(([c, l]) => `<span><i style="background:${c}"></i>${l}</span>`).join('');
 }
@@ -611,8 +889,8 @@ function fixChips(rep) {
 
 // ---------- views ----------
 function renderTiles(ms) {
-  const rows = statePacks(ms);
-  const ranked = rows.filter(r => !r.small);
+  const rows = packRows(ms);
+  const ranked = rows.filter(r => !r.small && r.rep.rule.gap_finder);
   const gaps = ranked.filter(r => r.rep.score > 0).length;
   const scope = state.pack === 'all' ? ms : ms.filter(m => m.pack === state.pack);
   const live = scope.filter(m => !m.draft).length;
@@ -621,10 +899,10 @@ function renderTiles(ms) {
     ['Drafts', scope.filter(m => m.draft).length, state.drafts ? 'counted' : 'hidden'],
   ];
   if (state.pack === 'all') {
-    tiles.push(['States with 10+', ranked.length, `of ${rows.length}`]);
-    tiles.push(['States with a gap', gaps, 'outside a band']);
+    tiles.push([`Packs with ${D.minMissions}+`, ranked.length, `of ${rows.length}`]);
+    tiles.push(['Packs with a gap', gaps, 'outside a band']);
   } else {
-    const r = report(scope);
+    const r = report(scope, state.pack);
     tiles.push(['Themes used', r.themes.used, `of ${THEME_KEYS.length}`]);
     tiles.push(['Gap score', r.score, scope.length < D.minMissions ? 'too few to judge' : 'pts outside bands']);
   }
@@ -633,49 +911,50 @@ function renderTiles(ms) {
 }
 
 function renderAll(ms) {
-  const rows = statePacks(ms);
-  const ranked = rows.filter(r => !r.small);
+  const rows = packRows(ms);
+  const ranked = rows.filter(r => !r.small && r.rep.rule.gap_finder);
   const gapRows = [...ranked].sort((a, b) => b.rep.score - a.rep.score);
   const maxScore = Math.max(1, ...gapRows.map(r => r.rep.score));
 
   const gapHtml = `
-  <section class="card">
+  <section class="card" data-tab="balance">
     <h2>Gap finder</h2>
-    <p class="sub">States with ${D.minMissions}+ missions, ranked by how far they sit outside the target bands
+    <p class="sub">Packs with ${D.minMissions}+ missions, ranked by how far they sit outside the target bands
       (points = percentage points outside, summed). The chips say roughly how many missions would bring each back in. Click a row to open it.</p>
     <div class="scroll"><table>
-      <thead><tr><th>State</th><th class="num">Missions</th><th>Gap</th><th>Indoor</th><th>Cheap</th><th>Date</th><th>Top theme</th><th>To fix</th></tr></thead>
+      <thead><tr><th>Pack</th><th class="num">Missions</th><th>Gap</th>${DIMS().map(d => `<th>${DIM_SHORT[d]}</th>`).join('')}<th>Top theme</th><th>To fix</th></tr></thead>
       <tbody>${gapRows.map(r => {
         const d = r.rep.dims, flag = (dim) => d[dim].off ? ' style="color:var(--b);font-weight:700"' : '';
+        const cell = (dim) => d[dim].skip ? '<td class="muted">–</td>' : `<td${flag(dim)}>${pct(d[dim].share)}</td>`;
         return `<tr class="click" data-pack="${r.id}">
           <td>${esc(shortName(r.id))}</td><td class="num">${r.ms.length}</td>
           <td><div class="score"><div class="bar" style="width:${r.rep.score / maxScore * 90}px;${r.rep.score ? '' : 'background:var(--line)'}"></div><span class="muted">${r.rep.score}</span></div></td>
-          <td${flag('setting')}>${pct(d.setting.share)}</td><td${flag('cost')}>${pct(d.cost.share)}</td><td${flag('mode')}>${pct(d.mode.share)}</td>
+          ${DIMS().map(cell).join('')}
           <td${r.rep.themes.off ? ' style="color:var(--b);font-weight:700"' : ''}>${esc(D.themes[r.rep.themes.top] || '–')} ${pct(r.rep.themes.topShare)}</td>
           <td>${fixChips(r.rep)}</td></tr>`;
-      }).join('') || '<tr><td colspan="8" class="muted">No state has 10 missions yet with these filters.</td></tr>'}</tbody>
+      }).join('') || '<tr><td colspan="${5 + DIMS().length}" class="muted">No pack has ${D.minMissions} missions yet with these filters.</td></tr>'}</tbody>
     </table></div>
-    <p class="sub" style="margin-top:10px">Too small to judge (under ${D.minMissions}): ${rows.filter(r => r.small).length} states. They're still in the charts below, faded.</p>
+    <p class="sub" style="margin-top:10px">Too small to judge (under ${D.minMissions}): ${rows.filter(r => r.small).length} packs.
+      ${rows.filter(r => !r.small && !r.rep.rule.gap_finder).length ? `Left out of the ranking in Settings: ${rows.filter(r => !r.small && !r.rep.rule.gap_finder).map(r => esc(shortName(r.id))).join(', ')}.` : ''}
+      They're all still in the charts below.</p>
   </section>`;
 
-  const anywhere = byPack(ms).anywhere || [];
-    const line = (r) => {
+  const line = (r) => {
     const label = shortName(r.id);
-    const cells = Object.keys(D.targets).map(dim => {
+    const cells = DIMS().map(dim => {
       return `<div class="${r.small ? 'small' : ''}">${r.ms.length ? gauge(dim, r.ms, r.rep, label) : ''}</div>`;
     }).join('');
     return `<div class="nm ${r.small ? 'small' : ''}" data-pack="${r.id}" title="Open ${esc(packName(r.id))}">${esc(label)} <span class="n">${r.ms.length}</span></div>${cells}`;
   };
   const balanceHtml = `
-  <section class="card">
-    <h2>Balance by state</h2>
+  <section class="card" data-tab="balance">
+    <h2>Balance by pack</h2>
     <p class="sub">Aim for the dot to land between the green lines. A green dot is balanced; an orange dot (with a !) is outside
-      the zone. Hover a bar for the counts. "Either" and "both" missions count half each way. Faded states have under ${D.minMissions} missions.</p>
-    <div class="scroll"><div class="balance" style="margin-top:12px;min-width:560px">
-      <div class="hd">State</div>
-      ${Object.keys(D.targets).map(d => `<div class="hd">${DIM_TITLE[d]}${gaugeEnds(d)}</div>`).join('')}
-      ${anywhere.length ? `${line({ id: 'anywhere', ms: anywhere, rep: report(anywhere), small: false })}<div class="divider">States</div>` : ''}
-      ${rows.map(line).join('')}
+      the zone. Hover a bar for the counts. "Either" and "both" missions count half each way. Faded packs have under ${D.minMissions} missions; "not judged" is turned off for that pack in Settings.</p>
+    <div class="scroll"><div class="balance" style="margin-top:12px;min-width:${130 + 150 * DIMS().length}px;grid-template-columns:130px repeat(${DIMS().length}, minmax(140px, 1fr))">
+      <div class="hd">Pack</div>
+      ${DIMS().map(d => `<div class="hd">${DIM_TITLE[d]}${gaugeEnds(d)}</div>`).join('')}
+      ${rows.map(line).join('') || '<div class="muted" style="grid-column:1/-1">No packs yet. Make one with + New pack.</div>'}
     </div></div>
     <div class="legend" style="margin-top:14px"><span><i class="zone"></i>Balanced zone</span><span><i class="pin" style="background:var(--pin-in)"></i>Inside ✓</span><span><i class="pin" style="background:var(--pin-out)"></i>Outside !</span></div>
   </section>`;
@@ -684,10 +963,10 @@ function renderAll(ms) {
   const STEPS = [1, 2, 4, 8, 14];   // 1 · 2-3 · 4-7 · 8-13 · 14+
   const step = c => c === 0 ? 0 : STEPS.filter(x => c >= x).length;
   const heatHtml = `
-  <section class="card">
+  <section class="card" data-tab="themes">
     <h2>Theme coverage</h2>
-    <p class="sub">How many missions each state has per theme. Empty outlined squares are themes the state doesn't have yet.
-      Not every state needs every theme (no deserts in Vermont), but empty columns across your big states are worth a look.</p>
+    <p class="sub">How many missions each pack has per theme. Empty outlined squares are themes the pack doesn't have yet.
+      Not every pack needs every theme (no deserts in Vermont), but empty columns across your big packs are worth a look.</p>
     <div class="legend">${['1', '2–3', '4–7', '8–13', '14+'].map((l, i) => `<span><i style="background:var(--heat-${i + 1})"></i>${l}</span>`).join('')}
       <span><i style="background:var(--heat-0);box-shadow:inset 0 0 0 1px var(--line-strong)"></i>none</span></div>
     <div class="scroll"><table class="heat">
@@ -704,11 +983,14 @@ function renderAll(ms) {
 
 function renderPack(ms) {
   const list = ms.filter(m => m.pack === state.pack);
-  const rep = report(list);
+  const rep = report(list, state.pack);
   const name = packName(state.pack);
+  const pinfo = D.packInfo[state.pack] || {};
   const small = list.length < D.minMissions;
-  const dims = Object.entries(D.targets).map(([dim, t]) => {
-    const d = rep.dims[dim];
+  const dims = DIMS().map(dim => {
+    const t = rep.rule.dims[dim], d = rep.dims[dim];
+    if (!t) return `<div class="dim"><h3>${DIM_TITLE[dim]}</h3><div class="big">${pct(d.share)} <span class="sub" style="font-family:var(--body);font-size:14px">${esc(D.dims[dim].side_a)}</span></div>
+      <div class="notjudged" style="margin-top:6px">Not judged for this pack (turned off in Settings).</div></div>`;
     const verdict = !list.length ? '' : small ? '<span class="muted">Too few missions to judge</span>'
       : d.off ? `<span class="fix">Add about ${d.need} ${esc(d.side)}</span>` : '<span class="ok">✓ Inside the green zone</span>';
     const counts = parts(dim, list).map(([n], i) => `${LEGENDS[dim][i][1]} ${n}`).join(' · ');
@@ -723,22 +1005,30 @@ function renderPack(ms) {
   const tc = rep.themes.counts;
   const used = THEME_KEYS.filter(k => tc[k]).sort((a, b) => tc[b] - tc[a]);
   const maxT = Math.max(1, ...used.map(k => tc[k]));
-  const leanCut = D.topThemeMax * list.length;
+  const leanCut = rep.rule.top_theme_max == null ? Infinity : rep.rule.top_theme_max * list.length;
   const themeHtml = used.map(k => `<div>${esc(D.themes[k])}</div>
     <div><div class="tb ${tc[k] > leanCut ? 'lean' : ''}" style="width:${tc[k] / maxT * 100}%" data-tip="<b>${esc(D.themes[k])}</b><br>${tc[k]} of ${list.length} missions (${pct(tc[k] / Math.max(1, list.length))})"></div></div>
     <div class="tc">${tc[k]}</div>`).join('');
 
   $('#view').innerHTML = `
-  <section class="card">
+  <section class="card" data-tab="all">
     <h2>${esc(name)}</h2>
     <p class="sub">${list.length} missions${state.drafts ? ` (${list.filter(m => !m.draft).length} live, ${list.filter(m => m.draft).length} drafts)` : ', live only'}.
-      <button class="link" data-pack="all">Back to all states</button></p>
+      ${pinfo.region ? `${esc(pinfo.region)} · ` : ''}${{ required: 'every mission has a place', optional: 'places optional', none: 'no places (works anywhere)' }[pinfo.places] || ''}.
+      <button class="link" data-pack="all">Back to all packs</button></p>
+    <div class="packbar">${state.pack !== 'general' ? `<button class="btn tiny" type="button" data-editpack="${esc(state.pack)}">Edit pack</button>
+      <button class="btn tiny" type="button" data-release="${esc(state.pack)}" title="Zip this pack's live missions to send someone">Release pack (zip)</button>
+      <button class="btn tiny" type="button" data-reveal="${esc(state.pack)}/pack.yaml">Show in folder</button>` : ''}</div>
+    ${pinfo.description ? `<p style="margin:8px 0 0">${esc(pinfo.description)}</p>` : ''}
+  </section>
+  <section class="card" data-tab="balance">
+    <h2>Balance</h2>
     <div class="dims" style="margin-top:14px">${dims}</div>
   </section>
-  <section class="card">
+  <section class="card" data-tab="themes">
     <h2>Themes</h2>
     <p class="sub">${rep.themes.used} of ${THEME_KEYS.length} themes used.
-      ${rep.themes.off && !small ? `<b style="color:var(--b)">${esc(D.themes[rep.themes.top])}</b> is on more than ${pct(D.topThemeMax)} of this pack (orange bars).` : ''}</p>
+      ${rep.themes.off && !small ? `<b style="color:var(--b)">${esc(D.themes[rep.themes.top])}</b> is on more than ${pct(rep.rule.top_theme_max)} of this pack (orange bars).` : ''}</p>
     <div class="themebars" style="margin-top:12px">${themeHtml || '<div class="muted">No missions yet.</div>'}</div>
     ${rep.themes.missing.length ? `<h3 style="margin-top:16px">No missions yet</h3>
       <p style="margin:6px 0 0">${rep.themes.missing.map(k => `<span class="chip">${esc(D.themes[k])}</span>`).join('')}</p>` : ''}
@@ -788,10 +1078,14 @@ function renderTable(ms) {
     return (dir === 'asc' ? c : -c) || a.name.localeCompare(b.name);
   });
   $('#mcount').textContent = `${list.length} mission${list.length === 1 ? '' : 's'}`;
+  navList = list; $('#tabN').textContent = list.length; keepState(); stepUi();
   const total = list.length;
   list = list.slice(0, state.shown);
-  const head = `<thead><tr>${COLS.map(([k, l, c]) => `<th class="sortable ${c || ''}" data-sort="${k}">${l}${key === k ? ` <span class="arrow">${dir === 'asc' ? '↑' : '↓'}</span>` : ''}</th>`).join('')}</tr></thead>`;
+  shownRows = list;
+  const allOn = list.length && list.every(m => sel.has(`${m.pack}/${m.id}`));
+  const head = `<thead><tr><th class="pick"><input type="checkbox" id="pickAll" ${allOn ? 'checked' : ''} aria-label="Select all shown" title="Select all shown"></th>${COLS.map(([k, l, c]) => `<th class="sortable ${c || ''}" data-sort="${k}">${l}${key === k ? ` <span class="arrow">${dir === 'asc' ? '↑' : '↓'}</span>` : ''}</th>`).join('')}</tr></thead>`;
   const body = list.map(m => `<tr class="click" tabindex="0" data-edit="${m.pack}/${m.id}" title="Edit ${esc(m.name)}">
+    <td class="pick"><input type="checkbox" data-pick="${m.pack}/${m.id}" ${sel.has(`${m.pack}/${m.id}`) ? 'checked' : ''} aria-label="Select ${esc(m.name)}"></td>
     <td class="num muted">${m.number ?? ''}</td>
     <td>${esc(m.name)}<div class="muted" style="font-size:12px">${esc(m.id)}</div></td>
     <td>${esc(shortName(m.pack))}</td><td>${esc(m.mode)}</td><td>${esc(m.setting)}</td><td>${esc(m.cost)}</td>
@@ -801,31 +1095,36 @@ function renderTable(ms) {
     <td class="num">${m.added || ''}</td>
     <td class="num">${m.edited || ''}${m.uncommitted ? ' <span class="chip new" title="Changed but not committed yet">unsaved</span>' : ''}</td>
   </tr>`).join('');
-  const more = total > list.length ? `<tfoot><tr><td colspan="${COLS.length}" style="border:0;padding-top:12px">Showing ${list.length} of ${total}.
+  const more = total > list.length ? `<tfoot><tr><td colspan="${COLS.length + 1}" style="border:0;padding-top:12px">Showing ${list.length} of ${total}.
     <button class="link" id="more">Show ${Math.min(PAGE, total - list.length)} more</button> · <button class="link" id="allrows">Show all</button></td></tr></tfoot>` : '';
-  const none = total ? '' : `<tbody><tr><td colspan="${COLS.length}" class="muted" style="padding:16px 8px">No missions match.${filtersActive() ? ' <button class="link" data-clear>Clear filters</button>' : ''}</td></tr></tbody>`;
+  const none = total ? '' : `<tbody><tr><td colspan="${COLS.length + 1}" class="muted" style="padding:16px 8px">No missions match.${filtersActive() ? ' <button class="link" data-clear>Clear filters</button>' : ''}</td></tr></tbody>`;
   $('#mtable').innerHTML = head + `<tbody>${body}</tbody>` + none + more;
 }
 
 // ---------- wiring ----------
 function render() {
   const ms = missionsNow();
-  $('#orderWrap').style.display = state.pack === 'all' ? '' : 'none';
   renderTiles(ms);
   state.pack === 'all' ? renderAll(ms) : renderPack(ms);
   renderAttention(ms);
   renderTable(ms);
+  applyTab();
 }
-function setPack(p) { state.pack = p; state.shown = PAGE; $('#pack').value = p; render(); scrollTo({ top: 0, behavior: 'smooth' }); }
+function setPack(p) { state.pack = p; state.shown = PAGE; $('#pack').value = p; render(); keepState(); scrollTo({ top: 0, behavior: 'smooth' }); }
 
 async function loadData() {
   const r = await api('api/data');
   if (!r.ok) { $('#view').innerHTML = `<div class="card"><h2>Couldn't load missions</h2><p>${esc(r.body.error || "The manager isn't answering. Is it still running?")}</p></div>`; return false; }
-  D = r.body; THEME_KEYS = Object.keys(D.themes);
+  D = r.body;
+  if (D.setup) { renderSetup(D.setup); return false; }
+  showMain(true);
+  THEME_KEYS = Object.keys(D.themes);
   $('#generated').textContent = `${D.missions.length} mission files, read just now.`;
-  $('#note').innerHTML = D.note ? `<div class="note">${esc(D.note)}</div>` : '';
-  const opts = Object.keys(D.packs).sort((a, b) => (a === 'anywhere' ? -1 : b === 'anywhere' ? 1 : shortName(a).localeCompare(shortName(b))));
-  $('#pack').innerHTML = `<option value="all">All states</option>` + opts.map(p =>
+  $('#generated').textContent += ` Repo: ${D.repo}`;
+  $('#note').innerHTML = (D.note ? `<div class="note">${esc(D.note)}</div>` : '') +
+    (D.scoringNote ? `<div class="note">Settings: ${esc(D.scoringNote)}</div>` : '') + repairHtml(D.repair);
+  const opts = Object.keys(D.packs).sort((a, b) => shortName(a).localeCompare(shortName(b)));
+  $('#pack').innerHTML = `<option value="all">All packs</option>` + opts.map(p =>
   `<option value="${p}">${esc(shortName(p))} (${D.missions.filter(m => m.pack === p).length})</option>`).join('');
   if (!(state.pack in D.packs) && state.pack !== 'all') state.pack = 'all';
   $('#pack').value = state.pack;
@@ -835,6 +1134,10 @@ async function loadData() {
   $('#fThemeSel').innerHTML = `<option value="">Any theme</option>` + [...THEME_KEYS].sort((a, b) => D.themes[a].localeCompare(D.themes[b]))
     .map(k => `<option value="${k}">${esc(D.themes[k])}</option>`).join('');
   $('#fStatus').value = state.status; $('#fIssue').value = state.issue; $('#fThemeSel').value = state.theme;
+  if (state.issue && !$('#fIssue').value) state.issue = '';      // a remembered filter that no longer exists
+  if (state.theme && !$('#fThemeSel').value) state.theme = '';
+  $('#q').value = state.q; $('#order').value = state.order;
+  $('#msort').value = [...$('#msort').options].some(o => o.value === state.msort) ? state.msort : '';
   return true;
 }
 $('#pack').onchange = e => setPack(e.target.value);
@@ -853,8 +1156,13 @@ function clearFilters() {
 }
 $('#clearFilters').onclick = clearFilters;
 document.addEventListener('click', e => {
-  const ed = e.target.closest('[data-edit]');
-  if (ed) { const [pk, id] = ed.dataset.edit.split('/'); return openEditor(pk, id); }
+  if (e.target.closest('td.pick, th.pick')) return;      // selecting for bulk edit, not opening
+  const target = e.target.closest('[data-edit]');
+  if (target) {
+    if ($('#editor').open && ed.dirty && !confirm('You have unsaved changes to this mission. Leave it without saving?')) return;
+    ed.dirty = false;
+    const [pk, id] = target.dataset.edit.split('/'); return openEditor(pk, id);
+  }
   const iss = e.target.closest('[data-issue]');
   if (iss) {
     const code = iss.dataset.issue === state.issue ? '' : iss.dataset.issue;
@@ -909,7 +1217,7 @@ const ORDERS = {   // the order options show in (the schema lists are sorted alp
 const ed = { pack: null, id: null, isNew: false, version: null, orig: {}, m: {}, dirty: false, dropComments: false };
 const today = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
 const opt = (key, v) => (LABELS[key] && LABELS[key][v]) || v;
-const isAnywhere = () => ed.pack === 'anywhere';
+const isAnywhere = () => ((D.packInfo || {})[ed.pack] || {}).places === 'none';   // packs whose missions have no place
 
 function toast(text) {
   const t = $('#toast'); t.textContent = text; t.classList.add('show');
@@ -937,7 +1245,8 @@ const listRows = (name, items, placeholder) => `<div data-list="${name}">${(item
 
 function linkRow(l = {}) {
   return `<div class="listrow two" data-link><input type="text" data-k="label" value="${esc(l.label || '')}" placeholder="Button text (Bike rentals)" maxlength="${D.schema.limits.linkLabel}">
-    <input type="url" data-k="url" value="${esc(l.url || '')}" placeholder="https://…"><button type="button" class="rm" data-rm aria-label="Remove link">×</button></div>`;
+    <input type="url" data-k="url" value="${esc(l.url || '')}" placeholder="https://…"><button type="button" class="btn tiny" data-checkurl title="Check this link now">Check link</button>
+    <button type="button" class="rm" data-rm aria-label="Remove link">×</button><div class="urlnote"></div></div>`;
 }
 function gearRow(g = {}) {
   const rent = isAnywhere() ? '' : `<select data-k="rent"><option value="">Rent?</option>${D.schema.rent.map(r =>
@@ -984,7 +1293,8 @@ function renderForm(info = {}) {
       <input type="text" inputmode="decimal" id="pLng" value="${esc(coords[1] ?? '')}" placeholder="Longitude -122.67306"></div>
       <p class="help" style="margin:2px 0 0">Paste a whole coordinate pair from Google Maps (like <code>45.573321524917056, -122.41112560365704</code>) into either box and it fills both, trimmed to 5 decimals (about a meter). Double-check the pin on the map before saving.</p>
       <a class="maplink" id="pMap" target="_blank" rel="noopener noreferrer" href="#">Check this pin on a map ↗</a></div>
-    ${field('pWebsite', 'Website', `<input type="url" id="pWebsite" value="${esc(place.website || '')}" placeholder="https://…">`)}
+    ${field('pWebsite', 'Website', `<div class="urlrow"><input type="url" id="pWebsite" value="${esc(place.website || '')}" placeholder="https://…">
+      <button type="button" class="btn tiny" data-checkurl title="Check this link now">Check link</button></div><div class="urlnote"></div>`)}
     <div class="f"><span class="lbl">Extra links <span class="help">up to ${L.links} more buttons</span></span>
       <div id="links">${(place.links || []).map(linkRow).join('')}</div>
       <button type="button" class="btn tiny" id="addLink" style="margin-top:8px;justify-self:start">+ Add a link</button></div>
@@ -1033,6 +1343,8 @@ function renderForm(info = {}) {
 
   <fieldset><legend>Themes <span class="count" id="themeCount"></span></legend>
     <p class="help" style="margin:0">Pick up to ${D.themesMax} that really fit. These are the website's filter chips.</p>
+    <div class="themekey"><span><i class="k-sugg"></i><b>Blue = suggested</b> from this mission's tags and words (click to pick it)</span>
+      <span><i class="k-pick"></i><b>Green = picked</b></span></div>
     ${Object.entries(D.themeGroups).map(([g, keys]) => `<div class="group-name">${g}</div>${chips('fTheme', keys, themes, D.themes)}`).join('')}
     <div class="alert warn" id="romanticWarn" hidden>Romantic is a date filter, but this mission is adventure-only. Drop romantic, or make the mode date or both.</div>
   </fieldset>
@@ -1100,6 +1412,7 @@ function refreshLive() {
   const picked = [...document.querySelectorAll('input[name=fTheme]:checked')];
   document.querySelectorAll('input[name=fTheme]').forEach(i => { i.disabled = !i.checked && picked.length >= D.themesMax; });
   const tc = $('#themeCount'); if (tc) tc.textContent = `${picked.length} / ${D.themesMax}`;
+  markSuggestions();
   const mode = (document.querySelector('input[name=fMode]:checked') || {}).value;
   const rw = $('#romanticWarn'); if (rw) rw.hidden = !(mode === 'adventure' && picked.some(i => i.value === 'romantic'));
   const kids = [...document.querySelectorAll('input[name=fWho]:checked')].some(i => i.value === 'kids');
@@ -1202,7 +1515,12 @@ function attnHtml() {
   const out = [];
   if (row.problems) out.push(`<div class="alert bad"><b>This mission fails a check</b>, so the site won't build until it's fixed:
     <ul>${row.problems.map(p => `<li>${esc(p)}</li>`).join('')}</ul></div>`);
-  const soft = row.issues.filter(i => !['fails-check', 'doubled', 'draft'].includes(i));
+  if (row.twins && row.twins.length) out.push(`<div class="alert warn"><b>Possible duplicate.</b> Compare, then keep both if they're different on purpose:
+    <ul>${row.twins.map(t => { const o = D.missions.find(x => x.id === t.id) || { id: t.id, pack: '?', name: t.id };
+      return `<li><b>${esc(o.name)}</b> <span class="muted">(${esc(shortName(o.pack))} · ${esc(t.why)})</span>
+        <button class="btn tiny" type="button" data-edit="${esc(o.pack)}/${esc(o.id)}">Open it</button>
+        <button class="btn tiny" type="button" data-sameok="${esc(row.id)}|${esc(o.id)}">Different on purpose</button></li>`; }).join('')}</ul></div>`);
+  const soft = row.issues.filter(i => !['fails-check', 'doubled', 'draft', 'twin'].includes(i));
   if (soft.length) out.push(`<div class="alert warn"><b>Needs attention:</b><ul>${soft.map(i => `<li><b>${esc(D.attention[i].label)}.</b> ${esc(D.attention[i].help)}</li>`).join('')}</ul></div>`);
   return out.join('');
 }
@@ -1224,6 +1542,7 @@ async function openEditor(pack, id, keepMode = false) {
   if (!r.ok) { $('#edTitle').textContent = 'Couldn’t open it'; $('#edBody').innerHTML = `<div class="alert bad">${esc(r.body.error || 'Error')}</div>`; return; }
   ed.version = r.body.version; ed.orig = r.body.data; ed.m = JSON.parse(JSON.stringify(r.body.data)); ed.text = r.body.text;
   $('#edTitle').textContent = ed.m.name || id;
+  stepUi();
   $('#edPath').textContent = `${r.body.path} · ${packName(pack)}`;
   setPublishBtn(!!ed.m.draft);
   renderForm(r.body);
@@ -1231,6 +1550,7 @@ async function openEditor(pack, id, keepMode = false) {
   $('#yamlText').value = r.body.text; yamlStatus('');
   $('#yamlAttn').innerHTML = attnHtml();
   setMode(mode);
+  checkMissionLinks(pack, id);
 }
 function startNew(pack, id, name) {
   Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '' });
@@ -1238,7 +1558,7 @@ function startNew(pack, id, name) {
     setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', themes: [], tags: [] };
   $('#edTitle').textContent = name || 'New mission';
   $('#edPath').textContent = `missions/${pack}/${id}.yaml · new · ${packName(pack)}`;
-  setMsg('Not saved yet.'); setPublishBtn(true);
+  setMsg('Not saved yet.'); setPublishBtn(true); stepUi();
   $('#yamlAttn').innerHTML = ''; yamlStatus('');
   setMode('form'); showSheet(); renderForm();
 }
@@ -1469,9 +1789,10 @@ const slug = s => s.toLowerCase().normalize('NFKD').replace(/[̀-ͯ]/g, '').repl
 let idTouched = false;
 $('#newBtn').onclick = () => {
   if (!D) return;
-  const packs = Object.keys(D.packs).filter(p => p !== 'general').sort((a, b) => a === 'anywhere' ? -1 : b === 'anywhere' ? 1 : shortName(a).localeCompare(shortName(b)));
+  const packs = Object.keys(D.packs).filter(p => p !== 'general').sort((a, b) => shortName(a).localeCompare(shortName(b)));
+  if (!packs.length) { toast('Make a pack first: + New pack.'); return openPackDlg(); }
   $('#nPack').innerHTML = packs.map(p => `<option value="${p}">${esc(packName(p))}</option>`).join('');
-  $('#nPack').value = state.pack !== 'all' && packs.includes(state.pack) ? state.pack : 'oregon';
+  $('#nPack').value = state.pack !== 'all' && packs.includes(state.pack) ? state.pack : packs[0];
   $('#nName').value = ''; $('#nId').value = ''; $('#nErr').hidden = true; idTouched = false;
   $('#newDlg').showModal(); $('#nName').focus();
 };
@@ -1486,7 +1807,676 @@ $('#newForm').addEventListener('submit', e => {
   startNew(pack, id, name);
 });
 
-loadData().then(ok => ok && render());
+// ---------- setup: an empty folder (or a half-finished repo) becomes a pack repo ----------
+function showMain(on) {
+  ['#mainControls', '#tiles', '#missionsCard', '#scanBtn', '#newPackBtn', '#newBtn'].forEach(sel => { $(sel).hidden = !on; });
+  if (!on) $('#attnCard').hidden = true;
+}
+const fileList = items => `<ul class="files">${items.map(i => `<li><code>${esc(i.path)}</code>: ${esc(i.what)}</li>`).join('')}</ul>`;
+function renderSetup(st) {
+  showMain(false);
+  $('#generated').textContent = `Folder: ${st.root}`;
+  $('#note').innerHTML = '';
+  const hasPacks = st.noPackYaml && st.noPackYaml.length;
+  $('#view').innerHTML = `
+  <section class="card setup">
+    <h2>Let's make this a pack repo</h2>
+    <p class="sub">This folder doesn't have a mission collection yet${hasPacks ? ` (it has pack folders, but no <code>missions/catalog.yaml</code>)` : ''}.
+      Setup adds only what's missing and never replaces a file that's already here.</p>
+    ${fileList(st.missing)}
+    <div class="row" style="margin-top:6px">
+      <div class="f"><label for="sName">Collection name <span class="help">shown with your packs</span></label>
+        <input type="text" id="sName" maxlength="60" placeholder="Sam's Pacific Coast Missions"></div>
+      <div class="f"><label for="sAuthor">Author <span class="help">you, or your group</span></label>
+        <input type="text" id="sAuthor" maxlength="60" placeholder="Sam R."></div>
+    </div>
+    <div class="f"><label for="sId">Short id <span class="help">permanent: it starts every mission's full id, so pick it once</span></label>
+      <input type="text" id="sId" maxlength="30" pattern="[a-z0-9][a-z0-9\-]*" placeholder="sams-coast"></div>
+    <p class="help" style="margin:6px 0 0">Every mission becomes <code><span id="sIdShow">your-id</span>/mission-file-name</code>. That's how a Hive
+      tells your missions apart from AmbleBee's and everyone else's, so it can never change once people install your packs.</p>
+    <div class="alert bad" id="sErr" hidden></div>
+    <div style="margin-top:16px"><button class="btn small primary" type="button" id="sGo">Set it up</button></div>
+  </section>`;
+  let idTouched = false;
+  $('#sName').oninput = () => { if (!idTouched) $('#sId').value = slug($('#sName').value).slice(0, 30); $('#sIdShow').textContent = $('#sId').value || 'your-id'; };
+  $('#sId').oninput = () => { idTouched = true; $('#sIdShow').textContent = $('#sId').value || 'your-id'; };
+  $('#sGo').onclick = async () => {
+    const r = await api('api/setup', { method: 'POST', body: JSON.stringify({ name: $('#sName').value, author: $('#sAuthor').value, source_id: $('#sId').value.trim() }) });
+    if (!r.ok) { $('#sErr').textContent = r.body.error || 'Setup failed.'; $('#sErr').hidden = false; return; }
+    toast(`Set up: ${r.body.created.length} file${r.body.created.length === 1 ? '' : 's'} added.`);
+    if (await loadData()) { render(); if (!Object.keys(D.packs).length) openPackDlg(); }
+  };
+}
+function repairHtml(rp) {
+  if (!rp) return '';
+  const out = [];
+  if (rp.missing.length) out.push(`<div class="alert warn"><b>This repo is missing ${rp.missing.length === 1 ? 'a piece' : 'a few pieces'}</b> a pack repo usually has.
+    Adding them never replaces anything.${fileList(rp.missing)}<div style="margin-top:8px"><button class="btn tiny" type="button" data-repair>Add what's missing</button></div></div>`);
+  if (rp.checker && rp.checker.outdated) out.push(`<div class="alert warn"><b>This repo's checker is older than the manager's</b> (version ${rp.checker.repo}, the manager has ${rp.checker.manager}),
+    so GitHub may check different rules than the manager does. <button class="btn tiny" type="button" data-checker>Update tools/amble_checks.py</button></div>`);
+  if (rp.noPackYaml && rp.noPackYaml.length) out.push(`<div class="alert warn"><b>${rp.noPackYaml.length === 1 ? 'A pack folder has' : 'Some pack folders have'} no pack.yaml</b>, so ${rp.noPackYaml.length === 1 ? 'it shows' : 'they show'} with just a folder name:
+    ${rp.noPackYaml.map(id => `<button class="btn tiny" type="button" data-adopt="${esc(id)}">Add pack.yaml to ${esc(id)}/</button>`).join(' ')}</div>`);
+  return out.join('');
+}
+document.addEventListener('click', async e => {
+  if (e.target.closest('[data-repair]')) {
+    const r = await api('api/setup', { method: 'POST', body: '{}' });
+    toast(r.ok ? `Added ${r.body.created.length} file${r.body.created.length === 1 ? '' : 's'}.` : (r.body.error || 'Couldn\'t add them.'));
+    if (await loadData()) render();
+  } else if (e.target.closest('[data-checker]')) {
+    const r = await api('api/checker', { method: 'POST', body: '{}' });
+    toast(r.ok ? 'Checker updated. Commit tools/amble_checks.py with your next push.' : (r.body.error || 'Couldn\'t update it.'));
+    if (await loadData()) render();
+  } else if (e.target.closest('[data-adopt]')) {
+    openPackDlg(e.target.closest('[data-adopt]').dataset.adopt);
+  }
+});
+
+// ---------- new pack ----------
+let packIdTouched = false, packAdopt = null;
+function openPackDlg(adopt = null) {
+  if (!D || D.setup) return;
+  packMode.edit = null;
+  $('#packSub').textContent = 'A pack is any set of missions people can add or skip on their own: a state, a city, or a theme like Oregon Waterfalls or Cozy Nights In.';
+  packAdopt = adopt; packIdTouched = !!adopt;
+  $('#packTitle').textContent = adopt ? `Add pack.yaml to ${adopt}/` : 'New pack';
+  $('#pkName').value = adopt ? adopt.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase()) : '';
+  $('#pkId').value = adopt || ''; $('#pkId').readOnly = !!adopt;
+  $('#pkRegion').value = ''; $('#pkDesc').value = ''; $('#pkPlaces').value = 'optional'; $('#pkErr').hidden = true;
+  if (D.icons) {
+    $('#pkIconWrap').hidden = false;
+    $('#pkIcon').innerHTML = `<option value="">Pick an icon…</option>` + D.icons.map(i => `<option value="${esc(i)}">${esc(i.replace(/-/g, ' '))}</option>`).join('');
+  } else $('#pkIconWrap').hidden = true;      // no icon set in this repo, so none needed
+  $('#packDlg').showModal(); $('#pkName').focus();
+}
+$('#newPackBtn').onclick = () => openPackDlg();
+$('#pkName').oninput = () => { if (!packIdTouched) $('#pkId').value = slug($('#pkName').value).slice(0, 40); };
+$('#pkId').oninput = () => { packIdTouched = true; };
+$('#packForm').addEventListener('submit', async e => {
+  if (e.submitter && e.submitter.value === 'cancel') return;
+  e.preventDefault();
+  if (packMode.edit) return savePackEdit();
+  const body = { id: $('#pkId').value.trim(), name: $('#pkName').value, region: $('#pkRegion').value, description: $('#pkDesc').value,
+                 icon: D.icons ? $('#pkIcon').value : '', places: $('#pkPlaces').value, adopt: !!packAdopt };
+  const r = await api('api/pack', { method: 'POST', body: JSON.stringify(body) });
+  if (!r.ok) { $('#pkErr').textContent = r.body.error || 'Couldn\'t make the pack.'; $('#pkErr').hidden = false; return; }
+  $('#packDlg').close();
+  toast(`${body.name} is ready. Add its first mission with + New mission.`);
+  if (await loadData()) setPack(r.body.id);
+});
+
+// ---------- settings (scoring.yaml) ----------
+const SET = { data: null, defaults: null };
+const BAR_LABEL = { setting: 'Indoor share', cost: 'Cheap share (free or $)', mode: 'Date share ("both" counts half)',
+  season: 'Winter share (any season counts)', time: 'Evening share ("any time" counts half)' };
+const pc = x => Math.round(x * 1000) / 10;
+function dimRow(key, label, band, shown) {
+  return `<label style="display:flex;gap:8px;align-items:center"><input type="checkbox" data-show="${key}" ${shown ? 'checked' : ''} style="width:17px;height:17px"> ${label}</label><input type="number" min="0" max="100" step="1" data-band="${key}" data-end="low" value="${pc(band.low)}" aria-label="${esc(label)} low">
+    <input type="number" min="0" max="100" step="1" data-band="${key}" data-end="high" value="${pc(band.high)}" aria-label="${esc(label)} high">`;
+}
+function ruleSelect(dim, v) {
+  const custom = v && typeof v === 'object';
+  return `<select data-r="${dim}">
+    <option value="">Default</option><option value="off" ${v === 'off' ? 'selected' : ''}>Off</option>
+    ${custom ? `<option value="custom" selected data-json='${esc(JSON.stringify(v))}'>${pc(v.low)}–${pc(v.high)}%</option>` : ''}</select>`;
+}
+function packRuleRow(pid, rule = {}) {
+  const opts = Object.keys(D.packs).sort((a, b) => shortName(a).localeCompare(shortName(b)))
+    .map(p => `<option value="${esc(p)}" ${p === pid ? 'selected' : ''}>${esc(shortName(p))}</option>`).join('');
+  const missing = pid && !(pid in D.packs) ? `<option value="${esc(pid)}" selected>${esc(pid)} (no such pack)</option>` : '';
+  const top = rule.top_theme;
+  return `<div class="prow" data-prow>
+    <select data-r="pack">${missing}${opts}</select>
+    <select data-r="gap_finder"><option value="">Ranked</option><option value="false" ${rule.gap_finder === false ? 'selected' : ''}>Skip</option></select>
+    ${ALL_DIMS().map(d => ruleSelect(d, rule[d])).join('')}
+    <select data-r="top_theme"><option value="">Default</option><option value="off" ${top === 'off' ? 'selected' : ''}>Off</option>
+      ${typeof top === 'number' ? `<option value="${top}" selected>${pc(top)}%</option>` : ''}</select>
+    <button type="button" class="rm" data-rmrule aria-label="Remove this exception">×</button></div>`;
+}
+function renderSettings(st) {
+  SET.data = st;
+  const b = st.balance;
+  $('#setBody').innerHTML = `
+    <h3 style="margin-top:14px">Balance bars</h3>
+    <p class="help" style="margin:2px 0 0">Tick the bars you want on the dashboard; unticked ones are hidden and not judged. A pack is only off when its share lands outside low–high.</p>
+    <div class="sgrid"><div class="hd">Show</div><div class="hd">Low %</div><div class="hd">High %</div>
+      ${ALL_DIMS().map(d => dimRow(d, BAR_LABEL[d], b[d], st.show.includes(d))).join('')}</div>
+    <h3 style="margin-top:16px">Other limits</h3>
+    <div class="row">
+      <div class="f"><label for="stTop">Top theme max % <span class="help">one theme above this = leaning</span></label><input type="number" id="stTop" min="0" max="100" value="${pc(st.top_theme_max)}"></div>
+      <div class="f"><label for="stMin">Min missions to rank</label><input type="number" id="stMin" min="0" step="1" value="${st.min_missions}"></div>
+      <div class="f"><label for="stStale">Stale after (days)</label><input type="number" id="stStale" min="0" step="1" value="${st.stale_days}"></div>
+    </div>
+    <h3 style="margin-top:16px">Pack exceptions</h3>
+    <p class="help" style="margin:2px 0 0">For packs that are lopsided on purpose, like an all-indoor rainy-day pack. Custom bands for one pack can be set in scoring.yaml itself.</p>
+    <div class="prow hd"><div>Pack</div><div>Gap finder</div>${ALL_DIMS().map(d => `<div>${DIM_SHORT[d]}</div>`).join('')}<div>Top theme</div><div></div></div>
+    <div id="prows">${Object.entries(st.packs).map(([pid, r]) => packRuleRow(pid, r)).join('')}</div>
+    <button type="button" class="btn tiny" id="addRule" style="margin-top:8px">+ Add a pack exception</button>`;
+}
+async function openSettings() {
+  const r = await api('api/scoring');
+  if (!r.ok) return toast(r.body.error || 'Couldn\'t load the settings.');
+  SET.defaults = r.body.defaults;
+  $('#setFile').textContent = r.body.file;
+  $('#setNote').hidden = !r.body.note; $('#setNote').textContent = r.body.note || '';
+  renderSettings(r.body.settings);
+  $('#setDlg').showModal();
+}
+function readSettings() {
+  const num = (v, d) => { const n = parseFloat(v); return Number.isFinite(n) ? n : d; };
+  const out = { balance: {}, packs: {}, show: ALL_DIMS().filter(d => $(`[data-show="${d}"]`).checked) };
+  for (const dim of ALL_DIMS()) out.balance[dim] = {
+    low: num($(`[data-band="${dim}"][data-end="low"]`).value, 0) / 100, high: num($(`[data-band="${dim}"][data-end="high"]`).value, 100) / 100 };
+  out.top_theme_max = num($('#stTop').value, 40) / 100;
+  out.min_missions = Math.round(num($('#stMin').value, 10));
+  out.stale_days = Math.round(num($('#stStale').value, 182));
+  for (const row of document.querySelectorAll('[data-prow]')) {
+    const get = k => row.querySelector(`[data-r="${k}"]`);
+    const pid = get('pack').value, rule = {};
+    if (get('gap_finder').value === 'false') rule.gap_finder = false;
+    for (const dim of ALL_DIMS()) {
+      const sel = get(dim), v = sel.value;
+      if (v === 'off') rule[dim] = 'off';
+      else if (v === 'custom') rule[dim] = JSON.parse(sel.selectedOptions[0].dataset.json);
+    }
+    const t = get('top_theme').value;
+    if (t === 'off') rule.top_theme = 'off'; else if (t) rule.top_theme = parseFloat(t);
+    if (pid && Object.keys(rule).length) out.packs[pid] = { ...(out.packs[pid] || {}), ...rule };
+  }
+  return out;
+}
+$('#settingsBtn').onclick = () => { if (D && !D.setup) openSettings(); else toast('Set up the repo first.'); };
+$('#setBody').addEventListener('click', e => {
+  if (e.target.id === 'addRule') {
+    const used = new Set([...document.querySelectorAll('[data-prow] [data-r="pack"]')].map(s => s.value));
+    const next = Object.keys(D.packs).sort((a, b) => shortName(a).localeCompare(shortName(b))).find(p => !used.has(p));
+    $('#prows').insertAdjacentHTML('beforeend', packRuleRow(next || '', {}));
+  }
+  if (e.target.closest('[data-rmrule]')) e.target.closest('[data-prow]').remove();
+});
+$('#setReset').onclick = async () => {
+  if (!confirm('Put every setting back to the defaults that ship with the manager?')) return;
+  const r = await api('api/scoring/reset', { method: 'POST', body: '{}' });
+  if (r.ok) { renderSettings(r.body.settings); toast('Back to the defaults.'); if (await loadData()) render(); }
+};
+$('#setForm').addEventListener('submit', async e => {
+  if (e.submitter && e.submitter.value === 'cancel') return;
+  e.preventDefault();
+  const r = await api('api/scoring', { method: 'POST', body: JSON.stringify({ settings: readSettings() }) });
+  if (!r.ok) return toast(r.body.error || 'Couldn\'t save the settings.');
+  if (r.body.notes && r.body.notes.length) { $('#setNote').hidden = false; $('#setNote').textContent = 'Fixed while saving: ' + r.body.notes.join('; '); renderSettings(r.body.settings); }
+  else $('#setDlg').close();
+  toast('Settings saved.');
+  if (await loadData()) render();
+});
+
+// ---------- scan for problems ----------
+function scanItem(x) {
+  if (x.twin) {
+    const [a, b] = [x.file.replace(/\.yaml$/, ''), x.twin];
+    return `<li><span><button class="link where" type="button" data-scanedit="${esc(a)}">${esc(a)}</button> and
+      <button class="link where" type="button" data-scanedit="${esc(b)}">${esc(b)}</button>: ${esc(x.msg.replace(/^possible duplicate of \S+ /, 'possible duplicates '))}</span>
+      <button class="btn tiny" type="button" data-sameok="${esc(a.split('/')[1])}|${esc(b.split('/')[1])}" style="margin-left:auto">Different on purpose</button></li>`;
+  }
+  const m = /^([a-z0-9-]+)\/([a-z0-9-]+)\.yaml$/.exec(x.file || '');
+  const open = m && m[2] !== 'pack' ? `<button class="link where" type="button" data-scanedit="${esc(m[1])}/${esc(m[2])}">${esc(x.file)}</button>`
+    : x.file ? `<span class="where">${esc(x.file)}</span>` : '';
+  return `<li>${open}<span>${esc(x.msg)}</span></li>`;
+}
+async function runScan() {
+  $('#scanBody').innerHTML = '<p class="sub" style="margin-top:14px">Scanning every mission…</p>';
+  const r = await api('api/scan');
+  if (!r.ok) { $('#scanBody').innerHTML = `<div class="alert bad">${esc(r.body.error || 'The scan didn\'t finish.')}</div>`; return; }
+  const d = r.body;
+  $('#scanBody').innerHTML = `
+    <div class="alert ${d.ok ? 'good' : 'bad'}"><b>${d.ok ? 'All clear.' : `${d.errors.length} problem${d.errors.length === 1 ? '' : 's'} would stop the build.`}</b>
+      Checked ${d.missions} mission${d.missions === 1 ? '' : 's'}.</div>
+    ${d.errors.length ? `<h3>Problems</h3><ul class="scanlist">${d.errors.map(scanItem).join('')}</ul>` : ''}
+    ${d.extra.map(x => `<h3>${esc(x.label)} ${x.ok ? '<span class="ok">✓</span>' : '<span style="color:var(--b)">!</span>'}</h3><pre class="scanout">${esc(x.lines.join('\n'))}</pre>`).join('')}
+    ${d.notes.length ? `<h3>Notes</h3><p class="help" style="margin:0">Worth a look, but none of these stop the build.</p><ul class="scanlist">${d.notes.map(scanItem).join('')}</ul>` : ''}`;
+}
+$('#scanBtn').onclick = () => { $('#scanDlg').showModal(); runScan(); };
+$('#scanAgain').onclick = runScan;
+$('#scanClose').onclick = () => $('#scanDlg').close();
+$('#scanBody').addEventListener('click', e => {
+  const b = e.target.closest('[data-scanedit]');
+  if (b) { $('#scanDlg').close(); const [pk, id] = b.dataset.scanedit.split('/'); openEditor(pk, id); }
+});
+
+// ---------- theme suggestions: blue chips ----------
+function themeSuggestions() {
+  const H = D.themeHints || {}, found = new Set();
+  const add = w => { if (w && H[w]) found.add(H[w]); };
+  ($('#fTags') || {}).value?.split(',').forEach(t => { t = t.trim().toLowerCase(); add(t); add(t.replace(/\s+/g, '-')); });
+  const text = ['fName', 'fShort', 'fDesc', 'fAbout', 'pName'].map(id => (document.getElementById(id) || {}).value || '').join(' ').toLowerCase();
+  const words = text.match(/[a-z0-9+]+/g) || [];
+  words.forEach((w, i) => { add(w); if (words[i + 1]) add(`${w}-${words[i + 1]}`); if (words[i + 2]) add(`${w}-${words[i + 1]}-${words[i + 2]}`); });
+  if ((document.querySelector('input[name=fMode]:checked') || {}).value === 'adventure') found.delete('romantic');
+  return found;
+}
+function markSuggestions() {
+  const found = themeSuggestions();
+  document.querySelectorAll('input[name=fTheme]').forEach(i => {
+    const lab = i.closest('.chipbox'), on = found.has(i.value) && !i.checked;
+    lab.classList.toggle('sugg', on);
+    lab.title = on ? 'Suggested from this mission\'s tags and words; click to pick it' : '';
+  });
+}
+document.addEventListener('input', e => { if (e.target.closest('#edBody')) markSuggestions(); });
+
+// ---------- edit pack (with a warning for packs already out there) ----------
+const packMode = { edit: null };
+function openEditPack(pid) {
+  const info = D.packInfo[pid];
+  if (!info) return;
+  openPackDlg();
+  packMode.edit = pid;
+  $('#packTitle').textContent = `Edit ${info.name}`;
+  $('#pkName').value = info.name; $('#pkId').value = pid; $('#pkId').readOnly = true;
+  $('#pkRegion').value = info.region; $('#pkDesc').value = info.description; $('#pkPlaces').value = info.places;
+  if (D.icons) $('#pkIcon').value = info.icon;
+  const live = info.count, drafts = info.drafts;
+  $('#packSub').innerHTML = live
+    ? `<span class="alert warn" style="display:block;margin:0"><b>Careful: ${esc(info.name)} is already out there</b> with ${live} live mission${live === 1 ? '' : 's'}.
+       People who installed it see a new name or description on their next update, and changing whether missions need a place can make some of them fail.
+       The folder name never changes. You'll see exactly what changes before anything is saved.</span>`
+    : `This pack has no live missions yet${drafts ? ` (${drafts} draft${drafts === 1 ? '' : 's'})` : ''}, so changes are safe. The folder name can't change.`;
+}
+async function savePackEdit() {
+  const body = { id: packMode.edit, name: $('#pkName').value, region: $('#pkRegion').value, description: $('#pkDesc').value,
+                 icon: D.icons ? $('#pkIcon').value : (D.packInfo[packMode.edit].icon || ''), places: $('#pkPlaces').value };
+  const dry = await api('api/pack/edit', { method: 'POST', body: JSON.stringify({ ...body, dry: true }) });
+  const showErr = r => { $('#pkErr').innerHTML = esc(r.body.error || 'Couldn\'t save it.') +
+    (r.body.problems && r.body.problems.length ? `<ul>${r.body.problems.slice(0, 8).map(x => `<li>${esc(x)}</li>`).join('')}${r.body.problems.length > 8 ? `<li>and ${r.body.problems.length - 8} more</li>` : ''}</ul>` : ''); $('#pkErr').hidden = false; };
+  if (!dry.ok) return showErr(dry);
+  if (dry.body.unchanged) { $('#packDlg').close(); return toast('Nothing changed.'); }
+  const live = D.packInfo[packMode.edit].count;
+  const msg = `Save these changes to ${packMode.edit}/pack.yaml?\n\n${dry.body.diff.filter(l => /^[+-]/.test(l)).join('\n')}` +
+    (live ? `\n\n${live} live missions use this pack; installed copies pick this up on their next update.` : '');
+  if (!confirm(msg)) return;
+  const r = await api('api/pack/edit', { method: 'POST', body: JSON.stringify({ ...body, dry: false }) });
+  if (!r.ok) return showErr(r);
+  $('#packDlg').close(); toast('Pack saved. Commit and push when you\'re ready.');
+  const pid = packMode.edit;
+  if (await loadData()) setPack(pid);
+}
+
+// ---------- previews ----------
+const COST_WORDS = { free: 'Free', $: '$ · under $20 for two', $$: '$$ · $20–60', $$$: '$$$ · over $60' };
+async function previewData() {
+  if (ed.mode === 'yaml') {
+    const r = await api('api/parse', { method: 'POST', body: JSON.stringify({ yaml: $('#yamlText').value }) });
+    return r.ok && r.body.data ? r.body.data : null;
+  }
+  return collect();
+}
+const HV_DURATION = { short: '1 to 3 hours', 'half-day': 'Half a day', 'all-day': 'All day' };
+const HV_COST = { free: 'Free', $: 'Under $20', $$: '$20–60', $$$: 'Over $60' };
+const HV_WHEN = { morning: 'Morning', evening: 'Evening', night: 'Night' };
+function hiveChips(m) {
+  const out = [];
+  if (HV_DURATION[m.duration]) out.push(`<span>${HV_DURATION[m.duration]}</span>`);
+  if (m.effort) out.push(`<span>${esc(m.effort[0].toUpperCase() + m.effort.slice(1))}</span>`);
+  if (HV_COST[m.cost]) out.push(`<span>${HV_COST[m.cost]}</span>`);
+  if (m.setting === 'outdoor' || m.setting === 'indoor') out.push(`<span class="out">${m.setting === 'outdoor' ? 'Outdoors' : 'Indoors'}</span>`);
+  if (HV_WHEN[m.time_of_day]) out.push(`<span class="when">${HV_WHEN[m.time_of_day]}</span>`);
+  return out.join('');
+}
+function packTotal(pack, m) {      // the pack's live missions, counting this one if it's about to go live
+  const live = D.missions.filter(x => x.pack === pack && !x.draft && x.id !== ed.id).length;
+  return live + (m.draft ? 0 : 1);
+}
+let cardPending = null;
+function cardMission(m) {             // the shape the website's catalog gives ticket()
+  const list = v => v == null || v === '' ? [] : [].concat(v);
+  return { ...m, id: ed.id, pack: ed.pack, full_id: `${(D.source && D.source.source_id) || 'local'}/${ed.id}`,
+    who: list(m.who), check_ahead: list(m.check_ahead), discounts: list(m.discounts), steps: list(m.steps), gear: list(m.gear),
+    season: m.season && m.season !== 'any' ? list(m.season) : 'any', time_of_day: m.time_of_day || 'any' };
+}
+function sendCard() {
+  const f = $('#pvFrame');
+  if (!f || !cardPending) return;
+  const packs = Object.entries(D.packInfo).map(([id, p]) => ({ id, name: p.name, icon: p.icon, region: p.region }));
+  f.contentWindow.postMessage({ type: 'card', mission: cardPending, packs, icons: D.packIcons }, location.origin);
+}
+addEventListener('message', e => {
+  if (e.origin !== location.origin || !e.data) return;
+  if (e.data.type === 'card-ready') sendCard();
+  if (e.data.type === 'card-height' && $('#pvFrame')) $('#pvFrame').style.height = `${Math.min(1400, e.data.h + 6)}px`;
+});
+async function openPreview() {
+  const m = await previewData();
+  if (!m) return toast('Fix the YAML first, then preview.');
+  const place = m.place || {}, short = String(m.short || ''), over = short.length > D.schema.limits.short;
+  const chips = [m.duration, m.effort, COST_WORDS[m.cost] || m.cost, m.setting !== 'either' ? m.setting : '',
+    m.season && m.season !== 'any' ? [].concat(m.season).join(', ') : '', m.time_of_day && m.time_of_day !== 'any' ? m.time_of_day : '']
+    .filter(Boolean).map(x => `<span>${esc(x)}</span>`).join('');
+  const paras = t => String(t || '').split(/\n\s*\n|\n/).filter(x => x.trim()).map(x => `<p>${esc(x.trim())}</p>`).join('');
+  const checked = m.checked ? `Checked ${new Date(m.checked + 'T12:00').toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}` : 'Draft: not on the site yet';
+  const about = m.about ? `<div><h3>About this place <span class="muted" style="text-transform:none;letter-spacing:0">· the mission's own web page only</span></h3>
+    <div class="pv-ticket"><div class="about" style="border:0;margin:0;padding:0">${paras(m.about)}</div></div></div>` : '';
+  $('#pvSub').textContent = D.card ? 'From what\'s in the form right now, saved or not, drawn by the website\'s own card code: exactly what the website and the Hive will show.'
+    : 'From what\'s in the form right now, saved or not. This repo has no website files, so this is a close match, not the real card.';
+  if (D.card) {
+    $('#pvBody').innerHTML = `<div><h3>Mission card <span class="muted" style="text-transform:none;letter-spacing:0">· drawn by the website's own code, the same card the Hive shows</span></h3>
+      <iframe id="pvFrame" title="Mission card preview" src="card-frame?key=${encodeURIComponent(KEY)}" style="width:100%;height:420px;border:0;display:block"></iframe></div>
+      ${over ? `<p class="help" style="margin:0;color:var(--b)">The short line is ${short.length} characters; keep it to ${D.schema.limits.short}.</p>` : ''}${about}`;
+    cardPending = cardMission(m);
+  } else {
+    $('#pvBody').innerHTML = `
+    <div><h3>Mission card <span class=\"muted\" style=\"text-transform:none;letter-spacing:0\">· approximate: this repo has no website files (site/js/ticket.js)</span></h3><div class="pv-hivebg"><div class="hv">
+      <div class="hv-stub"><svg aria-hidden="true" width="54" height="54" viewBox="0 0 78 78"><circle cx="39" cy="39" r="35" fill="none" stroke="#FFFDF8" stroke-width="2.5" stroke-dasharray="4 5"/>
+        <path d="M14 48 Q39 30 64 48" fill="none" stroke="#E8C27E" stroke-width="4" stroke-linecap="round"/><circle cx="39" cy="44" r="10" fill="#E8C27E"/><path d="M18 54h42" stroke="#FFFDF8" stroke-width="3" stroke-linecap="round"/></svg>
+        <span class="lbl">Mission</span><span class="num">${esc(m.number ?? '–')}</span></div>
+      <div class="hv-body">
+        <h4>${esc(m.name || 'Untitled')}</h4>
+        ${short ? `<p class="hv-short">${esc(short)}</p>` : ''}
+        ${m.description ? `<p class="hv-desc">${esc(String(m.description).replace(/\s+/g, ' ').trim())}</p>` : ''}
+        <div class="hv-chips">${hiveChips(m)}</div>
+        <p class="hv-src"><span>Mission <b>${esc(m.number ?? '?')} of ${packTotal(ed.pack, m)}</b> in <b>${esc(packName(ed.pack))}</b></span>
+          <code>${esc((D.source && D.source.source_id) || 'local')}/${esc(ed.id)}</code></p>
+      </div></div></div>
+      ${over ? `<p class="help" style="margin:6px 0 0;color:var(--b)">The short line is ${short.length} characters; keep it to ${D.schema.limits.short}.</p>` : ''}
+    </div>${about}`;
+  }
+  $('#pvDlg').showModal();
+}
+$('#edPreview').onclick = openPreview;
+$('#pvClose').onclick = () => $('#pvDlg').close();
+
+// ---------- show in folder ----------
+async function reveal(file, release = false) {
+  const r = await api('api/reveal', { method: 'POST', body: JSON.stringify({ file, release }) });
+  toast(r.ok ? 'Opened in your file browser.' : `${r.body.error || 'Couldn\'t open it.'}${r.body.path ? ` It's at ${r.body.path}` : ''}`);
+}
+$('#edReveal').onclick = () => { if (ed.isNew) return toast('Save it first; then it has a file to show.'); reveal(`${ed.pack}/${ed.id}.yaml`); };
+
+// ---------- release a pack ----------
+let lastRelease = null;
+async function releasePack(pid) {
+  $('#relTitle').textContent = `Release ${packName(pid)}`;
+  $('#relBody').innerHTML = '<p class="sub">Checking the pack and making the zip…</p>';
+  $('#relShow').hidden = $('#relDownload').hidden = true;
+  $('#relDlg').showModal();
+  const r = await api('api/release', { method: 'POST', body: JSON.stringify({ pack: pid }) });
+  if (!r.ok) {
+    $('#relBody').innerHTML = `<div class="alert bad">${esc(r.body.error || 'Couldn\'t release it.')}${r.body.problems ? `<ul>${r.body.problems.slice(0, 10).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}</div>`;
+    return;
+  }
+  const d = lastRelease = r.body;
+  $('#relBody').innerHTML = `<div class="alert good"><b>${esc(d.name)}</b> is ready: ${d.missions} live mission${d.missions === 1 ? '' : 's'}${d.drafts ? ` (${d.drafts} draft${d.drafts === 1 ? '' : 's'} left out)` : ''}, ${Math.max(1, Math.round(d.bytes / 1024))} KB.</div>
+    <p class="help" style="margin:10px 0 4px">Saved in the repo's <code>releases/</code> folder (git ignores it). Its checksum, the fingerprint a community-pack listing would pin:</p>
+    <code style="display:block;word-break:break-all;background:var(--linen);padding:8px 10px;border-radius:10px;font-size:12.5px">${esc(d.sha256)}</code>
+    <p class="help" style="margin:8px 0 0">The same missions always zip to the same checksum, so a changed checksum means something in the pack changed.</p>`;
+  $('#relShow').hidden = false;
+  $('#relDownload').hidden = false;
+  $('#relDownload').href = `api/release-file?name=${encodeURIComponent(d.name)}&key=${encodeURIComponent(KEY)}`;
+  $('#relDownload').setAttribute('download', d.name);
+}
+$('#relShow').onclick = () => lastRelease && reveal(lastRelease.name, true);
+$('#relClose').onclick = () => $('#relDlg').close();
+document.addEventListener('click', e => {
+  const ep = e.target.closest('[data-editpack]'); if (ep) return openEditPack(ep.dataset.editpack);
+  const rl = e.target.closest('[data-release]'); if (rl) return releasePack(rl.dataset.release);
+  const rv = e.target.closest('[data-reveal]'); if (rv) return reveal(rv.dataset.reveal);
+});
+
+// ---------- bulk edit (with a warning before anything is saved) ----------
+const sel = new Set();
+let shownRows = [], bulkPending = null;
+function bulkUi() {
+  $('#bulkBar').hidden = !sel.size;
+  $('#bulkCount').textContent = `${sel.size} selected`;
+  const a = $('#bulkAction').value, themed = a === 'add_themes' || a === 'remove_themes';
+  $('#bulkThemes').hidden = !themed;
+  if (themed && !$('#bulkThemes').dataset.built) {
+    $('#bulkThemes').innerHTML = THEME_KEYS.map(k => `<label class="chipbox"><input type="checkbox" name="bTheme" value="${k}"><span>${esc(D.themes[k])}</span></label>`).join('');
+    $('#bulkThemes').dataset.built = '1';
+  }
+  const picked = document.querySelectorAll('input[name=bTheme]:checked').length;
+  $('#bulkGo').disabled = !a || (themed && !picked);
+}
+document.addEventListener('change', e => {
+  if (e.target.matches('[data-pick]')) { e.target.checked ? sel.add(e.target.dataset.pick) : sel.delete(e.target.dataset.pick); bulkUi(); }
+  else if (e.target.id === 'pickAll') { shownRows.forEach(m => e.target.checked ? sel.add(`${m.pack}/${m.id}`) : sel.delete(`${m.pack}/${m.id}`)); renderTable(missionsNow()); bulkUi(); }
+  else if (e.target.id === 'bulkAction' || e.target.name === 'bTheme') bulkUi();
+});
+$('#bulkClear').onclick = () => { sel.clear(); renderTable(missionsNow()); bulkUi(); };
+function bulkRequest(extra = {}) {
+  return { action: $('#bulkAction').value, missions: [...sel],
+           value: [...document.querySelectorAll('input[name=bTheme]:checked')].map(i => i.value), ...extra };
+}
+$('#bulkGo').onclick = async () => {
+  const r = await api('api/bulk', { method: 'POST', body: JSON.stringify(bulkRequest({ dry: true })) });
+  const b = r.body, changed = (b.items || []).filter(i => !i.unchanged);
+  $('#bulkTitle').textContent = `${b.action || 'Bulk change'}: check before saving`;
+  if (!r.ok) {
+    $('#bulkWarn').className = 'alert bad';
+    $('#bulkWarn').innerHTML = `<b>${esc(b.error || 'Couldn\'t prepare that.')}</b>${b.problems ? `<ul>${b.problems.slice(0, 12).map(x => `<li>${esc(x)}</li>`).join('')}</ul>` : ''}`;
+    $('#bulkBody').innerHTML = ''; $('#bulkSave').hidden = true; bulkPending = null;
+    return $('#bulkDlg').showModal();
+  }
+  const live = changed.filter(i => { const m = D.missions.find(x => `${x.pack}/${x.id}.yaml` === i.file); return m && !m.draft; }).length;
+  const lost = changed.filter(i => i.lost && i.lost.length);
+  $('#bulkWarn').className = 'alert warn';
+  $('#bulkWarn').innerHTML = !changed.length ? 'None of the selected missions would change.'
+    : `<b>This changes ${changed.length} mission file${changed.length === 1 ? '' : 's'} at once</b>${live ? `, ${live} of them live on the site` : ''}.
+      Every one passed the checks. Read the changes below; there's no undo button, though git can bring back any file you haven't committed.
+      ${lost.length ? `<br><b>${lost.length} file${lost.length === 1 ? '' : 's'} would lose a note (# comment)</b> on a changed line; saving drops ${lost.length === 1 ? 'it' : 'them'}.` : ''}`;
+  $('#bulkBody').innerHTML = changed.map(i => `<div class="difffile"><h4>${esc(i.file)}</h4><pre>${i.diff.filter(l => /^[+-]/.test(l)).map(esc).join('\n')}</pre></div>`).join('') +
+    ((b.items || []).length - changed.length ? `<p class="help">${(b.items || []).length - changed.length} selected mission${(b.items || []).length - changed.length === 1 ? ' is' : 's are'} already that way, so ${(b.items || []).length - changed.length === 1 ? 'it' : 'they'} won't change.</p>` : '');
+  $('#bulkSave').hidden = !changed.length;
+  $('#bulkSave').textContent = `Save ${changed.length} mission${changed.length === 1 ? '' : 's'}`;
+  bulkPending = { versions: Object.fromEntries(changed.map(i => [i.file, i.version])), dropComments: !!lost.length };
+  $('#bulkDlg').showModal();
+};
+$('#bulkBack').onclick = () => $('#bulkDlg').close();
+$('#bulkSave').onclick = async () => {
+  if (!bulkPending) return;
+  const r = await api('api/bulk', { method: 'POST', body: JSON.stringify(bulkRequest({ dry: false, ...bulkPending })) });
+  if (!r.ok) { $('#bulkWarn').className = 'alert bad'; $('#bulkWarn').innerHTML = `<b>${esc(r.body.error || 'Not saved.')}</b>`; $('#bulkSave').hidden = true; return; }
+  $('#bulkDlg').close(); toast(`Saved ${r.body.changed} mission${r.body.changed === 1 ? '' : 's'}. Commit and push when you're ready.`);
+  sel.clear(); $('#bulkAction').value = ''; bulkUi();
+  if (await loadData()) render();
+};
+
+// ---------- ideas (mission-ideas.yaml, ignored by git) ----------
+let ideas = [];
+function renderIdeas() {
+  const showDone = $('#ideaShowDone').checked;
+  const list = ideas.map((x, i) => ({ ...x, i })).filter(x => showDone || !x.done);
+  $('#ideaList').innerHTML = list.length ? list.map(x => `<div class="idea ${x.done ? 'done' : ''}">
+      <input type="checkbox" data-idone="${x.i}" ${x.done ? 'checked' : ''} aria-label="Done" title="Done">
+      <div><div class="t">${esc(x.text)}</div><div class="meta">${x.pack ? esc(packName(x.pack)) + ' · ' : ''}added ${esc(x.added || '')}</div></div>
+      <button class="btn tiny" type="button" data-iwrite="${x.i}" title="Start a mission from this idea">Write it</button>
+      <button class="rm" type="button" data-idel="${x.i}" aria-label="Delete idea">×</button></div>`).join('')
+    : `<p class="muted" style="margin-top:12px">${ideas.length ? 'Everything here is done. Tick "Show done ones" to see them.' : 'No ideas yet. Jot one above.'}</p>`;
+}
+async function saveIdeas() {
+  const r = await api('api/ideas', { method: 'POST', body: JSON.stringify({ ideas }) });
+  if (!r.ok) return toast(r.body.error || 'Couldn\'t save the ideas.');
+  ideas = r.body.ideas;
+  if (r.body.gitignoreAdded) toast('Added mission-ideas.yaml to .gitignore, so ideas stay on this computer.');
+  renderIdeas();
+}
+$('#ideasBtn').onclick = async () => {
+  if (!D || D.setup) return toast('Set up the repo first.');
+  const r = await api('api/ideas');
+  if (!r.ok) return toast(r.body.error || 'Couldn\'t load the ideas.');
+  ideas = r.body.ideas;
+  $('#ideaPack').innerHTML = `<option value="">Any pack</option>` + Object.keys(D.packs).sort((a, b) => shortName(a).localeCompare(shortName(b)))
+    .map(p => `<option value="${esc(p)}">${esc(shortName(p))}</option>`).join('');
+  if (state.pack !== 'all') $('#ideaPack').value = state.pack;
+  renderIdeas(); $('#ideasDlg').showModal(); $('#ideaText').focus();
+};
+$('#ideaAdd').onclick = () => {
+  const text = $('#ideaText').value.trim();
+  if (!text) return;
+  ideas.unshift({ text, pack: $('#ideaPack').value, added: today() });
+  $('#ideaText').value = ''; saveIdeas();
+};
+$('#ideaText').addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); $('#ideaAdd').click(); } });
+$('#ideaShowDone').onchange = renderIdeas;
+$('#ideasClose').onclick = () => $('#ideasDlg').close();
+$('#ideaList').addEventListener('click', e => {
+  const del = e.target.closest('[data-idel]');
+  if (del) { ideas.splice(+del.dataset.idel, 1); return saveIdeas(); }
+  const w = e.target.closest('[data-iwrite]');
+  if (w) {
+    const x = ideas[+w.dataset.iwrite];
+    $('#ideasDlg').close(); $('#newBtn').click();
+    if (x.pack && D.packs[x.pack]) $('#nPack').value = x.pack;
+    $('#nName').value = x.text.replace(/\?$/, '').slice(0, 80); $('#nName').dispatchEvent(new Event('input'));
+  }
+});
+$('#ideaList').addEventListener('change', e => {
+  const d = e.target.closest('[data-idone]');
+  if (d) { ideas[+d.dataset.idone].done = d.checked; saveIdeas(); }
+});
+
+// ---------- tabs ----------
+document.querySelectorAll('[data-tabbtn]').forEach(b => b.addEventListener('click', () => setTab(b.dataset.tabbtn)));
+
+// ---------- previous / next mission in the editor (follows the Missions list as filtered and sorted) ----------
+let navList = [];
+function stepIndex() { return ed.isNew ? -1 : navList.findIndex(m => m.pack === ed.pack && m.id === ed.id); }
+function stepUi() {
+  const i = stepIndex(), n = navList.length;
+  document.querySelectorAll('[data-steppos]').forEach(el => { el.textContent = i < 0 ? (ed.isNew ? 'new' : 'not in list') : `${i + 1} of ${n}`; });
+  document.querySelectorAll('[data-step]').forEach(b => {
+    const d = +b.dataset.step;
+    b.disabled = i < 0 || i + d < 0 || i + d >= n;
+  });
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-step]');
+  if (!b || b.disabled) return;
+  const i = stepIndex(), next = navList[i + (+b.dataset.step)];
+  if (!next) return;
+  if (ed.dirty && !confirm('You have unsaved changes to this mission. Leave it without saving?')) return;
+  ed.dirty = false;
+  openEditor(next.pack, next.id).then(stepUi);
+});
+
+// ---------- "different on purpose": stop flagging two missions that share a spot ----------
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-sameok]');
+  if (!b) return;
+  const [a, c] = b.dataset.sameok.split('|');
+  const r = await api('api/same-spot', { method: 'POST', body: JSON.stringify({ a, b: c }) });
+  if (!r.ok) return toast(r.body.error || 'Couldn\'t save that.');
+  toast('Marked different on purpose (saved in missions/same-spot-ok.yaml). Commit it with your missions.');
+  b.closest('li').remove();
+  if (await loadData()) render();
+});
+
+// ---------- link checker ----------
+// purple = verified (blue means "suggested" elsewhere), red = broken, yellow = couldn't tell (or it moved: it loads, but maybe somewhere new)
+const LINK_LOOK = { ok: ['link-ok', 'ok', 'Link verified'], broken: ['link-bad', 'bad', 'Broken'], moved: ['link-unk', 'unk', 'Moved'], unknown: ['link-unk', 'unk', 'Couldn\'t check'] };
+function urlInputs() {
+  return [$('#pWebsite'), ...document.querySelectorAll('[data-link] [data-k=url]')].filter(Boolean);
+}
+function noteFor(input) {
+  return input.closest('[data-link]') ? input.closest('[data-link]').querySelector('.urlnote') : input.closest('.f').querySelector('.urlnote');
+}
+function showLink(input, res) {
+  input.classList.remove('link-ok', 'link-bad', 'link-unk', 'link-wait');
+  const note = noteFor(input);
+  if (!res) { if (note) { note.textContent = ''; note.className = 'urlnote'; } return; }
+  if (res === 'wait') { input.classList.add('link-wait'); if (note) { note.textContent = 'Checking…'; note.className = 'urlnote'; } return; }
+  const nice = d => { const t = new Date(d + 'T12:00'); return isNaN(t) ? d : t.toLocaleDateString(undefined, { month: 'short', day: 'numeric' }); };
+  if (res.manual) {                    // marked good by hand: purple, saying so (and what the checker found)
+    input.classList.add('link-ok');
+    input.title = `Manually marked good ${res.manual}; after ${res.manual_until} it's checked like any other link again`;
+    if (note) {
+      note.className = 'urlnote ok';
+      note.innerHTML = `✓ Manually marked good ${esc(res.manual)} <span class="muted" style="font-weight:400">· until ${esc(res.manual_until || '')}</span>${res.status !== 'ok' ? ` <span class="muted" style="font-weight:400">· the checker said: ${esc(res.note)}</span>` : ''}
+        <button class="link" type="button" data-linkmark="0" style="font-size:12.5px;margin-left:6px">Unmark</button>`;
+    }
+    return;
+  }
+  const [cls, ncls, word] = LINK_LOOK[res.status] || LINK_LOOK.unknown;
+  input.classList.add(cls);
+  input.title = `${word}${res.note && res.status !== 'ok' ? `: ${res.note}` : ''} (checked ${res.checked || 'just now'})`;
+  if (note) {
+    note.className = `urlnote ${ncls}`;
+    note.innerHTML = res.status === 'ok' ? `✓ ${esc(word)}` : `${esc(word)}: ${esc(res.note)}
+      <button class="btn tiny" type="button" data-linkmark="1" style="margin-left:8px;min-height:26px" title="You opened it and it works: stop flagging this link">Mark as good</button>`;
+  }
+}
+async function checkMissionLinks(pack, id, force = false) {
+  const inputs = urlInputs().filter(i => i.value.trim());
+  if (!inputs.length) return;
+  inputs.forEach(i => showLink(i, 'wait'));
+  const r = await api('api/links', { method: 'POST', body: JSON.stringify({ pack, id, force }) });
+  if (ed.pack !== pack || ed.id !== id) return;            // moved on to another mission meanwhile
+  const byUrl = Object.fromEntries((r.ok ? r.body.links : []).map(l => [l.url, l]));
+  inputs.forEach(i => showLink(i, byUrl[i.value.trim()] || null));
+}
+async function checkOne(input) {
+  const url = input.value.trim();
+  if (!url) return toast('Type a link first.');
+  showLink(input, 'wait');
+  const r = await api('api/link', { method: 'POST', body: JSON.stringify({ url }) });
+  if (input.value.trim() !== url) return;                    // edited while it was checking
+  showLink(input, r.ok ? r.body : { status: 'unknown', note: r.body.error || 'couldn\'t check it' });
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-checkurl]');
+  if (!b) return;
+  const input = b.closest('[data-link]') ? b.closest('[data-link]').querySelector('[data-k=url]') : $('#pWebsite');
+  if (input) checkOne(input);
+});
+document.addEventListener('click', async e => {
+  const b = e.target.closest('[data-linkmark]');
+  if (!b) return;
+  const row = b.closest('[data-link]'), input = row ? row.querySelector('[data-k=url]') : $('#pWebsite');
+  const url = input && input.value.trim();
+  if (!url) return;
+  const good = b.dataset.linkmark === '1';
+  const r = await api('api/link/mark', { method: 'POST', body: JSON.stringify({ url, good }) });
+  if (!r.ok) return toast(r.body.error || 'Couldn\'t save that.');
+  toast(good ? 'Marked good for 180 days (saved in missions/links-ok.yaml). Commit it with your missions.' : 'Unmarked: the checker\'s result counts again.');
+  checkOne(input);
+  if (await loadData()) render();
+});
+document.addEventListener('input', e => {     // a link you're editing isn't the one that was checked
+  if (e.target.id === 'pWebsite' || e.target.matches('[data-link] [data-k=url]')) showLink(e.target, null);
+});
+let linkPoll = null;
+function linkSummary(st) {
+  const c = st.counts || {};
+  return [c.broken && `${c.broken} broken`, c.moved && `${c.moved} moved`, c.unknown && `${c.unknown} couldn't check`].filter(Boolean).join(', ') || 'all working';
+}
+async function pollLinks() {
+  const r = await api('api/links/status');
+  if (!r.ok) return;
+  const st = r.body;
+  $('#linkAll').disabled = st.running;
+  if (st.running) {
+    $('#linkRun').textContent = `Checking links… ${st.done} of ${st.total}`;
+    if (!linkPoll) linkPoll = setInterval(pollLinks, 1500);
+  } else {
+    if (linkPoll) {
+      clearInterval(linkPoll); linkPoll = null;
+      toast(`Links checked: ${linkSummary(st)}. "Broken link" and "Link moved" in Needs attention list them.`);
+      if (await loadData()) render();
+    }
+    $('#linkRun').textContent = st.finished ? `Last check ${st.finished}: ${linkSummary(st)}` : '';
+  }
+}
+$('#linkAll').onclick = async () => {
+  const r = await api('api/links/start', { method: 'POST', body: '{}' });
+  if (!r.ok) return toast(r.body.error || 'Couldn\'t start the link check.');
+  toast(`Checking ${r.body.total} links in the background. Keep working; this takes a minute or two.`);
+  pollLinks();
+};
+
+const fontsReady = Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 2500))]);
+loadData().then(ok => { if (ok) { render(); pollLinks(); } })
+  .catch(err => { $('#view').innerHTML = `<div class="card"><h2>Couldn't load missions</h2><p>${esc(err && err.message || err)}</p></div>`; })
+  .then(() => fontsReady)
+  .then(() => requestAnimationFrame(() => document.body.classList.remove('booting')));
 </script>
 </body>
 </html>

@@ -46,7 +46,9 @@ def main():
         if not isinstance(data, dict):
             incomplete.append((f.name, ["should be 'key: value' lines"]))
             continue
-        gaps = [k for k in FIELDS if not str(data.get(k) or "").strip()]
+        # an icon is only required where there's an icon set to pick from (icons/packs/ next to missions/)
+        needed = [k for k in FIELDS if k != "icon" or icon_names is not None]
+        gaps = [k for k in needed if not str(data.get(k) or "").strip()]
         found = []
         if gaps:
             found.append(f"missing {', '.join(gaps)}")

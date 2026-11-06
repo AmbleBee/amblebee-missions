@@ -5,6 +5,10 @@ missions/
   catalog.yaml          source information (one per collection)
   SCHEMA.md             this file
   _template.yaml        copy this to start a new mission (files starting with _ are ignored)
+  same-spot-ok.yaml     missions that share a spot on purpose (the mission manager's
+                        "Different on purpose" button writes it; the duplicate finder skips them)
+  links-ok.yaml         links that work even though the link checker can't confirm it (the
+                        manager's "Mark as good" button writes it)
   general/              missions that aren't in a pack
     sunset-picnic.yaml
   oregon/               a pack: one folder per pack
@@ -12,9 +16,11 @@ missions/
     blue-pool-hike.yaml
 ```
 
-Structure is **source > pack > mission**. A pack is a curated collection, one per state plus Amble
-Anywhere, that people can add or skip on its own. Themes (ocean, camping, rainy day) are tags and
-filters, not packs.
+Structure is **source > pack > mission**. A pack is a curated collection that people can add or skip on
+its own: AmbleBee's own packs are one per state plus Amble Anywhere, but a pack can be about anything
+(Oregon Waterfalls, Cozy Nights In). Themes (ocean, camping, rainy day) are tags and filters on missions;
+a pack built around a theme is still just a pack. The mission manager's "New pack" button makes the
+folder and its pack.yaml for you.
 
 **The file name is the mission's id** (`sunset-picnic.yaml` → id `sunset-picnic`, shown on the Hive
 as `amblebee/sunset-picnic`). Ids are permanent: never rename a published mission's file. Use lowercase
@@ -41,6 +47,7 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 | `name` | Pack name ("Amble Oregon") |
 | `region` | Where it applies ("Oregon") |
 | `description` | One or two sentences |
+| `places` | Optional. Whether this pack's missions are about real spots: `required` (every mission needs a `place` with `coords`, like the state packs), `optional` (a place is welcome but not needed, for a themed pack mixing outings and nights in), or `none` (missions work anywhere, so no place, like Amble Anywhere). Left out: the `anywhere` folder is `none`, packs named "Amble ..." are `required`, anything else `optional`. |
 | `icon` | Name of an icon in `icons/packs/`, without `.svg` (`evergreen`, `needle`, `covered-bridge`…). To add one, see `icons/README.md`. |
 | `about` | Optional. A longer description (a short paragraph or two) shown on the pack's own page on the website, under the icon and `description`: what the state is like and what you'll find in the pack. Write it as `about: >` with the text indented on the lines below; a blank line starts a new paragraph. Website only: it's left out of catalog.json, so the Hive never downloads it. |
 
@@ -66,7 +73,7 @@ Check your changes with `python tools/check_missions.py` (this also runs on ever
 | `for_kids` | Required when `who` includes `kids`. `short`: one simple sentence; `steps`: simple photo prompts, one per camera screen |
 | `about` | The background that makes the place interesting: history, numbers, practical tips (parking, permits, best season). **Website only**: shown on the mission's own page under "About this place" (where Google reads it), left out of catalog.json so the camera and the Hive never get it. Write `about: >` with the text indented below; a blank line starts a new paragraph. 1500 characters max. To link to another mission, write its file name in double brackets, like `[[wallowa-lake-tramway]]`: the page shows the mission's name as a link (plain text while that mission is a draft), and the check catches typos. Links only work in `about`. [none] |
 | `steps` | Prompts for a guided mission, one camera screen each [none] |
-| `place` | **Required in every state pack** (Amble Oregon, Amble Texas...), **left out in Amble Anywhere**; the checker enforces both. Fields: `name`, `area`, `address`, `coords: [lat, lon]` (required in state packs: the entrance, dock or trailhead, 5 decimals; used for Near you and distances), optional `website`, optional `links` (up to 3 extra buttons: a list of `label` + `url`, labels 25 characters max, e.g. `- label: Bike rentals` / `url: https://...`). Map links are never stored; the Hive builds them from the address or coords. |
+| `place` | **Required in packs with `places: required`** (every state pack: Amble Oregon, Amble Texas...), **left out in packs with `places: none`** (Amble Anywhere), up to you in `places: optional` packs; the checker enforces this. Fields: `name`, `area`, `address`, `coords: [lat, lon]` (required in state packs: the entrance, dock or trailhead, 5 decimals; used for Near you and distances), optional `website`, optional `links` (up to 3 extra buttons: a list of `label` + `url`, labels 25 characters max, e.g. `- label: Bike rentals` / `url: https://...`). Map links are never stored; the Hive builds them from the address or coords. |
 | `gear` | Gear the mission really can't be done without, that many households don't own: a list of `item` (from the gear list below) plus, in state packs, `rent`: `on-site` (the place rents it), `nearby` (a shop close by does) or `"no"` (bring your own; keep the quotes, since a plain `no` reads as false). Amble Anywhere missions leave `rent` out. See **Gear** below. [none] |
 | `cost` | `free`, `$` (under $20 for two), `$$` ($20-60), `$$$` (over $60) [`$`] |
 | `setting` | `indoor`, `outdoor`, `either` [`either`] |

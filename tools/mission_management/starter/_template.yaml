@@ -1,0 +1,80 @@
+# Mission template. The mission manager's "+ New mission" button fills this in for you. By hand: copy it into a
+# pack folder (missions/<pack>/), name it after the mission (lowercase-with-dashes.yaml, permanent), then delete
+# the lines you don't need. Field reference: SCHEMA.md.   Check before pushing:
+#   python tools/check_missions.py    (every rule; also runs on every push)
+
+draft: true                    # hidden from the site until you've checked the pin and address; delete this line to publish
+# checked: 2026-11-02          # the day you last checked it (YYYY-MM-DD): place, hours and pin, or for Amble Anywhere
+#                              # that it still makes sense. When you publish, swap draft: true for this. Every live
+#                              # mission needs one or the other. Shows on the ticket as "Checked November 2026".
+number: 99                     # next free number in this pack; permanent, never reused
+name: Mission Name
+mode: date                     # date | adventure | both
+# who: [solo, friends, family, kids]     # who else can come; leave out for date-only missions
+
+# place: required when the pack's places is required, left out when it's none (see SCHEMA.md)
+# place:
+#   name: Place Name
+#   area: Neighborhood, City
+#   address: 123 Example St, City, ST 00000
+#   coords: [45.12345, -122.12345]       # lat, lon, 5 decimals: the entrance, dock or trailhead
+#   website: https://example.com         # the main link, shown as "Website"
+#   links:                               # optional, up to 3 extra buttons
+#     - label: Bike rentals              # button text, 25 characters max
+#       url: https://example.com/rentals
+
+short: One line for the camera screen, under 100 characters.
+description: >
+  The mission itself, in a few sentences: what to do, a small challenge, and the photo to take.
+  This is what the Hive's mission card and the top of the ticket show (aim for about 400 characters, 800 max).
+
+# about: >                     # optional, website only: the background that makes the place interesting
+#   History, numbers and practical tips (parking, permits, best season). Shown on the mission's
+#   own web page under "About this place", where Google reads it; never sent to the camera or
+#   the Hive. A blank line starts a new paragraph. 1500 characters max.
+#   Link to another mission with its file name in double brackets: [[wallowa-lake-tramway]]
+#   shows as "Wallowa Lake Tramway" and links to its page (plain text while it's a draft).
+
+# steps:                       # photo prompts, one camera screen each
+#   - First photo prompt
+#   - Second photo prompt
+
+# for_kids:                    # required when who includes kids
+#   short: Simple sentence for kids!
+#   steps:
+#     - Something red
+#     - A selfie with your grown-up!
+
+# gear:                        # only gear the mission really needs
+#   - item: bikes
+#     rent: on-site            # on-site | nearby | "no" (bring your own; keep the quotes)
+#   Gear list:
+#     water:   kayak, canoe, paddleboard, life-jackets, wetsuit, river-tube, fishing-gear
+#     camping: tent, sleeping-bags, camp-stove, hammock
+#     snow:    snowshoes, skis, snowboard, sled, traction-spikes
+#     other:   bikes, roller-skates, grill, telescope, binoculars, climbing-gear, headlamps,
+#              golf-clubs, disc-golf-discs, tennis-rackets, kite, high-clearance-vehicle
+
+duration: short                # short (1-3 hrs) | half-day | all-day
+effort: easy                   # easy | moderate | hard
+cost: $                        # free | $ (under $20 for two) | $$ ($20-60) | $$$ (over $60)
+setting: either                # indoor | outdoor | either
+season: any                    # any, or a list: [spring, summer, fall, winter]
+time_of_day: any               # any | morning | daytime | evening | night
+travel: local                  # home | local | drive | day-trip
+# check_ahead: [hours]         # any of: hours, tickets, reservation, seasonal, conditions
+# discounts: [senior, military]  # discounts the place offers (card says "Ask about discounts"); any of:
+#   senior, military, first-responder, healthcare, educator, student, government, local, birthday
+# caution: "This location has no cell service."  # website only (never the camera); one short sentence
+#                              # in quotes (so a colon inside it is fine),
+#                              # aim for under 120 characters (200 max). Shows in a yellow box on the ticket.
+# caution_until: 2026-12-01    # optional: hide the caution after this date (YYYY-MM-DD). Use it for anything
+#                              # temporary (closures, maintenance, construction); leave it out for lasting facts.
+# themes: [views, hiking]     # optional for now: 1-6 from this list, used for the website's filter chips
+#   outdoors: views, hiking, walks, waterfalls, beach, lakes-rivers, mountains, deserts, swimming, boating,
+#             caves, rocks-fossils, forests, parks, wildlife, gardens, stars, biking, picnic, sunsets
+#   culture:  history, museums, science, art, architecture, vehicles, spooky
+#   fun:      food, drinks, markets, movies, shows, games, thrills, quirky, holidays, road-trips
+#   feel:     playful, romantic, relaxing, small-towns, make-something
+tags: []                       # free-form keywords for search (anything goes)
+credit:                        # leave blank, or the name of whoever suggested it ("Suggested by Sam R.")

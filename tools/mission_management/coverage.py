@@ -1,4 +1,4 @@
-"""Loads every mission with its git dates, plus the balance targets the dashboard scores packs against.
+"""Loads every pack and mission with its git dates, for the dashboard (scoring.py holds the balance targets).
 
 Per pack the dashboard looks at:
     Setting   indoor vs outdoor ("either" counts half each way)
@@ -6,9 +6,9 @@ Per pack the dashboard looks at:
     Mode      date vs adventure ("both" counts half each way)
     Themes    how many of the website's themes the pack uses, and whether one theme takes over
 
-A pack is only "off" when a share falls outside its target band in TARGETS below, not when it
+A pack is only "off" when a share falls outside its target band in scoring.yaml, not when it
 isn't 50/50. Missions are mostly outdoors on purpose; the bands just catch the wild cases.
-Packs with fewer than MIN_MISSIONS missions are shown but not ranked (too few to judge).
+Packs with fewer than min_missions missions are shown but not ranked (too few to judge).
 
 Dates: "edited" and "added" come from git history (the last and first commit that touched the
 file). Outside git they fall back to the file's modified time; files you've changed but not
@@ -19,19 +19,7 @@ import os
 import subprocess
 from pathlib import Path
 
-from missions_lib import load_catalog
-
-# Target bands: the share of a pack's missions that should fall on the first side.
-# Tune these freely; the dashboard reads them from here.
-TARGETS = {
-    "setting": {"label": "Indoor share", "low": 0.25, "high": 0.60, "side_a": "indoor", "side_b": "outdoor"},
-    "cost":    {"label": "Cheap share (free or $)", "low": 0.40, "high": 0.80, "side_a": "cheap", "side_b": "pricier"},
-    "mode":    {"label": "Date share", "low": 0.35, "high": 0.65, "side_a": "date", "side_b": "adventure"},
-}
-TOP_THEME_MAX = 0.40     # one theme on more than 40% of a pack's missions = that pack leans on it
-MIN_MISSIONS = 10        # below this a pack isn't ranked in the gap finder
-NON_STATE = {"anywhere", "general"}
-
+from amble_checks import load_catalog, places_rule
 
 def git_dates(missions_dir):
     """(repo_top, {path from repo top: (added, edited)}, note). Dates are YYYY-MM-DD."""
@@ -83,8 +71,12 @@ def load(missions_dir):
             edited = added = datetime.date.fromtimestamp(os.path.getmtime(m["file"])).isoformat()
         rows.append({
             "id": m["id"], "pack": m["pack"], "number": m.get("number"), "name": m.get("name", m["id"]),
-            "mode": m.get("mode"), "setting": m.get("setting"), "cost": m.get("cost"),
+            "mode": m.get("mode"), "setting": m.get("setting"), "cost": m.get("cost"), "season": m.get("season"), "time": m.get("time_of_day"),
             "themes": list(m.get("themes") or []), "draft": bool(m.get("draft")),
             "checked": m.get("checked"), "added": added, "edited": edited, "uncommitted": rel in dirty,
         })
-    return {pid: p.get("name", pid) for pid, p in packs.items()}, rows, note
+    info = {pid: {"name": p.get("name", pid), "region": p.get("region") or "", "description": p.get("description") or "",
+                  "icon": p.get("icon") or "", "places": places_rule(pid, p), "count": p.get("count", 0),
+                  "drafts": p.get("drafts", 0)}
+            for pid, p in packs.items()}
+    return info, rows, note

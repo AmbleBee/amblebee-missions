@@ -1,0 +1,31 @@
+# Mission manager scoring: what the dashboard calls "balanced".
+#
+# These are the defaults that ship with the manager. On first run it copies them to scoring.yaml next to this
+# file, and that copy is yours: the Settings page edits it, and it never goes into a pack repo or a git push.
+# "Reset to defaults" on the Settings page copies this file over it again.
+#
+# A share is the part of a pack's missions on the first side ("either" and "both" count half each way).
+# A pack is only "off" when its share falls outside low-high, not when it isn't 50/50.
+version: 1
+
+balance:
+  setting: {low: 0.25, high: 0.60}   # indoor share: missions are mostly outdoors on purpose
+  cost: {low: 0.40, high: 0.80}      # cheap share (free or $)
+  mode: {low: 0.35, high: 0.65}      # date share
+  season: {low: 0.40, high: 1.0}     # winter share: missions you can do in winter ("any" season counts)
+  time: {low: 0.15, high: 0.60}      # evening share: evening or night ("any" time counts half)
+
+show: [setting, cost, mode, season, time]   # the balance bars shown and judged (the Settings page has checkboxes)
+
+top_theme_max: 0.40   # one theme on more than this share of a pack = the pack leans on it
+min_missions: 10      # packs with fewer missions are shown but not ranked (too few to judge)
+stale_days: 182       # a live mission last checked longer ago than this shows as "Checked 6+ months ago"
+
+# Per-pack exceptions, by pack folder name. Any of:
+#   gap_finder: false            still charted, never ranked in the gap finder
+#   setting / cost / mode / season / time: off   don't judge this balance at all (an all-indoor rainy-day pack)
+#   setting: {low: .., high: ..} judge it against a different band
+#   top_theme: off               a themed pack leaning on one theme is the point
+packs:
+  anywhere:
+    gap_finder: false

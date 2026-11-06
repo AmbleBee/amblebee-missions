@@ -7,3 +7,9 @@ _pins/
 _pins/**
 **/_pins/
 .venv/
+
+# the mission manager's personal scoring settings (made from scoring.default.yaml on first run)
+tools/mission_management/scoring.yaml
+# the mission manager's scratch ideas list and pack release zips (kept on this computer only)
+mission-ideas.yaml
+releases/
