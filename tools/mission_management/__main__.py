@@ -785,18 +785,32 @@ def main():
         sys.exit(f"Ports {PORTS.start}-{PORTS.stop - 1} are all busy. Close an old copy of the manager and try again.")
     print("AmbleBee Mission Management")
     print(f"  Repo: {ROOT}" + ("" if ready() else "  (not set up yet: the page walks you through it)"))
-    print(f"  This computer:  http://localhost:{port}/?key={KEY}")
-    ip = lan_ip()
+    # AMBLE_HOST: the address(es) you reach this machine by, e.g. a Tailscale IP or name, comma separated. Set it in
+    # a container's compose file, since a container can't see the server's own addresses.
+    hosts = [h.strip() for h in os.environ.get("AMBLE_HOST", "").split(",") if h.strip()]
     ts_ip, ts_name = tailscale_links()
-    if ip and not ip.startswith("127.") and ip != ts_ip:
-        print(f"  Same Wi-Fi:     http://{ip}:{port}/?key={KEY}")
-    if ts_ip:
-        print(f"  Tailscale:      http://{ts_ip}:{port}/?key={KEY}")
-        if ts_name:
-            print(f"                  http://{ts_name}:{port}/?key={KEY}")
-    if Path("/.dockerenv").exists():
-        print(f"  Running in Docker: other devices only reach it if the container publishes port {port}")
-        print(f"  (ports: - \"{port}:{port}\"). Then use the host's address, or an editor proxy at /proxy/{port}/.")
+    in_docker = Path("/.dockerenv").exists()
+    if in_docker and not ts_ip:
+        # a container's own addresses (localhost, 172.x/192.168.x Docker networks) don't reach it from a browser
+        if hosts:
+            for h in hosts:
+                print(f"  Open:  http://{h}:{port}/?key={KEY}")
+        else:
+            print(f"  Open:  http://TAILSCALEIP:{port}/?key={KEY}")
+            print("         (swap TAILSCALEIP for your server's Tailscale IP; to get a clickable link,")
+            print("          add  - AMBLE_HOST=TAILSCALEIP  under environment: in the compose file)")
+        print(f"  Needs  - {port}:{port}  under ports: in the compose file (then docker compose up -d).")
+    else:
+        for h in hosts:
+            print(f"  Your address:   http://{h}:{port}/?key={KEY}")
+        print(f"  This computer:  http://localhost:{port}/?key={KEY}")
+        ip = lan_ip()
+        if ip and not ip.startswith("127.") and ip != ts_ip:
+            print(f"  Same Wi-Fi:     http://{ip}:{port}/?key={KEY}")
+        if ts_ip:
+            print(f"  Tailscale:      http://{ts_ip}:{port}/?key={KEY}")
+            if ts_name:
+                print(f"                  http://{ts_name}:{port}/?key={KEY}")
     print(f"Saving writes straight into {MISSIONS}. Commit and push when you're happy. Ctrl+C to stop.")
     try:
         server.serve_forever()
