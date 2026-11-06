@@ -1,4 +1,5 @@
 draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 22
 name: Buffalo Bayou Cistern
 mode: both
@@ -7,7 +8,7 @@ place:
   name: Buffalo Bayou Park Cistern
   area: Buffalo Bayou Park, Houston
   coords: [29.76200, -95.37700]  # APPROX: set at the cistern entrance before publishing
-  website: https://buffalobayou.org/visit/destination/the-cistern/
+  website: https://buffalobayou.org/location/the-cistern/
 short: Tour Houston's echoing underground Cistern, a forest of 221 columns under Buffalo Bayou Park.
 description: >
   Walk down into an old underground drinking-water reservoir from 1926, a

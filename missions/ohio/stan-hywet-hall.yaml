@@ -7,8 +7,8 @@ place:
   name: Stan Hywet Hall and Gardens
   area: Akron
   address: 714 N Portage Path, Akron, OH 44303
-  coords: [41.11860, -81.54860]  # APPROX: set at the visitor entrance before publishing
-  website: https://www.stanhywet.org
+  coords: [41.11860, -81.54860]
+  website: https://stanhywet.org
 short: Tour a 65-room Tudor mansion, then pick your favorite garden room outside.
 description: >
   The country estate built by Goodyear's founder: a 65-room Tudor-style manor

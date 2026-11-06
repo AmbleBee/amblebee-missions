@@ -6,8 +6,8 @@ place:
   name: Cliff Walk at the Forty Steps
   area: Narragansett Ave, Newport
   address: Narragansett Ave & Ochre Point Ave, Newport, RI 02840
-  coords: [41.47170, -71.29890]  # APPROX coords: top of the Forty Steps
-  website: https://www.cliffwalk.com
+  coords: [41.47170, -71.29890]
+  website: https://cliffwalk.com
 short: Walk the cliffs between the ocean and the Gilded Age mansions. Sit on the Forty Steps.
 description: >
   The Cliff Walk runs along the rocky shore of Newport with the ocean on one side and huge

@@ -1,4 +1,4 @@
-checked: 2026-11-02
+checked: 2026-11-06
 number: 53
 name: Post, the Center of Oregon
 mode: both
@@ -9,8 +9,8 @@ place:
   address: 28550 SE Paulina Hwy, Post, OR 97752
   coords: [44.15699, -120.49097]
   links:
-    - label: Geographic Center
-      url: https://maps.app.goo.gl/HFUv6eXmYCzagFaG9
+    - label: Facebook Page
+      url: https://www.facebook.com/people/POST-GENERAL-STORE/100049051167058/
 short: Stand near the middle of Oregon in tiny Post, east of Prineville. Split a milkshake at the store.
 description: >
   Drive out to Post, a tiny ranch town that claims to be the center of Oregon,
