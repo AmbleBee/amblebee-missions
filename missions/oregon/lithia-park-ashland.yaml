@@ -1,12 +1,13 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 55
 name: Lithia Park, Ashland
 mode: both
 who: [solo, friends, family, kids]
 place:
-  name: Lithia Park (main entrance off the Plaza)
+  name: Lithia Park
   area: Downtown Ashland
-  coords: [42.19700, -122.71700]  # APPROX: set at the Plaza entrance before publishing
+  address: Winburn Way, Ashland, OR 97520
+  coords: [42.18860, -122.71836]
   website: https://www.ashlandoregon.gov/Facilities/Facility/Details/Lithia-Park-22
 short: Wander Lithia Park along Ashland Creek. Dare each other to sip the Lithia water.
 description: >

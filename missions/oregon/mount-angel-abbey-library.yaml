@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 27
 name: Mount Angel Abbey Library
 mode: date
@@ -6,20 +6,35 @@ place:
   name: Mount Angel Abbey
   area: St. Benedict, near Mt. Angel
   address: 1 Abbey Dr, St. Benedict, OR 97373
-  coords: [45.05880, -122.77450]  # APPROX: set at the parking lot before publishing
+  coords: [45.05776, -122.77551]
+  website: https://www.mountangelabbey.org/library/
 short: Visit the Alvar Aalto library at Mount Angel Abbey. Then the hilltop view.
 description: >
-  Visit the abbey's library, a quiet, light-filled building by the architect
-  Alvar Aalto. Speak softly; it's a working monastery. Afterward, walk the hilltop
-  grounds and look out over the valley.
+  Drive up the hill to Mount Angel Abbey and step into its library, one of
+  only two buildings in the US by the Finnish architect Alvar Aalto. Curving
+  wood, soft natural light and a fan-shaped reading room built into the hill
+  make it feel like a secret. Speak softly; it's a working monastery. Then
+  wander the hilltop grounds and find a bench looking out over the
+  Willamette Valley. The photo to get: the two of you on the library's
+  curved stairs, or at the edge of the hill with the farmland behind you.
 about: >
-  Benedictine monks from Engelberg, Switzerland, founded Mount Angel Abbey
-  in 1882, and monks still live, pray and work on the hilltop today.
+  Benedictine monks from Engelberg, Switzerland founded Mount Angel Abbey in
+  1882 on top of a 485-foot butte above the town of Mt. Angel. The library
+  opened in 1970 and is one of only two buildings Alvar Aalto designed in
+  the United States. He even designed the furniture, built in his own
+  factories in Finland. Its wave-like shapes and fan-shaped plan open out
+  toward the countryside to the north, and it holds one of the largest
+  theology collections in the Northwest, including manuscripts going back to
+  the 1100s.
 
-  The library, finished in 1970, is one of only two buildings in the United
-  States by the Finnish architect Alvar Aalto. Its fan-shaped reading room
-  is built to fill with soft daylight. The abbey also has a small museum and
-  a brewery that's open on some days.
+  The grounds are free to walk, and the views over the valley are some of
+  the best around Salem. Don't skip the small abbey museum, also free:
+  alongside Civil War relics and old vestments, it has what's billed as the
+  world's largest pig hairball. Check library and museum hours before you
+  go, since they can change around services and holidays.
+
+  Down the hill, the town of Mt. Angel has Bavarian-style buildings and is
+  famous for its Oktoberfest every September.
 duration: short
 effort: easy
 cost: free
@@ -28,5 +43,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours]
-themes: [views, architecture, markets, relaxing]
+themes: [views, architecture, markets, relaxing, walks, museums]
 tags: [architecture, books, calm, views]

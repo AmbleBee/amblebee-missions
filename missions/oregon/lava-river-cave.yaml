@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 14
 name: Lava River Cave
 mode: both
@@ -6,7 +6,9 @@ who: [solo, friends, family]
 place:
   name: Lava River Cave, Newberry National Volcanic Monument
   area: South of Bend
-  coords: [43.89600, -121.36900]  # APPROX: set at the cave parking before publishing
+  address: Cottonwood Rd, Bend, OR 97707
+  coords: [43.89541, -121.36961]
+  website: https://www.fs.usda.gov/r06/deschutes/recreation/lava-river-cave-interpretive-site
 short: Walk a mile into a lava tube in the dark. Turn off your lights for ten seconds.
 description: >
   Bring warm layers and two good lights each, then walk into a lava tube that runs
@@ -23,7 +25,7 @@ about: >
   but bring your own lights.
 gear:
   - item: headlamps
-    rent: on-site      # lanterns rent at the cave; bring two lights each anyway
+    rent: on-site
 duration: short
 effort: moderate
 cost: $

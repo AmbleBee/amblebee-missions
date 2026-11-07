@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 46
 name: Kerry Park Skyline Sunset
 mode: both
@@ -6,22 +6,38 @@ who: [solo, friends, family, kids]
 place:
   name: Kerry Park
   area: Queen Anne Hill, Seattle
-  coords: [47.62950, -122.36000]  # APPROX: set at the viewpoint before publishing
-short: Watch the Seattle skyline light up from Kerry Park. Space Needle in front, Rainier behind.
+  address: 211 W Highland Dr, Seattle, WA 98119
+  coords: [47.62947, -122.35994]
+  website: https://www.seattle.gov/parks/parks/kerry-park
+short: Watch Seattle light up at sunset from Kerry Park, with the Space Needle right in front.
 description: >
-  Climb up to Queen Anne Hill for Seattle's most famous view: the Space Needle
-  right in front of you, downtown behind it, and on a clear day Mount Rainier
-  floating over everything. Bring a hot drink, find a spot on the wall, and
-  stay as the sun sets and the city lights come on. Get a photo of you with the Needle lit up behind you. It's free and tiny, so arrive a bit
-  before sunset for a good spot.
+  Head up Queen Anne Hill to Kerry Park for Seattle's most famous view: the
+  Space Needle front and center, downtown behind it, Elliott Bay off to the
+  side and, on a clear day, Mount Rainier floating over everything. Bring a
+  hot drink, find a spot along the railing, and stay as the sun goes down
+  and the city lights come on. The photo to get: you at the railing with the
+  Needle lit up behind you. It's free and small, so come a little before
+  sunset to get a good spot.
 about: >
-  Albert Sperry Kerry and his wife gave the land to the city in 1927 so that
-  everyone who stops here could enjoy the view. The sculpture in the park,
-  Changing Form, by Doris Totten Chase, dates to 1971.
+  Kerry Park is a tiny 1.26-acre lookout on West Highland Drive, on the
+  south side of Queen Anne Hill. Albert and Katharine Kerry gave the land to
+  the city in 1927 so that everyone who stopped there could enjoy the view,
+  and it's been Seattle's classic skyline shot ever since. You've probably
+  seen it already: it's a go-to backdrop for local TV news, it's in the
+  opening of 10 Things I Hate About You, and it's the view behind Frasier's
+  apartment.
 
-  This view shows up in countless movies and postcards, from the Space
-  Needle and downtown to the Port of Seattle's cranes. Street parking along
-  Highland Drive is limited, so walking or a short ride is easiest.
+  From the railing you see the Space Needle in the middle, downtown, Elliott
+  Bay, West Seattle and Bainbridge Island, with Mount Rainier behind it all
+  when the sky is clear. Sunset and the blue hour after it are the best
+  times, and summer evenings get crowded. The big steel sculpture, Changing
+  Form by Doris Chase, has been there since 1971 and makes a good frame for
+  photos.
+
+  Want to see the view from the other direction? Go up the Needle itself on
+  [[space-needle-view]] and look back toward Queen Anne Hill. If you have
+  kids along, the stairs at the west end lead down to the playground at
+  Bayview-Kinnear Park.
 for_kids:
   short: City hunt! Find each thing.
   steps:
@@ -37,5 +53,5 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: local
-themes: [views, sunsets, romantic]
+themes: [views, sunsets, romantic, walks]
 tags: [views, skyline, sunset, romantic, free, seattle]

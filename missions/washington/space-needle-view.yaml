@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 1
 name: Up the Space Needle
 mode: both
@@ -7,21 +7,34 @@ place:
   name: Space Needle
   area: Seattle Center
   address: 400 Broad St, Seattle, WA 98109
-  coords: [47.62050, -122.34930]  # APPROX: set at the entrance before publishing
+  coords: [47.62051, -122.34932]
   website: https://www.spaceneedle.com/plan-your-visit
-short: Go up the Space Needle. Find your favorite thing in the view.
+short: Ride up the Space Needle and pick one spot in the view to go see next.
 description: >
-  Head up the Space Needle, ideally on a clear day or at sunset. Walk the
-  whole way around, and each pick one thing in the view you want to go and
-  see up close another day.
+  Ride the elevator up the Space Needle, ideally on a clear day or around
+  sunset. Walk the whole way around the top, then head down a level and
+  stand on the spinning glass floor with the city straight below your feet.
+  Each of you picks one thing in the view you want to go see up close
+  another day. The photo to get: everyone together at the glass with Seattle
+  and the water behind you.
 about: >
-  The Space Needle was built for the 1962 World's Fair in about 400 days and
-  stands 605 feet tall. It was the tallest structure west of the Mississippi
-  when it opened.
+  The Space Needle went up in about a year for the 1962 World's Fair and
+  still stands 605 feet tall, with the observation deck at about 520 feet.
+  The elevators get you there in roughly 41 seconds. It was built to handle
+  200 mph winds and a magnitude 9 earthquake, and it became an official
+  Seattle landmark in 1999.
 
-  A 2018 renovation added the Loupe, a rotating glass floor you can look
-  straight down through. On New Year's Eve, fireworks launch from the
-  Needle.
+  A 2018 renovation swapped the old walls for floor-to-ceiling glass and
+  added The Loupe, the world's first revolving glass floor. On a clear day
+  you can see Mount Rainier, the Olympic Mountains, Puget Sound and the
+  Cascades. Sunset is the most popular time, so book timed tickets ahead and
+  check the forecast before you pick a day.
+
+  It sits in Seattle Center, right next to [[chihuly-garden-and-glass]], so
+  the two make an easy pair. For the classic postcard view of the Needle
+  itself, with downtown and Rainier behind it, head up the hill to
+  [[kerry-park-sunset]]. On New Year's Eve the fireworks launch right off
+  the tower.
 for_kids:
   short: Look out from the top! Find each thing.
   steps:
@@ -37,5 +50,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [tickets, hours]
-themes: [views]
+themes: [views, walks, sunsets, architecture]
 tags: [views, landmark, seattle]

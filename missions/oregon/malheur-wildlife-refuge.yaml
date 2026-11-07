@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 52
 name: Malheur National Wildlife Refuge
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Malheur National Wildlife Refuge Headquarters
   area: Sodhouse Lane, south of Burns
   address: 36391 Sodhouse Ln, Princeton, OR 97721
-  coords: [43.26500, -118.84300]  # APPROX: set at the headquarters parking before publishing
+  coords: [43.26559, -118.84401]
   website: https://www.fws.gov/refuge/malheur/visit-us
 short: Spot birds at Malheur Refuge. Each keep a count and see who finds more species.
 description: >
@@ -42,5 +42,5 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [hours, conditions]
-themes: [deserts, wildlife]
+themes: [deserts, wildlife, walks]
 tags: [birds, wildlife, nature, high-desert, eastern-oregon]

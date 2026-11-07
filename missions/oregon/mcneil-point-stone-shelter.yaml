@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 62
 name: McNeil Point Stone Shelter
 mode: adventure
@@ -6,8 +6,8 @@ who: [solo, friends]
 place:
   name: Top Spur Trailhead (to McNeil Point)
   area: Northwest side of Mount Hood, Mt. Hood National Forest
-  address: Forest Road 1828-118, Mt. Hood National Forest, OR  # verify: no street address; from Lolo Pass Rd via FR 1825 and 1828
-  coords: [45.40770, -121.78594]  # trailhead coords from the Forest Service page
+  address: Forest Road 1828-118, Mt. Hood National Forest, OR
+  coords: [45.40770, -121.78594]
   website: https://www.fs.usda.gov/r06/mthood/recreation/top-spur-trailhead
 short: Climb Mount Hood's flank through wildflower meadows to an old stone shelter. Lunch with a view.
 description: >
@@ -42,6 +42,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions, seasonal]
-themes: [views, hiking, gardens]
+themes: [views, hiking, gardens, mountains, rocks-fossils]
 tags: [hiking, mount-hood, wildflowers, views, timberline-trail, wilderness, portland]
 credit:
