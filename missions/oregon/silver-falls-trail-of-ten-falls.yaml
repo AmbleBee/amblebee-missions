@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 54
 name: Silver Falls, Trail of Ten Falls
 mode: both
@@ -6,26 +6,41 @@ who: [solo, friends, family, kids]
 place:
   name: Silver Falls State Park, South Falls Day-Use Area
   area: East of Salem, near Sublimity
-  coords: [44.87800, -122.65600]  # APPROX: set at the South Falls parking before publishing
-  website: https://stateparks.oregon.gov/park_211.php
-short: Hike the Trail of Ten Falls at Silver Falls. Walk right behind the curtain of South Falls.
+  address: 20024 Silver Falls Hwy SE, Sublimity, OR 97385, United States
+  coords: [44.87743, -122.65498]
+  website: https://stateparks.oregon.gov/index.cfm?do=park.profile&parkId=151
+  links:
+    - label: Map
+      url: https://stateparks.oregon.gov/index.cfm?do=main.loadFile&load=_siteFiles%2Fpublications%2F%2F2025-silver-falls---tenfalls-southdistrict.074640.pdf
+short: Hike the Trail of Ten Falls at Silver Falls and walk right behind the curtain of South Falls.
 description: >
-  Hike Oregon's most famous waterfall loop, about seven miles through a mossy
-  canyon past ten waterfalls, and walk behind four of them on trails tucked
-  under the rock. Start at South Falls and stand right behind its 177-foot
-  curtain for a photo of you in the mist. Each pick your favorite
-  of the ten. For a shorter outing, just do the South Falls loop. Spring has
-  the biggest falls, and October has the fall colors. There's a day-use
-  parking fee, and dogs aren't allowed on the canyon trail.
+  Hike Oregon's most famous waterfall loop, the Trail of Ten Falls, about
+  seven miles through a mossy canyon past ten waterfalls. Four of them have
+  trails that run right behind the water. Start at South Falls and stand
+  behind its 177-foot curtain, then work your way past the rest and pick
+  your favorite of the ten. For a shorter outing, just do the South Falls
+  loop. The photo to get: you behind South Falls with the water pouring down
+  in front of you. Spring has the biggest falls and October has the fall
+  color. There's a day-use parking fee, and dogs aren't allowed on the
+  canyon trail.
 about: >
-  Silver Falls is Oregon's largest state park, at about 9,000 acres. The
-  Civilian Conservation Corps built its stone lodge and many of its trails
-  in the 1930s.
+  Silver Falls is Oregon's largest state park, covering more than 9,000
+  acres east of Salem. The Trail of Ten Falls runs 7.2 miles along Silver
+  Creek, and you can walk behind four of its waterfalls: South Falls, Lower
+  South Falls, Middle North Falls and North Falls. The hollows behind them
+  formed as the creek wore away a softer layer of rock beneath hard basalt
+  ledges.
 
-  Before it was a park, the falls drew tourists for stunts: in 1928 a
-  daredevil named Al Faussett rode a canoe over South Falls and survived.
-  The rock you walk behind is basalt, and the softer layer under it wore
-  away to make the hollow behind each fall.
+  Before it was a park, this was Silver Falls City, a logging town founded
+  in 1888, and a local businessman charged admission to see the falls. In
+  1928 the daredevil Al Faussett went over South Falls in a padded canvas
+  boat for a paying crowd. It landed on its side, and he was carried off
+  with a broken hand and serious injuries. The Civilian Conservation Corps
+  built the stone South Falls Lodge and much of the trail system in the
+  1930s.
+
+  Weekends fill up fast in summer, so go early. Trails behind the falls can
+  be wet and slick, so wear shoes with good grip.
 for_kids:
   short: Waterfall hunt! Count all ten.
   steps:
@@ -43,4 +58,4 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
 themes: [hiking, waterfalls, forests, parks]
-tags: [waterfall, hiking, forest, state-park, willamette-valley]
+tags: [silver-falls, trail-of-ten-falls, south-falls, waterfall-hike, behind-the-waterfall, state-park, salem, silverton, willamette-valley]

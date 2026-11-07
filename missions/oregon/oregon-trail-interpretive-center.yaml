@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 48
 name: Oregon Trail Interpretive Center
 mode: both
@@ -6,27 +6,38 @@ who: [solo, friends, family, kids]
 place:
   name: National Historic Oregon Trail Interpretive Center at Flagstaff Hill
   area: Flagstaff Hill, east of Baker City
-  address: 22267 Hwy 86, Baker City, OR 97814
-  coords: [44.81300, -117.72700]  # APPROX: set at the center's parking lot before publishing
+  address: 22267 OR-86, Baker City, OR 97814
+  coords: [44.81456, -117.72894]
   website: https://www.blm.gov/learn/interpretive-centers/national-historic-oregon-trail-interpretive-center
-short: Follow the Oregon Trail at Flagstaff Hill. Walk down to real wagon ruts from 1840s pioneers.
+short: Walk in the pioneers' footsteps at Flagstaff Hill, down to real Oregon Trail wagon ruts.
 description: >
-  Step into the pioneers' story at a hilltop museum overlooking the actual
-  route of the Oregon Trail: full-size wagons, diaries from the journey, and
-  the choices families had to make along the way. Then walk the trails down
-  the hill to real wagon ruts still cut into the sagebrush. Each decide what
-  you'd have packed in your one wagon, and get a photo of you by
-  the ruts with the Blue Mountains behind you. Watch for living-history days
-  at the wagon encampment. It charges a small fee and takes federal passes.
+  Start at the life-size wagon camp and work through the museum's story of
+  the Oregon Trail: the wagons, the diaries and the hard choices families
+  made on the way west. Then head out onto the hillside trails and follow
+  them down to real wagon ruts still cut into the sagebrush. On the walk,
+  decide what you'd have packed if everything you owned had to fit in one
+  wagon. The photo to get: you standing in the ruts with the Blue Mountains
+  behind you. Watch the calendar for living-history days and Oregon Trail
+  Days.
 about: >
   Hundreds of thousands of emigrants crossed the Oregon Trail between the
-  1840s and the 1860s, a trip of about 2,000 miles that took four to six
-  months. Here they got their first view of the Blue Mountains, one of the
-  last hard climbs before the Willamette Valley.
+  1840s and 1860s, a trip of about 2,000 miles that took four to six months.
+  From Flagstaff Hill they got their first look at the Blue Mountains, one
+  of the last hard climbs before the Willamette Valley. The National
+  Historic Oregon Trail Interpretive Center opened here in 1992, about six
+  miles northeast of Baker City, and is run by the Bureau of Land
+  Management.
 
-  The center opened in 1992 and is run by the Bureau of Land Management.
-  Baker City, a short drive away, grew up in the 1860s gold rush and still
-  has blocks of old brick buildings.
+  The 500-acre site has more than four miles of trails. Paved paths loop
+  around the hilltop and climb to Panorama Point, and dirt trails lead down
+  to the original wagon ruts. Along the way you'll pass what's left of the
+  Flagstaff Gold Mine, including a lode mine and a stamp mill. Inside,
+  exhibits cover pioneer life, the Native peoples of the region, and the
+  mining boom that built Northeast Oregon.
+
+  There's a small entry fee for most of the year, federal passes are
+  accepted, and winter hours are shorter, so check before you go. Pair it
+  with a walk through Baker City's historic downtown, a short drive away.
 for_kids:
   short: Pioneer hunt! Find each thing.
   steps:
@@ -43,5 +54,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [walks, history, museums]
-tags: [history, oregon-trail, museum, walking, eastern-oregon]
+themes: [walks, history, museums, views]
+tags: [oregon-trail, wagon-ruts, pioneers, flagstaff-hill, baker-city, blue-mountains, gold-mine, living-history, eastern-oregon]

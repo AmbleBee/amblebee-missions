@@ -1,5 +1,4 @@
-draft: true  # pin not verified yet; delete this line once it's checked
-checked: 2026-10-26
+checked: 2026-11-06
 number: 49
 name: Steens Mountain Loop
 mode: both
@@ -7,27 +6,34 @@ who: [solo, friends, family, kids]
 place:
   name: Steens Mountain Loop Road (north entrance)
   area: Frenchglen, Harney County
-  coords: [42.82700, -118.91500]  # APPROX: set at the loop's start near Frenchglen before publishing
-  website: https://www.blm.gov/visit/steens-mountain-cmpa
-short: Steens Mountain Loop near Frenchglen. Drive to the summit and look a mile down onto the Alvord.
+  coords: [42.82395, -118.91170]
+  website: https://www.blm.gov/visit/steens-mountain-wilderness
+short: Drive Oregon's highest road over Steens Mountain and look a mile down onto the Alvord Desert.
 description: >
-  Drive the highest road in Oregon, a gravel loop climbing nearly to the
-  top of Steens Mountain. Stop at Kiger Gorge, then walk out to the East Rim
-  overlook, where the mountain drops away about a mile straight down to the
-  Alvord Desert. The photo to get: you at the rim with the desert far below.
-  On the way, everyone keeps a count of wild horses, pronghorn and bighorn
-  sheep.
+  Drive the Steens Mountain Loop, a gravel road that climbs higher than any
+  other road in Oregon, nearly to the top of Steens Mountain. Stop at the
+  Kiger Gorge overlook to see a canyon carved by glaciers, then walk out to
+  the East Rim, where the mountain drops away about a mile straight down to
+  the Alvord Desert. On the way, everyone keeps a count of wild horses,
+  pronghorn and bighorn sheep. The photo to get: you at the East Rim with
+  the desert spread out far below.
 about: >
-  Steens Mountain rises to about 9,700 feet. It's a giant block of the
-  Earth's crust tilted up along a fault, so the west side climbs slowly
-  while the east side is a sheer wall. Ice Age glaciers carved the huge
-  U-shaped gorges like Kiger Gorge.
+  Steens Mountain rises to about 9,700 feet in Oregon's high desert. It's a
+  giant block of the Earth's crust tilted up along a fault, so the west side
+  climbs gently for miles while the east side ends in a sheer wall above the
+  Alvord Desert. Ice Age glaciers carved the huge U-shaped gorges along the
+  top, including Kiger Gorge, Little Blitzen and Big Indian.
 
-  Watch for Kiger mustangs, wild horses known for their Spanish-style
-  markings. The loop is about 52 miles, and the upper road only opens in
-  summer and early fall, after the snow melts. Fill up in Burns or
-  Frenchglen, bring plenty of water, and carry a paper map. Down below, the
-  Alvord itself is its own mission: [[alvord-desert]].
+  The loop is a 52-mile backcountry byway starting near Frenchglen, and the
+  upper road only opens in summer and early fall, once the snow melts. Watch
+  for Kiger mustangs, wild horses known for their Spanish-style markings.
+  Fish Lake and Page Springs campgrounds make good stops or overnights along
+  the way.
+
+  Services are few and far between: fill up in Burns or Frenchglen, bring
+  plenty of water, and carry a paper map. A high-clearance vehicle with good
+  tires is the safest bet on the rough upper road. Down below, the Alvord is
+  its own mission: [[alvord-desert]].
 for_kids:
   short: Mountain drive! Find each thing.
   steps:
@@ -47,7 +53,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
-caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
-          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
+caution: "Caution: No cell service on most of the loop. Download offline maps and bring a paper map."
 themes: [views, mountains, deserts, wildlife, road-trips]
-tags: [steens mountain loop, kiger gorge, east rim overlook, kiger mustangs, frenchglen, eastern-oregon]
+tags: [steens-mountain, steens-mountain-loop, kiger-gorge, east-rim, alvord-desert, kiger-mustangs, frenchglen, high-desert, eastern-oregon]

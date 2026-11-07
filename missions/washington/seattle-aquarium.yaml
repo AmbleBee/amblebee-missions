@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+draft: true # Website, coords, address verified
 number: 14
 name: Seattle Aquarium
 mode: both
@@ -6,8 +6,9 @@ who: [friends, family, kids]
 place:
   name: Seattle Aquarium
   area: Downtown Seattle waterfront
-  address: 1483 Alaskan Way, Seattle, WA 98101
-  coords: [47.60760, -122.34300]  # APPROX: set at the entrance before publishing
+  address: 1483 Alaskan Way Pier 59, Seattle, WA 98101
+  coords: [47.60741, -122.34292]
+  website: https://www.seattleaquarium.org
 short: Visit the Seattle Aquarium. Find the otters, and pick your favorite sea creature.
 description: >
   Spend a rainy morning at the aquarium on the waterfront. Watch the sea otters,

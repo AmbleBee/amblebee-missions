@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 11
 name: Painted Hills
 mode: both
@@ -6,21 +6,38 @@ who: [solo, friends, family]
 place:
   name: Painted Hills Unit, John Day Fossil Beds
   area: Near Mitchell
-  coords: [44.66150, -120.26550]  # APPROX: set at the overlook parking before publishing
-short: Walk the Painted Hills overlook. Photograph the stripes in the late light.
+  address: Overlook Trail, Mitchell, OR 97750
+  coords: [44.64988, -120.26675]
+  website: https://www.nps.gov/joda/planyourvisit/ptd-hills-unit.htm
+short: See the red, gold and black stripes of Oregon's Painted Hills glow in the late light.
 description: >
-  Drive out to the Painted Hills and walk the short overlook trail above the red,
-  gold and black striped hills. The colors change with the light, so late
-  afternoon is best. Stay on the trails; the hills scar for decades.
+  Drive out to the Painted Hills near Mitchell and start with the short
+  Overlook Trail for the classic view of the striped red and gold hills.
+  Then walk the boardwalk through Painted Cove, where you can see the
+  colored clay up close, and if you have energy left, climb the Carroll Rim
+  Trail for the big view over the whole valley. The colors shift with the
+  light, so late afternoon is best, and they're richest after a rain. The
+  photo to get: you on the overlook with the stripes rolling out behind you.
+  Stay on the trails, because footprints in the clay last for decades.
 about: >
-  The stripes are old soils, laid down over millions of years as the climate
-  changed and volcanoes dusted the land with ash. Red layers formed in warm,
-  wet times, yellow and tan in drier ones, and the black bands are mostly
-  plant matter.
+  The Painted Hills started forming about 35 million years ago, as ancient
+  floodplains, volcanic ash and a changing climate built up layer after
+  layer of soil. The red bands come from iron-rich soils formed in warm, wet
+  times, the yellow and tan bands from cooler, drier periods, and the black
+  streaks are lignite, fossilized plant matter from old riverbanks. Rain
+  soaks into the clay and darkens it, which is why the colors pop after a
+  storm.
 
-  The Painted Hills are one of the three units of John Day Fossil Beds
-  National Monument and one of the Seven Wonders of Oregon. Colors look
-  richest after a rain, when the clay is damp.
+  The hills are one of three units of John Day Fossil Beds National Monument
+  and one of the Seven Wonders of Oregon. They sit about nine miles
+  northwest of the small town of Mitchell. Fossilized leaves of redwood, fig
+  and alder have been found in the old lake beds here, and the wider area
+  has turned up early horses, camels and rhinos.
+
+  There are no services at the hills, so bring water and fill the gas tank
+  before you leave the main highway. For more of the fossil story, the
+  Thomas Condon Paleontology Center at the monument's Sheep Rock Unit is
+  about an hour away.
 duration: all-day
 effort: easy
 cost: free
@@ -29,5 +46,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [views, deserts, rocks-fossils]
-tags: [desert, geology, views]
+themes: [views, deserts, rocks-fossils, walks]
+tags: [painted-hills, john-day-fossil-beds, seven-wonders-of-oregon, mitchell, geology, photography, sunset, eastern-oregon]

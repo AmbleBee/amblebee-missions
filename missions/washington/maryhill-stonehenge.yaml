@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+draft: true # All verified except tags, description, about
 number: 56
 name: Maryhill Stonehenge and Museum
 mode: both
@@ -6,8 +6,9 @@ who: [solo, friends, family, kids]
 place:
   name: Maryhill Stonehenge Memorial
   area: Columbia River Gorge, near Goldendale
-  coords: [45.69300, -120.80600]  # APPROX: set at the Stonehenge parking before publishing
-  website: https://www.maryhillmuseum.org
+  address: Stonehenge Dr, Goldendale, WA 98620
+  coords: [45.69442, -120.80599]
+  website: https://www.maryhillmuseum.org/outside/stonehenge-memorial
 short: Stand inside a full-size Stonehenge over the Columbia Gorge. Then explore the Maryhill museum.
 description: >
   Walk into a full-size concrete copy of Stonehenge, built as a World War I
@@ -41,5 +42,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
-themes: [views, museums, art, quirky]
+themes: [views, museums, art, quirky, walks, rocks-fossils]
 tags: [quirky, roadside, art, museum, views, columbia-gorge]

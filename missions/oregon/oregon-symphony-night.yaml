@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 30
 name: Oregon Symphony Night
 mode: date
@@ -6,22 +6,32 @@ place:
   name: Arlene Schnitzer Concert Hall (the Schnitz)
   area: Downtown Portland
   address: 1037 SW Broadway, Portland, OR 97205
-  coords: [45.51720, -122.68150]  # APPROX: set at the entrance before publishing
+  coords: [45.51684, -122.68114]
   website: https://www.orsymphony.org/plan-your-visit
-short: Dress up fancy and see the Oregon Symphony. Photo under the Portland sign.
+short: Dress up and see the Oregon Symphony at the Schnitz, with a photo under the Portland sign.
 description: >
-  Pick a concert, get dressed up properly, and make a night of it: dinner or a
-  drink downtown first, then the Oregon Symphony at the Schnitz. Take a photo of
-  the two of you under the big Portland marquee, and each pick your favorite
-  piece on the way home.
+  Pick a concert and make a real night of it. Dress up properly, get dinner
+  or a drink downtown first, then take your seats for the Oregon Symphony at
+  the Arlene Schnitzer Concert Hall. Look up during the break: the gold
+  ceilings and chandeliers are half the show. On the way out, each pick your
+  favorite piece and say why. The photo to get: the two of you all dressed
+  up under the glowing PORTLAND sign on Broadway.
 about: >
-  The Oregon Symphony was founded in 1896, one of the oldest orchestras in
-  the country. It plays at the Arlene Schnitzer Concert Hall, a 1928 movie
-  palace that was restored and reopened as a concert hall in 1984.
+  The Oregon Symphony started in 1896 as the Portland Symphony Society,
+  which makes it the oldest orchestra in the western United States and the
+  sixth oldest in the country. It plays most of its season at the Arlene
+  Schnitzer Concert Hall, which everyone in Portland just calls the Schnitz.
 
-  The tall Portland sign out front is a city landmark. Rush and student
-  tickets are sometimes offered, and the season's pops and film concerts are
-  an easy way in if classical isn't your usual thing.
+  The Schnitz opened in 1928 as the Portland Publix Theatre, a grand
+  vaudeville and movie palace that later became the Paramount. It was
+  restored and reopened as a concert hall in 1984, with about 2,700 seats
+  under its ornate gold ceilings. The 65-foot PORTLAND sign over Broadway is
+  a replica of the original, with five-foot neon letters, and it's one of
+  the most photographed signs in the city.
+
+  New to classical? The season's pops and movie-score concerts, where the
+  orchestra plays a film's music live, are an easy and fun first night.
+  Check the symphony's site for the schedule and ticket deals.
 duration: short
 effort: easy
 cost: $$$
@@ -29,6 +39,6 @@ setting: indoor
 season: any
 time_of_day: evening
 travel: local
-check_ahead: [tickets]
-themes: [shows, playful]
-tags: [music, dress-up, fancy, portland]
+check_ahead: [tickets, hours]
+themes: [shows, history, architecture, romantic]
+tags: [oregon-symphony, arlene-schnitzer-concert-hall, the-schnitz, classical-music, concert, date-night, dress-up, portland]

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 6
 name: Gas Works Park
 mode: both
@@ -7,20 +7,34 @@ place:
   name: Gas Works Park
   area: Wallingford, Seattle
   address: 2101 N Northlake Way, Seattle, WA 98103
-  coords: [47.64560, -122.33440]  # APPROX: set at the park entrance before publishing
-short: Picnic by the rusted towers at Gas Works Park. Climb the hill for the skyline.
+  coords: [47.64654, -122.33540]
+  website: https://www.seattle.gov/parks/parks/gas-works-park
+short: Picnic by the rusted towers of Gas Works Park, then climb the hill for the Seattle skyline.
 description: >
-  Explore the old rusted gas plant towers, then climb Kite Hill for the view
-  across Lake Union to downtown. Bring a blanket and a snack, watch the
-  seaplanes take off, and stay for sunset if you can.
+  Wander among the old rusted towers of Seattle's former gas plant, then
+  climb the big grassy hill for the view across Lake Union to downtown and
+  the Space Needle. At the top, stand on the sundial and use your own shadow
+  to tell the time. Bring a blanket and a snack, watch the seaplanes and
+  sailboats out on the lake, and stay for sunset if you can. The photo to
+  get: you on the hill with the towers and the skyline behind you.
 about: >
-  The plant made gas for Seattle from coal, then oil, from 1906 until 1956.
-  The city turned it into a park that opened in 1975, keeping the towers
-  instead of tearing them down, which was a bold idea at the time.
+  From 1906 to 1956 this point on Lake Union was a plant that made gas for
+  Seattle, first from coal and later from oil. When the city turned it into
+  a park, landscape architect Richard Haag made a bold choice: instead of
+  tearing the plant down, he kept the rusted towers as giant sculptures. The
+  park opened in 1975, and it holds the last remaining coal gasification
+  plant in the United States. It joined the National Register of Historic
+  Places in 2013.
 
-  It's the only remaining coal gasification plant of its kind in the United
-  States, and it's on the National Register of Historic Places. The sundial
-  on top of Kite Hill uses you as the pointer.
+  The big mound, often called Kite Hill, is one of the best places in the
+  city to fly a kite. The sundial at the top, by artists Chuck Greening and
+  Kim Lazare, uses you as its pointer. The old pump house is now a covered
+  play barn. You may recognize the park from the movies Singles and 10
+  Things I Hate About You.
+
+  On the Fourth of July, Gas Works hosts one of Seattle's big fireworks
+  shows over the lake, so expect crowds that night. The Burke-Gilman Trail
+  runs right past the park if you'd rather arrive by bike.
 duration: short
 effort: easy
 cost: free
@@ -28,5 +42,5 @@ setting: outdoor
 season: any
 time_of_day: evening
 travel: local
-themes: [views, picnic]
-tags: [park, views, picnic, seattle]
+themes: [views, picnic, lakes-rivers, sunsets, history, architecture]
+tags: [gas-works-park, lake-union, kite-hill, seattle-skyline, sundial, kite-flying, fireworks, wallingford, seattle]

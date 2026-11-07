@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 34
 name: Peacock Lane Christmas Lights
 mode: both
@@ -6,7 +6,9 @@ who: [friends, family, kids]
 place:
   name: Peacock Lane
   area: Southeast Portland, between SE Belmont and SE Stark
-  coords: [45.51700, -122.61810]  # APPROX: set at the Belmont end of the street before publishing
+  address: 1098-1000 SE 42nd Ave, Portland, OR 97215
+  coords: [45.51796, -122.62176]
+  website: https://www.peacocklane.org
 short: Walk Peacock Lane's Christmas lights. Pick your favorite house and get hot cocoa.
 description: >
   In the second half of December, a whole block of Southeast Portland goes all
@@ -36,5 +38,5 @@ season: [winter]
 time_of_day: night
 travel: local
 check_ahead: [seasonal]
-themes: [holidays]
+themes: [holidays, walks, vehicles, playful, relaxing]
 tags: [christmas, lights, holiday, portland]

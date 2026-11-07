@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 4
 name: Mount St. Helens
 mode: both
@@ -6,22 +6,36 @@ who: [solo, friends, family]
 place:
   name: Coldwater Lake Recreation Area
   area: Spirit Lake Highway, Mount St. Helens
-  coords: [46.29000, -122.26800]  # APPROX: set at the parking lot before publishing
-short: Drive the Spirit Lake Highway to see Mount St. Helens. Picnic at Coldwater Lake.
+  address: WA-504, Castle Rock, WA 98611
+  coords: [46.29104, -122.26748]
+  website: https://www.fs.usda.gov/r06/giffordpinchot/recreation/site-coldwater-lake-picnic-and-boating-area
+short: Drive the Spirit Lake Highway into Mount St. Helens' blast zone and picnic at Coldwater Lake.
 description: >
-  Drive up the Spirit Lake Highway toward the volcano, stopping at viewpoints
-  along the way. Picnic at Coldwater Lake, a lake the 1980 eruption created, with
-  the blast zone all around you.
+  Drive up the Spirit Lake Memorial Highway toward Mount St. Helens,
+  stopping at viewpoints as the forest gives way to the 1980 blast zone.
+  Picnic at Coldwater Lake, a lake the eruption itself created, with the
+  volcano's open crater looking down on you. If you have energy left, walk
+  an easy trail through the hummocks, giant mounds left behind by the
+  landslide. The photo to get: you at the lake's edge with the mountain
+  behind you.
 about: >
-  On May 18, 1980, Mount St. Helens erupted, losing about 1,300 feet of its
-  top. Fifty-seven people died. The landslide dammed Coldwater Creek,
-  creating Coldwater Lake.
+  On May 18, 1980, at 8:32 in the morning, Mount St. Helens erupted after
+  its north side collapsed in the largest landslide in recorded history. The
+  mountain lost about 1,300 feet of its top, the sideways blast flattened
+  about 230 square miles of forest, and ash fell across 11 states. About 57
+  people died.
 
-  The Johnston Ridge Observatory is named for David Johnston, a
-  volcanologist killed while watching the mountain. A 2023 landslide washed
-  out the highway past the lake near milepost 49. The bridge there is being
-  rebuilt, and Johnston Ridge stays closed until the road and observatory
-  are repaired, so check what's open beyond Coldwater before you go.
+  The landslide dammed Coldwater Creek and created Coldwater Lake. Spirit
+  Lake, on the other side of the ridge, was hit by a wave about 600 feet
+  high, and mats of logs from the blast still float on it today, more than
+  40 years later. The Johnston Ridge Observatory is named for David
+  Johnston, the volcanologist who was killed at his observation post about
+  six miles from the mountain.
+
+  The highway climbs from Interstate 5 into the national volcanic monument,
+  with viewpoints and exhibits along the way. Bring food and water, since
+  services thin out the higher you go, and expect snow to close the upper
+  road in winter.
 duration: all-day
 effort: easy
 cost: $
@@ -30,5 +44,5 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
-themes: [views, lakes-rivers, rocks-fossils]
-tags: [volcano, views, lake]
+themes: [views, lakes-rivers, rocks-fossils, mountains, picnic, road-trips]
+tags: [mount-st-helens, spirit-lake-highway, coldwater-lake, blast-zone, volcano, 1980-eruption, johnston-ridge, hummocks-trail, southwest-washington]

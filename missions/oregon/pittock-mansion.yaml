@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 21
 name: Pittock Mansion
 mode: date
@@ -6,20 +6,43 @@ place:
   name: Pittock Mansion
   area: West Hills, Portland
   address: 3229 NW Pittock Dr, Portland, OR 97210
-  coords: [45.52500, -122.71600]  # APPROX: set at the entrance before publishing
-short: Tour the Pittock Mansion. Pick the room you'd live in. Then the view from the lawn.
+  coords: [45.52518, -122.71639]
+  website: https://pittockmansion.org
+short: Tour Portland's 1914 hilltop mansion, pick the room you'd claim, then soak in the view.
 description: >
-  Tour the 1914 mansion high above Portland and each pick the room you'd claim if
-  it were yours. Afterward, sit on the lawn for one of the best views of the city
-  and the mountains.
+  Tour the Pittock Mansion, the French château-style home perched high in
+  Portland's West Hills, and each pick the one room you'd claim if the house
+  were yours. Look for the luxuries that were cutting-edge in 1914: an
+  elevator, intercoms and a built-in vacuum system. Afterward, spread out on
+  the lawn for one of the best views in the city, with downtown below and
+  the Cascade peaks lined up on a clear day. The photo to get: the two of
+  you on the lawn with the city and the mountains behind you.
 about: >
-  Henry Pittock, who built The Oregonian into a major newspaper, finished
-  the mansion in 1914 and lived there with his wife Georgiana until they
-  died a few years later. It sits about 1,000 feet above the city.
+  Henry Pittock, the publisher who built The Oregonian into a major
+  newspaper, finished this 46-room, 16,000-square-foot mansion in 1914 with
+  his wife Georgiana. It sits about 1,000 feet above sea level, high over
+  downtown Portland. Georgiana helped start the city's love of roses: she
+  was a founding member of the Portland Rose Society, hosted the first
+  Portland Rose Show, and helped launch the Rose Festival. The couple only
+  lived there a few years before they died, in 1918 and 1919.
 
-  After a 1962 storm damaged the empty house, Portlanders raised money to
-  save it, and the city bought it in 1964. On clear days you can see five
-  Cascade peaks from the lawn. The grounds are free; the house tour isn't.
+  After the 1962 Columbus Day Storm badly damaged the empty house, the
+  owners thought about tearing it down. Portlanders raised $75,000 in three
+  months to save it, the city bought the estate in 1964, and it opened to
+  the public a year later. On clear days you can see up to five Cascade
+  peaks from the lawn.
+
+  The grounds and views are free; the house tour has a ticket. Want to earn
+  the view? The Wildwood Trail through Forest Park passes right by the
+  parking lot, so you can hike up instead of driving. Around the holidays
+  the mansion is decorated for Christmas, so check the schedule if you're
+  visiting in winter.
+steps:
+  - The room you'd claim as yours
+  - A 1914 gadget that still impresses
+  - The grandest staircase or doorway
+  - You at your favorite window
+  - Out on the lawn with the city behind
 duration: short
 effort: easy
 cost: $$
@@ -28,5 +51,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [views, history]
-tags: [history, views, portland]
+themes: [views, history, gardens, architecture]
+tags: [pittock-mansion, west-hills, forest-park, wildwood-trail, historic-house, house-tour, mount-hood, portland]

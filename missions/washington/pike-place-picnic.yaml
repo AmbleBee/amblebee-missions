@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 2
 name: Pike Place Picnic
 mode: date
@@ -6,20 +6,34 @@ place:
   name: Pike Place Market
   area: Downtown Seattle
   address: 85 Pike St, Seattle, WA 98101
-  coords: [47.60970, -122.34220]  # APPROX: set at the market sign before publishing
-short: Build a picnic from Pike Place stalls. Eat it by the water.
+  coords: [47.60940, -122.34186]
+  website: https://www.pikeplacemarket.org
+short: Build a picnic from Pike Place Market stalls, then eat it together by the water.
 description: >
-  Wander Pike Place Market and each pick two things for a shared picnic:
-  something sweet, something savory. Find a spot by the waterfront and
-  unpack it together.
+  Wander Pike Place Market and each pick two things for a shared picnic, one
+  sweet and one savory, without telling the other what you chose. Watch the
+  fish fly at the fish stand, give Rachel the bronze pig a coin for luck,
+  then take your finds down to the waterfront or to the little park at the
+  north end of the market and unpack them together. Taste-test everything
+  and vote on the best pick. The photo to get: the two of you with your
+  picnic spread out and Elliott Bay behind you.
 about: >
-  Pike Place Market opened in 1907, and it's one of the oldest continuously
-  running public farmers markets in the country. Farmers, craftspeople and
-  small shops still fill its stalls.
+  Pike Place Market opened on August 17, 1907, and it's one of the older
+  continuously running public farmers markets in the country. Farmers,
+  fishmongers, bakers and craftspeople still fill its stalls, and in 1971
+  Seattle voters passed an initiative to save the market from being torn
+  down and turn it into a historic district. Today it draws millions of
+  visitors a year.
 
-  Rachel the bronze pig, from 1986, is the market's mascot and a piggy bank
-  for its charities. The fish throwers at Pike Place Fish and the gum wall
-  under the market are classic stops.
+  Rachel, the 550-pound bronze pig under the Public Market Center sign, has
+  stood there since 1986 as the market's mascot and piggy bank. The coins go
+  to the Market Foundation's social services. Just up the street is the
+  Starbucks that has been at 1912 Pike Place since 1977, and down in Post
+  Alley is the famously sticky gum wall.
+
+  To get down to the water, take the Pike Street Hill Climb. Mornings on
+  weekdays are the calmest time to shop. For the Seattle view from up high,
+  pair it with [[space-needle-view]].
 duration: short
 effort: easy
 cost: $$
@@ -28,5 +42,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [lakes-rivers, food, markets]
-tags: [food, market, waterfront, seattle]
+themes: [lakes-rivers, food, markets, romantic]
+tags: [pike-place-market, seattle-waterfront, elliott-bay, rachel-the-pig, gum-wall, picnic, date-night, seattle]

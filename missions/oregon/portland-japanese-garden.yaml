@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 23
 name: Portland Japanese Garden
 mode: date
@@ -6,20 +6,35 @@ place:
   name: Portland Japanese Garden
   area: Washington Park, Portland
   address: 611 SW Kingston Ave, Portland, OR 97205
-  coords: [45.51900, -122.70800]  # APPROX: set at the entrance before publishing
-short: Walk the Japanese Garden slowly. Find the quietest spot and sit there.
+  coords: [45.51872, -122.70747]
+  website: https://japanesegarden.org
+short: Wander the Portland Japanese Garden slowly, find the quietest spot, and sit there together.
 description: >
-  Take your time through the ponds, moss and stone paths. Find the spot you both
-  think is the most peaceful and sit for a few minutes without talking. Then have
-  tea at the café.
+  Take your time through the Portland Japanese Garden's ponds, moss and
+  stone paths, and don't rush past the koi under Heavenly Falls. Together,
+  find the spot you both agree is the most peaceful and sit there for a few
+  minutes without talking. Then climb to the pavilion for the view over
+  Portland toward Mount Hood, and finish with tea and something sweet at the
+  Umami Café. The photo to get: the two of you on a stone path or bridge
+  with the maples overhead.
 about: >
-  The garden opened in 1967 and is widely called one of the most authentic
-  Japanese gardens outside Japan. Its several garden styles include a sand
-  and stone garden, a strolling pond garden and a tea garden.
+  The Portland Japanese Garden opened in 1967 in the hills of Washington
+  Park, designed by Professor Takuma Tono of Tokyo. In 1988 Japan's
+  ambassador to the US called it "the most beautiful and authentic Japanese
+  garden in the world outside of Japan." Its 12.5 acres hold five
+  traditional garden styles: a flat garden, a strolling pond garden, a sand
+  and stone garden, a natural garden and a tea garden. Heavenly Falls, a
+  35-foot waterfall, spills into the koi pond.
 
-  In 2017 it added a Cultural Village by the Japanese architect Kengo Kuma,
-  with the tea café and gift shop. It's beautiful in any season, and quiet
-  rainy days make the moss glow.
+  In 2017 the garden more than doubled in size with a Cultural Village
+  designed by the Japanese architect Kengo Kuma, home to the Umami Café,
+  where you can have green tea and Japanese sweets overlooking the hillside.
+  On a clear day you can see Mount Hood from the pavilion. Fall is the most
+  famous season, when a Japanese maple known simply as "The Tree" turns red,
+  but quiet rainy days make the moss glow too.
+
+  Make a day of Washington Park: the [[rose-test-garden]] is right next
+  door, and [[pittock-mansion]] is just up the hill.
 duration: short
 effort: easy
 cost: $$
@@ -28,5 +43,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [gardens, relaxing]
-tags: [garden, calm, seasonal, portland]
+discounts: [senior, student]
+themes: [gardens, relaxing, views, forests, art, architecture]
+tags: [portland-japanese-garden, washington-park, kengo-kuma, koi, japanese-maple, fall-color, tea, portland]
