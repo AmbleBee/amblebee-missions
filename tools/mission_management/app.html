@@ -1777,6 +1777,38 @@ function setPin([lat, lng]) {
   $('#pLat').value = lat; $('#pLng').value = lng; ed.dirty = true; refreshLive();
 }
 // ---------- wiring ----------
+// ---------- pasting: plain text only, no stray line breaks ----------
+// Text copied from a web page or a document brings hidden breaks, tabs and non-breaking spaces with it.
+// One-line fields get it all on one line; Description and About keep real paragraphs (a blank line between
+// them) but rejoin lines that were broken mid-sentence.
+const SENTENCE_END = /[.!?:;"”’)\]]$/;
+function cleanPaste(text, multiline) {
+  text = text.replace(/\r\n?|\u2028|\u2029/g, '\n').replace(/[\u00a0\u2007\u202f\t]/g, ' ').replace(/[\u200b-\u200d\ufeff]/g, '');
+  if (!multiline) return text.replace(/\s+/g, ' ').trim();
+  const paras = [];
+  for (const block of text.split(/\n\s*\n/)) {
+    const p = block.replace(/\s+/g, ' ').trim();
+    if (!p) continue;
+    if (paras.length && !SENTENCE_END.test(paras[paras.length - 1])) paras[paras.length - 1] += ' ' + p;   // broken mid-sentence
+    else paras.push(p);
+  }
+  return paras.join('\n\n');
+}
+$('#edBody').addEventListener('paste', e => {
+  const el = e.target;
+  if (!(el instanceof HTMLTextAreaElement || (el instanceof HTMLInputElement && /^(text|search|url|)$/.test(el.type)))) return;
+  if (el.id === 'pLat' || el.id === 'pLng') return;          // the pin has its own paste handling
+  const raw = (e.clipboardData || window.clipboardData)?.getData('text/plain');
+  if (raw == null) return;
+  e.preventDefault();
+  const text = cleanPaste(raw, el instanceof HTMLTextAreaElement);
+  el.focus();
+  if (!document.execCommand('insertText', false, text)) {      // keeps Ctrl+Z working where the browser allows it
+    el.setRangeText(text, el.selectionStart, el.selectionEnd, 'end');
+    el.dispatchEvent(new Event('input', { bubbles: true }));
+  }
+});
+
 $('#edForm').addEventListener('submit', saveMission);
 $('#edClose').onclick = closeEditor;
 $('#edCancel').onclick = closeEditor;

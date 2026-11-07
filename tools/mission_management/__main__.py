@@ -274,15 +274,21 @@ def _empty(v):
     return v is None or v == "" or v == [] or v == {}
 
 
+ODD_SPACE = re.compile("[\u00a0\u2007\u202f\t]")         # non-breaking spaces and tabs from copied text
+INVISIBLE = re.compile("[\u200b-\u200d\ufeff]")             # zero-width characters
+
+
 def clean(data, old):
     """Tidy what the form sent: folded paragraphs, no blank fields (unless the file already had one)."""
     out = {}
     for k, v in data.items():
+        if isinstance(v, str):
+            v = INVISIBLE.sub("", ODD_SPACE.sub(" ", v.replace("\r\n", "\n").replace("\r", "\n")))
         if k in FOLDED and isinstance(v, str):
             paras = [" ".join(p.split()) for p in re.split(r"\n\s*\n", v.strip()) if p.strip()]
             v = "\n".join(paras)
         elif isinstance(v, str):
-            v = v.strip()
+            v = " ".join(v.split())          # one-line fields stay on one line, however the text got in
         elif isinstance(v, list):
             v = [x.strip() if isinstance(x, str) else x for x in v]
             v = [x for x in v if not _empty(x)]
