@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [parks, history]
+themes: [parks, history, architecture, views]
 tags: [castillo de san marcos, spanish fort, cannon firing, coquina, oldest city, st-augustine]

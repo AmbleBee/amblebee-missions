@@ -5,10 +5,12 @@ mode: both
 who: [solo, friends, family]
 short: Waterfall hike. Find a waterfall trail you haven't done and have a snack at the falls.
 description: >
-  Pick a waterfall trail you haven't done, pack water and a snack, and take
-  your time on the way up. At the falls, each guess how tall the waterfall
-  is, then look it up. Have your snack where you can feel the mist. The photo
-  to get: you with the whole waterfall behind you.
+  Pick a waterfall trail you haven't done, check that it's flowing, and pack
+  water and a snack. Take your time on the way up and listen for the moment
+  you first hear the falls. At the waterfall, everyone guesses how tall it is,
+  then look it up and see who was closest. Have your snack where you can feel
+  the mist, and stay off the slick rocks. The photo to get: you with the whole
+  waterfall behind you.
 about: >
   Waterfalls usually run strongest in spring, during snowmelt and rainy
   season, and many shrink to a trickle by late summer. Check recent trip
@@ -25,5 +27,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
-themes: [hiking, waterfalls]
+themes: [waterfalls, hiking, forests, lakes-rivers, picnic, views]
 tags: [waterfall hike, waterfall trail, hiking near me, day hike, waterfalls, outdoors]

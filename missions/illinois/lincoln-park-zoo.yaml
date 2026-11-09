@@ -11,17 +11,25 @@ place:
   website: https://www.lpzoo.org
 short: Lincoln Park Zoo in Chicago. A free zoo in the city, open every day of the year.
 description: >
-  Wander a free zoo in the middle of the city, with the skyline peeking over
-  the trees. Visit the gorillas, lions and penguins, then walk the boardwalk
-  around the nature pond next door. Each pick your favorite animal and take
-  a photo of the other next to it, copying its pose.
+  Wander Chicago's free Lincoln Park Zoo, with the skyline peeking over the
+  trees. Visit the gorillas, lions and penguins, then walk the Nature
+  Boardwalk around the pond next door. Each pick a favorite animal and copy
+  its pose while the other takes the shot. In winter, come back after dark for
+  ZooLights. The photo to get: you next to your favorite animal, matching its
+  pose.
 about: >
-  The zoo opened in 1868, when Central Park in New York sent Chicago a pair
-  of swans, and it's one of the oldest zoos in the country. It's also one of
-  the few big zoos that has always been free.
+  Lincoln Park Zoo began in 1868, when New York's Central Park sent Chicago
+  two pairs of mute swans. Ten years later the city decided it should always
+  be free, and it still is: one of the oldest zoos in the country and the
+  longest-running free one, open 365 days a year.
 
-  In winter it lights up for ZooLights, a holiday light show. Parking is
-  paid, so take the bus or bike if you can.
+  Today it covers 49 acres in Lincoln Park, a short walk from the lakefront,
+  with nearly 200 species, including gorillas and chimpanzees at the
+  Regenstein Center for African Apes. Next door, the Nature Boardwalk loops
+  around a restored pond with skyline views.
+
+  In winter, ZooLights fills the grounds with holiday lights. Parking is paid,
+  so the bus or a bike is the easy way in.
 for_kids:
   short: Zoo hunt! Find each thing.
   steps:
@@ -38,5 +46,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [wildlife, holidays]
+themes: [wildlife, walks, holidays, playful]
 tags: [lincoln park zoo, free zoo chicago, zoolights, gorillas, nature boardwalk, chicago]

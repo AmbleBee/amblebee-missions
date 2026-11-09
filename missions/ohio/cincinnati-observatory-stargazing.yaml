@@ -32,5 +32,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [reservation, conditions]
-themes: [stars, science]
+themes: [stars, science, romantic, history]
 tags: [cincinnati observatory, historic telescope, stargazing date, mount lookout, astronomy night, cincinnati]

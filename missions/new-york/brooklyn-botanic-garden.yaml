@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, seasonal]
-themes: [gardens, relaxing]
+themes: [gardens, relaxing, walks, romantic]
 tags: [brooklyn botanic garden, japanese hill and pond garden, cherry blossoms, rose garden, prospect heights, nyc]

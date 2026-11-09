@@ -43,5 +43,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
 discounts: [birthday, military, local]
-themes: [beach, wildlife]
+themes: [beach, wildlife, science]
 tags: [oregon coast aquarium, newport, keiko free willy, sea otters, shark tunnel, yaquina bay]

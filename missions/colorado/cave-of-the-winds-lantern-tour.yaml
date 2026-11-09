@@ -35,5 +35,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
 discounts: [military]
-themes: [caves, spooky]
+themes: [caves, spooky, romantic]
 tags: [cave of the winds, lantern cave tour, manitou springs, mineral springs, spooky date, colorado-springs]

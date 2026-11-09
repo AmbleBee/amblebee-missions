@@ -15,13 +15,14 @@ description: >
   why. The photo to get: you on the prettiest bridge. Then walk back to
   Venice Beach for the sunset.
 about: >
-  Developer Abbot Kinney built "Venice of America" in 1905, with canals,
-  gondolas and Italian-style buildings. Most of the canals were filled in
-  and paved over in 1929 to make room for cars. The few that survived were
-  restored in the 1990s.
+  Developer Abbot Kinney built Venice of America in 1905, with canals,
+  gondolas and Italian-style buildings modeled on Venice, Italy. In 1929 most
+  of the canals were filled in and paved over for cars, and only a handful
+  survived.
 
-  These are people's front yards, so keep it quiet and stay on the public
-  walkways.
+  The surviving canals were listed on the National Register of Historic Places
+  in 1982, then restored and reopened in 1993. These are people's front yards,
+  so keep it quiet and stay on the public walkways.
 for_kids:
   short: Canal walk! Find each thing.
   steps:
@@ -37,5 +38,5 @@ setting: outdoor
 season: any
 time_of_day: any
 travel: local
-themes: [walks, quirky]
+themes: [walks, quirky, architecture, romantic, history]
 tags: [venice canals, venice beach, abbot kinney, canal walk, historic district, los-angeles]

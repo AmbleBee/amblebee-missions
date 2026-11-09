@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [wildlife]
+themes: [wildlife, playful, walks]
 tags: [central park zoo, sea lion feeding, snow leopards, delacorte clock, penguins, nyc]

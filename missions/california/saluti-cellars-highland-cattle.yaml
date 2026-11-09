@@ -34,5 +34,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, hours]
-themes: [wildlife, drinks]
+themes: [wildlife, drinks, quirky]
 tags: [saluti cellars, highland cattle, fair play wine, foothill wineries, somerset, sierra-foothills]

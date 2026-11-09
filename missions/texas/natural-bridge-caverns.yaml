@@ -40,6 +40,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
-themes: [caves]
+themes: [caves, rocks-fossils, science]
 tags: [cave, underground, tour, rainy-day, hill-country]
 credit:

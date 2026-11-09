@@ -9,13 +9,13 @@ place:
   address: 11150 East Blvd, Cleveland, OH 44106
   coords: [41.50890, -81.61190]  # APPROX: set at the south entrance before publishing
   website: https://www.clevelandart.org/home
-short: Wander a world-class art museum that's always free. Find the knights in armor.
+short: Wander Cleveland's big art museum, free every day. Find the knights in armor.
 description: >
   One of the best art museums in the country, and general admission is always
-  free. Walk from Egyptian mummies and a hall of knights in armor to Monet
-  and Picasso, then rest in the huge glass atrium. Each find a piece that
-  reminds you of the other. Afterward, walk the lagoon and Wade Park outside.
-  Closed Mondays.
+  free. Walk from Egyptian mummies and a hall of knights in armor to Monet and
+  Picasso, then rest in the huge glass atrium. Each find a piece that reminds
+  you of the other. Afterward, walk the lagoon and Wade Park outside. Closed
+  Mondays. The photo to get: you with the piece you picked for the other.
 about: >
   The museum opened in 1916, and it has been free to visit since the start,
   "for the benefit of all the people forever." Its collection holds more
@@ -37,5 +37,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [museums, art]
+themes: [museums, art, history, walks]
 tags: [art, museum, free, rainy-day, cleveland]

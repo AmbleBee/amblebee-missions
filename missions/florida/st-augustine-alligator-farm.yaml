@@ -43,5 +43,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [wildlife]
+themes: [wildlife, history, quirky]
 tags: [st augustine alligator farm, crocodiles, white alligators, bird rookery, roseate spoonbills, st-augustine]

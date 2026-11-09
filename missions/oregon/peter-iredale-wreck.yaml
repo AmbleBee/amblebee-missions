@@ -34,5 +34,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [beach, history]
+themes: [beach, history, parks, sunsets]
 tags: [peter iredale, shipwreck, fort stevens state park, astoria, oregon coast]

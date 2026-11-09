@@ -41,5 +41,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
-themes: [beach, wildlife]
+themes: [beach, wildlife, science]
 tags: [monterey bay aquarium, sea otters, kelp forest, cannery row, open ocean exhibit, monterey]

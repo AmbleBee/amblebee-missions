@@ -42,5 +42,5 @@ season: [fall]
 time_of_day: morning
 travel: day-trip
 check_ahead: [seasonal, hours]
-themes: [food]
+themes: [food, small-towns, road-trips, forests]
 tags: [apple hill, u-pick apples, cider doughnuts, apple orchards, placerville, gold-country]

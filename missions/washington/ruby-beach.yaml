@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [beach]
+themes: [beach, parks, views, sunsets, walks]
 tags: [ruby beach, sea stacks, driftwood, tide pools, olympic national park, olympic]

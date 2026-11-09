@@ -11,11 +11,12 @@ place:
   website: https://www.phipps.conservatory.org
 short: Wander a Victorian glasshouse full of flowers. Find the glass art hidden among the plants.
 description: >
-  Walk through the rooms of a big Victorian glass conservatory: a palm court, a
-  fern room, orchids, a desert room and a tropical forest, with Chihuly glass
-  sculptures tucked among the plants. The seasonal flower shows change every few
-  months, and in winter there's a model garden railroad. A warm escape on a cold
-  Pittsburgh day.
+  Walk through the rooms of a big Victorian glass conservatory: a palm court,
+  a fern room, orchids, a desert room and a tropical forest, with Chihuly
+  glass sculptures tucked among the plants. The seasonal flower shows change
+  every few months, and in winter there's a model garden railroad. A warm
+  escape on a cold Pittsburgh day. The photo to get: you beside a Chihuly
+  glass piece among the plants.
 about: >
   Henry Phipps, a partner of Andrew Carnegie in steel, gave the conservatory
   to Pittsburgh, and it opened in 1893. Its glass rooms have been rebuilt
@@ -41,5 +42,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [gardens, art]
+themes: [gardens, art, relaxing]
 tags: [gardens, flowers, greenhouse, glass-art, rainy-day]

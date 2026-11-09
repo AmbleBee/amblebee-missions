@@ -17,12 +17,15 @@ description: >
   photo of you against the big tank. The Algiers ferry leaves right
   next door if you want to keep going.
 about: >
-  The aquarium opened in 1990 on the riverfront at the foot of Canal Street.
+  The aquarium opened on the riverfront at the foot of Canal Street in 1990.
   Its giant Gulf of Mexico tank recreates the base of an offshore oil
   platform, where sharks, rays and huge fish gather in real life too.
 
-  It reopened after a big renovation in the 2020s with new exhibits. The
-  Algiers ferry leaves right next door if you want to keep exploring.
+  It reopened in June 2023 after a big renovation: now you can see the Gulf
+  tank from above and below, touch a stingray, and walk through an aviary in
+  the Amazon exhibit. The Audubon Insectarium moved into the same building at
+  the same time. The Algiers ferry leaves right next door if you want to keep
+  exploring.
 for_kids:
   short: Aquarium hunt! Find each thing.
   steps:
@@ -39,5 +42,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [wildlife]
+themes: [wildlife, science]
 tags: [audubon aquarium, gulf of mexico tank, underwater tunnel, canal street, family day out, new-orleans]

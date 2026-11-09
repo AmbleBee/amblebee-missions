@@ -41,5 +41,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, military]
-themes: [views, vehicles]
+themes: [views, vehicles, history, quirky]
 tags: [golden spike tower, bailey yard, largest rail yard, train watching, union pacific, north-platte]

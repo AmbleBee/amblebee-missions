@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
-themes: [lakes-rivers, wildlife]
+themes: [wildlife, lakes-rivers, science, views]
 tags: [shedd aquarium, beluga whales, museum campus, caribbean reef tank, lake michigan views, chicago]

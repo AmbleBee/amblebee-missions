@@ -34,5 +34,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, student]
-themes: [museums, art]
+themes: [museums, art, relaxing]
 tags: [morse museum, tiffany glass, tiffany chapel, park avenue winter park, stained glass, winter-park]

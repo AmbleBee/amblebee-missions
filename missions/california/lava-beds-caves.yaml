@@ -48,5 +48,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
-themes: [caves, parks]
+themes: [caves, parks, rocks-fossils, science, spooky]
 tags: [lava beds national monument, lava tubes, mushpot cave, modoc war, caving, far-north]

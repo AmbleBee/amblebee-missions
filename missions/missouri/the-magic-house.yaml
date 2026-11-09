@@ -17,12 +17,14 @@ description: >
   exhibits. Let the kids pick the order, and get a photo of everyone's crazy
   hair. Timed tickets can sell out on busy days, so book ahead.
 about: >
-  The Magic House opened in 1979 in an old Victorian mansion in Kirkwood and
-  has grown into one of the biggest children's museums in the country. The
-  hair-raising ball is a Van de Graaff generator: it fills you with static
-  electricity, so every hair pushes away from the others.
+  The Magic House opened in October 1979 in a Kirkwood house built in 1901,
+  started by two St. Louis women, Jody Newman and Barbie Freund, who
+  volunteered three years to make it happen. It has grown from 5,500 to 55,000
+  square feet and is counted among the country's top children's museums.
 
-  Timed tickets can sell out on busy days, so book ahead.
+  The hair-raising ball is a Van de Graaff generator: it fills you with static
+  electricity, so every hair pushes away from the others. Upstairs in the old
+  house, rooms show how the family who built it lived in the early 1900s.
 for_kids:
   short: Magic house! Find each thing.
   steps:
@@ -39,5 +41,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [museums, science]
+themes: [museums, science, playful, history]
 tags: [the magic house, childrens museum st louis, static electricity ball, hands-on science, kirkwood, st-louis]

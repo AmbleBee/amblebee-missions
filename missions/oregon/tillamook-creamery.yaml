@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [food]
+themes: [food, playful, small-towns]
 tags: [tillamook creamery, cheese factory, ice cream, cheese samples, tillamook, oregon coast]

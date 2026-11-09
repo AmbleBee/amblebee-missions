@@ -5,8 +5,12 @@ mode: both
 who: [solo, friends, family, kids]
 short: A walk with a photo prompt at every step. Hold the shutter to move on.
 description: >
-  Walk somewhere close to home and follow the prompts on the camera.
-  Take as many or as few photos at each step as you like.
+  Pick a direction from your front door and walk somewhere you don't usually
+  go: a side street, an alley, the block behind the grocery store. It's a
+  photo scavenger hunt: the camera gives you a prompt at each step, so slow
+  down and hunt for it. Look up at rooflines and down at sidewalks, and try a
+  few angles before you settle. Hold the shutter to move on to the next
+  prompt. The photo to get: the door you'd most want to own.
 about: >
   This mission is all about noticing things you'd normally walk past. Go
   slowly, look up at rooftops and down at sidewalks, and try a few angles
@@ -34,5 +38,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
-themes: [walks]
+themes: [walks, architecture, art, quirky, playful, sunsets]
 tags: [photo walk, neighborhood walk, photo scavenger hunt, guided walk, walk, photo]

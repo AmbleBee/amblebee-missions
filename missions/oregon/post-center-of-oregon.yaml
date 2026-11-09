@@ -44,5 +44,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [quirky, small-towns]
+themes: [quirky, small-towns, food, road-trips]
 tags: [post oregon, center of oregon, general store, milkshakes, prineville, crook county]

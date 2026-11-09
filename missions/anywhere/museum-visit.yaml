@@ -24,5 +24,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [tickets, hours]
-themes: [art, museums]
+themes: [art, museums, science, history, romantic]
 tags: [museum date, art museum, science museum, free museum days, culture, learning]

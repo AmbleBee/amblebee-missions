@@ -11,10 +11,12 @@ place:
   website: https://www.oakspark.com
 short: Ride something at Portland's Oaks Park, then skate the old roller rink. Loser buys the treats.
 description: >
-  Spend an afternoon at one of the oldest amusement parks in the country. Ride
-  a few rides, and take a photo on the one you were most nervous about. Then
-  lace up at the historic roller rink while the pipe organ plays. Whoever falls
-  first buys the fair treats.
+  Spend an afternoon at Oaks Park in Portland's Sellwood neighborhood, one of
+  the oldest amusement parks in the country, right on the Willamette River.
+  Ride a few rides, and save the one you're most nervous about for last. Then
+  lace up at the historic roller rink while the Wurlitzer pipe organ plays, on
+  a wooden floor that actually floats. Whoever falls first buys the fair
+  treats. The photo to get: you on the ride that scared you most.
 about: >
   Oaks Park opened on May 30, 1905, about three and a half miles south of
   downtown Portland, and it's one of the oldest amusement parks in the country
@@ -40,6 +42,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets, seasonal]
-themes: [thrills, playful]
+themes: [thrills, playful, history, food, quirky]
 tags: [oaks amusement park, roller rink, wurlitzer organ, sellwood, portland, roller coaster]
 credit: Elle M.

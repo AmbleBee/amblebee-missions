@@ -24,5 +24,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
-themes: [food]
+themes: [food, romantic, playful]
 tags: [food truck date, food cart pod, street food, try new food, local, explore]

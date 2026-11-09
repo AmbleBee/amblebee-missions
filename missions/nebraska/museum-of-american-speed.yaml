@@ -40,5 +40,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, student, military]
-themes: [museums, vehicles]
+themes: [museums, vehicles, history]
 tags: [museum of american speed, speedway motors, hot rods, racing engines, car museum, lincoln]

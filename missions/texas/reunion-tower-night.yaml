@@ -17,13 +17,14 @@ description: >
   each try to find where you came from. Get a photo of you with
   the skyline behind you. Buy tickets ahead for sunset.
 about: >
-  Reunion Tower opened in 1978 and rises 561 feet. Its ball is covered in
-  hundreds of LED lights that put on shows at night, often in team colors on
-  game days.
+  Reunion Tower opened in 1978 and rises 561 feet; locals just call it the
+  Ball. Its lights were upgraded in 2026 to more than 8,500 light points that
+  put on shows at night, often in team colors on game days, and the tower has
+  turned up in Dallas, RoboCop and The Iron Claw.
 
-  The GeO-Deck has indoor and outdoor viewing, with touchscreens that zoom
-  in on landmarks. Crown Block, the restaurant above it, has views all the
-  way around.
+  The GeO-Deck has indoor and outdoor viewing, with touchscreens that zoom in
+  on landmarks. Crown Block, the restaurant above it, has views all the way
+  around.
 for_kids:
   short: Tower hunt! Find each thing.
   steps:
@@ -40,6 +41,6 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [tickets]
-themes: [views]
+themes: [views, architecture, sunsets]
 tags: [views, skyline, night, observation-deck, dallas]
 credit:

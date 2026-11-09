@@ -16,12 +16,14 @@ description: >
   your best impression. The photo to get: you in front of the giant coral
   reef window. Afterward, walk the Tampa Riverwalk.
 about: >
-  The aquarium opened in 1995 under its big glass shell on the Tampa
-  waterfront. Behind the scenes, its scientists work to save Florida's coral
-  reefs, and they were the first to get Atlantic coral to spawn in a lab.
+  The Florida Aquarium opened on the Tampa waterfront in 1995, under a tall
+  glass atrium, and it's home to more than 7,000 plants and animals. Its
+  500,000-gallon Coral Reef exhibit is the big one, with sand tiger sharks
+  gliding past the window.
 
-  It's a great rainy-day plan. Check the daily schedule for feedings and
-  dive shows.
+  Behind the scenes, its scientists work to save Florida's coral reefs, and
+  they were the first to get Atlantic coral to spawn in a lab, in 2019. It's a
+  great rainy-day plan. Check the daily schedule for feedings and dive shows.
 for_kids:
   short: Aquarium hunt! Find each thing.
   steps:
@@ -38,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
-themes: [wildlife]
+themes: [wildlife, science]
 tags: [florida aquarium, tampa aquarium, coral reef tank, stingray touch pool, tampa riverwalk, tampa]

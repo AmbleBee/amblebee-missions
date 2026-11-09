@@ -33,5 +33,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [tickets, hours]
-themes: [wildlife]
+themes: [wildlife, walks, playful]
 tags: [zoo day, aquarium day, family outing, animal photos, animals, rainy-day-option]

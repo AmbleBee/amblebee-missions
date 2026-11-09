@@ -29,5 +29,5 @@ setting: outdoor
 season: any
 time_of_day: night
 travel: local
-themes: [drinks, shows]
+themes: [drinks, shows, history, quirky, walks]
 tags: [bourbon street, french quarter nightlife, live music, lafittes blacksmith shop, new orleans bars, new-orleans]

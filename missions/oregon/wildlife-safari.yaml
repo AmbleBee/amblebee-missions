@@ -45,6 +45,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [wildlife]
+themes: [wildlife, road-trips, playful]
 discounts: [senior, military, first-responder]
 tags: [drive-thru safari, giraffes, rhinos, cheetahs, roseburg, southern-oregon]

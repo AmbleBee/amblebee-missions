@@ -42,6 +42,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [rocks-fossils, museums]
+themes: [rocks-fossils, museums, history, science]
 tags: [museum, dinosaurs, fossils, kids, rainy-day, free, bismarck]
 credit:

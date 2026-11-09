@@ -9,9 +9,13 @@ place:
   coords: [45.62550, -122.65670]  # APPROX: set at the fort's entrance before publishing
 short: Walk the rebuilt fur-trade fort, Officers Row, and the land bridge to the river.
 description: >
-  Explore the reconstructed 1800s fur-trading fort, peek into the blacksmith shop
-  and trade store, then stroll the old houses of Officers Row. Finish by walking
-  the land bridge down toward the Columbia River.
+  Explore Fort Vancouver National Historic Site in Vancouver, Washington, a
+  reconstructed 1800s Hudson's Bay Company fur-trading post. Peek into the
+  blacksmith shop and the trade store, and in summer ask the costumed rangers
+  what life here was like. Then stroll the old houses of Officers Row and walk
+  the land bridge down toward the Columbia River. Pearson Air Museum is right
+  next door if you want more. The photo to get: you at the gate in the tall
+  wooden stockade.
 about: >
   The Hudson's Bay Company built Fort Vancouver in 1825, and it became the
   center of the fur trade across the Pacific Northwest under Dr. John
@@ -36,4 +40,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [walks, lakes-rivers, parks, history]
-tags: [history, walking, national-park, river]
+tags: [fort vancouver, hudson's bay company, officers row, national historic site, columbia river, vancouver wa]

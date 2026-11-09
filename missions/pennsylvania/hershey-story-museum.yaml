@@ -14,8 +14,9 @@ description: >
   Walk through Milton Hershey's story, from failed candy shops to the
   chocolate town he built, then head to the tasting bar for warm drinking
   chocolate from around the world. Book a hands-on Chocolate Lab class if you
-  want to make your own. Afterward, walk Chocolate Avenue and find the
-  Kiss-shaped streetlights.
+  want to make your own. Afterward, walk Chocolate Avenue and find the Kiss-
+  shaped streetlights. The photo to get: you under one of the Kiss-shaped
+  streetlights.
 about: >
   Milton Hershey failed at candy-making more than once before his Lancaster
   caramel company took off. He sold it in 1900 for $1 million and put the
@@ -39,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
-themes: [museums, food]
+themes: [museums, food, history, make-something]
 tags: [chocolate, museum, food, sweets, rainy-day]

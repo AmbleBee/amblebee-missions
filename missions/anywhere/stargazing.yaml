@@ -37,5 +37,5 @@ season: any
 time_of_day: night
 travel: drive
 check_ahead: [conditions]
-themes: [stars]
+themes: [stars, science, romantic, relaxing]
 tags: [stargazing, dark sky near me, constellations, milky way, light pollution map, astronomy]

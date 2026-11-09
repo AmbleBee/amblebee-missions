@@ -39,5 +39,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
-themes: [stars, museums]
+themes: [stars, museums, science, vehicles, history]
 tags: [kennedy space center, space shuttle atlantis, saturn v, rocket launch, nasa visitor complex, space-coast]

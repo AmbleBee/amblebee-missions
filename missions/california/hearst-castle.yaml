@@ -42,5 +42,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
-themes: [history, architecture]
+themes: [history, architecture, art, museums, views, parks]
 tags: [hearst castle, neptune pool, julia morgan, san simeon, elephant seals, central-coast]

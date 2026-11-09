@@ -34,5 +34,5 @@ time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
 discounts: [military, senior, student]
-themes: [history, museums]
+themes: [history, museums, architecture, quirky, art]
 tags: [lightner museum, alcazar hotel, henry flagler, gilded age, flagler college, st-augustine]

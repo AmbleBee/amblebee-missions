@@ -42,5 +42,5 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets]
 discounts: [military, senior, educator,first-responder, student]
-themes: [rocks-fossils, museums]
+themes: [rocks-fossils, museums, science]
 tags: [rice northwest museum, rocks and minerals, thunderegg, meteorite, crystals, hillsboro]

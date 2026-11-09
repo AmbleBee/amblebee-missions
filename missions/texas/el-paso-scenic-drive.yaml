@@ -38,6 +38,6 @@ setting: outdoor
 season: any
 time_of_day: night
 travel: day-trip
-themes: [views]
+themes: [views, mountains, road-trips, deserts, sunsets]
 tags: [views, night, city-lights, free, el-paso]
 credit:

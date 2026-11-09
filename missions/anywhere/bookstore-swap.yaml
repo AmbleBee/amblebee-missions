@@ -26,6 +26,6 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
-themes: [food, markets]
+themes: [markets, food, romantic, relaxing]
 tags: [bookstore date, coffee date, book swap, used books, cafe, gifts]
 credit: Jennifer F.

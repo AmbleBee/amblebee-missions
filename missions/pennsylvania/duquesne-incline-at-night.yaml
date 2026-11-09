@@ -33,5 +33,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [hours]
-themes: [views, history]
+themes: [views, history, romantic, vehicles, architecture]
 tags: [duquesne incline, mount washington overlook, pittsburgh skyline, three rivers, grandview avenue, pittsburgh]

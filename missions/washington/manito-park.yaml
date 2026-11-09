@@ -13,7 +13,8 @@ description: >
   Spend a slow afternoon in Spokane's favorite park: the formal Duncan Garden,
   the rose garden, the Japanese garden and the Gaiser Conservatory's tropical
   greenhouse, which is warm even in winter. Each crown one garden the winner,
-  then feed the ducks at Mirror Pond. The gardens are free.
+  then feed the ducks at Mirror Pond. The gardens are free. The photo to get:
+  you in the garden that won.
 about: >
   Manito Park opened in the early 1900s and was shaped with help from the
   Olmsted Brothers, the famous landscape architects. It once even had a zoo,
@@ -38,5 +39,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, seasonal]
-themes: [gardens]
-tags: [garden, flowers, park, spokane]
+themes: [gardens, relaxing, walks, wildlife]
+tags: [manito park, duncan garden, gaiser conservatory, japanese garden, rose garden, spokane]

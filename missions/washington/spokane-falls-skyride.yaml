@@ -17,13 +17,13 @@ description: >
   and the big garbage-eating goat sculpture, and get a photo of you
   with the falls behind you. The ride can close in high wind.
 about: >
-  The SkyRide was built for Expo '74, Spokane's World's Fair, and later
-  renovated. Spokane Falls is a series of cascades, and in spring the
-  snowmelt makes it roar.
+  The SkyRide was built for Expo '74, Spokane's World's Fair, which turned old
+  rail yards into the 64-acre Riverfront Park. Spokane Falls is a series of
+  cascades right downtown, and in spring the snowmelt makes it roar.
 
   The Garbage Goat sculpture was made for Expo '74 by Sister Paula Mary
   Turnbull, and it really does suck up trash. The Looff Carrousel from 1909
-  is next door, with a brass ring to grab.
+  came to the park in 1975, and it still has a brass ring to grab.
 for_kids:
   short: Falls hunt! Find each thing.
   steps:
@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
-themes: [waterfalls]
+themes: [waterfalls, views, thrills, history, lakes-rivers]
 tags: [waterfall, gondola, park, city, spokane]

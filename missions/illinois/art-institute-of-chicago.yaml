@@ -36,5 +36,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [museums, art]
+themes: [museums, art, history]
 tags: [art institute of chicago, nighthawks, american gothic, thorne miniature rooms, michigan avenue lions, chicago]

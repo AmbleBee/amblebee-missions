@@ -23,5 +23,5 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: local
-themes: [walks, food]
+themes: [walks, food, romantic, architecture]
 tags: [coffee date, neighborhood walk, explore your town, local coffee shop, walking date]

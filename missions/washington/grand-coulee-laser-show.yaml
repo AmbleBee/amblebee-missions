@@ -41,5 +41,5 @@ season: [spring, summer]
 time_of_day: night
 travel: day-trip
 check_ahead: [seasonal]
-themes: [lakes-rivers, history]
+themes: [lakes-rivers, history, shows, science, architecture]
 tags: [dam, laser-show, night, free, history, central-washington]

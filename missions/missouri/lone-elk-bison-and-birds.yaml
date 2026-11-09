@@ -46,5 +46,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [wildlife, picnic]
+themes: [wildlife, picnic, road-trips]
 tags: [lone elk park, drive-thru bison and elk, world bird sanctuary, eagles and owls, wildlife drive, st-louis]

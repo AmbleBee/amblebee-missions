@@ -17,12 +17,16 @@ description: >
   go, then compare lists over lunch. The photo to get: you in front of the
   wild red-and-steel building outside.
 about: >
-  The museum was founded in 1994 by Robert Petersen, the publisher of Hot
-  Rod magazine. In 2015 it got its famous makeover: curving ribbons of
-  stainless steel wrapped over a bright red building.
+  The Petersen was founded in 1994 by Robert Petersen, the publisher of Hot
+  Rod magazine. In December 2015 it reopened after a $125 million makeover by
+  architects Kohn Pedersen Fox, who wrapped the bright red building in curving
+  ribbons of stainless steel.
 
-  The Vault holds hundreds of cars that rarely go on display, and it needs
-  its own tour ticket, so book it with your admission.
+  Inside are more than 25 galleries over three floors, and it has shown famous
+  cars like the Magnum, P.I. Ferrari, the 1989 Batmobile and a De Tomaso
+  Pantera that belonged to Elvis. The Vault downstairs holds many more cars
+  that rarely go on display. It needs its own tour ticket, so book it with
+  your admission.
 for_kids:
   short: Car hunt! Find each car.
   steps:
@@ -39,5 +43,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [museums, vehicles]
+themes: [museums, vehicles, architecture, movies]
 tags: [petersen automotive museum, the vault, movie cars, car museum, museum row, los-angeles]

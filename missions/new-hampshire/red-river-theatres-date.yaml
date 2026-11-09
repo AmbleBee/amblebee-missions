@@ -10,18 +10,22 @@ place:
   website: https://redrivertheatres.org
 short: Red River Theatres in Concord, NH. Pick an indie film neither of you knows, then debate it.
 description: >
-  Pick a movie neither of you knows much about, grab popcorn and a beer or
-  glass of wine from the café, and settle into the stadium seats. Afterward,
-  walk Main Street and each give the film a score out of ten; whoever's
-  further from the other's score buys dessert. The photo to get: the two of
-  you out front with your tickets.
+  Pick a movie neither of you knows much about, grab popcorn and a glass of
+  wine, and settle in. Afterward, walk Main Street and each give the film a
+  score out of ten; whoever's further from the other's score buys dessert. The
+  photo to get: the two of you out front with your tickets.
 about: >
-  Red River is downtown Concord's nonprofit arthouse cinema, with three
-  screens showing independent, foreign and classic films. It's run with
-  help from members and volunteers, so buying a ticket supports it.
+  Red River Theatres opened on Concord's Main Street in 2007 as the city's
+  nonprofit independent cinema, and it's named after the 1948 John Wayne
+  western Red River. Its three small screening rooms show independent, foreign
+  and documentary films.
 
-  Downtown Concord's Main Street has cafés and dessert spots within a short
-  walk, which makes the after-movie debate easy.
+  Members and volunteers help keep it running, and it hosts talks with
+  directors, a short film festival, outdoor screenings and a red-carpet Oscar
+  party every year.
+
+  Downtown Concord's Main Street has cafés and dessert spots a short walk
+  away, which makes the after-movie debate easy.
 steps:
   - The two of you out front
   - Your tickets and popcorn
@@ -35,5 +39,5 @@ time_of_day: evening
 travel: local
 check_ahead: [tickets]
 discounts: [senior, military, student]
-themes: [movies, romantic]
+themes: [movies, romantic, walks]
 tags: [red river theatres, arthouse cinema, indie film, main street, concord]

@@ -40,5 +40,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
-themes: [beach, wildlife]
+themes: [beach, wildlife, views, walks]
 tags: [la jolla cove, sea lions, childrens pool, harbor seals, coastal walk, san-diego]

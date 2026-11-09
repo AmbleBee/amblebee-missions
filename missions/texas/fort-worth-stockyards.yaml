@@ -41,6 +41,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [wildlife, history]
+themes: [wildlife, history, quirky, markets]
 tags: [cowboys, longhorns, history, free, fort-worth]
 credit:

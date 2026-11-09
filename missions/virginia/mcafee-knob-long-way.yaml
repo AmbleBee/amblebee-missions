@@ -47,6 +47,6 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
-themes: [views, hiking]
+themes: [views, hiking, mountains, forests]
 tags: [hiking, appalachian-trail, views, triple-crown, catawba, roanoke]
 credit:

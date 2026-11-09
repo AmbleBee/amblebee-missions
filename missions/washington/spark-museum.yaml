@@ -19,12 +19,14 @@ description: >
   ahead. It isn't recommended for kids under 5. Make a day of it with dinner
   in downtown Bellingham.
 about: >
-  SPARK started in 1985 as a collector's radio museum and grew into a museum
-  of electrical invention, from the 1600s to the radio age.
+  SPARK began in 1985 as Jonathan Winter's collection of antique radios,
+  opened as a radio museum in 1998, and moved into its 23,000-square-foot home
+  downtown in 2001. Today it covers electrical invention from the 1600s to the
+  radio age.
 
-  The MegaZapper is one of the largest Tesla coils in the world. The museum
-  says the show is safe for the audience, though it's loud and bright.
-  Bellingham's downtown has plenty of restaurants and breweries nearby.
+  The MegaZapper is an 8-foot Tesla coil that throws 4 million volts. The
+  museum says the show is safe for the audience, though it's loud and bright.
+  Downtown Bellingham has plenty of restaurants and breweries nearby.
 for_kids:
   short: Spark hunt! Find each thing.
   steps:
@@ -41,5 +43,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
-themes: [museums, science]
+themes: [museums, science, quirky, history]
 tags: [science, museum, inventions, rainy-day, bellingham]

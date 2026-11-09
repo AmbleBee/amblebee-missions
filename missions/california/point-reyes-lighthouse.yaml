@@ -42,5 +42,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal, conditions]
-themes: [beach, wildlife]
+themes: [beach, wildlife, history, views, parks]
 tags: [point reyes lighthouse, elephant seals, chimney rock, whale watching, national seashore, bay-area]

@@ -36,5 +36,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [reservation, conditions]
 caution: "Don't handle the camera while you're flying; hand it to your instructor or a passenger. Flying carries inherent risks."
-themes: [views, vehicles]
+themes: [views, vehicles, thrills, make-something]
 tags: [discovery flight, intro flight lesson, fly a plane, young eagles, flight school, bucket-list]

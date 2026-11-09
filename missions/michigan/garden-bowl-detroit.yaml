@@ -39,5 +39,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours, reservation]
-themes: [history, games]
+themes: [history, games, playful]
 tags: [garden bowl, oldest bowling alley, majestic detroit, cosmic bowling, woodward avenue, detroit]

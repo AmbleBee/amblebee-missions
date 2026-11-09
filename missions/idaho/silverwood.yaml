@@ -10,17 +10,22 @@ place:
   website: https://www.silverwoodthemepark.com
 short: Silverwood near Coeur d'Alene. Ride the wooden coasters; each pick a ride the other must ride.
 description: >
-  Spend the day at the Northwest's biggest theme park. Ride the wooden coasters,
-  cool off at the water park next door, and each pick one ride the other has to
-  go on with you. Get a photo right after the scariest drop. Open in summer,
-  with weekend Halloween nights in the fall.
+  Spend the day at Silverwood, the Northwest's biggest theme park, north of
+  Coeur d'Alene. Ride the wooden coasters, take a loop on the old steam train
+  through the woods, and cool off at Boulder Beach water park next door. Each
+  pick one ride the other has to go on with you. It's open in summer, with
+  Scarywood Halloween nights in the fall. The photo to get: your faces right
+  after the scariest drop.
 about: >
-  Silverwood is the biggest theme park in the Pacific Northwest. It opened
-  in 1988 on what had been a small airfield, and it has a real
-  steam train that loops through the woods.
+  Silverwood started as an airfield: in 1973 Clayton Henley opened the Henley
+  Aerodrome here, a private airport with an antique plane museum. Businessman
+  Gary Norton bought it later and opened Silverwood as a theme park on June
+  20, 1988.
 
-  The wooden coasters are the stars, and Boulder Beach water park is next
-  door. In the fall, the park turns into Scarywood for Halloween nights.
+  Norton added a 1915 steam train on more than three miles of track, and a
+  Victorian-style town grew up around it. Today it's the biggest theme park in
+  the Pacific Northwest, with wooden coasters and Boulder Beach water park
+  next door. In the fall, the park turns into Scarywood for Halloween nights.
 for_kids:
   short: Theme park day! Find each thing.
   steps:
@@ -37,5 +42,5 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets, seasonal]
-themes: [thrills, playful]
+themes: [thrills, playful, swimming, vehicles, holidays]
 tags: [silverwood theme park, wooden roller coasters, boulder beach, scarywood, steam train, north-idaho]

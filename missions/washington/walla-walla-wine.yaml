@@ -8,18 +8,21 @@ place:
   coords: [46.06670, -118.33810]  # APPROX: set on Main Street downtown before publishing
 short: Make a weekend of Walla Walla wine country. Toast with your favorite pour.
 description: >
-  Head to Walla Walla for a weekend of wine tasting, with plenty of tasting rooms
-  right downtown and more out among the vineyards. Each pick your favorite pour
-  of the trip and bring a bottle home to remember it. Pick a designated driver
-  or stay downtown and walk.
+  Head to Walla Walla for a weekend of wine tasting, with dozens of tasting
+  rooms right downtown and more out among the vineyards. Each pick your
+  favorite pour of the trip and bring a bottle home to open on a special day.
+  Between tastings, walk Main Street and find something made with Walla Walla
+  sweet onions if they're in season. Pick a designated driver or stay downtown
+  and walk. The photo to get: the two of you toasting with your favorite pour.
 about: >
-  Walla Walla's modern wine scene began in the 1970s, and its American
-  Viticultural Area was created in 1984. The valley now has well over 100
-  wineries, spread across Washington and Oregon.
+  Walla Walla's modern wine scene took off in the 1970s with Leonetti Cellars,
+  and the valley became an official wine region (AVA) in 1984. It stretches
+  from southeast Washington into Oregon, with about 140 wineries, tasting
+  rooms and wine bars.
 
-  The name comes from a Native American phrase often translated as "many
-  waters." The town is also famous for Walla Walla sweet onions, harvested
-  in early summer.
+  The town is also famous for Walla Walla sweet onions, harvested in early
+  summer. Downtown's Main Street is walkable, so you can taste your way along
+  it without driving.
 duration: all-day
 effort: easy
 cost: $$$
@@ -28,5 +31,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, reservation]
-themes: [food, drinks]
-tags: [wine, food, weekend, splurge]
+themes: [food, drinks, romantic, small-towns, road-trips]
+tags: [walla walla wine, wine tasting weekend, walla walla tasting rooms, washington wine country, sweet onions, walla walla]

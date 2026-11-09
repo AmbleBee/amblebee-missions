@@ -11,10 +11,12 @@ place:
   website: https://omsi.edu
 short: Spend the day at OMSI. Each find the experiment that blows your mind.
 description: >
-  Explore OMSI's hands-on science halls, and add the submarine tour,
-  planetarium or big-screen theater if you like. Each find the one exhibit
-  that surprised you most, drag everyone else over to see it, and get a photo
-  of yourself with your pick. Vote at the end on whose was best.
+  Spend the day at OMSI, Portland's science museum on the Willamette River.
+  Explore the hands-on exhibit halls, then add a planetarium show, the giant-
+  screen theater or a guided tour of the USS Blueback submarine docked
+  outside. Each find the one exhibit that surprised you most, drag everyone
+  else over to see it, and vote at the end on whose was best. The photo to
+  get: you with your winning exhibit.
 about: >
   The Oregon Museum of Science and Industry started in 1944 and moved to its
   current home on the east bank of the Willamette River in 1992. It has five
@@ -41,6 +43,6 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 discounts: [military, senior]
-themes: [museums, science]
-tags: [omsi, science museum, uss blueback submarine, planetarium, portland]
+themes: [science, museums, stars, vehicles, playful]
+tags: [omsi, oregon museum of science and industry, science museum, uss blueback submarine, planetarium, portland]
 credit: Elle M.

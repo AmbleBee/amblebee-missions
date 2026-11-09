@@ -40,5 +40,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [museums, science]
-tags: [science, museum, rainy-day, seattle]
+themes: [museums, science, stars, wildlife]
+tags: [pacific science center, seattle center, butterfly house, planetarium, laser show, seattle]
