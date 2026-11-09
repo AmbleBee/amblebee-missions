@@ -47,6 +47,7 @@ import socket
 import subprocess
 import sys
 import tempfile
+import threading
 import urllib.parse
 from pathlib import Path
 
@@ -74,6 +75,10 @@ def use_repo(path):
     linkcheck.OK_FILE = MISSIONS / "links-ok.yaml"
 
 
+# Files the manager writes that only mean something on this computer, so they stay out of git.
+PRIVATE = ("missions/links-ok.yaml", ".mission-edits/")
+
+
 def default_repo():
     """The repo to open when none is named: the one the manager sits in (tools/mission_management/ in a pack
     repo), else the folder you started it from."""
@@ -87,7 +92,8 @@ def ready():
     return (MISSIONS / "catalog.yaml").exists()
 
 PORTS = range(8812, 8822)
-KEY = secrets.token_urlsafe(12)
+LOCK = {"key": ""}        # a temporary key set from the page (Lock); empty means open. Forgotten when the manager stops.
+SERVER = None
 FOLDED = ("description", "about")
 
 # The theme chips, grouped the way _template.yaml groups them.
@@ -123,6 +129,31 @@ def for_form(data):
     return out
 
 
+def git_changes():
+    """Files changed since the last commit (everything git would show you), or None outside a git checkout."""
+    try:
+        top = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "--show-toplevel"], capture_output=True, text=True, timeout=5)
+        out = subprocess.run(["git", "-C", str(ROOT), "status", "--porcelain", "--untracked-files=all"],
+                             capture_output=True, text=True, timeout=5)
+    except (OSError, subprocess.SubprocessError):
+        return None
+    if top.returncode or out.returncode:
+        return None
+    try:
+        under = ROOT.relative_to(Path(top.stdout.strip()).resolve()).as_posix()
+    except ValueError:
+        under = "."
+    under = "" if under == "." else under      # "" when the manager's repo is the git repo itself
+    files = []
+    for line in out.stdout.splitlines():
+        st, path = line[:2], line[3:].split(" -> ")[-1].strip('"')
+        kind = "new" if "?" in st or "A" in st else "deleted" if "D" in st else "changed"
+        rel = path[len(under) + 1:] if under and path.startswith(under + "/") else path
+        m = re.fullmatch(r"missions/([a-z0-9][a-z0-9-]*)/([a-z0-9][a-z0-9-]*)\.yaml", rel)
+        files.append({"path": path, "kind": kind, **({"pack": m.group(1), "id": m.group(2)} if m and kind != "deleted" else {})})
+    return {"files": files}
+
+
 def dashboard_data():
     if not ready():
         return {"setup": setup_repo.status(ROOT)}
@@ -139,7 +170,7 @@ def dashboard_data():
         "source": {k: (lib.load_catalog(MISSIONS)[0] or {}).get(k) for k in ("name", "source_id", "author")},
         "attention": {k: {"label": v[0], "help": v[1]} for k, v in ATTENTION.items()},
         "themes": lib.THEMES, "themeGroups": THEME_GROUPS, "themesMax": lib.THEMES_MAX,
-        "minMissions": settings["min_missions"],
+        "minMissions": settings["min_missions"], "git": git_changes(),
         "schema": {
             "allowed": {k: sorted(v) for k, v in lib.ALLOWED.items()},
             "lists": {k: sorted(v) for k, v in lib.LIST_ALLOWED.items()},
@@ -151,13 +182,61 @@ def dashboard_data():
     }
 
 
+# ---------- draft baselines: what a draft looked like before its first edit ----------
+# Saving a draft keeps a copy of the file as it was before that draft's first save, so the editor can show every
+# field changed since then in green, across sessions, until the mission goes live (then the copy is deleted).
+
+def baseline_path(pack, mid):
+    return ROOT / ".mission-edits" / pack / f"{mid}.yaml"
+
+
+def keep_baseline(pack, mid, before, after):
+    """Called after every save. before: the file's text before the save ("" for a new mission)."""
+    f = baseline_path(pack, mid)
+    if (yaml.safe_load(after) or {}).get("draft"):
+        if not f.exists():
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_text(before, encoding="utf-8")
+            extras.ensure_ignored(ROOT, ".mission-edits/")
+    elif f.exists():
+        f.unlink()
+
+
+def prune_baselines():
+    """Drops baselines for missions that went live some other way (a bulk publish, an edit in a text editor)."""
+    top = ROOT / ".mission-edits"
+    if not top.is_dir():
+        return
+    for f in top.glob("*/*.yaml"):
+        m = mission_path(f.parent.name, f.stem)
+        try:
+            draft = m.exists() and (yaml.load(m.read_text(encoding="utf-8"), Loader=lib._Loader) or {}).get("draft")
+        except yaml.YAMLError:
+            continue
+        if not draft:
+            f.unlink()
+
+
 def read_mission(pack, mid):
     path = mission_path(pack, mid)
     text = path.read_text(encoding="utf-8")
     *_, dups = chunks(text)
-    return {"data": for_form(yaml.safe_load(text) or {}), "version": version_of(text), "text": text,
-            "comments": comments_in(text.splitlines()), "duplicates": dups,
-            "path": str(path.relative_to(ROOT))}
+    data = yaml.safe_load(text) or {}
+    out = {"data": for_form(data), "version": version_of(text), "text": text,
+           "comments": comments_in(text.splitlines()), "duplicates": dups,
+           "path": str(path.relative_to(ROOT))}
+    b = baseline_path(pack, mid)
+    if b.exists():
+        if not data.get("draft"):
+            b.unlink()
+        else:
+            try:
+                before = b.read_text(encoding="utf-8")
+                out["baseline"] = {"data": for_form(yaml.safe_load(before) or {}) if before.strip() else None,
+                                   "since": datetime.date.fromtimestamp(b.stat().st_mtime).isoformat()}
+            except yaml.YAMLError:
+                pass
+    return out
 
 
 # ---------- needs attention ----------
@@ -166,6 +245,7 @@ ATTENTION = {        # code: (label shown on the dashboard, what it means)
     "fails-check": ("Fails a check", "Something tools/check_missions.py flags; open it to see what"),
     "doubled": ("Field written twice", "YAML only keeps the last copy; delete the one you don't want"),
     "approx-pin": ("Pin to verify", "A note in the file says the pin or address still needs checking"),
+    "no-address": ("Draft with no address", "Drafts only (trailheads and viewpoints don't need one, so live missions aren't flagged)"),
     "no-pin": ("No pin yet", "Its pack needs a place for every mission, and this one has no coords"),
     "caution-expired": ("Expired caution", "The caution_until date has passed; delete both caution lines"),
     "stale": ("Checked 6+ months ago", "Worth a fresh look: hours, prices and places change"),
@@ -176,7 +256,6 @@ ATTENTION = {        # code: (label shown on the dashboard, what it means)
     "twin": ("Possible duplicate", "Very close to, or named like, another mission; open it to compare, or mark them different on purpose"),
     "draft": ("Draft", "Waiting to be checked and published"),
 }
-VERIFY_NOTE = re.compile(r"\bapprox|\bverify\b|\bplaceholder|\btodo\b", re.I)
 
 
 _checked = {"sig": None, "problems": []}
@@ -211,8 +290,8 @@ def file_facts(path):
     key = (st.st_mtime_ns, st.st_size)
     if path not in _files or _files[path][0] != key:
         text = path.read_text(encoding="utf-8")
-        draft_notes = set(comments_in(chunks(text)[1].get("draft", [])))   # the draft line's own note is the "Draft" badge
-        approx = any(VERIFY_NOTE.search(c) for c in comments_in(text.splitlines()) if c not in draft_notes)
+        # the same "check the pin" notes the checker blocks on a live mission (the draft line's own note is the Draft badge)
+        approx = any(not line.startswith("draft:") for _, line in lib.pin_notes(text))
         _files[path] = (key, (yaml.load(text, Loader=lib._Loader) or {}, bool(lib.duplicate_fields(text)), approx))
     return _files[path][1]
 
@@ -241,6 +320,8 @@ def attention(rows, packs, settings):
             issues.append("doubled")
         if approx:
             issues.append("approx-pin")
+        if data.get("draft") and data.get("place") and not (data.get("place") or {}).get("address"):
+            issues.append("no-address")
         if rule == "required" and not ((data.get("place") or {}).get("coords")):
             issues.append("no-pin")
         until = lib.caution_until_date(data.get("caution_until"))
@@ -409,9 +490,14 @@ def save(body):
         return 422, {**out, "error": "Not saved: this would fail the mission checks."}
     if out["lost"] and not body.get("dropComments"):
         return 409, {**out, "error": "Saving would remove comments from lines you changed."}
+    before = path.read_text(encoding="utf-8") if path.exists() else ""
     tmp = path.with_name(f".{path.stem}.yaml.tmp")
     tmp.write_text(text, encoding="utf-8")
     os.replace(tmp, path)
+    try:
+        keep_baseline(body.get("pack"), body.get("id"), before, text)
+    except OSError:
+        pass     # only the green marks depend on it
     return 200, {"ok": True, "version": version_of(text), "path": str(path.relative_to(ROOT))}
 
 
@@ -503,12 +589,11 @@ def pack_icons():
 def card_frame():
     """A tiny page that loads the website's stylesheet, core.js and ticket.js, then draws whatever mission the
     editor sends it with the website's own ticket(). The Hive shows this same card, so the preview can't drift."""
-    k = urllib.parse.quote(KEY)
     return f"""<!doctype html><html lang="en"><head><meta charset="utf-8">
-<link rel="stylesheet" href="site/fonts/fonts.css"><link rel="stylesheet" href="site/style.css?key={k}">
+<link rel="stylesheet" href="site/fonts/fonts.css"><link rel="stylesheet" href="site/style.css">
 <style>html,body{{margin:0}} body{{padding:12px 10px 14px;border-radius:14px}} .ticket{{margin:0 !important}}
 a{{pointer-events:none}} .full-page,.report{{opacity:.6}}</style>
-<script src="site/js/core.js?key={k}"></script><script src="site/js/ticket.js?key={k}"></script></head>
+<script src="site/js/core.js"></script><script src="site/js/ticket.js"></script></head>
 <body><div id="card"></div><script>
 addEventListener("message", (e) => {{
   if (e.origin !== location.origin || !e.data || e.data.type !== "card") return;
@@ -552,28 +637,29 @@ class Handler(http.server.BaseHTTPRequestHandler):
             return path[min(found):]
         return "/" if path.endswith("/") else path
 
-    def _authed(self):
-        return secrets.compare_digest(self.headers.get("X-Amble-Key", ""), KEY)
+    def _authed(self, q=None):
+        """Open unless someone set a temporary key with the page's Lock button."""
+        if not LOCK["key"]:
+            return True
+        got = self.headers.get("X-Amble-Key", "") or ((q or {}).get("key") or [""])[0]
+        return secrets.compare_digest(got.encode("utf-8"), LOCK["key"].encode("utf-8"))
+
+    def _locked_out(self):
+        return self._send(403, {"error": "This manager is locked. Enter the key that was set on it.", "locked": True})
 
     def do_GET(self):
         url = urllib.parse.urlparse(self.path)
         q = urllib.parse.parse_qs(url.query)
         path = self._route()
         if path == "/":
-            if not secrets.compare_digest((q.get("key") or [""])[0], KEY):
-                return self._send(403, b"<p style='font-family:sans-serif'>Open the link printed in the terminal "
-                                       b"(it has a key that changes every run).</p>", "text/html; charset=utf-8")
             return self._send(200, (HERE / "app.html").read_bytes(), "text/html; charset=utf-8")
         if path == "/card-frame":          # the website's own mission card, for the editor's preview
-            if not secrets.compare_digest((q.get("key") or [""])[0], KEY):
-                return self._send(403, {"error": "Missing or wrong key."})
             if not card_ready():
                 return self._send(404, {"error": "This repo has no site/js/ticket.js."})
             return self._send(200, card_frame().encode("utf-8"), "text/html; charset=utf-8")
-        if path.startswith("/site/"):         # the few website files that page needs (fonts need no key)
+        if path.startswith("/site/"):         # the few public website files that page needs
             rel = path[len("/site/"):]
-            ok_key = secrets.compare_digest((q.get("key") or [""])[0], KEY)
-            if rel in CARD_FILES and ok_key or (rel.startswith("fonts/") and rel.endswith((".woff2", ".css")) and "/" not in rel[6:]):
+            if rel in CARD_FILES or (rel.startswith("fonts/") and rel.endswith((".woff2", ".css")) and "/" not in rel[6:]):
                 f = ROOT / "site" / rel
                 if f.is_file():
                     ctype = {".css": "text/css", ".js": "text/javascript", ".woff2": "font/woff2"}[f.suffix]
@@ -585,9 +671,10 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if f.suffix == ".woff2" and f.exists():
                 return self._send(200, f.read_bytes(), "font/woff2")
             return self._send(404, {"error": "no such font"})
-        link_key = path == "/api/release-file" and secrets.compare_digest((q.get("key") or [""])[0], KEY)   # a plain download link
-        if not (self._authed() or link_key):
-            return self._send(403, {"error": "Missing or wrong key. Open the link printed in the terminal."})
+        if path == "/api/lock":
+            return self._send(200, {"locked": bool(LOCK["key"]), "ok": self._authed()})
+        if not self._authed(q if path == "/api/release-file" else None):    # a download link carries the key itself
+            return self._locked_out()
         try:
             if path == "/api/data":
                 return self._send(200, dashboard_data())
@@ -629,16 +716,29 @@ class Handler(http.server.BaseHTTPRequestHandler):
 
     def do_POST(self):
         if not self._authed():
-            return self._send(403, {"error": "Missing or wrong key. Open the link printed in the terminal."})
+            return self._locked_out()
         path = self._route()
+        if path == "/api/stop":                 # the page's Stop button: answer, then shut down
+            self._send(200, {"ok": True})
+            threading.Thread(target=SERVER.shutdown, daemon=True).start()
+            return
+        if path == "/api/unlock":
+            LOCK["key"] = ""
+            return self._send(200, {"ok": True, "locked": False})
         if path not in ("/api/mission", "/api/preview", "/api/parse", "/api/setup", "/api/checker", "/api/pack",
                         "/api/scoring", "/api/scoring/reset", "/api/pack/edit", "/api/bulk", "/api/ideas",
                         "/api/release", "/api/reveal", "/api/same-spot", "/api/links",
-                        "/api/links/start", "/api/link", "/api/link/mark") or \
+                        "/api/links/start", "/api/link", "/api/link/mark", "/api/lock") or \
                 "application/json" not in self.headers.get("Content-Type", ""):
             return self._send(404, {"error": "Not found"})
         try:
             body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
+            if path == "/api/lock":             # set (or change) the temporary key
+                key = str(body.get("key") or "").strip()
+                if len(key) < 4:
+                    return self._send(422, {"error": "Use at least 4 characters."})
+                LOCK["key"] = key
+                return self._send(200, {"ok": True, "locked": True})
             if path == "/api/setup":            # create whatever the repo is missing (never overwrites)
                 try:
                     created = setup_repo.apply(ROOT, body)
@@ -699,7 +799,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 url = str(body.get("url") or "").strip()
                 if not url.startswith(("http://", "https://")):
                     return self._send(400, {"error": "That isn't a web address."})
-                return self._send(200, {"ok": True, "manual": linkcheck.set_mark(url, bool(body.get("good")))})
+                mark = linkcheck.set_mark(url, bool(body.get("good")))
+                extras.ensure_ignored(ROOT, "missions/links-ok.yaml")     # your own marks; not for GitHub
+                return self._send(200, {"ok": True, "manual": mark})
             if path == "/api/links/start":     # every mission's links, in the background
                 _, _, ms = lib.load_catalog(MISSIONS)
                 started = linkcheck.RUN.start(ms)
@@ -789,39 +891,36 @@ def main():
             continue
     else:
         sys.exit(f"Ports {PORTS.start}-{PORTS.stop - 1} are all busy. Close an old copy of the manager and try again.")
+    global SERVER
+    SERVER = server
+    if ready():
+        added = [p for p in PRIVATE if extras.ensure_ignored(ROOT, p)]
+        prune_baselines()
     print("AmbleBee Mission Management")
     print(f"  Repo: {ROOT}" + ("" if ready() else "  (not set up yet: the page walks you through it)"))
+    if ready() and added:
+        print(f"  Added {', '.join(added)} to .gitignore (they only mean something on this computer).")
     # AMBLE_HOST: the address(es) you reach this machine by, e.g. a Tailscale IP or name, comma separated. Set it in
     # a container's compose file, since a container can't see the server's own addresses.
     hosts = [h.strip() for h in os.environ.get("AMBLE_HOST", "").split(",") if h.strip()]
-    ts_ip, ts_name = tailscale_links()
+    ts_ip, _ = tailscale_links()
     in_docker = Path("/.dockerenv").exists()
-    if in_docker and not ts_ip:
-        # a container's own addresses (localhost, 172.x/192.168.x Docker networks) don't reach it from a browser
-        if hosts:
-            for h in hosts:
-                print(f"  Open:  http://{h}:{port}/?key={KEY}")
-        else:
-            print(f"  Open:  http://TAILSCALEIP:{port}/?key={KEY}")
-            print("         (swap TAILSCALEIP for your server's Tailscale IP; to get a clickable link,")
-            print("          add  - AMBLE_HOST=TAILSCALEIP  under environment: in the compose file)")
-        print(f"  Needs  - {port}:{port}  under ports: in the compose file (then docker compose up -d).")
-    else:
-        for h in hosts:
-            print(f"  Your address:   http://{h}:{port}/?key={KEY}")
-        print(f"  This computer:  http://localhost:{port}/?key={KEY}")
-        ip = lan_ip()
-        if ip and not ip.startswith("127.") and ip != ts_ip:
-            print(f"  Same Wi-Fi:     http://{ip}:{port}/?key={KEY}")
-        if ts_ip:
-            print(f"  Tailscale:      http://{ts_ip}:{port}/?key={KEY}")
-            if ts_name:
-                print(f"                  http://{ts_name}:{port}/?key={KEY}")
-    print(f"Saving writes straight into {MISSIONS}. Commit and push when you're happy. Ctrl+C to stop.")
+    ip = None if in_docker else lan_ip()      # a container only sees its own Docker network address
+    for h in hosts:
+        print(f"  Your address:   http://{h}:{port}/")
+    print(f"  This computer:  http://localhost:{port}/")
+    print(f"  Same Wi-Fi:     http://{ip if ip and not ip.startswith('127.') and ip != ts_ip else 'LANIP'}:{port}/")
+    print(f"  Tailscale:      http://{ts_ip or 'TAILSCALEIP'}:{port}/")
+    if in_docker:
+        print(f"  (In a container: needs  - {port}:{port}  under ports: in the compose file, then docker compose up -d.)")
+    print(f"Saving writes straight into {MISSIONS}. Commit and push when you're happy.")
+    print("Stop it with the Stop button on the page, or Ctrl+C here.")
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        print("\nStopped.")
+        pass
+    server.server_close()
+    print("\nStopped.")
 
 
 if __name__ == "__main__":

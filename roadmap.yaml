@@ -91,11 +91,23 @@
   status: done
   date: 2026-11-09
   tag: missions
-  summary: The mission manager now keeps track of what you've touched, whichever way you edit.
+  summary: The mission manager keeps track of what you've touched, across sessions, and is easier to run on a tablet.
   items:
     - Any field you change turns green with a "changed" tag, and goes back to normal if you change it back
     - Edits made in the YAML view show up green too when you switch back to the form, so you can hop between the two freely
+    - Drafts stay green across sessions until they go live, so you can do all the pins one day, the addresses the next and the descriptions after that
+    - Light green is this session's changes and a deeper green tagged "earlier" is from a past session
     - Text pasted in from a web page or a document comes in clean, with no stray line breaks or hidden characters
+    - A mission whose pin or address still has a "check this" note can't go live until the note is gone, and the "Pin to verify" badge uses the same rule
+    - No more key in the link; the terminal prints three plain links (this computer, same Wi-Fi, Tailscale)
+    - A Lock button sets a temporary key mid-session so nobody else on the network can make changes; it's forgotten when the manager stops
+    - A Stop button shuts the manager down from the page, no terminal needed
+    - The editor has a full-width button, and the page behind it no longer scrolls
+    - The page header scrolls away so the tablet gets more room, while table headers stay in view as you scroll through a table
+    - Links you mark as good by hand stay on your computer instead of going to GitHub
+    - If the tablet closes the tab before you save, your edits are kept on that device and the editor offers to bring them back, new missions included
+    - Pick a filter like "Draft with no address" and tap Work through these to step through the whole list with the editor's arrows
+    - A "not committed" button shows how many files are saved but not committed yet, with a list you can open missions from, and the mission table's old "unsaved" tag now says "not committed"
 
 - title: Mission Management
   status: done

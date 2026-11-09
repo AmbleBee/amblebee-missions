@@ -15,7 +15,7 @@
   color-scheme: light;
   --oat: #EFE7D8; --linen: #FAF5EC; --paper: #FFFDF8; --line: #E4D9C6; --line-strong: #D9CDB6;
   --ink: #4A3323; --ink-2: #6E5543; --ink-3: #8C7663;
-  --sage: #566B48; --sage-tint: #E3EAD6; --honey: #D8A65A; --honey-tint: #F6E6C6; --honey-deep: #946628;
+  --sage: #566B48; --sage-tint: #E3EAD6; --old-tint: #C5D4AE; --honey: #D8A65A; --honey-tint: #F6E6C6; --honey-deep: #946628;
   --a: #2a78d6; --a-soft: #9ec5f4; --a-tint: #e3eefb; --b: #eb6834; --b-soft: #f6b08f; --mid: #cfc6b6;
   --band: rgba(86, 107, 72, .16); --band-edge: #566B48;
   --zone: rgba(86, 140, 72, .30); --zone-edge: #3F7A3A; --pin-in: #2F6B2C; --pin-out: #D9531E;
@@ -32,7 +32,7 @@
     color-scheme: dark;
     --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
     --ink: #F3E9DC; --ink-2: #D7C8B6; --ink-3: #AE9E8B;
-    --sage: #9AAE85; --sage-tint: #34402B; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
+    --sage: #9AAE85; --sage-tint: #34402B; --old-tint: #4C6040; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
     --a: #3987e5; --a-soft: #1c5cab; --a-tint: #1d3350; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
     --band: rgba(154, 174, 133, .18); --band-edge: #9AAE85;
     --zone: rgba(120, 190, 110, .28); --zone-edge: #8FD08A; --pin-in: #8FD08A; --pin-out: #F08A55;
@@ -46,7 +46,7 @@
   color-scheme: dark;
   --oat: #211B16; --linen: #2A231D; --paper: #322A23; --line: #43382E; --line-strong: #54473A;
   --ink: #F3E9DC; --ink-2: #D7C8B6; --ink-3: #AE9E8B;
-  --sage: #9AAE85; --sage-tint: #34402B; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
+  --sage: #9AAE85; --sage-tint: #34402B; --old-tint: #4C6040; --honey: #D8A65A; --honey-tint: #4A3A22; --honey-deep: #E3B977;
   --a: #3987e5; --a-soft: #1c5cab; --a-tint: #1d3350; --b: #d95926; --b-soft: #8f3c1b; --mid: #6b6055;
   --band: rgba(154, 174, 133, .18); --band-edge: #9AAE85;
   --zone: rgba(120, 190, 110, .28); --zone-edge: #8FD08A; --pin-in: #8FD08A; --pin-out: #F08A55;
@@ -67,7 +67,7 @@ h3 { font-size: 16px; }
 .note { background: var(--honey-tint); border-radius: 10px; padding: 8px 12px; margin-top: 12px; font-size: 14px; }
 
 .controls { display: flex; flex-wrap: wrap; gap: 10px 18px; align-items: center; margin: 18px 0 8px;
-  position: sticky; top: 0; z-index: 5; background: var(--oat); padding: 10px 0; border-bottom: 1px solid var(--line); }
+  background: var(--oat); padding: 10px 0; border-bottom: 1px solid var(--line); }
 .controls label { font-size: 14px; color: var(--ink-2); display: flex; gap: 6px; align-items: center; }
 select, input[type=search] { font: inherit; color: var(--ink); background: var(--paper); border: 1px solid var(--line-strong);
   border-radius: 8px; padding: 5px 9px; }
@@ -89,7 +89,12 @@ td { border-bottom: 1px solid var(--line); padding: 6px 8px; vertical-align: mid
 td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
 tr.click { cursor: pointer; }
 tr.click:hover td { background: var(--linen); }
-.scroll { overflow-x: auto; }
+/* a long table scrolls inside its own box so its header row stays put above the rows (the page header doesn't stick) */
+.scroll { overflow: auto; max-height: calc(100dvh - 16px); overscroll-behavior: auto; }
+.scroll thead th { position: sticky; top: 0; z-index: 2; background: var(--paper); box-shadow: inset 0 -1px 0 var(--line-strong); }
+/* nothing behind an open dialog scrolls */
+html:has(dialog[open]), html:has(dialog[open]) body { overflow: hidden; }
+dialog, .sheet-body, dialog.diff .db { overscroll-behavior: contain; }
 th.sortable { cursor: pointer; user-select: none; }
 th.sortable:hover { color: var(--ink); }
 th .arrow { color: var(--sage); }
@@ -192,6 +197,19 @@ th .arrow { color: var(--sage); }
 dialog.sheet { margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; width: min(760px, 100vw); max-width: 100vw; border: 0;
   padding: 0; background: var(--oat); color: var(--ink); box-shadow: -10px 0 30px rgba(0, 0, 0, .18); }
 dialog.sheet::backdrop { background: rgba(40, 28, 20, .35); }
+dialog.sheet.full { width: 100vw; box-shadow: none; }
+.sheet-head .headbtns { margin-left: auto; display: flex; gap: 2px; align-items: center; }
+.sheet-head .headbtns .x { margin-left: 0; }
+.x.fs { font-size: 22px; padding: 0 8px; }
+.since { background: var(--sage-tint); box-shadow: inset 4px 0 0 var(--sage); border-radius: 12px; padding: 8px 12px; margin-top: 12px; font-size: 14px; }
+#lockBtn[aria-pressed="true"] { box-shadow: inset 0 0 0 2.5px var(--honey); }
+.gitlist { list-style: none; margin: 0; padding: 0; }
+.gitlist li { display: flex; gap: 10px; align-items: baseline; padding: 5px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.gitlist .k { font-size: 12px; font-weight: 800; color: var(--ink-3); min-width: 62px; text-transform: uppercase; letter-spacing: .03em; }
+.gitlist code { word-break: break-all; }
+.restore { background: var(--honey-tint); border-radius: 12px; padding: 10px 14px; margin-top: 12px; font-size: 14px; }
+.restore .row2 { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 8px; }
+.stopped { max-width: 520px; margin: 18vh auto 0; text-align: center; padding: 0 16px; }
 dialog.small { border: 0; border-radius: 20px; padding: 22px; width: min(460px, calc(100vw - 32px)); background: var(--paper); color: var(--ink); box-shadow: var(--shadow); }
 dialog.small::backdrop { background: rgba(40, 28, 20, .35); }
 .sheet-inner { display: flex; flex-direction: column; height: 100%; }
@@ -215,6 +233,12 @@ legend + * { clear: both; }
 .changed > label::after, .changed > .lbl::after { content: "changed"; font-size: 11px; font-weight: 800; letter-spacing: .04em; text-transform: uppercase;
   color: #FFFDF8; background: var(--sage); border-radius: 999px; padding: 1px 8px; margin-left: auto; }
 label.toggle.changed { display: flex; }
+/* changed in an earlier session (saved into this draft before): a deeper green */
+.changed.earlier { background: var(--old-tint); box-shadow: inset 4px 0 0 var(--fill-shadow); }
+.changed.earlier > label::after, .changed.earlier > .lbl::after { content: "earlier"; background: var(--fill-shadow); }
+.since i { display: inline-block; width: 22px; height: 12px; border-radius: 999px; vertical-align: -1px; margin: 0 4px 0 2px; }
+.since .k-now { background: var(--sage-tint); box-shadow: inset 0 0 0 2px var(--sage); }
+.since .k-old { background: var(--old-tint); box-shadow: inset 0 0 0 2px var(--fill-shadow); }
 .count { font-size: 12px; color: var(--ink-3); font-weight: 600; font-variant-numeric: tabular-nums; }
 .count.over { color: var(--bad); }
 .count.aim { color: var(--honey-deep); }
@@ -384,7 +408,7 @@ body:not(.booting) #boot { display: none; }
 .linkbox .st { font-weight: 800; white-space: nowrap; }
 .linkbox .st.ok { color: var(--sage); } .linkbox .st.broken { color: var(--bad); } .linkbox .st.moved, .linkbox .st.unknown { color: var(--honey-deep); }
 .linkbox .u { word-break: break-all; color: var(--ink-2); }
-.topbar { position: sticky; top: 0; z-index: 6; background: var(--oat); margin: 0 -16px; padding: 10px 16px 0; border-bottom: 1px solid var(--line); }
+.topbar { background: var(--oat); margin: 0 -16px; padding: 10px 16px 0; border-bottom: 1px solid var(--line); }
 .topbar .controls { position: static; border: 0; margin: 8px 0 0; padding: 4px 0; background: none; }
 .tabs { display: flex; gap: 4px; margin-top: 6px; }
 .tabs button { appearance: none; border: 0; background: none; font: inherit; font-weight: 800; font-size: 15px; color: var(--ink-2); cursor: pointer;
@@ -485,6 +509,9 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
         <button class="btn small" id="settingsBtn" type="button" title="What counts as balanced (your own scoring.yaml)">Settings</button>
         <button class="btn small" id="newPackBtn" type="button">+ New pack</button>
         <button class="btn small primary" id="newBtn" type="button">+ New mission</button>
+        <button class="btn small" id="gitBtn" type="button" hidden title="Files changed since your last commit"></button>
+        <button class="btn small" id="lockBtn" type="button" aria-pressed="false" title="Set a temporary key so other devices on your network need it">Lock</button>
+        <button class="btn small" id="stopBtn" type="button" title="Shut the manager down (no terminal needed)">Stop</button>
       </span>
     </nav>
   </header>
@@ -544,6 +571,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
       </label>
       <input type="search" id="q" placeholder="Search name, theme, id…">
       <span class="muted" id="mcount"></span>
+      <button class="btn tiny" type="button" id="workBtn" hidden title="Open the first one; the arrows in the editor walk the rest of this list">Work through these</button>
       <span style="margin-left:auto;display:inline-flex;gap:10px;align-items:center">
         <span class="muted" id="linkRun" style="font-size:13px"></span>
         <button class="btn tiny" type="button" id="linkAll" title="Check every mission's website and extra links in the background">Check all links</button></span>
@@ -578,7 +606,10 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
           <label><input type="radio" name="edMode" value="yaml"><span>YAML</span></label>
         </div></div>
       </div>
-      <button class="x" type="button" id="edClose" aria-label="Close">×</button>
+      <div class="headbtns">
+        <button class="x fs" type="button" id="edFull" aria-pressed="false" title="Full width" aria-label="Full width">⤢</button>
+        <button class="x" type="button" id="edClose" aria-label="Close">×</button>
+      </div>
     </div>
     <div class="sheet-body" id="edBody"></div>
     <div class="sheet-body" id="yamlBody" hidden>
@@ -598,6 +629,39 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
       <button class="btn small primary" type="submit" id="edSave">Review and save</button>
     </div>
   </form>
+</dialog>
+
+<dialog class="small wide" id="gitDlg" aria-labelledby="gitTitle">
+  <h2 id="gitTitle">Not committed yet</h2>
+  <p class="sub">Saved to disk, but git doesn't have these yet. Commit and push when you're ready; nothing here pushes for you.</p>
+  <div id="gitBody" style="max-height:55vh;overflow:auto;margin-top:10px"></div>
+  <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn small" type="button" id="gitClose">Close</button></div>
+</dialog>
+
+<dialog class="small" id="lockDlg" aria-labelledby="lockTitle">
+  <form method="dialog" id="lockForm">
+    <h2 id="lockTitle">Lock</h2>
+    <p class="sub" id="lockSub"></p>
+    <div class="f" id="lockField"><label for="lockKey" id="lockLbl">Key</label>
+      <input type="text" id="lockKey" autocomplete="off" autocapitalize="off" spellcheck="false" minlength="4"></div>
+    <div class="alert bad" id="lockErr" hidden></div>
+    <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap">
+      <button class="btn small" type="button" id="lockOff" hidden style="margin-right:auto">Remove the key</button>
+      <button class="btn small" type="button" id="lockCancel">Cancel</button>
+      <button class="btn small primary" type="submit" id="lockGo">Lock it</button>
+    </div>
+  </form>
+</dialog>
+
+<dialog class="small" id="stopDlg" aria-labelledby="stopTitle">
+  <h2 id="stopTitle">Stop Mission Management?</h2>
+  <p class="sub">It shuts down for every device that has it open. Everything you saved is already in the mission files.
+    To start it again: <code>python tools/mission_management</code></p>
+  <div class="alert warn" id="stopWarn" hidden>The editor has changes you haven't saved. They'll be lost.</div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+    <button class="btn small" type="button" id="stopCancel">Cancel</button>
+    <button class="btn small danger" type="button" id="stopGo">Stop it</button>
+  </div>
 </dialog>
 
 <dialog class="small diff" id="diffDlg" aria-labelledby="diffTitle">
@@ -713,12 +777,24 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
 </dialog>
 
 <script>
-const KEY = new URLSearchParams(location.search).get('key') || '';
+// Open by default. Someone can set a temporary key with Lock; then every device needs it (kept for this tab only).
+let KEY = '';
+try { KEY = sessionStorage.getItem('ambleKey') || ''; } catch (e) {}
+function rememberKey(k) { KEY = k; try { k ? sessionStorage.setItem('ambleKey', k) : sessionStorage.removeItem('ambleKey'); } catch (e) {} }
 let D = null, THEME_KEYS = [];
-async function api(path, opts = {}) {
-  const r = await fetch(path, { ...opts, headers: { 'X-Amble-Key': KEY, ...(opts.body ? { 'Content-Type': 'application/json' } : {}) } });
+async function api(path, opts = {}, retry = true) {
+  let r;
+  try {
+    r = await fetch(path, { ...opts, headers: { ...(KEY ? { 'X-Amble-Key': KEY } : {}), ...(opts.body ? { 'Content-Type': 'application/json' } : {}) } });
+  } catch (e) {
+    return { status: 0, ok: false, body: { error: "The manager isn't answering. Is it still running?" } };
+  }
   let body = {};
   try { body = await r.json(); } catch (e) {}
+  if (r.status === 403 && body.locked && retry) {        // locked from another device: ask for the key, then try again
+    await askKey();
+    return api(path, opts, false);
+  }
   return { status: r.status, ok: r.ok, body };
 }
 const $ = s => document.querySelector(s);
@@ -1079,6 +1155,8 @@ function renderTable(ms) {
   });
   $('#mcount').textContent = `${list.length} mission${list.length === 1 ? '' : 's'}`;
   navList = list; $('#tabN').textContent = list.length; keepState(); stepUi();
+  $('#workBtn').hidden = !(filtersActive() && list.length);
+  $('#workBtn').textContent = `Work through these (${list.length})`;
   const total = list.length;
   list = list.slice(0, state.shown);
   shownRows = list;
@@ -1093,7 +1171,7 @@ function renderTable(ms) {
     <td><span class="chip ${m.draft ? 'draft' : 'live'}">${m.draft ? 'Draft' : 'Live'}</span>${badges(m)}</td>
     <td class="num ${m.checked ? '' : 'muted'}">${m.checked || '–'}</td>
     <td class="num">${m.added || ''}</td>
-    <td class="num">${m.edited || ''}${m.uncommitted ? ' <span class="chip new" title="Changed but not committed yet">unsaved</span>' : ''}</td>
+    <td class="num">${m.edited || ''}${m.uncommitted ? ' <span class="chip new" title="Saved, but not committed to git yet">not committed</span>' : ''}</td>
   </tr>`).join('');
   const more = total > list.length ? `<tfoot><tr><td colspan="${COLS.length + 1}" style="border:0;padding-top:12px">Showing ${list.length} of ${total}.
     <button class="link" id="more">Show ${Math.min(PAGE, total - list.length)} more</button> · <button class="link" id="allrows">Show all</button></td></tr></tfoot>` : '';
@@ -1119,6 +1197,7 @@ async function loadData() {
   if (D.setup) { renderSetup(D.setup); return false; }
   showMain(true);
   THEME_KEYS = Object.keys(D.themes);
+  gitUi(); stashNote();
   $('#generated').textContent = `${D.missions.length} mission files, read just now.`;
   $('#generated').textContent += ` Repo: ${D.repo}`;
   $('#note').innerHTML = (D.note ? `<div class="note">${esc(D.note)}</div>` : '') +
@@ -1408,14 +1487,19 @@ function fieldBox(key) {
   if (key === '#pLat' || key === '#pLng') return el.closest('.f');          // the pin is one field
   return el.closest('label.toggle') || el.closest('.f') || el.closest('fieldset');
 }
+const sessionSnaps = {};   // pack/id: the form the first time it opened since this page loaded
 function markChanges() {
   if (!ed.snapshot) return;
-  const now = fieldValues(), changed = new Set();
+  const now = fieldValues(), changed = new Set(), fresh = new Set(), ss = ed.sessionSnap;
   for (const k of new Set([...Object.keys(now), ...Object.keys(ed.snapshot)])) {
-    if ((now[k] ?? '') !== (ed.snapshot[k] ?? '')) { const b = fieldBox(k); if (b) changed.add(b); }
+    if ((now[k] ?? '') !== (ed.snapshot[k] ?? '')) {
+      const b = fieldBox(k); if (!b) continue;
+      changed.add(b);
+      if (!ss || (now[k] ?? '') !== (ss[k] ?? '')) fresh.add(b);     // touched this session (one box can hold several keys)
+    }
   }
-  $('#edBody').querySelectorAll('.changed').forEach(b => { if (!changed.has(b)) b.classList.remove('changed'); });
-  changed.forEach(b => b.classList.add('changed'));
+  $('#edBody').querySelectorAll('.changed').forEach(b => { if (!changed.has(b)) b.classList.remove('changed', 'earlier'); });
+  changed.forEach(b => { b.classList.add('changed'); b.classList.toggle('earlier', !fresh.has(b)); });
 }
 
 // counters, theme cap, kids section, map link
@@ -1554,26 +1638,43 @@ function setMode(mode) {
 }
 async function openEditor(pack, id, keepMode = false) {
   const mode = keepMode ? ed.mode : 'form';
-  Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null });
+  Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null, since: '', sessionSnap: null });
   $('#edTitle').textContent = 'Loading…'; $('#edPath').textContent = `missions/${pack}/${id}.yaml`;
   $('#edBody').innerHTML = ''; setMsg(''); setMode('form');
   showSheet();
   const r = await api(`api/mission?pack=${encodeURIComponent(pack)}&id=${encodeURIComponent(id)}`);
   if (!r.ok) { $('#edTitle').textContent = 'Couldn’t open it'; $('#edBody').innerHTML = `<div class="alert bad">${esc(r.body.error || 'Error')}</div>`; return; }
-  ed.version = r.body.version; ed.orig = r.body.data; ed.m = JSON.parse(JSON.stringify(r.body.data)); ed.text = r.body.text;
+  ed.info = r.body; ed.version = r.body.version; ed.orig = r.body.data; ed.m = JSON.parse(JSON.stringify(r.body.data)); ed.text = r.body.text;
   $('#edTitle').textContent = ed.m.name || id;
   stepUi();
   $('#edPath').textContent = `${r.body.path} · ${packName(pack)}`;
   setPublishBtn(!!ed.m.draft);
+  const bl = r.body.baseline;
+  if (bl && bl.data) {               // a draft: green shows everything changed since its first draft save
+    const now = ed.m; ed.m = JSON.parse(JSON.stringify(bl.data));
+    renderForm({}); ed.m = now;         // renderForm keeps the first snapshot it takes
+  }
   renderForm(r.body);
-  $('#edBody').insertAdjacentHTML('afterbegin', attnHtml());
+  // what this mission looked like the first time it was opened since the page loaded: edits after that are "now"
+  const sk = `${pack}/${id}`;
+  if (!(sk in sessionSnaps)) sessionSnaps[sk] = fieldValues();
+  ed.sessionSnap = bl ? sessionSnaps[sk] : null;
+  if (bl && !bl.data) {              // made in the manager as a new draft: every filled-in field is new
+    ed.snapshot = Object.fromEntries(Object.entries(fieldValues()).map(([k, v]) => [k, v === 'false' ? v : '']));
+    markChanges();
+  }
+  ed.since = bl ? `<div class="since">Green shows what changed since this ${bl.data ? 'became a draft' : 'draft was started'}
+    (${esc(bl.since)}): <i class="k-now"></i>this session, <i class="k-old"></i>an earlier one. It clears once the mission goes live.</div>` : '';
+  markChanges();
+  $('#edBody').insertAdjacentHTML('afterbegin', attnHtml() + ed.since);
   $('#yamlText').value = r.body.text; yamlStatus('');
   $('#yamlAttn').innerHTML = attnHtml();
   setMode(mode);
+  offerRestore();
   checkMissionLinks(pack, id);
 }
 function startNew(pack, id, name) {
-  Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null });
+  Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null, since: '', sessionSnap: null });
   ed.m = { draft: true, number: nextNumber(pack), name, mode: 'both', duration: 'short', effort: 'easy', cost: '$',
     setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', themes: [], tags: [] };
   $('#edTitle').textContent = name || 'New mission';
@@ -1581,6 +1682,7 @@ function startNew(pack, id, name) {
   setMsg('Not saved yet.'); setPublishBtn(true); stepUi();
   $('#yamlAttn').innerHTML = ''; yamlStatus('');
   setMode('form'); showSheet(); renderForm();
+  sessionSnaps[`${pack}/${id}`] = Object.fromEntries(Object.entries(fieldValues()).map(([k, v]) => [k, v === 'false' ? v : '']));
 }
 
 // the request both "review" and "save" send, so what you saw is exactly what gets written
@@ -1656,7 +1758,7 @@ async function confirmSave() {
   const b = r.body;
   $('#diffDlg').close(); pending = null;
   if (r.ok) {
-    ed.dirty = false;
+    ed.dirty = false; dropStash(ed.pack, ed.id);
     if (b.unchanged) { setMsg('No changes to save.'); return; }
     const was = ed.isNew, pack = ed.pack, id = ed.id;
     ed.isNew = false;
@@ -1674,6 +1776,7 @@ async function confirmSave() {
 }
 function closeEditor() {
   if (ed.dirty && !confirm('Close without saving your changes?')) return;
+  if (ed.dirty) dropStash(ed.pack, ed.id);      // you chose to throw them away
   ed.dirty = false; $('#editor').close();
 }
 
@@ -1734,7 +1837,7 @@ async function switchMode(to) {
   ed.orig = parsed.data; ed.m = JSON.parse(JSON.stringify(parsed.data));
   ed.rmNotes = [];                            // the YAML you typed is the truth now, notes included
   renderForm({ duplicates: parsed.duplicates, comments: parsed.comments });
-  $('#edBody').insertAdjacentHTML('afterbegin', attnHtml());
+  $('#edBody').insertAdjacentHTML('afterbegin', attnHtml() + (ed.since || ''));
   setMode('form');
 }
 $('#yamlText').addEventListener('scroll', syncGutter);
@@ -1838,7 +1941,7 @@ $('#edForm').addEventListener('click', e => {
   else if (t.id === 'addLink') { $('#links').insertAdjacentHTML('beforeend', linkRow()); refreshLive(); }
   else if (t.id === 'addGear') { $('#gear').insertAdjacentHTML('beforeend', gearRow()); markChanges(); }
   else if (t.id === 'fToday') { $('#fChecked').value = today(); ed.dirty = true; markChanges(); }
-  else if (t.id === 'reloadMission') { ed.dirty = false; openEditor(ed.pack, ed.id); }
+  else if (t.id === 'reloadMission') { ed.dirty = false; dropStash(ed.pack, ed.id); openEditor(ed.pack, ed.id); }
 });
 $('#mtable').addEventListener('keydown', e => {
   const row = e.target.closest('[data-edit]');
@@ -2221,7 +2324,7 @@ async function openPreview() {
     : 'From what\'s in the form right now, saved or not. This repo has no website files, so this is a close match, not the real card.';
   if (D.card) {
     $('#pvBody').innerHTML = `<div><h3>Mission card <span class="muted" style="text-transform:none;letter-spacing:0">· drawn by the website's own code, the same card the Hive shows</span></h3>
-      <iframe id="pvFrame" title="Mission card preview" src="card-frame?key=${encodeURIComponent(KEY)}" style="width:100%;height:420px;border:0;display:block"></iframe></div>
+      <iframe id="pvFrame" title="Mission card preview" src="card-frame" style="width:100%;height:420px;border:0;display:block"></iframe></div>
       ${over ? `<p class="help" style="margin:0;color:var(--b)">The short line is ${short.length} characters; keep it to ${D.schema.limits.short}.</p>` : ''}${about}`;
     cardPending = cardMission(m);
   } else {
@@ -2272,7 +2375,7 @@ async function releasePack(pid) {
     <p class="help" style="margin:8px 0 0">The same missions always zip to the same checksum, so a changed checksum means something in the pack changed.</p>`;
   $('#relShow').hidden = false;
   $('#relDownload').hidden = false;
-  $('#relDownload').href = `api/release-file?name=${encodeURIComponent(d.name)}&key=${encodeURIComponent(KEY)}`;
+  $('#relDownload').href = `api/release-file?name=${encodeURIComponent(d.name)}${KEY ? `&key=${encodeURIComponent(KEY)}` : ''}`;
   $('#relDownload').setAttribute('download', d.name);
 }
 $('#relShow').onclick = () => lastRelease && reveal(lastRelease.name, true);
@@ -2419,6 +2522,7 @@ document.addEventListener('click', e => {
   const i = stepIndex(), next = stepList()[i + (+b.dataset.step)];
   if (!next) return;
   if (ed.dirty && !confirm('You have unsaved changes to this mission. Leave it without saving?')) return;
+  if (ed.dirty) dropStash(ed.pack, ed.id);
   ed.dirty = false;
   openEditor(next.pack, next.id).then(stepUi);
 });
@@ -2501,7 +2605,7 @@ document.addEventListener('click', async e => {
   const good = b.dataset.linkmark === '1';
   const r = await api('api/link/mark', { method: 'POST', body: JSON.stringify({ url, good }) });
   if (!r.ok) return toast(r.body.error || 'Couldn\'t save that.');
-  toast(good ? 'Marked good for 180 days (saved in missions/links-ok.yaml). Commit it with your missions.' : 'Unmarked: the checker\'s result counts again.');
+  toast(good ? 'Marked good for 180 days (saved in missions/links-ok.yaml, which stays on this computer).' : 'Unmarked: the checker\'s result counts again.');
   checkOne(input);
   if (await loadData()) render();
 });
@@ -2542,6 +2646,185 @@ loadData().then(ok => { if (ok) { render(); pollLinks(); } })
   .catch(err => { $('#view').innerHTML = `<div class="card"><h2>Couldn't load missions</h2><p>${esc(err && err.message || err)}</p></div>`; })
   .then(() => fontsReady)
   .then(() => requestAnimationFrame(() => document.body.classList.remove('booting')));
+
+// ---------- full-width editor ----------
+function setFull(on) {
+  $('#editor').classList.toggle('full', on);
+  $('#edFull').setAttribute('aria-pressed', String(on));
+  $('#edFull').title = $('#edFull').ariaLabel = on ? 'Normal width' : 'Full width';
+  $('#edFull').textContent = on ? '⤡' : '⤢';
+  try { localStorage.setItem('ambleFull', on ? '1' : ''); } catch (e) {}
+}
+$('#edFull').onclick = () => setFull(!$('#editor').classList.contains('full'));
+try { if (localStorage.getItem('ambleFull')) setFull(true); } catch (e) {}
+
+// ---------- Lock: an optional temporary key, forgotten when the manager stops ----------
+let lockWaiters = null;
+function lockUi(locked) {
+  $('#lockBtn').textContent = locked ? 'Locked' : 'Lock';
+  $('#lockBtn').setAttribute('aria-pressed', String(locked));
+}
+function lockDlg(mode) {      // mode: 'set' (lock it), 'enter' (this device needs the key), 'locked' (change or remove)
+  lockDlg.mode = mode;
+  const t = {
+    set: ['Lock with a temporary key', 'Anyone opening the manager on another device will need this key. It only lasts until the manager stops, so pick anything; you won\'t need it next time.', 'Lock it'],
+    enter: ['This manager is locked', 'Someone set a temporary key on it. Enter it to keep going (this tab remembers it until you close it).', 'Unlock'],
+    locked: ['Locked', 'Other devices need the key. You can change it, or remove it to open the manager up again.', 'Change key'],
+  }[mode];
+  $('#lockTitle').textContent = t[0]; $('#lockSub').textContent = t[1]; $('#lockGo').textContent = t[2];
+  $('#lockLbl').textContent = mode === 'locked' ? 'New key' : 'Key';
+  $('#lockOff').hidden = mode !== 'locked';
+  $('#lockCancel').hidden = mode === 'enter';
+  $('#lockErr').hidden = true; $('#lockKey').value = '';
+  if (!$('#lockDlg').open) $('#lockDlg').showModal();
+  $('#lockKey').focus();
+}
+function askKey() {
+  if (!lockWaiters) { lockWaiters = []; lockDlg('enter'); }
+  return new Promise(res => lockWaiters.push(res));
+}
+$('#lockDlg').addEventListener('cancel', e => { if (lockDlg.mode === 'enter') e.preventDefault(); });
+$('#lockCancel').onclick = () => $('#lockDlg').close();
+$('#lockForm').onsubmit = async e => {
+  e.preventDefault();
+  const key = $('#lockKey').value.trim();
+  const err = t => { $('#lockErr').textContent = t; $('#lockErr').hidden = false; };
+  if (key.length < 4) return err('Use at least 4 characters.');
+  if (lockDlg.mode === 'enter') {
+    const r = await fetch('api/lock', { headers: { 'X-Amble-Key': key } }).then(x => x.json()).catch(() => ({}));
+    if (!r.ok) return err("That's not the key.");
+    rememberKey(key); lockUi(true); $('#lockDlg').close();
+    const w = lockWaiters || []; lockWaiters = null; w.forEach(f => f());
+    return;
+  }
+  const r = await api('api/lock', { method: 'POST', body: JSON.stringify({ key }) });
+  if (!r.ok) return err(r.body.error || "Couldn't lock it.");
+  rememberKey(key); lockUi(true); $('#lockDlg').close();
+  toast('Locked. Other devices need the key until the manager stops.');
+};
+$('#lockOff').onclick = async () => {
+  const r = await api('api/unlock', { method: 'POST', body: '{}' });
+  if (!r.ok) return;
+  rememberKey(''); lockUi(false); $('#lockDlg').close(); toast('Unlocked: no key needed.');
+};
+$('#lockBtn').onclick = () => lockDlg($('#lockBtn').getAttribute('aria-pressed') === 'true' ? 'locked' : 'set');
+fetch('api/lock', { headers: KEY ? { 'X-Amble-Key': KEY } : {} }).then(x => x.json()).then(r => {
+  lockUi(!!r.locked);
+  if (!r.locked && KEY) rememberKey('');     // the manager restarted since; the old key is gone
+}).catch(() => {});
+
+// ---------- Stop: shut the manager down from the page ----------
+$('#stopBtn').onclick = () => { $('#stopWarn').hidden = !($('#editor').open && ed.dirty); $('#stopDlg').showModal(); };
+$('#stopCancel').onclick = () => $('#stopDlg').close();
+$('#stopGo').onclick = async () => {
+  const r = await api('api/stop', { method: 'POST', body: '{}' });
+  if (!r.ok) { $('#stopDlg').close(); return toast(r.body.error || "Couldn't stop it."); }
+  ed.dirty = false;
+  document.querySelectorAll('dialog[open]').forEach(d => d.close());
+  document.body.innerHTML = `<div class="stopped"><h1>Mission Management stopped</h1>
+    <p class="sub" style="margin-top:10px">You can close this tab. To start it again, run <code>python tools/mission_management</code> in the repo.</p></div>`;
+  document.title = 'Stopped · AmbleBee Mission Management';
+};
+
+// ---------- unsaved edits survive a closed tab (kept on this device until you save or throw them away) ----------
+const STASH = 'ambleUnsaved:';
+function dropStash(pack, id) { try { localStorage.removeItem(STASH + pack + '/' + id); } catch (e) {} stashNote(); }
+function readStash(pack, id) { try { return JSON.parse(localStorage.getItem(STASH + pack + '/' + id) || 'null'); } catch (e) { return null; } }
+function allStashes() {
+  const out = [];
+  try { for (let i = 0; i < localStorage.length; i++) { const k = localStorage.key(i); if (k.startsWith(STASH)) {
+    const v = JSON.parse(localStorage.getItem(k) || 'null'); if (v) out.push({ key: k.slice(STASH.length), ...v }); } } } catch (e) {}
+  return out.sort((a, b) => b.at - a.at);
+}
+function stashEdits() {
+  if (!$('#editor').open || !ed.dirty || !ed.id || ed.restoring) return;
+  try {
+    const yaml = ed.mode === 'yaml';
+    const name = yaml ? ((/^name:\s*(.+)$/m.exec($('#yamlText').value) || [])[1] || '').replace(/^["']|["']$/g, '') : ($('#fName') || {}).value;
+    localStorage.setItem(STASH + ed.pack + '/' + ed.id, JSON.stringify({ at: Date.now(), isNew: ed.isNew, version: ed.version,
+      name: name || ed.id, ...(yaml ? { yaml: $('#yamlText').value } : { data: collect(), base: ed.base || '' }) }));
+  } catch (e) {}
+}
+let stashTimer = null;
+const stashSoon = () => { clearTimeout(stashTimer); stashTimer = setTimeout(stashEdits, 800); };
+['input', 'change', 'click'].forEach(ev => $('#editor').addEventListener(ev, stashSoon));
+document.addEventListener('visibilitychange', () => { if (document.hidden) stashEdits(); });
+addEventListener('pagehide', stashEdits);
+function ago(t) {
+  const m = Math.round((Date.now() - t) / 60000);
+  return m < 1 ? 'just now' : m < 60 ? `${m} min ago` : m < 1440 ? `${Math.round(m / 60)} h ago` : new Date(t).toLocaleDateString();
+}
+function offerRestore() {
+  const st = readStash(ed.pack, ed.id);
+  $('#edBody').querySelectorAll('.restore').forEach(x => x.remove());
+  if (!st) return;
+  const moved = !st.isNew && st.version && st.version !== ed.version;
+  $('#edBody').insertAdjacentHTML('afterbegin', `<div class="restore" id="restoreBox"><b>Unsaved edits from ${esc(ago(st.at))}</b> are kept on this device
+    (the tab closed before they were saved).${moved ? ' The file has changed on disk since then; restoring puts your edits on top of the new version.' : ''}
+    <div class="row2"><button class="btn tiny primary" type="button" id="restoreGo">Restore them</button>
+    <button class="btn tiny" type="button" id="restoreDrop">Throw them away</button></div></div>`);
+  $('#restoreGo').onclick = () => restoreStash(st);
+  $('#restoreDrop').onclick = () => { dropStash(ed.pack, ed.id); $('#restoreBox').remove(); };
+}
+function restoreStash(st) {
+  ed.restoring = true;
+  if (st.yaml != null) {
+    $('#yamlText').value = st.yaml; yamlLines(); setMode('yaml');
+    $('#edBody').querySelectorAll('.restore').forEach(x => x.remove());
+  } else {
+    ed.m = JSON.parse(JSON.stringify(st.data)); ed.base = st.base || '';
+    const info = ed.info || {};
+    renderForm({ duplicates: info.duplicates, comments: info.comments });
+    $('#edBody').insertAdjacentHTML('afterbegin', (ed.isNew ? '' : attnHtml()) + (ed.since || ''));
+    setMode('form');
+  }
+  ed.dirty = true; ed.restoring = false;
+  setMsg('Your unsaved edits are back. Review and save when you’re ready.', 'ok');
+  stashEdits();
+}
+function stashNote() {
+  let box = $('#stashNote');
+  const list = D ? allStashes() : [];
+  if (!list.length) { if (box) box.remove(); return; }
+  if (!box) { $('#attnCard').insertAdjacentHTML('beforebegin', '<div class="restore card" id="stashNote" data-tab="missions" style="background:var(--honey-tint)"></div>'); box = $('#stashNote'); }
+  box.innerHTML = `<b>Unsaved edits on this device</b> (the tab closed before they were saved):
+    <ul style="margin:6px 0 0;padding-left:18px">${list.map(x => `<li>${esc(x.name)} <span class="muted">(${esc(x.key)}${x.isNew ? ', new' : ''}, ${esc(ago(x.at))})</span>
+      <button class="btn tiny" type="button" data-stash="${esc(x.key)}">Open</button></li>`).join('')}</ul>`;
+}
+document.addEventListener('click', e => {
+  const b = e.target.closest('[data-stash]');
+  if (!b) return;
+  const [pack, id] = b.dataset.stash.split('/'), st = readStash(pack, id);
+  if (!st) return stashNote();
+  if (st.isNew && !D.missions.some(m => m.pack === pack && m.id === id)) {   // never saved: start it again from the kept edits
+    if (!(pack in D.packs)) { dropStash(pack, id); return toast('That pack is gone, so those edits were dropped.'); }
+    startNew(pack, id, st.name); restoreStash(st);
+  } else openEditor(pack, id);
+});
+
+// ---------- work through a filtered list: open the first, then the editor's arrows walk the rest ----------
+$('#workBtn').onclick = () => { const m = navList[0]; if (m) openEditor(m.pack, m.id).then(stepUi); };
+
+// ---------- not committed yet ----------
+function gitUi() {
+  const g = D && D.git, b = $('#gitBtn');
+  if (!g || !g.files.length) { b.hidden = true; return; }
+  b.hidden = false; b.textContent = `${g.files.length} not committed`;
+}
+$('#gitBtn').onclick = () => {
+  const fs = D.git.files, ms = fs.filter(f => f.pack), other = fs.filter(f => !f.pack);
+  const name = f => (D.missions.find(m => m.pack === f.pack && m.id === f.id) || {}).name || f.id;
+  const li = f => `<li><span class="k">${esc(f.kind)}</span><span style="flex:1">${f.pack ? `<b>${esc(name(f))}</b> ` : ''}<code>${esc(f.path)}</code></span>
+    ${f.pack ? `<button class="btn tiny" type="button" data-gitopen="${esc(f.pack)}/${esc(f.id)}">Open</button>` : ''}</li>`;
+  $('#gitBody').innerHTML = (ms.length ? `<h3>Missions (${ms.length})</h3><ul class="gitlist">${ms.map(li).join('')}</ul>` : '') +
+    (other.length ? `<h3 style="margin-top:14px">Other files (${other.length})</h3><ul class="gitlist">${other.map(li).join('')}</ul>` : '');
+  $('#gitDlg').showModal();
+};
+$('#gitClose').onclick = () => $('#gitDlg').close();
+$('#gitBody').addEventListener('click', e => {
+  const b = e.target.closest('[data-gitopen]'); if (!b) return;
+  $('#gitDlg').close(); const [pk, id] = b.dataset.gitopen.split('/'); openEditor(pk, id);
+});
 </script>
 </body>
 </html>

@@ -1,8 +1,0 @@
-# Links that work even though the link checker can't confirm it (a site that blocks checkers).
-# The mission manager's "Mark as good" button writes these; Unmark removes them.
-# Each mark lasts 180 days, then the link is checked like any other again (expired marks drop off here).
-"https://japanesegarden.org": 2026-11-06
-"https://rubybrunch.com": 2026-11-06
-"https://stanhywet.org": 2026-11-06
-"https://www.seattleaquarium.org": 2026-11-06
-"https://zoo.org": 2026-11-08

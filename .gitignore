@@ -13,3 +13,6 @@ tools/mission_management/scoring.yaml
 # the mission manager's scratch ideas list and pack release zips (kept on this computer only)
 mission-ideas.yaml
 releases/
+# links you marked good by hand, and the drafts' "changed since" copies (both only mean something on this computer)
+missions/links-ok.yaml
+.mission-edits/

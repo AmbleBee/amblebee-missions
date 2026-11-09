@@ -17,6 +17,8 @@ mission_management/
 mission-ideas.yaml
 releases/
 scoring.yaml
+/missions/links-ok.yaml
+.mission-edits/
 __pycache__/
 *.pyc
 .DS_Store

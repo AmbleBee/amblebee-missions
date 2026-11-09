@@ -73,7 +73,7 @@ def plan(root):
 def missing_ignores(root):
     """Lines a pack repo's .gitignore should have so private things never get pushed. The manager's own folder is
     only ignored when it isn't part of the repo (AmbleBee's own repo keeps it, so it's shared)."""
-    want = ["mission-ideas.yaml", "releases/"]
+    want = ["mission-ideas.yaml", "releases/", "missions/links-ok.yaml", ".mission-edits/"]
     if not manager_inside(root):
         want += ["mission_management/", "scoring.yaml"]
     gi = Path(root) / ".gitignore"

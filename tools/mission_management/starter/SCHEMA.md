@@ -7,8 +7,8 @@ missions/
   _template.yaml        copy this to start a new mission (files starting with _ are ignored)
   same-spot-ok.yaml     missions that share a spot on purpose (the mission manager's
                         "Different on purpose" button writes it; the duplicate finder skips them)
-  links-ok.yaml         links that work even though the link checker can't confirm it (the
-                        manager's "Mark as good" button writes it)
+  links-ok.yaml         links you marked good by hand in the mission manager; kept on your
+                        computer only (it's in .gitignore)
   general/              missions that aren't in a pack
     sunset-picnic.yaml
   oregon/               a pack: one folder per pack
