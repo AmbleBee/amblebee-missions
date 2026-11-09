@@ -87,6 +87,20 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Search That Looks Farther
+  status: done
+  date: 2026-11-09
+  tag: website
+  summary: Search finds places beyond your distance, new visitors get pointed to real places near them, and the home page leads with the biggest packs.
+  items:
+    - Searching for a place past your distance still finds it, listed under "Farther than 30 mi" with how far away it is, so Crater Lake turns up from Portland
+    - A search that only a filter was hiding shows up too, under "Outside your filters"
+    - Matches near you still come first, and typo matching only steps in when nothing matches at all
+    - Open a mission without a ZIP code and a short line offers to add one, so your next pick can be a real place nearby
+    - Every mission now starts with Amble Anywhere and the biggest packs, biggest first
+    - Packs with fewer than 20 live missions fold under a "more packs" button until you open it, which makes the home page about a quarter as long on a phone
+    - Pick a mood or a filter and every match still shows, with nothing folded away
+
 - title: Smoother Mission Editing
   status: done
   date: 2026-11-09

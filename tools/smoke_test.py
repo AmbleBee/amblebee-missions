@@ -58,6 +58,7 @@ class Site:
 
 
 PREVIEW = 4   # missions per pack in "Every pack" with no filters (PACK_PREVIEW in site/js/browse.js)
+FOLD_MIN = 20   # packs with fewer live missions fold under "More packs" (PACK_FOLD_MIN in site/js/browse.js)
 
 
 def t_home_shows_a_taste_of_every_pack(site, catalog):
@@ -79,6 +80,29 @@ def t_home_shows_a_taste_of_every_pack(site, catalog):
     assert page.locator("#packs .pack-more").count() == 0
     page.goto(site.base + f'/packs/{p["id"]}/')     # and the Show all page lists every mission in the pack
     assert page.locator(".cards .card").count() == p["count"]
+
+
+def t_small_packs_fold_under_more_packs(site, catalog):
+    packs = [p for p in catalog["packs"] if p["count"]]
+    is_big = lambda p: p["id"] == "anywhere" or p["count"] >= FOLD_MIN
+    lead = [p["name"] for p in sorted((p for p in packs if is_big(p)), key=lambda p: (p["id"] != "anywhere", -p["count"]))]
+    small = [p for p in packs if not is_big(p)]
+    for path, root in (("/", "#packs"), ("/missions/", ".page")):
+        page = site.home() if path == "/" else site.open(path)
+        shown = page.locator(f"{root} > section.pack").evaluate_all("els => els.map(e => e.getAttribute('aria-label'))")
+        assert shown == lead, f"{path}: Amble Anywhere, then the big packs, biggest first"
+        fold = page.locator(f"{root} details.more-packs")
+        assert fold.locator("section.pack").count() == len(small)
+        assert f"{len(small)} more packs" in fold.locator("summary").inner_text()
+        assert not fold.locator("section.pack").first.is_visible(), f"{path}: small packs stay folded until asked for"
+        fold.locator("summary").click()
+        assert fold.locator("section.pack").first.is_visible()
+    page = site.home()
+    page.click("#packs details.more-packs summary")
+    page.check('input[name="mode"][value="date"]', force=True)   # a mood is picked: every match shows, nothing folded
+    assert page.locator("#packs details.more-packs").count() == 0
+    page.check('input[name="mode"][value="any"]', force=True)
+    assert page.locator("#packs details.more-packs").get_attribute("open") is not None, "the fold stays the way you left it"
 
 
 def t_phone_packs_swipe_sideways(site, catalog):
@@ -147,6 +171,50 @@ def t_search_matches_words_and_typos(site, catalog):
     assert search("watterfall")
     assert "close match" in page.inner_text("#browse-count")
     assert search("picnics") == search("picnic")
+
+
+def t_search_reaches_past_distance_and_filters(site, catalog):
+    page = site.home()
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".zip-set")
+
+    def search(text):
+        page.fill("#search-input", text)
+        page.wait_for_function("t => document.querySelector('#browse-count').textContent.includes(t)", arg=text)
+
+    search("crater lake")
+    far = page.locator("#packs .pack.beyond")
+    assert "Crater Lake" in far.locator(".card h4").all_inner_texts(), "a place past the distance still turns up in search"
+    assert "Farther than" in far.locator("h3").inner_text()
+    assert far.locator(".card .d").count(), "and its card says how far away it is"
+    search("multnomah")
+    assert page.locator("#packs .pack.beyond").count() == 0, "a nearby match needs no second list"
+    assert "Multnomah Falls" in page.locator("#packs .card h4").all_inner_texts()
+    page.click(".zip-clear")
+    page.click("#filters-toggle")
+    page.check('[data-filter="cost"] input[value="free"]', force=True)
+    search("symphony")
+    assert "Outside your filters" in page.locator("#packs .pack.beyond h3").inner_text()
+    page.click("#browse-clear")
+    search("symphony")
+    assert page.locator("#packs .pack.beyond").count() == 0 and page.locator("#packs .card").count()
+
+
+def t_a_pick_without_a_zip_offers_real_places(site, catalog):
+    page = site.home()
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert page.is_visible("#reveal-near"), "no ZIP yet: the pick says how to get real places"
+    page.click("#reveal-near-btn")
+    page.wait_for_function("() => document.activeElement && document.activeElement.id === 'zip-input'")
+    assert not page.is_visible("#reveal")
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".zip-set")
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert not page.is_visible("#reveal-near"), "with a ZIP set there's nothing to nudge"
 
 
 def t_zip_prefers_nearby_places(site, catalog):

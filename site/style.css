@@ -318,6 +318,20 @@ details.extra li { margin: 2px 0; }
 }
 .pack-more::after { content: "\2192"; margin-left: 8px; }
 .pack-more:hover { background: var(--fill); color: #FFFDF8; }
+/* "47 more packs": the small packs in Every mission, folded until asked for */
+.more-packs { margin-top: 8px; }
+.more-packs > summary {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 4px 12px; min-height: 56px; padding: 10px 20px; border-radius: 18px;
+  background: var(--linen); color: var(--walnut); cursor: pointer; list-style: none;
+}
+.more-packs > summary::-webkit-details-marker { display: none; }
+.more-packs > summary b { font-size: 1.1rem; }
+.more-packs > summary span { color: var(--walnut-soft); font-size: .95rem; }
+.more-packs > summary::after { content: "\25BE"; margin-left: auto; font-size: 1.2rem; transition: transform .2s ease; }
+.more-packs[open] > summary::after { transform: rotate(180deg); }
+.more-packs[open] > summary { margin-bottom: 34px; }
+.more-packs > summary:hover { background: var(--sage-tint); }
+@media (prefers-reduced-motion: reduce) { .more-packs > summary::after { transition: none; } }
 .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
 .card {
   appearance: none; border: 0; cursor: pointer; text-align: left; font: inherit; color: inherit;
@@ -438,6 +452,10 @@ body.revealing main > :not(#reveal) { display: none !important; }
 .reveal-head { text-align: center; margin-bottom: 22px; }
 .reveal-head .hand { font-size: 2.1rem; margin: 0; }
 .reveal-summary { display: inline-block; margin: .6rem 0 0; padding: 6px 14px; border-radius: 14px; background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; }
+.reveal-near { margin: .5rem auto 0; font-size: .95rem; color: var(--walnut-soft); }
+.reveal-near .linkish { display: block; margin: 0 auto; font-size: .95rem; }
+#near-you { scroll-margin-top: 16px; }
+.reveal-near[hidden] { display: none; }
 .reveal .ticket-actions { justify-content: center; padding-left: 0; margin-top: 26px; }
 .reveal-adjust { display: block; margin: 16px auto 0; }
 .reveal-adjust[hidden] { display: none; }

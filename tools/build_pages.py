@@ -39,6 +39,7 @@ from missions_lib import MISSION_LINK, load_catalog  # noqa: E402
 
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee"
+PACK_FOLD_MIN = 20   # packs with fewer live missions fold under "More packs" on /missions/, the same as site/js/browse.js
 PACK_PREVIEW = 4   # missions per pack on /missions/, the same as PACK_PREVIEW in site/js/browse.js
 NEARBY = 3         # "More missions nearby" at the bottom of each mission page: one full row on a computer
 META_MAX = 158     # Google cuts search snippets off at about this many characters
@@ -584,14 +585,20 @@ def build_pages(out):
         if days:
             lastmod[c["path"]] = max(days)
 
-    sections = []
-    for p in packs:   # the same taste of each pack as the home page: its first missions, then its own page
+    # the same order as the home page: Amble Anywhere, the big packs (biggest first), then the small ones folded away
+    live_count = {p["id"]: sum(1 for m in missions if m["pack"] == p["id"]) for p in packs}
+    is_big = lambda p: p["id"] == "anywhere" or live_count[p["id"]] >= PACK_FOLD_MIN
+    ordered = sorted(packs, key=lambda p: (p["id"] != "anywhere", not is_big(p), -live_count[p["id"]] if is_big(p) else 0))
+    sections, folded, folded_missions = [], [], 0
+    for p in ordered:   # the same taste of each pack as the home page: its first missions, then its own page
         rows = sorted((m for m in missions if m["pack"] == p["id"]), key=lambda m: m["number"])
         if not rows:
             continue
+        here = sections if is_big(p) else folded
+        folded_missions += 0 if is_big(p) else len(rows)
         more = len(rows) - PACK_PREVIEW
         link = f"/packs/{p['id']}/"
-        sections.append(
+        here.append(
             f'<section class="pack preview" aria-label="{esc(p.get("name"))}"><div class="pack-head">'
             f'<span class="badge">{icon(icons["packs"].get(p.get("icon"), ""), 26)}</span>'
             f'<div><h2><a href="{link}">{esc(p.get("name"))}</a></h2><p>{esc(p.get("description") or "")}</p></div></div>'
@@ -599,10 +606,14 @@ def build_pages(out):
             + (f'<a class="pack-more" href="{link}">{more} more · Show all {len(rows)}</a>' if more > 0 else "")
             + "</section>")
     intro = f"{stats['live']} live missions in {len(packs)} packs, with {stats['drafts']} more being checked."
+    more_packs = (f'<details class="more-packs"><summary><b>{len(folded)} more {"pack" if len(folded) == 1 else "packs"}</b>'
+                  f'<span>{folded_missions} {"mission" if folded_missions == 1 else "missions"} in packs that are still growing</span></summary>'
+                  f'{"".join(folded)}</details>') if folded else ""
     main = f"""<div class="page page-wide">
 <div class="page-intro"><h1>Every mission</h1><p>{esc(intro)}</p></div>
 {ideas_html(collections)}
 {"".join(sections)}
+{more_packs}
 </div>"""
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "url": f"{BASE}/missions/", "name": "Every mission", "description": intro}
     (Path(out) / "missions").mkdir(parents=True, exist_ok=True)

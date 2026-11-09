@@ -67,6 +67,7 @@
   <div class="reveal-head">
     <p class="hand" id="reveal-kicker">Your mission</p>
     <p class="reveal-summary" id="reveal-summary"></p>
+    <p class="reveal-near" id="reveal-near" hidden>This one works anywhere. <button type="button" class="linkish" id="reveal-near-btn">Add your ZIP or city for real places near you</button></p>
   </div>
   <div id="reveal-slot"></div>
   <div class="ticket-actions" id="reveal-actions"></div>
@@ -87,7 +88,7 @@
       <label><input type="radio" name="mode" value="adventure"><span>An adventure</span></label>
     </fieldset>
 
-    <fieldset class="near near-pick">
+    <fieldset class="near near-pick" id="near-you">
       <legend>Near you</legend>
       <div class="near-row">
         <form class="zip-form" id="zip-form" autocomplete="on" novalidate>
@@ -220,7 +221,7 @@
   <div class="browse-pick">
     <div class="search-field" role="search">
       <label for="search-input">Search missions</label>
-      <input type="search" id="search-input" placeholder="Try waterfall, Spokane, oysters, rainy day…" autocomplete="off" enterkeyhint="search" aria-describedby="search-hint">
+      <input type="search" id="search-input" placeholder="Try waterfall, Seattle, oysters, rainy day…" autocomplete="off" enterkeyhint="search" aria-describedby="search-hint">
     </div>
     <div class="pack-field">
       <label for="browse-pack">Show missions from</label>

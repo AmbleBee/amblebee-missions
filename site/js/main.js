@@ -276,6 +276,7 @@ async function start() {
   });
   window.addEventListener("hashchange", route);
   $("#reveal-adjust").addEventListener("click", () => startOver({ filters: true }));
+  $("#reveal-near-btn").addEventListener("click", () => startOver({ then: { id: "near-you", zip: true } }));
   // skip link: move focus without touching the address, which would close an open mission
   $(".skip").addEventListener("click", (e) => {
     e.preventDefault();

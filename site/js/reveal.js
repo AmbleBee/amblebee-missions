@@ -162,6 +162,8 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   $("#reveal-summary").textContent = gift ? `Sealed just for ${gift.t || "you"}. Open your own any time.`
     : linked ? "Someone sent you this one. Open your own any time." : rollSummary();
   $("#reveal-summary").hidden = sealed || from === "mine";   // "mine": reopened, so the old picks are gone
+  // no ZIP yet, so every pick comes from the do-anywhere pack: say so, and offer the step that brings real places in
+  $("#reveal-near").hidden = sealed || animate || from !== "roll" || !!S.here || $("#pack-select").value !== "anywhere";
   window.scrollTo({ top: 0 });
   const slot = $("#reveal-slot");
   if (sealed || animate) {
@@ -304,6 +306,7 @@ async function route() {
     requestAnimationFrame(() => {
       if (el) el.scrollIntoView({ behavior: REDUCED() ? "auto" : "smooth" });
       if (after.search) $("#search-input").focus({ preventScroll: true });
+      if (after.zip) $("#zip-input").focus({ preventScroll: true });
     });
   }
 }
