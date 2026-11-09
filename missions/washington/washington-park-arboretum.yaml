@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-08
 number: 28
 name: Washington Park Arboretum
 mode: both
@@ -7,22 +7,32 @@ place:
   name: Washington Park Arboretum (Graham Visitors Center)
   area: Montlake / Madison Park, Seattle
   address: 2300 Arboretum Dr E, Seattle, WA 98112
-  coords: [47.64000, -122.29500]  # APPROX: set at the visitors center before publishing
-short: Wander Azalea Way in the Arboretum. Find the tree with the best color of the season.
+  coords: [47.63982, -122.29423]
+  website: https://botanicgardens.uw.edu/washington-park-arboretum/visit/graham-visitors-center/
+short: Wander Azalea Way in the Washington Park Arboretum and find the tree with the season's best color.
 description: >
-  Walk the arboretum's trails and grassy Azalea Way through trees from all over
-  the world. Spring brings blooming azaleas and cherries, fall brings fiery
-  maples. Each find the tree with the best color today and photograph it. Add
-  the Japanese Garden at the south end (it has its own small fee) for a quiet
-  pond and koi.
+  Walk the Washington Park Arboretum's trails and grassy Azalea Way through
+  trees from all over the world. Spring brings blooming azaleas, rhododendrons
+  and cherries; fall brings fiery maples. Hunt for the single tree with the
+  best color today. The photo to get: you under your winning tree. If you have
+  time, follow the boardwalks out to Foster Island's marsh to look for ducks
+  and herons, or add the Seattle Japanese Garden at the south end, which has
+  its own small fee, for a quiet pond full of koi.
 about: >
-  The arboretum was founded in 1934 and covers about 230 acres. It's run by
-  the University of Washington and the city, and its trees come from all
-  over the world.
+  The Washington Park Arboretum was founded in 1934 on land the city bought
+  in 1900, with a park plan by the famous Olmsted Brothers landscape firm.
+  It covers about 230 acres along the shore of Union Bay and is run by the
+  University of Washington Botanic Gardens and Seattle Parks and Recreation,
+  with trees and shrubs from around the world.
 
-  The Seattle Japanese Garden opened in 1960, designed by Juki Iida. The
-  Arboretum Loop Trail circles the park in about two miles, linking its
-  gardens and meadows.
+  Azalea Way, the grassy promenade through the middle of the park, started
+  out as a horse-racing track before it was turned into a walking path in
+  1934. The Arboretum Loop Trail circles the park in about two miles, and
+  boardwalks lead out across the wetlands of Foster Island.
+
+  At the south end, the 3.5-acre Seattle Japanese Garden opened in 1960,
+  designed by Juki Iida. Spring and fall are the showiest seasons, but the
+  arboretum is free and open year-round.
 for_kids:
   short: Tree hunt! Find each thing.
   steps:
@@ -38,5 +48,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
-themes: [walks, forests, gardens]
-tags: [garden, trees, seasonal, walking, seattle]
+themes: [walks, forests, gardens, lakes-rivers, wildlife, relaxing]
+tags: [washington-park-arboretum, azalea-way, seattle-japanese-garden, foster-island, fall-color, cherry-blossoms, uw-botanic-gardens, madison-park, seattle]

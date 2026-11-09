@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-08
 number: 62
 name: Bouldering Date at Vertical World
 mode: date
@@ -6,25 +6,33 @@ place:
   name: Vertical World Seattle
   area: Magnolia, Seattle
   address: 2330 W Commodore Way, Seattle, WA 98199
-  coords: [47.66140, -122.39480]  # APPROX: set at the entrance before publishing
+  coords: [47.66085, -122.38680]
   website: https://seattle.verticalworld.com
-short: Boulder together at the gym from the folks who opened America's first. Cheer every send.
+short: Boulder together at Vertical World, the folks behind America's first climbing gym.
 description: >
-  Vertical World opened America's first climbing gym in Seattle in 1987, and today
-  its Commodore Way gym welcomes total beginners to just show up and boulder: short
-  walls, no ropes, no class needed. Buy two day passes, rent climbing shoes, and
-  pick easy problems to work out together, taking turns coaching each other on
-  where to put your feet, and rest between tries. Get a photo of your partner at the
-  top of their best climb. Everyone, even people just watching, needs a waiver, so
-  fill it out online before you go; the roped walls need a belay check or an intro
-  class first.
+  Bouldering is climbing on short walls with no ropes and no class needed,
+  which makes it a perfect first-try date. Buy two day passes, rent climbing
+  shoes, and pick the easiest problems on the wall. Work them out together,
+  taking turns coaching each other on where to put your hands and feet, and
+  rest between tries. Cheer every send, even the tiny ones. The photo to get:
+  your partner at the top of their best climb, grinning. Everyone, even
+  people just watching, needs a waiver, so fill it out online before you go.
+  The roped walls need a belay check or an intro class first.
 about: >
-  Bouldering problems are graded on the V scale, starting at V0 for
-  beginners. Gyms reset their routes often, so there's always something new
-  to try.
+  Vertical World opened the very first rock climbing gym in America in 1987,
+  in a run-down warehouse on Elliott Avenue in Seattle. Founders Rich
+  Johnston and Dan Cauthorn helped start a sport that now has gyms in nearly
+  every city, and their Commodore Way gym in Magnolia carries on the
+  tradition with bouldering and roped walls for every level.
 
-  The Ballard Locks are a few minutes away, where boats are lifted between
-  Lake Washington and Puget Sound, and salmon climb a fish ladder in summer.
+  Bouldering problems are graded on the V scale, starting at V0 for total
+  beginners and climbing into the teens for the world's best. Gyms reset
+  their routes often, so there's always something new to try, and sore
+  forearms the next day are part of the fun.
+
+  Make an afternoon of it: the Ballard Locks are a few minutes away, where
+  boats are lifted between Puget Sound and the lakes, and salmon climb the
+  fish ladder in summer.
 duration: short
 effort: moderate
 cost: $$$
@@ -33,6 +41,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
-themes: [thrills]
-tags: [climbing, bouldering, active, rainy-day, magnolia, seattle]
-credit:
+themes: [thrills, make-something, playful, romantic]
+tags: [bouldering, rock-climbing, climbing-gym, vertical-world, first-climbing-gym, active-date, rainy-day, magnolia, seattle]

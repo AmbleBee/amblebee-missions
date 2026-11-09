@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-08
 number: 11
 name: Pyramid Mountain Lookout
 mode: both
@@ -6,22 +6,32 @@ who: [solo, friends]
 place:
   name: Pyramid Mountain trailhead (North Shore Road, Lake Crescent)
   area: North shore of Lake Crescent, Olympic National Park
-  coords: [48.07900, -123.89200]  # APPROX: set at the trailhead before publishing
-short: Hike up to the WWII spotter cabin on Pyramid Mountain. Lunch above Lake Crescent.
+  address: Olympic Discovery Trail, Port Angeles, WA 98363
+  coords: [48.06623, -123.85969]
+short: Climb to the WWII spotter cabin on Pyramid Mountain and eat lunch high above Lake Crescent.
 description: >
-  A real climb: about 7 miles round trip and nearly 2,800 feet up through the
-  forest to a tiny World War II aircraft-spotting cabin perched on the summit.
-  Eat lunch beside it with Lake Crescent spread out below. Start early, bring
-  plenty of water, and give yourselves the whole day. Parking is just a few
-  roadside spots.
+  A real climb: about 7 miles round trip and nearly 2,750 feet up through
+  old forest to a tiny World War II aircraft-spotting cabin perched on the
+  summit. Eat lunch beside it with Lake Crescent spread out far below and the
+  Strait of Juan de Fuca beyond. Start early, bring plenty of water and
+  trekking poles, and give yourself the whole day. The photo to get: you by
+  the cabin with the lake behind you. Parking is just a few roadside spots.
 about: >
-  The cabin on top was built in the 1940s, during World War II, to watch for
-  enemy aircraft along the coast. It's one of the few such posts still
-  standing in Olympic National Park.
+  The cabin on the summit was built during World War II to watch the sky for
+  enemy aircraft heading toward the coast. It's one of the few such spotter
+  posts still standing in Olympic National Park, and the view from it takes
+  in nearly the whole length of Lake Crescent.
 
-  Lake Crescent below is glacier-carved and more than 600 feet deep. The
-  trailhead is on North Shore Road, and parking is just a few spots, so go
-  early on summer weekends.
+  The Pyramid Peak Trail climbs about 2,750 feet in 3.4 miles to a summit
+  just over 3,000 feet. It starts from the Spruce Railroad Trail, the same
+  path that leads to [[devils-punchbowl-lake-crescent]], so the two pair
+  well. About 1.7 miles up, the trail crosses an old slide area of loose
+  rock for roughly 100 yards. Trekking poles help, and it shouldn't be
+  crossed when it's wet or icy.
+
+  The trailhead is on North Shore Road off US 101, with only a few shoulder
+  parking spots, so go early on summer weekends. No pass is required.
+caution: A loose slide area crosses the trail about 1.7 miles up. Don't cross it when wet or icy.
 duration: all-day
 effort: hard
 cost: free
@@ -30,5 +40,5 @@ season: [summer, fall]
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
-themes: [views, hiking]
-tags: [hiking, lookout, views, olympic]
+themes: [hiking, views, history, parks, forests, lakes-rivers]
+tags: [pyramid-mountain, pyramid-peak-trail, ww2-lookout, aircraft-warning-cabin, lake-crescent, olympic-national-park, port-angeles, olympic-peninsula]

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-07
 number: 17
 name: Chihuly Garden and Glass
 mode: both
@@ -7,24 +7,32 @@ place:
   name: Chihuly Garden and Glass
   area: Seattle Center, Seattle
   address: 305 Harrison St, Seattle, WA 98109
-  coords: [47.62060, -122.35060]  # APPROX: set at the entrance before publishing
+  coords: [47.62057, -122.35044]
   website: https://www.chihulygardenandglass.com
 short: Walk through rooms of giant blown glass, then the glass garden under the Space Needle.
 description: >
   Wander gallery after gallery of Dale Chihuly's huge, wildly colored glass
-  sculptures, then step into the Glasshouse and out to the garden, where glass
-  grows among the real plants with the Space Needle overhead. Each pick the piece
+  sculptures, from a glowing chandelier forest to a room of glass boats. Then
+  step into the soaring Glasshouse and out to the garden, where glass grows
+  among the real plants with the Space Needle overhead. Pick the one piece
   you'd want in your living room. Go near dusk if you can; the garden glows as
-  the light fades.
+  the light fades. The photo to get: you in the garden with the glass in front
+  and the Space Needle rising behind.
 about: >
   Dale Chihuly was born in Tacoma in 1941 and became the best-known glass
   artist in the world. After losing the sight in one eye in a 1976 car
   accident, he began leading teams of glassblowers instead of blowing every
-  piece himself.
+  piece himself, which is how his work grew to this enormous scale.
 
-  The exhibit opened in 2012 on the grounds of the 1962 World's Fair. The
-  Glasshouse is about 40 feet tall, with a 100-foot-long sculpture in red,
-  orange and yellow hanging from the ceiling.
+  Chihuly Garden and Glass opened in 2012 at Seattle Center, on the grounds of
+  the 1962 World's Fair, where the old Fun Forest amusement park used to be.
+  It has three parts: the indoor galleries, the garden, and the Glasshouse,
+  about 40 feet tall, with a 100-foot-long sculpture in reds, oranges and
+  yellows hanging from its ceiling, one of the largest Chihuly has ever made.
+
+  The Space Needle stands right next door, so the two make an easy pair:
+  [[space-needle-view]]. Timed tickets sell out on busy days, and evenings
+  bring the best light in the garden.
 for_kids:
   short: Glass hunt! Find each thing.
   steps:
@@ -41,5 +49,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours, tickets]
-themes: [gardens, art]
-tags: [art, glass, garden, seattle]
+themes: [art, gardens, museums, sunsets, architecture]
+tags: [chihuly-garden-and-glass, dale-chihuly, glass-art, glasshouse, seattle-center, space-needle, seattle]

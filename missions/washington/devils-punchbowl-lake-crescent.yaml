@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-07
 number: 10
 name: Devil's Punchbowl at Lake Crescent
 mode: both
@@ -6,22 +6,33 @@ who: [solo, friends, family]
 place:
   name: Spruce Railroad Trailhead (east end, Lake Crescent)
   area: North shore of Lake Crescent, Olympic National Park
-  coords: [48.09420, -123.80200]  # APPROX: set at the trailhead parking before publishing
-short: Walk the Spruce Railroad Trail to the Devil's Punchbowl bridge. Photo over the blue water.
+  coords: [48.09323, -123.80195]
+  website: https://www.nps.gov/olym/index.htm
+short: Walk the Spruce Railroad Trail to the Devil's Punchbowl bridge over Lake Crescent's blue water.
 description: >
   Follow the old railroad grade along the north shore of Lake Crescent to the
-  little bridge over Devil's Punchbowl, a cove of unbelievably clear blue water.
-  Peek into the old train tunnel nearby. In summer, wade in from the shore if
-  you're brave; the water is freezing. Skip jumping off the bridge, which has
-  killed people.
+  little bridge over Devil's Punchbowl, a cove of unbelievably clear blue
+  water. Keep going a bit farther to walk through the restored McFee Tunnel,
+  blasted for the railroad more than a century ago. In summer, wade in from
+  the shore if you're brave; the water is freezing. Skip jumping off the
+  bridge, which has killed people. The photo to get: you on the bridge with
+  the blue water below.
 about: >
-  The Spruce Railroad was built in 1918 to carry spruce for World War I
-  airplanes, but the war ended before it was finished. The old grade was
-  rebuilt as a paved trail, and its McFee Tunnel reopened in 2020.
+  The Spruce Railroad was built during World War I to haul spruce for
+  airplane frames, but it wasn't finished until 1919, a year too late for
+  the war. It was abandoned in 1951. Today its grade is the Spruce Railroad
+  Trail, about 4 miles one way, rebuilt so hikers, bikes and wheelchairs can
+  all use it. The 450-foot McFee Tunnel reopened in 2017, and the shorter
+  Daley-Rankin Tunnel in 2020. The trail is part of the 134-mile Olympic
+  Discovery Trail.
 
-  Lake Crescent is more than 600 feet deep. Its water has very little
-  nitrogen, so almost no algae grows, which is why it's so clear and blue.
-  The lake was carved by glaciers in the last ice age.
+  Lake Crescent is about 600 feet deep. Glaciers carved its valley during
+  the last Ice Age, and a landslide later dammed it into a lake. Its water
+  has so little nitrogen that almost no algae grows, which is why it's so
+  clear and blue. It's also home to the Beardslee trout, found nowhere else.
+
+  The lake has its own famous mystery: the Lady of the Lake, a woman who
+  vanished in 1937 and was found years later, preserved by the icy water.
 duration: short
 effort: easy
 cost: $
@@ -30,5 +41,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [hiking, lakes-rivers, swimming]
-tags: [lake, hiking, swimming, olympic]
+themes: [walks, lakes-rivers, swimming, parks, biking, history]
+tags: [devils-punchbowl, lake-crescent, spruce-railroad-trail, mcfee-tunnel, olympic-national-park, olympic-discovery-trail, port-angeles, olympic-peninsula]

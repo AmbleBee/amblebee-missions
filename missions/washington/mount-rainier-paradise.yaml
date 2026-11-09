@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-07
 number: 7
 name: Mount Rainier at Paradise
 mode: both
@@ -6,20 +6,35 @@ who: [solo, friends, family]
 place:
   name: Paradise, Mount Rainier National Park
   area: Mount Rainier National Park
-  coords: [46.78600, -121.73500]  # APPROX: set at the visitor center parking before publishing
-short: Walk the meadows at Paradise under Mount Rainier. Wildflowers in summer, snow in winter.
+  coords: [46.78595, -121.73628]
+  website: https://www.nps.gov/mora/planyourvisit/hours.htm
+short: Walk the Paradise meadows under Mount Rainier, wildflowers in summer and snow in winter.
 description: >
-  Drive up to Paradise and walk a stretch of trail right under the mountain. In
-  summer the meadows fill with wildflowers; in winter it's snowshoes and snow
-  play. Find a spot where the whole mountain fits behind you. Summer
-  weekends get very busy, so go early.
+  Drive up to Paradise on the south side of Mount Rainier and walk a stretch
+  of trail right under the mountain. In summer the meadows fill with
+  wildflowers and the short walk to Myrtle Falls frames the peak perfectly;
+  if you're up for more, climb part of the Skyline Trail. In winter it's
+  snowshoes, sledding and snow play. Find a spot where the whole mountain
+  fits behind you. The photo to get: you in the meadow with Rainier towering
+  behind. Summer weekends get very busy, so go early.
 about: >
-  Paradise got its name in the 1880s, when Virginia Longmire saw the meadows
-  and called them paradise. It averages more than 600 inches of snow a year,
-  and in 1971-72 it set a world record with over 1,100 inches.
+  Paradise got its name in the summer of 1885, when Virinda Longmire saw the
+  meadows full of wildflowers and called them paradise. It sits at about
+  5,400 feet on Mount Rainier's south slope and is one of the snowiest places
+  on Earth, averaging about 670 inches of snow a year. In the winter of
+  1971-72 it got about 1,122 inches, a world record at the time.
 
-  The Paradise Inn opened in 1916. Mount Rainier was the fifth national
-  park, in 1899. Summer weekends are busiest, so arrive early for parking.
+  Mount Rainier became the country's fifth national park in 1899. The
+  historic Paradise Inn opened in 1916, and the Henry M. Jackson Visitor
+  Center, rebuilt in 2008, has exhibits, rangers and trail maps. The road up
+  from the Nisqually entrance is one of the few park roads kept open to cars
+  in winter.
+
+  Summer weekends are the busiest, so arrive early for parking. Wildflowers
+  usually peak from late July into August. In winter, carry tire chains and
+  check road conditions before you go, since the road to Paradise can close
+  in storms. Ready for the full loop above the meadows? That's its own
+  mission: [[rainier-skyline-trail]].
 duration: all-day
 effort: moderate
 cost: $$
@@ -28,5 +43,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
-themes: [hiking, mountains, parks, gardens]
-tags: [mountain, national-park, wildflowers, hiking]
+themes: [views, mountains, parks, hiking, walks, gardens]
+tags: [mount-rainier, paradise, wildflowers, skyline-trail, myrtle-falls, paradise-inn, snowshoeing, national-park, washington]

@@ -1,5 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
-checked: 2026-11-06
+checked: 2026-11-08
 number: 22
 name: Buffalo Bayou Cistern
 mode: both
@@ -7,26 +6,35 @@ who: [solo, friends, family, kids]
 place:
   name: Buffalo Bayou Park Cistern
   area: Buffalo Bayou Park, Houston
-  coords: [29.76200, -95.37700]  # APPROX: set at the cistern entrance before publishing
+  address: 105-B Sabine St, Houston, TX 77007
+  coords: [29.76218, -95.37584]
   website: https://buffalobayou.org/location/the-cistern/
 short: Tour Houston's echoing underground Cistern, a forest of 221 columns under Buffalo Bayou Park.
 description: >
-  Walk down into an old underground drinking-water reservoir from 1926, a
-  dark, echoing room the size of one and a half football fields, held up by
-  221 tall concrete columns that reflect in a few inches of water. On the
-  guided tour, listen to the guide demonstrate the echo, which lasts for
-  seconds, and catch any art installation that's being shown inside. Then
-  walk the Buffalo Bayou trails with the skyline behind you, and get a photo
-  of you there. Book tour tickets ahead.
+  Walk down into Houston's old underground drinking-water reservoir from
+  1926, a dark, echoing room bigger than a football field, held up by 221
+  tall concrete columns that reflect in a thin layer of water. On the guided
+  history tour, listen to the guide show off the echo, which hangs in the
+  air for about 17 seconds, or book one of the art or sound experiences
+  held inside. Then walk the Buffalo Bayou trails with the downtown skyline
+  behind you. The photo to get: you on the walkway with the columns
+  stretching away into the dark. Book tour tickets ahead.
 about: >
-  The Cistern was built in 1926 to hold Houston's drinking water. It sprang
-  a leak and was shut down in 2007, then forgotten until the city
-  rediscovered it a few years later. Buffalo Bayou Partnership opened it to
-  visitors in 2016.
+  The Cistern was built in 1926 as one of Houston's first underground
+  drinking-water reservoirs, holding 15 million gallons. After an
+  irreparable leak was found in 2007, it was taken out of service, and the
+  Buffalo Bayou Partnership turned it into a public space that opened in
+  May 2016.
 
-  Its 221 concrete columns stand 25 feet tall, and the echo lasts about 17
-  seconds. Some tours are guided and some feature light and sound art. The
-  bayou trails outside run right into downtown.
+  Inside, 221 slender concrete columns, each 25 feet tall, stand in rows
+  across 87,500 square feet. The room's echo lasts about 17 seconds, which
+  makes it a favorite space for sound and light art. Along with the
+  history tours, the Cistern hosts rotating art installations and sound
+  meditation sessions.
+
+  Up top, Buffalo Bayou Park's trails follow the water right into
+  downtown, with skyline views, bike paths and a big lawn for picnics.
+caution: Children under 9 aren't allowed inside the Cistern.
 for_kids:
   short: Cistern hunt! Find each thing.
   steps:
@@ -43,6 +51,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
-themes: [caves, history, architecture]
-tags: [underground, history, architecture, tour, rainy-day, houston]
-credit:
+themes: [caves, history, architecture, art, walks, quirky]
+tags: [buffalo-bayou-cistern, underground-cistern, buffalo-bayou-park, houston-history, echo, art-installation, rainy-day, houston]

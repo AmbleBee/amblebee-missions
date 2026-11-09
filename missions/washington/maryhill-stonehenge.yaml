@@ -1,4 +1,4 @@
-draft: true # All verified except tags, description, about
+checked: 2026-11-08
 number: 56
 name: Maryhill Stonehenge and Museum
 mode: both
@@ -7,25 +7,36 @@ place:
   name: Maryhill Stonehenge Memorial
   area: Columbia River Gorge, near Goldendale
   address: Stonehenge Dr, Goldendale, WA 98620
-  coords: [45.69442, -120.80599]
+  coords: [45.69439, -120.80604]
   website: https://www.maryhillmuseum.org/outside/stonehenge-memorial
-short: Stand inside a full-size Stonehenge over the Columbia Gorge. Then explore the Maryhill museum.
+short: Stand inside a full-size Stonehenge above the Columbia Gorge, then explore the Maryhill Museum.
 description: >
   Walk into a full-size concrete copy of Stonehenge, built as a World War I
-  memorial on a windy bluff high above the Columbia River. Stand in the center
-  and get a photo of you framed by the giant stones. Then drive
-  down to the Maryhill Museum of Art, a castle-like mansion in the middle of
-  nowhere, full of Rodin sculptures, chess sets and a royal collection from
-  Romania. Stonehenge is free; the museum is seasonal, roughly spring to fall.
+  memorial on a windy bluff high above the Columbia River. Stand on the altar
+  stone in the center, which lines up with sunrise on the summer solstice.
+  Then drive down to the Maryhill Museum of Art, a castle-like mansion in the
+  middle of nowhere, full of Rodin sculptures, hundreds of chess sets and
+  treasures from the Queen of Romania. Pick your favorite chess set. The
+  photo to get: you framed between the giant stones with the gorge behind.
+  Stonehenge is free; the museum is seasonal, roughly spring to fall.
 about: >
-  Sam Hill, a road builder and businessman, built the Stonehenge copy as the
-  first World War I memorial in the country. It was dedicated in 1918 and
-  honors Klickitat County soldiers who died in the war. Hill is buried
-  nearby.
+  Sam Hill, a road builder and businessman, built this Stonehenge as the
+  first memorial in the United States to the dead of World War I, honoring
+  the soldiers and sailors of Klickitat County. It was dedicated on July 4,
+  1918, and finished in 1929. Hill, a Quaker, believed the original
+  Stonehenge had been a place of sacrifice, and he built his copy as a
+  reminder that people are still sacrificed to war. He's buried on the bluff
+  just below it.
 
-  His mansion became the Maryhill Museum of Art. Queen Marie of Romania
-  dedicated it in 1926, and it opened in 1940. Hill also built the Peace
-  Arch at the Canadian border.
+  A few miles west, Hill's unfinished mansion became the Maryhill Museum of
+  Art. Queen Marie of Romania dedicated it in 1926, and it opened to the
+  public in 1940, on Hill's birthday. It holds more than 70 works by Rodin,
+  including a version of The Thinker, more than 300 chess sets from around
+  the world, and tiny fashion mannequins from France's postwar Theatre de la
+  Mode.
+
+  Hill also built the Peace Arch at the Canadian border. Bring a jacket: the
+  wind on the bluff is fierce.
 for_kids:
   short: Stone circle! Find each thing.
   steps:
@@ -42,5 +53,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
-themes: [views, museums, art, quirky, walks, rocks-fossils]
-tags: [quirky, roadside, art, museum, views, columbia-gorge]
+themes: [views, museums, art, quirky, history, walks]
+tags: [maryhill-stonehenge, stonehenge-replica, maryhill-museum, sam-hill, rodin, wwi-memorial, columbia-river-gorge, goldendale, roadside-attraction]

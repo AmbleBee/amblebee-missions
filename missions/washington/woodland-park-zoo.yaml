@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-08
 number: 29
 name: Woodland Park Zoo
 mode: both
@@ -7,21 +7,35 @@ place:
   name: Woodland Park Zoo
   area: Phinney Ridge, Seattle
   address: 5500 Phinney Ave N, Seattle, WA 98103
-  coords: [47.66850, -122.35050]  # APPROX: set at the West Entrance before publishing
-  website: https://www.zoo.org
-short: Visit Woodland Park Zoo. Each find the animal most like the other.
+  coords: [47.66848, -122.35086]
+  website: https://zoo.org
+short: Explore Woodland Park Zoo and each find the animal that's most like someone else.
 description: >
-  Spend a day wandering the zoo's forests, savanna and tropical rain forest.
-  Watch the grizzlies and the snow leopards, and each find the animal that's
-  most like the other person. Explain your pick over a snack, then walk the rose
-  garden by the entrance on the way out.
+  Spend a day wandering Woodland Park Zoo's savanna, tropical rain forest and
+  northwest trail. Watch the giraffes and lions on the African Savanna, the
+  gorillas in the rain forest, the tigers in Banyan Wilds and the grizzly
+  bears fishing in their stream. Along the way, everyone secretly picks the
+  animal that's most like someone else in the group, then reveals and
+  explains their picks over a snack. The photo to get: each person next to
+  the animal they got picked as. On the way out, walk the free rose garden
+  by the entrance.
 about: >
-  The land was once Guy Phinney's private estate, which the city bought in
-  1899. The zoo became a leader in naturalistic exhibits in the 1970s,
-  putting animals in settings that look like their real homes.
+  Woodland Park Zoo began in 1899 as a small menagerie on Guy Phinney's
+  estate, after his widow sold the land to the city. Today it covers 92
+  acres in north Seattle, with hundreds of species and more than a million
+  visitors a year.
 
-  Its gorilla exhibit, opened in 1979, was one of the first of its kind. The
-  rose garden next door has been there since the 1920s and is free to walk.
+  In the 1970s the zoo helped invent "landscape immersion," building
+  habitats that look like the animals' real homes instead of cages. Its
+  gorilla habitat, redesigned under director David Hancocks in the late
+  1970s, became a model for zoos around the world. Today's highlights
+  include the African Savanna, the Tropical Rain Forest, Banyan Wilds with
+  Malayan tigers and sloth bears, and the Living Northwest Trail with
+  grizzlies.
+
+  The Woodland Park Rose Garden next door is free to walk, and in summer
+  the ZooTunes concert series has been bringing music to the zoo's lawn
+  since 1983.
 for_kids:
   short: Zoo hunt! Find each animal.
   steps:
@@ -38,5 +52,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [wildlife]
-tags: [animals, zoo, seattle]
+themes: [wildlife, gardens, walks, playful]
+tags: [woodland-park-zoo, seattle-zoo, gorillas, grizzly-bears, african-savanna, rose-garden, phinney-ridge, kids, seattle]

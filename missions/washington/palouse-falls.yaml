@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-07
 number: 8
 name: Palouse Falls
 mode: both
@@ -6,21 +6,33 @@ who: [solo, friends, family]
 place:
   name: Palouse Falls State Park
   area: Eastern Washington, near Washtucna
-  coords: [46.66350, -118.22350]  # APPROX: set at the park parking before publishing
-short: See Palouse Falls drop into its canyon. Stay behind the railings for the photo.
+  address: Palouse Falls Rd, LaCrosse, WA 99143
+  coords: [46.66378, -118.22736]
+  website: https://parks.wa.gov/find-parks/state-parks/palouse-falls-state-park-heritage-site
+short: See Palouse Falls plunge 200 feet into a basalt canyon in Washington's dry east side.
 description: >
-  Make the drive out to the dry east side to see a waterfall plunging into a
-  huge basalt canyon. Walk the short overlook trails and find your favorite
-  angle. Stay on the official viewpoints; the canyon rim is dangerous. Spring
-  has the most water.
+  Make the drive out to Washington's dry east side, where the Palouse River
+  suddenly drops about 200 feet into a huge basalt canyon. Walk the short
+  overlook trail and then wander the other viewpoints to find your favorite
+  angle. Stay behind the railings and on the official viewpoints; the canyon
+  rim is crumbly and dangerous. Spring has the most water. The photo to get:
+  you at the overlook with the falls and the canyon walls behind you.
 about: >
-  Palouse Falls drops about 198 feet into a canyon carved by the ice age
-  Missoula Floods, which roared across eastern Washington more than 15,000
-  years ago.
+  Palouse Falls drops about 200 feet into a canyon nearly 380 feet deep. The
+  canyon was carved by the Ice Age Missoula Floods, enormous floods that
+  burst out of a glacial lake in Montana again and again and scoured the
+  basalt of eastern Washington into the Channeled Scablands. About four
+  miles downstream, the Palouse River joins the Snake River.
 
-  It became Washington's official state waterfall in 2014, after a class of
-  schoolkids pushed for it. The park is small, with no services nearby, so
-  bring water and snacks. Spring and early summer have the most water.
+  In 2014 Palouse Falls became Washington's official state waterfall, after
+  elementary school students from nearby Washtucna proposed it to the
+  legislature. In 2009 the kayaker Tyler Bradt paddled over the falls, setting
+  an unofficial world record for the highest waterfall ever run.
+
+  The park is small and remote, with no services nearby, so bring water,
+  snacks and a full tank of gas. A Discover Pass is needed to park. Spring
+  and early summer have the most water, and late afternoon light makes the
+  canyon walls glow.
 duration: all-day
 effort: easy
 cost: $
@@ -29,5 +41,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-themes: [waterfalls, rocks-fossils, road-trips]
-tags: [waterfall, canyon, road-trip]
+themes: [waterfalls, views, rocks-fossils, parks, road-trips, picnic]
+tags: [palouse-falls, state-waterfall, basalt-canyon, missoula-floods, channeled-scablands, palouse-river, state-park, eastern-washington]

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-08
 number: 17
 name: Bike the Missions Trail
 mode: both
@@ -6,24 +6,36 @@ who: [solo, friends, family, kids]
 place:
   name: San Antonio Missions National Historical Park (Mission San José)
   area: South San Antonio
-  coords: [29.36200, -98.48000]  # APPROX: set at the Mission San José visitor center before publishing
+  address: 6701 San Jose Dr, San Antonio, TX 78214
+  coords: [29.36027, -98.47970]
   website: https://www.nps.gov/saan/index.htm
 short: Bike the river trail between San Antonio's old Spanish missions in the cool morning.
 description: >
   Rent bikes and ride the Mission Reach trail along the San Antonio River,
-  linking four old Spanish missions from the 1700s that are still active
-  churches. Start early to beat the heat, and stop at Mission San José, the
-  "Queen of the Missions," to explore the stone walls and the carved rose
-  window. Each pick your favorite mission. Get a photo of you at
-  the rose window. The missions and trail are free.
+  linking four Spanish missions from the 1700s that are still active
+  churches: Concepción, San José, San Juan and Espada. Start early to beat
+  the heat, and stop at Mission San José, the "Queen of the Missions," to
+  explore its stone walls and the carved Rose Window. Ride on to Espada to
+  see an aqueduct that has carried water for nearly 300 years. Pick your
+  favorite mission of the day. The photo to get: you at the Rose Window. The
+  missions and the trail are free.
 about: >
-  Four Spanish missions were built along the river in the 1700s, and their
-  churches still hold services. In 2015 they and the Alamo became a UNESCO
-  World Heritage Site, the only one in Texas.
+  San Antonio's four southern missions, Concepción, San José, San Juan and
+  Espada, were moved to the river here in the 1720s and 1730s, and they
+  still hold services as active Catholic parishes. They became a national
+  historical park in 1983, and in 2015 they and the Alamo were named a
+  UNESCO World Heritage Site, the only one in Texas.
 
-  At Mission Espada, a stone aqueduct from the 1730s still carries water
-  over a creek to nearby fields. San Antonio bike share stations sit along
-  the trail if you don't want to rent.
+  The Mission Reach project, finished in 2013, restored this stretch of the
+  San Antonio River and added about 15 miles of trails for biking, walking
+  and paddling, so you can ride from mission to mission along the water. At
+  Mission Espada, a stone aqueduct from the 1730s, now a National Historic
+  Landmark, still carries water over a creek to nearby fields.
+
+  Mission San José is the largest of the four, with a visitor center and
+  rangers to answer questions. Bike-share stations sit along the trail if
+  you don't want to rent, and summer mornings are by far the most
+  comfortable time to ride.
 for_kids:
   short: Mission ride! Find each thing.
   steps:
@@ -42,6 +54,5 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: day-trip
-themes: [parks, biking, history]
-tags: [biking, history, missions, national-park, san-antonio]
-credit:
+themes: [biking, history, parks, architecture, lakes-rivers, art]
+tags: [san-antonio-missions, mission-reach, mission-san-jose, rose-window, espada-aqueduct, unesco-world-heritage, river-trail, bike-ride, san-antonio]

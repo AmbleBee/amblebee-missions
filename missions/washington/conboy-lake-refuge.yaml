@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-07
 number: 43
 name: Conboy Lake Wildlife Refuge
 mode: both
@@ -6,24 +6,34 @@ who: [solo, friends, family, kids]
 place:
   name: Conboy Lake National Wildlife Refuge (Willard Springs Trail)
   area: Glenwood, south of Mount Adams
-  coords: [45.95800, -121.33900]  # APPROX: set at the refuge headquarters trailhead before publishing
+  address: 100 Wildlife Refuge Rd, Glenwood, WA 98619
+  coords: [45.96423, -121.34319]
   website: https://www.fws.gov/refuge/conboy-lake
-short: Walk the Willard Springs Trail at Conboy Lake. Listen for sandhill cranes under Mount Adams.
+short: Walk the Willard Springs Trail at Conboy Lake and listen for sandhill cranes under Mount Adams.
 description: >
   Walk an easy 3.5-mile loop through meadows, marsh and ponderosa pines in a
   quiet valley right under Mount Adams. Stop at the observation platform for
   the best view of the mountain, and listen for the rattling calls of sandhill
   cranes, which nest here in spring and summer. Watch for bald eagles and
-  hawks too, and each keep count of the birds you spot. Get a photo of you on the platform with Mount Adams behind you. It's free, and fall
-  brings golden aspens and larches. Pair it with huckleberry pie in Trout Lake.
+  hawks too, and keep a count of every bird you spot. It's free, and fall
+  brings golden aspens and larches. Afterward, go for huckleberry pie in
+  nearby Trout Lake. The photo to get: you on the platform with Mount Adams
+  behind you.
 about: >
-  The refuge was set up in 1964. Conboy Lake is shallow and seasonal,
-  filling with snowmelt in spring and drying into meadow by late summer,
-  which makes it rich ground for birds and wildflowers.
+  Conboy Lake National Wildlife Refuge was set up in 1964 and covers about
+  7,000 acres at the foot of Mount Adams, which rises to 12,281 feet. Early
+  settlers drained the old Conboy and Camas lakes for farmland, and today the
+  refuge is a patchwork of shallow seasonal marsh, grassland and pine forest
+  that fills with snowmelt in spring and dries into meadow by late summer.
 
-  It's one of the few places in Washington where sandhill cranes nest, and
-  it's also home to the threatened Oregon spotted frog. Trout Lake, a few
-  miles away, is known for wild huckleberries in late summer.
+  It's one of the few places in Washington where greater sandhill cranes
+  nest. In spring you may spot their fuzzy chicks, called colts, near the
+  headquarters and along the nearby roads. The refuge is also home to the
+  rare Oregon spotted frog and to bald eagles, and the historic
+  Whitcomb-Cole hewn log house is a reminder of the valley's homestead days.
+
+  Early mornings are best for birds. Trout Lake, a few miles away, is known
+  for wild huckleberries in late summer.
 for_kids:
   short: Crane hunt! Find each thing.
   steps:
@@ -39,5 +49,5 @@ setting: outdoor
 season: [spring, summer, fall]
 time_of_day: morning
 travel: day-trip
-themes: [hiking, mountains, wildlife]
-tags: [birds, wildlife, hiking, mountains, mount-adams, south-cascades]
+themes: [walks, wildlife, lakes-rivers, mountains, forests, views]
+tags: [conboy-lake, wildlife-refuge, sandhill-cranes, birdwatching, willard-springs-trail, mount-adams, trout-lake, huckleberries, south-cascades]
