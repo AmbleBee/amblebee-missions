@@ -34,6 +34,6 @@ cost: free
 setting: indoor
 season: any
 time_of_day: evening
-travel: local
+travel: home
 themes: [games, relaxing, romantic]
 tags: [at-home, chess night, learn chess, board game night, strategy, cozy]

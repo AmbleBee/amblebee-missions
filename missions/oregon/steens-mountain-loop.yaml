@@ -53,6 +53,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [seasonal, conditions]
-caution: "Caution: No cell service on most of the loop. Download offline maps and bring a paper map."
+caution: "No cell service on most of the loop. Download offline maps and bring a paper map."
 themes: [views, mountains, deserts, wildlife, road-trips]
 tags: [steens-mountain, steens-mountain-loop, kiger-gorge, east-rim, alvord-desert, kiger-mustangs, frenchglen, high-desert, eastern-oregon]

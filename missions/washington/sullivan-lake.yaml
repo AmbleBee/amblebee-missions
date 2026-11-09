@@ -41,7 +41,6 @@ season: [summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
-caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
-          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
+caution: "Cell service is unreliable or missing here. Download offline maps before you go."
 themes: [hiking, lakes-rivers, forests, wildlife]
 tags: [sullivan lake, colville national forest, bighorn sheep, golden larches, metaline falls, northeast-washington]

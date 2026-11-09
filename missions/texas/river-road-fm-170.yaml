@@ -39,7 +39,6 @@ season: [fall, winter, spring]
 time_of_day: morning
 travel: day-trip
 check_ahead: [conditions]
-caution: "Limited Cell Service: Cell phone reception is unreliable or unavailable in this area. 
-          Download offline maps before visiting and do not rely on cellular service for navigation or emergencies."
+caution: "Cell service is unreliable or missing here. Download offline maps before you go."
 themes: [lakes-rivers, deserts, rocks-fossils, road-trips]
 tags: [river road fm 170, el camino del rio, rio grande, big hill, big bend ranch, big-bend]
