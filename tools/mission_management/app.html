@@ -1372,7 +1372,8 @@ function renderForm(info = {}) {
     ${field('fTags', 'Search keywords', text('fTags', (m.tags || []).join(', '), 'placeholder="hot springs, soaking, old-growth"'), 'separate with commas')}
   </fieldset>
   ${extra.length ? `<p class="help" style="margin-top:14px">Also in this file and kept exactly as is: ${extra.map(k => `<code>${esc(k)}</code>`).join(', ')}.</p>` : ''}`;
-  ed.snapshot = fieldValues();
+  // the form as it was when the mission opened; kept through trips to the YAML view so edits made there show too
+  if (!ed.snapshot) ed.snapshot = fieldValues();
   refreshLive();
 }
 
@@ -1553,7 +1554,7 @@ function setMode(mode) {
 }
 async function openEditor(pack, id, keepMode = false) {
   const mode = keepMode ? ed.mode : 'form';
-  Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '', rmNotes: [] });
+  Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null });
   $('#edTitle').textContent = 'Loading…'; $('#edPath').textContent = `missions/${pack}/${id}.yaml`;
   $('#edBody').innerHTML = ''; setMsg(''); setMode('form');
   showSheet();
@@ -1572,7 +1573,7 @@ async function openEditor(pack, id, keepMode = false) {
   checkMissionLinks(pack, id);
 }
 function startNew(pack, id, name) {
-  Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '', rmNotes: [] });
+  Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null });
   ed.m = { draft: true, number: nextNumber(pack), name, mode: 'both', duration: 'short', effort: 'easy', cost: '$',
     setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', themes: [], tags: [] };
   $('#edTitle').textContent = name || 'New mission';

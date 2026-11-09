@@ -87,6 +87,16 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Smoother Mission Editing
+  status: done
+  date: 2026-11-09
+  tag: missions
+  summary: The mission manager now keeps track of what you've touched, whichever way you edit.
+  items:
+    - Any field you change turns green with a "changed" tag, and goes back to normal if you change it back
+    - Edits made in the YAML view show up green too when you switch back to the form, so you can hop between the two freely
+    - Text pasted in from a web page or a document comes in clean, with no stray line breaks or hidden characters
+
 - title: Mission Management
   status: done
   date: 2026-11-05
