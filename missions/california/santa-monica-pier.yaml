@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 10
 name: Santa Monica Pier
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Santa Monica Pier
   area: Santa Monica
   address: 200 Santa Monica Pier, Santa Monica, CA 90401
-  coords: [34.00920, -118.49720]  # APPROX: set at the pier entrance (Ocean Ave) before publishing
+  coords: [34.00830, -118.49876]
   website: https://www.santamonicapier.org
 short: Santa Monica Pier. Find the Route 66 End of the Trail sign and ride the Ferris wheel at sunset.
 description: >

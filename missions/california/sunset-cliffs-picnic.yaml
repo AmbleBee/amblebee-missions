@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 3
 name: Sunset Cliffs Picnic
 mode: both
@@ -6,7 +6,9 @@ who: [solo, friends, family]
 place:
   name: Sunset Cliffs Natural Park (Ladera Street area)
   area: Point Loma, San Diego
-  coords: [32.71680, -117.25460]  # APPROX: set at the Ladera St parking area before publishing
+  address: Ladera St, San Diego, CA 92107
+  coords: [32.71794, -117.25493]
+  website: https://www.sandiego.gov/park-and-recreation/parks/regional/shoreline/sunset
 short: Sunset Cliffs in San Diego. Picnic on the bluffs and watch the sun drop into the Pacific.
 description: >
   Pack a picnic and get to the cliffs about an hour before sunset, since
@@ -30,5 +32,6 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [conditions]
+caution: This area has steep, unprotected drop-offs and unstable, eroding cliff edges. Stay on established trails, keep well back from the edges, and use extra caution after dark.
 themes: [views, beach, rocks-fossils, picnic, sunsets]
 tags: [sunset cliffs, point loma, ocean beach, sunset picnic, sea caves, san-diego]

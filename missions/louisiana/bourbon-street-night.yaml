@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 1
 name: Bourbon Street Night
 mode: both
@@ -6,7 +6,8 @@ who: [friends]
 place:
   name: Bourbon Street, French Quarter
   area: French Quarter, New Orleans
-  coords: [29.95830, -90.06570]  # APPROX: set at a spot on Bourbon Street before publishing
+  coords: [29.95944, -90.06493]
+  website: https://www.neworleans.com/plan/streets/bourbon-street/
 short: Bourbon Street at night in New Orleans. Follow the best live music in for one song.
 description: >
   Head to the French Quarter after dark and walk Bourbon Street with music

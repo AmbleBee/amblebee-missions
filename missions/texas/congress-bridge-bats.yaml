@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 1
 name: Congress Avenue Bridge Bats
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Ann W. Richards Congress Avenue Bridge
   area: Lady Bird Lake, downtown Austin
-  coords: [30.26100, -97.74500]  # APPROX: set at the bat-viewing area on the bridge before publishing
+  address: Congress Avenue Bridge, S Congress Ave, Austin, TX 78704
+  coords: [30.26246, -97.74466]
 short: Watch about a million bats pour out from under Austin's Congress Avenue Bridge at dusk.
 description: >
   Grab a spot on the bridge railing or the grassy lakeshore below about half

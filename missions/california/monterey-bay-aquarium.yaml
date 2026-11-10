@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 9
 name: Monterey Bay Aquarium
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Monterey Bay Aquarium
   area: Cannery Row, Monterey
   address: 886 Cannery Row, Monterey, CA 93940
-  coords: [36.61820, -121.90170]  # APPROX: set at the entrance before publishing
+  coords: [36.61801, -121.90198]
   website: https://www.montereybayaquarium.org
 short: Monterey Bay Aquarium on Cannery Row. Watch the sea otters and stand under the kelp forest.
 description: >
@@ -41,5 +41,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets]
+discounts: [senior]
 themes: [beach, wildlife, science]
 tags: [monterey bay aquarium, sea otters, kelp forest, cannery row, open ocean exhibit, monterey]
