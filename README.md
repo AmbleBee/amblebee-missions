@@ -3,7 +3,7 @@
 
 **Less wondering what to do. More memories worth keeping.**
 
-[Explore AmbleBee](https://amblebee.com) | [Suggest a Mission](https://forms.gle/V8UZRwmDrLwzQpuM6) | [Contribute](CONTRIBUTING.md)
+[Explore AmbleBee](https://amblebee.com) | [Suggest a Mission](https://amblebee.com/suggest/) | [Contribute](CONTRIBUTING.md)
 
 AmbleBee is a free collection of date ideas, adventures, and little experiences designed to help people get out, try something new, and make memories.
 
@@ -51,7 +51,7 @@ You don't need programming experience, a GitHub account, or a complete mission w
 
 You can help by:
 
-- **[Suggesting a mission](https://forms.gle/V8UZRwmDrLwzQpuM6)** — Share an idea and let us handle the research and writing.
+- **[Suggesting a mission](https://amblebee.com/suggest/)** — Share an idea and let us handle the research and writing.
 - **Reporting an issue** — Use the report link on any mission to flag outdated or incorrect information.
 - **Contributing directly** — Add or improve missions through a GitHub pull request.
 - **Creating your own packs** — Use the included Mission Manager to organize a collection of adventures.

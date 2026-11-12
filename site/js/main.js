@@ -211,7 +211,7 @@ async function start() {
   $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} live missions · updated ${prettyDate(src.updated)}`;
 
   const form = $("#form-link");
-  if (safeUrl(FORM_URL)) { form.href = FORM_URL; form.target = "_blank"; form.rel = "noopener"; }
+  if (FORM_URL) form.href = FORM_URL;
   else { form.href = REPO_URL; $("#form-note").textContent = "The submission form opens soon. Until then, a pull request on GitHub works, or check back."; }
   $("#repo-link").href = REPO_URL;
 

@@ -1,0 +1,53 @@
+<h1>Report a problem</h1>
+<p class="hand">Thanks for keeping missions accurate.</p>
+<p>Is a place closed or moved, a pin in the wrong spot, or something wrong or unsafe? Tell us and we'll check it.</p>
+
+<div class="intake" data-intake="report">
+  <p class="intake-wait">Checking the mailbox…</p>
+  <div class="intake-down" hidden>
+    <p class="hand">Reports are closed for a moment</p>
+    <p>Please try again later. If it's about safety, email <a href="mailto:staff@amblebee.com">staff@amblebee.com</a>.</p>
+  </div>
+  <div class="intake-backup" hidden>
+    <p class="hand">Our mailbox is taking a break</p>
+    <p>You can still send it through our backup form. It may take us longer to see, and it won't come with a status link. Or try again here a little later.</p>
+    <p class="backup-row"><a class="btn primary small backup-link" href="#" target="_blank" rel="noopener">Use the backup form</a> <button type="button" class="btn small backup-retry">Try again</button></p>
+  </div>
+  <form class="intake-form" novalidate hidden>
+    <p class="report-about" hidden>About the mission: <a href="/missions/"></a></p>
+    <input type="hidden" name="mission_id">
+    <div class="field">
+      <label for="report-mission">Which mission?</label>
+      <input id="report-mission" name="mission_name" type="text" maxlength="120" aria-describedby="report-mission-hint">
+      <p class="hint" id="report-mission-hint">Its name is enough. Tip: "Report a problem" on a mission fills this in for you.</p>
+    </div>
+    <div class="field">
+      <label for="report-body">What's wrong?</label>
+      <textarea id="report-body" name="body" rows="5" maxlength="3000" required></textarea>
+    </div>
+    <div class="field">
+      <label for="report-name">Your name <span class="opt">(optional)</span></label>
+      <input id="report-name" name="name" type="text" maxlength="40" autocomplete="given-name">
+    </div>
+    <div class="field">
+      <label for="report-email">Email <span class="opt">(optional)</span></label>
+      <input id="report-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="report-email-hint">
+      <p class="hint" id="report-email-hint">Only if you'd like to hear back.</p>
+    </div>
+    <div class="field">
+      <label class="check"><input type="checkbox" name="follow"> <span>Send me a link to follow this report</span></label>
+    </div>
+    <div class="hp" aria-hidden="true"><label for="report-website">Leave this empty</label><input id="report-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <button class="btn primary" type="submit">Send the report</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+  <div class="intake-done" tabindex="-1" hidden></div>
+</div>
+
+<section class="intake-mine" hidden>
+  <h2>Your submissions</h2>
+  <p class="hint">Saved on this device only.</p>
+  <ul></ul>
+</section>
+<noscript><p>This form needs JavaScript. You can also email <a href="mailto:staff@amblebee.com">staff@amblebee.com</a>.</p></noscript>
+<script src="/js/intake.js" defer></script>

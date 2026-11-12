@@ -37,7 +37,7 @@ Even a single suggestion can help someone discover their next adventure.
 
 Know an incredible place? Have a creative date idea? Found a fun activity that more people should know about?
 
-[**Suggest a Mission**](https://forms.gle/V8UZRwmDrLwzQpuM6)
+[**Suggest a Mission**](https://amblebee.com/suggest/)
 
 You don't need to write a complete mission. Just tell us what makes the place or experience special.
 
@@ -218,7 +218,7 @@ Community-created packs are part of AmbleBee's longer-term plans.
 
 You can follow upcoming features and development progress on the [Bee Trail](https://amblebee.com/roadmap.html).
 
-In the meantime, you're welcome to [suggest individual missions](https://forms.gle/V8UZRwmDrLwzQpuM6) for consideration in the official collection.
+In the meantime, you're welcome to [suggest individual missions](https://amblebee.com/suggest/) for consideration in the official collection.
 
 If you want to propose a large new official pack, please contact us before submitting the entire collection so we can discuss whether it fits the existing library.
 
@@ -385,7 +385,7 @@ You're welcome to reach out.
 
 **Email:** [staff@amblebee.com](mailto:staff@amblebee.com)
 
-**Suggest a mission:** [Submission Form](https://forms.gle/V8UZRwmDrLwzQpuM6)
+**Suggest a mission:** [Submission Form](https://amblebee.com/suggest/)
 
 For technical changes, you can also open a GitHub issue or pull request.
 

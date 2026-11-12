@@ -276,7 +276,7 @@ You don't need to build an entire pack to contribute.
 
 You can:
 
-- [Suggest a mission](https://forms.gle/V8UZRwmDrLwzQpuM6).
+- [Suggest a mission](https://amblebee.com/suggest/).
 - Report incorrect or outdated information on an existing mission.
 - Contribute directly through the official GitHub repository.
 

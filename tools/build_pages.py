@@ -7,7 +7,8 @@ Writes, inside the built site:
     <collection>/index.html      missions gathered by idea ("Rainy Day Date Ideas"), from collections.yaml
     packs/<pack>/index.html      one pack's missions, under its icon, description and long "about" text
     missions/<id>/index.html     one mission, with its own title, preview, structured data and nearby missions
-    about/, safety/, privacy/, contact/  written in pages/, wrapped in the same header and footer
+    about/, safety/, privacy/, contact/, suggest/, report/, status/  written in pages/, wrapped in the same header and footer
+                                 (report/ and status/ are noindex and left out of the sitemap)
     404.html                     shown by GitHub Pages for any address that doesn't exist
     sitemap.xml, robots.txt      with each page's last-changed date from git, when there's a full checkout
     cards/cards.json             what each share card says; tools/build_cards.py then draws them
@@ -47,19 +48,23 @@ COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked on
 NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
 OG_IMAGE = {"url": f"{BASE}/og-image.png?v=2",   # for pages without their own share card; the same as site/index.html
             "alt": "AmbleBee: date ideas and adventures near you. A sealed envelope with a honey wax seal, and a bee flying off to deliver it"}
-CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js
-# the same "Report a problem" form as site/js/core.js: opens with the mission's id and name already filled in
-REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
-REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
+CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js; amblebee-intake is the server behind the Suggest, Report, Contact and Status pages (site/js/intake.js)
+# the same "Report a problem" page as site/js/core.js: opens with the mission's id and name already filled in
+REPORT_PAGE = "/report/"
 INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "about": ("About", "How AmbleBee started, where the missions came from, and where the camera and Hive are going."),
     "safety": ("Safety", "How to stay safe on an AmbleBee mission, and what's up to you."),
     "privacy": ("Privacy", "What AmbleBee keeps, what stays on your device, and what goes to Google or GitHub."),
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
+    "suggest": ("Suggest a mission", "Know a great date spot or adventure? Suggest it for AmbleBee and it might become a mission."),
+    "report": ("Report a problem", "Tell AmbleBee about a closed place, a wrong pin, or anything off with a mission."),
+    "status": ("Submission status", "Check where your AmbleBee suggestion or report is at."),
 }
+NOINDEX_PAGES = {"report", "status"}   # useful only through a link: kept out of search engines and the sitemap
 
 # the small line above the title on each info page's share card
-CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello"}
+CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello",
+                "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -240,9 +245,8 @@ def mission_html(m, pack, icons, today):
         kids = m["for_kids"]
         extras += extra("Kids' version", f'<p style="margin:0;font-weight:800">{esc(kids["short"])}</p>{steps(kids.get("steps") or [])}')
 
-    report = REPORT_FORM + "?" + urlencode({"usp": "pp_url", REPORT_FIELDS["id"]: m["full_id"], REPORT_FIELDS["name"]: m["name"]})
-    report_html = (f'<p class="report">Closed, moved or something off? '
-                   f'<a href="{esc(report)}" target="_blank" rel="noopener">Report a problem</a></p>')
+    report = REPORT_PAGE + "?" + urlencode({"id": m["id"], "name": m["name"]})
+    report_html = f'<p class="report">Closed, moved or something off? <a href="{esc(report)}">Report a problem</a></p>'
     credit = str(m.get("credit") or "").strip()
     credit_html = f'<p class="credit">Suggested by {esc(credit)}</p>' if credit else ""
     return f"""<article class="ticket">
@@ -629,7 +633,13 @@ def build_pages(out):
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         image = share_card(f"page-{name}", f"{title}: {desc}", badge="hive", eyebrow=CARD_EYEBROW.get(name, "AmbleBee"),
                            title=title, text=desc, note=f"amblebee.com/{name}")
-        write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image))
+        text = page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image)
+        if name in NOINDEX_PAGES:
+            f = Path(out) / name / "index.html"
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
+            continue
+        write(path, text)
         if dates.get(f"pages/{name}.html"):
             lastmod[path] = dates[f"pages/{name}.html"]
 

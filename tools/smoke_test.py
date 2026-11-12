@@ -36,18 +36,71 @@ def serve(folder):
     return server
 
 
+INTAKE = "https://amblebee-intake.tail58116.ts.net"   # API in site/js/intake.js; the tests stand in for it
+
+
+class FakeIntake:
+    """Answers like AmbleBee Intake would, so the forms can be tested without the real server.
+    mode: "up", "paused" (health says not accepting) or "down" (no answer at all)."""
+
+    def __init__(self):
+        self.mode, self.posts = "up", []
+
+    def handle(self, route):
+        req = route.request
+        path = req.url.split(INTAKE, 1)[1].split("?")[0]
+        cors = {"access-control-allow-origin": "*", "access-control-allow-methods": "GET, POST",
+                "access-control-allow-headers": "Content-Type", "content-type": "application/json"}
+        if self.mode == "down":
+            return route.abort()
+        if req.method == "OPTIONS":
+            return route.fulfill(status=200, headers=cors, body="")
+
+        def reply(status, body):
+            route.fulfill(status=status, headers=cors, body=json.dumps(body))
+        if path == "/health":
+            return reply(200, {"ok": True, "accepting": self.mode == "up"})
+        if req.method == "POST":
+            data = json.loads(req.post_data or "{}")
+            self.posts.append((path, data))
+            need = {"/submit/idea": ["title", "body"], "/report": ["body"], "/contact": ["name", "email", "message"]}.get(path)
+            if need is None:
+                return reply(404, {"ok": False})
+            errors = {f: "Please fill this in." for f in need if not str(data.get(f, "")).strip()}
+            if errors:
+                return reply(400, {"ok": False, "error": "Please check the highlighted fields.", "errors": errors})
+            if path == "/contact" or (path == "/report" and not data.get("follow")):
+                return reply(201, {"ok": True})
+            return reply(201, {"ok": True, "token": "tok123", "status_url": "https://amblebee.com/status/#tok123"})
+        if path == "/status/tok123":
+            return reply(200, {"ok": True, "kind": "idea", "title": "Tide pools", "status": "in_review", "headline": "In review",
+                               "text": "We're reading it now.", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
+                               "steps": [{"status": s, "label": s} for s in ("awaiting", "in_review", "building", "approved", "live")],
+                               "history": [{"status": "awaiting", "label": "Awaiting review", "at": "2026-11-12T16:00:00+00:00"}]})
+        return reply(404, {"ok": False, "error": "not found"})
+
+
+def expected(message):
+    """The browser logs an API's 400 (a form with a mistake) or an outage as an error. Those are the forms
+    working as designed, so they don't fail a test; every other console error still does."""
+    where = (message.location or {}).get("url", "")
+    return message.type == "error" and (INTAKE in where or INTAKE in message.text)   # Chromium and WebKit word it differently
+
+
 class Site:
     """A fresh page for each test. Motion is reduced so envelopes open right away."""
 
     def __init__(self, browser, base):
         self.browser, self.base, self.errors = browser, base, []
+        self.intake = FakeIntake()
 
     def open(self, path="/", viewport=DESKTOP):
         ctx = self.browser.new_context(viewport=viewport, reduced_motion="reduce", accept_downloads=True)
+        ctx.route(INTAKE + "/**", self.intake.handle)
         page = ctx.new_page()
         page.set_default_timeout(TIMEOUT_MS)
         page.on("pageerror", lambda e: self.errors.append(f"{path}: {e}"))
-        page.on("console", lambda m: self.errors.append(f"{path}: {m.text}") if m.type == "error" else None)
+        page.on("console", lambda m: self.errors.append(f"{path}: {m.text}") if m.type == "error" and not expected(m) else None)
         page.goto(self.base + path)
         return page
 
@@ -715,7 +768,106 @@ def t_built_pages_load(site, catalog):
     assert page.locator(".report a").count() == 1
     assert page.locator("a[href^='mailto:']").count() == 0
     page = site.open("/contact/")
-    assert page.locator("a[href='mailto:staff@amblebee.com']").count() == 1
+    assert page.locator("a[href='mailto:staff@amblebee.com']").count() >= 1, "email stays as the fallback"
+
+
+def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
+    page = site.open("/suggest/")
+    page.wait_for_selector(".intake-form", state="visible")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-form .err")
+    assert page.get_attribute("#idea-title", "aria-invalid") == "true", "a missing title is pointed out"
+    page.fill("#idea-title", "Tide pools at Haystack Rock")
+    page.fill("#idea-body", "Go at low tide and find three different sea stars.")
+    page.fill("#idea-name", "Sam R.")
+    page.check("input[name=credit]")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-done .link-box")
+    assert page.input_value(".intake-done .link-box") == "https://amblebee.com/status/#tok123"
+    path, sent = site.intake.posts[-1]
+    assert path == "/submit/idea" and sent["credit"] is True and sent["website"] == "" and sent["elapsed_ms"] > 0
+    page.reload()
+    page.wait_for_selector(".intake-mine li a")
+    assert page.inner_text(".intake-mine li a") == "Tide pools at Haystack Rock", "the link is kept under Your submissions"
+    assert page.input_value("#idea-title") == "", "a sent suggestion doesn't come back as a draft"
+
+
+def t_report_from_a_mission_fills_it_in(site, catalog):
+    mission = catalog["missions"][0]
+    page = site.open(f"/missions/{mission['id']}/")
+    page.click(".report a")
+    page.wait_for_selector(".intake-form", state="visible")
+    assert mission["name"] in page.inner_text(".report-about"), "the report names its mission"
+    page.fill("#report-body", "The parking lot is closed for the winter.")
+    page.check("input[name=follow]")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-done .link-box")
+    path, sent = site.intake.posts[-1]
+    assert path == "/report" and sent["mission_id"] == mission["id"] and sent["follow"] is True
+    ticket = site.home()
+    ticket.click("#packs .card")
+    href = ticket.get_attribute("#dialog-body .report a", "href")
+    assert href.startswith("/report/?id="), "the pop-up ticket links to the report page too"
+
+
+def t_contact_form_sends_and_keeps_a_draft(site, catalog):
+    page = site.open("/contact/")
+    page.wait_for_selector(".intake-form", state="visible")
+    page.fill("#contact-name", "Riley")
+    page.fill("#contact-message", "Any plans for a Montana pack?")
+    page.reload()                                                     # typing survives a reload
+    page.wait_for_selector(".intake-form", state="visible")
+    assert page.input_value("#contact-message") == "Any plans for a Montana pack?"
+    page.fill("#contact-email", "riley@example.com")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-done h2")
+    assert "token" not in json.dumps(site.intake.posts[-1][1])
+
+
+def t_forms_say_when_the_mailbox_is_closed(site, catalog):
+    site.intake.mode = "paused"                       # switched off on purpose: closed, and no backup
+    for path in ("/suggest/", "/report/", "/contact/"):
+        page = site.open(path)
+        page.wait_for_selector(".intake-down", state="visible")
+        assert not page.is_visible(".intake-form") and not page.is_visible(".intake-backup"), f"{path} paused must stay closed"
+    site.intake.mode = "down"                         # server unreachable: the Google Form backups
+    page = site.open("/suggest/")
+    page.wait_for_selector(".intake-backup", state="visible")
+    assert page.get_attribute(".backup-link", "href").startswith("https://forms.gle/")
+    mission = catalog["missions"][0]
+    page = site.open(f"/report/?id={mission['id']}&name={mission['name']}")
+    page.wait_for_selector(".intake-backup", state="visible")
+    href = page.get_attribute(".backup-link", "href")
+    assert "docs.google.com/forms" in href and f"entry.872618061={mission['id']}" in href, "the backup report keeps the mission"
+    page = site.open("/contact/")
+    page.wait_for_selector(".intake-down", state="visible")   # contact has no Google Form: email instead
+    site.intake.mode = "up"
+    page = site.open("/suggest/")
+    site.intake.mode = "down"
+    page.wait_for_selector(".intake-form", state="visible")
+    page.fill("#idea-title", "Tide pools")
+    page.fill("#idea-body", "Go at low tide and find three different sea stars.")
+    page.click(".intake-form button[type=submit]")                # the server vanishes mid-send
+    page.wait_for_selector(".form-status.bad a")
+    assert "forms.gle" in page.get_attribute(".form-status.bad a", "href"), "a failed send offers the backup too"
+    assert page.input_value("#idea-title") == "Tide pools", "and nothing typed is lost"
+    site.intake.mode = "up"
+
+
+def t_status_page_shows_where_it_is(site, catalog):
+    page = site.open("/status/#tok123")
+    page.wait_for_selector(".status-card")
+    assert page.inner_text(".status-headline") == "In review"
+    assert page.locator(".steps li.done").count() == 1 and page.locator(".steps li.now").count() == 1
+    page = site.open("/status/#nope")
+    page.wait_for_selector(".status-view h2")
+    assert "couldn't find" in page.inner_text(".status-view h2")
+    page = site.open("/status/")
+    page.fill("#status-link", "https://amblebee.com/status/#tok123")
+    page.click(".link-form button")
+    page.wait_for_selector(".status-card")
+    for path in ("/status/", "/report/"):
+        assert site.open(path).locator('meta[name="robots"][content="noindex"]').count() == 1, f"{path} stays out of search"
 
 
 def main():

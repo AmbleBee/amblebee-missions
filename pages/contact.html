@@ -1,16 +1,44 @@
 <h1>Contact</h1>
 <p class="hand">Every message gets read.</p>
-<p>Two quick forms cover most things, and they're the fastest way to get something fixed or added.</p>
+<p>Pick whatever fits. All three come straight to us.</p>
 
-<h2>Report a problem with a mission</h2>
-<p>Is a place closed or moved, or is something wrong or unsafe? The easiest way is to <a href="/missions/">find the mission</a>, open it, and tap "Report a problem" at the bottom. The form opens with the mission ID and name already filled in, so you only have to tell us what's wrong.</p>
-<p>Don't have the mission open? Use this button instead and type the mission's name yourself.</p>
-<p><a class="btn primary" href="https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform?usp=pp_url&amp;entry.872618061=contact-page" target="_blank" rel="noopener">Report a problem</a></p>
+<div class="contact-paths">
+  <a class="path" href="/suggest/"><b>Suggest a mission</b><span>Know a great date spot or adventure? It might end up in a pack.</span></a>
+  <a class="path" href="/report/"><b>Report a problem</b><span>Closed, moved or something off? Tip: the button on each mission fills in which one.</span></a>
+  <a class="path" href="#message"><b>Send a message</b><span>Questions, ideas, or a change to your name on a mission.</span></a>
+</div>
 
-<h2>Suggest a mission</h2>
-<p>Know a great date spot or adventure? It takes about five minutes, and it might end up in a pack.</p>
-<p><a class="btn primary" href="https://forms.gle/V8UZRwmDrLwzQpuM6" target="_blank" rel="noopener">Suggest a mission</a></p>
+<h2 id="message">Send a message</h2>
+<div class="intake" data-intake="contact">
+  <p class="intake-wait">Checking the mailbox…</p>
+  <div class="intake-down" hidden>
+    <p class="hand">Our contact form is down right now</p>
+    <p>Please try again later, or email <a href="mailto:staff@amblebee.com">staff@amblebee.com</a>.</p>
+  </div>
+  <form class="intake-form" novalidate hidden>
+    <div class="field">
+      <label for="contact-name">Your name</label>
+      <input id="contact-name" name="name" type="text" maxlength="40" required autocomplete="given-name">
+    </div>
+    <div class="field">
+      <label for="contact-email">Email</label>
+      <input id="contact-email" name="email" type="email" maxlength="254" required autocomplete="email" aria-describedby="contact-email-hint">
+      <p class="hint" id="contact-email-hint">So we can reply. We won't use it for anything else.</p>
+    </div>
+    <div class="field">
+      <label for="contact-message">Message</label>
+      <textarea id="contact-message" name="message" rows="6" maxlength="5000" required></textarea>
+    </div>
+    <div class="hp" aria-hidden="true"><label for="contact-website">Leave this empty</label><input id="contact-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <button class="btn primary" type="submit">Send message</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+  <div class="intake-done" tabindex="-1" hidden></div>
+</div>
 
 <h2>Anything else</h2>
-<p>For anything the forms don't cover, like a question about the site or a request to change or remove your name on a mission, email <a href="mailto:staff@amblebee.com">staff@amblebee.com</a>.</p>
+<p>Prefer email? Write to <a href="mailto:staff@amblebee.com">staff@amblebee.com</a>.</p>
 <p>Have a GitHub account and don't mind posting in public? You can also <a href="https://github.com/AmbleBee/amblebee-missions/issues" target="_blank" rel="noopener">open an issue</a>. Please leave out private details.</p>
+<p>Sent us something? <a href="/status/">Check its status</a>.</p>
+<noscript><p>The message form needs JavaScript. Email <a href="mailto:staff@amblebee.com">staff@amblebee.com</a> instead.</p></noscript>
+<script src="/js/intake.js" defer></script>

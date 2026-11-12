@@ -1,0 +1,23 @@
+<h1>Submission status</h1>
+<p class="hand">Where your suggestion is at</p>
+
+<div class="status-view" aria-live="polite" hidden></div>
+
+<div class="status-lookup">
+  <p>Open the private link you got when you sent it in, or paste it here.</p>
+  <form class="link-form">
+    <label for="status-link">Your status link</label>
+    <div class="link-row">
+      <input id="status-link" name="link" type="text" placeholder="https://amblebee.com/status/#…" autocomplete="off">
+      <button class="btn small" type="submit">Check</button>
+    </div>
+  </form>
+</div>
+
+<section class="intake-mine" hidden>
+  <h2>Your submissions</h2>
+  <p class="hint">Saved on this device only.</p>
+  <ul></ul>
+</section>
+<noscript><p>Checking a status needs JavaScript.</p></noscript>
+<script src="/js/intake.js" defer></script>
