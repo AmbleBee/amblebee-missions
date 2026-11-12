@@ -100,6 +100,17 @@
     - Leave an email and we'll send updates. If it doesn't show up, check your spam folder
     - If our forms are ever down, the old Google forms step in as a backup so nothing gets lost
 
+- title: A Logo of Our Own
+  status: done
+  date: 2026-11-12
+  tag: website
+  summary: AmbleBee has a real logo now, a bee out on its trail, and it sits at the top of every page. A few rough edges on the new forms got smoothed out too.
+  items:
+    - The new AmbleBee logo replaces the little hive in the header, in light and dark mode and on phones
+    - "**Know a great spot?** in the menu now goes straight to [Suggest a mission](/suggest/) instead of scrolling down the home page"
+    - Names on the forms are a first name and last initial, like Max W. Type a full name and it's shortened for you, so a full last name is never kept
+    - Your submissions now sits in a tidy card, with each one on its own row
+
 - title: Search That Looks Farther
   status: done
   date: 2026-11-09

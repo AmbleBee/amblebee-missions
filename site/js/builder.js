@@ -240,7 +240,8 @@
     } },
 
     { id: "you", title: "About you", fields: ["you_name", "email"], render: function () {
-      var n = text("you_name", S.you.you_name, SC.limits.credit, function (v) { S.you.you_name = v; }, { autocomplete: "given-name" });
+      var n = text("you_name", S.you.you_name, SC.limits.credit, function (v) { S.you.you_name = v; }, { autocomplete: "name", placeholder: "Max W." });
+      X.tidyName(n.input);
       var credit = el("input", { type: "checkbox", id: "b-credit" });
       credit.checked = !!S.you.credit;
       credit.addEventListener("change", function () { S.you.credit = credit.checked; persist(); });

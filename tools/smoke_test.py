@@ -692,6 +692,10 @@ def t_computer_menu_and_search_link(site, catalog):
     assert not page.is_visible(".menu-panel")
     page.click('.top nav > a[href="/#search"]')
     page.wait_for_function("() => document.activeElement.id === 'search-input'")
+    assert page.locator(".top .brand img[src*='logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "the logo loads"
+    page.click('.top nav > a:has-text("Know a great spot?")')
+    page.wait_for_url("**/suggest/")
+    assert page.locator(".top .brand img[src='/logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "and on other pages"
 
 
 def t_menu_links_keep_filters_and_leave_a_mission(site, catalog):
@@ -811,8 +815,10 @@ def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
     assert page.get_attribute("#idea-title", "aria-invalid") == "true", "a missing title is pointed out"
     page.fill("#idea-title", "Tide pools at Haystack Rock")
     page.fill("#idea-body", "Go at low tide and find three different sea stars.")
-    page.fill("#idea-name", "Sam R.")
+    assert "First name and last initial" in page.inner_text("#idea-name-hint")
+    page.fill("#idea-name", "sam rivera")
     page.check("input[name=credit]")
+    assert page.input_value("#idea-name") == "Sam R.", "a full name is shortened to a first name and last initial"
     page.fill("#idea-email", "sam@example.com")
     page.click(".intake-form button[type=submit]")
     page.wait_for_selector(".intake-done .link-box")
@@ -821,9 +827,12 @@ def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
     assert page.input_value(".intake-done .link-box") == "https://amblebee.com/status/#tok123"
     path, sent = site.intake.posts[-1]
     assert path == "/submit/idea" and sent["credit"] is True and sent["website"] == "" and sent["elapsed_ms"] > 0
+    assert sent["name"] == "Sam R."
     page.reload()
     page.wait_for_selector(".intake-mine li a")
     assert page.inner_text(".intake-mine li a") == "Tide pools at Haystack Rock", "the link is kept under Your submissions"
+    card = page.evaluate("(() => { const s = getComputedStyle(document.querySelector('.intake-mine')); return [s.boxShadow, s.paddingLeft]; })()")
+    assert card[0] != "none" and card[1] != "0px", "Your submissions sits in a card"
     assert page.input_value("#idea-title") == "", "a sent suggestion doesn't come back as a draft"
 
 

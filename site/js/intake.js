@@ -89,9 +89,26 @@
       forgetBtn.addEventListener("click", function () { forget(x.token); renderMine(); });
       ul.append(el("li", {}, [
         el("a", { href: "/status/#" + x.token, text: x.title || "Your submission" }),
-        el("small", { text: " · " + (KIND[x.kind] || "Submission") + (x.at ? " · " + new Date(x.at).toLocaleDateString() : "") + " " }),
+        el("small", { text: (KIND[x.kind] || "Submission") + (x.at ? " · " + new Date(x.at).toLocaleDateString() : "") }),
         forgetBtn
       ]));
+    });
+  }
+
+  // ---------- names ----------
+  // Names are kept as a first name and last initial: "max westlie" becomes "Max W.". A first name alone is left as it is.
+  function shortName(value) {
+    var words = String(value || "").trim().split(/\s+/).filter(Boolean).map(function (w) {
+      return w === w.toLowerCase() ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+    });
+    if (words.length < 2) return words.join("");
+    var last = words.pop().replace(/\.+$/, "");
+    return words.join(" ") + (last ? " " + last.charAt(0).toUpperCase() + "." : "");
+  }
+  function tidyName(input) {
+    input.addEventListener("blur", function () {
+      var short = shortName(input.value);
+      if (short !== input.value) { input.value = short; input.dispatchEvent(new Event("input", { bubbles: true })); }
     });
   }
 
@@ -171,6 +188,8 @@
     var form = $("form", box), wait = $(".intake-wait", box), down = $(".intake-down", box), done = $(".intake-done", box);
     var status = $(".form-status", form);
     restoreDraft(form, kind);
+    var nameInput = $('input[name="name"]', form);
+    if (nameInput) tidyName(nameInput);
     if (kind === "report") prefillReport(form);
 
     form.addEventListener("input", function () {
@@ -334,7 +353,7 @@
 
   // shared with site/js/builder.js (the full mission builder)
   window.AmbleIntake = { API: API, BACKUP: BACKUP, request: request, health: health, el: el, $: $, $$: $$, load: load,
-    save: save, track: track, linkPanel: linkPanel, renderMine: renderMine, spamNote: spamNote, started: started };
+    save: save, track: track, linkPanel: linkPanel, renderMine: renderMine, spamNote: spamNote, started: started, shortName: shortName, tidyName: tidyName };
 
   $$(".intake[data-intake]").forEach(setup);
   if ($(".status-view")) setupStatus();

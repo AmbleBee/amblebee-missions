@@ -104,7 +104,7 @@ def nav_html(current=""):
     """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
     home = current == "index"
     main = [("/about/", "About"), ("/#browse" if home else "/missions/", "Every mission"), ("/#search", "Search"),
-            ("/roadmap.html", "Bee trail"), ("/#share", "Know a great spot?")]
+            ("/roadmap.html", "Bee trail"), ("/suggest/", "Know a great spot?")]
     if not home:
         main.insert(0, ("/", "Open a mission"))
     extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/contact/", "Contact")]
@@ -418,7 +418,7 @@ def build_pages(out):
     if problems:
         raise SystemExit("Not building pages, fix the icons first:\n  - " + "\n  - ".join(problems))
     brand = re.search(r'<a class="brand".*?</a>', (ROOT / "site" / "index.html").read_text(encoding="utf-8"), re.S).group(0)
-    brand = brand.replace('href="./"', 'href="/"')
+    brand = brand.replace('href="./"', 'href="/"').replace('src="logo.webp"', 'src="/logo.webp"')
     today = datetime.date.today().isoformat()
     _, raw_packs, raw_missions = load_catalog(ROOT / "missions")   # the "about" texts are left out of catalog.json, so read them here
     pack_about = {pid: str(pk.get("about") or "").strip() for pid, pk in raw_packs.items()}

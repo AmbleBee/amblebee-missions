@@ -18,7 +18,8 @@
   <form class="intake-form" novalidate hidden>
     <div class="field">
       <label for="contact-name">Your name</label>
-      <input id="contact-name" name="name" type="text" maxlength="40" required autocomplete="given-name">
+      <input id="contact-name" name="name" type="text" maxlength="40" required autocomplete="name" placeholder="Max W." aria-describedby="contact-name-hint">
+      <p class="hint" id="contact-name-hint">First name and last initial, like Max W.</p>
     </div>
     <div class="field">
       <label for="contact-email">Email</label>
