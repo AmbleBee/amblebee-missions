@@ -51,6 +51,14 @@ class CheckerTest(unittest.TestCase):
     def test_clean_mission_passes(self):
         self.assertEqual(self.problems(), [])
 
+    # ---- suggestion (the AmbleBee Intake number a mission came from) ----
+    def test_suggestion_number_passes(self):
+        self.assertEqual(self.problems(extra="suggestion: 12\n"), [])
+
+    def test_suggestion_must_be_a_number(self):
+        for bad in ("suggestion: twelve\n", "suggestion: 0\n", "suggestion: true\n"):
+            self.assertProblem(self.problems(extra=bad), "suggestion should be")
+
     # ---- gear ----
     def test_known_gear_with_rent_passes(self):
         self.assertEqual(self.problems(extra="gear:\n  - item: headlamps\n    rent: on-site\n"), [])

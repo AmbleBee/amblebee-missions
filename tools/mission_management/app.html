@@ -104,6 +104,7 @@ th .arrow { color: var(--sage); }
 .chip.draft { background: var(--honey-tint); border-color: transparent; color: var(--ink); }
 .chip.live { background: var(--sage-tint); border-color: transparent; color: var(--ink); }
 .chip.new { border-style: dashed; }
+.chip.suggested { background: var(--sage-tint); border-color: transparent; color: var(--ink); }
 .muted { color: var(--ink-3); }
 .ok { color: var(--sage); font-weight: 700; }
 
@@ -552,7 +553,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
     <h2>Missions</h2>
     <p class="sub">Everything you've written, with the last time each file changed. Click a column to sort, click a mission to edit it.</p>
     <div class="controls filters" style="position:static;border:0;padding:6px 0;margin:8px 0 0">
-      <label>Status <select id="fStatus"><option value="">All</option><option value="live">Live</option><option value="draft">Drafts</option></select></label>
+      <label>Status <select id="fStatus"><option value="">All</option><option value="live">Live</option><option value="draft">Drafts</option><option value="suggested">Suggested</option></select></label>
       <label>Needs <select id="fIssue"><option value="">Anything or nothing</option><option value="*">Any attention</option></select></label>
       <label>Theme <select id="fThemeSel"><option value="">Any theme</option></select></label>
       <button class="link" id="clearFilters" type="button" hidden>Clear filters</button>
@@ -874,7 +875,7 @@ function themeCounts(ms) {
 const count = (ms, key, val) => ms.filter(m => m[key] === val).length;
 
 // ---------- data slices ----------
-function missionsNow() { return D.missions.filter(m => state.drafts || !m.draft); }
+function missionsNow() { return D.missions.filter(m => state.drafts || !m.draft || state.status === 'suggested'); }   // suggestions start as drafts
 function byPack(ms) {
   const g = {}; Object.keys(D.packs).forEach(p => g[p] = []);
   for (const m of ms) (g[m.pack] ||= []).push(m);
@@ -1137,7 +1138,7 @@ function filtersActive() { return !!(state.status || state.issue || state.theme 
 
 function renderTable(ms) {
   let list = inPack(ms);
-  if (state.status) list = list.filter(m => state.status === 'draft' ? m.draft : !m.draft);
+  if (state.status) list = list.filter(m => state.status === 'suggested' ? !!m.suggestion : state.status === 'draft' ? m.draft : !m.draft);
   if (state.issue) list = list.filter(m => state.issue === '*' ? m.issues.some(i => i !== 'draft') : m.issues.includes(state.issue));
   if (state.theme) list = list.filter(m => m.themes.includes(state.theme));
   $('#clearFilters').hidden = !filtersActive();
@@ -1168,7 +1169,7 @@ function renderTable(ms) {
     <td>${esc(m.name)}<div class="muted" style="font-size:12px">${esc(m.id)}</div></td>
     <td>${esc(shortName(m.pack))}</td><td>${esc(m.mode)}</td><td>${esc(m.setting)}</td><td>${esc(m.cost)}</td>
     <td>${m.themes.map(t => `<span class="chip">${esc(D.themes[t] || t)}</span>`).join('')}</td>
-    <td><span class="chip ${m.draft ? 'draft' : 'live'}">${m.draft ? 'Draft' : 'Live'}</span>${badges(m)}</td>
+    <td><span class="chip ${m.draft ? 'draft' : 'live'}">${m.draft ? 'Draft' : 'Live'}</span>${m.suggestion ? `<span class="chip suggested" title="From suggestion #${esc(String(m.suggestion))} in AmbleBee Intake">Suggested</span>` : ''}${badges(m)}</td>
     <td class="num ${m.checked ? '' : 'muted'}">${m.checked || '–'}</td>
     <td class="num">${m.added || ''}</td>
     <td class="num">${m.edited || ''}${m.uncommitted ? ' <span class="chip new" title="Saved, but not committed to git yet">not committed</span>' : ''}</td>
@@ -2709,6 +2710,7 @@ $('#lockOff').onclick = async () => {
 };
 $('#lockBtn').onclick = () => lockDlg($('#lockBtn').getAttribute('aria-pressed') === 'true' ? 'locked' : 'set');
 fetch('api/lock', { headers: KEY ? { 'X-Amble-Key': KEY } : {} }).then(x => x.json()).then(r => {
+  if (r.managed) { $('#lockBtn').hidden = true; $('#stopBtn').hidden = true; return; }   // run by a server: it handles both
   lockUi(!!r.locked);
   if (!r.locked && KEY) rememberKey('');     // the manager restarted since; the old key is gone
 }).catch(() => {});

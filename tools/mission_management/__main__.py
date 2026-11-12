@@ -30,6 +30,9 @@ What it does
 Safety
   - Anyone on your network could reach the port, so every link carries a random key that changes
     each run. Without it the page shows nothing and nothing can be saved.
+  - On a server (AmbleBee Intake runs it inside its admin panel), these settings come from the environment:
+    AMBLE_BIND (address to listen on), AMBLE_PORT (one fixed port), AMBLE_LOCK (a key every request must carry;
+    the page can't change or remove it, and Lock and Stop are hidden).
   - If a file changed on disk after you opened it (say you edited it in VSCodium), the save is refused
     so neither change gets lost. Reload the mission and redo the edit.
 """
@@ -91,8 +94,11 @@ def default_repo():
 def ready():
     return (MISSIONS / "catalog.yaml").exists()
 
-PORTS = range(8812, 8822)
-LOCK = {"key": ""}        # a temporary key set from the page (Lock); empty means open. Forgotten when the manager stops.
+PORTS = range(int(os.environ["AMBLE_PORT"]), int(os.environ["AMBLE_PORT"]) + 1) if os.environ.get("AMBLE_PORT") \
+    else range(8812, 8822)
+BIND = os.environ.get("AMBLE_BIND", "0.0.0.0")
+FIXED_KEY = os.environ.get("AMBLE_LOCK", "")   # set by the server it runs on (see Safety above); the page can't change it
+LOCK = {"key": FIXED_KEY}  # a temporary key set from the page (Lock); empty means open. Forgotten when the manager stops.
 SERVER = None
 FOLDED = ("description", "about")
 
@@ -346,6 +352,7 @@ def attention(rows, packs, settings):
             issues.append("draft")
         r["issues"] = issues
         r["hasPin"] = bool((data.get("place") or {}).get("coords"))
+        r["suggestion"] = data.get("suggestion")      # the AmbleBee Intake submission it came from, if any
     return rows
 
 
@@ -672,7 +679,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 return self._send(200, f.read_bytes(), "font/woff2")
             return self._send(404, {"error": "no such font"})
         if path == "/api/lock":
-            return self._send(200, {"locked": bool(LOCK["key"]), "ok": self._authed()})
+            return self._send(200, {"locked": bool(LOCK["key"]), "ok": self._authed(), "managed": bool(FIXED_KEY)})
         if not self._authed(q if path == "/api/release-file" else None):    # a download link carries the key itself
             return self._locked_out()
         try:
@@ -718,6 +725,8 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if not self._authed():
             return self._locked_out()
         path = self._route()
+        if FIXED_KEY and path in ("/api/stop", "/api/unlock", "/api/lock"):
+            return self._send(403, {"error": "This manager is run by a server, which sets its key and keeps it running."})
         if path == "/api/stop":                 # the page's Stop button: answer, then shut down
             self._send(200, {"ok": True})
             threading.Thread(target=SERVER.shutdown, daemon=True).start()
@@ -885,7 +894,7 @@ def main():
             sys.exit(f"A mission file won't load, so the manager can't start:\n  {e}")
     for port in PORTS:
         try:
-            server = http.server.ThreadingHTTPServer(("0.0.0.0", port), Handler)
+            server = http.server.ThreadingHTTPServer((BIND, port), Handler)
             break
         except OSError:
             continue

@@ -23,7 +23,7 @@ import yaml
 # The order keys appear in the existing files. New keys go into this order; unknown keys go last.
 ORDER = ["draft", "checked", "number", "name", "mode", "who", "place", "short", "description", "about",
          "steps", "for_kids", "gear", "duration", "effort", "cost", "setting", "season", "time_of_day", "travel",
-         "check_ahead", "discounts", "routine", "caution", "caution_until", "themes", "tags", "credit"]
+         "check_ahead", "discounts", "routine", "caution", "caution_until", "themes", "tags", "credit", "suggestion"]
 PLACE_ORDER = ["name", "area", "address", "coords", "website", "links"]
 FLOW_LISTS = {"who", "season", "check_ahead", "discounts", "themes", "tags"}
 FOLDED = {"description", "about"}

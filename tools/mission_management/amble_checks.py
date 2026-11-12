@@ -18,7 +18,7 @@ from pathlib import Path
 
 import yaml
 
-CHECKER_VERSION = 2   # 2: packs choose whether missions need a place (pack.yaml `places`)
+CHECKER_VERSION = 3   # 2: packs choose whether missions need a place (pack.yaml `places`); 3: optional `suggestion`
 
 # pack.yaml `places`: whether this pack's missions are about a real spot.
 #   required  every mission needs a place with coords (state packs: Near you and distances use them)
@@ -45,7 +45,7 @@ LIST_ALLOWED = {
     "season": {"spring", "summer", "fall", "winter"},
     "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
-KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit",
+KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit", "suggestion",
                                                               "caution", "caution_until", "draft", "themes", "checked", "about"}
 GEAR = {
     # Water
@@ -433,6 +433,9 @@ def check_catalog(root):
             elif cr.strip()[:1] in "(\"'" or cr.strip().lower().startswith("suggested by"):
                 problems.append(f"{where}: credit should be just the name, like `credit: Max W.` "
                                 "(the site adds \"Suggested by\" itself; no brackets or quotes)")
+        sg = m.get("suggestion")   # the AmbleBee Intake submission a mission came from; never published
+        if sg is not None and (isinstance(sg, bool) or not isinstance(sg, int) or sg < 1):
+            problems.append(f"{where}: suggestion should be the suggestion's number from AmbleBee Intake, like `suggestion: 12`")
         if "draft" in m and not isinstance(m["draft"], bool):
             problems.append(f"{where}: draft should be true or false (or leave the line out)")
         # description: the mission itself (what to do, the challenge, the photo), short enough for the Hive's card.

@@ -374,6 +374,7 @@ Effort should reflect what visitors reasonably need to complete the mission.
 | `themes` | Up to six predefined activity themes | None |
 | `tags` | Additional searchable keywords | Empty list |
 | `credit` | Optional contributor name | None |
+| `suggestion` | The AmbleBee Intake suggestion number a mission came from (added for you; never published) | None |
 
 ### Cost Categories
 
