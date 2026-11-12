@@ -199,6 +199,7 @@
         .then(function (r) {
           if (r.status === 201 && r.body.ok) {
             save(DRAFT_KEY + kind, null);
+            form.reset();   // Firefox refills fields on reload from what's in them, so empty them once sent
             track(kind + "_sent");
             var title = kind === "report" ? (data.mission_name || data.mission_id) : data.title;
             done.textContent = "";
