@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-11
 number: 2
 name: Bowl at the Garden Bowl
 mode: both
@@ -7,8 +7,8 @@ place:
   name: Garden Bowl at the Majestic
   area: Midtown, Detroit
   address: 4140 Woodward Ave, Detroit, MI 48201
-  coords: [42.35160, -83.06070]  # APPROX: set at the entrance before publishing
-  website: https://majesticdetroit.com/garden-bowl/
+  coords: [42.35117, -83.06002]
+  website: https://www.majesticdetroit.com/bowling
 short: Garden Bowl in Detroit. Bowl at an alley rolling since 1913, and the loser buys the snacks.
 description: >
   The Garden Bowl has been knocking down pins on Woodward since 1913, and it

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-11
 number: 2
 name: Central Park Zoo
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Central Park Zoo
   area: Central Park at E 64th St and Fifth Ave
-  coords: [40.76780, -73.97180]  # APPROX: set at the entrance before publishing
+  address: New York, NY 10019
+  coords: [40.76774, -73.97194]
   website: https://centralparkzoo.com
 short: Central Park Zoo. Visit the snow leopards, penguins and sea lions, and catch a feeding.
 description: >
@@ -40,5 +41,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+discounts: [senior]
 themes: [wildlife, playful, walks]
 tags: [central park zoo, sea lion feeding, snow leopards, delacorte clock, penguins, nyc]

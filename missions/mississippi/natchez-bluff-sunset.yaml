@@ -1,11 +1,11 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-11
 number: 1
 name: Sunset on the Natchez Bluff
 mode: date
 place:
   name: Natchez Bluff
   area: Downtown Natchez, above Natchez Under-the-Hill
-  coords: [31.55980, -91.40680]  # APPROX coords: bluff park on Broadway St
+  coords: [31.56180, -91.40663]
   website: https://www.visitnatchez.org
 short: Natchez Bluff sunset over the Mississippi, then walk down to Natchez Under-the-Hill.
 description: >

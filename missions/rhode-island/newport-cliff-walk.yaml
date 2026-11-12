@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-11
 number: 1
 name: Walk the Newport Cliff Walk
 mode: date
@@ -6,16 +6,18 @@ place:
   name: Cliff Walk at the Forty Steps
   area: Narragansett Ave, Newport
   address: Narragansett Ave & Ochre Point Ave, Newport, RI 02840
-  coords: [41.47170, -71.29890]
-  website: https://cliffwalk.com
+  coords: [41.47591, -71.29724]
+  website: https://www.newportri.gov/city-hall/departments/public-services/tree-parks-open-space/cliff-walk
 short: Walk the cliffs between the ocean and the Gilded Age mansions. Sit on the Forty Steps.
 description: >
   The Cliff Walk runs along the rocky shore of Newport with the ocean on one
   side and huge Gilded Age mansions on the other. Start at the Forty Steps,
-  walk south as far as you like, and sit on the stone steps down to the water
-  to watch the waves. Some sections are rough and parts may be closed for
-  repairs. The photo to get: the two of you on the path with a mansion on one
-  side and the ocean on the other.
+  sit on the stone steps overlooking the water, and watch the waves. Then
+  follow the Cliff Walk north for an easy coastal stroll. If you want to
+  explore farther south toward the famous mansions, follow the posted
+  detours around any closed sections. Some stretches are rough, so wear
+  comfortable walking shoes. The photo to get: the two of you on the path
+  with a mansion on one side and the ocean on the other.
 about: >
   The Cliff Walk runs about 3.5 miles along Newport's shore and was named a
   National Recreation Trail in 1975. Its path follows old fishermen's rights

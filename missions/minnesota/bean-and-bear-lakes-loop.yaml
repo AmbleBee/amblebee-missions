@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-11
 number: 2
 name: Bean and Bear Lakes Loop
 mode: adventure
@@ -6,27 +6,28 @@ who: [solo, friends, family]
 place:
   name: Superior Hiking Trail, Penn Boulevard Trailhead
   area: Silver Bay, North Shore
-  address: Penn Blvd, Silver Bay, MN 55614  # verify
-  coords: [47.30180, -91.28650]  # APPROX: set at the trailhead before publishing
-  website: https://superiorhiking.org
+  address: Superior Hiking Trail, Silver Bay, MN 55614
+  coords: [47.29206, -91.29864]
+  website: https://superiorhiking.org/trail-section/two-harbors-to-silver-bay/
 short: Bean and Bear Lakes loop near Silver Bay, MN. Hike the cliffs over twin lakes and Lake Superior.
 description: >
   Follow the Superior Hiking Trail up into the hills to the cliffs above
-  Bean and Bear Lakes, two narrow lakes tucked between rock walls, with Lake
-  Superior spread out behind you. Take your long lunch on the ledge where
-  both lakes line up below you, and each guess which lake is deeper. The
-  photo to get: you on the ledge with both lakes below.
+  Bean and Bear Lakes, two narrow lakes tucked between rocky ridges, with
+  glimpses of Lake Superior in the distance. Find a safe spot away from the
+  cliff edges to enjoy a long lunch, and guess which lake is deeper. The
+  trail climbs through forests and across rocky terrain, so bring sturdy
+  shoes, plenty of water, and a trail map. The photo to get: you at an
+  overlook with both lakes below.
 about: >
   The Superior Hiking Trail runs more than 300 miles along the ridges above
-  Lake Superior, from Duluth to the Canadian border. Bean and Bear Lakes sit
-  in basins scraped out of the rock by glaciers.
+  Lake Superior, from the Duluth area toward the Canadian border. Bean and
+  Bear Lakes sit in rocky basins shaped by glaciers.
 
-  The loop is about 7 miles with constant steep ups and downs, rocks, roots
-  and mud. Plan four to five hours, and bring poles and plenty of water;
-  there's nothing at the trailhead. Fall color peaks in late September and
-  early October.
+  The loop is approximately 6.5 to 7 miles, with steep climbs, rocky
+  sections, roots, and occasional mud. Allow four to six hours, depending on
+  your pace, and bring plenty of water.
 steps:
-  - Bean Lake from the cliffs
+  - Bean Lake from a safe overlook
   - Bear Lake and Lake Superior in one shot
   - Your boots after the muddiest stretch
 duration: half-day
@@ -37,5 +38,6 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [conditions]
+caution: Strenuous hike - Exposed overlooks - Slippery terrain.
 themes: [views, hiking, lakes-rivers, forests]
 tags: [bean and bear lakes, superior hiking trail, north shore hike, fall color, lake superior views, silver-bay]

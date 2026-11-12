@@ -1,13 +1,14 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-11
 number: 1
 name: Central Park Rowboat
 mode: both
 who: [friends, family, kids]
 place:
-  name: Loeb Boathouse
+  name: Central Park (Loeb) Boathouse
   area: The Lake, Central Park (enter near E 72nd St)
-  coords: [40.77530, -73.96890]  # APPROX: set at the boat rental dock before publishing
-  website: https://www.thecentralparkboathouse.com
+  address: EAST 72ND ST +, Center Dr, New York, NY 10021
+  coords: [40.77530, -73.96852]
+  website: https://centralparkboathouse.com/restaurant-menu/
 short: Central Park rowboat from the Loeb Boathouse. Take turns rowing the Lake and find Bow Bridge.
 description: >
   Rent a rowboat at the Loeb Boathouse and row out onto the Lake, with the

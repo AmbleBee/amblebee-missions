@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-11
 number: 2
 name: Barton Springs Pool
 mode: both
@@ -6,17 +6,19 @@ who: [solo, friends, family, kids]
 place:
   name: Barton Springs Pool, Zilker Park
   area: Zilker Park, Austin
-  coords: [30.26400, -97.77100]  # APPROX: set at the main entrance before publishing
-  website: https://www.austintexas.gov/department/barton-springs-pool
+  address: 2131 William Barton Dr, Austin, TX 78746
+  coords: [30.26374, -97.77128]
+  website: https://www.austintexas.gov/services/visit-barton-springs-pool
 short: Take a morning swim in Barton Springs, a spring-fed pool that stays about 68 degrees all year.
 description: >
-  Jump into a three-acre natural pool fed by underground springs, where the
-  water stays around 68 degrees all year, crystal clear over a rocky bottom.
-  Go first thing in the morning, when it's calm and the locals are doing laps,
-  and dare each other to jump in without wading. Watch for the tiny Barton
-  Springs salamander signs, then dry off on the grassy hill. Get a photo of
-  you by the water. It's cheap, but it closes now and then for cleaning
-  or floods, so check before you go.
+  ump into a three-acre natural pool fed by underground springs, where the
+  water stays around 68 to 70 degrees all year. Go in the morning when the
+  water is calm and the crowds are smaller, and challenge each other to
+  brave the chilly water. Look for signs about the tiny endangered Barton
+  Springs salamander, then dry off on the grassy hillside. Get a photo
+  together by the water. Admission is inexpensive during the paid season,
+  but the pool sometimes closes for cleaning or flooding, so check the hours
+  and conditions before you go.
 about: >
   Barton Springs is fed by the Edwards Aquifer, and people have swum here
   for well over a century. The pool is about 900 feet long and holds a
@@ -30,7 +32,7 @@ for_kids:
   short: Spring swim! Find each thing.
   steps:
     - The clear water
-    - A fish
+    - A fish or another aquatic animal
     - The diving board
     - The grassy hill
     - A selfie by the pool!
@@ -42,6 +44,7 @@ season: any
 time_of_day: morning
 travel: local
 check_ahead: [hours, conditions]
+discounts: [military, senior]
 themes: [swimming, lakes-rivers, relaxing]
 tags: [barton springs pool, zilker park, natural spring pool, cold swim, barton springs salamander, austin]
 credit:
