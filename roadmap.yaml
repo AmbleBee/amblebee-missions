@@ -87,6 +87,19 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Our Own Suggestion Box
+  status: done
+  date: 2026-11-12
+  tag: website
+  summary: The Google forms are retired in favor of our own. [Suggest a mission](/suggest/), [report a problem](/report/) or [get in touch](/contact/) right here on AmbleBee, then [check its status](/status/) any time.
+  items:
+    - "[Suggest a mission](/suggest/) two ways: [share an idea](/suggest/idea/) in a few lines, or [build the full mission](/suggest/mission/) step by step with tips along the way. Full missions go live faster"
+    - Every suggestion gets a private status link, so you can follow it from Awaiting Review all the way to Live
+    - "[Report a problem](/report/) with any mission. The report button on each mission fills in which one, and you can tick a box to follow the fix"
+    - A real [Contact](/contact/) page with a message form, plus staff@amblebee.com if you'd rather email
+    - Leave an email and we'll send updates. If it doesn't show up, check your spam folder
+    - If our forms are ever down, the old Google forms step in as a backup so nothing gets lost
+
 - title: Search That Looks Farther
   status: done
   date: 2026-11-09

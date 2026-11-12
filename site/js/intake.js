@@ -150,6 +150,16 @@
     ]);
   }
 
+  // "We sent an email to …": only when an email really goes out (ideas and missions with an email; reports only
+  // when they asked to follow). Gmail and others sometimes file a brand-new sender as spam, so say where to look.
+  function spamNote(email, future) {
+    return el("p", { class: "spam-note" }, [
+      document.createTextNode((future ? "We'll email " : "We sent an email to ")),
+      el("b", { text: email }),
+      document.createTextNode(" with updates. If you don't see it, please check your spam folder.")
+    ]);
+  }
+
   var THANKS = {
     idea: ["Thank you! Your idea is in.", "Every suggestion gets read. You can follow it from \"Awaiting review\" all the way to \"Live\"."],
     report: ["Thank you for the report!", "We'll take a look and fix what needs fixing."],
@@ -204,6 +214,8 @@
             var title = kind === "report" ? (data.mission_name || data.mission_id) : data.title;
             done.textContent = "";
             done.append(el("h2", { text: THANKS[kind][0] }), el("p", { text: THANKS[kind][1] }));
+            var mailed = String(data.email || "").trim();
+            if (mailed && (kind === "idea" || (kind === "report" && data.follow))) done.append(spamNote(mailed));
             if (r.body.status_url) done.append(linkPanel(r.body.status_url, kind, title));
             form.hidden = true;
             done.hidden = false;
@@ -319,6 +331,10 @@
     window.addEventListener("hashchange", showStatus);
     showStatus();
   }
+
+  // shared with site/js/builder.js (the full mission builder)
+  window.AmbleIntake = { API: API, BACKUP: BACKUP, request: request, health: health, el: el, $: $, $$: $$, load: load,
+    save: save, track: track, linkPanel: linkPanel, renderMine: renderMine, spamNote: spamNote, started: started };
 
   $$(".intake[data-intake]").forEach(setup);
   if ($(".status-view")) setupStatus();

@@ -1,0 +1,54 @@
+<p class="back-link"><a href="/suggest/">← Both ways to suggest</a></p>
+<h1>Share an idea</h1>
+<p class="hand">Know a great spot?</p>
+<p>Tell us about a date spot or adventure you love, in your own words. Every idea gets read, and if yours becomes a mission, you can be credited on it.</p>
+
+<div class="intake" data-intake="idea">
+  <p class="intake-wait">Checking the mailbox…</p>
+  <div class="intake-down" hidden>
+    <p class="hand">Currently not accepting suggestions</p>
+    <p>Our suggestion box is closed for a moment. Please try again later.</p>
+  </div>
+  <div class="intake-backup" hidden>
+    <p class="hand">Our mailbox is taking a break</p>
+    <p>You can still send it through our backup form. It may take us longer to see, and it won't come with a status link. Or try again here a little later.</p>
+    <p class="backup-row"><a class="btn primary small backup-link" href="#" target="_blank" rel="noopener">Use the backup form</a> <button type="button" class="btn small backup-retry">Try again</button></p>
+  </div>
+  <form class="intake-form" novalidate hidden>
+    <div class="field">
+      <label for="idea-title">What's the place or idea?</label>
+      <input id="idea-title" name="title" type="text" maxlength="120" required aria-describedby="idea-title-hint">
+      <p class="hint" id="idea-title-hint">A name is enough, like "Haystack Rock tide pools."</p>
+    </div>
+    <div class="field">
+      <label for="idea-body">Tell us about it</label>
+      <textarea id="idea-body" name="body" rows="6" maxlength="3000" required aria-describedby="idea-body-hint"></textarea>
+      <p class="hint" id="idea-body-hint">Where is it, and what should people do or photograph there? Every mission has something to do or a photo to take.</p>
+    </div>
+    <div class="field">
+      <label for="idea-name">Your name <span class="opt">(optional)</span></label>
+      <input id="idea-name" name="name" type="text" maxlength="40" autocomplete="given-name">
+      <label class="check"><input type="checkbox" name="credit"> <span>Credit me on the mission ("Suggested by …")</span></label>
+    </div>
+    <div class="field">
+      <label for="idea-email">Email <span class="opt">(optional)</span></label>
+      <input id="idea-email" name="email" type="email" maxlength="254" autocomplete="email" aria-describedby="idea-email-hint">
+      <p class="hint" id="idea-email-hint">Your status link always works, but email is the safest way for us to reach you if we have a question.</p>
+    </div>
+    <div class="hp" aria-hidden="true"><label for="idea-website">Leave this empty</label><input id="idea-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <p class="hint">We only use your email for updates about this suggestion, and your name only appears on a mission if you ask. <a href="/privacy/#forms">Privacy</a></p>
+    <button class="btn primary" type="submit">Send my idea</button>
+    <p class="form-status" role="status" aria-live="polite"></p>
+  </form>
+  <div class="intake-done" tabindex="-1" hidden></div>
+</div>
+
+<p class="hint">Know the place well? <a href="/suggest/mission/">Build the full mission</a> instead: it helps us most and goes live faster.</p>
+
+<section class="intake-mine" hidden>
+  <h2>Your submissions</h2>
+  <p class="hint">Saved on this device only.</p>
+  <ul></ul>
+</section>
+<noscript><p>This form needs JavaScript. You can also email <a href="mailto:staff@amblebee.com">staff@amblebee.com</a>.</p></noscript>
+<script src="/js/intake.js" defer></script>

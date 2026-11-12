@@ -60,9 +60,16 @@ class FakeIntake:
             route.fulfill(status=status, headers=cors, body=json.dumps(body))
         if path == "/health":
             return reply(200, {"ok": True, "accepting": self.mode == "up"})
+        if path == "/schema":
+            return reply(200, {"ok": True, **SCHEMA})
         if req.method == "POST":
             data = json.loads(req.post_data or "{}")
             self.posts.append((path, data))
+            if path == "/submit/mission":
+                m = data.get("mission") or {}
+                if not m.get("name") or not m.get("description"):
+                    return reply(400, {"ok": False, "error": "Please check the highlighted fields.", "errors": {"name": "Give the mission a name."}})
+                return reply(201, {"ok": True, "token": "tok123", "status_url": "https://amblebee.com/status/#tok123"})
             need = {"/submit/idea": ["title", "body"], "/report": ["body"], "/contact": ["name", "email", "message"]}.get(path)
             if need is None:
                 return reply(404, {"ok": False})
@@ -78,6 +85,23 @@ class FakeIntake:
                                "steps": [{"status": s, "label": s} for s in ("awaiting", "in_review", "building", "approved", "live")],
                                "history": [{"status": "awaiting", "label": "Awaiting review", "at": "2026-11-12T16:00:00+00:00"}]})
         return reply(404, {"ok": False, "error": "not found"})
+
+
+SCHEMA = {   # a small stand-in for AmbleBee Intake's GET /schema
+    "packs": [{"id": "oregon", "name": "Amble Oregon", "places": "required"}, {"id": "anywhere", "name": "Amble Anywhere", "places": "none"}],
+    "allowed": {"mode": ["date", "adventure", "both"], "who": ["solo", "friends", "family", "kids"], "duration": ["short", "half-day", "all-day"],
+                "effort": ["easy", "moderate", "hard"], "cost": ["free", "$", "$$", "$$$"], "setting": ["indoor", "outdoor", "either"],
+                "season": ["spring", "summer", "fall", "winter"], "time_of_day": ["any", "morning", "daytime", "evening", "night"],
+                "travel": ["home", "local", "drive", "day-trip"], "check_ahead": ["hours", "tickets"], "discounts": ["senior", "student"]},
+    "labels": {"mode": {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}, "cost": {"$": "Under $20 for two"},
+               "rent": {"on-site": "Rent it there", "nearby": "Rent it nearby", "no": "Bring your own"}},
+    "gear": ["bikes", "headlamps", "life-jackets"], "rent": ["on-site", "nearby", "no"],
+    "themes": {"beach": "Beaches & coast", "wildlife": "Animals & wildlife", "drinks": "Wine, beer & cocktails", "playful": "Playful & silly"},
+    "theme_groups": {"Outdoors": ["beach", "wildlife"], "Fun": ["drinks"], "Feel": ["playful"]}, "themes_max": 6,
+    "limits": {"name": 80, "short": 100, "description": 800, "about": 1500, "caution": 200, "credit": 40},
+    "couple_words": r"\b(the two of you|you two|both of you|your partner|your date|hold hands)\b",
+    "tips": {"name": "Short and specific beats clever.", "coords": "Right-click the entrance in Google Maps."},
+}
 
 
 def expected(message):
@@ -771,8 +795,16 @@ def t_built_pages_load(site, catalog):
     assert page.locator("a[href='mailto:staff@amblebee.com']").count() >= 1, "email stays as the fallback"
 
 
-def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
+def t_suggest_page_offers_both_ways(site, catalog):
     page = site.open("/suggest/")
+    assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1
+    assert page.locator(".suggest-paths a[href='/suggest/mission/']").count() == 1
+    text = page.inner_text(".suggest-paths")
+    assert "takes us longer" in text and "helps us the most" in text, "each way says what it means for us"
+
+
+def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
+    page = site.open("/suggest/idea/")
     page.wait_for_selector(".intake-form", state="visible")
     page.click(".intake-form button[type=submit]")
     page.wait_for_selector(".intake-form .err")
@@ -781,8 +813,11 @@ def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
     page.fill("#idea-body", "Go at low tide and find three different sea stars.")
     page.fill("#idea-name", "Sam R.")
     page.check("input[name=credit]")
+    page.fill("#idea-email", "sam@example.com")
     page.click(".intake-form button[type=submit]")
     page.wait_for_selector(".intake-done .link-box")
+    note = page.inner_text(".intake-done .spam-note")
+    assert "sam@example.com" in note and "spam folder" in note, "the thank-you says where the email went"
     assert page.input_value(".intake-done .link-box") == "https://amblebee.com/status/#tok123"
     path, sent = site.intake.posts[-1]
     assert path == "/submit/idea" and sent["credit"] is True and sent["website"] == "" and sent["elapsed_ms"] > 0
@@ -790,6 +825,65 @@ def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
     page.wait_for_selector(".intake-mine li a")
     assert page.inner_text(".intake-mine li a") == "Tide pools at Haystack Rock", "the link is kept under Your submissions"
     assert page.input_value("#idea-title") == "", "a sent suggestion doesn't come back as a draft"
+
+
+def t_builder_walks_through_and_sends(site, catalog):
+    page = site.open("/suggest/mission/", PHONE)
+    page.wait_for_selector(".builder-panel h2")
+    assert not page.locator(".builder-back").is_visible(), "no Back on the first step"
+    page.click(".builder-next")                                        # nothing filled in: it says what's missing
+    page.wait_for_selector(".builder-panel .err")
+    page.select_option("#b-pack", "oregon")
+    page.fill("#b-name", "Tide Pools at Haystack Rock")
+    page.click("#b-mode label:has-text('Date or adventure')")
+    page.click("#b-who label:has-text('kids')")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-place_name")                             # Oregon needs a place
+    page.click(".builder-next")
+    page.wait_for_selector(".field[data-field=place_name] .err")
+    page.fill("#b-place_name", "Haystack Rock")
+    page.fill("#b-coords", "45.88456, -123.96875")
+    assert "Right-click" in page.inner_text(".field[data-field=coords] .tip"), "each field has its tip"
+    page.click(".builder-next")
+    page.wait_for_selector("#b-short")
+    page.fill("#b-short", "Find three kinds of sea stars at low tide.")
+    page.fill("#b-description", "Go at low tide, hold hands and find three kinds of sea stars.")
+    page.fill("#b-for_kids", "Find a crab hiding in the rocks!")
+    page.fill("#b-kids_steps", "Something orange")
+    page.click(".builder-next")
+    page.wait_for_selector(".field[data-field=description] .err")      # couple words on a mission kids can come on
+    page.fill("#b-description", "Go at low tide and find three kinds of sea stars, then photograph the biggest one with the rock behind it.")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-duration")
+    page.click("#b-gear-items label:has-text('headlamps')")
+    page.select_option(".gear-row select", "on-site")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-themes")
+    page.click("#b-themes label:has-text('Beaches & coast')")
+    page.click("#b-themes label:has-text('Wine, beer & cocktails')")
+    page.click(".builder-next")
+    page.wait_for_selector(".field[data-field=themes] .err")           # no drinks when kids can come
+    page.click("#b-themes label:has-text('Wine, beer & cocktails')")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-about")
+    page.reload()                                                       # answers survive a reload, on the same step
+    page.wait_for_selector("#b-about")
+    page.click(".builder-next")
+    page.fill("#b-email", "sam@example.com")
+    page.click(".builder-next")
+    page.wait_for_selector(".review-part")
+    review = page.inner_text(".builder-panel")
+    assert "Haystack Rock" in review and "headlamps" in review and "spam folder" in review
+    page.click(".builder-next")                                         # Send my mission
+    page.wait_for_selector(".intake-done .link-box")
+    path, sent = site.intake.posts[-1]
+    m = sent["mission"]
+    assert path == "/submit/mission" and m["pack"] == "oregon" and m["who"] == ["kids"] and m["gear"] == [{"item": "headlamps", "rent": "on-site"}]
+    assert m["themes"] == ["beach"] and m["season"] == "any" and m["place"]["coords"] == "45.88456, -123.96875" and sent["email"] == "sam@example.com"
+    assert "spam folder" in page.inner_text(".intake-done .spam-note")
+    page.goto(site.base + "/suggest/mission/")
+    page.wait_for_selector(".builder-panel h2")
+    assert page.input_value("#b-name") == "", "a sent mission doesn't come back as a draft"
 
 
 def t_report_from_a_mission_fills_it_in(site, catalog):
@@ -826,14 +920,15 @@ def t_contact_form_sends_and_keeps_a_draft(site, catalog):
 
 def t_forms_say_when_the_mailbox_is_closed(site, catalog):
     site.intake.mode = "paused"                       # switched off on purpose: closed, and no backup
-    for path in ("/suggest/", "/report/", "/contact/"):
+    for path in ("/suggest/idea/", "/suggest/mission/", "/report/", "/contact/"):
         page = site.open(path)
         page.wait_for_selector(".intake-down", state="visible")
-        assert not page.is_visible(".intake-form") and not page.is_visible(".intake-backup"), f"{path} paused must stay closed"
+        assert not page.is_visible(".intake-form, .builder-form") and not page.is_visible(".intake-backup"), f"{path} paused must stay closed"
     site.intake.mode = "down"                         # server unreachable: the Google Form backups
-    page = site.open("/suggest/")
-    page.wait_for_selector(".intake-backup", state="visible")
-    assert page.get_attribute(".backup-link", "href").startswith("https://forms.gle/")
+    for path in ("/suggest/idea/", "/suggest/mission/"):
+        page = site.open(path)
+        page.wait_for_selector(".intake-backup", state="visible")
+        assert page.get_attribute(".backup-link", "href").startswith("https://forms.gle/"), path
     mission = catalog["missions"][0]
     page = site.open(f"/report/?id={mission['id']}&name={mission['name']}")
     page.wait_for_selector(".intake-backup", state="visible")
@@ -842,7 +937,7 @@ def t_forms_say_when_the_mailbox_is_closed(site, catalog):
     page = site.open("/contact/")
     page.wait_for_selector(".intake-down", state="visible")   # contact has no Google Form: email instead
     site.intake.mode = "up"
-    page = site.open("/suggest/")
+    page = site.open("/suggest/idea/")
     site.intake.mode = "down"
     page.wait_for_selector(".intake-form", state="visible")
     page.fill("#idea-title", "Tide pools")
@@ -868,6 +963,8 @@ def t_status_page_shows_where_it_is(site, catalog):
     page.wait_for_selector(".status-card")
     for path in ("/status/", "/report/"):
         assert site.open(path).locator('meta[name="robots"][content="noindex"]').count() == 1, f"{path} stays out of search"
+    for path in ("/suggest/idea/", "/suggest/mission/"):
+        assert site.open(path).locator('meta[name="robots"]').count() == 0, f"{path} can be found in search"
 
 
 def main():

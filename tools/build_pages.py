@@ -57,14 +57,18 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "privacy": ("Privacy", "What AmbleBee keeps, what stays on your device, and what goes to Google or GitHub."),
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
     "suggest": ("Suggest a mission", "Know a great date spot or adventure? Suggest it for AmbleBee and it might become a mission."),
+    "suggest-idea": ("Share an idea", "Tell AmbleBee about a date spot or adventure you love, in your own words."),
+    "suggest-mission": ("Build a mission", "Build a full AmbleBee mission step by step, with tips along the way."),
     "report": ("Report a problem", "Tell AmbleBee about a closed place, a wrong pin, or anything off with a mission."),
     "status": ("Submission status", "Check where your AmbleBee suggestion or report is at."),
 }
 NOINDEX_PAGES = {"report", "status"}   # useful only through a link: kept out of search engines and the sitemap
+PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
 CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello",
-                "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission"}
+                "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
+                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -627,15 +631,15 @@ def build_pages(out):
                               title="Every mission", text=intro, note="amblebee.com/missions")), encoding="utf-8")
 
     for name, (title, desc) in INFO_PAGES.items():
-        path = f"/{name}/"
+        path = PAGE_PATHS.get(name, f"/{name}/")
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
         main = f'<div class="page info">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         image = share_card(f"page-{name}", f"{title}: {desc}", badge="hive", eyebrow=CARD_EYEBROW.get(name, "AmbleBee"),
-                           title=title, text=desc, note=f"amblebee.com/{name}")
+                           title=title, text=desc, note="amblebee.com" + path.rstrip("/"))
         text = page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image)
         if name in NOINDEX_PAGES:
-            f = Path(out) / name / "index.html"
+            f = Path(out) / path.strip("/") / "index.html"
             f.parent.mkdir(parents=True, exist_ok=True)
             f.write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
             continue
