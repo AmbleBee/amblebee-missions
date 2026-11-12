@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-12
 number: 45
 name: Dinner at Mizuna, Spokane
 mode: date
@@ -6,8 +6,8 @@ place:
   name: Mizuna Restaurant and Wine Bar
   area: Downtown Spokane
   address: 214 N Howard St, Spokane, WA 99201
-  coords: [47.65850, -117.42450]  # APPROX: set at the entrance before publishing
-  website: https://www.mizuna.com  # verify
+  coords: [47.65950, -117.42044]
+  website: https://www.mizuna.com
 short: Have a slow dinner at Mizuna in downtown Spokane. Each pick a wine for the other.
 description: >
   Settle in for dinner at Mizuna, a downtown Spokane favorite for seasonal
@@ -34,6 +34,6 @@ setting: either
 season: any
 time_of_day: evening
 travel: day-trip
-check_ahead: [reservation]
+check_ahead: [reservation, hours]
 themes: [food, drinks, romantic]
 tags: [dinner, wine, romantic, food, spokane]
