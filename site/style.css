@@ -908,6 +908,11 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .status-thread p { margin: 4px 0 0; padding: 10px 14px; border-radius: 14px; background: var(--linen); color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; }
 .status-thread li.us p { background: var(--sage-tint); color: var(--sage-ink); }
 .status-thread + .status-answer { border-top: 0; padding-top: 0; margin-top: 4px; }
+.status-close { margin: 14px 0 0; padding-top: 12px; border-top: 2px dashed var(--line); display: flex; flex-wrap: wrap; align-items: center; gap: 8px; color: var(--walnut-soft); }
+.status-closeask { margin: 14px 0; padding: 14px 16px; border-radius: 14px; background: var(--honey-tint); color: var(--ink); }
+.status-closeask p { margin: 0 0 8px; }
+.status-closeask-title { font: 600 1.2rem/1.2 var(--display); }
+.status-closeask-actions { display: flex; flex-wrap: wrap; gap: 10px; margin: 10px 0 0; }
 .status-thanks { padding: 12px 14px; border-radius: 12px; background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; }
 .status-reason { padding: 12px 14px; border-radius: 12px; background: var(--honey-tint); color: var(--ink); font-weight: 700; }
 .steps { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 8px; }

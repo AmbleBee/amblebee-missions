@@ -45,6 +45,7 @@ class FakeIntake:
 
     def __init__(self):
         self.mode, self.posts, self.answered = "up", [], False
+        self.closed = False
         self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
                        {"who": "us", "at": "2026-11-13T16:00:00+00:00", "body": "We'd love one! Any favorite spots?"}]
 
@@ -67,7 +68,11 @@ class FakeIntake:
         if req.method == "POST":
             data = json.loads(req.post_data or "{}")
             self.posts.append((path, data))
+            if path == "/status/msg123/close":
+                self.closed = True
+                return reply(200, {"ok": True})
             if path == "/status/msg123/reply":
+                self.closed = False
                 self.thread.append({"who": "them", "at": "2026-11-14T16:00:00+00:00", "body": data.get("message", "")})
                 return reply(201, {"ok": True})
             if path == "/status/ask123/reply":
@@ -98,12 +103,15 @@ class FakeIntake:
                                "history": [{"status": "awaiting", "label": "Awaiting review", "at": "2026-11-12T16:00:00+00:00"}]})
         if path == "/status/msg123":
             mine = self.thread[-1]["who"] == "them"
-            return reply(200, {"ok": True, "kind": "contact", "title": "Your message to AmbleBee", "closed": False,
-                               "status": "queue" if mine else "needs_info", "headline": "In the queue" if mine else "We wrote back",
-                               "text": "It's waiting to be read." if mine else "We replied and need a little more from you. See below.",
-                               "created_at": "2026-11-12T16:00:00+00:00", "due": None if mine else "2026-12-13T16:00:00+00:00",
-                               "steps": [{"status": s, "label": s} for s in ("queue", "review", "done")], "history": [],
-                               "thread": self.thread, "can_reply": True})
+            status, headline, text = (("queue", "In the queue", "It's waiting to be read.") if mine else
+                                      ("open", "Conversation open", "We replied. Write back any time, or close it when you're all set."))
+            if self.closed:
+                status, headline, text = "done", "Closed", "You closed this conversation. Need anything else? Reply below and it opens again."
+            return reply(200, {"ok": True, "kind": "contact", "title": "Your message to AmbleBee", "closed": self.closed,
+                               "status": status, "headline": headline, "text": text, "days": 30,
+                               "created_at": "2026-11-12T16:00:00+00:00", "due": "2026-12-13T16:00:00+00:00" if status == "open" else None,
+                               "steps": [{"status": s, "label": s} for s in ("queue", "review", "open", "done")], "history": [],
+                               "thread": self.thread, "can_reply": True, "can_close": not self.closed})
         if path == "/status/ask123":
             waiting = not self.answered
             view = {"ok": True, "kind": "idea", "title": "Covered bridge loop", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
@@ -1012,10 +1020,12 @@ def t_status_page_shows_where_it_is(site, catalog):
 def t_status_page_shows_a_contact_conversation_and_takes_a_reply(site, catalog):
     page = site.open("/status/#msg123")
     page.wait_for_selector(".status-thread")
-    assert page.inner_text(".status-headline") == "We wrote back"
+    assert page.inner_text(".status-headline") == "Conversation open"
     assert page.locator(".status-thread li").count() == 2 and page.locator(".status-thread li.us").count() == 1
     assert "Any favorite spots?" in page.inner_text(".status-thread li.us")
-    assert "mark it done" in page.inner_text(".status-answer .hint")
+    hints = page.inner_text(".status-answer")
+    assert "closes on December 13, 2026" in hints and "another 30 days" in hints
+    assert "not by email" in hints, "it says to reply here, not by email"
     page.fill("#status-answer", "Glacier, for sure.")
     page.click(".status-answer button[type=submit]")
     page.wait_for_selector(".status-thanks")
@@ -1024,6 +1034,35 @@ def t_status_page_shows_a_contact_conversation_and_takes_a_reply(site, catalog):
     assert page.inner_text(".status-headline") == "In the queue"
     assert page.locator(".status-answer").count() == 1, "they can write again"
     del site.intake.thread[2:]
+
+
+def t_a_contact_conversation_can_be_closed_from_the_page_or_an_email(site, catalog):
+    site.intake.closed = False
+    page = site.open("/status/#msg123")
+    page.wait_for_selector(".status-close button")
+    assert page.locator(".status-closeask").count() == 0, "no question unless the email's Close button was used"
+    page.click(".status-close button")
+    page.wait_for_function("() => document.querySelector('.status-headline') && document.querySelector('.status-headline').textContent === 'Closed'")
+    assert site.intake.posts[-1][0] == "/status/msg123/close"
+    assert "Closed. Thanks" in page.inner_text(".status-thanks")
+    assert page.locator(".status-close").count() == 0 and page.locator(".status-answer").count() == 1, "closed, but they can still write"
+
+    site.intake.closed = False   # the Close button in an email: the page asks first
+    before = len(site.intake.posts)
+    page = site.open("/status/#msg123&close")
+    page.wait_for_selector(".status-closeask")
+    assert len(site.intake.posts) == before and not site.intake.closed, "opening the link doesn't close anything by itself"
+    assert page.locator(".status-thread li").count() == 2, "the conversation is there to read first"
+    page.click(".status-closeask-actions button:has-text('Keep it open')")
+    page.wait_for_selector(".status-close button")
+    assert page.locator(".status-closeask").count() == 0 and not site.intake.closed
+    assert page.evaluate("location.hash") == "#msg123", "the close request is dropped from the address"
+    page = site.open("/status/#msg123&close")
+    page.click(".status-closeask-actions button:has-text('Yes, close it')")
+    page.wait_for_selector(".status-thanks")
+    assert site.intake.closed and page.inner_text(".status-headline") == "Closed"
+    assert page.evaluate("location.hash") == "#msg123"
+    site.intake.closed = False
 
 
 def t_status_page_asks_a_question_and_takes_the_answer(site, catalog):

@@ -293,7 +293,10 @@
     var send = el("button", { class: "btn primary", type: "submit", text: chat ? "Send reply" : "Send my answer" });
     var form = el("form", { class: "intake-form status-answer", novalidate: "" }, [
       chat ? null : el("p", { class: "status-question", text: v.question }),
-      v.due ? el("p", { class: "hint", text: "Please answer by " + when(v.due) + ". After that we'll " + (chat ? "mark it done." : "close it for now.") }) : null,
+      v.due ? el("p", { class: "hint", text: chat
+        ? "This conversation closes on " + when(v.due) + " if there's no reply. Each reply keeps it open another " + (v.days || 30) + " days."
+        : "Please answer by " + when(v.due) + ". After that we'll close it for now." }) : null,
+      chat ? el("p", { class: "hint", text: "Please reply here, not by email. Email replies can get lost." }) : null,
       el("div", { class: "field" }, [el("label", { for: "status-answer", text: chat ? "Your reply" : "Your answer" }), area]),
       send, note
     ]);
@@ -320,10 +323,46 @@
     return form;
   }
 
+  // Closing a contact conversation: the button on this page, or the Close button in an email. The email one
+  // lands here with "&close" on the link and asks first, so nothing closes just because a link was opened.
+  var justClosed = false;
+  function plainLink(token) {
+    try { history.replaceState(null, "", location.pathname + "#" + token); } catch (e) { /* fine: the next load just asks again */ }
+  }
+  function closeIt(token, button, note) {
+    button.disabled = true;
+    request("/status/" + encodeURIComponent(token) + "/close",
+      { method: "POST", headers: { "Content-Type": "application/json" }, body: "{}" })
+      .then(function (r) {
+        if (r.status === 200 && r.body.ok) { track("conversation_closed"); justClosed = true; plainLink(token); showStatus(); return; }
+        button.disabled = false;
+        if (note) { note.className = "form-status bad"; note.textContent = r.body.error || "That didn't work. Please try again."; }
+      }, function () {
+        button.disabled = false;
+        if (note) { note.className = "form-status bad"; note.textContent = "We couldn't reach AmbleBee just now. Please try again in a minute."; }
+      });
+  }
+  function closeAsk(token) {
+    var yes = el("button", { class: "btn primary small", type: "button", text: "Yes, close it" });
+    var no = el("button", { class: "btn small", type: "button", text: "Keep it open" });
+    var note = el("p", { class: "form-status", role: "status", "aria-live": "polite" });
+    var box = el("div", { class: "status-closeask", role: "group", "aria-label": "Close this conversation?" }, [
+      el("p", { class: "status-closeask-title", text: "Close this conversation?" }),
+      el("p", { text: "Closing lets us know you're all set. You can still reply later and it opens again." }),
+      el("p", { class: "status-closeask-actions" }, [yes, no]), note
+    ]);
+    yes.addEventListener("click", function () { closeIt(token, yes, note); });
+    no.addEventListener("click", function () { plainLink(token); showStatus(); });
+    return box;
+  }
+
   function showStatus(view) {
     var out = $(".status-view");
     var lookup = $(".status-lookup");
-    var token = location.hash.replace(/^#/, "");
+    // "#<token>" or, from the Close button in an email, "#<token>&close"
+    var parts = location.hash.replace(/^#/, "").split("&");
+    var token = parts[0];
+    var wantsClose = parts.indexOf("close") > 0;
     out.textContent = "";
     if (!token) { out.hidden = true; lookup.hidden = false; return; }
     lookup.hidden = true;
@@ -350,6 +389,11 @@
         el("p", { class: "status-headline", text: v.headline }),
         el("p", { text: v.text })
       ]);
+      if (justClosed) {
+        justClosed = false;
+        card.append(el("p", { class: "status-thanks", role: "status", text: "Closed. Thanks for letting us know!" }));
+      }
+      if (v.thread && wantsClose && v.can_close) card.append(closeAsk(token));
       if (justAnswered) {
         justAnswered = false;
         card.append(el("p", { class: "status-thanks", role: "status", text: v.thread ? "Sent! We'll read it soon." : "Thank you! Your answer is in, and your suggestion is moving again." }));
@@ -362,6 +406,11 @@
           ]);
         })));
         if (v.can_reply) card.append(answerForm(token, v));
+        if (v.can_close && !wantsClose) {
+          var shut = el("button", { class: "btn small", type: "button", text: "Close this conversation" });
+          shut.addEventListener("click", function () { closeIt(token, shut); });
+          card.append(el("p", { class: "status-close" }, [el("span", { text: "All sorted? " }), shut]));
+        }
       } else if (v.status === "needs_info" && v.question) card.append(answerForm(token, v));
       if (v.reason) card.append(el("p", { class: "status-reason", text: v.reason }));
       if (v.mission_url) card.append(el("p", {}, [el("a", { class: "btn primary small", href: v.mission_url, text: "See the mission" })]));
@@ -394,7 +443,7 @@
     form.addEventListener("submit", function (e) {
       e.preventDefault();
       var raw = form.elements.link.value.trim();
-      var token = raw.indexOf("#") !== -1 ? raw.split("#").pop() : raw;
+      var token = (raw.indexOf("#") !== -1 ? raw.split("#").pop() : raw).split("&")[0];
       if (token) location.hash = token;
     });
     window.addEventListener("hashchange", showStatus);
