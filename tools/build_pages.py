@@ -46,7 +46,7 @@ NEARBY = 3         # "More missions nearby" at the bottom of each mission page: 
 META_MAX = 158     # Google cuts search snippets off at about this many characters
 COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked once it has this many live missions
 NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
-OG_IMAGE = {"url": f"{BASE}/og-image.png?v=2",   # for pages without their own share card; the same as site/index.html
+OG_IMAGE = {"url": f"{BASE}/og-image.png?v=3",   # for pages without their own share card; the same as site/index.html
             "alt": "AmbleBee: date ideas and adventures near you. A sealed envelope with a honey wax seal, and a bee flying off to deliver it"}
 CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js; amblebee-intake is the server behind the Suggest, Report, Contact and Status pages (site/js/intake.js)
 # the same "Report a problem" page as site/js/core.js: opens with the mission's id and name already filled in

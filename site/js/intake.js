@@ -18,7 +18,7 @@
   var REPORT_FIELDS = { id: "entry.872618061", name: "entry.160884926" };   // pre-fills the backup report form
   var LIST_KEY = "amble.submissions";
   var DRAFT_KEY = "amble.draft.";
-  var KIND = { idea: "Mission idea", mission: "Mission", report: "Problem report" };
+  var KIND = { idea: "Mission idea", mission: "Mission", report: "Problem report", contact: "Message" };
   var started = Date.now();
 
   function $(sel, root) { return (root || document).querySelector(sel); }
@@ -180,7 +180,7 @@
   var THANKS = {
     idea: ["Thank you! Your idea is in.", "Every suggestion gets read. You can follow it from \"Awaiting review\" all the way to \"Live\"."],
     report: ["Thank you for the report!", "We'll take a look and fix what needs fixing."],
-    contact: ["Thanks! Your message is on its way.", "We read every message and will reply to your email, usually within a few days."]
+    contact: ["Thanks! Your message is on its way.", "We read every message, usually within a few days. Our reply shows up on your private page below, and we'll email you when it does."]
   };
 
   function setup(box) {
@@ -230,11 +230,11 @@
             save(DRAFT_KEY + kind, null);
             form.reset();   // Firefox refills fields on reload from what's in them, so empty them once sent
             track(kind + "_sent");
-            var title = kind === "report" ? (data.mission_name || data.mission_id) : data.title;
+            var title = kind === "report" ? (data.mission_name || data.mission_id) : (kind === "contact" ? "Your message to AmbleBee" : data.title);
             done.textContent = "";
             done.append(el("h2", { text: THANKS[kind][0] }), el("p", { text: THANKS[kind][1] }));
             var mailed = String(data.email || "").trim();
-            if (mailed && (kind === "idea" || (kind === "report" && data.follow))) done.append(spamNote(mailed));
+            if (mailed && (kind === "idea" || kind === "contact" || (kind === "report" && data.follow))) done.append(spamNote(mailed));
             if (r.body.status_url) done.append(linkPanel(r.body.status_url, kind, title));
             form.hidden = true;
             done.hidden = false;
@@ -283,6 +283,43 @@
     catch (e) { return ""; }
   }
 
+  // "We have a question": the question, when to answer by, and a box to answer in. The answer goes to
+  // POST /status/<token>/reply, and the suggestion carries on from where it was.
+  var justAnswered = false;
+  function answerForm(token, v) {
+    var area = el("textarea", { id: "status-answer", rows: "5", maxlength: "3000", required: "" });
+    var note = el("p", { class: "form-status", role: "status", "aria-live": "polite" });
+    var chat = !!v.thread;   // a contact conversation, not a question about a suggestion
+    var send = el("button", { class: "btn primary", type: "submit", text: chat ? "Send reply" : "Send my answer" });
+    var form = el("form", { class: "intake-form status-answer", novalidate: "" }, [
+      chat ? null : el("p", { class: "status-question", text: v.question }),
+      v.due ? el("p", { class: "hint", text: "Please answer by " + when(v.due) + ". After that we'll " + (chat ? "mark it done." : "close it for now.") }) : null,
+      el("div", { class: "field" }, [el("label", { for: "status-answer", text: chat ? "Your reply" : "Your answer" }), area]),
+      send, note
+    ]);
+    function bad(text) {
+      send.disabled = false;
+      note.className = "form-status bad";
+      note.textContent = text;
+    }
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var text = area.value.trim();
+      if (!text) { area.setAttribute("aria-invalid", "true"); bad(chat ? "Write your reply first." : "Write your answer first."); area.focus(); return; }
+      area.removeAttribute("aria-invalid");
+      send.disabled = true;
+      note.className = "form-status";
+      note.textContent = "Sending…";
+      request("/status/" + encodeURIComponent(token) + "/reply",
+        { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ message: text }) })
+        .then(function (r) {
+          if (r.status === 201 && r.body.ok) { track("answer_sent"); justAnswered = true; showStatus(); return; }
+          bad((r.body.errors && r.body.errors.message) || r.body.error || "That didn't send. Please try again.");
+        }, function () { bad("We couldn't reach AmbleBee just now. Your answer is still here, so please try again in a minute."); });
+    });
+    return form;
+  }
+
   function showStatus(view) {
     var out = $(".status-view");
     var lookup = $(".status-lookup");
@@ -313,6 +350,19 @@
         el("p", { class: "status-headline", text: v.headline }),
         el("p", { text: v.text })
       ]);
+      if (justAnswered) {
+        justAnswered = false;
+        card.append(el("p", { class: "status-thanks", role: "status", text: v.thread ? "Sent! We'll read it soon." : "Thank you! Your answer is in, and your suggestion is moving again." }));
+      }
+      if (v.thread) {
+        card.append(el("ol", { class: "status-thread", "aria-label": "Conversation" }, v.thread.map(function (m) {
+          return el("li", { class: m.who === "us" ? "us" : "you" }, [
+            el("span", { class: "who", text: (m.who === "us" ? "AmbleBee" : "You") + " · " + when(m.at) }),
+            el("p", { text: m.body })
+          ]);
+        })));
+        if (v.can_reply) card.append(answerForm(token, v));
+      } else if (v.status === "needs_info" && v.question) card.append(answerForm(token, v));
       if (v.reason) card.append(el("p", { class: "status-reason", text: v.reason }));
       if (v.mission_url) card.append(el("p", {}, [el("a", { class: "btn primary small", href: v.mission_url, text: "See the mission" })]));
       out.append(card);

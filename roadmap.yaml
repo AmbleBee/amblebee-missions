@@ -87,6 +87,19 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Looking After What You Send
+  status: done
+  date: 2026-11-13
+  tag: website
+  summary: Behind the scenes, AmbleBee now tidies up after itself and keeps a safety copy, so what you send us is handled with care. The details are on the [privacy page](/privacy/).
+  items:
+    - Your name and email are removed automatically 90 days after your suggestion goes live or is declined, or your report is settled
+    - Contact messages, and the replies back and forth, are deleted 90 days after they're wrapped up
+    - "Want something gone sooner? [Ask us](/contact/) and we can remove it right away"
+    - "Send a [contact message](/contact/) and you get a receipt by email, with a private link to follow the conversation"
+    - Everything you send is backed up every night, so a hiccup on our side doesn't lose your suggestion
+    - We can find your suggestion or message quickly when you write in about it, and answer common questions faster
+
 - title: Our Own Suggestion Box
   status: done
   date: 2026-11-12
@@ -98,6 +111,8 @@
     - "[Report a problem](/report/) with any mission. The report button on each mission fills in which one, and you can tick a box to follow the fix"
     - A real [Contact](/contact/) page with a message form, plus staff@amblebee.com if you'd rather email
     - Leave an email and we'll send updates. If it doesn't show up, check your spam folder
+    - If we have a question about your suggestion, you can answer it right on your status page
+    - Contact messages are conversations now. Our reply shows up on your private page, and you can write back there
     - If our forms are ever down, the old Google forms step in as a backup so nothing gets lost
 
 - title: A Logo of Our Own
@@ -107,6 +122,7 @@
   summary: AmbleBee has a real logo now, a bee out on its trail, and it sits at the top of every page. A few rough edges on the new forms got smoothed out too.
   items:
     - The new AmbleBee logo replaces the little hive in the header, in light and dark mode and on phones
+    - The bee is also the icon in your browser tab, on your phone's home screen and on the pictures that show when a link is shared
     - "**Know a great spot?** in the menu now goes straight to [Suggest a mission](/suggest/) instead of scrolling down the home page"
     - Names on the forms are a first name and last initial, like Max W. Type a full name and it's shortened for you, so a full last name is never kept
     - Your submissions now sits in a tidy card, with each one on its own row

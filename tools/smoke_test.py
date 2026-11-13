@@ -44,7 +44,9 @@ class FakeIntake:
     mode: "up", "paused" (health says not accepting) or "down" (no answer at all)."""
 
     def __init__(self):
-        self.mode, self.posts = "up", []
+        self.mode, self.posts, self.answered = "up", [], False
+        self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
+                       {"who": "us", "at": "2026-11-13T16:00:00+00:00", "body": "We'd love one! Any favorite spots?"}]
 
     def handle(self, route):
         req = route.request
@@ -65,6 +67,14 @@ class FakeIntake:
         if req.method == "POST":
             data = json.loads(req.post_data or "{}")
             self.posts.append((path, data))
+            if path == "/status/msg123/reply":
+                self.thread.append({"who": "them", "at": "2026-11-14T16:00:00+00:00", "body": data.get("message", "")})
+                return reply(201, {"ok": True})
+            if path == "/status/ask123/reply":
+                if not str(data.get("message", "")).strip():
+                    return reply(400, {"ok": False, "error": "Please check your answer.", "errors": {"message": "Please fill in your answer."}})
+                self.answered = True
+                return reply(201, {"ok": True})
             if path == "/submit/mission":
                 m = data.get("mission") or {}
                 if not m.get("name") or not m.get("description"):
@@ -76,14 +86,34 @@ class FakeIntake:
             errors = {f: "Please fill this in." for f in need if not str(data.get(f, "")).strip()}
             if errors:
                 return reply(400, {"ok": False, "error": "Please check the highlighted fields.", "errors": errors})
-            if path == "/contact" or (path == "/report" and not data.get("follow")):
+            if path == "/report" and not data.get("follow"):
                 return reply(201, {"ok": True})
+            if path == "/contact":
+                return reply(201, {"ok": True, "token": "msg123", "status_url": "https://amblebee.com/status/#msg123"})
             return reply(201, {"ok": True, "token": "tok123", "status_url": "https://amblebee.com/status/#tok123"})
         if path == "/status/tok123":
             return reply(200, {"ok": True, "kind": "idea", "title": "Tide pools", "status": "in_review", "headline": "In review",
                                "text": "We're reading it now.", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
                                "steps": [{"status": s, "label": s} for s in ("awaiting", "in_review", "building", "approved", "live")],
                                "history": [{"status": "awaiting", "label": "Awaiting review", "at": "2026-11-12T16:00:00+00:00"}]})
+        if path == "/status/msg123":
+            mine = self.thread[-1]["who"] == "them"
+            return reply(200, {"ok": True, "kind": "contact", "title": "Your message to AmbleBee", "closed": False,
+                               "status": "queue" if mine else "needs_info", "headline": "In the queue" if mine else "We wrote back",
+                               "text": "It's waiting to be read." if mine else "We replied and need a little more from you. See below.",
+                               "created_at": "2026-11-12T16:00:00+00:00", "due": None if mine else "2026-12-13T16:00:00+00:00",
+                               "steps": [{"status": s, "label": s} for s in ("queue", "review", "done")], "history": [],
+                               "thread": self.thread, "can_reply": True})
+        if path == "/status/ask123":
+            waiting = not self.answered
+            view = {"ok": True, "kind": "idea", "title": "Covered bridge loop", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
+                    "status": "needs_info" if waiting else "building", "headline": "We have a question" if waiting else "Building the mission",
+                    "text": "We need a little more from you. See below." if waiting else "We're turning your idea into a full mission.",
+                    "steps": [{"status": s, "label": s} for s in ("awaiting", "in_review", "building", "approved", "live")],
+                    "history": [{"status": "awaiting", "label": "Awaiting review", "at": "2026-11-12T16:00:00+00:00"}]}
+            if waiting:
+                view.update(question="Which bridge do you start at?", due="2026-12-12T16:00:00+00:00")
+            return reply(200, view)
         return reply(404, {"ok": False, "error": "not found"})
 
 
@@ -925,6 +955,9 @@ def t_contact_form_sends_and_keeps_a_draft(site, catalog):
     page.click(".intake-form button[type=submit]")
     page.wait_for_selector(".intake-done h2")
     assert "token" not in json.dumps(site.intake.posts[-1][1])
+    assert page.input_value(".intake-done .link-box") == "https://amblebee.com/status/#msg123", "a private link to the conversation"
+    assert "riley@example.com" in page.inner_text(".intake-done .spam-note") and "spam" in page.inner_text(".intake-done .spam-note")
+    assert page.inner_text(".intake-mine li a") == "Your message to AmbleBee" and "Message" in page.inner_text(".intake-mine li small")
 
 
 def t_forms_say_when_the_mailbox_is_closed(site, catalog):
@@ -974,6 +1007,41 @@ def t_status_page_shows_where_it_is(site, catalog):
         assert site.open(path).locator('meta[name="robots"][content="noindex"]').count() == 1, f"{path} stays out of search"
     for path in ("/suggest/idea/", "/suggest/mission/"):
         assert site.open(path).locator('meta[name="robots"]').count() == 0, f"{path} can be found in search"
+
+
+def t_status_page_shows_a_contact_conversation_and_takes_a_reply(site, catalog):
+    page = site.open("/status/#msg123")
+    page.wait_for_selector(".status-thread")
+    assert page.inner_text(".status-headline") == "We wrote back"
+    assert page.locator(".status-thread li").count() == 2 and page.locator(".status-thread li.us").count() == 1
+    assert "Any favorite spots?" in page.inner_text(".status-thread li.us")
+    assert "mark it done" in page.inner_text(".status-answer .hint")
+    page.fill("#status-answer", "Glacier, for sure.")
+    page.click(".status-answer button[type=submit]")
+    page.wait_for_selector(".status-thanks")
+    assert site.intake.posts[-1] == ("/status/msg123/reply", {"message": "Glacier, for sure."})
+    assert page.locator(".status-thread li").count() == 3 and "Glacier, for sure." in page.inner_text(".status-thread li:last-child")
+    assert page.inner_text(".status-headline") == "In the queue"
+    assert page.locator(".status-answer").count() == 1, "they can write again"
+    del site.intake.thread[2:]
+
+
+def t_status_page_asks_a_question_and_takes_the_answer(site, catalog):
+    site.intake.answered = False
+    page = site.open("/status/#ask123")
+    page.wait_for_selector(".status-answer")
+    assert page.inner_text(".status-headline") == "We have a question"
+    assert page.inner_text(".status-question") == "Which bridge do you start at?"
+    assert "December 12, 2026" in page.inner_text(".status-answer .hint"), "it says when to answer by"
+    page.click(".status-answer button[type=submit]")
+    assert page.get_attribute("#status-answer", "aria-invalid") == "true", "an empty answer is pointed out"
+    assert not site.intake.answered
+    page.fill("#status-answer", "The red one on Mill Road.")
+    page.click(".status-answer button[type=submit]")
+    page.wait_for_selector(".status-thanks")
+    assert site.intake.posts[-1] == ("/status/ask123/reply", {"message": "The red one on Mill Road."})
+    assert page.inner_text(".status-headline") == "Building the mission", "it carries on from where it was"
+    assert page.locator(".status-answer").count() == 0, "the question is gone once it's answered"
 
 
 def main():

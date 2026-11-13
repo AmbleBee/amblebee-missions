@@ -898,6 +898,17 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .status-kind { font-size: .9rem; font-weight: 800; color: var(--walnut-soft); margin: 0 0 .2rem; }
 .status-headline { font: 700 1.8rem/1.1 var(--hand); color: var(--sage-deep); margin: .1rem 0 .4rem; }
 .status-card.muted .status-headline { color: var(--walnut-soft); }
+.intake-form.status-answer { max-width: none; margin: 14px 0 0; padding-top: 14px; border-top: 2px dashed var(--line); }
+.intake-form.status-answer textarea { min-height: 110px; background: var(--linen); }
+.status-question { padding: 12px 14px; border-radius: 12px; border-left: 4px solid var(--sage); background: var(--linen); color: var(--ink); font-weight: 700; white-space: pre-wrap; overflow-wrap: anywhere; margin: 0 0 8px; }
+.status-thread { list-style: none; margin: 14px 0 0; padding: 14px 0 0; border-top: 2px dashed var(--line); }
+.status-thread li { margin: 0 0 12px; max-width: 92%; }
+.status-thread li.us { margin-left: auto; }
+.status-thread .who { font-size: .85rem; font-weight: 800; color: var(--walnut-soft); }
+.status-thread p { margin: 4px 0 0; padding: 10px 14px; border-radius: 14px; background: var(--linen); color: var(--ink); white-space: pre-wrap; overflow-wrap: anywhere; }
+.status-thread li.us p { background: var(--sage-tint); color: var(--sage-ink); }
+.status-thread + .status-answer { border-top: 0; padding-top: 0; margin-top: 4px; }
+.status-thanks { padding: 12px 14px; border-radius: 12px; background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; }
 .status-reason { padding: 12px 14px; border-radius: 12px; background: var(--honey-tint); color: var(--ink); font-weight: 700; }
 .steps { list-style: none; padding: 0; margin: 0 0 18px; display: flex; flex-wrap: wrap; gap: 8px; }
 .steps li { padding: 6px 12px; border-radius: 999px; background: var(--linen); box-shadow: inset 0 0 0 2px var(--line); font-weight: 800; font-size: .9rem; color: var(--walnut-soft); }
