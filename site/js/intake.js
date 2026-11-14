@@ -96,7 +96,7 @@
   }
 
   // ---------- names ----------
-  // Names are kept as a first name and last initial: "max westlie" becomes "Max W.". A first name alone is left as it is.
+  // Names are kept as a first name and last initial: "john doe" becomes "John D.". A first name alone is left as it is.
   function shortName(value) {
     var words = String(value || "").trim().split(/\s+/).filter(Boolean).map(function (w) {
       return w === w.toLowerCase() ? w.charAt(0).toUpperCase() + w.slice(1) : w;
@@ -282,6 +282,10 @@
     try { return new Date(iso).toLocaleDateString(undefined, { month: "long", day: "numeric", year: "numeric" }); }
     catch (e) { return ""; }
   }
+  function shortWhen(iso) {   // "Nov 12", for the dates under the progress steps
+    try { return new Date(iso).toLocaleDateString(undefined, { month: "short", day: "numeric" }); }
+    catch (e) { return ""; }
+  }
 
   // "We have a question": the question, when to answer by, and a box to answer in. The answer goes to
   // POST /status/<token>/reply, and the suggestion carries on from where it was.
@@ -378,10 +382,16 @@
       }
       if (r.status !== 200 || !r.body.ok) throw new Error("bad");
       var v = r.body;
-      var stepIdx = v.steps.map(function (s) { return s.status; }).indexOf(v.status);
+      // v.step: the step to light up (while we wait on a question, the one it goes back to). Each step reached
+      // shows the date it got there, from the history.
+      var stepIdx = v.steps.map(function (s) { return s.status; }).indexOf(v.step || v.status);
+      var reached = {};
+      (v.history || []).forEach(function (x) { reached[x.status] = x.at; });
       var steps = el("ol", { class: "steps", "aria-label": "Progress" }, v.steps.map(function (s, i) {
         var state = stepIdx === -1 ? "" : (i < stepIdx ? "done" : (i === stepIdx ? "now" : ""));
-        return el("li", { class: state, "aria-current": state === "now" ? "step" : null }, [el("span", { text: s.label })]);
+        var date = state && reached[s.status] ? shortWhen(reached[s.status]) : "";
+        return el("li", { class: state, "aria-current": state === "now" ? "step" : null },
+          [el("span", { text: s.label }), date ? el("small", { class: "step-date", text: date }) : null]);
       }));
       var card = el("div", { class: "status-card" + (v.status === "declined" || v.status === "no_change" ? " muted" : "") }, [
         el("p", { class: "status-kind", text: (KIND[v.kind] || "Submission") + " · sent " + when(v.created_at) }),
@@ -417,9 +427,9 @@
       out.append(card);
       if (stepIdx !== -1) out.append(steps);
       if (v.history && v.history.length) {
-        out.append(el("h3", { text: "History" }),
-          el("ul", { class: "status-history" }, v.history.map(function (x) {
-            return el("li", {}, [el("b", { text: x.label }), document.createTextNode(" · " + when(x.at))]);
+        out.append(el("h3", { text: "What's happened so far" }),
+          el("ol", { class: "status-history" }, v.history.map(function (x) {
+            return el("li", { class: "h-" + x.status }, [el("b", { text: x.label }), el("span", { text: when(x.at) })]);
           })));
       }
       if (!mine().some(function (x) { return x.token === token; })) {

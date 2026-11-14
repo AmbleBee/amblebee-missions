@@ -100,7 +100,8 @@ class FakeIntake:
             return reply(200, {"ok": True, "kind": "idea", "title": "Tide pools", "status": "in_review", "headline": "In review",
                                "text": "We're reading it now.", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
                                "steps": [{"status": s, "label": s} for s in ("received", "in_review", "working", "approved", "live")],
-                               "history": [{"status": "received", "label": "Received", "at": "2026-11-12T16:00:00+00:00"}]})
+                               "history": [{"status": "received", "label": "Received", "at": "2026-11-12T16:00:00+00:00"},
+                                           {"status": "in_review", "label": "In review", "at": "2026-11-14T18:00:00+00:00"}]})
         if path == "/status/msg123":
             mine = self.thread[-1]["who"] == "them"
             status, headline, text = (("received", "Received", "It's waiting to be read.") if mine else
@@ -120,7 +121,7 @@ class FakeIntake:
                     "steps": [{"status": s, "label": s} for s in ("received", "in_review", "working", "approved", "live")],
                     "history": [{"status": "received", "label": "Received", "at": "2026-11-12T16:00:00+00:00"}]}
             if waiting:
-                view.update(question="Which bridge do you start at?", due="2026-12-12T16:00:00+00:00")
+                view.update(question="Which bridge do you start at?", due="2026-12-12T16:00:00+00:00", step="working")
             return reply(200, view)
         return reply(404, {"ok": False, "error": "not found"})
 
@@ -1042,6 +1043,10 @@ def t_status_page_shows_where_it_is(site, catalog):
     page.wait_for_selector(".status-card")
     assert page.inner_text(".status-headline") == "In review"
     assert page.locator(".steps li.done").count() == 1 and page.locator(".steps li.now").count() == 1
+    assert "Nov 12" in page.inner_text(".steps li.done") and "Nov 14" in page.inner_text(".steps li.now"), "each step reached shows its date"
+    assert page.locator(".steps li:not(.done):not(.now) .step-date").count() == 0, "steps not reached yet have no date"
+    assert "What's happened so far" in page.inner_text(".status-view") and page.locator(".status-history li").count() == 2
+    assert "November 14, 2026" in page.inner_text(".status-history li:last-child")
     page = site.open("/status/#nope")
     page.wait_for_selector(".status-view h2")
     assert "couldn't find" in page.inner_text(".status-view h2")
@@ -1109,6 +1114,8 @@ def t_status_page_asks_a_question_and_takes_the_answer(site, catalog):
     page.wait_for_selector(".status-answer")
     assert page.inner_text(".status-headline") == "We have a question"
     assert page.inner_text(".status-question") == "Which bridge do you start at?"
+    assert page.locator(".steps li.now").count() == 1 and page.inner_text(".steps li.now").startswith("working"), \
+        "while a question waits, the progress steps still show where it'll go back to"
     assert "December 12, 2026" in page.inner_text(".status-answer .hint"), "it says when to answer by"
     page.click(".status-answer button[type=submit]")
     assert page.get_attribute("#status-answer", "aria-invalid") == "true", "an empty answer is pointed out"

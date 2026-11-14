@@ -431,7 +431,7 @@ def check_catalog(root):
             elif "://" in cr or "@" in cr:
                 problems.append(f"{where}: credit should be a name only, no links or email addresses")
             elif cr.strip()[:1] in "(\"'" or cr.strip().lower().startswith("suggested by"):
-                problems.append(f"{where}: credit should be just the name, like `credit: Max W.` "
+                problems.append(f"{where}: credit should be just the name, like `credit: John D.` "
                                 "(the site adds \"Suggested by\" itself; no brackets or quotes)")
         sg = m.get("suggestion")   # the AmbleBee Intake submission a mission came from; never published
         if sg is not None and (isinstance(sg, bool) or not isinstance(sg, int) or sg < 1):
