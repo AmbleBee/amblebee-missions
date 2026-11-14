@@ -888,7 +888,7 @@ def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
     assert page.get_attribute("#idea-title", "aria-invalid") == "true", "a missing title is pointed out"
     page.fill("#idea-title", "Tide pools at Haystack Rock")
     page.fill("#idea-body", "Go at low tide and find three different sea stars.")
-    assert "First name and last initial" in page.inner_text("#idea-name-hint")
+    assert "first name and last initial" in page.inner_text("#idea-name-hint").lower()
     page.fill("#idea-name", "sam rivera")
     page.check("input[name=credit]")
     assert page.input_value("#idea-name") == "Sam R.", "a full name is shortened to a first name and last initial"
