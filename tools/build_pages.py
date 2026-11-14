@@ -56,6 +56,7 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "safety": ("Safety", "How to stay safe on an AmbleBee mission, and what's up to you."),
     "privacy": ("Privacy", "What AmbleBee keeps, what stays on your device, and what goes to Google or GitHub."),
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
+    "faq": ("Questions and answers", "Quick answers about AmbleBee missions, suggesting a place, what each status means, and your information."),
     "suggest": ("Suggest a mission", "Know a great date spot or adventure? Suggest it for AmbleBee and it might become a mission."),
     "suggest-idea": ("Share an idea", "Tell AmbleBee about a date spot or adventure you love, in your own words."),
     "suggest-mission": ("Build a mission", "Build a full AmbleBee mission step by step, with tips along the way."),
@@ -66,7 +67,7 @@ NOINDEX_PAGES = {"report", "status"}   # useful only through a link: kept out of
 PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
-CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello",
+CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
                 "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
                 "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?"}
 
@@ -107,7 +108,7 @@ def nav_html(current=""):
             ("/roadmap.html", "Bee trail"), ("/suggest/", "Know a great spot?")]
     if not home:
         main.insert(0, ("/", "Open a mission"))
-    extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/contact/", "Contact")]
+    extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
 
     def link(href, text, cls=""):
         cls = " nav-share" if cls != "phone-only" and text.startswith("Know") else cls
@@ -120,6 +121,17 @@ def nav_html(current=""):
             f'<details class="menu"><summary>{burger}<span class="menu-phone">Menu</span><span class="menu-wide">More</span></summary>'
             f'<div class="menu-panel">{"".join(link(h, t, "phone-only") for h, t in main)}{"".join(link(h, t) for h, t in extra)}</div>'
             '</details></nav>')
+
+
+def faq_jsonld(body, path):
+    """pages/faq.html as FAQPage data for search engines: each question is a <details class="faq-item">, its <summary>
+    the question and its <div class="faq-a"> the answer."""
+    strip = lambda t: " ".join(html.unescape(re.sub(r"<[^>]+>", " ", t)).split())  # noqa: E731
+    items = []
+    for q, a in re.findall(r'<details class="faq-item"[^>]*>\s*<summary>(.*?)</summary>\s*<div class="faq-a">(.*?)</div>\s*</details>', body, re.S):
+        answer = re.sub(r"\s+([.,:;!?])", r"\1", strip(a))
+        items.append({"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": answer}})
+    return {"@context": "https://schema.org", "@type": "FAQPage", "url": BASE + path, "mainEntity": items}
 
 
 def page(title, description, path, main, jsonld, brand, extra_script="", current="", image=None):
@@ -168,7 +180,7 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 {main}
 </main>
 <footer class="foot">
-  <p class="foot-links"><a href="/about/">About</a> <a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/contact/">Contact</a></p>
+  <p class="foot-links"><a href="/about/">About</a> <a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/faq/">FAQ</a> <a href="/contact/">Contact</a></p>
   <p class="foot-social">Follow along: <a href="https://www.pinterest.com/AmbleBeeHQ/" target="_blank" rel="me noopener" aria-label="AmbleBee on Pinterest (opens in a new tab)">Pinterest</a> <a href="https://bsky.app/profile/amblebeehq.bsky.social" target="_blank" rel="me noopener" aria-label="AmbleBee on Bluesky (opens in a new tab)">Bluesky</a> <a href="https://x.com/AmbleBeeHQ" target="_blank" rel="me noopener" aria-label="AmbleBee on X (opens in a new tab)">X</a></p>
   <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
 </footer>
@@ -635,6 +647,8 @@ def build_pages(out):
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
         main = f'<div class="page info">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
+        if name == "faq":
+            ld = faq_jsonld(body, path)
         image = share_card(f"page-{name}", f"{title}: {desc}", badge="hive", eyebrow=CARD_EYEBROW.get(name, "AmbleBee"),
                            title=title, text=desc, note="amblebee.com" + path.rstrip("/"))
         text = page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image)

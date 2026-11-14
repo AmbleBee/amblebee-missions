@@ -1,6 +1,7 @@
 <h1>Contact</h1>
 <p class="hand">Every message gets read.</p>
 <p>Pick whatever fits. All three come straight to us.</p>
+<p class="contact-faq">Got a question? <a href="/faq/">The FAQ</a> might answer it right away.</p>
 
 <div class="contact-paths">
   <a class="path" href="/suggest/"><b>Suggest a mission</b><span>Know a great date spot or adventure? It might end up in a pack.</span></a>
@@ -9,6 +10,7 @@
 </div>
 
 <h2 id="message">Send a message</h2>
+<p class="hint">Before you write: <a href="/faq/">questions and answers</a> covers statuses, credit names, your information and more.</p>
 <div class="intake" data-intake="contact">
   <p class="intake-wait">Checking the mailbox…</p>
   <div class="intake-down" hidden>
@@ -25,6 +27,11 @@
       <label for="contact-email">Email</label>
       <input id="contact-email" name="email" type="email" maxlength="254" required autocomplete="email" aria-describedby="contact-email-hint">
       <p class="hint" id="contact-email-hint">So we can reply. We won't use it for anything else.</p>
+    </div>
+    <div class="field">
+      <label for="contact-subject">Subject</label>
+      <input id="contact-subject" name="subject" type="text" maxlength="60" required placeholder="A mission in Montana?" aria-describedby="contact-subject-hint">
+      <p class="hint" id="contact-subject-hint">A few words about what it's about.</p>
     </div>
     <div class="field">
       <label for="contact-message">Message</label>

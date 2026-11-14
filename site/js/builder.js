@@ -347,7 +347,7 @@
           var done = $(".intake-done", box);
           done.textContent = "";
           done.append(el("h2", { text: "Thank you! Your mission is in." }),
-            el("p", { text: "Since you built the whole thing, all that's left for us is to check it. You can follow it from \"Awaiting review\" all the way to \"Live\"." }));
+            el("p", { text: "Since you built the whole thing, all that's left for us is to check it. You can follow it from \"Received\" all the way to \"Live\"." }));
           if (S.you.email) done.append(X.spamNote(S.you.email));
           if (r.body.status_url) done.append(X.linkPanel(r.body.status_url, "mission", S.m.name));
           S = { m: {}, you: {}, step: 0, seen: 0 };

@@ -87,6 +87,20 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Questions, Answers and Clearer Statuses
+  status: done
+  date: 2026-11-14
+  tag: website
+  summary: A new [questions and answers](/faq/) page for the things people ask most, clearer steps when you send something in, and a few friendly changes to how we keep in touch.
+  items:
+    - "[Questions and answers](/faq/): tap a question to open its answer, or search for a word like status, credit or delete. It's in the More menu and at the bottom of every page"
+    - "Clearer steps on your status page: Received, In review, Working on it, Approved and Live. **Working on it** means we're checking the place and the details, and it isn't approved yet. The [FAQ](/faq/#statuses) explains each one"
+    - The contact form asks for a short subject, so your message gets to the right place faster
+    - If we're waiting to hear back from you, you'll get one friendly reminder halfway through the 30 days. A conversation we're still working on never closes by itself
+    - If you report a problem and ask to follow it, we can ask you a quick question on its status page when something isn't clear
+    - "Plain and simple: unless a mission says otherwise, AmbleBee isn't connected to the places in it, and no one pays to be included right now. Business owners are welcome to [suggest their own place](/suggest/)"
+    - Behind the scenes, a new morning roundup makes sure every suggestion, report and message gets read, and replies come back faster
+
 - title: Looking After What You Send
   status: done
   date: 2026-11-13

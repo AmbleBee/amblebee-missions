@@ -764,6 +764,33 @@ main:focus { outline: none; }
 .info p, .info ul { margin: 0 0 .8rem; }
 .info li { margin: .25rem 0; }
 
+/* ---- the FAQ: a search box, then each question as a chip that opens its answer (pages/faq.html, js/faq.js) ---- */
+.faq-search { margin: 1.1rem 0 .6rem; }
+.faq-search label { display: block; font-weight: 800; color: var(--ink); margin: 0 0 6px; }
+.faq-search input {
+  width: 100%; min-height: 50px; padding: 12px 20px; border: 0; border-radius: 999px;
+  font: 600 1.05rem/1.4 var(--body); color: var(--ink); background: var(--paper); box-shadow: inset 0 0 0 2px var(--line-strong);
+}
+.faq-search input:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+.faq-count { min-height: 1.4em; margin: .4rem 0 0 !important; font-weight: 700; color: var(--walnut-soft); }
+.faq-group h2 { margin-top: 1.4rem; }
+.faq-item { margin: 0 0 10px; border-radius: 22px; background: var(--paper); border: 2px solid var(--line); overflow: hidden; }
+.faq-item summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; gap: 14px;
+  padding: 12px 18px; font-weight: 800; color: var(--ink); line-height: 1.35;
+}
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary::after { content: "+"; margin-left: auto; flex: none; font: 700 1.35rem/1 var(--display); color: var(--sage-deep); }
+.faq-item[open] summary::after { content: "–"; }
+.faq-item summary:hover { background: var(--linen); }
+.faq-item[open] { border-color: var(--sage); }
+.faq-item summary:focus-visible { outline-offset: -4px; }
+.faq-a { padding: 2px 18px 6px; }
+.faq-a p, .faq-a ul { margin: 0 0 .8rem; }
+.faq-item[hidden], .faq-group[hidden], .faq-none[hidden] { display: none; }
+.faq-none { font-weight: 700; padding: 6px 2px; }
+.faq-more { margin-top: 1.6rem !important; }
+
 /* ---- phones and small tablets: the main button comes right after the mood picker, the rest follows ---- */
 @media (max-width: 860px) {
   .roll { padding-top: 14px; }

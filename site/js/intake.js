@@ -178,7 +178,7 @@
   }
 
   var THANKS = {
-    idea: ["Thank you! Your idea is in.", "Every suggestion gets read. You can follow it from \"Awaiting review\" all the way to \"Live\"."],
+    idea: ["Thank you! Your idea is in.", "Every suggestion gets read. You can follow it from \"Received\" all the way to \"Live\"."],
     report: ["Thank you for the report!", "We'll take a look and fix what needs fixing."],
     contact: ["Thanks! Your message is on its way.", "We read every message, usually within a few days. Our reply shows up on your private page below, and we'll email you when it does."]
   };
@@ -230,7 +230,7 @@
             save(DRAFT_KEY + kind, null);
             form.reset();   // Firefox refills fields on reload from what's in them, so empty them once sent
             track(kind + "_sent");
-            var title = kind === "report" ? (data.mission_name || data.mission_id) : (kind === "contact" ? "Your message to AmbleBee" : data.title);
+            var title = kind === "report" ? (data.mission_name || data.mission_id) : (kind === "contact" ? (data.subject || "Your message to AmbleBee") : data.title);
             done.textContent = "";
             done.append(el("h2", { text: THANKS[kind][0] }), el("p", { text: THANKS[kind][1] }));
             var mailed = String(data.email || "").trim();
@@ -294,7 +294,7 @@
     var form = el("form", { class: "intake-form status-answer", novalidate: "" }, [
       chat ? null : el("p", { class: "status-question", text: v.question }),
       v.due ? el("p", { class: "hint", text: chat
-        ? "This conversation closes on " + when(v.due) + " if there's no reply. Each reply keeps it open another " + (v.days || 30) + " days."
+        ? "We're waiting to hear from you. If there's no reply, this conversation closes on " + when(v.due) + "."
         : "Please answer by " + when(v.due) + ". After that we'll close it for now." }) : null,
       chat ? el("p", { class: "hint", text: "Please reply here, not by email. Email replies can get lost." }) : null,
       el("div", { class: "field" }, [el("label", { for: "status-answer", text: chat ? "Your reply" : "Your answer" }), area]),

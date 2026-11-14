@@ -85,7 +85,7 @@ class FakeIntake:
                 if not m.get("name") or not m.get("description"):
                     return reply(400, {"ok": False, "error": "Please check the highlighted fields.", "errors": {"name": "Give the mission a name."}})
                 return reply(201, {"ok": True, "token": "tok123", "status_url": "https://amblebee.com/status/#tok123"})
-            need = {"/submit/idea": ["title", "body"], "/report": ["body"], "/contact": ["name", "email", "message"]}.get(path)
+            need = {"/submit/idea": ["title", "body"], "/report": ["body"], "/contact": ["name", "email", "subject", "message"]}.get(path)
             if need is None:
                 return reply(404, {"ok": False})
             errors = {f: "Please fill this in." for f in need if not str(data.get(f, "")).strip()}
@@ -99,26 +99,26 @@ class FakeIntake:
         if path == "/status/tok123":
             return reply(200, {"ok": True, "kind": "idea", "title": "Tide pools", "status": "in_review", "headline": "In review",
                                "text": "We're reading it now.", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
-                               "steps": [{"status": s, "label": s} for s in ("awaiting", "in_review", "building", "approved", "live")],
-                               "history": [{"status": "awaiting", "label": "Awaiting review", "at": "2026-11-12T16:00:00+00:00"}]})
+                               "steps": [{"status": s, "label": s} for s in ("received", "in_review", "working", "approved", "live")],
+                               "history": [{"status": "received", "label": "Received", "at": "2026-11-12T16:00:00+00:00"}]})
         if path == "/status/msg123":
             mine = self.thread[-1]["who"] == "them"
-            status, headline, text = (("queue", "In the queue", "It's waiting to be read.") if mine else
-                                      ("open", "Conversation open", "We replied. Write back any time, or close it when you're all set."))
+            status, headline, text = (("received", "Received", "It's waiting to be read.") if mine else
+                                      ("waiting", "We wrote back", "We replied and need a little more from you. See below."))
             if self.closed:
                 status, headline, text = "done", "Closed", "You closed this conversation. Need anything else? Reply below and it opens again."
-            return reply(200, {"ok": True, "kind": "contact", "title": "Your message to AmbleBee", "closed": self.closed,
+            return reply(200, {"ok": True, "kind": "contact", "title": "A Montana pack?", "closed": self.closed,
                                "status": status, "headline": headline, "text": text, "days": 30,
-                               "created_at": "2026-11-12T16:00:00+00:00", "due": "2026-12-13T16:00:00+00:00" if status == "open" else None,
-                               "steps": [{"status": s, "label": s} for s in ("queue", "review", "open", "done")], "history": [],
+                               "created_at": "2026-11-12T16:00:00+00:00", "due": "2026-12-13T16:00:00+00:00" if status == "waiting" else None,
+                               "steps": [{"status": s, "label": s} for s in ("received", "open", "done")], "history": [],
                                "thread": self.thread, "can_reply": True, "can_close": not self.closed})
         if path == "/status/ask123":
             waiting = not self.answered
             view = {"ok": True, "kind": "idea", "title": "Covered bridge loop", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
-                    "status": "needs_info" if waiting else "building", "headline": "We have a question" if waiting else "Building the mission",
-                    "text": "We need a little more from you. See below." if waiting else "We're turning your idea into a full mission.",
-                    "steps": [{"status": s, "label": s} for s in ("awaiting", "in_review", "building", "approved", "live")],
-                    "history": [{"status": "awaiting", "label": "Awaiting review", "at": "2026-11-12T16:00:00+00:00"}]}
+                    "status": "needs_info" if waiting else "working", "headline": "We have a question" if waiting else "Working on it",
+                    "text": "We need a little more from you. See below." if waiting else "We're looking into it: checking the place and the details. It isn't approved yet.",
+                    "steps": [{"status": s, "label": s} for s in ("received", "in_review", "working", "approved", "live")],
+                    "history": [{"status": "received", "label": "Received", "at": "2026-11-12T16:00:00+00:00"}]}
             if waiting:
                 view.update(question="Which bridge do you start at?", due="2026-12-12T16:00:00+00:00")
             return reply(200, view)
@@ -779,13 +779,48 @@ def t_idea_pages_gather_missions_and_link_both_ways(site, catalog):
     page.wait_for_function("document.title.startsWith('AmbleBee: Date Ideas')")
 
 
+def t_faq_questions_open_and_search_filters_them(site, catalog):
+    page = site.open("/faq/")
+    page.wait_for_selector(".faq-search", state="visible")
+    total = page.locator(".faq-item").count()
+    assert total >= 10 and page.locator(".faq-item[open]").count() == 0, "every question starts closed"
+    page.click("#cost summary")
+    assert page.locator("#cost[open]").count() == 1 and page.is_visible("#cost .faq-a"), "clicking a question opens its answer"
+    page.fill("#faq-q", "credit")
+    assert page.locator(".faq-item:not([hidden])").count() == 1 and page.locator("#credit[open]").count() == 1
+    assert "1 answer matches" in page.inner_text(".faq-count")
+    assert not page.is_visible("#using"), "a section with no matches is hidden"
+    page.fill("#faq-q", "price")   # a word that's not in the text, only in its extra search words
+    assert page.locator("#cost:not([hidden])").count() == 1
+    page.fill("#faq-q", "Don’t hear")   # a curly apostrophe still matches "don't"
+    assert page.locator("#reply:not([hidden])").count() == 1
+    page.fill("#faq-q", "del")          # half a word is enough
+    assert page.locator("#delete:not([hidden])").count() == 1
+    page.fill("#faq-q", "zzzz")
+    assert page.locator(".faq-item:not([hidden])").count() == 0 and page.is_visible(".faq-none") and "zzzz" in page.inner_text(".faq-none")
+    page.press("#faq-q", "Escape")
+    assert page.locator(".faq-item:not([hidden])").count() == total and not page.is_visible(".faq-none")
+    assert page.locator("#cost[open]").count() == 1 and page.locator("#credit[open]").count() == 0, "clearing puts back what was open"
+    page = site.open("/faq/#statuses")
+    page.wait_for_selector("#statuses[open]")
+    assert "Working on it" in page.inner_text("#statuses .faq-a"), "a link to one answer opens it"
+    page = site.open("/faq/?q=delete")
+    page.wait_for_selector("#delete[open]")
+    assert page.input_value("#faq-q") == "delete"
+
+
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",
-                 "/about/", "/safety/", "/privacy/", "/contact/", "/rainy-day-date-ideas/", "/at-home-date-ideas/",
+                 "/about/", "/safety/", "/privacy/", "/faq/", "/contact/", "/rainy-day-date-ideas/", "/at-home-date-ideas/",
                  "/free-date-ideas/", "/kid-friendly-adventures/"):
         page = site.open(path)
         page.wait_for_selector("h1")
+    page = site.open("/faq/")
+    data = json.loads(page.inner_text('script[type="application/ld+json"]'))
+    assert data["@type"] == "FAQPage" and len(data["mainEntity"]) >= 10, "the FAQ is marked up for search"
+    assert page.locator('nav .menu-panel a[href="/faq/"]').count() == 1, "the FAQ is in the More menu"
+    assert site.open("/contact/").locator('a[href="/faq/"]').count() >= 1, "the contact page points to the FAQ"
     page = site.open(f"/missions/{mission['id']}/")
     assert mission["name"] in page.inner_text("h1")
     assert all("about" not in m for m in catalog["missions"]), "a mission's about is for its web page, never catalog.json"
@@ -961,11 +996,14 @@ def t_contact_form_sends_and_keeps_a_draft(site, catalog):
     assert page.input_value("#contact-message") == "Any plans for a Montana pack?"
     page.fill("#contact-email", "riley@example.com")
     page.click(".intake-form button[type=submit]")
+    page.wait_for_selector("#contact-subject[aria-invalid=true], .form-status.bad")   # the subject is required
+    page.fill("#contact-subject", "A Montana pack?")
+    page.click(".intake-form button[type=submit]")
     page.wait_for_selector(".intake-done h2")
     assert "token" not in json.dumps(site.intake.posts[-1][1])
     assert page.input_value(".intake-done .link-box") == "https://amblebee.com/status/#msg123", "a private link to the conversation"
     assert "riley@example.com" in page.inner_text(".intake-done .spam-note") and "spam" in page.inner_text(".intake-done .spam-note")
-    assert page.inner_text(".intake-mine li a") == "Your message to AmbleBee" and "Message" in page.inner_text(".intake-mine li small")
+    assert page.inner_text(".intake-mine li a") == "A Montana pack?" and "Message" in page.inner_text(".intake-mine li small")
 
 
 def t_forms_say_when_the_mailbox_is_closed(site, catalog):
@@ -1020,18 +1058,18 @@ def t_status_page_shows_where_it_is(site, catalog):
 def t_status_page_shows_a_contact_conversation_and_takes_a_reply(site, catalog):
     page = site.open("/status/#msg123")
     page.wait_for_selector(".status-thread")
-    assert page.inner_text(".status-headline") == "Conversation open"
+    assert page.inner_text(".status-headline") == "We wrote back"
     assert page.locator(".status-thread li").count() == 2 and page.locator(".status-thread li.us").count() == 1
     assert "Any favorite spots?" in page.inner_text(".status-thread li.us")
     hints = page.inner_text(".status-answer")
-    assert "closes on December 13, 2026" in hints and "another 30 days" in hints
+    assert "closes on December 13, 2026" in hints and "waiting to hear from you" in hints
     assert "not by email" in hints, "it says to reply here, not by email"
     page.fill("#status-answer", "Glacier, for sure.")
     page.click(".status-answer button[type=submit]")
     page.wait_for_selector(".status-thanks")
     assert site.intake.posts[-1] == ("/status/msg123/reply", {"message": "Glacier, for sure."})
     assert page.locator(".status-thread li").count() == 3 and "Glacier, for sure." in page.inner_text(".status-thread li:last-child")
-    assert page.inner_text(".status-headline") == "In the queue"
+    assert page.inner_text(".status-headline") == "Received"
     assert page.locator(".status-answer").count() == 1, "they can write again"
     del site.intake.thread[2:]
 
@@ -1079,7 +1117,7 @@ def t_status_page_asks_a_question_and_takes_the_answer(site, catalog):
     page.click(".status-answer button[type=submit]")
     page.wait_for_selector(".status-thanks")
     assert site.intake.posts[-1] == ("/status/ask123/reply", {"message": "The red one on Mill Road."})
-    assert page.inner_text(".status-headline") == "Building the mission", "it carries on from where it was"
+    assert page.inner_text(".status-headline") == "Working on it", "it carries on from where it was"
     assert page.locator(".status-answer").count() == 0, "the question is gone once it's answered"
 
 
