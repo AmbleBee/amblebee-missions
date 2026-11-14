@@ -281,6 +281,7 @@ dialog.small input, dialog.small select {
 .rm:hover { background: var(--bad-tint); color: var(--bad); }
 .toggle { display: flex; gap: 10px; align-items: center; font-weight: 700; }
 .toggle input { width: 20px; height: 20px; accent-color: var(--fill); }
+dialog.small .toggle input { width: 20px; height: 20px; min-height: 0; flex: none; padding: 0; margin: 0; border: 0; box-shadow: none; background: none; appearance: auto; }
 .alert { border-radius: 14px; padding: 10px 14px; margin-top: 14px; font-size: 14px; }
 .alert.bad { background: var(--bad-tint); }
 .alert.warn { background: var(--honey-tint); }
@@ -631,6 +632,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
       <div class="stepnav" data-stepnav><button class="btn tiny" type="button" data-step="-1" title="Previous mission in the list" aria-label="Previous mission">←</button>
         <span class="pos" data-steppos></span><button class="btn tiny" type="button" data-step="1" title="Next mission in the list" aria-label="Next mission">→</button></div>
       <div class="msg" id="edMsg"></div>
+      <button class="btn small danger" type="button" id="edDelete" title="Delete this mission's file">Delete</button>
       <button class="btn small" type="button" id="edCancel">Close</button>
       <button class="btn small" type="button" id="edPreview" title="How it will look on the website and the Hive">Preview</button>
       <button class="btn small publish" type="button" id="edPublish" hidden title="Sets checked to today, removes draft, then shows you the change">Checked today, publish</button>
@@ -669,6 +671,15 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
   <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
     <button class="btn small" type="button" id="stopCancel">Cancel</button>
     <button class="btn small danger" type="button" id="stopGo">Stop it</button>
+  </div>
+</dialog>
+
+<dialog class="small" id="delDlg" aria-labelledby="delTitle">
+  <div class="dh"><h2 id="delTitle">Delete this mission?</h2><p class="sub" id="delSub"></p></div>
+  <div id="delBody"></div>
+  <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+    <button class="btn small" type="button" id="delCancel">Keep it</button>
+    <button class="btn small danger" type="button" id="delGo">Delete mission</button>
   </div>
 </dialog>
 
@@ -1653,6 +1664,7 @@ function setMode(mode) {
 async function openEditor(pack, id, keepMode = false) {
   const mode = keepMode ? ed.mode : 'form';
   Object.assign(ed, { pack, id, isNew: false, dirty: false, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null, since: '', sessionSnap: null });
+  $('#edDelete').hidden = false;
   $('#edTitle').textContent = 'Loading…'; $('#edPath').textContent = `missions/${pack}/${id}.yaml`;
   $('#edBody').innerHTML = ''; setMsg(''); setMode('form');
   showSheet();
@@ -1689,6 +1701,7 @@ async function openEditor(pack, id, keepMode = false) {
 }
 function startNew(pack, id, name) {
   Object.assign(ed, { pack, id, isNew: true, version: null, orig: {}, dirty: true, dropComments: false, base: '', text: '', rmNotes: [], snapshot: null, since: '', sessionSnap: null });
+  $('#edDelete').hidden = true;                 // not saved yet: Close is all it takes
   ed.m = { draft: true, number: nextNumber(pack), name, mode: 'both', duration: 'short', effort: 'easy', cost: '$',
     setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', themes: [], tags: [] };
   $('#edTitle').textContent = name || 'New mission';
@@ -1794,6 +1807,65 @@ function closeEditor() {
   if (ed.dirty) dropStash(ed.pack, ed.id);      // you chose to throw them away
   ed.dirty = false; $('#editor').close();
 }
+
+// ---------- delete a mission (a draft or a live one) ----------
+// Asks first, and says what it means: a draft just goes; a live one also leaves the website once it's committed.
+async function askDelete() {
+  if (ed.isNew) return closeEditor();           // never saved: there's no file to delete
+  const r = await api('api/delete', { method: 'POST', body: JSON.stringify({ pack: ed.pack, id: ed.id, version: ed.version, dry: true }) });
+  if (!r.ok) { setMsg(`<span class="bad">${esc(r.body.error || "Couldn't check that mission.")}</span>`); return; }
+  const b = r.body;
+  $('#delTitle').textContent = b.draft ? 'Delete this draft?' : 'Delete this live mission?';
+  $('#delSub').innerHTML = `<b>${esc(b.name)}</b> · <code>${esc(b.path)}</code>`;
+  const linked = b.linked || [];
+  $('#delBody').innerHTML = (linked.length
+    ? `<div class="alert bad"><b>${linked.length === 1 ? 'Another mission links' : linked.length + ' other missions link'} to this one</b>,
+        so it can't be deleted yet: a link to a mission that's gone fails the checks. Take <code>[[${esc(ed.id)}]]</code> out of
+        ${linked.length === 1 ? 'it' : 'them'} first.
+        <ul>${linked.map(o => `<li><b>${esc(o.name)}</b> <span class="muted">(${esc(shortName(o.pack))})</span>
+          <button class="btn tiny" type="button" data-edit="${esc(o.pack)}/${esc(o.id)}">Open it</button></li>`).join('')}</ul></div>`
+    : '') + (b.draft
+    ? `<p>It's a draft, so nothing on the website changes. The file is removed.</p>`
+    : `<div class="alert warn"><b>This one is live.</b> Once the delete is committed and pushed, its page leaves the website,
+        links to it stop working, and anyone who saved it or stamped it loses it. If the place has only closed for now,
+        ticking <b>Draft</b> hides it without losing anything.</div>
+       <label class="toggle" style="margin-top:8px"><input type="checkbox" id="delSure"> Yes, remove it from the website</label>`)
+    + (ed.dirty ? `<p class="help">Your unsaved changes to it go too.</p>` : '')
+    + `<p class="help">Nothing leaves the website until the delete is committed and pushed (Publish, in the admin). Before that it can be brought back with git.</p>`;
+  const sure = $('#delSure');
+  $('#delGo').disabled = !!sure || !!linked.length;
+  if (sure) { sure.disabled = !!linked.length; sure.onchange = () => { $('#delGo').disabled = !sure.checked || !!linked.length; }; }
+  $('#delGo').textContent = b.draft ? 'Delete draft' : 'Delete mission';
+  $('#delDlg').showModal();
+  (sure || $('#delCancel')).focus();
+}
+async function confirmDelete() {
+  $('#delGo').disabled = true;
+  const pack = ed.pack, id = ed.id;
+  const r = await api('api/delete', { method: 'POST', body: JSON.stringify({ pack, id, version: ed.version }) });
+  $('#delDlg').close();
+  if (!r.ok) {
+    setMsg(`<div class="alert bad" style="margin:0">${esc(r.body.error || 'Something went wrong; nothing was deleted.')}
+      ${r.body.stale ? '<br><button type="button" class="btn tiny" id="reloadMission" style="margin-top:8px">Reopen the latest version</button>' : ''}</div>`);
+    return;
+  }
+  ed.dirty = false; dropStash(pack, id);
+  sel.delete(`${pack}/${id}`);
+  $('#editor').close();
+  toast(r.body.draft ? 'Draft deleted' : 'Mission deleted. Commit to take it off the website.');
+  await loadData(); render();
+  openOnly();                                    // on a one-mission page, say it's gone
+}
+$('#edDelete').onclick = askDelete;
+$('#delCancel').onclick = () => $('#delDlg').close();
+$('#delBody').addEventListener('click', e => {       // "Open it" beside a mission that links to this one
+  const b = e.target.closest('[data-edit]'); if (!b) return;
+  e.stopPropagation();
+  if (ed.dirty && !confirm('Leave this mission without saving your changes?')) return;
+  ed.dirty = false; $('#delDlg').close();
+  const [pack, id] = b.dataset.edit.split('/'); openEditor(pack, id);
+});
+$('#delGo').onclick = confirmDelete;
 
 // ---------- one-click publish: checked today, no draft line, then the usual review ----------
 function publishYaml(t) {

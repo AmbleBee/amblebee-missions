@@ -508,6 +508,56 @@ def save(body):
     return 200, {"ok": True, "version": version_of(text), "path": str(path.relative_to(ROOT))}
 
 
+def delete_mission(body):
+    """Delete one mission file (a draft or a live one). With "dry" it only reports what would go, for the
+    confirm box. Nothing else is touched: on a live mission the site's page for it stops existing once this
+    is committed and pushed."""
+    pack, mid = body.get("pack"), body.get("id")
+    _, packs, _ = lib.load_catalog(MISSIONS)
+    if pack not in packs or pack == "general":
+        return 400, {"error": f"No pack folder named '{pack}'."}
+    if not isinstance(mid, str) or not lib.ID_RE.match(mid):
+        return 400, {"error": "The file name (id) can only use lowercase letters, numbers and dashes."}
+    path = mission_path(pack, mid)
+    if not path.is_file():
+        return 404, {"error": f"{path.relative_to(ROOT)} doesn't exist any more."}
+    text = path.read_text(encoding="utf-8")
+    if body.get("version") and body["version"] != version_of(text):
+        return 409, {"error": "This mission changed on disk since you opened it. Reopen it, then delete.", "stale": True}
+    try:
+        data = yaml.load(text, Loader=lib._Loader) or {}
+    except yaml.YAMLError:
+        data = {}
+    rel = str(path.relative_to(ROOT))
+    # other missions that mention this one as [[its-id]] in their text: the checks fail on a link to nothing,
+    # so those have to change first
+    linked = []
+    for f in sorted(MISSIONS.glob("*/*.yaml")):
+        if f == path or f.name == "pack.yaml":
+            continue
+        try:
+            other = f.read_text(encoding="utf-8")
+        except OSError:
+            continue
+        if f"[[{mid}]]" in other:
+            found = re.search(r"^name:\s*(.+)$", other, re.M)
+            linked.append({"pack": f.parent.name, "id": f.stem, "name": (found.group(1).strip().strip("\"'") if found else f.stem)})
+    facts = {"path": rel, "name": str(data.get("name") or mid), "draft": bool(data.get("draft")), "linked": linked}
+    if body.get("dry"):
+        return 200, {"ok": True, "dry": True, **facts}
+    if linked:
+        return 409, {"error": f"Not deleted: {len(linked)} other mission{'s' if len(linked) != 1 else ''} link to it "
+                              f"({', '.join(x['id'] for x in linked[:5])}). Take [[{mid}]] out of those first.", **facts}
+    path.unlink()
+    try:
+        b = baseline_path(pack, mid)
+        if b.exists():
+            b.unlink()
+    except OSError:
+        pass     # only the green marks used it
+    return 200, {"ok": True, "deleted": True, **facts}
+
+
 # ---------- scan for problems: everything the build checks, over the whole repo ----------
 
 def _split(problem):
@@ -734,7 +784,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path == "/api/unlock":
             LOCK["key"] = ""
             return self._send(200, {"ok": True, "locked": False})
-        if path not in ("/api/mission", "/api/preview", "/api/parse", "/api/setup", "/api/checker", "/api/pack",
+        if path not in ("/api/mission", "/api/delete", "/api/preview", "/api/parse", "/api/setup", "/api/checker", "/api/pack",
                         "/api/scoring", "/api/scoring/reset", "/api/pack/edit", "/api/bulk", "/api/ideas",
                         "/api/release", "/api/reveal", "/api/same-spot", "/api/links",
                         "/api/links/start", "/api/link", "/api/link/mark", "/api/lock") or \
@@ -836,7 +886,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
                 ok, note = extras.reveal(target)
                 return self._send(200 if ok else 500, {"ok": ok, "note": note, "path": str(target)} if ok
                                   else {"error": note, "path": str(target)})
-            if path == "/api/preview":          # what a save would change, without writing anything
+            if path == "/api/delete":           # remove a mission file ("dry" only says what would go)
+                code, out = delete_mission(body)
+            elif path == "/api/preview":        # what a save would change, without writing anything
                 code, out, _, _ = prepare(body)
             elif path == "/api/parse":          # the YAML editor's text, read back for the form
                 data, err = parse_yaml(str(body.get("yaml") or ""))
