@@ -25,6 +25,7 @@ html[data-season="winter"] body::before {
   animation: amble-twinkle 2.8s ease-in-out infinite alternate;
 }
 @keyframes amble-twinkle { from { filter: brightness(1); } to { filter: brightness(1.25) saturate(1.15); } }
+@media (prefers-reduced-motion: reduce) { html[data-season="winter"] body::before { animation: none; } }
 
 /* a snowflake drifting past the hive */
 html[data-season="winter"] .brand::after {

@@ -152,8 +152,8 @@ def expected(message):
 class Site:
     """A fresh page for each test. Motion is reduced so envelopes open right away."""
 
-    def __init__(self, browser, base):
-        self.browser, self.base, self.errors = browser, base, []
+    def __init__(self, browser, base, folder=None):
+        self.browser, self.base, self.errors, self.folder = browser, base, [], folder
         self.intake = FakeIntake()
 
     def open(self, path="/", viewport=DESKTOP):
@@ -809,6 +809,39 @@ def t_faq_questions_open_and_search_filters_them(site, catalog):
     assert page.input_value("#faq-q") == "delete"
 
 
+def t_seasonal_looks_follow_the_calendar_and_turn_off(site, catalog):
+    if not (Path(site.folder) / "themes" / "season.js").exists():
+        return   # the site was built without themes/ (tools/build_themes.py): plain all year, nothing to test
+    from datetime import datetime
+
+    def on(day, motion="reduce"):
+        ctx = site.browser.new_context(viewport=DESKTOP, reduced_motion=motion)
+        page = ctx.new_page()
+        page.clock.set_fixed_time(datetime.fromisoformat(day + "T12:00:00"))
+        page.goto(site.base + "/faq/")
+        return page, page.evaluate("document.documentElement.getAttribute('data-season')")
+    for day, want in (("2026-11-30", "fall"), ("2026-12-01", "winter"), ("2027-01-01", "winter"), ("2027-02-28", "winter"),
+                      ("2028-02-29", "winter"), ("2027-03-01", "spring"), ("2027-05-31", "spring"), ("2027-06-01", "summer"),
+                      ("2027-08-31", "summer"), ("2027-09-01", "fall")):
+        page, got = on(day)
+        assert got == want, f"{day}: expected {want}, got {got}"
+        page.context.close()
+    page, _ = on("2026-12-10")
+    assert page.locator(".season-flurry").count() == 0, "no falling snow when the device asks for reduced motion"
+    assert "Turn off the Winter look" in page.inner_text(".season-switch")
+    page.click(".season-switch button")
+    assert page.evaluate("document.documentElement.getAttribute('data-season')") is None
+    page.reload()
+    assert page.evaluate("document.documentElement.getAttribute('data-season')") is None, "turning it off is remembered"
+    assert "back on" in page.inner_text(".season-switch")
+    page.context.close()
+    page, _ = on("2026-12-10", motion="no-preference")
+    page.wait_for_selector(".season-flurry span", state="attached")
+    page.click(".season-switch button")
+    assert page.locator(".season-flurry").count() == 0, "turning the look off stops the snow"
+    page.context.close()
+
+
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",
@@ -1132,7 +1165,7 @@ def main():
     with sync_playwright() as p:
         engine = getattr(p, os.environ.get("SMOKE_ENGINE", "chromium"))
         browser = engine.launch(channel="chrome" if os.environ.get("SMOKE_CHROME") else None)
-        site = Site(browser, f"http://127.0.0.1:{server.server_address[1]}")
+        site = Site(browser, f"http://127.0.0.1:{server.server_address[1]}", folder)
         for name, fn in tests:
             label = re.sub(r"^t_", "", name).replace("_", " ")
             site.errors = []

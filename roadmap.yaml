@@ -66,10 +66,17 @@
     - Every finished mission becomes a memory, with its photos and a note
 
 - title: Seasonal Themes
-  status: next
+  status: done
+  date: 2026-11-14
   tag: website
-  when: Planning since Nov 4, 2026
-  summary: Special looks for the website around holidays and seasons, shown only for a short window each time. The rest of the year the site stays its plain self, and a switch in the footer turns the seasonal look off if you'd rather not see it.
+  summary: The website changes its look with the seasons. A switch in the footer turns the seasonal look off if you'd rather keep it plain.
+  items:
+    - "**Spring:** blossom colors, a flowering vine and wildflowers, with a few petals drifting down when you arrive"
+    - "**Summer:** sky and sunshine colors, a string of pennants and a strip of sand"
+    - "**Fall:** harvest colors, a leaf garland and piles of leaves, with falling leaves when you arrive"
+    - "**Winter:** a string of lights, snow and icicles, with a little snow when you arrive"
+    - The falling leaves, petals and snow are gone once they reach the bottom of the page, and never shown to anyone whose device asks for less motion
+    - Holiday looks may come later
  
 - title: Testing Mission Management
   status: doing

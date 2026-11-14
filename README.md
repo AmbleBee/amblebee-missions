@@ -106,6 +106,7 @@ For the mission format and pack structure, see [SCHEMA.md](missions/SCHEMA.md).
 | `data/` | City and ZIP code lookup data |
 | `collections.yaml` | Curated mission collections and themed pages |
 | `roadmap.yaml` | Public project roadmap and updates |
+| `themes/` | Optional seasonal looks and when they show. The site works the same without it ([how themes work](themes/README.md)) |
 | `.github/workflows/` | Automated testing and GitHub Pages deployment |
 
 Each mission is stored as an individual YAML file, making it possible to maintain, validate, and organize the collection without requiring a database.

@@ -1,0 +1,40 @@
+/* Summer: sky and sunshine accents, a string of pennants along the top, a strip of sand and shells on the footer,
+   and a little sun on the envelope. No arrival flurry. Every rule starts with html[data-season="summer"], so none of
+   this shows unless the look is on. Colors are checked by tools/build_themes.py (light and dark). */
+
+html[data-season="summer"] {
+  --sage: #7FB7D6; --sage-deep: #24607F; --sage-shadow: #1C4D67; --sage-tint: #DCEDF6; --sage-ink: #1B4A63;
+  --fill: #24607F; --fill-hover: #1F546F; --fill-shadow: #173F54;
+  --honey: #E8A93A; --honey-tint: #F8E5BB; --honey-deep: #85561A;
+  --tape: rgba(127, 183, 214, .55); --tape-honey: rgba(232, 169, 58, .5);
+}
+@media (prefers-color-scheme: dark) {
+  html[data-season="summer"] {
+    --sage: #6FA8C8; --sage-deep: #8FC6E3; --sage-shadow: #3B6E8A; --sage-tint: #1F3846; --sage-ink: #CDE7F4;
+    --fill: #24607F; --fill-hover: #2C6F92; --fill-shadow: #163B4E;
+    --honey: #EDB552; --honey-tint: #47381C; --honey-deep: #F2C877;
+    --tape: rgba(111, 168, 200, .45); --tape-honey: rgba(237, 181, 82, .4);
+  }
+}
+
+/* a string of pennants across the very top of the page */
+html[data-season="summer"] body::before {
+  content: ""; position: absolute; top: 0; left: 0; right: 0; height: 22px; z-index: 30;
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2296%22 height=%2222%22 viewBox=%220 0 96 22%22%3E%3Cpath d=%22M0 3 Q48.0 9 96 3%22 fill=%22none%22 stroke=%22%237A5A42%22 stroke-width=%221.2%22/%3E%3Cpath d=%22M-1 4.3 L13 4.3 L6 16.3Z%22 fill=%22%23E8A93A%22/%3E%3Cpath d=%22M19 7.5 L33 7.5 L26 19.5Z%22 fill=%22%237FB7D6%22/%3E%3Cpath d=%22M39 8.7 L53 8.7 L46 20.7Z%22 fill=%22%23F3E3C3%22/%3E%3Cpath d=%22M59 7.9 L73 7.9 L66 19.9Z%22 fill=%22%235A9BBF%22/%3E%3Cpath d=%22M79 5.1 L93 5.1 L86 17.1Z%22 fill=%22%23E07A4E%22/%3E%3C/svg%3E") repeat-x 0 0 / 96px 22px;
+}
+
+/* a little sun by the logo */
+html[data-season="summer"] .brand::after {
+  content: ""; position: absolute; left: -7px; top: -4px; width: 18px; height: 18px;
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%225%22 fill=%22%23F2B33D%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(0 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(45 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(90 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(135 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(180 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(225 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(270 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(315 12 12)%22/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* a strip of sand with a few shells along the footer's top edge, and a sun peeking over the envelope */
+html[data-season="summer"] .foot::before {
+  content: ""; position: absolute; left: 0; right: 0; top: -17px; height: 22px; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22347%22 height=%2222%22 viewBox=%220 0 347 22%22%3E%3Cpath d=%22M0 13.1 Q17.4 10.1 34.8 14.0 Q54.3 10.7 73.7 13.7 Q92.9 7.1 112.1 10.1 Q126.8 7.1 141.4 14.7 Q157.9 11.5 174.4 14.5 Q185.6 9.3 196.7 12.3 Q209.2 9.3 221.6 12.7 Q237.4 7.1 253.1 10.1 Q265.3 7.1 277.4 11.4 Q296.6 8.4 315.8 13.8 Q327.4 10.8 339.0 14.0 Q343.0 10.1 347.0 13.1 V22 H0Z%22 fill=%22%23E9D3A4%22/%3E%3Cpath d=%22M0 13.1 Q17.4 10.1 34.8 14.0 Q54.3 10.7 73.7 13.7 Q92.9 7.1 112.1 10.1 Q126.8 7.1 141.4 14.7 Q157.9 11.5 174.4 14.5 Q185.6 9.3 196.7 12.3 Q209.2 9.3 221.6 12.7 Q237.4 7.1 253.1 10.1 Q265.3 7.1 277.4 11.4 Q296.6 8.4 315.8 13.8 Q327.4 10.8 339.0 14.0 Q343.0 10.1 347.0 13.1%22 fill=%22none%22 stroke=%22%23C9A96A%22 stroke-width=%221%22/%3E%3Cpath d=%22M211.9 16.4 a3.2 3.2 0 0 1 6.4 0z%22 fill=%22%23F6E9D2%22 stroke=%22%23C9A96A%22 stroke-width=%22.7%22/%3E%3Cpath d=%22M294.9 16.6 a3.2 3.2 0 0 1 6.4 0z%22 fill=%22%23F6E9D2%22 stroke=%22%23C9A96A%22 stroke-width=%22.7%22/%3E%3Cpath d=%22M331.3 18.6 a3.2 3.2 0 0 1 6.4 0z%22 fill=%22%23F6E9D2%22 stroke=%22%23C9A96A%22 stroke-width=%22.7%22/%3E%3C/svg%3E") repeat-x 0 0 / 347px 22px;
+}
+html[data-season="summer"] .env::before {
+  content: ""; position: absolute; right: 26px; top: -22px; width: 44px; height: 44px; z-index: 5; pointer-events: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 24 24%22%3E%3Ccircle cx=%2212%22 cy=%2212%22 r=%225.6%22 fill=%22%23F2B33D%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(0 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(45 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(90 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(135 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(180 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(225 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(270 12 12)%22/%3E%3Cpath d=%22M12 2.2 V5.4%22 stroke=%22%23F2B33D%22 stroke-width=%221.8%22 stroke-linecap=%22round%22 transform=%22rotate(315 12 12)%22/%3E%3C/svg%3E") center / contain no-repeat; transition: opacity .2s ease;
+}

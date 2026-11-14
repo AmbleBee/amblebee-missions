@@ -1,4 +1,5 @@
-# Seasonal looks for amblebee.com: which theme shows when.
+# Seasonal looks for amblebee.com: which theme shows when. For now, the four seasons back to back;
+# holiday looks can come later (see holiday: below).
 #
 # Optional, like the whole themes/ folder: without it the site is plain all year.
 # Edit, push, done. tools/build_themes.py checks this file on every build and says plainly what's wrong.
@@ -6,8 +7,10 @@
 # Each entry:
 #   theme:    the folder in themes/ (fall -> themes/fall/theme.css)          (required)
 #   name:     what the footer calls it ("the Fall & Thanksgiving look")     (required)
-#   from, to: month and day, MM-DD in quotes. Repeats every year.            (required)
+#   from, to: month and day, MM-DD in quotes. Repeats every year.            (required, unless holiday is set)
 #             "to" can be in the next year: from "12-01" to "01-01" works.
+#   holiday:  instead of from and to, for dates that move every year:
+#             thanksgiving-week = Monday to Sunday of the week with the 4th Thursday of November (never past Nov 30)
 #   message:  one friendly line shown in the footer while it's on            (optional)
 #   flurry:   true for a shower of falling leaves or snow when someone arrives   (optional, default false)
 #             or refreshes. It falls down the page (behind the content) and is gone
@@ -17,9 +20,22 @@
 # Visitors can turn the look off in the footer. To try a theme any day, run bash tools/preview.sh
 # and use the "Theme preview" picker in the corner (it only shows on localhost).
 
+- theme: spring
+  name: Spring
+  from: "03-01"
+  to: "05-31"
+  message: Happy spring from the hive! Everything's blooming, so it's a good day to go somewhere new.
+  flurry: true
+
+- theme: summer
+  name: Summer
+  from: "06-01"
+  to: "08-31"
+  message: Happy summer from the hive! Long days and warm evenings, made for wandering.
+
 - theme: fall
-  name: Fall & Thanksgiving
-  from: "11-01"
+  name: Fall
+  from: "09-01"
   to: "11-30"
   message: Happy fall from the hive! It's cozy season, so grab something warm and go somewhere new.
   flurry: true
@@ -27,6 +43,6 @@
 - theme: winter
   name: Winter
   from: "12-01"
-  to: "01-01"
-  message: Happy holidays from the hive! Bundle up and go see the lights.
+  to: "02-29"
+  message: Happy winter from the hive! Bundle up, there's still plenty to go see.
   flurry: true

@@ -34,7 +34,10 @@ THEMES = ROOT / "themes"
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from check_contrast import MIN_RATIO, PAIRS, ratio, tokens  # noqa: E402
 
-KEYS = {"theme", "name", "from", "to", "message", "flurry"}
+KEYS = {"theme", "name", "from", "to", "holiday", "message", "flurry"}
+# looks whose dates move every year: worked out in the visitor's browser (season.js) instead of from/to.
+# For checking overlaps, each one counts every day it could ever fall on.
+HOLIDAYS = {"thanksgiving-week": ("11-22", "11-30")}   # Monday to Sunday around the 4th Thursday of November, never past Nov 30
 MMDD = re.compile(r"^(\d{2})-(\d{2})$")
 # every page links style.css (with or without a leading slash, with or without a ?v= after the build)
 STYLE_LINK = re.compile(r'<link rel="stylesheet" href="/?style\.css(?:\?v=[0-9a-f]+)?">')
@@ -96,9 +99,16 @@ def load():
             continue
         for k in sorted(set(e) - KEYS):
             problems.append(f"{where}: unknown field '{k}' (fields: {', '.join(sorted(KEYS))})")
+        if e.get("holiday"):
+            if e["holiday"] not in HOLIDAYS:
+                problems.append(f"{where}: holiday should be one of: {', '.join(sorted(HOLIDAYS))}")
+            if e.get("from") or e.get("to"):
+                problems.append(f"{where}: use either holiday or from and to, not both")
+            else:
+                e = {**e, "from": HOLIDAYS.get(e["holiday"], ("01-01", "01-01"))[0], "to": HOLIDAYS.get(e["holiday"], ("01-01", "01-01"))[1]}
         for k in ("theme", "name", "from", "to"):
             if not e.get(k):
-                problems.append(f"{where}: needs '{k}'")
+                problems.append(f"{where}: needs '{k}'" + (" (or a holiday)" if k in ("from", "to") else ""))
         if "flurry" in e and not isinstance(e["flurry"], bool):
             problems.append(f"{where}: flurry should be true or false")
         if e.get("theme") and e["theme"] not in css:
@@ -113,7 +123,7 @@ def load():
                 ok = False
         if ok and all(e.get(k) for k in ("theme", "name")):
             clean.append({"theme": str(e["theme"]), "name": str(e["name"]).strip(), "from": str(e["from"]).strip(),
-                          "to": str(e["to"]).strip(), "message": str(e.get("message") or "").strip(),
+                          "to": str(e["to"]).strip(), "holiday": str(e.get("holiday") or ""), "message": str(e.get("message") or "").strip(),
                           "flurry": bool(e.get("flurry"))})
     for i, a in enumerate(clean):
         for b in clean[i + 1:]:
@@ -156,7 +166,12 @@ SEASON_JS = r"""/* Seasonal looks for AmbleBee, built by tools/build_themes.py f
     try { if (value === null) window[kind].removeItem(key); else window[kind].setItem(key, value); } catch (e) {}
   }
   var d = new Date();
-  var today = String(d.getMonth() + 1).padStart(2, "0") + "-" + String(d.getDate()).padStart(2, "0");
+  function mmdd(month, day) { return String(month).padStart(2, "0") + "-" + String(day).padStart(2, "0"); }
+  var today = mmdd(d.getMonth() + 1, d.getDate());
+  // looks whose dates move every year, worked out for this year
+  var thursday = 1 + (4 - new Date(d.getFullYear(), 10, 1).getDay() + 7) % 7 + 21;   // the 4th Thursday of November
+  var HOLIDAYS = { "thanksgiving-week": [mmdd(11, thursday - 3), mmdd(11, Math.min(thursday + 3, 30))] };
+  SEASONS.forEach(function (s) { if (HOLIDAYS[s.holiday]) { s.from = HOLIDAYS[s.holiday][0]; s.to = HOLIDAYS[s.holiday][1]; } });
   function inSeason(s) { return s.from <= s.to ? (today >= s.from && today <= s.to) : (today >= s.from || today <= s.to); }
   var current = SEASONS.filter(inSeason)[0] || null;
 
@@ -346,7 +361,7 @@ def main():
     schedule, css, problems = load()
     if problems:
         sys.exit("Seasonal themes need a fix:\n  - " + "\n  - ".join(problems))
-    when = ", ".join(f"{s['name']} {s['from']} to {s['to']}" for s in schedule) or "nothing scheduled"
+    when = ", ".join(f"{s['name']} " + (s["holiday"] if s["holiday"] else f"{s['from']} to {s['to']}") for s in schedule) or "nothing scheduled"
     if not args.out:
         print(f"Themes OK: {len(css)} theme(s); {when}")
         return

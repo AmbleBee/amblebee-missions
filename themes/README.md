@@ -1,14 +1,19 @@
 # Seasonal themes
 
+For now the four seasons run back to back, so one look is always on (visitors can turn it off in the footer).
+Holiday looks can be added later, with fixed dates or a `holiday` rule like `thanksgiving-week`.
+
 Optional seasonal looks for amblebee.com. The website doesn't depend on anything in here: delete this
 folder and the site is plain all year, with no errors and no extra requests.
 
 | File | What it does |
 |---|---|
-| `seasons.yaml` | Which look shows when (month and day, every year). Edit, push, done |
+| `seasons.yaml` | Which look shows when (month and day every year, or a holiday whose date moves, like Thanksgiving week). Edit, push, done |
 | `_base.css` | Shared bits: the footer's on/off switch and the localhost preview picker |
-| `fall/theme.css` | Fall & Thanksgiving: harvest accents, a leaf garland, leaves piled on the footer and the envelope, falling leaves on arrival |
-| `winter/theme.css` | Winter: evergreen accents, a string of lights, snow and icicles on the footer, snow on the envelope, a snow flurry on arrival |
+| `spring/theme.css` | Spring (Mar-May): blossom accents, a flowering vine, grass and wildflowers on the footer, blossoms on the envelope, falling petals on arrival |
+| `summer/theme.css` | Summer (Jun-Aug): sky and sunshine accents, a string of pennants, sand and shells on the footer, a sun on the envelope (no flurry) |
+| `fall/theme.css` | Fall (Sep-Nov): harvest accents, a leaf garland, leaves piled on the footer and the envelope, falling leaves on arrival |
+| `winter/theme.css` | Winter (Dec-Feb): evergreen accents, a string of lights, snow and icicles on the footer, snow on the envelope, a snow flurry on arrival |
 
 ## How it works
 
@@ -21,7 +26,7 @@ A season with `flurry: true` in `seasons.yaml` also gets a shower of falling lea
 of a visit and whenever the page is refreshed (not on every click). It falls down the whole page rather than
 the screen, so it stays put when you scroll and catches up with you, passing behind cards, buttons and text.
 It ends when the last piece reaches the footer (or after 90 seconds on very long pages). Visitors whose device
-asks for reduced motion never see it, and turning the look off stops it.
+asks for reduced motion never see it (and the winter lights stay still for them), and turning the look off stops it.
 
 The footer and envelope decorations are drawn as a few layers of different widths, so the leaf piles, snow
 and icicles look scattered instead of repeating.
@@ -29,7 +34,7 @@ and icicles look scattered instead of repeating.
 ## Trying a theme
 
 Run `bash tools/preview.sh` and open http://localhost:8811. A **Theme preview** picker sits in the bottom-left
-corner (only on localhost): pick Plain, Fall, Winter, or "By today's date". You can also add `?season=winter`
+corner (only on localhost): pick Plain, any season, or "By today's date". You can also add `?season=winter`
 to any address. The choice lasts until you close the tab.
 
 ## Making a new theme
@@ -38,11 +43,12 @@ to any address. The choice lasts until you close the tab.
 2. Change the colors. Themes change the accents (buttons, links, highlights) and keep the site's own paper
    colors, so the page feels the same all year. Every token you set in the light block must also be set in
    the dark-mode block.
-3. Add an entry to `seasons.yaml`.
+3. Add an entry to `seasons.yaml`, with `from` and `to`, or a `holiday` for dates that move every year
+   (today: `thanksgiving-week`; new ones go in `HOLIDAYS` in `tools/build_themes.py` and in `season.js` inside it).
 4. `python tools/build_themes.py` checks it all and says plainly what to fix.
 
 Rules the check enforces: every rule starts with `html[data-season="<name>"]` (so nothing leaks onto the plain
-site), dates are `"MM-DD"` and can't overlap, text stays readable, and `--foot-bg` stays the same (the footer
+site), dates are `"MM-DD"` and can't overlap (a holiday counts every day it could ever fall on), text stays readable, and `--foot-bg` stays the same (the footer
 is the page's clear end in every look).
 
 Decorations should never take up space: the garland sits above the header and the little accent floats by
