@@ -46,5 +46,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, conditions]
-themes: [beach, history]
+themes: [beach, history, parks, views, lakes-rivers, hiking]
 tags: [cape disappointment, lewis and clark, north head lighthouse, columbia river bar, storm watching, ilwaco, southwest-washington]

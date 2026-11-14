@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 7
 name: Idaho Potato Museum
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Idaho Potato Museum
   area: Downtown Blackfoot
   address: 130 NW Main St, Blackfoot, ID 83221
-  coords: [43.19100, -112.34500]  # APPROX: set at the entrance before publishing
+  coords: [43.18970, -112.34371]
   website: https://www.idahopotatomuseum.com
 short: Idaho Potato Museum in Blackfoot. Learn everything about spuds and see the giant potato.
 description: >

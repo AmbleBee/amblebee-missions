@@ -18,13 +18,15 @@ description: >
   boardwalk with the river behind you. It's free, but it sometimes closes for
   private events.
 about: >
-  The Elevated Acre is a "privately owned public space," a park that a
-  building's owners built and keep open to everyone in exchange for being
-  allowed to build bigger. New York has hundreds of them, many easy to walk
-  past without noticing.
+  The Elevated Acre is a "privately owned public space," a park a building's
+  owners built and keep open to everyone in exchange for being allowed to
+  build bigger. Today's design, by Ken Smith and Rogers Marvel Architects, won
+  a design competition and opened in 2005.
 
-  It's free, but it sometimes closes for private events, so check before you
-  go.
+  It has a lawn ringed by amphitheater steps, a hardwood boardwalk about 30
+  feet above the East River, and a light tower you can spot from the FDR
+  Drive. It's free, but it sometimes closes for private events, so check
+  before you go.
 for_kids:
   short: Secret park! Find each thing.
   steps:
@@ -41,5 +43,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [views]
+themes: [views, picnic, lakes-rivers, quirky]
 tags: [elevated acre, hidden park nyc, 55 water street, east river views, privately owned public space, nyc]

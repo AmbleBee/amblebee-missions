@@ -36,18 +36,133 @@ def serve(folder):
     return server
 
 
+INTAKE = "https://amblebee-intake.tail58116.ts.net"   # API in site/js/intake.js; the tests stand in for it
+
+
+class FakeIntake:
+    """Answers like AmbleBee Intake would, so the forms can be tested without the real server.
+    mode: "up", "paused" (health says not accepting) or "down" (no answer at all)."""
+
+    def __init__(self):
+        self.mode, self.posts, self.answered = "up", [], False
+        self.closed = False
+        self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
+                       {"who": "us", "at": "2026-11-13T16:00:00+00:00", "body": "We'd love one! Any favorite spots?"}]
+
+    def handle(self, route):
+        req = route.request
+        path = req.url.split(INTAKE, 1)[1].split("?")[0]
+        cors = {"access-control-allow-origin": "*", "access-control-allow-methods": "GET, POST",
+                "access-control-allow-headers": "Content-Type", "content-type": "application/json"}
+        if self.mode == "down":
+            return route.abort()
+        if req.method == "OPTIONS":
+            return route.fulfill(status=200, headers=cors, body="")
+
+        def reply(status, body):
+            route.fulfill(status=status, headers=cors, body=json.dumps(body))
+        if path == "/health":
+            return reply(200, {"ok": True, "accepting": self.mode == "up"})
+        if path == "/schema":
+            return reply(200, {"ok": True, **SCHEMA})
+        if req.method == "POST":
+            data = json.loads(req.post_data or "{}")
+            self.posts.append((path, data))
+            if path == "/status/msg123/close":
+                self.closed = True
+                return reply(200, {"ok": True})
+            if path == "/status/msg123/reply":
+                self.closed = False
+                self.thread.append({"who": "them", "at": "2026-11-14T16:00:00+00:00", "body": data.get("message", "")})
+                return reply(201, {"ok": True})
+            if path == "/status/ask123/reply":
+                if not str(data.get("message", "")).strip():
+                    return reply(400, {"ok": False, "error": "Please check your answer.", "errors": {"message": "Please fill in your answer."}})
+                self.answered = True
+                return reply(201, {"ok": True})
+            if path == "/submit/mission":
+                m = data.get("mission") or {}
+                if not m.get("name") or not m.get("description"):
+                    return reply(400, {"ok": False, "error": "Please check the highlighted fields.", "errors": {"name": "Give the mission a name."}})
+                return reply(201, {"ok": True, "token": "tok123", "status_url": "https://amblebee.com/status/#tok123"})
+            need = {"/submit/idea": ["title", "body"], "/report": ["body"], "/contact": ["name", "email", "subject", "message"]}.get(path)
+            if need is None:
+                return reply(404, {"ok": False})
+            errors = {f: "Please fill this in." for f in need if not str(data.get(f, "")).strip()}
+            if errors:
+                return reply(400, {"ok": False, "error": "Please check the highlighted fields.", "errors": errors})
+            if path == "/report" and not data.get("follow"):
+                return reply(201, {"ok": True})
+            if path == "/contact":
+                return reply(201, {"ok": True, "token": "msg123", "status_url": "https://amblebee.com/status/#msg123"})
+            return reply(201, {"ok": True, "token": "tok123", "status_url": "https://amblebee.com/status/#tok123"})
+        if path == "/status/tok123":
+            return reply(200, {"ok": True, "kind": "idea", "title": "Tide pools", "status": "in_review", "headline": "In review",
+                               "text": "We're reading it now.", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
+                               "steps": [{"status": s, "label": s} for s in ("received", "in_review", "working", "approved", "live")],
+                               "history": [{"status": "received", "label": "Received", "at": "2026-11-12T16:00:00+00:00"}]})
+        if path == "/status/msg123":
+            mine = self.thread[-1]["who"] == "them"
+            status, headline, text = (("received", "Received", "It's waiting to be read.") if mine else
+                                      ("waiting", "We wrote back", "We replied and need a little more from you. See below."))
+            if self.closed:
+                status, headline, text = "done", "Closed", "You closed this conversation. Need anything else? Reply below and it opens again."
+            return reply(200, {"ok": True, "kind": "contact", "title": "A Montana pack?", "closed": self.closed,
+                               "status": status, "headline": headline, "text": text, "days": 30,
+                               "created_at": "2026-11-12T16:00:00+00:00", "due": "2026-12-13T16:00:00+00:00" if status == "waiting" else None,
+                               "steps": [{"status": s, "label": s} for s in ("received", "open", "done")], "history": [],
+                               "thread": self.thread, "can_reply": True, "can_close": not self.closed})
+        if path == "/status/ask123":
+            waiting = not self.answered
+            view = {"ok": True, "kind": "idea", "title": "Covered bridge loop", "closed": False, "created_at": "2026-11-12T16:00:00+00:00",
+                    "status": "needs_info" if waiting else "working", "headline": "We have a question" if waiting else "Working on it",
+                    "text": "We need a little more from you. See below." if waiting else "We're looking into it: checking the place and the details. It isn't approved yet.",
+                    "steps": [{"status": s, "label": s} for s in ("received", "in_review", "working", "approved", "live")],
+                    "history": [{"status": "received", "label": "Received", "at": "2026-11-12T16:00:00+00:00"}]}
+            if waiting:
+                view.update(question="Which bridge do you start at?", due="2026-12-12T16:00:00+00:00")
+            return reply(200, view)
+        return reply(404, {"ok": False, "error": "not found"})
+
+
+SCHEMA = {   # a small stand-in for AmbleBee Intake's GET /schema
+    "packs": [{"id": "oregon", "name": "Amble Oregon", "places": "required"}, {"id": "anywhere", "name": "Amble Anywhere", "places": "none"}],
+    "allowed": {"mode": ["date", "adventure", "both"], "who": ["solo", "friends", "family", "kids"], "duration": ["short", "half-day", "all-day"],
+                "effort": ["easy", "moderate", "hard"], "cost": ["free", "$", "$$", "$$$"], "setting": ["indoor", "outdoor", "either"],
+                "season": ["spring", "summer", "fall", "winter"], "time_of_day": ["any", "morning", "daytime", "evening", "night"],
+                "travel": ["home", "local", "drive", "day-trip"], "check_ahead": ["hours", "tickets"], "discounts": ["senior", "student"]},
+    "labels": {"mode": {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}, "cost": {"$": "Under $20 for two"},
+               "rent": {"on-site": "Rent it there", "nearby": "Rent it nearby", "no": "Bring your own"}},
+    "gear": ["bikes", "headlamps", "life-jackets"], "rent": ["on-site", "nearby", "no"],
+    "themes": {"beach": "Beaches & coast", "wildlife": "Animals & wildlife", "drinks": "Wine, beer & cocktails", "playful": "Playful & silly"},
+    "theme_groups": {"Outdoors": ["beach", "wildlife"], "Fun": ["drinks"], "Feel": ["playful"]}, "themes_max": 6,
+    "limits": {"name": 80, "short": 100, "description": 800, "about": 1500, "caution": 200, "credit": 40},
+    "couple_words": r"\b(the two of you|you two|both of you|your partner|your date|hold hands)\b",
+    "tips": {"name": "Short and specific beats clever.", "coords": "Right-click the entrance in Google Maps."},
+}
+
+
+def expected(message):
+    """The browser logs an API's 400 (a form with a mistake) or an outage as an error. Those are the forms
+    working as designed, so they don't fail a test; every other console error still does."""
+    where = (message.location or {}).get("url", "")
+    return message.type == "error" and (INTAKE in where or INTAKE in message.text)   # Chromium and WebKit word it differently
+
+
 class Site:
     """A fresh page for each test. Motion is reduced so envelopes open right away."""
 
     def __init__(self, browser, base):
         self.browser, self.base, self.errors = browser, base, []
+        self.intake = FakeIntake()
 
     def open(self, path="/", viewport=DESKTOP):
         ctx = self.browser.new_context(viewport=viewport, reduced_motion="reduce", accept_downloads=True)
+        ctx.route(INTAKE + "/**", self.intake.handle)
         page = ctx.new_page()
         page.set_default_timeout(TIMEOUT_MS)
         page.on("pageerror", lambda e: self.errors.append(f"{path}: {e}"))
-        page.on("console", lambda m: self.errors.append(f"{path}: {m.text}") if m.type == "error" else None)
+        page.on("console", lambda m: self.errors.append(f"{path}: {m.text}") if m.type == "error" and not expected(m) else None)
         page.goto(self.base + path)
         return page
 
@@ -58,6 +173,7 @@ class Site:
 
 
 PREVIEW = 4   # missions per pack in "Every pack" with no filters (PACK_PREVIEW in site/js/browse.js)
+FOLD_MIN = 20   # packs with fewer live missions fold under "More packs" (PACK_FOLD_MIN in site/js/browse.js)
 
 
 def t_home_shows_a_taste_of_every_pack(site, catalog):
@@ -79,6 +195,29 @@ def t_home_shows_a_taste_of_every_pack(site, catalog):
     assert page.locator("#packs .pack-more").count() == 0
     page.goto(site.base + f'/packs/{p["id"]}/')     # and the Show all page lists every mission in the pack
     assert page.locator(".cards .card").count() == p["count"]
+
+
+def t_small_packs_fold_under_more_packs(site, catalog):
+    packs = [p for p in catalog["packs"] if p["count"]]
+    is_big = lambda p: p["id"] == "anywhere" or p["count"] >= FOLD_MIN
+    lead = [p["name"] for p in sorted((p for p in packs if is_big(p)), key=lambda p: (p["id"] != "anywhere", -p["count"]))]
+    small = [p for p in packs if not is_big(p)]
+    for path, root in (("/", "#packs"), ("/missions/", ".page")):
+        page = site.home() if path == "/" else site.open(path)
+        shown = page.locator(f"{root} > section.pack").evaluate_all("els => els.map(e => e.getAttribute('aria-label'))")
+        assert shown == lead, f"{path}: Amble Anywhere, then the big packs, biggest first"
+        fold = page.locator(f"{root} details.more-packs")
+        assert fold.locator("section.pack").count() == len(small)
+        assert f"{len(small)} more packs" in fold.locator("summary").inner_text()
+        assert not fold.locator("section.pack").first.is_visible(), f"{path}: small packs stay folded until asked for"
+        fold.locator("summary").click()
+        assert fold.locator("section.pack").first.is_visible()
+    page = site.home()
+    page.click("#packs details.more-packs summary")
+    page.check('input[name="mode"][value="date"]', force=True)   # a mood is picked: every match shows, nothing folded
+    assert page.locator("#packs details.more-packs").count() == 0
+    page.check('input[name="mode"][value="any"]', force=True)
+    assert page.locator("#packs details.more-packs").get_attribute("open") is not None, "the fold stays the way you left it"
 
 
 def t_phone_packs_swipe_sideways(site, catalog):
@@ -147,6 +286,50 @@ def t_search_matches_words_and_typos(site, catalog):
     assert search("watterfall")
     assert "close match" in page.inner_text("#browse-count")
     assert search("picnics") == search("picnic")
+
+
+def t_search_reaches_past_distance_and_filters(site, catalog):
+    page = site.home()
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".zip-set")
+
+    def search(text):
+        page.fill("#search-input", text)
+        page.wait_for_function("t => document.querySelector('#browse-count').textContent.includes(t)", arg=text)
+
+    search("crater lake")
+    far = page.locator("#packs .pack.beyond")
+    assert "Crater Lake" in far.locator(".card h4").all_inner_texts(), "a place past the distance still turns up in search"
+    assert "Farther than" in far.locator("h3").inner_text()
+    assert far.locator(".card .d").count(), "and its card says how far away it is"
+    search("multnomah")
+    assert page.locator("#packs .pack.beyond").count() == 0, "a nearby match needs no second list"
+    assert "Multnomah Falls" in page.locator("#packs .card h4").all_inner_texts()
+    page.click(".zip-clear")
+    page.click("#filters-toggle")
+    page.check('[data-filter="cost"] input[value="free"]', force=True)
+    search("symphony")
+    assert "Outside your filters" in page.locator("#packs .pack.beyond h3").inner_text()
+    page.click("#browse-clear")
+    search("symphony")
+    assert page.locator("#packs .pack.beyond").count() == 0 and page.locator("#packs .card").count()
+
+
+def t_a_pick_without_a_zip_offers_real_places(site, catalog):
+    page = site.home()
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert page.is_visible("#reveal-near"), "no ZIP yet: the pick says how to get real places"
+    page.click("#reveal-near-btn")
+    page.wait_for_function("() => document.activeElement && document.activeElement.id === 'zip-input'")
+    assert not page.is_visible("#reveal")
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".zip-set")
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert not page.is_visible("#reveal-near"), "with a ZIP set there's nothing to nudge"
 
 
 def t_zip_prefers_nearby_places(site, catalog):
@@ -547,6 +730,10 @@ def t_computer_menu_and_search_link(site, catalog):
     assert not page.is_visible(".menu-panel")
     page.click('.top nav > a[href="/#search"]')
     page.wait_for_function("() => document.activeElement.id === 'search-input'")
+    assert page.locator(".top .brand img[src*='logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "the logo loads"
+    page.click('.top nav > a:has-text("Know a great spot?")')
+    page.wait_for_url("**/suggest/")
+    assert page.locator(".top .brand img[src='/logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "and on other pages"
 
 
 def t_menu_links_keep_filters_and_leave_a_mission(site, catalog):
@@ -564,6 +751,12 @@ def t_footer_is_dark_on_short_pages_too(site, catalog):
     box = page.locator(".foot").bounding_box()
     assert box["y"] + box["height"] >= 1599, "the footer should reach the bottom of a short page"
     assert page.evaluate("getComputedStyle(document.querySelector('.foot')).backgroundColor") == "rgb(74, 51, 35)"
+    for path in ("/contact/", "/", "/roadmap.html"):      # Follow along: the AmbleBeeHQ accounts, in a new tab
+        social = site.open(path).locator(".foot .foot-social a")
+        assert social.count() == 3, f"{path}: the footer should link Pinterest, Bluesky and X"
+        for i in range(3):
+            link = social.nth(i)
+            assert link.get_attribute("target") == "_blank" and "AmbleBee on" in (link.get_attribute("aria-label") or "")
 
 
 def t_idea_pages_gather_missions_and_link_both_ways(site, catalog):
@@ -586,13 +779,48 @@ def t_idea_pages_gather_missions_and_link_both_ways(site, catalog):
     page.wait_for_function("document.title.startsWith('AmbleBee: Date Ideas')")
 
 
+def t_faq_questions_open_and_search_filters_them(site, catalog):
+    page = site.open("/faq/")
+    page.wait_for_selector(".faq-search", state="visible")
+    total = page.locator(".faq-item").count()
+    assert total >= 10 and page.locator(".faq-item[open]").count() == 0, "every question starts closed"
+    page.click("#cost summary")
+    assert page.locator("#cost[open]").count() == 1 and page.is_visible("#cost .faq-a"), "clicking a question opens its answer"
+    page.fill("#faq-q", "credit")
+    assert page.locator(".faq-item:not([hidden])").count() == 1 and page.locator("#credit[open]").count() == 1
+    assert "1 answer matches" in page.inner_text(".faq-count")
+    assert not page.is_visible("#using"), "a section with no matches is hidden"
+    page.fill("#faq-q", "price")   # a word that's not in the text, only in its extra search words
+    assert page.locator("#cost:not([hidden])").count() == 1
+    page.fill("#faq-q", "Don’t hear")   # a curly apostrophe still matches "don't"
+    assert page.locator("#reply:not([hidden])").count() == 1
+    page.fill("#faq-q", "del")          # half a word is enough
+    assert page.locator("#delete:not([hidden])").count() == 1
+    page.fill("#faq-q", "zzzz")
+    assert page.locator(".faq-item:not([hidden])").count() == 0 and page.is_visible(".faq-none") and "zzzz" in page.inner_text(".faq-none")
+    page.press("#faq-q", "Escape")
+    assert page.locator(".faq-item:not([hidden])").count() == total and not page.is_visible(".faq-none")
+    assert page.locator("#cost[open]").count() == 1 and page.locator("#credit[open]").count() == 0, "clearing puts back what was open"
+    page = site.open("/faq/#statuses")
+    page.wait_for_selector("#statuses[open]")
+    assert "Working on it" in page.inner_text("#statuses .faq-a"), "a link to one answer opens it"
+    page = site.open("/faq/?q=delete")
+    page.wait_for_selector("#delete[open]")
+    assert page.input_value("#faq-q") == "delete"
+
+
 def t_built_pages_load(site, catalog):
     mission = catalog["missions"][-1]
     for path in ("/roadmap.html", "/missions/", f"/packs/{mission['pack']}/", f"/missions/{mission['id']}/",
-                 "/about/", "/safety/", "/privacy/", "/contact/", "/rainy-day-date-ideas/", "/at-home-date-ideas/",
+                 "/about/", "/safety/", "/privacy/", "/faq/", "/contact/", "/rainy-day-date-ideas/", "/at-home-date-ideas/",
                  "/free-date-ideas/", "/kid-friendly-adventures/"):
         page = site.open(path)
         page.wait_for_selector("h1")
+    page = site.open("/faq/")
+    data = json.loads(page.inner_text('script[type="application/ld+json"]'))
+    assert data["@type"] == "FAQPage" and len(data["mainEntity"]) >= 10, "the FAQ is marked up for search"
+    assert page.locator('nav .menu-panel a[href="/faq/"]').count() == 1, "the FAQ is in the More menu"
+    assert site.open("/contact/").locator('a[href="/faq/"]').count() >= 1, "the contact page points to the FAQ"
     page = site.open(f"/missions/{mission['id']}/")
     assert mission["name"] in page.inner_text("h1")
     assert all("about" not in m for m in catalog["missions"]), "a mission's about is for its web page, never catalog.json"
@@ -615,6 +843,15 @@ def t_built_pages_load(site, catalog):
     welcome = page.locator(".welcome")   # first-time visitors from Google learn what AmbleBee is
     assert "New to AmbleBee?" in welcome.inner_text() and welcome.locator('a[href="/"]').count() == 1
     assert welcome.locator(".ideas a").count() >= 1
+    page.evaluate("localStorage.setItem('amble.used', '1')")      # opened a mission before: no intro
+    page.reload()
+    assert page.locator(".welcome").count() == 0, "returning visitors shouldn't see the New to AmbleBee box"
+    page = site.open(f"/missions/{mission['id']}/")
+    for _ in range(3):                                            # a few pages in, without opening a mission
+        page.reload()
+    assert page.locator(".welcome").count() == 0, "the intro should go after a few pages"
+    raw = page.evaluate("fetch(location.href).then((r) => r.text())")
+    assert "New to AmbleBee?" in raw, "search engines still get the box in the page itself"
     checked = next((m for m in catalog["missions"] if m.get("checked")), None)
     if checked:   # the "Checked November 2026" line, on the mission's page and in the popup
         page = site.open(f"/missions/{checked['id']}/")
@@ -632,7 +869,256 @@ def t_built_pages_load(site, catalog):
     assert page.locator(".report a").count() == 1
     assert page.locator("a[href^='mailto:']").count() == 0
     page = site.open("/contact/")
-    assert page.locator("a[href='mailto:staff@amblebee.com']").count() == 1
+    assert page.locator("a[href='mailto:staff@amblebee.com']").count() >= 1, "email stays as the fallback"
+
+
+def t_suggest_page_offers_both_ways(site, catalog):
+    page = site.open("/suggest/")
+    assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1
+    assert page.locator(".suggest-paths a[href='/suggest/mission/']").count() == 1
+    text = page.inner_text(".suggest-paths")
+    assert "takes us longer" in text and "helps us the most" in text, "each way says what it means for us"
+
+
+def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
+    page = site.open("/suggest/idea/")
+    page.wait_for_selector(".intake-form", state="visible")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-form .err")
+    assert page.get_attribute("#idea-title", "aria-invalid") == "true", "a missing title is pointed out"
+    page.fill("#idea-title", "Tide pools at Haystack Rock")
+    page.fill("#idea-body", "Go at low tide and find three different sea stars.")
+    assert "First name and last initial" in page.inner_text("#idea-name-hint")
+    page.fill("#idea-name", "sam rivera")
+    page.check("input[name=credit]")
+    assert page.input_value("#idea-name") == "Sam R.", "a full name is shortened to a first name and last initial"
+    page.fill("#idea-email", "sam@example.com")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-done .link-box")
+    note = page.inner_text(".intake-done .spam-note")
+    assert "sam@example.com" in note and "spam folder" in note, "the thank-you says where the email went"
+    assert page.input_value(".intake-done .link-box") == "https://amblebee.com/status/#tok123"
+    path, sent = site.intake.posts[-1]
+    assert path == "/submit/idea" and sent["credit"] is True and sent["website"] == "" and sent["elapsed_ms"] > 0
+    assert sent["name"] == "Sam R."
+    page.reload()
+    page.wait_for_selector(".intake-mine li a")
+    assert page.inner_text(".intake-mine li a") == "Tide pools at Haystack Rock", "the link is kept under Your submissions"
+    card = page.evaluate("(() => { const s = getComputedStyle(document.querySelector('.intake-mine')); return [s.boxShadow, s.paddingLeft]; })()")
+    assert card[0] != "none" and card[1] != "0px", "Your submissions sits in a card"
+    assert page.input_value("#idea-title") == "", "a sent suggestion doesn't come back as a draft"
+
+
+def t_builder_walks_through_and_sends(site, catalog):
+    page = site.open("/suggest/mission/", PHONE)
+    page.wait_for_selector(".builder-panel h2")
+    assert not page.locator(".builder-back").is_visible(), "no Back on the first step"
+    page.click(".builder-next")                                        # nothing filled in: it says what's missing
+    page.wait_for_selector(".builder-panel .err")
+    page.select_option("#b-pack", "oregon")
+    page.fill("#b-name", "Tide Pools at Haystack Rock")
+    page.click("#b-mode label:has-text('Date or adventure')")
+    page.click("#b-who label:has-text('kids')")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-place_name")                             # Oregon needs a place
+    page.click(".builder-next")
+    page.wait_for_selector(".field[data-field=place_name] .err")
+    page.fill("#b-place_name", "Haystack Rock")
+    page.fill("#b-coords", "45.88456, -123.96875")
+    assert "Right-click" in page.inner_text(".field[data-field=coords] .tip"), "each field has its tip"
+    page.click(".builder-next")
+    page.wait_for_selector("#b-short")
+    page.fill("#b-short", "Find three kinds of sea stars at low tide.")
+    page.fill("#b-description", "Go at low tide, hold hands and find three kinds of sea stars.")
+    page.fill("#b-for_kids", "Find a crab hiding in the rocks!")
+    page.fill("#b-kids_steps", "Something orange")
+    page.click(".builder-next")
+    page.wait_for_selector(".field[data-field=description] .err")      # couple words on a mission kids can come on
+    page.fill("#b-description", "Go at low tide and find three kinds of sea stars, then photograph the biggest one with the rock behind it.")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-duration")
+    page.click("#b-gear-items label:has-text('headlamps')")
+    page.select_option(".gear-row select", "on-site")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-themes")
+    page.click("#b-themes label:has-text('Beaches & coast')")
+    page.click("#b-themes label:has-text('Wine, beer & cocktails')")
+    page.click(".builder-next")
+    page.wait_for_selector(".field[data-field=themes] .err")           # no drinks when kids can come
+    page.click("#b-themes label:has-text('Wine, beer & cocktails')")
+    page.click(".builder-next")
+    page.wait_for_selector("#b-about")
+    page.reload()                                                       # answers survive a reload, on the same step
+    page.wait_for_selector("#b-about")
+    page.click(".builder-next")
+    page.fill("#b-email", "sam@example.com")
+    page.click(".builder-next")
+    page.wait_for_selector(".review-part")
+    review = page.inner_text(".builder-panel")
+    assert "Haystack Rock" in review and "headlamps" in review and "spam folder" in review
+    page.click(".builder-next")                                         # Send my mission
+    page.wait_for_selector(".intake-done .link-box")
+    path, sent = site.intake.posts[-1]
+    m = sent["mission"]
+    assert path == "/submit/mission" and m["pack"] == "oregon" and m["who"] == ["kids"] and m["gear"] == [{"item": "headlamps", "rent": "on-site"}]
+    assert m["themes"] == ["beach"] and m["season"] == "any" and m["place"]["coords"] == "45.88456, -123.96875" and sent["email"] == "sam@example.com"
+    assert "spam folder" in page.inner_text(".intake-done .spam-note")
+    page.goto(site.base + "/suggest/mission/")
+    page.wait_for_selector(".builder-panel h2")
+    assert page.input_value("#b-name") == "", "a sent mission doesn't come back as a draft"
+
+
+def t_report_from_a_mission_fills_it_in(site, catalog):
+    mission = catalog["missions"][0]
+    page = site.open(f"/missions/{mission['id']}/")
+    page.click(".report a")
+    page.wait_for_selector(".intake-form", state="visible")
+    assert mission["name"] in page.inner_text(".report-about"), "the report names its mission"
+    page.fill("#report-body", "The parking lot is closed for the winter.")
+    page.check("input[name=follow]")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-done .link-box")
+    path, sent = site.intake.posts[-1]
+    assert path == "/report" and sent["mission_id"] == mission["id"] and sent["follow"] is True
+    ticket = site.home()
+    ticket.click("#packs .card")
+    href = ticket.get_attribute("#dialog-body .report a", "href")
+    assert href.startswith("/report/?id="), "the pop-up ticket links to the report page too"
+
+
+def t_contact_form_sends_and_keeps_a_draft(site, catalog):
+    page = site.open("/contact/")
+    page.wait_for_selector(".intake-form", state="visible")
+    page.fill("#contact-name", "Riley")
+    page.fill("#contact-message", "Any plans for a Montana pack?")
+    page.reload()                                                     # typing survives a reload
+    page.wait_for_selector(".intake-form", state="visible")
+    assert page.input_value("#contact-message") == "Any plans for a Montana pack?"
+    page.fill("#contact-email", "riley@example.com")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector("#contact-subject[aria-invalid=true], .form-status.bad")   # the subject is required
+    page.fill("#contact-subject", "A Montana pack?")
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-done h2")
+    assert "token" not in json.dumps(site.intake.posts[-1][1])
+    assert page.input_value(".intake-done .link-box") == "https://amblebee.com/status/#msg123", "a private link to the conversation"
+    assert "riley@example.com" in page.inner_text(".intake-done .spam-note") and "spam" in page.inner_text(".intake-done .spam-note")
+    assert page.inner_text(".intake-mine li a") == "A Montana pack?" and "Message" in page.inner_text(".intake-mine li small")
+
+
+def t_forms_say_when_the_mailbox_is_closed(site, catalog):
+    site.intake.mode = "paused"                       # switched off on purpose: closed, and no backup
+    for path in ("/suggest/idea/", "/suggest/mission/", "/report/", "/contact/"):
+        page = site.open(path)
+        page.wait_for_selector(".intake-down", state="visible")
+        assert not page.is_visible(".intake-form, .builder-form") and not page.is_visible(".intake-backup"), f"{path} paused must stay closed"
+    site.intake.mode = "down"                         # server unreachable: the Google Form backups
+    for path in ("/suggest/idea/", "/suggest/mission/"):
+        page = site.open(path)
+        page.wait_for_selector(".intake-backup", state="visible")
+        assert page.get_attribute(".backup-link", "href").startswith("https://forms.gle/"), path
+    mission = catalog["missions"][0]
+    page = site.open(f"/report/?id={mission['id']}&name={mission['name']}")
+    page.wait_for_selector(".intake-backup", state="visible")
+    href = page.get_attribute(".backup-link", "href")
+    assert "docs.google.com/forms" in href and f"entry.872618061={mission['id']}" in href, "the backup report keeps the mission"
+    page = site.open("/contact/")
+    page.wait_for_selector(".intake-down", state="visible")   # contact has no Google Form: email instead
+    site.intake.mode = "up"
+    page = site.open("/suggest/idea/")
+    site.intake.mode = "down"
+    page.wait_for_selector(".intake-form", state="visible")
+    page.fill("#idea-title", "Tide pools")
+    page.fill("#idea-body", "Go at low tide and find three different sea stars.")
+    page.click(".intake-form button[type=submit]")                # the server vanishes mid-send
+    page.wait_for_selector(".form-status.bad a")
+    assert "forms.gle" in page.get_attribute(".form-status.bad a", "href"), "a failed send offers the backup too"
+    assert page.input_value("#idea-title") == "Tide pools", "and nothing typed is lost"
+    site.intake.mode = "up"
+
+
+def t_status_page_shows_where_it_is(site, catalog):
+    page = site.open("/status/#tok123")
+    page.wait_for_selector(".status-card")
+    assert page.inner_text(".status-headline") == "In review"
+    assert page.locator(".steps li.done").count() == 1 and page.locator(".steps li.now").count() == 1
+    page = site.open("/status/#nope")
+    page.wait_for_selector(".status-view h2")
+    assert "couldn't find" in page.inner_text(".status-view h2")
+    page = site.open("/status/")
+    page.fill("#status-link", "https://amblebee.com/status/#tok123")
+    page.click(".link-form button")
+    page.wait_for_selector(".status-card")
+    for path in ("/status/", "/report/"):
+        assert site.open(path).locator('meta[name="robots"][content="noindex"]').count() == 1, f"{path} stays out of search"
+    for path in ("/suggest/idea/", "/suggest/mission/"):
+        assert site.open(path).locator('meta[name="robots"]').count() == 0, f"{path} can be found in search"
+
+
+def t_status_page_shows_a_contact_conversation_and_takes_a_reply(site, catalog):
+    page = site.open("/status/#msg123")
+    page.wait_for_selector(".status-thread")
+    assert page.inner_text(".status-headline") == "We wrote back"
+    assert page.locator(".status-thread li").count() == 2 and page.locator(".status-thread li.us").count() == 1
+    assert "Any favorite spots?" in page.inner_text(".status-thread li.us")
+    hints = page.inner_text(".status-answer")
+    assert "closes on December 13, 2026" in hints and "waiting to hear from you" in hints
+    assert "not by email" in hints, "it says to reply here, not by email"
+    page.fill("#status-answer", "Glacier, for sure.")
+    page.click(".status-answer button[type=submit]")
+    page.wait_for_selector(".status-thanks")
+    assert site.intake.posts[-1] == ("/status/msg123/reply", {"message": "Glacier, for sure."})
+    assert page.locator(".status-thread li").count() == 3 and "Glacier, for sure." in page.inner_text(".status-thread li:last-child")
+    assert page.inner_text(".status-headline") == "Received"
+    assert page.locator(".status-answer").count() == 1, "they can write again"
+    del site.intake.thread[2:]
+
+
+def t_a_contact_conversation_can_be_closed_from_the_page_or_an_email(site, catalog):
+    site.intake.closed = False
+    page = site.open("/status/#msg123")
+    page.wait_for_selector(".status-close button")
+    assert page.locator(".status-closeask").count() == 0, "no question unless the email's Close button was used"
+    page.click(".status-close button")
+    page.wait_for_function("() => document.querySelector('.status-headline') && document.querySelector('.status-headline').textContent === 'Closed'")
+    assert site.intake.posts[-1][0] == "/status/msg123/close"
+    assert "Closed. Thanks" in page.inner_text(".status-thanks")
+    assert page.locator(".status-close").count() == 0 and page.locator(".status-answer").count() == 1, "closed, but they can still write"
+
+    site.intake.closed = False   # the Close button in an email: the page asks first
+    before = len(site.intake.posts)
+    page = site.open("/status/#msg123&close")
+    page.wait_for_selector(".status-closeask")
+    assert len(site.intake.posts) == before and not site.intake.closed, "opening the link doesn't close anything by itself"
+    assert page.locator(".status-thread li").count() == 2, "the conversation is there to read first"
+    page.click(".status-closeask-actions button:has-text('Keep it open')")
+    page.wait_for_selector(".status-close button")
+    assert page.locator(".status-closeask").count() == 0 and not site.intake.closed
+    assert page.evaluate("location.hash") == "#msg123", "the close request is dropped from the address"
+    page = site.open("/status/#msg123&close")
+    page.click(".status-closeask-actions button:has-text('Yes, close it')")
+    page.wait_for_selector(".status-thanks")
+    assert site.intake.closed and page.inner_text(".status-headline") == "Closed"
+    assert page.evaluate("location.hash") == "#msg123"
+    site.intake.closed = False
+
+
+def t_status_page_asks_a_question_and_takes_the_answer(site, catalog):
+    site.intake.answered = False
+    page = site.open("/status/#ask123")
+    page.wait_for_selector(".status-answer")
+    assert page.inner_text(".status-headline") == "We have a question"
+    assert page.inner_text(".status-question") == "Which bridge do you start at?"
+    assert "December 12, 2026" in page.inner_text(".status-answer .hint"), "it says when to answer by"
+    page.click(".status-answer button[type=submit]")
+    assert page.get_attribute("#status-answer", "aria-invalid") == "true", "an empty answer is pointed out"
+    assert not site.intake.answered
+    page.fill("#status-answer", "The red one on Mill Road.")
+    page.click(".status-answer button[type=submit]")
+    page.wait_for_selector(".status-thanks")
+    assert site.intake.posts[-1] == ("/status/ask123/reply", {"message": "The red one on Mill Road."})
+    assert page.inner_text(".status-headline") == "Working on it", "it carries on from where it was"
+    assert page.locator(".status-answer").count() == 0, "the question is gone once it's answered"
 
 
 def main():

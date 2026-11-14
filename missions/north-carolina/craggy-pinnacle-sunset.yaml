@@ -1,18 +1,29 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 1
 name: Sunset on Craggy Pinnacle
 mode: date
 place:
   name: Craggy Pinnacle Trail
   area: Blue Ridge Parkway milepost 364, near Asheville
-  coords: [35.70440, -82.37340]  # APPROX coords: Craggy Pinnacle trailhead
+  address: 3641 Blue Ridge Pkwy, Barnardsville, NC 28709
+  coords: [35.70420, -82.37371]
   website: https://www.nps.gov/blri/planyourvisit/craggy-gardens.htm
 short: Hike 20 minutes through rhododendron tunnels to a 360° Blue Ridge sunset.
 description: >
-  A short climb from the Blue Ridge Parkway takes you through tunnels of rhododendron to
-  the top of Craggy Pinnacle, with mountains rolling away in every direction. Bring a
-  blanket and something warm to drink for sunset. Parkway sections close in winter; in
-  June the rhododendrons bloom.
+  A short climb from the Blue Ridge Parkway takes you through tunnels of
+  rhododendron to the top of Craggy Pinnacle, with mountains rolling away in
+  every direction. Bring a blanket and something warm to drink for sunset.
+  Parkway sections close in winter; in June the rhododendrons bloom. The photo
+  to get: the two of you on the summit as the sun drops behind the ridges.
+about: >
+  Craggy Pinnacle tops out at about 5,890 feet, on one of the Blue Ridge's
+  "heath balds," treeless summits covered in rhododendron and twisted,
+  wind-stunted trees. The trail is under a mile each way.
+
+  The Catawba rhododendrons usually bloom in mid to late June. The Parkway
+  near Asheville closes in winter, and some stretches were closed for
+  repairs after Hurricane Helene in 2024, so check the Parkway's road status
+  page before you drive up.
 duration: short
 effort: moderate
 cost: free
@@ -22,5 +33,5 @@ time_of_day: evening
 travel: drive
 check_ahead: [conditions, seasonal]
 themes: [views, hiking, sunsets]
-tags: [hike, sunset, views, blue-ridge]
+tags: [craggy pinnacle trail, blue ridge parkway, asheville sunset hike, craggy gardens, rhododendron bloom, asheville]
 credit:

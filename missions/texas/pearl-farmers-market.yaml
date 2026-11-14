@@ -15,6 +15,14 @@ description: >
   coffee and pastries for a breakfast by the river. Walk a stretch of the
   quieter northern River Walk after. Get a photo of you in front of
   the old brewhouse tower. The market runs Saturday and Sunday mornings.
+about: >
+  The Pearl Brewery made beer here from 1883 until 2001. The old brewhouse
+  and buildings were then restored into shops, restaurants and the Hotel
+  Emma.
+
+  The Culinary Institute of America has a campus here, so the food scene is
+  serious. The River Walk's Museum Reach runs from the Pearl south toward
+  downtown, past public art and a lock and dam that boats go through.
 for_kids:
   short: Market hunt! Find each thing.
   steps:
@@ -31,6 +39,6 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [hours]
-themes: [food, markets]
-tags: [farmers-market, food, breakfast, san-antonio]
+themes: [food, markets, lakes-rivers, history, walks]
+tags: [pearl farmers market, the pearl san antonio, pearl brewery, river walk, weekend market, san antonio]
 credit:

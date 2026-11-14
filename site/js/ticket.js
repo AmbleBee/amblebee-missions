@@ -93,7 +93,7 @@ function ticket(m, { titleId, heading = "h3" } = {}) {
         h("div", {},
           checkedLine(m),
           reportUrl(m) ? h("p", { class: "report" }, "Closed, moved or something off? ",
-            h("a", { href: reportUrl(m), target: "_blank", rel: "noopener" }, "Report a problem")) : null),
+            h("a", { href: reportUrl(m) }, "Report a problem")) : null),
         m.id ? h("a", { class: "btn small full-page", href: `/missions/${encodeURIComponent(m.id)}/` },
           "See the full page", svg(ICON.arrow, 18)) : null)));
 }
@@ -106,11 +106,8 @@ function checkedLine(m) {
 }
 
 function reportUrl(m) {
-  if (!safeUrl(REPORT_FORM)) return null;
-  const q = new URLSearchParams({ usp: "pp_url" });
-  q.set(REPORT_FIELDS.id, m.full_id || m.id || "");
-  q.set(REPORT_FIELDS.name, m.name || "");
-  return `${REPORT_FORM}?${q}`;
+  if (!m.id) return null;
+  return `${REPORT_PAGE}?${new URLSearchParams({ id: m.id, name: m.name || "" })}`;
 }
 
 function actions(m) {

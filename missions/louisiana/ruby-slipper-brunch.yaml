@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 4
 name: Brunch at the Ruby Slipper
 mode: both
@@ -7,7 +7,8 @@ place:
   name: The Ruby Slipper Cafe (Canal Street flagship)
   area: Canal Street, New Orleans
   address: 1001 Canal St, New Orleans, LA 70112
-  coords: [29.95610, -90.07320]  # APPROX: set at the entrance before publishing
+  coords: [29.95523, -90.07169]
+  website: https://rubybrunch.com
 short: Ruby Slipper brunch in New Orleans. Order one sweet and one savory and share both.
 description: >
   Get brunch at the Ruby Slipper, a New Orleans favorite for Southern
@@ -16,12 +17,17 @@ description: >
   photo to get: both plates on the table before anyone takes a bite. Expect a
   wait on weekends.
 about: >
-  The Ruby Slipper opened after Hurricane Katrina, and its name comes from
-  Dorothy's line "There's no place like home," a nod to people coming back
-  to the city. It's grown to several locations around the South.
+  The Ruby Slipper Cafe opened in New Orleans in 2008, started by Jennifer and
+  Erich Weishaupt, two engineers who had been helping their neighborhood
+  rebuild after Hurricane Katrina. The name came from a little girl on the
+  radio who described New Orleans as Oz and everywhere else as Kansas.
 
-  Bananas Foster, the inspiration for the pain perdu, was invented in New
-  Orleans in the 1950s at Brennan's restaurant.
+  It has grown to more than 30 locations across the South, but the menu still
+  leans New Orleans: a whole lineup of Benedicts, biscuits and gravy, and
+  bananas Foster pain perdu. Bananas Foster itself was invented in New Orleans
+  in the 1950s at Brennan's.
+
+  Weekend waits can be long, so go early or on a weekday.
 duration: short
 effort: easy
 cost: $$

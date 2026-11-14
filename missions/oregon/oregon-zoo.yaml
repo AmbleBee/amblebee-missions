@@ -11,10 +11,12 @@ place:
   website: https://www.oregonzoo.org
 short: Visit the Oregon Zoo in Portland's Washington Park. Each find the animal most like you.
 description: >
-  Spend a day at the zoo and take your time at each exhibit. Each pick the
-  animal that's most like you, and one that's most like someone else in your
-  group. Get a photo of everyone copying their animal twin's pose, then explain
-  your picks over a snack.
+  Spend a day at the Oregon Zoo in Portland's Washington Park and take your
+  time at each exhibit instead of racing the map. Each secretly pick the
+  animal that's most like you and one that's most like someone else in your
+  group. Don't miss the elephants at Elephant Lands or the Great Northwest.
+  Over a snack, reveal your picks and make your case for each one. The photo
+  to get: everyone copying their animal twin's pose.
 about: >
   The Oregon Zoo started in 1888 with two bears given to the city, making it
   the oldest zoo west of the Mississippi. Today it covers 64 acres in
@@ -42,5 +44,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 discounts: [military]
-themes: [wildlife]
-tags: [oregon zoo, portland zoo, washington park, elephant lands, max light rail]
+themes: [wildlife, walks, playful, science, history]
+tags: [oregon zoo, portland zoo, washington park, elephant lands, asian elephants, max light rail]

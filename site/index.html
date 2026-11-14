@@ -15,12 +15,12 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="AmbleBee">
 <meta property="og:url" content="https://amblebee.com/">
-<meta property="og:image" content="https://amblebee.com/og-image.png?v=2">
+<meta property="og:image" content="https://amblebee.com/og-image.png?v=3">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="AmbleBee: date ideas and adventures near you. A sealed envelope with a honey wax seal, and a bee flying off to deliver it">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://amblebee.com/og-image.png?v=2">
+<meta name="twitter:image" content="https://amblebee.com/og-image.png?v=3">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
@@ -44,18 +44,8 @@
 
 <header class="top">
   <a class="brand" href="./" aria-label="AmbleBee Missions, home">
-    <svg aria-hidden="true" width="52" height="44" viewBox="0 0 52 44">
-      <path d="M6 40 h30" stroke="#7A5A42" stroke-width="3" stroke-linecap="round"/>
-      <path d="M9 40 C9 30 11 22 21 13 C31 22 33 30 33 40z" fill="#D8A65A"/>
-      <path d="M11.5 32 h19 M10 36 h22 M13.5 27 h15 M16.5 22 h9" stroke="#B5853F" stroke-width="2" stroke-linecap="round"/>
-      <path d="M17 40 v-4 a4 4 0 0 1 8 0 v4z" fill="#5A3E2B"/>
-      <path d="M30 10 q6 -8 12 -3" fill="none" stroke="#7A5A42" stroke-width="1.6" stroke-dasharray="1.5 3.5" stroke-linecap="round"/>
-      <ellipse cx="43" cy="9" rx="4" ry="2.6" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.2" transform="rotate(-25 43 9)"/>
-      <ellipse cx="45" cy="14" rx="5.5" ry="4" fill="#E8B54A"/>
-      <path d="M44 10.4 v7.2 M47 10.8 v6.4" stroke="#5A3E2B" stroke-width="1.6"/>
-      <circle cx="50" cy="13.6" r="2.4" fill="#5A3E2B"/>
-    </svg>
-    <span>AmbleBee <em>Missions</em></span>
+    <img src="logo.webp" alt="" width="540" height="179">
+    <span><em>Missions</em></span>
   </a>
   <!--site-nav-->
 </header>
@@ -67,6 +57,7 @@
   <div class="reveal-head">
     <p class="hand" id="reveal-kicker">Your mission</p>
     <p class="reveal-summary" id="reveal-summary"></p>
+    <p class="reveal-near" id="reveal-near" hidden>This one works anywhere. <button type="button" class="linkish" id="reveal-near-btn">Add your ZIP or city for real places near you</button></p>
   </div>
   <div id="reveal-slot"></div>
   <div class="ticket-actions" id="reveal-actions"></div>
@@ -87,7 +78,7 @@
       <label><input type="radio" name="mode" value="adventure"><span>An adventure</span></label>
     </fieldset>
 
-    <fieldset class="near near-pick">
+    <fieldset class="near near-pick" id="near-you">
       <legend>Near you</legend>
       <div class="near-row">
         <form class="zip-form" id="zip-form" autocomplete="on" novalidate>
@@ -220,7 +211,7 @@
   <div class="browse-pick">
     <div class="search-field" role="search">
       <label for="search-input">Search missions</label>
-      <input type="search" id="search-input" placeholder="Try waterfall, Spokane, oysters, rainy day…" autocomplete="off" enterkeyhint="search" aria-describedby="search-hint">
+      <input type="search" id="search-input" placeholder="Try waterfall, Seattle, oysters, rainy day…" autocomplete="off" enterkeyhint="search" aria-describedby="search-hint">
     </div>
     <div class="pack-field">
       <label for="browse-pack">Show missions from</label>
@@ -253,7 +244,7 @@
   <h2 id="share-title">Know a great spot?</h2>
   <p>Suggest a date spot or adventure and it might end up in a pack. It takes about five minutes, and every one gets read.</p>
   <div class="share-row">
-    <a class="btn primary" id="form-link" href="https://forms.gle/V8UZRwmDrLwzQpuM6" target="_blank" rel="noopener">Suggest a mission</a>
+    <a class="btn primary" id="form-link" href="/suggest/">Suggest a mission</a>
     <a class="btn" id="repo-link" href="https://github.com/AmbleBee/amblebee-missions">Or send a pull request</a>
   </div>
   <p class="hint" id="form-note"></p>
@@ -266,7 +257,8 @@
 </main>
 
 <footer class="foot">
-  <p class="foot-links"><a href="missions/">Every mission by pack</a> <a href="safety/">Safety</a> <a href="privacy/">Privacy</a> <a href="contact/">Contact</a></p>
+  <p class="foot-links"><a href="missions/">Every mission by pack</a> <a href="safety/">Safety</a> <a href="privacy/">Privacy</a> <a href="faq/">FAQ</a> <a href="contact/">Contact</a></p>
+  <p class="foot-social">Follow along: <a href="https://www.pinterest.com/AmbleBeeHQ/" target="_blank" rel="me noopener" aria-label="AmbleBee on Pinterest (opens in a new tab)">Pinterest</a> <a href="https://bsky.app/profile/amblebeehq.bsky.social" target="_blank" rel="me noopener" aria-label="AmbleBee on Bluesky (opens in a new tab)">Bluesky</a> <a href="https://x.com/AmbleBeeHQ" target="_blank" rel="me noopener" aria-label="AmbleBee on X (opens in a new tab)">X</a></p>
   <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
   <p id="catalog-meta"></p>
 </footer>

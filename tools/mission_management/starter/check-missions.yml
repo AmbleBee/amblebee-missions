@@ -1,0 +1,24 @@
+# Checks every mission on each push and pull request: the same rules the mission manager runs on every save.
+# Added by the AmbleBee mission manager. A red X on GitHub means a mission needs fixing; the log says which.
+name: Check missions
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Install PyYAML
+        run: pip install pyyaml==6.0.1
+      - name: Check missions
+        run: python tools/check_missions.py

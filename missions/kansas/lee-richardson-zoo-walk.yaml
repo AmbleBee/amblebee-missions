@@ -17,9 +17,14 @@ description: >
   defend it. The photo to get: the family with the tallest animal you can
   find. Picnic in Finnup Park next door when legs get tired.
 about: >
-  Lee Richardson Zoo is one of the biggest zoos in Kansas, a real surprise
-  out on the High Plains, and walking in is free. You can also pay to drive
-  the loop road, but on foot is the way to see everything up close.
+  Lee Richardson Zoo started in 1927 with two skunks, brought in by Garden
+  City's police and parks chief, Lee Richardson. It was named for him in 1950,
+  and today it covers 47 acres in Finnup Park with more than 80 species,
+  accredited by the Association of Zoos and Aquariums.
+
+  Walking in is free, and cars can pay to drive the loop road. Look for
+  giraffes and lions on the African Plains, snow leopards and red pandas in
+  Wild Asia, and cougars and jaguars in Cat Canyon.
 
   Summer afternoons get hot, so go in the morning when the animals are more
   active, and bring water.
@@ -39,5 +44,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, conditions]
-themes: [wildlife, picnic]
+themes: [wildlife, picnic, walks, playful]
 tags: [lee richardson zoo, free zoo, finnup park, giraffes, family day out, garden-city]

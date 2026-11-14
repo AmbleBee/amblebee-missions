@@ -42,5 +42,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets, hours]
-themes: [museums, art]
+themes: [museums, art, architecture]
 tags: [the broad, free art museum la, infinity mirror room, jeff koons, disney concert hall, los-angeles]

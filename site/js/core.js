@@ -7,12 +7,10 @@
 
 
 // ---- settings you might edit -----------------------------------------------------------------
-const FORM_URL = "https://forms.gle/V8UZRwmDrLwzQpuM6";   // "Suggest a mission"
+const FORM_URL = "/suggest/";   // "Suggest a mission" (pages/suggest.html, sent to AmbleBee Intake)
 const REPO_URL = "https://github.com/AmbleBee/amblebee-missions";
-// "Report a problem" form: opens with the mission's id and name already filled in.
-// Use the long docs.google.com/forms/.../viewform address (short forms.gle links can't pre-fill).
-const REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform";
-const REPORT_FIELDS = { id: "entry.872618061", name: "entry.160884926" };
+// "Report a problem" page: opens with the mission's id and name already filled in (pages/report.html)
+const REPORT_PAGE = "/report/";
 
 // ---- labels ---------------------------------------------------------------------------------
 const L = {

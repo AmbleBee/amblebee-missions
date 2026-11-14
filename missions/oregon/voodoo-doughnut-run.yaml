@@ -41,5 +41,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
-themes: [food]
+themes: [food, quirky, playful]
 tags: [doughnuts, sweets, voodoo doll doughnut, bacon maple bar, old town portland, portland]

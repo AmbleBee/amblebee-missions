@@ -8,7 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from missions_lib import THEMES_REQUIRED, check_catalog, expired_cautions, load_catalog  # noqa: E402
+from missions_lib import (PIN_NOTES_BLOCK_LIVE, THEMES_REQUIRED, check_catalog, expired_cautions,  # noqa: E402
+                          load_catalog, pin_notes)
 
 folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "missions"
 problems = check_catalog(folder)
@@ -36,3 +37,11 @@ if not THEMES_REQUIRED:
         live = sum(1 for m in missing if not m.get("draft"))
         print(f"\nNote: {len(missing)} mission(s) have no themes yet ({live} of them on the site). "
               "python tools/suggest_themes.py suggests some from their tags.")
+# live missions whose file still says the pin needs checking (a reminder until PIN_NOTES_BLOCK_LIVE is on)
+if not PIN_NOTES_BLOCK_LIVE:
+    noted = [m for m in missions if not m.get("draft") and pin_notes(Path(m["file"]).read_text(encoding="utf-8"))]
+    if noted:
+        print(f"\nNote: {len(noted)} live mission(s) still have a \"check the pin before publishing\" note. Check each pin, "
+              "delete the note, then set PIN_NOTES_BLOCK_LIVE = True in tools/missions_lib.py:")
+        for m in noted:
+            print(f"  - {Path(m['file']).relative_to(folder)}")

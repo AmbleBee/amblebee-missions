@@ -33,5 +33,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [history, spooky]
+themes: [history, spooky, museums, architecture]
 tags: [old idaho penitentiary, historic prison tour, solitary confinement, haunted boise, east end, boise]

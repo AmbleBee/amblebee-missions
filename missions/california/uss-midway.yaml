@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 8
 name: USS Midway Museum
 mode: both
@@ -7,7 +7,7 @@ place:
   name: USS Midway Museum
   area: Downtown waterfront, San Diego
   address: 910 N Harbor Dr, San Diego, CA 92101
-  coords: [32.71370, -117.17510]  # APPROX: set at the boarding entrance before publishing
+  coords: [32.71428, -117.17531]
   website: https://www.midway.org
 short: USS Midway Museum in San Diego. Explore a real aircraft carrier and sit in a cockpit.
 description: >
@@ -40,5 +40,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+discounts: [military]
 themes: [history, museums, vehicles]
 tags: [uss midway museum, aircraft carrier tour, flight deck, naval history, cockpit, san-diego]

@@ -1,3 +1,4 @@
+draft: true  # pin not verified yet; delete this line once it's checked
 checked: 2026-10-14   # now daytime history and architecture only.
 # Ghost tours (#11) and cocktail tours (#9) have their own missions.
 number: 2

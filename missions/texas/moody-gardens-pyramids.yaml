@@ -17,6 +17,14 @@ description: >
   pick the animal you'd adopt. Get a photo of you in the shark
   tunnel. It's a good rainy-day plan; buy a combo ticket for the pyramids you
   want.
+about: >
+  The Rainforest Pyramid opened in 1993, a ten-story glass pyramid with
+  plants and animals from the rainforests of Asia, Africa and the Americas.
+  The Aquarium Pyramid followed in 1999.
+
+  Moody Gardens is named for the Moody family, a Galveston banking and
+  shipping family. The grounds also include Palm Beach, a swimming beach
+  with white sand brought in.
 for_kids:
   short: Pyramid hunt! Find each thing.
   steps:
@@ -33,6 +41,6 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
-themes: [forests, wildlife]
+themes: [forests, wildlife, science, architecture]
 tags: [aquarium, rainforest, animals, rainy-day, galveston]
 credit:

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 1
 name: Congress Avenue Bridge Bats
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Ann W. Richards Congress Avenue Bridge
   area: Lady Bird Lake, downtown Austin
-  coords: [30.26100, -97.74500]  # APPROX: set at the bat-viewing area on the bridge before publishing
+  address: Congress Avenue Bridge, S Congress Ave, Austin, TX 78704
+  coords: [30.26246, -97.74466]
 short: Watch about a million bats pour out from under Austin's Congress Avenue Bridge at dusk.
 description: >
   Grab a spot on the bridge railing or the grassy lakeshore below about half
@@ -15,6 +16,15 @@ description: >
   swirl out from under the bridge and ribbon off across the sky to hunt
   insects. Each guess the minute they'll start, and get a photo of you with the bat cloud behind you. The bats are here roughly March
   through October, with the biggest flights in late summer. It's free.
+about: >
+  When the bridge was rebuilt in 1980, the gaps under it turned out to be
+  perfect bat roosts. Up to about 1.5 million Mexican free-tailed bats now
+  live here in summer, the largest urban bat colony in North America.
+
+  At first people wanted them gone, until Bat Conservation International
+  showed the city how harmless they are and how many insects they eat, tons
+  every night. The bats are mostly mothers and pups, and Austin throws a Bat
+  Fest on the bridge each summer.
 for_kids:
   short: Bat watch! Find each thing.
   steps:
@@ -31,6 +41,6 @@ season: [spring, summer, fall]
 time_of_day: evening
 travel: local
 check_ahead: [seasonal]
-themes: [wildlife, sunsets]
+themes: [wildlife, sunsets, quirky, lakes-rivers, science]
 tags: [bats, wildlife, sunset, free, austin]
 credit:

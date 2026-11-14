@@ -31,5 +31,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
-themes: [markets]
+themes: [markets, romantic, relaxing]
 tags: [powells city of books, bookstore, used books, pearl district, book swap, portland]

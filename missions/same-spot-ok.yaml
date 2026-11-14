@@ -1,0 +1,12 @@
+# Missions that share a spot (or a name) on purpose: different goals at the same place.
+# The mission manager's duplicate finder skips these pairs. Its "Different on purpose" button adds them.
+- [chihuly-garden-and-glass, space-needle-view]
+- [french-quarter-cocktail-walk, french-quarter-walking-tour]
+- [french-quarter-cocktail-walk, ghost-and-vampire-tour]
+- [french-quarter-cocktail-walk, jackson-square-murder-mystery]
+- [french-quarter-walking-tour, ghost-and-vampire-tour]
+- [french-quarter-walking-tour, jackson-square-murder-mystery]
+- [ghost-and-vampire-tour, jackson-square-murder-mystery]
+- [halls-of-gems-and-minerals, hayden-planetarium]
+- [kennedy-school-movie, kennedy-school-soaking-pool]
+- [mount-rainier-paradise, rainier-skyline-trail]

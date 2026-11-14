@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 1
 name: South Beach Art Deco at Night
 mode: both
@@ -6,7 +6,12 @@ who: [solo, friends]
 place:
   name: Ocean Drive (Art Deco Historic District)
   area: South Beach, Miami Beach
-  coords: [25.78000, -80.13000]  # APPROX: set at the Art Deco Welcome Center before publishing
+  address: 1001 Ocean Dr, Miami Beach, FL 33139
+  coords: [25.78035, -80.13050]
+  website: https://mdpl.org/welcome-center/
+  links:
+    - label: Visitor Information
+      url: https://mdpl.org/contact-us/
 short: South Beach Art Deco at night. Stroll Ocean Drive as the pastel hotels glow in neon.
 description: >
   Walk Ocean Drive after sunset, when the pastel 1930s Art Deco hotels light
@@ -31,5 +36,5 @@ setting: outdoor
 season: any
 time_of_day: night
 travel: local
-themes: [beach, architecture, drinks, quirky, romantic]
+themes: [beach, architecture, drinks, quirky, romantic, art]
 tags: [south beach art deco, ocean drive neon, miami beach at night, art deco historic district, neon signs, miami]

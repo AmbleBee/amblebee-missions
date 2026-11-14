@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 55
 name: Ginkgo Petrified Forest
 mode: both
@@ -6,8 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Ginkgo Petrified Forest State Park (Interpretive Center)
   area: Vantage, on the Columbia River
-  coords: [46.94800, -119.98500]  # APPROX: set at the interpretive center before publishing
-  website: https://parks.wa.gov  # verify: link the Ginkgo Petrified Forest park page
+  coords: [46.94785, -120.03588]
+  website: https://parks.wa.gov/find-parks/state-parks/ginkgo-petrified-forest-state-park
 short: Find trees turned to stone at Ginkgo Petrified Forest, high above the Columbia River.
 description: >
   See logs that turned to stone millions of years ago, buried in lava and
@@ -16,6 +16,15 @@ description: >
   the trail in the hills to find the stone logs still lying where they were
   uncovered. Each find the most colorful piece, and get a photo of you with the river canyon behind you. Hot in summer; bring water. Parking
   takes a Discover Pass.
+about: >
+  The logs are about 15 million years old. Trees were buried in volcanic ash
+  and lava, and minerals slowly replaced the wood. Highway workers found
+  them in the 1920s, and the Civilian Conservation Corps built the
+  interpretive center in the 1930s.
+
+  More than 50 kinds of trees have been found here, including ginkgo, which
+  is rare as a fossil. The center also has Native American petroglyphs saved
+  from the river before it was dammed.
 for_kids:
   short: Stone tree hunt! Find each thing.
   steps:

@@ -41,5 +41,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior]
-themes: [wildlife]
+themes: [wildlife, quirky, lakes-rivers]
 tags: [gatorland, alligators, gator jumparoo, white alligators, classic florida, orlando]

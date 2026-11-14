@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 6
 name: San Diego Zoo
 mode: both
@@ -7,14 +7,16 @@ place:
   name: San Diego Zoo
   area: Balboa Park, San Diego
   address: 2920 Zoo Dr, San Diego, CA 92101
-  coords: [32.73540, -117.14900]  # APPROX: set at the main entrance before publishing
+  coords: [32.73612, -117.14920]
   website: https://zoo.sandiegozoo.org
 short: San Diego Zoo in Balboa Park. Ride the Skyfari and find the animal most like each other.
 description: >
-  Ride the Skyfari aerial tram over the treetops, take the guided bus tour
-  to get your bearings, then wander the canyons on foot. Each find the
-  animal that's most like someone else in your group and explain why over a
-  snack. The photo to get: your group with the animal that won.
+  Spend the day at the San Diego Zoo in Balboa Park. Ride the Skyfari aerial
+  tram over the treetops for the view, take the guided bus tour to get your
+  bearings, then wander the canyons on foot. Each secretly pick the animal
+  that's most like someone else in your group, then reveal your picks over a
+  snack and make your case. Wear comfortable shoes, since it's hilly. The
+  photo to get: your group with the animal that won.
 about: >
   The zoo got its start in 1916, after Dr. Harry Wegeforth heard a lion
   roaring from an exhibit left over from the world's fair and said San Diego
@@ -39,5 +41,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [wildlife]
+themes: [wildlife, walks, views, gardens, playful]
 tags: [san diego zoo, skyfari, balboa park, giant pandas, family day out, san-diego]

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-05
 number: 15
 name: Algiers Ferry at Sunset
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: Canal Street Ferry Terminal
   area: Foot of Canal Street, New Orleans
-  coords: [29.94940, -90.06190]  # APPROX: set at the ferry terminal before publishing
+  address: Canal Street Ferry Terminal, New Orleans, LA 70130
+  coords: [29.94985, -90.06333]
 short: Algiers ferry at sunset in New Orleans. Cross the river and walk the levee at Algiers Point.
 description: >
   Hop the little ferry at the foot of Canal Street for a quick ride across

@@ -41,5 +41,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal]
-themes: [caves, rocks-fossils]
+themes: [caves, rocks-fossils, parks, science, spooky]
 tags: [ape cave, lava tube, mount st helens, the meatball, cougar wa, volcano]

@@ -7,8 +7,7 @@ place:
   name: Galloping Ghost Arcade
   area: Ogden Ave, Brookfield
   address: 9415 Ogden Ave, Brookfield, IL 60513
-  coords: [41.82330, -87.84420]  # APPROX: set at the entrance before publishing
-  website: https://www.gallopingghostarcade.com
+  coords: [41.82330, -87.84420]
 short: Galloping Ghost Arcade near Chicago. Pay once and play hundreds of arcade games on free play.
 description: >
   Out in suburban Brookfield, one door fee unlocks a huge, dim, packed arcade

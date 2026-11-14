@@ -5,10 +5,12 @@ mode: both
 who: [solo, friends, family, kids]
 short: Try geocaching. Find a hidden cache or two near you with the free app.
 description: >
-  Download a geocaching app and look for a few caches near you. Follow the
-  clues, find the hidden box, sign the logbook, and trade a little trinket
-  if there's one inside. See who spots each cache first. The photo to get:
-  you holding the cache, without showing where it was hidden.
+  Download a geocaching app and pick two or three easy caches near you,
+  ideally in a park or along a trail. Follow the clues, find the hidden
+  container, sign the logbook, and trade a little trinket if there's one
+  inside. Keep score of who spots each cache first, and play it cool when
+  other people walk by. The photo to get: you holding the cache, without
+  showing where it was hidden.
 about: >
   Geocaching started in May 2000, the day after GPS became accurate enough
   for everyday use. The very first cache was hidden near Portland, Oregon,
@@ -32,5 +34,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
-themes: [games]
+themes: [games, walks, hiking, playful, quirky]
 tags: [geocaching, treasure hunt app, outdoor scavenger hunt, gps game, family outing, outdoors]

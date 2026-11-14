@@ -15,12 +15,16 @@ description: >
   signature drink for each other and name it after an inside joke. Get a photo toasting with your creations. It's 21 and up, and
   classes book up, so reserve ahead and plan a ride home.
 about: >
+  The first known definition of a cocktail was printed in 1806 in a newspaper
+  in Hudson, New York: "a stimulating liquor, composed of spirits of any kind,
+  sugar, water, and bitters." That's still the basic recipe for an Old
+  Fashioned.
+
   A bartender's rule of thumb: shake drinks with citrus or juice, and stir
   drinks made only of spirits. Many classic sours follow the same simple
   balance of two parts spirit, one part sour and one part sweet, so once you
-  learn it you can invent your own.
-
-  Classes are 21 and up and book up, so reserve ahead and plan a ride home.
+  learn it you can invent your own. Classes are 21 and up and book up, so
+  reserve ahead and plan a ride home.
 duration: short
 effort: easy
 cost: $$$
@@ -29,5 +33,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [reservation]
-themes: [drinks, make-something]
+themes: [drinks, make-something, playful]
 tags: [cocktail making class, mixology class nyc, learn bartending, signature drink, cocktails, nyc]

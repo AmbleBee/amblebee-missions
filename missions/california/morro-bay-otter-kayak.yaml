@@ -45,5 +45,5 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [reservation, conditions]
-themes: [boating, wildlife]
+themes: [boating, wildlife, beach, views]
 tags: [morro bay kayaking, sea otters, morro rock, embarcadero, wildlife paddle, central-coast]

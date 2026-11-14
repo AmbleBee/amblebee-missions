@@ -4,11 +4,11 @@ name: Crow Peak Summit
 mode: adventure
 who: [solo, friends, family]
 place:
-  name: Crow Peak Trailhead (Trail #64)
+  name: Crow Peak Trailhead (Trail
   area: Higgins Gulch, Spearfish
   address: Higgins Gulch Rd (FSR 214), about 7 mi southwest of Spearfish, SD  # verify
   coords: [44.40399, -103.97118]  # SummitPost trailhead coords; confirm at the pullout
-  website: https://www.fs.usda.gov/blackhills
+  website: https://www.fs.usda.gov/r02/blackhills
 short: Grind up 1,600 feet to the top of Crow Peak. Sign the summit register and earn that view.
 description: >
   Drive out Higgins Gulch Road from Spearfish and climb Crow Peak, a steep
@@ -19,6 +19,14 @@ description: >
   the summit register and get a photo next to the wooden summit sign with the
   hills rolling out behind you. Start early: summer afternoons bring sudden
   thunderstorms, and there's no water on the trail.
+about: >
+  Crow Peak rises to about 5,760 feet. Its Lakota name is often translated
+  as "the hill where the Crow died," from a story about a battle between
+  Lakota and Crow warriors.
+
+  The trail is about seven miles round trip with around 1,500 feet of climb.
+  Spearfish Canyon is close by if you still want a drive, and the town of
+  Spearfish has good spots to eat after.
 steps:
   - The trailhead sign before you start
   - The first big view through the pines

@@ -22,15 +22,16 @@
   window.ambleTrack = function (name, params) {
     if (loaded && window.gtag) window.gtag("event", name, params || {});
   };
-  var REPORT_ID_FIELD = "entry.872618061";   // the mission id field on the "Report a problem" form (site/js/core.js)
   function watchActions() {
     document.addEventListener("click", function (e) {
       var a = e.target.closest && e.target.closest("a[href]");
       if (!a) return;
-      if (/forms\.gle\//.test(a.href)) window.ambleTrack("suggest_click");
-      else if (/docs\.google\.com\/forms\//.test(a.href)) {
-        var id = null;
-        try { id = new URL(a.href).searchParams.get(REPORT_ID_FIELD); } catch (err) { /* old browser: count without the id */ }
+      var url;
+      try { url = new URL(a.href); } catch (err) { return; }
+      if (url.origin !== location.origin) return;
+      if (url.pathname === "/suggest/") window.ambleTrack("suggest_click");
+      else if (url.pathname === "/report/") {
+        var id = url.searchParams.get("id");
         window.ambleTrack("report_click", id ? { mission_id: id } : {});
       }
     }, true);

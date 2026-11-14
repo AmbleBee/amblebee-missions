@@ -40,5 +40,5 @@ season: any
 time_of_day: night
 travel: day-trip
 check_ahead: [reservation]
-themes: [history, spooky]
+themes: [history, spooky, walks]
 tags: [st augustine ghost tour, haunted st augustine, lantern tour, oldest city, haunted lighthouse, st-augustine]

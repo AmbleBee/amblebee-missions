@@ -87,6 +87,97 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Questions, Answers and Clearer Statuses
+  status: done
+  date: 2026-11-14
+  tag: website
+  summary: A new [questions and answers](/faq/) page for the things people ask most, clearer steps when you send something in, and a few friendly changes to how we keep in touch.
+  items:
+    - "[Questions and answers](/faq/): tap a question to open its answer, or search for a word like status, credit or delete. It's in the More menu and at the bottom of every page"
+    - "Clearer steps on your status page: Received, In review, Working on it, Approved and Live. **Working on it** means we're checking the place and the details, and it isn't approved yet. The [FAQ](/faq/#statuses) explains each one"
+    - The contact form asks for a short subject, so your message gets to the right place faster
+    - If we're waiting to hear back from you, you'll get one friendly reminder halfway through the 30 days. A conversation we're still working on never closes by itself
+    - If you report a problem and ask to follow it, we can ask you a quick question on its status page when something isn't clear
+    - "Plain and simple: unless a mission says otherwise, AmbleBee isn't connected to the places in it, and no one pays to be included right now. Business owners are welcome to [suggest their own place](/suggest/)"
+    - Behind the scenes, a new morning roundup makes sure every suggestion, report and message gets read, and replies come back faster
+
+- title: Looking After What You Send
+  status: done
+  date: 2026-11-13
+  tag: website
+  summary: Behind the scenes, AmbleBee now tidies up after itself and keeps a safety copy, so what you send us is handled with care. The details are on the [privacy page](/privacy/).
+  items:
+    - Your name and email are removed automatically 90 days after your suggestion goes live or is declined, or your report is settled
+    - Contact messages, and the replies back and forth, are deleted 90 days after they're wrapped up
+    - "Want something gone sooner? [Ask us](/contact/) and we can remove it right away"
+    - "Send a [contact message](/contact/) and you get a receipt by email, with a private link to follow the conversation"
+    - Everything you send is backed up every night, so a hiccup on our side doesn't lose your suggestion
+    - We can find your suggestion or message quickly when you write in about it, and answer common questions faster
+
+- title: Our Own Suggestion Box
+  status: done
+  date: 2026-11-12
+  tag: website
+  summary: The Google forms are retired in favor of our own. [Suggest a mission](/suggest/), [report a problem](/report/) or [get in touch](/contact/) right here on AmbleBee, then [check its status](/status/) any time.
+  items:
+    - "[Suggest a mission](/suggest/) two ways: [share an idea](/suggest/idea/) in a few lines, or [build the full mission](/suggest/mission/) step by step with tips along the way. Full missions go live faster"
+    - Every suggestion gets a private status link, so you can follow it from Awaiting Review all the way to Live
+    - "[Report a problem](/report/) with any mission. The report button on each mission fills in which one, and you can tick a box to follow the fix"
+    - A real [Contact](/contact/) page with a message form, plus staff@amblebee.com if you'd rather email
+    - Leave an email and we'll send updates. If it doesn't show up, check your spam folder
+    - If we have a question about your suggestion, you can answer it right on your status page
+    - Contact messages are conversations now. Our reply shows up on your private page, and you can write back there
+    - A conversation stays open while you're talking. Close it yourself when you're all set, from the page or the email, or it closes after 30 days of quiet
+    - If our forms are ever down, the old Google forms step in as a backup so nothing gets lost
+
+- title: A Logo of Our Own
+  status: done
+  date: 2026-11-12
+  tag: website
+  summary: AmbleBee has a real logo now, a bee out on its trail, and it sits at the top of every page. A few rough edges on the new forms got smoothed out too.
+  items:
+    - The new AmbleBee logo replaces the little hive in the header, in light and dark mode and on phones
+    - The bee is also the icon in your browser tab, on your phone's home screen and on the pictures that show when a link is shared
+    - "**Know a great spot?** in the menu now goes straight to [Suggest a mission](/suggest/) instead of scrolling down the home page"
+    - Names on the forms are a first name and last initial, like Max W. Type a full name and it's shortened for you, so a full last name is never kept
+    - Your submissions now sits in a tidy card, with each one on its own row
+
+- title: Search That Looks Farther
+  status: done
+  date: 2026-11-09
+  tag: website
+  summary: Search finds places beyond your distance, new visitors get pointed to real places near them, and the home page leads with the biggest packs.
+  items:
+    - Searching for a place past your distance still finds it, listed under "Farther than 30 mi" with how far away it is, so Crater Lake turns up from Portland
+    - A search that only a filter was hiding shows up too, under "Outside your filters"
+    - Matches near you still come first, and typo matching only steps in when nothing matches at all
+    - Open a mission without a ZIP code and a short line offers to add one, so your next pick can be a real place nearby
+    - Every mission now starts with Amble Anywhere and the biggest packs, biggest first
+    - Packs with fewer than 20 live missions fold under a "more packs" button until you open it, which makes the home page about a quarter as long on a phone
+    - Pick a mood or a filter and every match still shows, with nothing folded away
+
+- title: Smoother Mission Editing
+  status: done
+  date: 2026-11-09
+  tag: missions
+  summary: The mission manager keeps track of what you've touched, across sessions, and is easier to run on a tablet.
+  items:
+    - Any field you change turns green with a "changed" tag, and goes back to normal if you change it back
+    - Edits made in the YAML view show up green too when you switch back to the form, so you can hop between the two freely
+    - Drafts stay green across sessions until they go live, so you can do all the pins one day, the addresses the next and the descriptions after that
+    - Light green is this session's changes and a deeper green tagged "earlier" is from a past session
+    - Text pasted in from a web page or a document comes in clean, with no stray line breaks or hidden characters
+    - A mission whose pin or address still has a "check this" note can't go live until the note is gone, and the "Pin to verify" badge uses the same rule
+    - No more key in the link; the terminal prints three plain links (this computer, same Wi-Fi, Tailscale)
+    - A Lock button sets a temporary key mid-session so nobody else on the network can make changes; it's forgotten when the manager stops
+    - A Stop button shuts the manager down from the page, no terminal needed
+    - The editor has a full-width button, and the page behind it no longer scrolls
+    - The page header scrolls away so the tablet gets more room, while table headers stay in view as you scroll through a table
+    - Links you mark as good by hand stay on your computer instead of going to GitHub
+    - If the tablet closes the tab before you save, your edits are kept on that device and the editor offers to bring them back, new missions included
+    - Pick a filter like "Draft with no address" and tap Work through these to step through the whole list with the editor's arrows
+    - A "not committed" button shows how many files are saved but not committed yet, with a list you can open missions from, and the mission table's old "unsaved" tag now says "not committed"
+
 - title: Mission Management
   status: done
   date: 2026-11-05
@@ -98,6 +189,25 @@
     - Every mission in one list, with when it was added, last changed and last checked, so the oldest ones get a fresh look first
     - Edit any mission from the browser, from its name and description down to its themes, map pin and photo prompts
     - Every change runs through the same checks as the website before it's saved, and new missions start as drafts until they're checked
+    - A YAML view for editing a mission's file directly, notes and all, that points to the exact line if something's off
+    - Every save shows exactly which lines will change before anything is written
+    - '"Checked today, publish" takes a checked draft live in one step'
+    - A "Needs attention" list for pins still to verify, missions not checked in six months, expired cautions and anything failing a check, plus quick filters by status, attention and theme
+    - Saves take a couple of seconds instead of ten or more
+
+- title: Fresher Picks and Fact-Checked Places
+  status: done
+  date: 2026-11-05
+  tag: website
+  summary: Opening missions feels fresh every time, returning visitors skip the intro, and the story behind each place got a careful second look.
+  items:
+    - '"Open a mission" now deals missions like a shuffled deck: nothing comes up twice until every match has had its turn, and changing your filters starts a fresh deck'
+    - With a ZIP code set, the places near you still come up first
+    - The "New to AmbleBee?" box steps aside once you've been here before, remembered only in your own browser
+    - Every mission waiting in drafts now has its "About this place" story ready for the day it goes live
+    - We checked the trickiest facts in those stories against real sources and fixed the ones that had changed, like a museum's name, a park's reservation rules and a farm that's open all year
+    - Find AmbleBee on Pinterest, Bluesky and X, linked at the bottom of every page
+    - Five missions went back to drafts until their map pins are double-checked, and a new check makes sure no mission goes live with an unchecked pin
 
 - title: The Big Website Tune-Up, Part 3
   status: done

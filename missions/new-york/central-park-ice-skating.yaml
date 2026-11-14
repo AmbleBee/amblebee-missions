@@ -17,9 +17,10 @@ description: >
   crowded rink. Skating runs in the cold months, roughly late fall through
   winter; check this season's dates and book a time slot ahead.
 about: >
-  Wollman Rink opened in 1950 at the south end of Central Park, and it's
-  appeared in many movies. The buildings rising over the trees line Central
-  Park South, so the view is pure New York.
+  Wollman Rink opened in 1950 at the south end of Central Park. It has turned
+  up in a long list of movies, including Love Story, Home Alone 2, Serendipity
+  and Stepmom, and the hotels rising over the trees along Central Park South
+  make the view pure New York.
 
   Skating runs in the cold months, roughly late fall through winter. Go on a
   weeknight or early on a weekday for a less crowded rink, and book a time
@@ -40,5 +41,5 @@ season: [fall, winter]
 time_of_day: evening
 travel: local
 check_ahead: [tickets, seasonal]
-themes: [romantic]
+themes: [romantic, playful, holidays, views]
 tags: [wollman rink, central park ice skating, winter in nyc, skating date, skyline views, nyc]

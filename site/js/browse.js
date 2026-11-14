@@ -98,6 +98,7 @@ function liveLine() {
   const drafts = (S.catalog.stats || {}).drafts || 0;
   return `${S.missions.length} live missions in ${S.packs.length} packs${drafts ? `, ${drafts} more being checked` : ""}`;
 }
+const PACK_FOLD_MIN = 20;   // packs with fewer live missions fold under "More packs" in "Every pack"; build_pages.py does the same on /missions/
 const PACK_PREVIEW = 4;   // missions per pack in "Every pack" with no filters; build_pages.py shows the same on /missions/
 // "Sort by" in Every mission: a flat list instead of pack sections. Ties stay in A to Z order.
 const byRank = (order, get) => (a, b) => order.indexOf(get(a)) - order.indexOf(get(b)) || a.name.localeCompare(b.name);
@@ -179,23 +180,41 @@ function renderBrowse() {
         h("span", {}, L.cost[m.cost] || m.cost)));
   };
   if (searching) {
-    const rank = (loose) => everything.map((m) => [searchScore(m, words, loose), m]).filter(([sc]) => sc > 0)
+    const rank = (list, loose) => list.map((m) => [searchScore(m, words, loose), m]).filter(([sc]) => sc > 0)
       .sort((a, b) => b[0] - a[0] || (S.here ? (distM(a[1]) ?? 1e12) - (distM(b[1]) ?? 1e12) : 0)
         || a[1].name.localeCompare(b[1].name))
       .map(([, m]) => m);
-    let found = rank(false);
-    const close = !found.length;
-    if (close) found = rank(true);   // nothing exact: try short word starts and small typos
-    if (S.sort) found = [...found].sort(SORTS[S.sort]);
-    $("#browse-count").textContent = close && found.length
-      ? `${found.length} close ${found.length === 1 ? "match" : "matches"} for "${S.q.trim()}"`
-      : `${found.length} ${found.length === 1 ? "mission matches" : "missions match"} "${S.q.trim()}"`;
+    // a search for a real place shouldn't come up empty because of the distance or a filter: missions that match
+    // the words but not the picks are listed too, under their own heading, so "Crater Lake" works from Portland
+    const inPicks = new Set(everything);
+    const outside = browsing ? S.missions.filter((m) => !inPicks.has(m)) : [];
+    let found = rank(everything, false), beyond = rank(outside, false);
+    const close = !found.length && !beyond.length;
+    if (close) { found = rank(everything, true); beyond = found.length ? [] : rank(outside, true); }   // nothing exact anywhere: try short word starts and small typos
+    if (S.sort) { found = [...found].sort(SORTS[S.sort]); beyond = [...beyond].sort(SORTS[S.sort]); }
+    const q = S.q.trim(), total = found.length + beyond.length;
+    const matchWord = (k) => (close && k ? `close ${k === 1 ? "match" : "matches"} for` : k === 1 ? "mission matches" : "missions match");
+    // only the distance in the way: say so. Anything else: "your filters"
+    const g = { ...f, pack: "all", within: null };
+    const farOnly = f.within != null && beyond.every((m) => passes(m, g));
+    $("#browse-count").textContent = !beyond.length ? `${found.length} ${matchWord(found.length)} "${q}"`
+      : !found.length ? `${beyond.length} ${matchWord(beyond.length)} "${q}", ${farOnly ? "farther away" : "outside your filters"}`
+      : `${total} ${matchWord(total)} "${q}", ${found.length} ${farOnly ? `within ${f.within} ${S.unit}` : "in your filters"}`;
     announce($("#browse-count").textContent);
+    if (beyond.length) $("#search-hint").textContent = "Matches outside your distance or filters are listed too.";
     if (found.length) wrap.append(h("section", { class: "pack", "aria-label": "Search results" },
       h("div", { class: "cards" }, found.map(card))));
-    else wrap.append(h("p", { class: "none" },
-      browsing ? `Nothing matches "${S.q.trim()}" with these filters. Try clearing them.`
-        : `Nothing matches "${S.q.trim()}". Try a different word, like a town, a place or an activity.`));
+    if (beyond.length) {
+      const head = farOnly ? `Farther than ${f.within} ${S.unit} from ${S.zip}` : "Outside your filters";
+      const sub = farOnly ? "These match your search but are past your distance." : "These match your search but not everything you picked.";
+      wrap.append(h("section", { class: "pack beyond", "aria-label": head },
+        h("div", { class: "pack-head" },
+          h("span", { class: "badge" }, svg(ICON.pin, 26)),
+          h("div", {}, h("h3", {}, head), h("p", {}, found.length ? sub : `Nothing ${farOnly ? `within ${f.within} ${S.unit}` : "in your filters"} matches "${q}". ${sub}`))),
+        h("div", { class: "cards" }, beyond.map(card))));
+    }
+    if (!total) wrap.append(h("p", { class: "none" },
+      `Nothing matches "${q}". Try a different word, like a town, a place or an activity.`));
     return;
   }
   if (S.browse === "near" && S.here) {
@@ -224,7 +243,13 @@ function renderBrowse() {
     // every pack and no filters: a taste of each pack (its first few missions, a swipe row on phones), and the
     // rest on the pack's own page. With filters or a mood picked, every match shows, since that list is the answer.
     const preview = S.browse === "all" && !browsing;
-    for (const p of S.packs) {
+    // Amble Anywhere, then the big packs (biggest first), then the rest A to Z. With no filters the small packs
+    // fold away under "More packs", so the home page leads with the packs that have the most to offer
+    const big = (p) => p.id === "anywhere" || p.count >= PACK_FOLD_MIN;
+    const ordered = [...S.packs].sort((a, b) => (b.id === "anywhere") - (a.id === "anywhere") || big(b) - big(a)
+      || (big(a) ? b.count - a.count : 0));
+    const folded = [];
+    for (const p of ordered) {
       if (S.browse !== "all" && S.browse !== p.id) continue;
       const ms = everything.filter((m) => m.pack === p.id);
       if (!ms.length) continue;
@@ -233,12 +258,23 @@ function renderBrowse() {
       const shown = preview ? ms.slice(0, PACK_PREVIEW) : ms;
       const more = ms.length - shown.length;
       const page = `${HOME}packs/${encodeURIComponent(p.id)}/`;
-      wrap.append(h("section", { class: "pack" + (preview ? " preview" : ""), "aria-label": p.name },
+      const section = h("section", { class: "pack" + (preview ? " preview" : ""), "aria-label": p.name },
         h("div", { class: "pack-head" },
           h("span", { class: "badge" }, svg(packIcon(p), 26)),
           h("div", {}, h("h3", {}, preview ? h("a", { href: page }, p.name) : p.name), p.description ? h("p", {}, p.description) : null)),
         h("div", { class: "cards" }, shown.map(card)),
-        more > 0 ? h("a", { class: "pack-more", href: page }, `${more} more · Show all ${ms.length}`) : null));
+        more > 0 ? h("a", { class: "pack-more", href: page }, `${more} more · Show all ${ms.length}`) : null);
+      if (preview && !big(p)) folded.push([section, ms.length]); else wrap.append(section);
+    }
+    if (folded.length) {
+      const count = folded.reduce((n, [, k]) => n + k, 0);
+      const fold = h("details", { class: "more-packs" },
+        h("summary", {}, h("b", {}, `${folded.length} more ${folded.length === 1 ? "pack" : "packs"}`),
+          h("span", {}, `${count} ${count === 1 ? "mission" : "missions"} in packs that are still growing`)),
+        ...folded.map(([s]) => s));
+      fold.open = !!S.morePacks;   // stays the way you left it while filters and searches redraw the list
+      fold.addEventListener("toggle", () => { S.morePacks = fold.open; });
+      wrap.append(fold);
     }
   }
   if (!wrap.children.length) wrap.append(h("p", { class: "none" }, browsing ? "None of these fit your filters. Clear them to see more." : "No missions in this pack yet."));

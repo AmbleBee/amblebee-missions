@@ -17,13 +17,14 @@ description: >
   joke and try to retell it over a slice of pizza on MacDougal. The photo to
   get: your crew under the Comedy Cellar sign outside.
 about: >
-  The Comedy Cellar opened in 1982 and became one of the most famous comedy
-  clubs in the world, a place where big names test new jokes in a tiny room.
-  Upstairs, the Olive Tree Cafe has a table where comics hang out between
-  sets.
+  The Comedy Cellar was started in the early 1980s by comedian Bill Grundfest
+  and became one of the most famous comedy clubs in the world, a tiny basement
+  room where comics like Robin Williams, Chris Rock, Sarah Silverman and Jon
+  Stewart have tested new jokes.
 
-  Reserve ahead and expect a cover plus a two-drink minimum. The comedy is
-  very adult.
+  Upstairs, the Olive Tree Cafe shares a kitchen with the club, and comics
+  hang out there between sets. Reserve ahead and expect a cover plus a two-
+  drink minimum. The comedy is very adult.
 duration: short
 effort: easy
 cost: $$
@@ -32,5 +33,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [reservation]
-themes: [drinks, shows]
+themes: [drinks, shows, history, quirky]
 tags: [comedy cellar, stand-up comedy nyc, greenwich village, macdougal street, late show, nyc]

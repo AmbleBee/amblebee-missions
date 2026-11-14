@@ -39,5 +39,5 @@ season: any
 time_of_day: morning
 travel: local
 check_ahead: [conditions]
-themes: [wildlife]
+themes: [wildlife, science, walks]
 tags: [animal tracking, animal footprints, nature detective, kids nature walk, wildlife, free]

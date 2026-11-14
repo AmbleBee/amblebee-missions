@@ -41,5 +41,5 @@ time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets]
 discounts: [senior, military]
-themes: [food]
+themes: [food, quirky, history]
 tags: [tabasco factory tour, avery island, hot sauce tasting, jungle gardens, cajun country, new-iberia]

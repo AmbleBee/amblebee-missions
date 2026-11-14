@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-12
 number: 45
 name: Dinner at Mizuna, Spokane
 mode: date
@@ -6,8 +6,8 @@ place:
   name: Mizuna Restaurant and Wine Bar
   area: Downtown Spokane
   address: 214 N Howard St, Spokane, WA 99201
-  coords: [47.65850, -117.42450]  # APPROX: set at the entrance before publishing
-  website: https://www.mizuna.com  # verify
+  coords: [47.65950, -117.42044]
+  website: https://www.mizuna.com
 short: Have a slow dinner at Mizuna in downtown Spokane. Each pick a wine for the other.
 description: >
   Settle in for dinner at Mizuna, a downtown Spokane favorite for seasonal
@@ -15,7 +15,18 @@ description: >
   for each other one course, and each pick a glass of wine you think the other
   will love from the long list. In summer, ask for a table on the hidden patio
   in the alley. Afterward, walk a few blocks to Riverfront Park and the falls
-  lit up at night. Reserve ahead on weekends.
+  lit up at night. Reserve ahead on weekends. The photo to get: the two of you
+  clinking the glasses you picked for each other.
+about: >
+  Mizuna opened in 1996 as a vegetarian restaurant, named for the Japanese
+  mustard green in its salads, inside the Bennett Block, a brick building put
+  up after the Great Spokane Fire of 1889. It added meat and seafood later and
+  is now on its third set of owners.
+
+  Spokane grew around the falls of the Spokane River. In 1974 it hosted Expo
+  '74, the first World's Fair with an environmental theme, which turned old
+  rail yards into Riverfront Park. The Davenport Hotel, from 1914, is a short
+  walk away and worth peeking into.
 duration: short
 effort: easy
 cost: $$$
@@ -23,6 +34,6 @@ setting: either
 season: any
 time_of_day: evening
 travel: day-trip
-check_ahead: [reservation]
+check_ahead: [reservation, hours]
 themes: [food, drinks, romantic]
 tags: [dinner, wine, romantic, food, spokane]

@@ -4,10 +4,12 @@ name: Garden Visit
 mode: date
 short: Botanical garden date. Wander a public garden and find your favorite quiet spot.
 description: >
-  Visit a public, botanical or Japanese garden and walk slowly. Each find
-  the plant with the funniest name on its label and read it out loud. Then
-  find a bench or quiet corner you both like and sit for a while. The photo
-  to get: the two of you in your favorite spot.
+  Visit a public, botanical or Japanese garden and walk it slowly, like you
+  have nowhere else to be. Each find the plant with the funniest name on its
+  label and read it out loud in your best tour-guide voice. Then pick a bench
+  or quiet corner you both like, bring out a snack if it's allowed, and sit
+  long enough to notice the sounds. The photo to get: the two of you in your
+  favorite spot.
 about: >
   Gardens change with the seasons, so the same one is worth visiting more
   than once: blossoms in spring, roses in early summer, color in fall. Even
@@ -23,5 +25,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [relaxing]
+themes: [gardens, relaxing, romantic, walks, picnic, forests]
 tags: [botanical garden date, japanese garden, public garden, slow walk, calm, outdoors]

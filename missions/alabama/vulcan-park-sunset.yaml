@@ -26,8 +26,8 @@ about: >
 
   The small museum at the base tells the story of Birmingham's iron
   industry. Check the hours before you go. The observation deck can close
-  before sunset in some seasons, but the park's lawn is still a great place
-  to watch it.
+  before sunset in some seasons, but you can still watch
+  it from the park's lawn.
 duration: short
 effort: easy
 cost: $
@@ -36,5 +36,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
-themes: [views, sunsets]
+themes: [views, sunsets, romantic, history, art]
 tags: [vulcan statue, red mountain, observation deck, city lights, birmingham]

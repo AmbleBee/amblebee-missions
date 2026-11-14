@@ -7,7 +7,8 @@ Writes, inside the built site:
     <collection>/index.html      missions gathered by idea ("Rainy Day Date Ideas"), from collections.yaml
     packs/<pack>/index.html      one pack's missions, under its icon, description and long "about" text
     missions/<id>/index.html     one mission, with its own title, preview, structured data and nearby missions
-    about/, safety/, privacy/, contact/  written in pages/, wrapped in the same header and footer
+    about/, safety/, privacy/, contact/, suggest/, report/, status/  written in pages/, wrapped in the same header and footer
+                                 (report/ and status/ are noindex and left out of the sitemap)
     404.html                     shown by GitHub Pages for any address that doesn't exist
     sitemap.xml, robots.txt      with each page's last-changed date from git, when there's a full checkout
     cards/cards.json             what each share card says; tools/build_cards.py then draws them
@@ -39,26 +40,36 @@ from missions_lib import MISSION_LINK, load_catalog  # noqa: E402
 
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee"
+PACK_FOLD_MIN = 20   # packs with fewer live missions fold under "More packs" on /missions/, the same as site/js/browse.js
 PACK_PREVIEW = 4   # missions per pack on /missions/, the same as PACK_PREVIEW in site/js/browse.js
 NEARBY = 3         # "More missions nearby" at the bottom of each mission page: one full row on a computer
 META_MAX = 158     # Google cuts search snippets off at about this many characters
 COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked once it has this many live missions
 NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
-OG_IMAGE = {"url": f"{BASE}/og-image.png?v=2",   # for pages without their own share card; the same as site/index.html
+OG_IMAGE = {"url": f"{BASE}/og-image.png?v=3",   # for pages without their own share card; the same as site/index.html
             "alt": "AmbleBee: date ideas and adventures near you. A sealed envelope with a honey wax seal, and a bee flying off to deliver it"}
-CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js
-# the same "Report a problem" form as site/js/core.js: opens with the mission's id and name already filled in
-REPORT_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSesllGRZbJaA4nINHJnwgmJxMIFX4z1aI88puOSOCUmzrnfHQ/viewform"
-REPORT_FIELDS = {"id": "entry.872618061", "name": "entry.160884926"}
+CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js; amblebee-intake is the server behind the Suggest, Report, Contact and Status pages (site/js/intake.js)
+# the same "Report a problem" page as site/js/core.js: opens with the mission's id and name already filled in
+REPORT_PAGE = "/report/"
 INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "about": ("About", "How AmbleBee started, where the missions came from, and where the camera and Hive are going."),
     "safety": ("Safety", "How to stay safe on an AmbleBee mission, and what's up to you."),
     "privacy": ("Privacy", "What AmbleBee keeps, what stays on your device, and what goes to Google or GitHub."),
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
+    "faq": ("Questions and answers", "Quick answers about AmbleBee missions, suggesting a place, what each status means, and your information."),
+    "suggest": ("Suggest a mission", "Know a great date spot or adventure? Suggest it for AmbleBee and it might become a mission."),
+    "suggest-idea": ("Share an idea", "Tell AmbleBee about a date spot or adventure you love, in your own words."),
+    "suggest-mission": ("Build a mission", "Build a full AmbleBee mission step by step, with tips along the way."),
+    "report": ("Report a problem", "Tell AmbleBee about a closed place, a wrong pin, or anything off with a mission."),
+    "status": ("Submission status", "Check where your AmbleBee suggestion or report is at."),
 }
+NOINDEX_PAGES = {"report", "status"}   # useful only through a link: kept out of search engines and the sitemap
+PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
-CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello"}
+CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
+                "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
+                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -94,10 +105,10 @@ def nav_html(current=""):
     """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
     home = current == "index"
     main = [("/about/", "About"), ("/#browse" if home else "/missions/", "Every mission"), ("/#search", "Search"),
-            ("/roadmap.html", "Bee trail"), ("/#share", "Know a great spot?")]
+            ("/roadmap.html", "Bee trail"), ("/suggest/", "Know a great spot?")]
     if not home:
         main.insert(0, ("/", "Open a mission"))
-    extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/contact/", "Contact")]
+    extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
 
     def link(href, text, cls=""):
         cls = " nav-share" if cls != "phone-only" and text.startswith("Know") else cls
@@ -110,6 +121,17 @@ def nav_html(current=""):
             f'<details class="menu"><summary>{burger}<span class="menu-phone">Menu</span><span class="menu-wide">More</span></summary>'
             f'<div class="menu-panel">{"".join(link(h, t, "phone-only") for h, t in main)}{"".join(link(h, t) for h, t in extra)}</div>'
             '</details></nav>')
+
+
+def faq_jsonld(body, path):
+    """pages/faq.html as FAQPage data for search engines: each question is a <details class="faq-item">, its <summary>
+    the question and its <div class="faq-a"> the answer."""
+    strip = lambda t: " ".join(html.unescape(re.sub(r"<[^>]+>", " ", t)).split())  # noqa: E731
+    items = []
+    for q, a in re.findall(r'<details class="faq-item"[^>]*>\s*<summary>(.*?)</summary>\s*<div class="faq-a">(.*?)</div>\s*</details>', body, re.S):
+        answer = re.sub(r"\s+([.,:;!?])", r"\1", strip(a))
+        items.append({"@type": "Question", "name": strip(q), "acceptedAnswer": {"@type": "Answer", "text": answer}})
+    return {"@context": "https://schema.org", "@type": "FAQPage", "url": BASE + path, "mainEntity": items}
 
 
 def page(title, description, path, main, jsonld, brand, extra_script="", current="", image=None):
@@ -158,7 +180,8 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 {main}
 </main>
 <footer class="foot">
-  <p class="foot-links"><a href="/about/">About</a> <a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/contact/">Contact</a></p>
+  <p class="foot-links"><a href="/about/">About</a> <a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/faq/">FAQ</a> <a href="/contact/">Contact</a></p>
+  <p class="foot-social">Follow along: <a href="https://www.pinterest.com/AmbleBeeHQ/" target="_blank" rel="me noopener" aria-label="AmbleBee on Pinterest (opens in a new tab)">Pinterest</a> <a href="https://bsky.app/profile/amblebeehq.bsky.social" target="_blank" rel="me noopener" aria-label="AmbleBee on Bluesky (opens in a new tab)">Bluesky</a> <a href="https://x.com/AmbleBeeHQ" target="_blank" rel="me noopener" aria-label="AmbleBee on X (opens in a new tab)">X</a></p>
   <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
 </footer>
 {extra_script}</body>
@@ -238,9 +261,8 @@ def mission_html(m, pack, icons, today):
         kids = m["for_kids"]
         extras += extra("Kids' version", f'<p style="margin:0;font-weight:800">{esc(kids["short"])}</p>{steps(kids.get("steps") or [])}')
 
-    report = REPORT_FORM + "?" + urlencode({"usp": "pp_url", REPORT_FIELDS["id"]: m["full_id"], REPORT_FIELDS["name"]: m["name"]})
-    report_html = (f'<p class="report">Closed, moved or something off? '
-                   f'<a href="{esc(report)}" target="_blank" rel="noopener">Report a problem</a></p>')
+    report = REPORT_PAGE + "?" + urlencode({"id": m["id"], "name": m["name"]})
+    report_html = f'<p class="report">Closed, moved or something off? <a href="{esc(report)}">Report a problem</a></p>'
     credit = str(m.get("credit") or "").strip()
     credit_html = f'<p class="credit">Suggested by {esc(credit)}</p>' if credit else ""
     return f"""<article class="ticket">
@@ -408,7 +430,7 @@ def build_pages(out):
     if problems:
         raise SystemExit("Not building pages, fix the icons first:\n  - " + "\n  - ".join(problems))
     brand = re.search(r'<a class="brand".*?</a>', (ROOT / "site" / "index.html").read_text(encoding="utf-8"), re.S).group(0)
-    brand = brand.replace('href="./"', 'href="/"')
+    brand = brand.replace('href="./"', 'href="/"').replace('src="logo.webp"', 'src="/logo.webp"')
     today = datetime.date.today().isoformat()
     _, raw_packs, raw_missions = load_catalog(ROOT / "missions")   # the "about" texts are left out of catalog.json, so read them here
     pack_about = {pid: str(pk.get("about") or "").strip() for pid, pk in raw_packs.items()}
@@ -583,14 +605,20 @@ def build_pages(out):
         if days:
             lastmod[c["path"]] = max(days)
 
-    sections = []
-    for p in packs:   # the same taste of each pack as the home page: its first missions, then its own page
+    # the same order as the home page: Amble Anywhere, the big packs (biggest first), then the small ones folded away
+    live_count = {p["id"]: sum(1 for m in missions if m["pack"] == p["id"]) for p in packs}
+    is_big = lambda p: p["id"] == "anywhere" or live_count[p["id"]] >= PACK_FOLD_MIN
+    ordered = sorted(packs, key=lambda p: (p["id"] != "anywhere", not is_big(p), -live_count[p["id"]] if is_big(p) else 0))
+    sections, folded, folded_missions = [], [], 0
+    for p in ordered:   # the same taste of each pack as the home page: its first missions, then its own page
         rows = sorted((m for m in missions if m["pack"] == p["id"]), key=lambda m: m["number"])
         if not rows:
             continue
+        here = sections if is_big(p) else folded
+        folded_missions += 0 if is_big(p) else len(rows)
         more = len(rows) - PACK_PREVIEW
         link = f"/packs/{p['id']}/"
-        sections.append(
+        here.append(
             f'<section class="pack preview" aria-label="{esc(p.get("name"))}"><div class="pack-head">'
             f'<span class="badge">{icon(icons["packs"].get(p.get("icon"), ""), 26)}</span>'
             f'<div><h2><a href="{link}">{esc(p.get("name"))}</a></h2><p>{esc(p.get("description") or "")}</p></div></div>'
@@ -598,10 +626,14 @@ def build_pages(out):
             + (f'<a class="pack-more" href="{link}">{more} more · Show all {len(rows)}</a>' if more > 0 else "")
             + "</section>")
     intro = f"{stats['live']} live missions in {len(packs)} packs, with {stats['drafts']} more being checked."
+    more_packs = (f'<details class="more-packs"><summary><b>{len(folded)} more {"pack" if len(folded) == 1 else "packs"}</b>'
+                  f'<span>{folded_missions} {"mission" if folded_missions == 1 else "missions"} in packs that are still growing</span></summary>'
+                  f'{"".join(folded)}</details>') if folded else ""
     main = f"""<div class="page page-wide">
 <div class="page-intro"><h1>Every mission</h1><p>{esc(intro)}</p></div>
 {ideas_html(collections)}
 {"".join(sections)}
+{more_packs}
 </div>"""
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "url": f"{BASE}/missions/", "name": "Every mission", "description": intro}
     (Path(out) / "missions").mkdir(parents=True, exist_ok=True)
@@ -611,13 +643,21 @@ def build_pages(out):
                               title="Every mission", text=intro, note="amblebee.com/missions")), encoding="utf-8")
 
     for name, (title, desc) in INFO_PAGES.items():
-        path = f"/{name}/"
+        path = PAGE_PATHS.get(name, f"/{name}/")
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
         main = f'<div class="page info">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
+        if name == "faq":
+            ld = faq_jsonld(body, path)
         image = share_card(f"page-{name}", f"{title}: {desc}", badge="hive", eyebrow=CARD_EYEBROW.get(name, "AmbleBee"),
-                           title=title, text=desc, note=f"amblebee.com/{name}")
-        write(path, page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image))
+                           title=title, text=desc, note="amblebee.com" + path.rstrip("/"))
+        text = page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image)
+        if name in NOINDEX_PAGES:
+            f = Path(out) / path.strip("/") / "index.html"
+            f.parent.mkdir(parents=True, exist_ok=True)
+            f.write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
+            continue
+        write(path, text)
         if dates.get(f"pages/{name}.html"):
             lastmod[path] = dates[f"pages/{name}.html"]
 

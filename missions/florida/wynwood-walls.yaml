@@ -41,5 +41,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [walks, art]
+themes: [walks, art, food, quirky]
 tags: [wynwood walls, miami street art, murals, art basel, wynwood art district, miami]

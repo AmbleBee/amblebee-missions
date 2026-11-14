@@ -4,10 +4,11 @@ name: Mini Golf
 mode: date
 short: Mini golf date. Play a round, invent trick shots, and loser buys the ice cream after.
 description: >
-  Find a mini golf course, outdoor or one of the indoor glow-in-the-dark
-  ones. Play a round, and on each hole the winner gets to invent a trick
-  shot the other has to try. Loser buys the ice cream after. The photo to
-  get: the two of you at the silliest hole on the course.
+  Find a mini golf course, an old outdoor one with windmills and dinosaurs or
+  an indoor glow-in-the-dark one. Play a round, and on each hole the winner
+  invents a trick shot the other has to try: off the wall, eyes closed, wrong
+  hand. Keep the scorecard honest. Loser buys the ice cream after. The photo
+  to get: the two of you at the silliest hole on the course.
 about: >
   Mini golf has been around for about a century. In the late 1920s and
   early 1930s it became a craze, with tens of thousands of courses popping
@@ -23,5 +24,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [hours]
-themes: [games, playful]
+themes: [games, playful, romantic, quirky, food]
 tags: [mini golf date, glow golf, putt putt, trick shots, games, playful]

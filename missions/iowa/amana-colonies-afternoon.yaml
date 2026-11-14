@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-09
 number: 2
 name: An Afternoon in the Amana Colonies
 mode: date
@@ -6,8 +6,8 @@ place:
   name: Amana Colonies Visitor Center
   area: Main Amana, Amana Colonies
   address: 622 46th Ave, Amana, IA 52203
-  coords: [41.79900, -91.87000]  # APPROX: set at the entrance before publishing
-  website: https://www.amanacolonies.com
+  coords: [41.80000, -91.86797]
+  website: https://amanacolonies.com
 short: Amana Colonies, Iowa. Stroll the old German villages, taste local beer and share a feast.
 description: >
   Wander Main Amana's brick and stone shops, the woolen mill and bakeries,

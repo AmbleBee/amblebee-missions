@@ -41,5 +41,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
-themes: [food]
+themes: [food, walks, art, history]
 tags: [calle ocho, little havana, domino park, cuban coffee, rooster statues, miami]

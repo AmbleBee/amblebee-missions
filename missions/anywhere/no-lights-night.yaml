@@ -25,6 +25,6 @@ cost: free
 setting: indoor
 season: any
 time_of_day: night
-travel: local
+travel: home
 themes: [games, relaxing, romantic]
 tags: [at-home, candlelight date, unplugged night, no phones, cozy, games]

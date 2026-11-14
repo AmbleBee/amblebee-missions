@@ -43,5 +43,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [museums, art]
+themes: [museums, art, history]
 tags: [capitol modern, hawaii state art museum, free museum honolulu, sculpture garden, family art hunt, honolulu]

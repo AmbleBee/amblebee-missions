@@ -1,0 +1,37 @@
+<p class="back-link"><a href="/suggest/">← Both ways to suggest</a></p>
+<h1>Build a mission</h1>
+<p class="hand">Step by step, with tips along the way.</p>
+<p>Fill in the mission the way it would appear on AmbleBee. Your answers are saved on this device as you go, so you can stop and come back.</p>
+
+<div class="builder">
+  <p class="intake-wait">Checking the mailbox…</p>
+  <div class="intake-down" hidden>
+    <p class="hand">The mission builder is closed for a moment</p>
+    <p>Please try again later, or <a href="/suggest/idea/">share it as an idea</a> instead.</p>
+  </div>
+  <div class="intake-backup" hidden>
+    <p class="hand">Our mailbox is taking a break</p>
+    <p>You can still send it through our backup form. It may take us longer to see, and it won't come with a status link. Or try again here a little later.</p>
+    <p class="backup-row"><a class="btn primary small backup-link" href="#" target="_blank" rel="noopener">Use the backup form</a> <button type="button" class="btn small backup-retry">Try again</button></p>
+  </div>
+  <form class="builder-form" novalidate hidden>
+    <ol class="builder-steps" aria-label="Steps"></ol>
+    <div class="builder-panel" tabindex="-1"></div>
+    <div class="hp" aria-hidden="true"><label for="b-website">Leave this empty</label><input id="b-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+    <p class="form-status" role="status" aria-live="polite"></p>
+    <div class="builder-nav">
+      <button type="button" class="btn builder-back">Back</button>
+      <button type="button" class="btn primary builder-next">Next</button>
+    </div>
+  </form>
+  <div class="intake-done" tabindex="-1" hidden></div>
+</div>
+
+<section class="intake-mine" hidden>
+  <h2>Your submissions</h2>
+  <p class="hint">Saved on this device only.</p>
+  <ul></ul>
+</section>
+<noscript><p>The mission builder needs JavaScript. You can <a href="mailto:staff@amblebee.com">email us</a> instead.</p></noscript>
+<script src="/js/intake.js" defer></script>
+<script src="/js/builder.js" defer></script>

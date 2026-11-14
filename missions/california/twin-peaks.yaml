@@ -37,5 +37,5 @@ season: any
 time_of_day: any
 travel: local
 check_ahead: [conditions]
-themes: [views, sunsets]
+themes: [views, sunsets, romantic]
 tags: [twin peaks, san francisco views, christmas tree point, sutro tower, city lights, san-francisco]

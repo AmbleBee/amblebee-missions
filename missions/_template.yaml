@@ -13,7 +13,7 @@ name: Mission Name
 mode: date                     # date | adventure | both
 # who: [solo, friends, family, kids]     # who else can come; leave out for date-only missions
 
-# place: required in every state pack (Amble Oregon...), left out in Amble Anywhere
+# place: required in packs with places: required (every state pack), left out in places: none packs (Amble Anywhere)
 # place:
 #   name: Place Name
 #   area: Neighborhood, City

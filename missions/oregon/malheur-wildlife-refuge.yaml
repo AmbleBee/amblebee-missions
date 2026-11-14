@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-06
 number: 52
 name: Malheur National Wildlife Refuge
 mode: both
@@ -7,7 +7,7 @@ place:
   name: Malheur National Wildlife Refuge Headquarters
   area: Sodhouse Lane, south of Burns
   address: 36391 Sodhouse Ln, Princeton, OR 97721
-  coords: [43.26500, -118.84300]  # APPROX: set at the headquarters parking before publishing
+  coords: [43.26559, -118.84401]
   website: https://www.fws.gov/refuge/malheur/visit-us
 short: Spot birds at Malheur Refuge. Each keep a count and see who finds more species.
 description: >
@@ -17,7 +17,16 @@ description: >
   to watch for, and check the board of recent sightings. Then drive part of
   the gravel auto tour route. Each keep your own count and see who spots more
   kinds of birds. Spring migration is the best time. The visitor center is
-  closed October through February, but the museum and grounds stay open.
+  closed October through February, but the museum and grounds stay open. The
+  photo to get: the biggest flock you can fit in one frame.
+about: >
+  President Theodore Roosevelt set the refuge aside in 1908 to protect birds
+  being hunted for hat feathers. It now covers more than 187,000 acres, and
+  more than 300 bird species have been seen here.
+
+  Spring brings sandhill cranes, swans and snow geese by the thousands, with
+  the Harney County Migratory Bird Festival in April. Bring water and a full
+  tank, since services are few and far between.
 for_kids:
   short: Bird hunt! Find each thing.
   steps:
@@ -34,5 +43,5 @@ season: any
 time_of_day: morning
 travel: day-trip
 check_ahead: [hours, conditions]
-themes: [deserts, wildlife]
-tags: [birds, wildlife, nature, high-desert, eastern-oregon]
+themes: [wildlife, deserts, lakes-rivers, road-trips, walks]
+tags: [malheur national wildlife refuge, bird watching, sandhill cranes, burns oregon, high desert, eastern oregon]

@@ -38,5 +38,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [reservation, seasonal, conditions]
-themes: [mountains, thrills]
+themes: [mountains, thrills, views, romantic, forests]
 tags: [bretton woods canopy tour, ziplining, white mountains, mount washington hotel, gondola, bretton-woods]
