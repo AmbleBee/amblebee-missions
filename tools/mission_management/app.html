@@ -199,6 +199,13 @@ dialog.sheet { margin: 0 0 0 auto; height: 100dvh; max-height: 100dvh; width: mi
   padding: 0; background: var(--oat); color: var(--ink); box-shadow: -10px 0 30px rgba(0, 0, 0, .18); }
 dialog.sheet::backdrop { background: rgba(40, 28, 20, .35); }
 dialog.sheet.full { width: 100vw; box-shadow: none; }
+/* ?only=<pack>/<id>: just this mission's editor, filling the frame (the admin's report page shows it beside the report) */
+body.only > main { display: none; }
+body.only dialog.sheet { width: 100vw; box-shadow: none; }
+body.only dialog.sheet::backdrop { background: var(--oat); }
+body.only #edClose, body.only #edCancel, body.only #edFull, body.only #edReveal, body.only #editor [data-stepnav] { display: none; }
+body.only.only-missing > main { display: block; }
+body.only.only-missing main > :not(#view) { display: none; }
 .sheet-head .headbtns { margin-left: auto; display: flex; gap: 2px; align-items: center; }
 .sheet-head .headbtns .x { margin-left: 0; }
 .x.fs { font-size: 22px; padding: 0 8px; }
@@ -781,6 +788,12 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
 // Open by default. Someone can set a temporary key with Lock; then every device needs it (kept for this tab only).
 let KEY = '';
 try { KEY = sessionStorage.getItem('ambleKey') || ''; } catch (e) {}
+// ?only=<pack>/<id> shows just that mission's editor (see openOnly)
+const ONLY = (() => {
+  const v = new URLSearchParams(location.search).get('only') || '', i = v.indexOf('/');
+  return i > 0 && i < v.length - 1 ? { pack: v.slice(0, i), id: v.slice(i + 1) } : null;
+})();
+if (ONLY) document.body.classList.add('only');
 function rememberKey(k) { KEY = k; try { k ? sessionStorage.setItem('ambleKey', k) : sessionStorage.removeItem('ambleKey'); } catch (e) {} }
 let D = null, THEME_KEYS = [];
 async function api(path, opts = {}, retry = true) {
@@ -1776,6 +1789,7 @@ async function confirmSave() {
     ${b.stale ? '<br><button type="button" class="btn tiny" id="reloadMission" style="margin-top:8px">Reopen the latest version</button>' : ''}</div>`);
 }
 function closeEditor() {
+  if (ONLY) return;                              // the editor is the whole page here: there's nothing behind it to go back to
   if (ed.dirty && !confirm('Close without saving your changes?')) return;
   if (ed.dirty) dropStash(ed.pack, ed.id);      // you chose to throw them away
   ed.dirty = false; $('#editor').close();
@@ -2642,8 +2656,17 @@ $('#linkAll').onclick = async () => {
   pollLinks();
 };
 
+// ---------- ?only=<pack>/<id>: open straight into one mission's editor and stay there ----------
+function openOnly() {
+  if (!ONLY) return;
+  if (D.missions.some(m => m.pack === ONLY.pack && m.id === ONLY.id)) return openEditor(ONLY.pack, ONLY.id);
+  document.body.classList.add('only-missing');
+  $('#view').innerHTML = `<div class="card"><h2>That mission isn't here</h2>
+    <p><code>missions/${esc(ONLY.pack)}/${esc(ONLY.id)}.yaml</code> isn't in this copy of the missions. It may have been renamed, moved to another pack or removed.</p></div>`;
+}
+
 const fontsReady = Promise.race([document.fonts ? document.fonts.ready : Promise.resolve(), new Promise(r => setTimeout(r, 2500))]);
-loadData().then(ok => { if (ok) { render(); pollLinks(); } })
+loadData().then(ok => { if (ok) { render(); pollLinks(); openOnly(); } })
   .catch(err => { $('#view').innerHTML = `<div class="card"><h2>Couldn't load missions</h2><p>${esc(err && err.message || err)}</p></div>`; })
   .then(() => fontsReady)
   .then(() => requestAnimationFrame(() => document.body.classList.remove('booting')));
