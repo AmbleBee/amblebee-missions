@@ -271,7 +271,8 @@
       var input = el("input", { id: "me-email", type: "email", autocomplete: "email", maxlength: "200", placeholder: "you@example.com" });
       var addBtn = el("button", { type: "submit", class: "btn small", text: st.email ? "Change recovery email" : "Add recovery email" });
       var form = el("form", { class: "me-email-form" },
-        el("label", { for: "me-email" }, st.email ? "A recovery email is set. Use a different one:" : "Recovery email ", st.email ? null : el("span", { class: "opt", text: "(optional)" })),
+        el("label", { for: "me-email" }, st.email ? "A recovery email is set" + (masked() ? ": " + masked() : "") + ". Use a different one:" : "Recovery email ",
+          st.email ? null : el("span", { class: "opt", text: "(optional)" })),
         el("div", { class: "backup-row" }, input, addBtn));
       form.addEventListener("submit", function (e) {
         e.preventDefault();
@@ -340,6 +341,21 @@
     sec.append(openForm, lostForm);
     return sec;
   }
+  // the recovery email as this browser remembers it (site/js/profile.js), partly hidden: m•••@e•••••e.com.
+  // Another device opened from the link doesn't have it: the server only keeps a fingerprint.
+  function masked() {
+    var e = "";
+    try { e = localStorage.getItem("amble.email") || ""; } catch (x) { return ""; }
+    var at = e.lastIndexOf("@");
+    if (at < 1) return "";
+    var name = e.slice(0, at), host = e.slice(at + 1), dot = host.lastIndexOf(".");
+    var dom = dot > 0 ? host.slice(0, dot) : host, tld = dot > 0 ? host.slice(dot) : "";
+    var hide = function (w, keepEnd) {
+      if (w.length <= 2) return w.charAt(0) + "•";
+      return w.charAt(0) + "•".repeat(Math.min(w.length - (keepEnd ? 2 : 1), 6)) + (keepEnd ? w.charAt(w.length - 1) : "");
+    };
+    return hide(name, false) + "@" + hide(dom, true) + tld;
+  }
   function copy(id, value, label) {
     var box = el("input", { id: id, class: "link-box", type: "text", readonly: true, value: value, "aria-label": label });
     return el("div", { class: "copy-row" }, box, el("button", { type: "button", class: "btn small", text: "Copy", onclick: function () {
@@ -366,7 +382,9 @@
       bar.className = "profile-bar is-saved";
       bar.replaceChildren(el("p", {}, el("b", { text: "✓ Saved to your profile" }),
         st.syncing ? " · saving…" : st.error ? " · " + st.error : st.last ? " · synced " + ago(st.last) : ""),
-        el("a", { href: "/me/settings/#profile", text: "Profile link and recovery" }));
+        el("a", { href: "/me/settings/#profile", text: "Profile link and recovery" }),
+        st.email ? null : el("p", { class: "profile-bar-nudge" }, el("b", { text: "No recovery email yet. " }),
+          "If you lose your link, there's no way back in. ", el("a", { href: "/me/settings/#profile", text: "Add a recovery email" })));
     } else if (st.gone) {
       bar.className = "profile-bar is-gone";
       bar.replaceChildren(el("p", {}, el("b", { text: "This profile's link has stopped working." }),

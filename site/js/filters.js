@@ -11,7 +11,15 @@ function readFilters() {
     cost: checked("cost"), setting: checked("setting"), time: checked("time"), themes: checked("themes"),
     inSeason: $("#f-season").checked, goNow: $("#f-gonow").checked, hour: new Date().getHours(),
     within: $("#within-select").value ? Number($("#within-select").value) : null,
+    hideDone: !!($("#f-new") && $("#f-new").checked), doneIds: doneIds(),
   };
+}
+// missions marked done on this device (site/js/done.js), by full id
+function doneIds() { return new Set(window.AmbleDone ? window.AmbleDone.list().map((c) => c.mission) : []); }
+// "Hide ones we've done" only shows once something has been marked done (or it's already on, from a link)
+function syncNewFilter() {
+  const field = $("#new-field");
+  if (field) field.hidden = !doneIds().size && !$("#f-new").checked;
 }
 function passes(m, f) {
   if (f.mode === "date" && !["date", "both"].includes(m.mode)) return false;
@@ -38,11 +46,12 @@ function passes(m, f) {
   if (f.goNow && ((m.check_ahead || []).some((c) => c === "tickets" || c === "reservation")
     || !inSeason(m) || !rightTime(m, f.hour))) return false;
   if (f.within != null) { const d = distM(m); if (d != null && d > f.within * M_PER[S.unit]) return false; }
+  if (f.hideDone && f.doneIds.has(m.full_id)) return false;
   return true;
 }
 function activeFilters(f) {
   return f.who.length + f.duration.length + f.effort.length + f.cost.length + f.setting.length + f.time.length + f.themes.length
-    + (f.inSeason ? 1 : 0) + (f.goNow ? 1 : 0);
+    + (f.inSeason ? 1 : 0) + (f.goNow ? 1 : 0) + (f.hideDone ? 1 : 0);
 }
 const pool = () => { const f = readFilters(); return S.missions.filter((m) => passes(m, f)); };
 // at zero results: the one change that would bring the most missions back
@@ -52,6 +61,7 @@ function bestRelax(f) {
   const tries = lists.filter(([k]) => f[k].length).map(([k, label]) => [label, { ...f, [k]: [] }]);
   if (f.inSeason) tries.push(["In season now", { ...f, inSeason: false }]);
   if (f.goNow) tries.push(["Go right now", { ...f, goNow: false }]);
+  if (f.hideDone) tries.push(["Hide ones we've done", { ...f, hideDone: false }]);
   if (f.within != null) tries.push(["the distance", { ...f, within: null }]);
   if (f.mode !== "any") tries.push(["What are you in the mood for?", { ...f, mode: "any" }]);
   if (f.pack !== "all") tries.push(["Pick from", { ...f, pack: "all" }]);

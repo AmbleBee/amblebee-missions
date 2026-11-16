@@ -57,7 +57,7 @@ function playOpen(env, done) {
 const DECK_KEY = "amble-deck";
 const shuffled = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
 function deckFor(f) {
-  const { hour, ...rest } = f;     // the hour only matters through the pool itself
+  const { hour, doneIds, ...rest } = f;     // the hour (and what's been done) only matter through the pool itself
   return JSON.stringify([rest, S.zip || "", S.unit]);
 }
 function dealOrder(p, f) {
@@ -74,12 +74,19 @@ function dealOrder(p, f) {
 let memDeck = null;      // used when the browser won't keep sessionStorage
 function loadDeck() { try { return JSON.parse(sessionStorage.getItem(DECK_KEY)) || memDeck; } catch (e) { return memDeck; } }
 function saveDeck(d) { memDeck = d; try { sessionStorage.setItem(DECK_KEY, JSON.stringify(d)); } catch (e) { /* in-memory it is */ } }
+// Something new: rolls skip missions already marked done, unless that leaves nothing or someone asked to include them.
+// "Include them too" under the picked mission switches it, and this browser remembers.
+const REPEATS_KEY = "amble.roll.repeats";
+function rollRepeats() { try { return localStorage.getItem(REPEATS_KEY) === "1"; } catch (e) { return false; } }
+function setRollRepeats(on) { try { if (on) localStorage.setItem(REPEATS_KEY, "1"); else localStorage.removeItem(REPEATS_KEY); } catch (e) { /* fine */ } }
 function pickMission() {
   // "Not for us" missions (site/js/done.js) are never dealt, unless they're all that's left
   const hidden = window.AmbleDone ? window.AmbleDone.hidden() : new Set();
   const all = pool();
   const kept = all.filter((m) => !hidden.has(m.full_id));
-  const p = kept.length ? kept : all;
+  let p = kept.length ? kept : all;
+  const done = doneIds();
+  if (!rollRepeats() && done.size) { const fresh = p.filter((m) => !done.has(m.full_id)); if (fresh.length) p = fresh; }
   if (!p.length) return null;
   const f = readFilters(), key = deckFor(f);
   const byId = new Map(p.map((m) => [m.full_id, m]));
@@ -168,6 +175,7 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   $("#reveal-summary").hidden = sealed || from === "mine";   // "mine": reopened, so the old picks are gone
   // no ZIP yet, so every pick comes from the do-anywhere pack: say so, and offer the step that brings real places in
   $("#reveal-near").hidden = sealed || animate || from !== "roll" || !!S.here || $("#pack-select").value !== "anywhere";
+  freshLine(sealed || animate ? null : from);
   window.scrollTo({ top: 0 });
   const slot = $("#reveal-slot");
   if (sealed || animate) {
@@ -200,6 +208,25 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   $("#reveal-done").replaceChildren(...[doneBox(m)].filter(Boolean));   // "Mark done" (site/js/done.js)
   if (growFrom && growFrom.width && !REDUCED()) growTicket(t, growFrom); else t.classList.add("pop");
   const title = $("#reveal-title"); if (title) { title.tabIndex = -1; title.focus({ preventScroll: true }); }
+}
+// under a rolled mission: whether ones already done were left out, and the switch
+function freshLine(from) {
+  const line = $("#reveal-fresh");
+  const done = doneIds();
+  const inPool = from === "roll" ? pool().filter((m) => done.has(m.full_id)).length : 0;
+  line.hidden = !inPool;
+  if (!inPool) return;
+  const repeats = rollRepeats();
+  const allDone = !repeats && pool().every((m) => done.has(m.full_id));
+  const flip = h("button", { type: "button", class: "linkish", onclick: () => {
+    setRollRepeats(!repeats); freshLine("roll");
+    const b = $("#reveal-fresh button"); if (b) b.focus();
+  } }, repeats ? "Only ones we haven't done" : "Include them too");
+  line.replaceChildren(
+    allDone ? "You've done every mission that fits, so here's one to do again. "
+      : repeats ? "Picking from every mission, including ones you've done. "
+      : `Picking ones you haven't done yet (${inPool === 1 ? "1 you've done is" : inPool + " you've done are"} left out). `,
+    allDone ? null : flip);
 }
 // FLIP: start the full ticket at the envelope card's spot and size, then let it grow into place.
 function growTicket(t, from) {

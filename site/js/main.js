@@ -123,6 +123,7 @@ function filterQuery() {
   QUERY_LISTS.forEach((k) => { if (f[k].length) q.set(k, f[k].join(",")); });
   if (f.inSeason) q.set("season", "now");
   if (f.goNow) q.set("go", "now");
+  if (f.hideDone) q.set("new", "1");
   if (S.browse && !["all", "near"].includes(S.browse)) q.set("list", S.browse);
   if (S.q.trim()) q.set("q", S.q.trim());
   if (S.sort) q.set("sort", S.sort);
@@ -145,6 +146,7 @@ function readQuery() {
   }
   $("#f-season").checked = q.get("season") === "now";
   $("#f-gonow").checked = q.get("go") === "now";
+  $("#f-new").checked = q.get("new") === "1";
   if (S.packById[q.get("list")]) S.browse = q.get("list");
   S.q = (q.get("q") || "").slice(0, 80);
   $("#search-input").value = S.q;
@@ -294,6 +296,9 @@ async function start() {
   }));
 
   readQuery();
+  syncNewFilter();
+  // marking something done changes what "Hide ones we've done" hides, and whether it shows at all
+  window.addEventListener("amble:done", () => { syncNewFilter(); if ($("#f-new").checked) refresh(); });
   renderWithin();
   renderBrowse();
   renderTeaser();

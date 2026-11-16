@@ -1329,6 +1329,110 @@ def t_not_for_us_button_on_a_mission(site, catalog):
     assert home.locator(".reveal .skip-btn, #reveal-slot .skip-btn").count() == 1, "a picked mission has it too"
 
 # ---- free profiles (site/js/profile.js), against FakeIntake ----
+def done_list(page, ids):
+    """This browser has done these missions (full ids), as if marked done."""
+    page.evaluate("ids => localStorage.setItem('amble.done', JSON.stringify({v: 1, hidden: [], "
+                  "done: ids.map(i => ({mission: i, done_at: '2026-11-01T18:00:00Z'}))}))", ids)
+
+
+def t_rolls_pick_something_new_until_asked(site, catalog):
+    anywhere = [m for m in catalog["missions"] if m["pack"] == "anywhere"]   # with no ZIP set, a roll deals from Anywhere
+    keep = anywhere[0]
+    page = site.open("/missions/" + keep["id"] + "/")
+    done_list(page, [m["full_id"] for m in anywhere[1:]])
+    page.goto(site.base + "/")
+    page.wait_for_selector("#packs .card", state="attached")
+    page.click("#roll-btn")
+    for _ in range(3):
+        page.wait_for_selector("#reveal-title")
+        assert page.inner_text("#reveal-title") == keep["name"], "the one not done yet is picked"
+        assert "haven't done" in page.inner_text("#reveal-fresh")
+        page.click("#reveal-actions >> text=Open another")
+    page.wait_for_selector("#reveal-title")
+    page.click("#reveal-fresh >> text=Include them too")
+    assert page.evaluate("localStorage.getItem('amble.roll.repeats')") == "1", "the choice is remembered"
+    assert "including ones you've done" in page.inner_text("#reveal-fresh")
+    names = set()
+    for _ in range(12):
+        page.click("#reveal-actions >> text=Open another")
+        page.wait_for_selector("#reveal-title")
+        names.add(page.inner_text("#reveal-title"))
+    assert len(names) > 1, "with repeats on, done missions come up again"
+    page.click("#reveal-fresh >> text=Only ones we haven't done")
+    assert page.evaluate("localStorage.getItem('amble.roll.repeats')") is None
+    # every one done: it says so, and still deals
+    done_list(page, [m["full_id"] for m in anywhere])
+    page.goto(site.base + "/")
+    page.wait_for_selector("#packs .card", state="attached")
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert "every mission that fits" in page.inner_text("#reveal-fresh")
+
+
+def t_hide_ones_we_have_done_filter(site, catalog):
+    page = site.home()
+    page.click("#filters-toggle")
+    assert page.locator("#new-field").is_hidden(), "nothing done yet: no filter to show"
+    done = catalog["missions"][0]
+    done_list(page, [done["full_id"]])
+    page.reload()
+    page.wait_for_selector("#packs .card", state="attached")
+    page.click("#filters-toggle")
+    page.click("#new-field label:has(#f-new)")
+    page.wait_for_function("location.search.includes('new=1')")
+    assert page.locator("#packs .card").count() == len(catalog["missions"]) - 1, "every mission but the done one"
+    assert page.locator(f'#packs a.card[href*="/missions/{done["id"]}/"]').count() == 0
+    page.goto(site.base + "/?new=1")
+    page.wait_for_selector("#packs .card", state="attached")
+    assert page.is_checked("#f-new"), "the filter comes back from the address"
+
+
+def t_mark_done_mentions_stamps_until_the_first(site, catalog):
+    mission = catalog["missions"][0]
+    page = site.open(f"/missions/{mission['id']}/")
+    page.wait_for_selector(".done-mark")
+    assert "collect stamps" in page.inner_text(".done-box")
+    mark(page)
+    page.reload()
+    page.wait_for_selector(".done-head")
+    other = catalog["missions"][1]
+    page.goto(site.base + f"/missions/{other['id']}/")
+    page.wait_for_selector(".done-mark")
+    assert page.locator(".done-stamp-hint").count() == 0, "once a stamp is earned, the hint has done its job"
+
+
+def t_profile_nudges_for_a_recovery_email_and_masks_it(site, catalog):
+    page = site.open("/me/")
+    assert "has-profile" not in (page.get_attribute(".top .nav-profile", "class") or "")
+    key = give_profile(site, page)
+    page.wait_for_selector(".profile-bar.is-saved")
+    assert "has-profile" in page.get_attribute(".top .nav-profile", "class"), "the header shows there's a profile"
+    assert "No recovery email yet" in page.inner_text(".profile-bar")
+    site.intake.profiles[key]["email"] = True
+    page.evaluate("localStorage.setItem('amble.email', 'maxwell@example.com');"
+                  "const p = JSON.parse(localStorage.getItem('amble.profile')); p.email = true;"
+                  "localStorage.setItem('amble.profile', JSON.stringify(p))")
+    page.reload()
+    page.wait_for_selector(".profile-bar.is-saved")
+    assert "No recovery email yet" not in page.inner_text(".profile-bar")
+    page.goto(site.base + "/me/settings/")
+    page.wait_for_selector("label[for=me-email]")
+    label = page.inner_text("label[for=me-email]")
+    assert "m•••••" in label and "@e•••••e.com" in label and "maxwell" not in label, label
+    page.goto(site.base + "/contact/")
+    page.wait_for_selector(".intake-form", state="visible")
+    assert page.input_value("#contact-email") == "maxwell@example.com"
+    assert page.locator(".filled-note").inner_text().endswith("Filled in from your profile")
+    page.fill("#contact-email", "other@example.com")
+    assert page.locator(".filled-note").count() == 0, "typed over: no longer from the profile"
+
+
+def t_faq_explains_profiles_and_stamps(site, catalog):
+    page = site.open("/faq/")
+    for q in ("profile", "notes", "lost", "stamp-gone", "not-for-us"):
+        assert page.locator(f"details#{q} summary").count() == 1, q
+
+
 def t_mark_done_offers_a_free_profile_until_not_now(site, catalog):
     mission = catalog["missions"][5]
     before = len(site.intake.posts)
@@ -1739,6 +1843,8 @@ def main():
         raise SystemExit(f"No built site in {folder}. Run bash tools/preview.sh or the build steps first.")
     catalog = json.loads((folder / "catalog.json").read_text(encoding="utf-8"))
     tests = [(name, fn) for name, fn in globals().items() if name.startswith("t_")]
+    only = os.environ.get("SMOKE_ONLY")   # e.g. SMOKE_ONLY=stamp runs just the tests with "stamp" in the name
+    if only: tests = [(n, f) for n, f in tests if only in n]
     server = serve(folder)
     failed = []
     with sync_playwright() as p:

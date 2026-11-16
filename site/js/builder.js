@@ -18,7 +18,8 @@
   var S = X.load(DRAFT, null) || {};
   S.m = S.m || { mode: "", who: [], place: {}, steps: [], for_kids: { steps: [] }, season: [], gear: [], check_ahead: [], discounts: [], themes: [] };
   S.you = S.you || {};
-  if (!S.you.email) { try { S.you.email = localStorage.getItem("amble.email") || ""; } catch (e) { /* private mode */ } }   // saved with a profile (site/js/profile.js)
+  var fromProfile = "";   // the email saved with a profile (site/js/profile.js) fills in an empty one
+  if (!S.you.email) { try { S.you.email = fromProfile = localStorage.getItem("amble.email") || ""; } catch (e) { /* private mode */ } }
   S.step = S.step || 0;
   S.seen = S.seen || 0;
   var errors = {};
@@ -246,10 +247,11 @@
       var credit = el("input", { type: "checkbox", id: "b-credit" });
       credit.checked = !!S.you.credit;
       credit.addEventListener("change", function () { S.you.credit = credit.checked; persist(); });
-      var em = text("email", S.you.email, 254, function (v) { S.you.email = v; }, { type: "email", autocomplete: "email" });
+      var em = text("email", S.you.email, 254, function (v) { S.you.email = v; if (v !== fromProfile) fromProfile = ""; }, { type: "email", autocomplete: "email" });
       var nameField = field("you_name", "Your name", n.input, { optional: true });
       nameField.append(el("label", { class: "check" }, [credit, el("span", { text: "Credit me on the mission (\"Suggested by …\")" })]));
       return [nameField, field("email", "Email", em.input, { optional: true }),
+        fromProfile && S.you.email === fromProfile ? el("p", { class: "filled-note", text: "✓ Filled in from your profile" }) : null,
         el("p", { class: "hint" }, [document.createTextNode("We only use your email for updates about this mission, and your name only appears on it if you ask. "),
           el("a", { href: "/privacy/#forms", text: "Privacy" })])];
     }, check: function () {

@@ -427,7 +427,9 @@
         if (window.AmbleProfile && !window.AmbleProfile.has()) window.AmbleProfile.offer(true);   // "Start a free profile?" (site/js/profile.js)
       } }, icon("check", 20), mine.length ? "Mark done again" : "Mark done");
       if (!mine.length) {
-        root.append(el("p", { class: "done-lead" }, el("b", { text: "Did this one?" }), " Mark it done to keep track of it on this device."), mark, live);
+        var noStamps = !api.list().length;   // the first mission done earns First Steps, so no missions means no stamps yet
+        root.append(el("p", { class: "done-lead" }, el("b", { text: "Did this one?" }), " Mark it done to keep track of it on this device."),
+          noStamps ? el("p", { class: "done-stamp-hint", text: "Missions you mark done collect stamps in your stamp book." }) : "", mark, live);
         if (focus === "mark") mark.focus();
         return;
       }

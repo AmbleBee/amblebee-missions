@@ -60,6 +60,7 @@
   <div class="reveal-head">
     <p class="hand" id="reveal-kicker">Your mission</p>
     <p class="reveal-summary" id="reveal-summary"></p>
+    <p class="reveal-fresh" id="reveal-fresh" hidden></p>
     <p class="reveal-near" id="reveal-near" hidden>This one works anywhere. <button type="button" class="linkish" id="reveal-near-btn">Add your ZIP or city for real places near you</button></p>
   </div>
   <div id="reveal-slot"></div>
@@ -185,6 +186,12 @@
       <div class="chips">
         <label><input type="checkbox" id="f-season"><span>In season now</span></label>
         <label><input type="checkbox" id="f-gonow"><span>Go right now</span></label>
+      </div>
+    </fieldset>
+    <fieldset id="new-field" hidden>
+      <legend>Your missions</legend>
+      <div class="chips">
+        <label><input type="checkbox" id="f-new"><span>Hide ones we've done</span></label>
       </div>
     </fieldset>
     <p class="hint right-now-hint" id="right-now-hint">"Go right now" skips anything that needs booking, is out of season, or is better at another time of day. Opening hours still vary, so check first.</p>

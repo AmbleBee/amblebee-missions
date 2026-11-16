@@ -26,3 +26,21 @@
     if (box) box.remove();
   }
 })();
+
+/* The Profile button in the header fills in when this browser has a profile (site/js/profile.js), so it's easy to
+   see that your missions are being saved. Only reads this browser's own storage. */
+(function () {
+  var btn = document.querySelector(".top .nav-profile");
+  if (!btn) return;
+  function paint() {
+    var on = false;
+    try { var st = JSON.parse(localStorage.getItem("amble.profile") || "null"); on = !!(st && st.key && !st.gone); } catch (e) { on = false; }
+    btn.classList.toggle("has-profile", on);
+    btn.title = on ? "Profile (saved)" : "Profile";
+    var sr = btn.querySelector(".sr");
+    if (sr) sr.textContent = on ? "Profile, saved" : "Profile";
+  }
+  paint();
+  window.addEventListener("amble:profile", paint);
+  window.addEventListener("storage", function (e) { if (e.key === "amble.profile") paint(); });
+})();

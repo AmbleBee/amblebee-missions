@@ -191,7 +191,14 @@
     // the email saved with a profile on this device (site/js/profile.js) fills in an empty email box
     var emailInput = $('input[name="email"]', form), mine = null;
     try { mine = localStorage.getItem("amble.email"); } catch (e) { /* private mode */ }
-    if (emailInput && !emailInput.value && mine) emailInput.value = mine;
+    if (emailInput && !emailInput.value && mine) {
+      emailInput.value = mine;
+      var note = document.createElement("p");
+      note.className = "filled-note";
+      note.textContent = "✓ Filled in from your profile";
+      emailInput.insertAdjacentElement("afterend", note);
+      emailInput.addEventListener("input", function () { note.remove(); }, { once: true });   // typed over it: no longer from the profile
+    }
     var nameInput = $('input[name="name"]', form);
     if (nameInput) tidyName(nameInput);
     if (kind === "report") prefillReport(form);
