@@ -94,8 +94,10 @@ function ticket(m, { titleId, heading = "h3" } = {}) {
           checkedLine(m),
           reportUrl(m) ? h("p", { class: "report" }, "Closed, moved or something off? ",
             h("a", { href: reportUrl(m) }, "Report a problem")) : null),
-        m.id ? h("a", { class: "btn small full-page", href: `/missions/${encodeURIComponent(m.id)}/` },
-          "See the full page", svg(ICON.arrow, 18)) : null)));
+        h("div", { class: "foot-acts" },
+          window.AmbleDone && m.full_id ? window.AmbleDone.skipButton(m.full_id) : null,   // "Not for us" (site/js/done.js)
+          m.id ? h("a", { class: "btn small full-page", href: `/missions/${encodeURIComponent(m.id)}/` },
+            "See the full page", svg(ICON.arrow, 18)) : null))));
 }
 
 // "Checked November 2026": when the place, hours and pin were last confirmed (missions/SCHEMA.md → checked)
@@ -111,7 +113,17 @@ function reportUrl(m) {
 }
 
 function actions(m) {
-  return h("div", { class: "ticket-actions" }, shareButtons(m), saveButton(m));
+  const box = document.createDocumentFragment();
+  box.append(h("div", { class: "ticket-actions" }, shareButtons(m), saveButton(m)));
+  const done = doneBox(m);
+  if (done) box.append(done);
+  return box;
+}
+// "Mark done", how it went, and a note to remember it by: kept on this device by site/js/done.js
+function doneBox(m) {
+  if (!window.AmbleDone || !m.full_id) return null;
+  return window.AmbleDone.box({ mission: m.full_id, slug: m.id, name: m.name, pack: m.pack, mode: m.mode,
+    setting: m.setting || "either", time_of_day: m.time_of_day || "any", themes: m.themes || [] });
 }
 // two ways to share: a sealed "gift" link with names and a hidden note, or a plain link to the mission's own page
 // sharing always starts at the card, so people see the note option; "Share without a note" sits next to Seal it

@@ -18,6 +18,7 @@
   var S = X.load(DRAFT, null) || {};
   S.m = S.m || { mode: "", who: [], place: {}, steps: [], for_kids: { steps: [] }, season: [], gear: [], check_ahead: [], discounts: [], themes: [] };
   S.you = S.you || {};
+  if (!S.you.email) { try { S.you.email = localStorage.getItem("amble.email") || ""; } catch (e) { /* private mode */ } }   // saved with a profile (site/js/profile.js)
   S.step = S.step || 0;
   S.seen = S.seen || 0;
   var errors = {};

@@ -188,6 +188,10 @@
     var form = $("form", box), wait = $(".intake-wait", box), down = $(".intake-down", box), done = $(".intake-done", box);
     var status = $(".form-status", form);
     restoreDraft(form, kind);
+    // the email saved with a profile on this device (site/js/profile.js) fills in an empty email box
+    var emailInput = $('input[name="email"]', form), mine = null;
+    try { mine = localStorage.getItem("amble.email"); } catch (e) { /* private mode */ }
+    if (emailInput && !emailInput.value && mine) emailInput.value = mine;
     var nameInput = $('input[name="name"]', form);
     if (nameInput) tidyName(nameInput);
     if (kind === "report") prefillReport(form);

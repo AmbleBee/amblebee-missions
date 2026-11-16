@@ -87,6 +87,18 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Mark It Done, Collect Stamps
+  status: done
+  date: 2026-11-16
+  tag: website
+  summary: Tap **Mark done** under any mission to keep track of what you've done, how it went, and anything you want to remember. Every few missions, a stamp lands in [your stamp book](/me/).
+  items:
+    - Each time you do a mission gets its own "Done" chip, with the day, a thumbs up or down, and a note. Did it again? Mark it done again
+    - "Thirteen stamps to start: First Steps, Lovebirds, Road Tripper, a stamp for each season, Our Year of Adventures (a new design every year) and milestones from 10 to 1,000 missions. They turn up as a surprise"
+    - "[Your profile](/me/) shows your stamp book and every mission you've done. Missions you've done get a ✓ on their cards"
+    - Not your thing? Tap **Not for us** on a mission and we'll never pick it for you again. It stays in the list, just faded
+    - "A free profile keeps it all safe if you clear your browser or get a new phone: no name, no password. Scan its QR code to open it on your phone, and your notes are locked with your own link so only you can read them. The [privacy page](/privacy/#profiles) has the details"
+
 - title: Questions, Answers and Clearer Statuses
   status: done
   date: 2026-11-14

@@ -62,14 +62,16 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "suggest-mission": ("Build a mission", "Build a full AmbleBee mission step by step, with tips along the way."),
     "report": ("Report a problem", "Tell AmbleBee about a closed place, a wrong pin, or anything off with a mission."),
     "status": ("Submission status", "Check where your AmbleBee suggestion or report is at."),
+    "me": ("Your profile", "Your AmbleBee stamp book and the missions you've marked done, kept on your own device."),
+    "me-settings": ("Profile settings", "Your stamp details, missions set aside and a copy of your AmbleBee profile, kept on your own device."),
 }
-NOINDEX_PAGES = {"report", "status"}   # useful only through a link: kept out of search engines and the sitemap
-PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/"}   # pages/<name>.html → this address
+NOINDEX_PAGES = {"report", "status", "me", "me-settings"}   # useful only through a link: kept out of search engines and the sitemap
+PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
 CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
                 "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
-                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?"}
+                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -117,7 +119,13 @@ def nav_html(current=""):
         return f'<a href="{href}"{attr}{here}>{text}</a>'
     burger = ('<svg class="menu-burger" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
               'stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>')
-    return (f'<nav aria-label="Main">{"".join(link(h, t) for h, t in main)}'
+    # Profile: your stamp book and missions (/me/) and their settings (/me/settings/), one tap away on every page.
+    # It becomes the way into a saved profile in Phase 3 (claude/profiles-and-stamps-PLAN.md).
+    mine = ' aria-current="page"' if current in ("me", "me-settings") else ""
+    profile = (f'<a class="nav-profile" href="/me/" title="Profile"{mine}><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" '
+               'fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
+               '<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6"/></svg><span class="sr">Profile</span></a>')
+    return (f'<nav aria-label="Main">{"".join(link(h, t) for h, t in main)}{profile}'
             f'<details class="menu"><summary>{burger}<span class="menu-phone">Menu</span><span class="menu-wide">More</span></summary>'
             f'<div class="menu-panel">{"".join(link(h, t, "phone-only") for h, t in main)}{"".join(link(h, t) for h, t in extra)}</div>'
             '</details></nav>')
@@ -136,6 +144,9 @@ def faq_jsonld(body, path):
 
 def page(title, description, path, main, jsonld, brand, extra_script="", current="", image=None):
     url = BASE + path
+    if 'class="card"' in main and "/js/done.js" not in main + extra_script:
+        extra_script += ('<script src="/js/done.js" defer></script>\n'      # the "Done" chip on cards of missions you've done
+                         '<script src="/js/profile.js" defer></script>\n')  # kept up to date with the profile
     image = image or OG_IMAGE
     data = json.dumps(jsonld, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     return f"""<!doctype html>
@@ -273,9 +284,17 @@ def mission_html(m, pack, icons, today):
     <p class="desc">{esc(str(m["description"]).strip())}</p>
     <ul class="tags" aria-label="Details">{tag_html}</ul>
     {notes_html}{caution_html}{place_html}{extras}
-    {checked_html(m)}{report_html}
+    <div class="ticket-foot"><div>{checked_html(m)}{report_html}</div><div class="foot-acts"><span class="skip-slot" data-mission="{esc(m["full_id"])}"></span></div></div>
   </div>
 </article>"""
+
+
+def done_info(m):
+    """What the "Mark done" box needs to know about a mission: the same fields site/js/done.js saves with each time
+    it's done, so the stamps worked out later go by the mission as it was that day."""
+    return json.dumps({"mission": m["full_id"], "slug": m["id"], "name": m["name"], "pack": m["pack"], "mode": m["mode"],
+                       "setting": m.get("setting") or "either", "time_of_day": m.get("time_of_day") or "any",
+                       "themes": m.get("themes") or []}, ensure_ascii=False, separators=(",", ":"))
 
 
 UI_ICON = {   # the same artwork as ICON in site/js/core.js
@@ -439,6 +458,9 @@ def build_pages(out):
     dates = git_dates()
     lastmod = {}   # page path -> date, for the sitemap
     until_script = '<script src="/until.js" defer></script>\n'
+    done_script = ('<script src="/js/done.js" defer></script>\n'      # the "Mark done" box under each mission (site/js/done.js)
+                   '<script src="/js/profile.js" defer></script>\n'   # and the free profile that keeps it safe (site/js/profile.js)
+                   '<script src="/js/stamps.js" defer></script>\n')   # and the stamp that lands when one is earned (site/js/stamps.js)
 
     missions = catalog["missions"]
     live_ids = {m["id"] for m in missions}   # drafts aren't in the catalog, so a [[link]] to one stays plain text
@@ -505,6 +527,7 @@ def build_pages(out):
   <a class="btn" href="{esc(app_link)}&amp;do=save">{icon(UI_ICON["download"], 20)}Save as image</a>
   <a class="btn" href="/">Open a different mission</a>
 </div>
+<div class="done-slot" data-mission="{esc(done_info(m))}"></div>
 {about_html(m, mission_about.get(m["id"]), mission_names, live_ids)}
 {also_html}
 {welcome_html(pack, pack_path, stats["live"], collections)}
@@ -526,7 +549,8 @@ def build_pages(out):
                            eyebrow=pack.get("name"), sub=re.sub(r"\s*\([^)]*\)", "", where) if place else "Do it anywhere",
                            corner=f"Mission {m['number']}", title=m["name"], text=short,
                            chips=[MODE[m["mode"]], DURATION[m["duration"]], COST[m["cost"]]])
-        write(path, page(title, desc, path, main, ld, brand, until_script if 'data-until="' in main else "", image=image))
+        scripts = (until_script if 'data-until="' in main else "") + done_script
+        write(path, page(title, desc, path, main, ld, brand, scripts, image=image))
         f = dates.get(f"missions/{m['pack']}/{m['id']}.yaml")
         if f:
             lastmod[path] = f

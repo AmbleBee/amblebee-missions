@@ -10,6 +10,9 @@ console, exits with an error, which stops the deploy.
 import functools
 import http.server
 import json
+import secrets
+import string
+from datetime import datetime, timezone
 import re
 import sys
 import threading
@@ -45,6 +48,7 @@ class FakeIntake:
 
     def __init__(self):
         self.mode, self.posts, self.answered = "up", [], False
+        self.profiles = {}   # key -> {"done": {rid: completion}, "removed": [], "prefs": None, "email": False}
         self.closed = False
         self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
                        {"who": "us", "at": "2026-11-13T16:00:00+00:00", "body": "We'd love one! Any favorite spots?"}]
@@ -53,7 +57,7 @@ class FakeIntake:
         req = route.request
         path = req.url.split(INTAKE, 1)[1].split("?")[0]
         cors = {"access-control-allow-origin": "*", "access-control-allow-methods": "GET, POST",
-                "access-control-allow-headers": "Content-Type", "content-type": "application/json"}
+                "access-control-allow-headers": "Content-Type, Authorization", "content-type": "application/json"}
         if self.mode == "down":
             return route.abort()
         if req.method == "OPTIONS":
@@ -68,6 +72,8 @@ class FakeIntake:
         if req.method == "POST":
             data = json.loads(req.post_data or "{}")
             self.posts.append((path, data))
+            if path.startswith("/profile"):
+                return self.profile(path, data, req.headers.get("authorization", ""), reply)
             if path == "/status/msg123/close":
                 self.closed = True
                 return reply(200, {"ok": True})
@@ -124,6 +130,48 @@ class FakeIntake:
                 view.update(question="Which bridge do you start at?", due="2026-12-12T16:00:00+00:00", step="working")
             return reply(200, view)
         return reply(404, {"ok": False, "error": "not found"})
+
+
+    def profile(self, path, data, auth, reply):
+        """Website profiles, like amblebee-intake's app/profiles.py (which has its own tests for the details)."""
+        now = datetime.now(timezone.utc).isoformat()
+        if path == "/profile":
+            key = data.get("key", "")
+            if len(key) != 22:
+                return reply(400, {"ok": False, "errors": {"key": "bad"}})
+            if "@" not in (data.get("email") or "@x.y") and data.get("email"):
+                return reply(400, {"ok": False, "errors": {"email": "That email doesn't look right."}})
+            self.profiles.setdefault(key, {"done": {}, "removed": [], "prefs": None, "email": bool(data.get("email")),
+                                           "vault": {"wk": None, "we": None, "salt": None, **(data.get("vault") or {})}})
+            return reply(201, {"ok": True, "created": True})
+        if path == "/profile/lost":
+            return reply(200, {"ok": True})
+        key = auth[8:] if auth.startswith("Profile ") else ""
+        prof = self.profiles.get(key)
+        if prof is None:
+            return reply(401, {"ok": False, "error": "We couldn't find that profile.", "gone": True})
+        if path == "/profile/remove":
+            del self.profiles[key]
+            return reply(200, {"ok": True})
+        prof.setdefault("vault", {"wk": None, "we": None, "salt": None})
+        if path == "/profile/email":
+            prof["email"] = bool(data.get("email"))
+            prof["vault"].update((data.get("vault") or {}) if prof["email"] else {"we": None, "salt": None})
+            return reply(200, {"ok": True, "email": prof["email"]})
+        if path == "/profile/vault":
+            prof["vault"]["wk"] = (data.get("vault") or {}).get("wk")
+            return reply(200, {"ok": True})
+        for rid in data.get("removed") or []:
+            prof["done"].pop(rid, None)
+            prof["removed"].append(rid)
+        for c in data.get("done") or []:
+            if c["rid"] not in prof["removed"]:
+                old = prof["done"].get(c["rid"], {})
+                prof["done"][c["rid"]] = {**c, "note": c.get("note", old.get("note", ""))}
+        if data.get("prefs"):
+            prof["prefs"] = data["prefs"]
+        return reply(200, {"ok": True, "now": now, "done": list(prof["done"].values()), "removed": prof["removed"],
+                           "prefs": prof["prefs"], "email": prof["email"], "created_at": now, "vault": prof["vault"]})
 
 
 SCHEMA = {   # a small stand-in for AmbleBee Intake's GET /schema
@@ -714,6 +762,7 @@ def t_phone_menu_reaches_everything_from_any_page(site, catalog):
             assert page.locator(".menu-panel a", has_text=text).first.is_visible(), f"{text} missing on {path}"
         page.keyboard.press("Escape")
         assert not page.is_visible(".menu-panel")
+        assert page.is_visible('.top nav > a.nav-profile[href="/me/"]'), f"Profile is one tap away on a phone ({path})"
         assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
     page = site.home(viewport=PHONE)
     page.click(".top .menu summary")
@@ -732,8 +781,17 @@ def t_computer_menu_and_search_link(site, catalog):
     page.click('.top nav > a[href="/#search"]')
     page.wait_for_function("() => document.activeElement.id === 'search-input'")
     assert page.locator(".top .brand img[src*='logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "the logo loads"
+    assert page.locator('.menu-panel a[href="/me/"]').count() == 0, "Your missions moved out of More"
+    profile = page.locator('.top nav > a.nav-profile')
+    assert profile.is_visible() and profile.evaluate("a => a.previousElementSibling.textContent") == "Know a great spot?", \
+        "Profile sits right of Know a great spot?"
     page.click('.top nav > a:has-text("Know a great spot?")')
     page.wait_for_url("**/suggest/")
+    page.get_by_role("link", name="Profile").click()
+    page.wait_for_url("**/me/")
+    assert page.locator('.nav-profile[aria-current="page"]').count() == 1
+    page.goto(site.base + "/me/settings/")
+    assert page.locator('.nav-profile[aria-current="page"]').count() == 1
     assert page.locator(".top .brand img[src='/logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "and on other pages"
 
 
@@ -1126,6 +1184,552 @@ def t_status_page_asks_a_question_and_takes_the_answer(site, catalog):
     assert site.intake.posts[-1] == ("/status/ask123/reply", {"message": "The red one on Mill Road."})
     assert page.inner_text(".status-headline") == "Working on it", "it carries on from where it was"
     assert page.locator(".status-answer").count() == 0, "the question is gone once it's answered"
+
+# ---- Mark done, Your missions and backups (site/js/done.js, site/js/me.js) ----
+def mark(page, within=""):
+    """Press Mark done, and answer "Not now" if it asks "Start a free profile?" (after one Not now it stops asking)."""
+    page.click((within + " " if within else "") + ".done-mark")
+    if page.locator(".profile-dlg[open]").count():
+        page.click(".profile-dlg .profile-later")
+        page.wait_for_selector(".profile-dlg[open]", state="detached")
+
+
+def give_profile(site, page):
+    """This browser gets a profile on FakeIntake (Settings only shows its other sections with one). Reloads the page."""
+    key = "".join(secrets.choice(string.ascii_letters + string.digits) for _ in range(22))
+    site.intake.profiles[key] = {"done": {}, "removed": [], "prefs": None, "email": False, "vault": {"wk": None, "we": None, "salt": None}}
+    page.evaluate("k => localStorage.setItem('amble.profile', JSON.stringify({ key: k, since: null, email: false, last: 0 }))", key)
+    page.reload()
+    return key
+def t_mark_done_keeps_the_mission_and_how_it_went(site, catalog):
+    mission = catalog["missions"][0]
+    path = f"/missions/{mission['id']}/"
+    page = site.open(path)
+    mark(page)
+    assert "Done" in page.inner_text(".done-head")
+    assert page.locator(".done-entry[open]").count() == 1, "the new chip opens, ready for how it went"
+    assert page.evaluate("document.activeElement.closest('.done-entry') !== null")
+    page.click('[data-rate="up"]')
+    assert page.get_attribute('[data-rate="up"]', "aria-pressed") == "true"
+    page.fill(".done-box textarea", "Best sandwich of the year.")
+    page.locator(".done-box textarea").blur()
+    page.reload()
+    page.wait_for_selector(".done-head")
+    assert page.locator(".done-entry[open]").count() == 0, "after a reload each time is a closed chip"
+    summary = page.inner_text(".done-entry summary")
+    assert summary.startswith("Done ") and "Loved it" in summary and "Note" in summary
+    page.click(".done-entry summary")
+    assert page.get_attribute('[data-rate="up"]', "aria-pressed") == "true", "the rating survives a reload"
+    assert page.input_value(".done-box textarea") == "Best sandwich of the year.", "and so does the note"
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".me-list li")
+    row = page.locator(".me-list li").first
+    assert mission["name"] in row.inner_text() and "Loved it" in row.inner_text()
+    assert "Best sandwich of the year." in row.inner_text()
+    page.goto(site.base + path)
+    page.click(".done-entry summary")
+    page.click(".done-remove")
+    sure = page.inner_text(".done-remove-sure")
+    assert "takes back" in sure and "First Steps" in sure and "comes back if you mark it done again" in sure.replace("They come", "It comes"), sure
+    page.click(".done-remove-keep")
+    assert page.locator(".done-entry").count() == 1, "Keep it keeps it"
+    page.click(".done-remove")
+    page.click(".done-remove-yes")
+    page.wait_for_selector(".done-lead")
+    page.wait_for_function("() => [...document.querySelectorAll('.done-box .sr')].some(e => e.textContent.includes('taken back too'))")   # and says so
+    page.goto(site.base + "/me/")
+    page.wait_for_selector("text=Nothing marked done yet")
+
+
+def t_done_again_counts_and_the_day_can_change(site, catalog):
+    mission = catalog["missions"][1]
+    page = site.open(f"/missions/{mission['id']}/")
+    mark(page)
+    page.fill('.done-box input[type="date"]', "2025-06-01")
+    page.wait_for_function("() => document.querySelector('.done-entry summary').textContent.includes('June 1, 2025')")
+    assert page.inner_text(".done-mark") == "Mark done again", "the done button stays, for next time"
+    assert "null" not in page.inner_text(".done-box"), "no stray null"
+    mark(page)
+    page.wait_for_selector(".done-times")
+    assert "2 times" in page.inner_text(".done-head")
+    assert page.locator(".done-entry").count() == 2 and page.locator(".done-entry[open]").count() == 1
+    assert page.locator(".done-entry summary").nth(1).inner_text().startswith("Done June 1, 2025"), "newest first"
+    page.goto(site.base + f"/packs/{mission['pack']}/")
+    chip = page.locator(f'a.card[href="/missions/{mission["id"]}/"] .done-chip')
+    chip.wait_for()
+    assert "Done ×2" in chip.inner_text(), "cards of missions you've done say so"
+    assert page.locator(".card .done-chip").count() == 1
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".me-list li")
+    assert page.locator(".me-list li").count() == 2
+    assert "1 mission done" in page.inner_text("#me-done-title")
+    assert "since Jun 1, 2025" in page.inner_text(".me-done .hint")
+
+
+def t_not_for_us_is_never_picked(site, catalog):
+    ids = [m["full_id"] for m in catalog["missions"]]
+    keep = next(m for m in catalog["missions"] if m["pack"] == "anywhere")   # with no ZIP set, a roll deals from Anywhere
+    hidden = [i for i in ids if i != keep["full_id"]]
+    page = site.open("/missions/" + keep["id"] + "/")
+    page.evaluate("h => localStorage.setItem('amble.done', JSON.stringify({v: 1, done: [], hidden: h}))", hidden)
+    page.goto(site.base + "/")
+    page.wait_for_selector("#packs .card", state="attached")
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert page.inner_text("#reveal-title") == keep["name"], "only the mission that isn't hidden can be picked"
+    assert page.locator("#reveal-done .done-mark").count() == 1, "Mark done is under a picked mission too"
+    mark(page, '#reveal-done')
+    page.wait_for_selector("#reveal-done .done-head")
+
+
+def t_marking_one_down_offers_not_for_us(site, catalog):
+    mission = catalog["missions"][2]
+    page = site.open(f"/missions/{mission['id']}/")
+    mark(page)
+    assert page.locator('.done-box label.check:has-text("Not for us")').count() == 0
+    page.click('[data-rate="down"]')
+    page.check('.done-box label.check:has-text("Not for us") input')
+    page.goto(site.base + f"/packs/{mission['pack']}/")
+    card = page.locator(f'a.card[href="/missions/{mission["id"]}/"]')
+    page.wait_for_selector(f'a.card.is-skipped[href="/missions/{mission["id"]}/"]')
+    assert float(card.evaluate("a => getComputedStyle(a).opacity")) < 0.7, "Not for us missions are faded"
+    assert page.locator("a.card.is-skipped").count() == 1, "only that one, and it keeps its place"
+    assert card.locator(".skip-chip").inner_text() == "Not for us"
+    page.goto(site.base + "/me/settings/")
+    assert page.locator(".me-hidden").count() == 0, "without a profile, Settings is only Your profile"
+    give_profile(site, page)
+    page.wait_for_selector(".me-hidden .me-list li")
+    page.click('.me-hidden button:has-text("Show it again")')
+    page.wait_for_selector(".me-hidden .me-list", state="detached")
+    assert "Not really" in page.inner_text(".me-hidden"), "with nothing set aside, it says how to set one aside"
+    page.goto(site.base + f"/packs/{mission['pack']}/")
+    page.wait_for_selector(f'a.card[href="/missions/{mission["id"]}/"] .done-chip')
+    assert page.locator("a.card.is-skipped, .card .skip-chip").count() == 0, "Show it again brings it back to full colour"
+
+
+def t_not_for_us_button_on_a_mission(site, catalog):
+    mission = catalog["missions"][4]
+    page = site.open(f"/missions/{mission['id']}/")
+    btn = page.locator(".ticket .skip-btn")
+    assert btn.inner_text() == "Not for us" and btn.get_attribute("aria-pressed") == "false"
+    assert page.evaluate("getComputedStyle(document.querySelector('.ticket .skip-btn')).boxShadow").count("inset") == 1, "outlined"
+    assert page.locator(".ticket-foot .report").count() == 1, "it sits with Report a problem"
+    btn.click()
+    assert btn.get_attribute("aria-pressed") == "true", "no need to mark it done first"
+    assert page.evaluate("JSON.parse(localStorage.getItem('amble.done')).hidden") == [mission["full_id"]]
+    assert page.locator(".done-entry").count() == 0, "and it isn't marked done"
+    page.goto(site.base + f"/packs/{mission['pack']}/")
+    page.wait_for_selector(f'a.card.is-skipped[href="/missions/{mission["id"]}/"]')
+    page.goto(site.base + f"/missions/{mission['id']}/")
+    page.click(".ticket .skip-btn")
+    assert page.get_attribute(".ticket .skip-btn", "aria-pressed") == "false", "tapping again brings it back"
+    home = site.home()
+    home.click("#roll-btn")
+    home.wait_for_selector("#reveal-title")
+    assert home.locator(".reveal .skip-btn, #reveal-slot .skip-btn").count() == 1, "a picked mission has it too"
+
+# ---- free profiles (site/js/profile.js), against FakeIntake ----
+def t_mark_done_offers_a_free_profile_until_not_now(site, catalog):
+    mission = catalog["missions"][5]
+    before = len(site.intake.posts)
+    page = site.open(f"/missions/{mission['id']}/")
+    page.click(".done-mark")
+    page.wait_for_selector(".profile-dlg[open]")
+    text = page.inner_text(".profile-dlg")
+    assert "Marked done! Keep it safe?" in text and "no name, no password" in text.lower(), text
+    assert "only keep your mission log" in text.lower() and "notes you write" in text, "it says what's kept"
+    assert "scrambled fingerprint" in text and "(optional)" in text, "and how the email is handled"
+    assert page.locator(".done-entry").count() == 1, "the mission is marked whatever they choose"
+    page.keyboard.press("Escape")
+    page.wait_for_selector(".profile-dlg[open]", state="detached")
+    page.click(".done-mark")
+    page.wait_for_selector(".profile-dlg[open]")   # closing it isn't a No: it asks again
+    page.click(".profile-dlg .profile-later")
+    page.wait_for_selector(".profile-dlg[open]", state="detached")
+    page.click(".done-mark")
+    assert page.locator(".profile-dlg[open]").count() == 0, "after Not now it stops asking"
+    page.goto(site.base + f"/missions/{catalog['missions'][8]['id']}/")
+    page.click(".done-mark")
+    assert page.locator(".profile-dlg[open]").count() == 0, "on every page of this browser"
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".profile-bar.is-local")
+    assert "Only on this device" in page.inner_text(".profile-bar")
+    page.click('.profile-bar button:has-text("Start a free profile")')
+    page.wait_for_selector(".profile-dlg[open]")   # asking for one still works
+    assert "Start a free profile" in page.inner_text(".profile-dlg h2")
+    page.keyboard.press("Escape")
+    page.goto(site.base + "/me/settings/")
+    sections = page.locator(".me-app > section").evaluate_all("els => els.map(e => e.id)")
+    assert sections == ["profile"], f"without a profile, Settings is only Your profile: {sections}"
+    assert not [p for p, _ in site.intake.posts[before:] if p.startswith("/profile")], "nothing goes to the server without a profile"
+
+
+def t_start_a_profile_and_it_keeps_up(site, catalog):
+    mission = catalog["missions"][6]
+    page = site.open(f"/missions/{mission['id']}/")
+    page.click(".done-mark")
+    page.wait_for_selector(".profile-dlg[open]")
+    page.fill("#profile-email", "max@example.com")
+    page.click(".profile-start")
+    page.wait_for_selector("#profile-link")
+    link = page.input_value("#profile-link")
+    key = link.split("#", 1)[1]
+    assert link.startswith(site.base + "/me/#") and len(key) == 22, link
+    assert page.inner_text(".profile-dlg .recovery-code") == key and "emailed both" in page.inner_text(".profile-dlg")
+    made = [d for p, d in site.intake.posts if p == "/profile"][-1]
+    assert made["key"] == key and made["email"] == "max@example.com"
+    assert set(made["vault"]) == {"wk", "we", "salt"}, "the notes key goes along, locked with the link and with the email"
+    page.wait_for_function("k => (JSON.parse(localStorage.getItem('amble.profile')) || {}).since", arg=key)
+    prof = site.intake.profiles[key]
+    assert [c["mission"] for c in prof["done"].values()] == [mission["full_id"]], "the mission went to the profile"
+    page.click(".profile-dlg .btn.primary")
+    page.click('[data-rate="up"]')
+    page.wait_for_function("() => (JSON.parse(localStorage.getItem('amble.done')).dirty || []).length === 0")
+    assert [c["rating"] for c in prof["done"].values()] == ["up"], "a change follows on its own"
+    assert "Saved to your profile" in page.inner_text(".done-box .hint")
+    page.click(".done-mark")
+    page.wait_for_selector(".done-times")
+    assert page.locator(".profile-dlg[open]").count() == 0, "with a profile, no more asking"
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".profile-bar.is-saved")
+    assert "Saved to your profile" in page.inner_text(".profile-bar")
+    page.goto(site.base + "/me/settings/")
+    page.click(".me-show-link")
+    assert page.input_value("#me-link").endswith("#" + key) and page.inner_text(".me-profile .recovery-code") == key
+    assert not page.is_visible(".me-show-link"), "the button steps aside once it's done its job"
+    qr = page.locator(".me-qr svg.qr")
+    assert qr.get_attribute("aria-label") == "QR code for your profile link" and qr.bounding_box()["width"] >= 150, "a QR code to scan"
+    assert page.evaluate("JSON.stringify(AmbleQR.matrix('https://amblebee.com/me/#' + 'k'.repeat(22)).length)") == "33", "a profile link fits a small, easy code"
+    assert "stays signed in" in page.inner_text(".me-qr")
+    page.goto(site.base + "/contact/")   # the email given with the profile fills in the forms on this device
+    page.wait_for_selector("#contact-email")
+    page.wait_for_function("() => document.querySelector('#contact-email').value === 'max@example.com'")
+    page.goto(site.base + "/report/")
+    page.wait_for_function("() => document.querySelector('#report-email').value === 'max@example.com'")
+    page.goto(site.base + "/me/settings/")
+    page.click(".me-show-link")
+    page.click(".me-profile .linkish:has-text('Remove the recovery email')")
+    page.wait_for_selector("text=Recovery email removed")
+    assert prof["email"] is False
+    assert page.evaluate("localStorage.getItem('amble.email')") is None, "removing it forgets it here too"
+    page.click(".me-sign-out")
+    page.click(".me-sign-out")
+    page.wait_for_selector(".me-start")
+    assert page.evaluate("localStorage.getItem('amble.profile')") is None
+    assert page.evaluate("JSON.parse(localStorage.getItem('amble.done')).done.length") == 0, "signing out forgets the missions here"
+    assert key in site.intake.profiles, "but the profile is still there"
+
+    other = site.open("/me/#" + key)   # the link on another device
+    other.wait_for_selector(".me-list li")
+    assert mission["name"] in other.inner_text(".me-list") and other.evaluate("location.hash") == "", "it opens, and the key leaves the address"
+    other.wait_for_selector(".profile-bar.is-saved")
+    other.goto(site.base + "/me/settings/")
+    other.click(".me-remove-btn")
+    other.click(".me-remove-yes")
+    other.wait_for_selector("text=Your account was removed")
+    assert key not in site.intake.profiles, "Remove account removes the profile from the server"
+    assert other.evaluate("localStorage.getItem('amble.profile')") is None
+
+
+def t_notes_are_locked_with_the_link(site, catalog):
+    mission = catalog["missions"][9]
+    page = site.open(f"/missions/{mission['id']}/")
+    page.click(".done-mark")
+    page.click(".profile-start")
+    page.wait_for_selector("#profile-link")
+    key = page.input_value("#profile-link").split("#", 1)[1]
+    page.click(".profile-dlg .btn.primary")
+    page.fill(".done-box textarea", "Sarah's birthday, best cocoa")
+    page.locator(".done-box textarea").blur()
+    page.wait_for_function("() => !JSON.parse(localStorage.getItem('amble.done')).dirty.length")
+    stored = list(site.intake.profiles[key]["done"].values())[0]["note"]
+    assert stored.startswith("n1:") and "Sarah" not in stored and "cocoa" not in stored, f"the server only gets a locked note: {stored[:40]}"
+    assert site.intake.profiles[key]["vault"]["wk"], "with the notes key, locked with the link"
+    other = site.open("/me/#" + key)
+    other.wait_for_selector(".me-note")
+    assert other.inner_text(".me-note") == "Sarah's birthday, best cocoa", "the link opens them on another device"
+
+def t_opening_a_profile_link_keeps_its_settings(site, catalog):
+    page = site.open(f"/missions/{catalog['missions'][7]['id']}/")
+    page.click(".done-mark")
+    page.click(".profile-start")
+    page.wait_for_selector("#profile-link")
+    key = page.input_value("#profile-link").split("#", 1)[1]
+    page.goto(site.base + "/me/settings/")
+    page.select_option("#me-home", "oregon")
+    page.wait_for_function("() => !JSON.parse(localStorage.getItem('amble.done')).prefs_dirty")
+    other = site.open("/me/#" + key)   # a fresh device has no settings of its own: it mustn't send empty ones
+    other.wait_for_selector(".profile-bar.is-saved")
+    other.goto(site.base + "/me/settings/")
+    assert other.input_value("#me-home") == "oregon", "the profile's home state survives"
+    assert site.intake.profiles[key]["prefs"]["settings"] == {"home_state": "oregon"}
+
+def t_a_profile_link_that_stopped_working(site, catalog):
+    page = site.open("/me/#" + "x" * 22)
+    page.wait_for_selector(".profile-bar.is-gone")
+    assert "stopped working" in page.inner_text(".profile-bar")
+    page.goto(site.base + "/me/settings/")
+    page.wait_for_selector(".me-profile .form-status.bad")
+    page.fill("#me-lost", "max@example.com")
+    page.click(".me-lost-form button")
+    page.wait_for_selector("text=a new link is on its way")
+    sent = [d for p, d in site.intake.posts if p == "/profile/lost"][-1]
+    assert sent["email"] == "max@example.com" and sent["website"] == "" and sent["elapsed_ms"] >= 0
+
+def t_backup_code_moves_the_list(site, catalog):
+    mission = catalog["missions"][3]
+    page = site.open(f"/missions/{mission['id']}/")
+    mark(page)
+    page.goto(site.base + "/me/settings/")
+    give_profile(site, page)
+    page.click('button:has-text("Copy a backup code")')
+    page.wait_for_selector("#me-code:not([hidden])")
+    code = page.input_value("#me-code")
+    assert code.startswith("AMB1:")
+    with page.expect_download() as saved:
+        page.click('button:has-text("Download a backup file")')
+    assert saved.value.suggested_filename.startswith("amblebee-missions-")
+    other = site.open("/me/")   # a fresh browser: nothing there yet
+    other.wait_for_selector("text=Nothing marked done yet")
+    other.goto(site.base + "/me/settings/")
+    give_profile(site, other)
+    other.fill("#me-paste", "not a real code")
+    other.click('button:has-text("Add from this code")')
+    other.wait_for_selector(".form-status.bad")
+    other.fill("#me-paste", code)
+    other.click('button:has-text("Add from this code")')
+    other.wait_for_selector("text=Added 1 mission")
+    other.fill("#me-paste", code)
+    other.click('button:has-text("Add from this code")')
+    other.wait_for_selector("text=already here")
+    other.goto(site.base + "/me/")
+    other.wait_for_selector(".me-list li")
+    assert mission["name"] in other.inner_text(".me-list")
+    assert other.locator(".me-list li").count() == 1, "the same backup twice doesn't double up"
+
+
+# ---- Stamps and the stamp book (site/js/stamps.js, site/js/book.js) ----
+STAMP_HELPERS = """
+  window.mk = (mission, y, m, d, extra) => Object.assign({
+    rid: (mission.replace(/[^a-z0-9]/g, '') + y + m + d + Math.random().toString(36).slice(2, 6)).slice(-16),
+    mission: 'max/' + mission, slug: mission, name: mission,
+    done_at: new Date(y, m - 1, d, 12).toISOString(),
+    snapshot: { pack: 'anywhere', mode: 'adventure', setting: 'outdoor', time_of_day: 'any', themes: [] },
+    as_date: false, rating: null, note: '' }, extra || {});
+  window.inPack = (pack, mode) => ({ snapshot: { pack, mode: mode || 'adventure', setting: 'outdoor', time_of_day: 'any', themes: [] } });
+  window.keys = (list, settings) => AmbleStamps.compute(list, settings).map(s => s.key);
+"""
+
+
+def t_stamp_rules_follow_the_stamp_book(site, catalog):
+    page = site.open("/me/")
+    page.wait_for_function("() => window.AmbleStamps")
+    page.evaluate(STAMP_HELPERS)
+    ev = page.evaluate
+    assert ev("keys([])") == []
+    assert ev("keys([mk('a', 2026, 3, 5)])") == ["first-steps", "our-year-2026"], "a first mission: First Steps and its year"
+    assert ev("AmbleStamps.compute([mk('a', 2026, 3, 5)])[1].art") == "/stamps/our-year-2026.svg"
+    assert ev("keys([mk('a', 2025, 3, 5)])") == ["first-steps"], "years before 2026 have passed: no year stamp"
+    assert ev("AmbleStamps.compute([mk('a', 2031, 3, 5)])[1].art") == "/stamps/our-year.svg", "a year whose scene isn't drawn yet gets the plain one"
+    assert ev("[2026, 2027, 2028, 2029, 2030].map(y => AmbleStamps.compute([mk('a', y, 3, 5)])[1].art)") == \
+        [f"/stamps/our-year-{y}.svg" for y in range(2026, 2031)]
+    assert ev("keys([mk('a', 2025, 12, 31), mk('b', 2026, 1, 1)])").count("our-year-2026") == 1
+    # Lovebirds: a date mission, or a "both" mission done as a date
+    assert "lovebirds" in ev("keys([mk('a', 2026, 3, 5, inPack('anywhere', 'date'))])")
+    assert "lovebirds" not in ev("keys([mk('a', 2026, 3, 5, inPack('anywhere', 'both'))])")
+    assert "lovebirds" in ev("keys([mk('a', 2026, 3, 5, Object.assign(inPack('anywhere', 'both'), { as_date: true }))])")
+    # Road Tripper: three state packs (Anywhere isn't a state), earned on the third
+    rt = ev("""AmbleStamps.compute([mk('a', 2026, 3, 1, inPack('oregon')), mk('b', 2026, 3, 2, inPack('anywhere')),
+               mk('c', 2026, 3, 3, inPack('washington')), mk('d', 2026, 3, 4, inPack('oregon')), mk('e', 2026, 3, 5, inPack('idaho'))])
+               .find(s => s.id === 'road-tripper')""")
+    assert rt and rt["slug"] == "e", "Road Tripper is earned by the mission in the third state"
+    assert rt["how"] == "Missions in three different states: Oregon, Washington and Idaho.", rt["how"]
+    # Home Sweet Home: 10 different missions in your home state's pack, only once it's set
+    home = "Array.from({ length: 10 }, (_, i) => mk('h' + i, 2026, 4, i + 1, inPack('oregon')))"
+    assert "home-sweet-home" not in ev(f"keys({home})")
+    assert "home-sweet-home" in ev(f"keys({home}, {{ home_state: 'oregon' }})")
+    assert "home-sweet-home" not in ev("keys(Array.from({ length: 10 }, (_, i) => mk('same', 2026, 4, i + 1, inPack('oregon'))), { home_state: 'oregon' })"), \
+        "the same mission ten times is one mission"
+    # Seasons go by the day it was done; five different missions in one season
+    assert "spring-has-sprung" in ev("keys(Array.from({ length: 5 }, (_, i) => mk('s' + i, 2026, 3 + (i % 3), 10)))")
+    assert "spring-has-sprung" not in ev("keys(Array.from({ length: 5 }, (_, i) => mk('s0', 2026, 4, i + 1)))")
+    assert "winter-wonderland" in ev("keys([mk('w1', 2025, 12, 5), mk('w2', 2026, 1, 5), mk('w3', 2026, 2, 5), mk('w4', 2027, 1, 5), mk('w5', 2027, 2, 5)])")
+    assert "master-of-the-seasons" in ev("keys([mk('a', 2026, 1, 5), mk('a', 2026, 4, 5), mk('a', 2026, 7, 5), mk('a', 2026, 10, 5)])")
+    assert "master-of-the-seasons" not in ev("keys([mk('a', 2026, 1, 5), mk('b', 2026, 4, 5), mk('c', 2026, 7, 5)])")
+    # Our Anniversary: a date mission on the day (Feb 29 counts on Feb 28 in other years)
+    assert "our-anniversary" in ev("keys([mk('a', 2025, 6, 14, inPack('anywhere', 'date'))], { anniversary: '06-14' })")
+    assert "our-anniversary" not in ev("keys([mk('a', 2025, 6, 14)], { anniversary: '06-14' })"), "it has to be a date"
+    assert "our-anniversary" not in ev("keys([mk('a', 2025, 6, 14, inPack('anywhere', 'date'))])"), "no anniversary set, no stamp"
+    assert "our-anniversary" in ev("keys([mk('a', 2027, 2, 28, inPack('anywhere', 'date'))], { anniversary: '02-29' })")
+    assert "anniversary, June 14" in ev("AmbleStamps.compute([mk('a', 2025, 6, 14, inPack('anywhere', 'date'))], { anniversary: '06-14' }).find(s => s.id === 'our-anniversary').how")
+    assert ev("AmbleStamps.compute(Array.from({ length: 10 }, (_, i) => mk('h' + i, 2026, 4, i + 1, inPack('oregon'))), { home_state: 'oregon' }).find(s => s.id === 'home-sweet-home').how").endswith("Oregon.")
+    assert all(ev("AmbleStamps.compute(Array.from({ length: 30 }, (_, i) => mk('x' + (i % 6), 2026, 1 + (i % 12), 1 + i, inPack(['oregon', 'idaho', 'utah'][i % 3], 'date')))).map(s => s.how)")), \
+        "every stamp says how it was earned"
+    # Old Favorites: five different missions done again
+    fav = "Array.from({ length: 5 }, (_, i) => [mk('f' + i, 2026, 5, 1), mk('f' + i, 2026, 6, 1)]).flat()"
+    assert "old-favorites" in ev(f"keys({fav})")
+    assert "old-favorites" not in ev("keys(Array.from({ length: 9 }, (_, i) => mk('f0', 2026, 5, i + 1)))")
+    # count milestones: every time out counts; First Steps is the first, then 10, 25, 50, 100, 200, 500, 1,000
+    assert "milestone-25" in ev("keys(Array.from({ length: 25 }, (_, i) => mk('m' + (i % 3), 2026, 1 + (i % 12), 1 + i)))")
+    assert "milestone-25" not in ev("keys(Array.from({ length: 24 }, (_, i) => mk('m' + i, 2026, 1 + (i % 12), 1 + i)))")
+    many = ev("""AmbleStamps.compute(Array.from({ length: 1000 }, (_, i) => mk('m' + (i % 40), 2000 + Math.floor(i / 50), 1 + (i % 12), 1 + (i % 28))))
+                 .filter(s => s.id.startsWith('milestone-')).map(s => [s.id, s.name, s.art])""")
+    assert [m[0] for m in many] == ["milestone-%d" % n for n in (10, 25, 50, 100, 200, 500, 1000)], many
+    assert many[-1][1] == "1,000 Missions" and many[-1][2] == "/stamps/milestone-1000.svg"
+    assert "milestone-1" not in ev("keys([mk('a', 2026, 3, 5)])"), "First Steps is the first milestone"
+    # Our Year of Adventures carries how many missions that year holds, and keeps counting after it's earned
+    years = ev("AmbleStamps.compute([mk('a', 2027, 3, 1), mk('b', 2027, 9, 1), mk('a', 2027, 10, 1), mk('c', 2028, 1, 2)]).filter(s => s.year).map(s => [s.key, s.year_count, s.slug])")
+    assert years == [["our-year-2027", 3, "a"], ["our-year-2028", 1, "c"]], years
+    # in the order earned, and never a photo stamp on the website
+    order = ev("AmbleStamps.compute([mk('a', 2026, 3, 5, inPack('anywhere', 'date')), mk('b', 2026, 3, 1)]).map(s => s.id + ':' + s.slug)")
+    assert order == ["first-steps:b", "our-year:b", "lovebirds:a"], order
+    assert not {"say-cheese", "the-scrapbook", "then-and-now"} & set(ev("AmbleStamps.all.map(s => s.id)"))
+
+
+def t_a_new_stamp_lands_after_mark_done(site, catalog):
+    mission = next(m for m in catalog["missions"] if m["mode"] == "date")
+    page = site.open(f"/missions/{mission['id']}/")
+    mark(page)
+    page.wait_for_selector(".stamp-landing")
+    text = page.inner_text(".stamp-landing")
+    assert "First Steps" in text and "Lovebirds" in text and "Our Year of Adventures" in text
+    assert page.locator(".stamp-landing .stamp-img.lands").count() == 3, "each new stamp lands"
+    assert page.locator('.stamp-landing a[href="/me/"]').count() == 1
+    page.click('[data-rate="up"]')
+    assert page.locator(".stamp-landing").count() == 1 and page.locator(".stamp-img.lands").count() == 0, "it stays, standing still"
+    page.reload()
+    page.wait_for_selector(".done-head")
+    assert page.locator(".stamp-landing").count() == 0, "a stamp lands once"
+    mark(page)
+    page.wait_for_selector(".done-times")
+    assert page.locator(".stamp-landing").count() == 0, "doing it again earns nothing new here"
+
+    calm = site.open(f"/missions/{mission['id']}/")   # reduce motion: the stamp is just there
+    calm.emulate_media(reduced_motion="reduce")
+    calm.reload()
+    mark(calm)
+    calm.wait_for_selector(".stamp-landing")
+    assert calm.evaluate("getComputedStyle(document.querySelector('.stamp-landing .stamp-img')).animationName") == "none"
+
+
+def t_stamp_book_in_order_with_find_pages(site, catalog):
+    page = site.open("/me/")
+    page.wait_for_selector(".book")
+    assert page.evaluate("document.querySelector('.me-book').compareDocumentPosition(document.querySelector('.me-done')) & 4"), \
+        "the stamp book comes first, then the missions done"
+    assert page.locator(".book .stamp").count() == 0 and page.locator(".stamp-blank").count() == 12, "an empty book is all empty spots"
+    assert "first stamp lands" in page.inner_text(".book-none")
+    page.evaluate(STAMP_HELPERS)
+    page.evaluate("""() => {
+      const done = [];
+      for (let y = 2027; y <= 2040; y++) done.push(mk('y' + y, y, 7, 4));                 // a year stamp each year
+      done.push(mk('date', 2041, 2, 14, inPack('anywhere', 'date')));
+      localStorage.setItem('amble.done', JSON.stringify({ v: 1, done, hidden: [], settings: {} }));
+    }""")
+    page.reload()
+    page.wait_for_selector(".book .stamp")
+    n = page.evaluate("AmbleStamps.earned().length")
+    assert n == 19, n   # First Steps, 15 years, Summer Lovin' (5 Julys), 10 Missions, Lovebirds
+    assert page.locator(".book .stamp").count() == 12 and "Pages 1–2 of 4" in page.inner_text(".book-where")
+    first = page.locator(".book .stamp-spot").first.inner_text()
+    assert "First Steps" in first and "y2027" in first and "Jul 4, 2027" in first, "the book starts with the first stamp earned"
+    assert page.locator(".stamp-spot.open-spot").count() == 0
+    page.click(".book-next")
+    assert "Pages 3–4 of 4" in page.inner_text(".book-where") and page.locator(".book .stamp").count() == 7
+    assert page.locator(".stamp-spot.open-spot").count() == 5 and page.locator(".stamp-spot.open-spot").all_inner_texts() == [""] * 5, \
+        "empty spots have no names"
+    assert page.is_disabled(".book-next")
+    page.click(".book-back")
+    page.click(".book-newest")
+    assert "Pages 3–4" in page.inner_text(".book-where")
+    page.wait_for_function("() => (document.activeElement.getAttribute('aria-label') || '').startsWith('Lovebirds')")   # Newest stamp goes to it
+    page.click('.book-menu [data-view="seasons"]')
+    page.wait_for_selector("h3#book-title:has-text('Seasons')")
+    assert page.evaluate("location.hash") == "", "Find a stamp pages leave the address alone"
+    assert page.locator(".book-page.find .stamp").count() == 1 and "Summer Lovin'" in page.inner_text(".book-page.find")
+    assert page.inner_text('.book-menu [data-view="memories"] small') == "16"
+    page.click('.book-menu [data-view="memories"]')
+    page.wait_for_selector("h3#book-title:has-text('Memories')")
+    assert "10 Missions" in page.inner_text(".book-page.find")
+    assert "1 mission" in page.locator(".book-page.find .stamp-spot").first.inner_text(), "a year stamp says how many missions that year"
+    page.click('.book-menu [data-view="places"]')
+    page.wait_for_selector("h3#book-title:has-text('Places')")
+    assert "None here yet" in page.inner_text(".book-view")
+    page.click('.book-menu [data-view="book"]')
+    page.wait_for_selector(".book .stamp")
+    assert "Pages 3–4" in page.inner_text(".book-where"), "the book stays open where you left it"
+    page.click(".book-back")
+    page.locator(".book .stamp").first.click()
+    page.wait_for_selector(".stamp-dialog[open]")
+    assert "First Steps" in page.inner_text(".stamp-dialog") and page.locator('.stamp-dialog a[href="/missions/y2027/"]').count() == 1
+    assert page.inner_text(".stamp-how") == "HOW YOU EARNED IT\nYour very first mission marked done." or \
+        page.inner_text(".stamp-how p") == "Your very first mission marked done."
+    assert page.locator(".stamp-dialog .stamp-year-count").count() == 0, "only year stamps show a count"
+    page.keyboard.press("Escape")
+    assert page.evaluate("document.activeElement.classList.contains('stamp')"), "closing goes back to the stamp"
+    page.locator(".book .stamp").nth(1).click()
+    page.wait_for_selector(".stamp-dialog[open]")
+    assert page.inner_text(".stamp-dialog .stamp-year-count") == "1 mission in 2027."
+    page.keyboard.press("Escape")
+    phone = site.open("/me/")
+    phone.set_viewport_size({"width": 390, "height": 900})
+    phone.wait_for_selector(".book")
+    assert phone.locator(".book-page").count() == 1, "one page at a time on a phone"
+    assert page.locator('meta[name="robots"][content="noindex"]').count() == 1
+
+
+def t_stamp_settings_are_kept_and_backed_up(site, catalog):
+    oregon = [m for m in catalog["missions"] if m["pack"] == "oregon"][:10]
+    if len(oregon) < 10:
+        return
+    page = site.open("/me/settings/")
+    page.evaluate("ms => localStorage.setItem('amble.done', JSON.stringify({ v: 1, hidden: [], done: ms.map((m, i) => ({"
+                  " rid: 'or' + String(i).padStart(4, '0'), mission: m.full_id, slug: m.id, name: m.name,"
+                  " done_at: new Date(2026, 3, i + 1, 12).toISOString(),"
+                  " snapshot: { pack: m.pack, mode: m.mode, setting: '', time_of_day: '', themes: [] } })) }))", oregon)
+    give_profile(site, page)
+    page.wait_for_selector(".me-stamps")
+    page.select_option("#me-home", "oregon")
+    page.wait_for_selector("text=Home state saved")
+    assert "Home Sweet Home" in page.inner_text(".form-status"), "setting it says which stamp it earned"
+    assert page.evaluate("document.activeElement.id") == "me-home"
+    page.select_option("#me-ann-month", "02")
+    page.select_option("#me-ann-day", "31")
+    page.wait_for_selector("text=Anniversary saved")
+    assert page.evaluate("JSON.parse(localStorage.getItem('amble.done')).settings") == {"home_state": "oregon", "anniversary": "02-29"}
+    page.click('button:has-text("Copy a backup code")')
+    code = page.input_value("#me-code")
+    other = site.open("/me/settings/")
+    give_profile(site, other)
+    other.fill("#me-paste", code)
+    other.click('button:has-text("Add from this code")')
+    other.wait_for_selector("text=Added 10 missions")
+    assert other.input_value("#me-home") == "oregon" and other.input_value("#me-ann-day") == "29", "the backup brings the settings"
+    other.goto(site.base + "/me/")
+    other.click('.book-menu [data-view="places"]')
+    other.wait_for_selector(".book-page.find .stamp")
+    assert "Home Sweet Home" in other.inner_text(".book-page.find")
+    other.click(".me-settings-link")
+    other.wait_for_url("**/me/settings/")
+    other.select_option("#me-home", "")
+    other.wait_for_selector("text=Home state cleared")
+    assert "home_state" not in other.evaluate("JSON.parse(localStorage.getItem('amble.done')).settings")
+    # Remove account: one more question first, then everything on this device goes
+    other.click(".me-remove-btn")
+    assert other.is_visible(".me-remove-yes") and other.evaluate("document.activeElement.textContent") == "Cancel"
+    assert not other.is_visible(".me-remove-btn"), "while it asks, the first button steps aside"
+    other.click(".me-remove-cancel")
+    assert not other.is_visible(".me-remove-yes") and other.evaluate("JSON.parse(localStorage.getItem('amble.done')).done.length") == 10
+    other.click(".me-remove-btn")
+    other.click(".me-remove-yes")
+    other.wait_for_selector("text=Your account was removed")
+    left = other.evaluate("JSON.parse(localStorage.getItem('amble.done'))")
+    assert (left["done"], left["hidden"], left["settings"]) == ([], [], {}), left
+    other.wait_for_selector(".me-start")
+    assert other.locator("#me-ann-month").count() == 0, "no profile any more: Settings is back to just Your profile"
+    other.goto(site.base + "/me/")
+    other.wait_for_selector("text=Nothing marked done yet")
+    assert other.locator(".book .stamp").count() == 0, "and the stamps with it"
 
 
 def main():

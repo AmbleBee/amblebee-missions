@@ -77,6 +77,12 @@ h1, h2, h3 { font-family: var(--display); font-variation-settings: "SOFT" 100; f
 .top nav a:hover { background: var(--linen); }
 .top nav a.nav-share { background: var(--honey-tint); box-shadow: inset 0 0 0 2px var(--honey); color: var(--ink); margin-left: 4px; }
 .top nav a.nav-share:hover { filter: brightness(1.05); }
+.top nav a.nav-profile {
+  justify-content: center; width: 44px; padding: 0; margin-left: 4px; border-radius: 50%;
+  background: var(--paper); box-shadow: inset 0 0 0 2px var(--line-strong); color: var(--sage-deep);
+}
+.top nav a.nav-profile:hover { background: var(--linen); }
+.top nav a.nav-profile[aria-current="page"] { background: var(--sage-tint); box-shadow: inset 0 0 0 2px var(--sage); color: var(--sage-ink); }
 
 /* ---- bee-trail dividers ---- */
 .divider { display: flex; align-items: center; gap: 14px; margin: 18px 0 4px; }
@@ -529,7 +535,7 @@ body.revealing main > :not(#reveal) { display: none !important; }
   .env.in-reveal { margin-top: 60px; }
 }
 .reveal-summary[hidden] { display: none; }
-.reveal-head, #reveal-actions, #reveal-adjust { transition: opacity .3s ease .25s; }
+.reveal-head, #reveal-actions, #reveal-adjust, #reveal-done { transition: opacity .3s ease .25s; }
 .grow-wait { opacity: 0; transition: none !important; }
 
 /* ---- gift links: the "Send with a note" dialog ---- */
@@ -673,7 +679,7 @@ body.revealing main > :not(#reveal) { display: none !important; }
 
 /* ---- arriving from a shared or gift link: show only an envelope-shaped placeholder until the letter is ready ---- */
 html.arriving main > :not(#reveal), html.arriving .foot, html.arriving .reveal-head,
-html.arriving #reveal-actions, html.arriving #reveal-adjust { display: none !important; }
+html.arriving #reveal-actions, html.arriving #reveal-adjust, html.arriving #reveal-done { display: none !important; }
 html.arriving #reveal { display: block; }
 html.arriving #reveal-slot:empty::before {
   content: ""; display: block; width: 100%; max-width: 560px; aspect-ratio: 1.5 / 1; margin: 70px auto 0;
@@ -833,6 +839,7 @@ main:focus { outline: none; }
 @media (max-width: 860px) {
   .top { flex-wrap: nowrap; }
   .top nav > a { display: none; }
+  .top nav > a.nav-profile { display: inline-flex; margin-right: 4px; }
   .menu-burger, .menu-phone { display: inline; }
   .top nav .menu-panel a.phone-only { display: flex; }
   .menu-wide { display: none; }
@@ -1020,3 +1027,228 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .review-part dt { font-weight: 800; color: var(--walnut-soft); }
 .review-part dd { margin: 0; color: var(--ink); white-space: pre-wrap; word-break: break-word; }
 @media (max-width: 600px) { .review-part dl { grid-template-columns: 1fr; } .review-part dd { margin-bottom: 6px; } }
+
+/* ---- "Mark done" under a mission, and the Your missions page (site/js/done.js, site/js/me.js) ---- */
+.done-slot:empty { display: none; }
+.done-box { margin: 22px 0 6px; padding: 18px 22px 16px; border-radius: 22px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); }
+.done-box.is-done { box-shadow: inset 0 0 0 2.5px var(--sage); }
+.reveal .done-box { margin: 18px auto 0; max-width: 40rem; text-align: left; }
+.done-lead { margin: 0 0 12px; color: var(--walnut); }
+.done-lead b { color: var(--ink); }
+.done-head { display: flex; align-items: center; gap: 10px; font-size: 1.3rem; margin: 0 0 12px; color: var(--ink); }
+.done-head:focus { outline: none; }
+.done-head svg { flex-shrink: 0; color: #FFFDF8; background: var(--fill); border-radius: 50%; padding: 4px; width: 30px; height: 30px; }
+.done-times { color: var(--walnut-soft); font: 700 1rem var(--body); }
+.done-grid { display: flex; flex-wrap: wrap; gap: 14px 28px; align-items: flex-end; }
+.done-field { margin: 12px 0 0; }
+.done-grid .done-field { margin: 0; }
+.done-field label, .done-rate legend { display: block; font-weight: 800; color: var(--ink); margin: 0 0 6px; padding: 0; }
+.done-field .opt { font-weight: 600; color: var(--walnut-soft); }
+.done-field input[type="date"], .done-field textarea {
+  min-height: 46px; padding: 10px 14px; border: 0; border-radius: 14px;
+  font: 600 1rem/1.4 var(--body); color: var(--ink); background: var(--linen); box-shadow: inset 0 0 0 2px var(--line-strong);
+}
+.done-field textarea { width: 100%; resize: vertical; line-height: 1.5; }
+.done-rate { border: 0; margin: 0; padding: 0; min-width: 0; }
+.done-rate-row { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip-btn {
+  appearance: none; border: 0; cursor: pointer; display: inline-flex; align-items: center; gap: 8px;
+  min-height: 44px; padding: 0 16px; border-radius: 14px; font: 700 1rem var(--body);
+  background: var(--paper); box-shadow: inset 0 0 0 2px var(--line-strong); color: var(--walnut);
+}
+.chip-btn:hover { background: var(--linen); }
+.chip-btn.on { background: var(--fill); color: #FFFDF8; box-shadow: 0 3px 0 var(--fill-shadow); }
+.done-box label.check { display: flex; gap: 10px; align-items: flex-start; font-weight: 700; color: var(--walnut); margin: 12px 0 0; cursor: pointer; }
+.done-box label.check input { width: 20px; height: 20px; margin: 3px 0 0; flex-shrink: 0; accent-color: var(--fill); }
+.done-foot { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 22px; margin-top: 10px; }
+.done-foot a { font-weight: 800; }
+.done-box .hint { margin: 2px 0 0; }
+
+.me-done, .me-hidden, .me-backup { margin: 22px 0; padding: 20px 22px; border-radius: 22px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); }
+.me-done h2, .me-hidden h2, .me-backup h2 { font-size: 1.35rem; margin: 0 0 .2rem; }
+.me-done .hint, .me-hidden .hint { margin: 0 0 6px; }
+.me-list { list-style: none; margin: 8px 0 0; padding: 0; }
+.me-list li { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 2px 14px; padding: 10px 0; border-top: 2px dashed var(--line); }
+.me-list li > a, .me-list .me-name { grid-column: 1; font-weight: 800; color: var(--ink); overflow-wrap: anywhere; text-transform: none; }
+.me-list li > a { color: var(--sage-deep); }
+.me-list small { grid-column: 1; color: var(--walnut-soft); font-weight: 700; }
+.me-list .me-note { grid-column: 1; margin: 4px 0 0; font: 700 1.25rem/1.25 var(--hand); color: var(--walnut); white-space: pre-wrap; overflow-wrap: anywhere; }
+.me-list .linkish { grid-column: 2; grid-row: 1 / span 3; }
+.me-code { width: 100%; margin-top: 12px; min-height: 76px; padding: 12px 14px; border: 0; border-radius: 14px; font: 600 .9rem/1.4 ui-monospace, monospace; color: var(--ink); background: var(--linen); box-shadow: inset 0 0 0 2px var(--line-strong); overflow-wrap: anywhere; }
+.me-import { margin-top: 18px; }
+.me-import label { display: block; font-weight: 800; color: var(--ink); margin: 14px 0 6px; }
+.me-import .backup-row { margin-top: 10px; }
+
+/* ---- stamps: the new-stamp moment under Mark done, settings on /me/, and the stamp book (site/js/stamps.js, book.js) ---- */
+.stamp-img { display: block; height: auto; filter: drop-shadow(0 2px 2px rgba(74, 51, 35, .22)); }
+.stamp-landing { display: flex; align-items: center; gap: 14px 18px; flex-wrap: wrap; margin: 0 0 14px; padding: 12px 16px; border-radius: 18px; background: var(--honey-tint); }
+.stamp-landing-art { display: flex; gap: 6px; }
+.stamp-landing .stamp-img { width: 74px; transform: rotate(-4deg); }
+.stamp-landing p { margin: 0 0 4px; color: var(--ink); }
+.stamp-landing a { font-weight: 800; }
+.stamp-img.lands { animation: stamp-land .5s cubic-bezier(.2, .9, .3, 1.2) both; }
+@keyframes stamp-land {
+  0% { opacity: 0; transform: scale(1.9) rotate(-16deg); }
+  55% { opacity: 1; transform: scale(.92) rotate(-3deg); }
+  100% { opacity: 1; transform: scale(1) rotate(-4deg); }
+}
+
+.me-stamps { margin: 22px 0; padding: 20px 22px; border-radius: 22px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); }
+.me-stamps h2 { font-size: 1.35rem; margin: 0 0 .2rem; }
+.me-stamps .hint { margin: 0 0 10px; }
+.me-settings { display: flex; flex-wrap: wrap; gap: 14px 28px; margin: 16px 0 8px; padding-top: 14px; border-top: 2px dashed var(--line); }
+.me-settings .done-field { margin: 0; }
+.me-ann { border: 0; padding: 0; min-width: 0; }
+.me-ann-row { display: flex; gap: 8px; }
+
+.page.info:has(.book-app) { max-width: 1100px; }   /* the open book needs room for two pages side by side */
+.book-wrap { display: grid; grid-template-columns: 11rem 1fr; gap: 22px; align-items: start; margin-top: 18px; }
+.book-menu ul { list-style: none; margin: 0; padding: 0; }
+.book-menu :is(a, button) { display: flex; justify-content: space-between; gap: 8px; padding: 8px 12px; border-radius: 12px; font-weight: 800; color: var(--walnut); text-decoration: none; }
+.book-menu :is(a, button):hover { background: var(--linen); }
+.book-menu .on { background: var(--sage-tint); color: var(--sage-ink); }
+.book-menu small { font-weight: 700; color: var(--walnut-soft); }
+.book-menu .on small { color: inherit; }
+.book-menu-head { margin: 14px 0 4px 12px; font: 700 1.3rem/1.1 var(--hand); color: var(--sage-deep); }
+
+.book { display: grid; gap: 0; padding: 14px; border-radius: 22px; background: var(--fill); box-shadow: 0 5px 0 var(--fill-shadow); }
+.book.two { grid-template-columns: 1fr 1fr; }
+.book-page { list-style: none; margin: 0; padding: 16px 12px 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 10px; background: var(--paper); border-radius: 12px; min-height: 100%; }
+.book.two .book-page:first-child { border-radius: 12px 4px 4px 12px; box-shadow: inset -14px 0 16px -14px rgba(74, 51, 35, .35); }
+.book.two .book-page:last-child { border-radius: 4px 12px 12px 4px; box-shadow: inset 14px 0 16px -14px rgba(74, 51, 35, .35); }
+.book-page.find { background: transparent; padding: 0; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); }
+.stamp-spot { display: flex; flex-direction: column; align-items: center; text-align: center; min-width: 0; }
+.stamp { appearance: none; border: 0; padding: 4px; margin: 0; background: none; cursor: pointer; border-radius: 10px; width: 100%; max-width: 120px; }
+.stamp .stamp-img { width: 100%; transition: transform .15s ease; }
+.stamp:hover .stamp-img { transform: rotate(0deg) scale(1.04) !important; }
+.stamp:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+.stamp-cap { margin: 4px 0 0; display: flex; flex-direction: column; font-size: .8rem; line-height: 1.25; color: var(--walnut-soft); overflow-wrap: anywhere; }
+.stamp-cap b { color: var(--ink); font-size: .86rem; }
+.stamp-cap .stamp-count { margin-top: 2px; font: 700 1.05rem/1.1 var(--hand); color: var(--sage-deep); }
+.stamp-dialog-body .stamp-year-count { margin-top: 6px; font: 700 1.35rem/1.2 var(--hand); color: var(--sage-deep); }
+.stamp-spot.open-spot { justify-content: flex-start; padding: 4px; }
+.stamp-blank { display: block; width: 100%; max-width: 112px; aspect-ratio: 600 / 780; border-radius: 10px; border: 2.5px dashed var(--line-strong); opacity: .9; }
+.book-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 10px 16px; margin: 16px 0 0; }
+.book-where { font-weight: 800; color: var(--walnut-soft); }
+.book-nav .btn:disabled { opacity: .45; cursor: default; box-shadow: inset 0 0 0 2.5px var(--line-strong); }
+.book-none { margin: 0 0 14px; }
+.book-view > h2:not(.sr) { font-size: 1.5rem; margin: 0 0 12px; }
+.book-view > h2:focus { outline: none; }
+.stamp-dialog { width: min(380px, calc(100vw - 24px)); }
+.stamp-dialog-body { padding: 24px 22px 18px; background: var(--paper); text-align: center; }
+.stamp-dialog-body .stamp-img { width: min(220px, 60vw); margin: 0 auto 10px; transform: rotate(-3deg); }
+.stamp-dialog-body h2 { font-size: 1.4rem; margin: 0 0 .3rem; }
+.stamp-dialog-body p { margin: 0; }
+.stamp-how { margin: 14px 0 4px; padding: 12px 14px; border-radius: 14px; background: var(--sage-tint); color: var(--sage-ink); text-align: left; }
+.stamp-how h3 { margin: 0 0 2px; font: 800 .8rem/1.2 var(--body); letter-spacing: .04em; text-transform: uppercase; }
+@media (max-width: 759px) {
+  .book-wrap { grid-template-columns: 1fr; gap: 12px; }
+  .book-menu { display: flex; flex-wrap: wrap; align-items: center; gap: 4px; }
+  .book-menu ul { display: contents; }
+  .book-menu li { display: inline-block; }
+  .book-menu :is(a, button) { width: auto; padding: 6px 12px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); }
+  .book-menu-head { width: 100%; margin: 6px 0 0 2px; font-size: 1.15rem; }
+  .book { padding: 10px; }
+}
+
+/* the profile page (/me/): heading with Settings beside it, the stamp book on top, then missions done */
+.me-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 10px 20px; }
+.me-head .btn { gap: 8px; margin-bottom: 6px; }
+.me-book { margin: 26px 0 8px; }
+.me-book > h2 { font-size: 1.6rem; margin: 0; }
+.me-book .book-wrap { margin-top: 12px; }
+.book-menu button { appearance: none; border: 0; background: none; cursor: pointer; font: inherit; font-weight: 800; color: var(--walnut); width: 100%; text-align: left; }
+.book-menu button.on { color: var(--sage-ink); }
+.me-stamps .me-settings { border-top: 0; padding-top: 0; margin-top: 12px; }
+.book-view > h3:not(.sr) { font-size: 1.4rem; margin: 0 0 12px; }
+.book-view > h3:focus { outline: none; }
+
+/* ---- each time you did a mission, as a chip that opens (site/js/done.js), and "Done" on mission cards ---- */
+.done-entries { display: grid; gap: 8px; margin: 0 0 14px; }
+.done-entry { border-radius: 16px; background: var(--linen); box-shadow: inset 0 0 0 2px var(--line); }
+.done-entry[open] { background: var(--paper); box-shadow: inset 0 0 0 2px var(--sage); }
+.done-entry summary {
+  list-style: none; cursor: pointer; display: flex; align-items: center; flex-wrap: wrap; gap: 4px 10px;
+  min-height: 46px; padding: 8px 16px 8px 12px; border-radius: 16px; font-weight: 800; color: var(--ink);
+}
+.done-entry summary::-webkit-details-marker { display: none; }
+.done-entry summary > svg { flex-shrink: 0; width: 24px; height: 24px; padding: 3px; border-radius: 50%; color: #FFFDF8; background: var(--fill); }
+.done-entry summary small { font-weight: 700; color: var(--walnut-soft); }
+.done-entry summary::after {
+  content: ""; margin-left: auto; width: 9px; height: 9px; border-right: 2.5px solid var(--walnut-soft); border-bottom: 2.5px solid var(--walnut-soft);
+  transform: translateY(-2px) rotate(45deg); transition: transform .15s ease;
+}
+.done-entry[open] summary::after { transform: translateY(2px) rotate(-135deg); }
+.done-entry summary:focus-visible { outline-offset: -3px; }
+.done-entry-body { padding: 4px 16px 14px; }
+.done-entry-body .done-remove { margin-top: 12px; }
+.done-foot .done-mark { margin-right: 6px; }
+.card .done-chip {
+  display: inline-flex; align-items: center; gap: 4px; flex-shrink: 0; padding: 2px 9px 2px 5px; border-radius: 999px;
+  background: var(--fill); color: #FFFDF8; font: 800 .76rem/1.4 var(--body);
+}
+.card .done-chip svg { width: 14px; height: 14px; }
+.card.is-skipped { opacity: .5; filter: saturate(.4); transition: opacity .15s ease; }   /* marked "Not for us": still there, just quieter */
+.card.is-skipped:hover, .card.is-skipped:focus-visible { opacity: .85; }
+.card .skip-chip { flex-shrink: 0; padding: 2px 9px; border-radius: 999px; background: var(--line); color: var(--walnut); font: 800 .76rem/1.4 var(--body); }
+.me-remove { margin: 22px 0; padding: 20px 22px; border-radius: 22px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); }
+.me-remove h2 { font-size: 1.35rem; margin: 0 0 .2rem; }
+.me-remove .btn.me-remove-btn, .me-remove .btn.me-remove-yes { box-shadow: inset 0 0 0 2.5px var(--alert); color: var(--alert); }
+.me-remove .btn.me-remove-yes { background: var(--alert); color: var(--paper); }
+.me-remove-sure { margin-top: 10px; padding: 14px 16px; border-radius: 14px; background: var(--honey-tint); color: var(--ink); }
+.me-remove-sure p { margin: 0 0 10px; }
+.me-remove [hidden] { display: none !important; }   /* the buttons' own display would otherwise win over hidden */
+/* "Not for us" at the bottom right of a mission, by Report a problem: outlined in red, filled once it's set */
+.foot-acts { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 8px; margin-top: .6rem; margin-left: auto; }
+.foot-acts .full-page { margin-top: 0; }
+.btn.skip-btn { gap: 6px; background: var(--paper); color: var(--alert); box-shadow: inset 0 0 0 2.5px var(--alert); }
+.btn.skip-btn:hover { background: color-mix(in srgb, var(--alert) 12%, var(--paper)); }
+.btn.skip-btn.on { background: var(--alert); color: var(--paper); }
+@media (max-width: 600px) { .foot-acts { flex: 1 1 100%; } .foot-acts > * { flex: 1 1 auto; justify-content: center; } }
+
+/* ---- profiles (site/js/profile.js): the line on /me/, the section in Settings, and "Start a free profile?" ---- */
+.profile-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px 18px; margin: 14px 0 0; padding: 12px 16px; border-radius: 16px; }
+.profile-bar:empty { display: none; }
+.profile-bar p { margin: 0; }
+.profile-bar a { font-weight: 800; }
+.profile-bar.is-saved { background: var(--sage-tint); color: var(--sage-ink); }
+.profile-bar.is-saved a { color: var(--sage-ink); }
+.profile-bar.is-local { background: var(--honey-tint); color: var(--ink); }
+.profile-bar.is-gone { background: color-mix(in srgb, var(--alert) 14%, var(--paper)); color: var(--ink); }
+.me-profile { margin: 22px 0; padding: 20px 22px; border-radius: 22px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--sage); }
+.me-profile h2 { font-size: 1.35rem; margin: 0 0 .3rem; }
+.me-profile form { margin: 16px 0 0; }
+.me-profile label { display: block; font-weight: 800; color: var(--ink); margin: 0 0 6px; }
+.me-profile input[type="email"], .me-profile input[type="text"], .link-box {
+  flex: 1 1 16rem; min-width: 0; min-height: 44px; padding: 8px 14px; border: 0; border-radius: 14px;
+  font: 600 1rem/1.4 var(--body); color: var(--ink); background: var(--linen); box-shadow: inset 0 0 0 2px var(--line-strong);
+}
+.me-profile .backup-row { align-items: center; }
+.me-profile .me-email, .me-profile .me-out, .me-profile .me-link { margin-top: 16px; padding-top: 14px; border-top: 2px dashed var(--line); }
+.me-profile .me-email form { margin: 0; }
+.me-link[hidden] { display: none; }
+.copy-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
+.copy-note { font-weight: 800; color: var(--sage-deep); }
+.recovery-code { font: 700 .95rem/1.4 ui-monospace, monospace; padding: 2px 8px; border-radius: 8px; background: var(--linen); overflow-wrap: anywhere; }
+.profile-dlg { width: min(520px, calc(100vw - 24px)); }
+.profile-dlg-body { padding: 24px 24px 20px; background: var(--paper); }
+.profile-dlg h2 { font-size: 1.5rem; margin: 0 0 .5rem; }
+.profile-dlg p { margin: 0 0 .7rem; }
+.profile-dlg input[type="email"] {
+  width: 100%; min-height: 46px; padding: 10px 14px; border: 0; border-radius: 14px;
+  font: 600 1rem/1.4 var(--body); color: var(--ink); background: var(--linen); box-shadow: inset 0 0 0 2px var(--line-strong);
+}
+.profile-dlg .done-field label { display: block; font-weight: 800; color: var(--ink); margin: 0 0 6px; }
+.profile-dlg-actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin: 14px 0 0 !important; justify-content: flex-start !important; }
+.profile-dlg .form-status:empty { display: none; }
+.profile-dlg form.profile-offer { display: block; margin: 0; }   /* not the centred row other dialog forms use */
+.done-remove-wrap { margin-top: 12px; }
+.done-remove-sure { padding: 12px 14px; border-radius: 14px; background: var(--honey-tint); color: var(--ink); }
+.done-remove-sure p { margin: 0 0 10px; }
+.done-remove-sure .done-remove-yes { box-shadow: inset 0 0 0 2.5px var(--alert); color: var(--alert); }
+/* the profile link as a QR code (site/js/qr.js): always dark on white, so phone cameras read it in dark mode too */
+.me-qr { display: flex; flex-wrap: wrap; align-items: center; gap: 12px 18px; margin: 0 0 12px; }
+.me-qr .qr { width: 168px; height: 168px; flex: none; border-radius: 12px; box-shadow: 0 0 0 2px var(--line); }
+.me-qr p { margin: 0 0 6px; }
+.me-qr > div { flex: 1 1 14rem; min-width: 0; }
+.me-profile [hidden] { display: none !important; }   /* buttons' own display would otherwise win over hidden */

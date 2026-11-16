@@ -75,7 +75,11 @@ let memDeck = null;      // used when the browser won't keep sessionStorage
 function loadDeck() { try { return JSON.parse(sessionStorage.getItem(DECK_KEY)) || memDeck; } catch (e) { return memDeck; } }
 function saveDeck(d) { memDeck = d; try { sessionStorage.setItem(DECK_KEY, JSON.stringify(d)); } catch (e) { /* in-memory it is */ } }
 function pickMission() {
-  const p = pool();
+  // "Not for us" missions (site/js/done.js) are never dealt, unless they're all that's left
+  const hidden = window.AmbleDone ? window.AmbleDone.hidden() : new Set();
+  const all = pool();
+  const kept = all.filter((m) => !hidden.has(m.full_id));
+  const p = kept.length ? kept : all;
   if (!p.length) return null;
   const f = readFilters(), key = deckFor(f);
   const byId = new Map(p.map((m) => [m.full_id, m]));
@@ -168,7 +172,7 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   const slot = $("#reveal-slot");
   if (sealed || animate) {
     document.title = `A sealed mission · ${SITE_NAME}`;
-    $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true;
+    $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true; $("#reveal-done").replaceChildren();
     const env = envelope({
       title: gift ? `${gift.f || "Someone"} sent you a mission.` : sealed ? "Someone sent you a mission." : "Your next mission is sealed inside.",
       sub: gift && gift.n ? "There's a note tucked inside." : null,
@@ -193,6 +197,7 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
     h("button", { type: "button", class: "btn", onclick: () => startOver() }, "Start over"),
   ].filter(Boolean));
   $("#reveal-adjust").hidden = linked;
+  $("#reveal-done").replaceChildren(...[doneBox(m)].filter(Boolean));   // "Mark done" (site/js/done.js)
   if (growFrom && growFrom.width && !REDUCED()) growTicket(t, growFrom); else t.classList.add("pop");
   const title = $("#reveal-title"); if (title) { title.tabIndex = -1; title.focus({ preventScroll: true }); }
 }
@@ -202,7 +207,7 @@ function growTicket(t, from) {
   if (!to.width) { t.classList.add("pop"); return; }
   const s = from.width / to.width;
   const cut = Math.max(0, to.height - from.height / s);
-  const rest = [$("#reveal-actions"), $("#reveal-adjust"), $(".reveal-head")];
+  const rest = [$("#reveal-actions"), $("#reveal-adjust"), $("#reveal-done"), $(".reveal-head")];
   rest.forEach((e) => e && e.classList.add("grow-wait"));
   t.style.transformOrigin = "0 0";
   t.style.transform = `translate(${from.left - to.left}px, ${from.top - to.top}px) scale(${s})`;
@@ -234,7 +239,7 @@ function showLost(sub) {
   $("#reveal").hidden = false;
   $("#reveal-kicker").textContent = "Return to sender";
   $("#reveal-summary").hidden = true;
-  $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true;
+  $("#reveal-actions").replaceChildren(); $("#reveal-adjust").hidden = true; $("#reveal-done").replaceChildren();
   const env = envelope({ title: "This letter got lost in the mail.", sub, to: "you", button: "Open your own",
     onOpen: () => {
       history.replaceState(null, "", location.pathname + location.search);
