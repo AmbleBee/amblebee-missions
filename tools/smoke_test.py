@@ -1415,6 +1415,7 @@ def t_profile_nudges_for_a_recovery_email_and_masks_it(site, catalog):
     page.reload()
     page.wait_for_selector(".profile-bar.is-saved")
     assert "No recovery email yet" not in page.inner_text(".profile-bar")
+    assert "null" not in page.inner_text(".profile-bar"), "no stray null where the nudge was"
     page.goto(site.base + "/me/settings/")
     page.wait_for_selector("label[for=me-email]")
     label = page.inner_text("label[for=me-email]")

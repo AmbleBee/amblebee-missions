@@ -259,7 +259,7 @@
         shown.replaceChildren(
           qr ? el("div", { class: "me-qr" }, qr, el("div", {},
             el("p", {}, el("b", { text: "On your phone? Scan this with its camera." })),
-            el("p", { class: "hint", text: "Your profile opens there and stays signed in on that phone, so your missions and stamps follow you. Anyone who scans it can open your profile, so don't share a photo of it." }))) : null,
+            el("p", { class: "hint", text: "Your profile opens there and stays signed in on that phone, so your missions and stamps follow you. Anyone who scans it can open your profile, so don't share a photo of it." }))) : "",   // replaceChildren prints a null as "null"
           el("p", { class: "hint", text: "Or open this link on another phone or computer. Anyone with it can open your profile, so keep it to yourself." }),
           copy("me-link", P.link(), "Your profile link"),
           el("p", { class: "hint" }, "Recovery code: ", el("code", { class: "recovery-code", text: P.key() })));
@@ -384,7 +384,7 @@
       bar.replaceChildren(el("p", {}, el("b", { text: "✓ Saved to your profile" }),
         st.syncing ? " · saving…" : st.error ? " · " + st.error : st.last ? " · synced " + ago(st.last) : ""),
         el("a", { href: "/me/settings/#profile", text: "Profile link and recovery" }),
-        st.email ? null : el("p", { class: "profile-bar-nudge" }, el("b", { text: "No recovery email yet. " }),
+        st.email ? "" : el("p", { class: "profile-bar-nudge" }, el("b", { text: "No recovery email yet. " }),
           "If you lose your link, there's no way back in. ", el("a", { href: "/me/settings/#profile", text: "Add a recovery email" })));
     } else if (st.gone) {
       bar.className = "profile-bar is-gone";
