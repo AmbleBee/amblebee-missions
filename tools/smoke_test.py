@@ -1671,10 +1671,11 @@ def t_stamp_book_in_order_with_find_pages(site, catalog):
     page.wait_for_selector(".stamp-dialog[open]")
     assert page.inner_text(".stamp-dialog .stamp-year-count") == "1 mission in 2027."
     page.keyboard.press("Escape")
-    phone = site.open("/me/")
-    phone.set_viewport_size({"width": 390, "height": 900})
+    phone = site.open("/me/", viewport={"width": 390, "height": 900})
     phone.wait_for_selector(".book")
     assert phone.locator(".book-page").count() == 1, "one page at a time on a phone"
+    phone.set_viewport_size({"width": 1100, "height": 900})   # turned sideways or a wider window: two pages, once it redraws
+    phone.wait_for_function("() => document.querySelectorAll('.book-page').length === 2")
     assert page.locator('meta[name="robots"][content="noindex"]').count() == 1
 
 

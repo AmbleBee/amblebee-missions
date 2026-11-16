@@ -156,7 +156,9 @@
     app.replaceChildren(el("div", { class: "book-wrap" }, menu(), view === "book" ? book(focusKey) : findPage(view)), live);
   }
 
-  wide.addEventListener("change", function () { draw(); });
+  // one page or two as the screen changes (older Safari, iOS 13 and before, only has addListener)
+  if (wide.addEventListener) wide.addEventListener("change", function () { draw(); });
+  else if (wide.addListener) wide.addListener(function () { draw(); });
   window.addEventListener("amble:done", function () { draw(); });
   window.addEventListener("storage", function (e) { if (e.key === "amble.done") draw(); });
   ST.fresh();   // looking at the book counts as having seen them: they won't "land" again later
