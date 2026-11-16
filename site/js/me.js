@@ -196,7 +196,8 @@
     sec.append(el("p", { class: "hint", text: "Two stamps use these: one for missions close to home, one for a date on your anniversary. Both are optional." }),
       el("div", { class: "me-settings" },
       el("div", { class: "done-field" }, el("label", { for: "me-home" }, "Home state ", el("span", { class: "opt", text: "(optional)" })), state),
-      el("fieldset", { class: "done-field me-ann" }, el("legend", {}, "Anniversary ", el("span", { class: "opt", text: "(optional)" })),
+      el("fieldset", { class: "done-field me-ann" }, el("legend", {}, "Your anniversary ", el("span", { class: "opt", text: "(optional)" })),
+        el("p", { class: "hint me-ann-hint", text: "The day you got together, for the Our Anniversary stamp. Only the month and day are kept." }),
         el("div", { class: "me-ann-row" }, month, day))));
     return sec;
   }
@@ -341,7 +342,7 @@
     sec.append(openForm, lostForm);
     return sec;
   }
-  // the recovery email as this browser remembers it (site/js/profile.js), partly hidden: m•••@e•••••e.com.
+  // the recovery email as this browser remembers it (site/js/profile.js), partly hidden, first and last letters showing: m•••••l@e•••••e.com.
   // Another device opened from the link doesn't have it: the server only keeps a fingerprint.
   function masked() {
     var e = "";
@@ -354,7 +355,7 @@
       if (w.length <= 2) return w.charAt(0) + "•";
       return w.charAt(0) + "•".repeat(Math.min(w.length - (keepEnd ? 2 : 1), 6)) + (keepEnd ? w.charAt(w.length - 1) : "");
     };
-    return hide(name, false) + "@" + hide(dom, true) + tld;
+    return hide(name, true) + "@" + hide(dom, true) + tld;
   }
   function copy(id, value, label) {
     var box = el("input", { id: id, class: "link-box", type: "text", readonly: true, value: value, "aria-label": label });

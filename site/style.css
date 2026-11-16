@@ -1261,3 +1261,5 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .top nav a.nav-profile.has-profile { background: var(--fill); color: #FFFDF8; box-shadow: none; }
 .top nav a.nav-profile.has-profile:hover { background: var(--fill); filter: brightness(1.08); }
 .top nav a.nav-profile.has-profile[aria-current="page"] { box-shadow: 0 0 0 3px var(--sage-tint); }
+.me-ann legend { font: 800 1rem var(--body); color: var(--ink); margin: 0 0 4px; }
+.me-ann .me-ann-hint { margin: 0 0 8px; }

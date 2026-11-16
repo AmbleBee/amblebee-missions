@@ -1418,7 +1418,7 @@ def t_profile_nudges_for_a_recovery_email_and_masks_it(site, catalog):
     page.goto(site.base + "/me/settings/")
     page.wait_for_selector("label[for=me-email]")
     label = page.inner_text("label[for=me-email]")
-    assert "m•••••" in label and "@e•••••e.com" in label and "maxwell" not in label, label
+    assert "m•••••l@e•••••e.com" in label and "maxwell" not in label, label
     page.goto(site.base + "/contact/")
     page.wait_for_selector(".intake-form", state="visible")
     assert page.input_value("#contact-email") == "maxwell@example.com"
@@ -1798,6 +1798,7 @@ def t_stamp_settings_are_kept_and_backed_up(site, catalog):
     page.wait_for_selector("text=Home state saved")
     assert "Home Sweet Home" in page.inner_text(".form-status"), "setting it says which stamp it earned"
     assert page.evaluate("document.activeElement.id") == "me-home"
+    assert "The day you got together" in page.inner_text(".me-ann"), "says whose anniversary it means"
     page.select_option("#me-ann-month", "02")
     page.select_option("#me-ann-day", "31")
     page.wait_for_selector("text=Anniversary saved")
