@@ -87,7 +87,7 @@ Clone or download this repository, then run:
 python tools/mission_management
 ```
 
-The application starts a local web interface and provides the address to open in your browser.
+The application starts a local web interface and prints the link to open in your browser. The link carries a key that changes every time you start it, so keep it to yourself. By default only your own computer can open it; to use it from a phone or laptop, start it with `AMBLE_BIND=0.0.0.0 python tools/mission_management` and open the printed Same Wi-Fi or Tailscale link there. `python tools/mission_management/safety_test.py` checks these rules.
 
 Python and the project's required dependencies must be installed.
 

@@ -27,12 +27,19 @@ What it does
   - Saving writes the YAML file in missions/ directly. Fields you didn't touch keep their exact lines
     (comments included), so `git diff` shows only what you changed. Commit and push as usual.
 
-Safety
-  - Anyone on your network could reach the port, so every link carries a random key that changes
-    each run. Without it the page shows nothing and nothing can be saved.
+Safety (security-fixes-PLAN.md, Phase 2)
+  - It listens on this computer only (127.0.0.1). To use it from another device, start it with
+    AMBLE_BIND=0.0.0.0 on purpose; the Same Wi-Fi and Tailscale links are printed then.
+  - Every run makes a random key, and every request must carry it. The start-up link has it (?key=...); the page
+    keeps it for that tab and takes it out of the address bar. Without it the page shows nothing and nothing
+    can be saved. Lock can swap in a key that's easier to type on another device; removing it goes back to the
+    start-up key, never to "no key".
+  - Unless AMBLE_BIND was set on purpose, requests that name any other host than this computer are refused, so a
+    web page can't reach it through a DNS trick (add names you really use to AMBLE_HOST).
+  - Changes need a JSON body (as the page sends), so another site can't post a plain form to it.
   - On a server (AmbleBee Intake runs it inside its admin panel), these settings come from the environment:
     AMBLE_BIND (address to listen on), AMBLE_PORT (one fixed port), AMBLE_LOCK (a key every request must carry;
-    the page can't change or remove it, and Lock and Stop are hidden).
+    the page can't change or remove it, Lock and Stop are hidden, and the key is never printed).
   - If a file changed on disk after you opened it (say you edited it in VSCodium), the save is refused
     so neither change gets lost. Reload the mission and redo the edit.
 """
@@ -96,9 +103,12 @@ def ready():
 
 PORTS = range(int(os.environ["AMBLE_PORT"]), int(os.environ["AMBLE_PORT"]) + 1) if os.environ.get("AMBLE_PORT") \
     else range(8812, 8822)
-BIND = os.environ.get("AMBLE_BIND", "0.0.0.0")
+BIND_SET = "AMBLE_BIND" in os.environ        # chosen on purpose (a server, or AMBLE_BIND=0.0.0.0 for other devices)
+BIND = os.environ.get("AMBLE_BIND", "127.0.0.1")
 FIXED_KEY = os.environ.get("AMBLE_LOCK", "")   # set by the server it runs on (see Safety above); the page can't change it
-LOCK = {"key": FIXED_KEY}  # a temporary key set from the page (Lock); empty means open. Forgotten when the manager stops.
+START_KEY = FIXED_KEY or secrets.token_urlsafe(16)   # never empty: every request needs a key
+LOCK = {"key": START_KEY}  # Lock can swap in an easier key for other devices; it goes back to START_KEY, never to none
+LOCAL_HOSTS = {"127.0.0.1", "localhost", "::1"}
 SERVER = None
 FOLDED = ("description", "about")
 
@@ -695,16 +705,28 @@ class Handler(http.server.BaseHTTPRequestHandler):
         return "/" if path.endswith("/") else path
 
     def _authed(self, q=None):
-        """Open unless someone set a temporary key with the page's Lock button."""
-        if not LOCK["key"]:
-            return True
+        """Every request carries the key: X-Amble-Key from the page, or ?key= on a download link."""
         got = self.headers.get("X-Amble-Key", "") or ((q or {}).get("key") or [""])[0]
-        return secrets.compare_digest(got.encode("utf-8"), LOCK["key"].encode("utf-8"))
+        return bool(LOCK["key"]) and secrets.compare_digest(got.encode("utf-8"), LOCK["key"].encode("utf-8"))
+
+    def _host_ok(self):
+        """Only this computer's own names, unless AMBLE_BIND was set on purpose (blocks DNS rebinding)."""
+        if BIND_SET:
+            return True
+        host = (self.headers.get("Host") or "").strip().lower()
+        name = host[1:host.index("]")] if host.startswith("[") and "]" in host else host.rsplit(":", 1)[0] if host.count(":") == 1 else host
+        extra = {h.strip().lower() for h in os.environ.get("AMBLE_HOST", "").split(",") if h.strip()}
+        return name in LOCAL_HOSTS or name in extra
+
+    def _wrong_host(self):
+        return self._send(403, {"error": "This manager only answers on this computer. Open it at http://localhost."})
 
     def _locked_out(self):
         return self._send(403, {"error": "This manager is locked. Enter the key that was set on it.", "locked": True})
 
     def do_GET(self):
+        if not self._host_ok():
+            return self._wrong_host()
         url = urllib.parse.urlparse(self.path)
         q = urllib.parse.parse_qs(url.query)
         path = self._route()
@@ -728,8 +750,9 @@ class Handler(http.server.BaseHTTPRequestHandler):
             if f.suffix == ".woff2" and f.exists():
                 return self._send(200, f.read_bytes(), "font/woff2")
             return self._send(404, {"error": "no such font"})
-        if path == "/api/lock":
-            return self._send(200, {"locked": bool(LOCK["key"]), "ok": self._authed(), "managed": bool(FIXED_KEY)})
+        if path == "/api/lock":   # "ok": this tab's key works. "custom": Lock swapped in an easier key
+            return self._send(200, {"locked": True, "ok": self._authed(), "managed": bool(FIXED_KEY),
+                                    "custom": LOCK["key"] != START_KEY})
         if not self._authed(q if path == "/api/release-file" else None):    # a download link carries the key itself
             return self._locked_out()
         try:
@@ -772,23 +795,27 @@ class Handler(http.server.BaseHTTPRequestHandler):
         self._send(404, {"error": "Not found"})
 
     def do_POST(self):
+        if not self._host_ok():
+            return self._wrong_host()
         if not self._authed():
             return self._locked_out()
         path = self._route()
+        # every change needs a JSON body, as the page sends: another site can't post a plain form here
+        if "application/json" not in self.headers.get("Content-Type", ""):
+            return self._send(404, {"error": "Not found"})
         if FIXED_KEY and path in ("/api/stop", "/api/unlock", "/api/lock"):
             return self._send(403, {"error": "This manager is run by a server, which sets its key and keeps it running."})
         if path == "/api/stop":                 # the page's Stop button: answer, then shut down
             self._send(200, {"ok": True})
             threading.Thread(target=SERVER.shutdown, daemon=True).start()
             return
-        if path == "/api/unlock":
-            LOCK["key"] = ""
-            return self._send(200, {"ok": True, "locked": False})
+        if path == "/api/unlock":               # back to the start-up key, never to no key at all
+            LOCK["key"] = START_KEY
+            return self._send(200, {"ok": True, "locked": True, "start": True})
         if path not in ("/api/mission", "/api/delete", "/api/preview", "/api/parse", "/api/setup", "/api/checker", "/api/pack",
                         "/api/scoring", "/api/scoring/reset", "/api/pack/edit", "/api/bulk", "/api/ideas",
                         "/api/release", "/api/reveal", "/api/same-spot", "/api/links",
-                        "/api/links/start", "/api/link", "/api/link/mark", "/api/lock") or \
-                "application/json" not in self.headers.get("Content-Type", ""):
+                        "/api/links/start", "/api/link", "/api/link/mark", "/api/lock"):
             return self._send(404, {"error": "Not found"})
         try:
             body = json.loads(self.rfile.read(int(self.headers.get("Content-Length", 0))) or b"{}")
@@ -967,11 +994,19 @@ def main():
     ts_ip, _ = tailscale_links()
     in_docker = Path("/.dockerenv").exists()
     ip = None if in_docker else lan_ip()      # a container only sees its own Docker network address
+    # the start-up link carries the key (never printed when a server set it: it would land in that server's logs)
+    k = "" if FIXED_KEY else "?key=" + urllib.parse.quote(START_KEY)
+    wide = BIND not in ("127.0.0.1", "localhost", "::1")
     for h in hosts:
-        print(f"  Your address:   http://{h}:{port}/")
-    print(f"  This computer:  http://localhost:{port}/")
-    print(f"  Same Wi-Fi:     http://{ip if ip and not ip.startswith('127.') and ip != ts_ip else 'LANIP'}:{port}/")
-    print(f"  Tailscale:      http://{ts_ip or 'TAILSCALEIP'}:{port}/")
+        print(f"  Your address:   http://{h}:{port}/{k}")
+    print(f"  This computer:  http://localhost:{port}/{k}")
+    if wide:
+        print(f"  Same Wi-Fi:     http://{ip if ip and not ip.startswith('127.') and ip != ts_ip else 'LANIP'}:{port}/{k}")
+        print(f"  Tailscale:      http://{ts_ip or 'TAILSCALEIP'}:{port}/{k}")
+    else:
+        print("  Only this computer can open it. To use it from another device: AMBLE_BIND=0.0.0.0 python tools/mission_management")
+    if not FIXED_KEY:
+        print("  The link has this run's key in it, so keep it to yourself. It changes every time you start the manager.")
     if in_docker:
         print(f"  (In a container: needs  - {port}:{port}  under ports: in the compose file, then docker compose up -d.)")
     print(f"Saving writes straight into {MISSIONS}. Commit and push when you're happy.")

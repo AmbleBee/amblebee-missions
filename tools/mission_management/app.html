@@ -519,7 +519,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
         <button class="btn small" id="newPackBtn" type="button">+ New pack</button>
         <button class="btn small primary" id="newBtn" type="button">+ New mission</button>
         <button class="btn small" id="gitBtn" type="button" hidden title="Files changed since your last commit"></button>
-        <button class="btn small" id="lockBtn" type="button" aria-pressed="false" title="Set a temporary key so other devices on your network need it">Lock</button>
+        <button class="btn small" id="lockBtn" type="button" aria-pressed="false" title="Set a shorter key to type on your other devices">Key for other devices</button>
         <button class="btn small" id="stopBtn" type="button" title="Shut the manager down (no terminal needed)">Stop</button>
       </span>
     </nav>
@@ -656,7 +656,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
       <input type="text" id="lockKey" autocomplete="off" autocapitalize="off" spellcheck="false" minlength="4"></div>
     <div class="alert bad" id="lockErr" hidden></div>
     <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px;flex-wrap:wrap">
-      <button class="btn small" type="button" id="lockOff" hidden style="margin-right:auto">Remove the key</button>
+      <button class="btn small" type="button" id="lockOff" hidden style="margin-right:auto">Back to the start-up key</button>
       <button class="btn small" type="button" id="lockCancel">Cancel</button>
       <button class="btn small primary" type="submit" id="lockGo">Lock it</button>
     </div>
@@ -796,9 +796,17 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
 </dialog>
 
 <script>
-// Open by default. Someone can set a temporary key with Lock; then every device needs it (kept for this tab only).
+// Every request needs this run's key. The start-up link carries it (?key=...): keep it for this tab only, and take it
+// out of the address bar so it isn't left in the history or copied along with the link.
 let KEY = '';
-try { KEY = sessionStorage.getItem('ambleKey') || ''; } catch (e) {}
+try {
+  const u = new URL(location.href), k = u.searchParams.get('key');
+  if (k) {
+    sessionStorage.setItem('ambleKey', k); sessionStorage.setItem('ambleStartKey', k);
+    u.searchParams.delete('key'); history.replaceState(null, '', u.pathname + u.search + u.hash);
+  }
+  KEY = sessionStorage.getItem('ambleKey') || '';
+} catch (e) {}
 // ?only=<pack>/<id> shows just that mission's editor (see openOnly)
 const ONLY = (() => {
   const v = new URLSearchParams(location.search).get('only') || '', i = v.indexOf('/');
@@ -2756,16 +2764,16 @@ try { if (localStorage.getItem('ambleFull')) setFull(true); } catch (e) {}
 
 // ---------- Lock: an optional temporary key, forgotten when the manager stops ----------
 let lockWaiters = null;
-function lockUi(locked) {
-  $('#lockBtn').textContent = locked ? 'Locked' : 'Lock';
-  $('#lockBtn').setAttribute('aria-pressed', String(locked));
+function lockUi(custom) {    // custom: an easier key for other devices is on
+  $('#lockBtn').textContent = custom ? 'Easy key on' : 'Key for other devices';
+  $('#lockBtn').setAttribute('aria-pressed', String(custom));
 }
 function lockDlg(mode) {      // mode: 'set' (lock it), 'enter' (this device needs the key), 'locked' (change or remove)
   lockDlg.mode = mode;
   const t = {
-    set: ['Lock with a temporary key', 'Anyone opening the manager on another device will need this key. It only lasts until the manager stops, so pick anything; you won\'t need it next time.', 'Lock it'],
-    enter: ['This manager is locked', 'Someone set a temporary key on it. Enter it to keep going (this tab remembers it until you close it).', 'Unlock'],
-    locked: ['Locked', 'Other devices need the key. You can change it, or remove it to open the manager up again.', 'Change key'],
+    set: ['A key for your other devices', 'Every device needs this run\'s key, and it\'s in the link you started with. To open the manager on a phone or laptop, set a shorter key here and type it there. It only lasts until the manager stops.', 'Use this key'],
+    enter: ['This manager needs its key', 'Open it with the link printed where you started it (it has the key in it), or enter the key here. This tab remembers it until you close it.', 'Open'],
+    locked: ['Easier key is on', 'Other devices can use this key until the manager stops. You can change it, or go back to the start-up key.', 'Change key'],
   }[mode];
   $('#lockTitle').textContent = t[0]; $('#lockSub').textContent = t[1]; $('#lockGo').textContent = t[2];
   $('#lockLbl').textContent = mode === 'locked' ? 'New key' : 'Key';
@@ -2795,19 +2803,23 @@ $('#lockForm').onsubmit = async e => {
   }
   const r = await api('api/lock', { method: 'POST', body: JSON.stringify({ key }) });
   if (!r.ok) return err(r.body.error || "Couldn't lock it.");
+  try { if (!sessionStorage.getItem('ambleStartKey') && KEY) sessionStorage.setItem('ambleStartKey', KEY); } catch (e) {}
   rememberKey(key); lockUi(true); $('#lockDlg').close();
-  toast('Locked. Other devices need the key until the manager stops.');
+  toast('Done. Other devices can use this key until the manager stops.');
 };
-$('#lockOff').onclick = async () => {
+$('#lockOff').onclick = async () => {     // back to the start-up key (there's always a key)
   const r = await api('api/unlock', { method: 'POST', body: '{}' });
   if (!r.ok) return;
-  rememberKey(''); lockUi(false); $('#lockDlg').close(); toast('Unlocked: no key needed.');
+  let start = '';
+  try { start = sessionStorage.getItem('ambleStartKey') || ''; } catch (e) {}
+  rememberKey(start); lockUi(false); $('#lockDlg').close();
+  toast(start ? 'Back to the start-up key.' : 'Back to the start-up key. Open the manager with its start-up link.');
 };
 $('#lockBtn').onclick = () => lockDlg($('#lockBtn').getAttribute('aria-pressed') === 'true' ? 'locked' : 'set');
 fetch('api/lock', { headers: KEY ? { 'X-Amble-Key': KEY } : {} }).then(x => x.json()).then(r => {
   if (r.managed) { $('#lockBtn').hidden = true; $('#stopBtn').hidden = true; return; }   // run by a server: it handles both
-  lockUi(!!r.locked);
-  if (!r.locked && KEY) rememberKey('');     // the manager restarted since; the old key is gone
+  lockUi(!!r.custom);
+  if (!r.ok && KEY) rememberKey('');         // the manager restarted since; the old key is gone (it asks for the new one)
 }).catch(() => {});
 
 // ---------- Stop: shut the manager down from the page ----------
