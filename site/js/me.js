@@ -330,7 +330,7 @@
     var lostForm = el("form", { class: "me-lost-form" },
       el("label", { for: "me-lost", text: "Lost your link? Type your recovery email" }),
       el("div", { class: "backup-row" }, lostIn, lostBtn),
-      el("p", { class: "hint", text: "If a profile has that recovery email, we'll email it a new link. The old link stops working." }));
+      el("p", { class: "hint", text: "If a profile has that recovery email, we'll email it a new link. Once you open it, the old link stops working." }));
     lostForm.addEventListener("submit", function (e) {
       e.preventDefault();
       busy(lostBtn, "Sending…");
