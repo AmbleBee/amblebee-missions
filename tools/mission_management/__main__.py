@@ -620,10 +620,16 @@ def scan():
         notes.append({"file": "", "msg": f"This repo's checker (tools/amble_checks.py) is version {ck['repo']}; the manager's is "
                                          f"{ck['manager']}. Update it from the setup notice so GitHub checks the same rules."})
     extra = []
-    pins = ROOT / "tools" / "check_pins.py"          # a repo's own extra checks, when it has them (AmbleBee's map pins)
+    # a repo's own extra checks, when it has them (AmbleBee's map pins). The copy next to this manager runs when there is
+    # one: run by AmbleBee Intake that's its approved copy of tools/, so code nobody approved never runs there
+    pins = HERE.parent / "check_pins.py"
+    if not pins.exists():
+        pins = ROOT / "tools" / "check_pins.py"
     if pins.exists() and (ROOT / "data" / "cities.json").exists():
         try:
-            out = subprocess.run([sys.executable, str(pins)], cwd=ROOT, capture_output=True, text=True, timeout=180)
+            out = subprocess.run([sys.executable, str(pins), str(ROOT / "missions"), "--cities", str(ROOT / "data" / "cities.json"),
+                                  "--checked", str(ROOT / "tools" / "border_spots.txt")],
+                                 cwd=ROOT, capture_output=True, text=True, timeout=180)
             lines = [l for l in (out.stdout + out.stderr).splitlines() if l.strip()]
             extra.append({"label": "Map pins (tools/check_pins.py)", "ok": out.returncode == 0, "lines": lines[-60:]})
         except (OSError, subprocess.SubprocessError) as e:

@@ -27,12 +27,14 @@ CATALOG_FIELDS = {"name": 60, "source_id": 30, "author": 60}
 
 
 def manager_inside(root):
-    """True when this manager is part of the repo itself (AmbleBee's own repo), so the repo already has the checker."""
+    """True when this manager is part of the repo itself (AmbleBee's own repo), so the repo already has the checker.
+    Also true when it's a copy of that repo's own tools run from elsewhere: AmbleBee Intake runs an approved copy
+    of tools/, outside its clone, so new tools code never runs before it's approved (security-fixes-PLAN.md, Phase 3)."""
     try:
         HERE.relative_to(Path(root).resolve())
         return True
     except ValueError:
-        return False
+        return (Path(root) / "tools" / "mission_management" / "amble_checks.py").is_file()
 
 
 def _workflow_runs_checker(root):
