@@ -127,10 +127,18 @@
     btn.setAttribute("aria-expanded", "false");
     if (refocus) btn.focus();
   }
+  // From the keyboard: Enter or Space on the button opens it and moves to the first item. Handled on keydown (whose
+  // default is stopped, so no click follows), because browsers don't agree on how to tell a keyboard click apart.
+  btn.addEventListener("keydown", function (e) {
+    if ((e.key === "Enter" || e.key === " ") && !(e.metaKey || e.ctrlKey || e.shiftKey || e.altKey)) {
+      e.preventDefault();
+      if (panel.hidden) show(true); else hide(true);
+    }
+  });
   btn.addEventListener("click", function (e) {
     if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;   // "open in a new tab" still works
     e.preventDefault();
-    if (panel.hidden) show(e.detail === 0); else hide(false);                   // detail 0: opened from the keyboard
+    if (panel.hidden) show(false); else hide(false);
   });
   document.addEventListener("keydown", function (e) {
     if (panel.hidden) return;

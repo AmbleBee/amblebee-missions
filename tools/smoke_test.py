@@ -2074,6 +2074,12 @@ def t_profile_menu(site, catalog):
     assert page.evaluate("document.activeElement.textContent") == "My plans"
     page.keyboard.press("Escape")
     assert page.is_hidden("#profile-menu") and page.evaluate("document.activeElement.classList.contains('nav-profile')")
+    page.keyboard.press(" ")
+    assert page.is_visible("#profile-menu") and page.evaluate("document.activeElement.textContent") == "My stamps and missions", "Space opens it too"
+    page.keyboard.press("Escape")
+    btn.click()
+    assert page.is_visible("#profile-menu"), "a click after using the keyboard still opens it"
+    page.keyboard.press("Escape")
     btn.click()
     page.mouse.click(5, 600)
     assert page.is_hidden("#profile-menu"), "a tap outside closes it"
