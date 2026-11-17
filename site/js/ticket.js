@@ -87,6 +87,8 @@ function ticket(m, { titleId, heading = "h3" } = {}) {
       caution, place, extras,
       h("p", { class: "source" }, svg(packIcon(pack), 18),
         h("span", {}, "Mission ", h("b", {}, String(m.number || "?")), " in ", h("b", {}, pack.name))),
+      // "Add to calendar" on its own row, so it's never under a finger meant for Not for us (site/js/plans.js)
+      window.AmblePlans && m.full_id ? window.AmblePlans.button(m) : null,
       // the bottom row: when it was checked and how to report it, with the mission's own page on the right
       // (the page has everything, including the "About this place" background the popup leaves out)
       h("div", { class: "ticket-foot" },

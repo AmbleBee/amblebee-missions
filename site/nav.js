@@ -44,3 +44,75 @@
   window.addEventListener("amble:profile", paint);
   window.addEventListener("storage", function (e) { if (e.key === "amble.profile") paint(); });
 })();
+
+/* The profile menu (calendar-voting-PLAN.md, decision 46): the profile button opens a short menu instead of going
+   straight to Your profile. Without JavaScript it's still a plain link to /me/. Messages and Votes join it later. */
+(function () {
+  var btn = document.querySelector(".top nav > a.nav-profile");
+  var nav = btn && btn.parentElement;
+  if (!btn || !nav) return;
+  var panel = document.createElement("div");
+  panel.className = "profile-menu";
+  panel.id = "profile-menu";
+  panel.hidden = true;
+  nav.appendChild(panel);
+  btn.setAttribute("aria-controls", "profile-menu");
+  btn.setAttribute("aria-expanded", "false");
+  btn.setAttribute("aria-haspopup", "true");
+
+  function has() {
+    try { var st = JSON.parse(localStorage.getItem("amble.profile") || "null"); return !!(st && st.key && !st.gone); } catch (e) { return false; }
+  }
+  function item(href, text, here) {
+    var a = document.createElement("a");
+    a.href = href;
+    a.textContent = text;
+    if (here) a.setAttribute("aria-current", "page");
+    return a;
+  }
+  function fill() {
+    var path = location.pathname;
+    var items = [
+      item("/me/", has() ? "My profile" : "My stamps and missions", path === "/me/"),
+      item("/me/plans/", "My plans", path === "/me/plans/"),
+      item("/contact/", "Support", path === "/contact/"),
+    ];
+    if (!has()) items.push(item("/me/settings/", "Start a free profile", false));
+    panel.replaceChildren.apply(panel, items);
+    if (!has()) panel.lastChild.className = "profile-menu-start";
+  }
+  function place() {
+    var n = nav.getBoundingClientRect(), b = btn.getBoundingClientRect();
+    panel.style.right = Math.max(0, n.right - b.right) + "px";
+  }
+  function show(focusFirst) {
+    fill(); place();
+    panel.hidden = false;
+    btn.setAttribute("aria-expanded", "true");
+    if (focusFirst && panel.firstChild) panel.firstChild.focus();
+  }
+  function hide(refocus) {
+    if (panel.hidden) return;
+    panel.hidden = true;
+    btn.setAttribute("aria-expanded", "false");
+    if (refocus) btn.focus();
+  }
+  btn.addEventListener("click", function (e) {
+    if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return;   // "open in a new tab" still works
+    e.preventDefault();
+    if (panel.hidden) show(e.detail === 0); else hide(false);                   // detail 0: opened from the keyboard
+  });
+  document.addEventListener("keydown", function (e) {
+    if (panel.hidden) return;
+    if (e.key === "Escape") { hide(true); return; }
+    if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+      var links = Array.prototype.slice.call(panel.querySelectorAll("a"));
+      var i = links.indexOf(document.activeElement);
+      e.preventDefault();
+      links[(i + (e.key === "ArrowDown" ? 1 : -1) + links.length) % links.length].focus();
+    }
+  });
+  document.addEventListener("click", function (e) { if (!panel.hidden && !panel.contains(e.target) && !btn.contains(e.target)) hide(false); });
+  panel.addEventListener("focusout", function (e) { if (!panel.hidden && e.relatedTarget && !panel.contains(e.relatedTarget) && e.relatedTarget !== btn) hide(false); });
+  window.addEventListener("resize", function () { if (!panel.hidden) place(); });
+})();

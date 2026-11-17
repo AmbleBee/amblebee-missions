@@ -170,8 +170,16 @@ class FakeIntake:
                 prof["done"][c["rid"]] = {**c, "note": c.get("note", old.get("note", ""))}
         if data.get("prefs"):
             prof["prefs"] = data["prefs"]
+        plans, gone = prof.setdefault("plans", {}), prof.setdefault("plans_removed", [])
+        for pid in data.get("plans_removed") or []:
+            plans.pop(pid, None)
+            gone.append(pid)
+        for x in data.get("plans") or []:
+            if x["id"] not in gone:
+                plans[x["id"]] = x
         return reply(200, {"ok": True, "now": now, "done": list(prof["done"].values()), "removed": prof["removed"],
-                           "prefs": prof["prefs"], "email": prof["email"], "created_at": now, "vault": prof["vault"]})
+                           "prefs": prof["prefs"], "email": prof["email"], "created_at": now, "vault": prof["vault"],
+                           "plans": list(plans.values()), "plans_removed": gone})
 
 
 SCHEMA = {   # a small stand-in for AmbleBee Intake's GET /schema
@@ -787,7 +795,8 @@ def t_computer_menu_and_search_link(site, catalog):
         "Profile sits right of Know a great spot?"
     page.click('.top nav > a:has-text("Know a great spot?")')
     page.wait_for_url("**/suggest/")
-    page.get_by_role("link", name="Profile").click()
+    page.get_by_role("link", name="Profile").click()     # opens the profile menu (site/nav.js)
+    page.locator("#profile-menu a", has_text="My stamps and missions").click()
     page.wait_for_url("**/me/")
     assert page.locator('.nav-profile[aria-current="page"]').count() == 1
     page.goto(site.base + "/me/settings/")
@@ -1837,6 +1846,256 @@ def t_stamp_settings_are_kept_and_backed_up(site, catalog):
     other.goto(site.base + "/me/")
     other.wait_for_selector("text=Nothing marked done yet")
     assert other.locator(".book .stamp").count() == 0, "and the stamps with it"
+
+
+# ---- Plans: Add to calendar, My plans, "Did you go?" and Planned Ahead (site/js/plans.js; calendar-voting-PLAN.md branch 1) ----
+def plan_mission(catalog):
+    """A mission with a place, a short duration and no winter season, so every part of the dialog shows."""
+    return next(m for m in catalog["missions"] if isinstance(m.get("season"), list) and "winter" not in m["season"]
+                and (m.get("place") or {}).get("address") and m.get("duration") == "short")
+
+
+JS_DAY = "n => { const t = new Date(); t.setDate(t.getDate() + n); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }"
+
+
+def put_plan(page, m, day_offset, added_offset, pid="pppppp01"):
+    """A plan made added_offset days ago for a day day_offset days from today, written straight into this browser."""
+    page.evaluate("""([m, d, a, pid, js]) => {
+        const day = eval(js);
+        const added = new Date(); added.setDate(added.getDate() + a);
+        const st = JSON.parse(localStorage.getItem('amble.done') || '{"v":1,"done":[],"hidden":[],"settings":{},"dirty":[],"removed":[]}');
+        st.plans = (st.plans || []).concat([{ id: pid, mission: m.full_id, slug: m.id, name: m.name, day: day(d), time: null,
+                                              source: 'calendar', added_at: added.toISOString(), updated_at: added.toISOString() }]);
+        localStorage.setItem('amble.done', JSON.stringify(st));
+    }""", [m, day_offset, added_offset, pid, JS_DAY])
+
+
+def t_add_to_calendar_builds_each_calendar(site, catalog):
+    from urllib.parse import urlparse, parse_qs
+    m = plan_mission(catalog)
+    page = site.open(f"/missions/{m['id']}/")
+    btn, skip = page.locator(".ticket .plan-btn"), page.locator(".ticket .skip-btn")
+    b, k = btn.bounding_box(), skip.bounding_box()
+    assert b["x"] < k["x"] and b["y"] + b["height"] <= k["y"], "Add to calendar is on the left, on its own row above Not for us"
+    assert btn.evaluate("e => getComputedStyle(e).backgroundColor") != skip.evaluate("e => getComputedStyle(e).backgroundColor"), "and looks different"
+    btn.click()
+    page.wait_for_selector("#plan-dialog[open]")
+    saturday = page.evaluate("(() => { const t = new Date(); t.setDate(t.getDate() + ((6 - t.getDay() + 7) % 7 || 7)); return t; })()")
+    assert page.evaluate("document.activeElement.id") == "plan-day"
+    assert page.evaluate("new Date(document.querySelector('#plan-day').value + 'T12:00').getDay()") == 6, "the day starts on the next Saturday"
+    page.fill("#plan-day", "2027-07-04")                                        # all day, in season
+    g = urlparse(page.get_attribute(".plan-google", "href")); gq = parse_qs(g.query)
+    assert g.netloc == "calendar.google.com" and gq["action"] == ["TEMPLATE"] and gq["dates"] == ["20270704/20270705"], gq
+    assert gq["text"] == [f"{m['name']} · AmbleBee"] and f"/missions/{m['id']}/" in gq["details"][0] and "ctz" not in gq
+    assert m["place"]["name"] in gq["location"][0]
+    o = urlparse(page.get_attribute(".plan-outlook", "href")); oq = parse_qs(o.query)
+    assert (o.netloc, o.path) == ("outlook.live.com", "/calendar/0/action/compose") and oq["rru"] == ["addevent"]
+    assert oq["startdt"] == ["2027-07-04"] and oq["enddt"] == ["2027-07-05"] and oq["allday"] == ["true"], oq
+    assert urlparse(page.get_attribute(".plan-outlook-work", "href")).netloc == "outlook.office.com", "work and school accounts"
+    assert page.inner_text(".plan-season") == "", "in season: no warning"
+    page.fill("#plan-day", "2027-01-16")                                        # out of season: a warning, never a block
+    assert "Out of season on Saturday, January 16, 2027" in page.inner_text(".plan-season")
+    assert page.get_attribute(".plan-google", "href")
+    page.check("input[name=plan-when][value=time]")
+    page.fill("#plan-time", "10:30")
+    assert page.input_value("#plan-length") == "2", "a short mission starts at 2 hours"
+    gq = parse_qs(urlparse(page.get_attribute(".plan-google", "href")).query)
+    assert gq["dates"] == ["20270116T103000/20270116T123000"] and gq.get("ctz"), "local times, read in the person's own zone"
+    oq = parse_qs(urlparse(page.get_attribute(".plan-outlook", "href")).query)
+    assert oq["startdt"] == [page.evaluate("new Date(2027, 0, 16, 10, 30).toISOString().replace(/\\.\\d{3}Z$/, 'Z')")] and oq["allday"] == ["false"]
+    with page.expect_download() as d:
+        page.click(".plan-ics")
+    raw = Path(d.value.path()).read_bytes().decode("utf-8")
+    assert d.value.suggested_filename == f"{m['id']}.ics"
+    assert raw.startswith("BEGIN:VCALENDAR\r\n") and raw.endswith("END:VCALENDAR\r\n") and "\n" not in raw.replace("\r\n", "")
+    assert all(len(line.encode()) <= 75 for line in raw.split("\r\n")), "lines are folded at 75 bytes"
+    ics = raw.replace("\r\n ", "")
+    assert "DTSTART:20270116T103000\r\n" in ics and "DTEND:20270116T123000\r\n" in ics, "floating local times, no zone pinned"
+    assert "TRIGGER:-P1D\r\n" in ics, "reminded the day before"
+    assert "\\," in ics.split("LOCATION:")[1].split("\r\n")[0], "commas are escaped"
+    assert "Saved to My plans" in page.inner_text(".plan-done")
+    page.keyboard.press("Escape")
+    page.wait_for_selector("#plan-dialog", state="hidden")
+    assert page.evaluate("document.activeElement.classList.contains('plan-btn')"), "focus goes back to the button"
+    assert "Planned for Saturday, January 16, 2027 at 10:30 a.m." in page.inner_text(".ticket .plan-note")
+    plans = page.evaluate("AmbleDone.plans()")
+    assert len(plans) == 1 and plans[0]["day"] == "2027-01-16" and plans[0]["time"] == "10:30" and plans[0]["source"] == "calendar"
+    # the same mission and day again only updates it
+    page.click(".ticket .plan-btn")
+    assert page.input_value("#plan-day") == "2027-01-16" and page.is_checked("input[name=plan-when][value=time]"), "opens on the plan"
+    page.check("input[name=plan-when][value=all]")
+    with page.expect_download():
+        page.click(".plan-ics")
+    plans = page.evaluate("AmbleDone.plans()")
+    assert len(plans) == 1 and plans[0]["time"] is None, plans
+
+
+def t_calendar_files_follow_the_standard(site, catalog):
+    page = site.open("/missions/")
+    page.goto(site.base + f"/missions/{plan_mission(catalog)['id']}/")
+    run = lambda plan, extra="": page.evaluate("""([plan, extra]) => {
+        const m = { full_id: 'amblebee/x', id: 'x', name: 'Café, "fun"; ok' + extra, short: 'Line one\\nline two \\\\ done', duration: 'all-day', season: 'any' };
+        return AmblePlans.ics(AmblePlans.event(m, plan)).replace(/\\r\\n /g, ''); }""", [plan, extra])
+    ics = run({"day": "2027-07-04", "time": None, "remind": "morning"})
+    assert "DTSTART;VALUE=DATE:20270704\r\nDTEND;VALUE=DATE:20270705" in ics, "all day: an exclusive end date"
+    assert 'SUMMARY:Café\\, "fun"\\; ok · AmbleBee' in ics and "Line one\\nline two \\\\ done" in ics, "text is escaped"
+    assert "TRIGGER:PT8H" in ics and "LOCATION" not in ics and "GEO" not in ics, "8 a.m. on the day; Anywhere missions have no place"
+    assert "TRIGGER:-PT15H" in run({"day": "2027-07-04", "time": None}), "all day, the day before: 9 a.m. that day"
+    assert "VALARM" not in run({"day": "2027-07-04", "time": None, "remind": "none"})
+    assert "TRIGGER:-PT1H30M" in run({"day": "2027-07-04", "time": "09:30", "remind": "morning"}), "8 a.m. on the day"
+    assert "TRIGGER:-PT1H" in run({"day": "2027-07-04", "time": "07:00", "remind": "morning"}), "an hour ahead of an early start"
+    assert "DTEND:20270704T150000" in run({"day": "2027-07-04", "time": "07:00", "hours": 8}), "all-day missions with a time: 8 hours"
+    long = page.evaluate("""() => { const m = { full_id: 'amblebee/x', id: 'x', name: '🐝'.repeat(60), short: '', duration: 'short' };
+        return AmblePlans.ics(AmblePlans.event(m, { day: '2027-07-04' })); }""")
+    folded = [line for line in long.split("\r\n")]
+    assert all(len(line.encode()) <= 75 for line in folded) and "�" not in long.replace("\r\n ", ""), "folding never splits an emoji"
+
+
+def t_my_plans_and_coming_up(site, catalog):
+    m = plan_mission(catalog)
+    page = site.open("/me/plans/")
+    page.wait_for_selector(".plan-empty")
+    assert "Add to calendar" in page.inner_text(".plan-empty")
+    page.goto(site.base + "/me/")
+    assert not page.is_visible(".coming-up"), "no plans, no Coming up"
+    page.goto(site.base + f"/missions/{m['id']}/")
+    page.click(".ticket .plan-btn")
+    page.fill("#plan-day", "2027-07-04")
+    with page.expect_download():
+        page.click(".plan-ics")
+    page.keyboard.press("Escape")
+    put_plan(page, catalog["missions"][3], 400, -1, "pppppp02")
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".coming-up li")
+    assert page.locator(".coming-up li").count() == 2 and m["name"] in page.inner_text(".coming-up li >> nth=0"), "soonest first"
+    page.click(".coming-up a:has-text('See all my plans')")
+    page.wait_for_url("**/me/plans/")
+    page.wait_for_selector(".plan-item")
+    first = page.inner_text(".plan-item >> nth=0")
+    assert "Sunday, July 4, 2027" in first and m["name"] in first and "From your calendar" in first, first
+    assert page.locator('.nav-profile[aria-current="page"]').count() == 1
+    page.click(".plan-item >> nth=0 >> .plan-again")
+    page.wait_for_selector("#plan-dialog[open]")
+    assert page.input_value("#plan-day") == "2027-07-04", "Add to calendar again opens on that day"
+    page.keyboard.press("Escape")
+    page.click(".plan-item >> nth=0 >> .plan-remove")
+    page.wait_for_function("() => document.querySelectorAll('.plan-item').length === 1")
+    assert page.evaluate("JSON.parse(localStorage.getItem('amble.done')).plans_removed").count("pppppp02") == 0
+    assert page.evaluate("AmbleDone.plans().length") == 1
+
+
+def t_did_you_go_marks_it_done_and_planned_ahead(site, catalog):
+    m = plan_mission(catalog)
+    page = site.open(f"/missions/{m['id']}/")
+    put_plan(page, m, -3, -6)                                                # planned 3 days ahead, the day was 3 days ago
+    page.reload()
+    page.wait_for_selector(".done-box .plan-ask-box")
+    assert "Did you go?" in page.inner_text(".plan-ask-box") and "You planned this for" in page.inner_text(".plan-ask-box")
+    page.click(".plan-ask-box .plan-yes")
+    page.wait_for_selector(".done-entry")
+    c = page.evaluate("AmbleDone.list()[0]")
+    want = page.evaluate(f"({JS_DAY})(-3)")
+    assert c["via"] == "plan" and c["planned_at"] and page.evaluate("d => { const t = new Date(d); return t.getFullYear() + '-' + String(t.getMonth() + 1).padStart(2, '0') + '-' + String(t.getDate()).padStart(2, '0'); }", c["done_at"]) == want, "marked on the plan's day"
+    assert page.evaluate("AmbleDone.plans().length") == 0 and not page.is_visible(".plan-ask-box"), "the plan is cleared"
+    assert any(s["id"] == "planned-ahead" for s in page.evaluate("AmbleStamps.earned()")), "Planned Ahead"
+    assert "Planned Ahead" in page.inner_text(".done-box"), "and it lands right there"
+
+    other = catalog["missions"][5]                                           # We didn't go: nothing marked
+    page.goto(site.base + f"/missions/{other['id']}/")
+    put_plan(page, other, -2, -5, "pppppp03")
+    page.reload()
+    page.click(".plan-ask-box .plan-no")
+    page.wait_for_selector(".plan-ask-box", state="detached")
+    assert page.evaluate("AmbleDone.forMission(%s).length" % json.dumps(other["full_id"])) == 0
+    assert page.evaluate("JSON.parse(localStorage.getItem('amble.done')).plans_removed").count("pppppp03") == 1, "the removal reaches the profile"
+
+
+def t_planned_ahead_needs_a_days_notice(site, catalog):
+    m = plan_mission(catalog)
+    page = site.open(f"/missions/{m['id']}/")
+    put_plan(page, m, 0, 0)                                                   # planned this morning, for today
+    page.reload()
+    assert not page.is_visible(".plan-ask-box"), "today's plan isn't asked about yet"
+    page.click(".done-mark")
+    page.click(".profile-later")
+    c = page.evaluate("AmbleDone.list()[0]")
+    assert c["via"] == "plan", "marking it done uses the plan"
+    assert not any(s["id"] == "planned-ahead" for s in page.evaluate("AmbleStamps.earned()")), "but a same-day plan isn't planning ahead"
+    assert page.evaluate("AmbleDone.plans().length") == 0
+    put_plan(page, m, 5, 0, "pppppp04")                                       # a later plan for the same mission stays
+    put_plan(page, catalog["missions"][2], -70, -80, "pppppp05")              # 70 days past, never answered: cleared quietly
+    assert [p["id"] for p in page.evaluate("AmbleDone.plans()")] == ["pppppp04"]
+
+
+def t_plans_sync_with_the_profile(site, catalog):
+    m = plan_mission(catalog)
+    page = site.open(f"/missions/{m['id']}/")
+    put_plan(page, catalog["missions"][4], 30, -1, "pppppp06")               # made before the profile: it moves in
+    page.reload()
+    page.click(".done-mark")
+    page.click(".profile-start")
+    page.wait_for_selector("#profile-link")
+    key = page.input_value("#profile-link").split("#", 1)[1]
+    page.click(".profile-dlg .btn.primary")
+    page.click(".ticket .plan-btn")
+    page.fill("#plan-day", "2027-07-04")
+    with page.expect_download():
+        page.click(".plan-ics")
+    page.keyboard.press("Escape")
+    page.wait_for_function("() => { const d = JSON.parse(localStorage.getItem('amble.done')); return !d.plans_dirty.length && !d.dirty.length; }")
+    plans = site.intake.profiles[key]["plans"]
+    assert sorted(p["day"] for p in plans.values()) == sorted([page.evaluate(f"({JS_DAY})(30)"), "2027-07-04"]), plans
+    other = site.open("/me/#" + key)                                         # another device
+    other.wait_for_selector(".profile-bar.is-saved")
+    other.goto(site.base + "/me/plans/")
+    other.wait_for_selector(".plan-item")
+    assert other.locator(".plan-item").count() == 2 and "Sunday, July 4, 2027" in other.inner_text(".plans-app")
+    assert "Saved to your profile" in other.inner_text(".plans-app")
+    other.click(".plan-item:has-text('July 4, 2027') .plan-remove")
+    other.wait_for_function("() => !JSON.parse(localStorage.getItem('amble.done')).plans_removed.length")
+    assert len(site.intake.profiles[key]["plans"]) == 1, "the removal reached the profile"
+    page.evaluate("(() => { const s = JSON.parse(localStorage.getItem('amble.profile')); s.last = 0; localStorage.setItem('amble.profile', JSON.stringify(s)); })()")
+    page.goto(site.base + "/me/plans/")                                      # (it checks for other devices' changes every 30 seconds)
+    page.wait_for_function("() => document.querySelectorAll('.plan-item').length === 1")
+
+
+def t_profile_menu(site, catalog):
+    page = site.open("/about/")
+    btn = page.locator(".top nav > a.nav-profile")
+    assert btn.get_attribute("aria-expanded") == "false"
+    btn.focus()
+    page.keyboard.press("Enter")
+    page.wait_for_selector("#profile-menu:not([hidden])")
+    assert btn.get_attribute("aria-expanded") == "true"
+    labels = page.locator("#profile-menu a").all_inner_texts()
+    assert labels == ["My stamps and missions", "My plans", "Support", "Start a free profile"], labels
+    assert page.evaluate("document.activeElement.textContent") == "My stamps and missions", "the keyboard lands on the first item"
+    page.keyboard.press("ArrowDown")
+    assert page.evaluate("document.activeElement.textContent") == "My plans"
+    page.keyboard.press("Escape")
+    assert page.is_hidden("#profile-menu") and page.evaluate("document.activeElement.classList.contains('nav-profile')")
+    btn.click()
+    page.mouse.click(5, 600)
+    assert page.is_hidden("#profile-menu"), "a tap outside closes it"
+    phone = site.open("/contact/", PHONE)
+    phone.click(".top nav > a.nav-profile")
+    phone.locator("#profile-menu a", has_text="My plans").click()
+    phone.wait_for_url("**/me/plans/")
+    assert phone.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
+
+
+def t_add_to_calendar_in_the_popup(site, catalog):
+    m = plan_mission(catalog)
+    page = site.home()
+    page.goto(site.base + "/#mission=" + m["full_id"].replace("/", "%2F") + "&from=page")
+    page.wait_for_selector("#reveal-title")
+    page.click(".ticket .plan-btn")
+    page.wait_for_selector("#plan-dialog[open]")
+    assert m["name"] in page.inner_text("#plan-dialog .gift-mission")
+    page.keyboard.press("Escape")
+    phone = site.open(f"/missions/{m['id']}/", PHONE)
+    b = phone.locator(".ticket .plan-btn").bounding_box()
+    assert b["width"] > 300, "a full-width row on phones"
 
 
 def main():

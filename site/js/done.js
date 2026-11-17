@@ -15,7 +15,15 @@
 
    For a profile (site/js/profile.js), the list also remembers what changed since the profile last had it: each
    completion has updated_at, "dirty" lists the ones to send, "removed" the ones taken off, and prefs_at /
-   prefs_dirty do the same for Not for us and the settings. Without a profile these just sit there. */
+   prefs_dirty do the same for Not for us and the settings. Without a profile these just sit there.
+
+   Plans (claude/calendar-voting-PLAN.md, branch 1) live here too, so backups, the profile sync and moving into a new
+   profile carry them like everything else:
+     { id, mission, slug, name, day: "2027-07-04", time: "09:30" | null, source: "calendar" | "vote",
+       vote_id, vote_name, added_at, updated_at }
+   plans_dirty / plans_removed track what the profile hasn't heard yet. Marking a mission done clears its plans for
+   that day or earlier, and the completion remembers it was planned (via: "plan", planned_at) for the Planned Ahead
+   stamp. Plans more than 60 days past without an answer are cleared quietly. */
 (function () {
   "use strict";
 
@@ -26,10 +34,16 @@
   var ID_RE = /^[a-z0-9-]+\/[a-z0-9-]+$/;
   var STATE_RE = /^[a-z]+(-[a-z]+)*$/;
   var ANNIV_RE = /^(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+  var DAY_RE = /^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12]\d|3[01])$/;
+  var TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
+  var ID6 = /^[a-z0-9]{6,16}$/;
+  var PLANS_MAX = 500;
+  var PLAN_STALE_DAYS = 60;   // a plan this far past its day, never answered, is cleared quietly
   var mem = null;         // used when the browser won't keep localStorage (private mode)
 
   // ---- storage --------------------------------------------------------------------------------------
-  function empty() { return { v: 1, done: [], hidden: [], settings: {}, dirty: [], removed: [], prefs_at: null, prefs_dirty: false }; }
+  function empty() { return { v: 1, done: [], hidden: [], settings: {}, dirty: [], removed: [], prefs_at: null, prefs_dirty: false,
+                             plans: [], plans_dirty: [], plans_removed: [] }; }
   function stamp() { return new Date().toISOString(); }
   function dirty(d, rid) { if (d.dirty.indexOf(rid) < 0) d.dirty.push(rid); }
   function prefsChanged(d) { d.prefs_at = stamp(); d.prefs_dirty = true; }
@@ -75,8 +89,54 @@
       as_date: c.as_date === true,
       rating: c.rating === "up" || c.rating === "down" ? c.rating : null,
       note: str(c.note, NOTE_MAX),
+      via: c.via === "plan" || c.via === "vote" ? c.via : null,
+      planned_at: (c.via === "plan" || c.via === "vote") && !isNaN(new Date(c.planned_at).getTime()) ? new Date(c.planned_at).toISOString() : null,
       updated_at: !isNaN(new Date(c.updated_at).getTime()) ? new Date(c.updated_at).toISOString() : t.toISOString(),
     };
+  }
+  function realDay(v) {
+    if (typeof v !== "string" || !DAY_RE.test(v)) return false;
+    var t = new Date(+v.slice(0, 4), +v.slice(5, 7) - 1, +v.slice(8, 10));
+    return t.getMonth() === +v.slice(5, 7) - 1;   // not 2027-02-30
+  }
+  function cleanPlan(x) {
+    if (!x || typeof x !== "object" || typeof x.mission !== "string" || !ID_RE.test(x.mission) || !realDay(x.day)) return null;
+    var added = new Date(x.added_at);
+    if (isNaN(added.getTime())) return null;
+    var str = function (v, max) { return typeof v === "string" ? v.slice(0, max) : ""; };
+    var vote = x.source === "vote";
+    return {
+      id: typeof x.id === "string" && ID6.test(x.id) ? x.id : newId(),
+      mission: x.mission, slug: str(x.slug, 80) || x.mission.split("/")[1], name: str(x.name, 120) || x.mission.split("/")[1],
+      day: x.day, time: typeof x.time === "string" && TIME_RE.test(x.time) ? x.time : null,
+      source: vote ? "vote" : "calendar",
+      vote_id: vote && typeof x.vote_id === "string" && /^[A-Za-z0-9_-]{8,24}$/.test(x.vote_id) ? x.vote_id : null,
+      vote_name: vote ? (str(x.vote_name, 60).trim() || null) : null,
+      added_at: added.toISOString(),
+      updated_at: !isNaN(new Date(x.updated_at).getTime()) ? new Date(x.updated_at).toISOString() : added.toISOString(),
+    };
+  }
+  function today() { return ymd(new Date()); }
+  function daysAgo(n) { var t = new Date(); t.setDate(t.getDate() - n); return ymd(t); }
+  var soonest = function (a, b) { var x = a.day + (a.time || ""), y = b.day + (b.time || ""); return x < y ? -1 : x > y ? 1 : 0; };
+  function dropPlan(d, id) {
+    var n = d.plans.length;
+    d.plans = d.plans.filter(function (x) { return x.id !== id; });
+    d.plans_dirty = d.plans_dirty.filter(function (x) { return x !== id; });
+    if (d.plans.length !== n && d.plans_removed.indexOf(id) < 0) d.plans_removed.push(id);
+    return d.plans.length !== n;
+  }
+  // Clears plans for a mission on or before a day (it's been done); returns the one with the most notice, for via
+  function usePlans(d, mission, day) {
+    var hit = d.plans.filter(function (x) { return x.mission === mission && x.day <= day; });
+    hit.forEach(function (x) { dropPlan(d, x.id); });
+    hit.sort(function (a, b) { return a.added_at < b.added_at ? -1 : 1; });
+    return hit[0] || null;
+  }
+  function stalePlans(d) {
+    var cut = daysAgo(PLAN_STALE_DAYS), gone = false;
+    d.plans.slice().forEach(function (x) { if (x.day < cut) gone = dropPlan(d, x.id) || gone; });
+    return gone;
   }
   function clean(d) {
     if (!d || d.v !== 1 || !Array.isArray(d.done)) return null;
@@ -96,6 +156,16 @@
     out.removed = (Array.isArray(d.removed) ? d.removed : []).filter(ridOk).slice(-2000);
     out.prefs_at = d.prefs_at && !isNaN(new Date(d.prefs_at).getTime()) ? new Date(d.prefs_at).toISOString() : null;
     out.prefs_dirty = d.prefs_dirty === true;
+    var pseen = {};
+    (Array.isArray(d.plans) ? d.plans : []).forEach(function (x) {
+      var y = cleanPlan(x);
+      if (y && !pseen[y.id]) { pseen[y.id] = 1; out.plans.push(y); }
+    });
+    out.plans = out.plans.slice(-PLANS_MAX);
+    var pids = {};
+    out.plans.forEach(function (x) { pids[x.id] = 1; });
+    out.plans_dirty = (Array.isArray(d.plans_dirty) ? d.plans_dirty : []).filter(function (r) { return ridOk(r) && pids[r]; });
+    out.plans_removed = (Array.isArray(d.plans_removed) ? d.plans_removed : []).filter(ridOk).slice(-2000);
     return out;
   }
   function newId() {
@@ -110,6 +180,7 @@
     list: function () { return read().done.sort(newest); },
     forMission: function (id) { return read().done.filter(function (c) { return c.mission === id; }).sort(newest); },
     // info: { mission, slug, name, pack, mode, setting, time_of_day, themes }
+    // Any plans for this mission on or before the day are cleared, and the completion remembers it was planned.
     add: function (info, when) {
       var d = read();
       var c = cleanOne({
@@ -118,6 +189,8 @@
         as_date: info.mode === "date",
       });
       if (!c) return null;
+      var used = usePlans(d, c.mission, ymd(new Date(c.done_at)));
+      if (used) { c.via = used.source === "vote" ? "vote" : "plan"; c.planned_at = used.added_at; }
       c.updated_at = stamp();
       d.done.push(c);
       dirty(d, c.rid);
@@ -152,6 +225,38 @@
       }
     },
     hidden: function () { return new Set(read().hidden); },
+
+    // ---- plans (site/js/plans.js) ----
+    plans: function () {
+      var d = read();
+      if (stalePlans(d)) { write(d); changed(); }
+      return d.plans.slice().sort(soonest);
+    },
+    plansFor: function (id) { return api.plans().filter(function (x) { return x.mission === id; }); },
+    // past: their day is before today, so it's time to ask "Did you go?"
+    pastPlans: function () { var t = today(); return api.plans().filter(function (x) { return x.day < t; }); },
+    // info: { mission, slug, name }; one plan per mission and day (planning it again for that day updates its time)
+    addPlan: function (info, day, time, extra) {
+      var d = read();
+      var same = d.plans.find(function (x) { return x.mission === info.mission && x.day === day; });
+      var now = stamp();
+      var x = cleanPlan(Object.assign({ id: same ? same.id : newId(), mission: info.mission, slug: info.slug, name: info.name, day: day,
+                                        time: time || null, source: "calendar", added_at: same ? same.added_at : now }, extra || {}));
+      if (!x) return null;
+      x.updated_at = now;
+      d.plans = d.plans.filter(function (y) { return y.id !== x.id; });
+      d.plans.push(x);
+      if (d.plans_dirty.indexOf(x.id) < 0) d.plans_dirty.push(x.id);
+      d.plans = d.plans.slice(-PLANS_MAX);
+      write(d); changed();
+      return x;
+    },
+    // Remove, and "We didn't go": the plan just goes, nothing marked
+    removePlan: function (id) {
+      var d = read();
+      if (dropPlan(d, id)) { write(d); changed(); return true; }
+      return false;
+    },
     settings: function () { return read().settings; },
     // patch: { home_state?, anniversary? }; null or "" clears one
     setSettings: function (patch) {
@@ -212,6 +317,15 @@
       });
       data.hidden.forEach(function (id) { if (d.hidden.indexOf(id) < 0) d.hidden.push(id); });
       Object.keys(data.settings).forEach(function (k) { if (!d.settings[k]) d.settings[k] = data.settings[k]; });   // what's set here wins
+      var planned = {};
+      d.plans.forEach(function (x) { planned[x.mission + "|" + x.day] = 1; planned["#" + x.id] = 1; });
+      data.plans.forEach(function (x) {
+        if (planned[x.mission + "|" + x.day] || planned["#" + x.id]) return;
+        planned[x.mission + "|" + x.day] = 1;
+        x.updated_at = stamp();
+        d.plans.push(x); d.plans_dirty.push(x.id);
+      });
+      d.plans = d.plans.slice(-PLANS_MAX);
       prefsChanged(d);
       d.done = d.done.slice(-KEEP_MAX);
       write(d); changed();
@@ -225,7 +339,10 @@
       var d = read();
       var want = {};
       (all ? d.done.map(function (c) { return c.rid; }) : d.dirty).forEach(function (r) { want[r] = 1; });
+      var wantP = {};
+      (all ? d.plans.map(function (x) { return x.id; }) : d.plans_dirty).forEach(function (r) { wantP[r] = 1; });
       return { done: d.done.filter(function (c) { return want[c.rid]; }), removed: all ? [] : d.removed.slice(),
+               plans: d.plans.filter(function (x) { return wantP[x.id]; }), plans_removed: all ? [] : d.plans_removed.slice(),
                // settings go only if this device ever set any: a fresh device opening a profile link must not wipe the profile's
                prefs: d.prefs_dirty || (all && d.prefs_at) ? { hidden: d.hidden.slice(), settings: d.settings, at: d.prefs_at || stamp() } : null };
     },
@@ -242,12 +359,21 @@
       p.removed.forEach(function (r) { gone[r] = 1; });
       d.removed = d.removed.filter(function (r) { return !gone[r]; });
       if (p.prefs && d.prefs_at === p.prefs.at) d.prefs_dirty = false;
+      var pat = {};
+      (p.plans || []).forEach(function (x) { pat[x.id] = x.updated_at; });
+      d.plans_dirty = d.plans_dirty.filter(function (r) {
+        var x = d.plans.find(function (y) { return y.id === r; });
+        return !(r in pat) || (x && x.updated_at !== pat[r]);
+      });
+      var pgone = {};
+      (p.plans_removed || []).forEach(function (r) { pgone[r] = 1; });
+      d.plans_removed = d.plans_removed.filter(function (r) { return !pgone[r]; });
       write(d);
     },
     // what the profile has that this device doesn't: newer edits win, removals are removals
     merge: function (res) {
       var d = read();
-      var before = JSON.stringify([d.done, d.hidden, d.settings]);
+      var before = JSON.stringify([d.done, d.hidden, d.settings, d.plans]);
       var gone = {};
       (res.removed || []).forEach(function (r) { gone[r] = 1; });
       d.done = d.done.filter(function (c) { return !gone[c.rid]; });
@@ -267,8 +393,25 @@
         d.prefs_at = pat.toISOString();
       }
       d.done = d.done.slice(-KEEP_MAX);
+      // plans: the same rules (an older server sends none, which changes nothing)
+      var pgone = {};
+      (res.plans_removed || []).forEach(function (r) { pgone[r] = 1; });
+      d.plans = d.plans.filter(function (x) { return !pgone[x.id]; });
+      d.plans_dirty = d.plans_dirty.filter(function (r) { return !pgone[r]; });
+      (res.plans || []).forEach(function (raw) {
+        var x = cleanPlan(raw);
+        if (!x || pgone[x.id]) return;
+        var i = d.plans.findIndex(function (y) { return y.id === x.id; });
+        if (i < 0) d.plans.push(x);
+        else if (d.plans_dirty.indexOf(x.id) < 0 || x.updated_at >= d.plans[i].updated_at) d.plans[i] = x;
+      });
+      // a plan for a mission already done on or after its day clears itself
+      d.plans.slice().forEach(function (x) {
+        if (d.done.some(function (c) { return c.mission === x.mission && ymd(new Date(c.done_at)) >= x.day; })) dropPlan(d, x.id);
+      });
+      d.plans = d.plans.slice(-PLANS_MAX);
       write(d);
-      if (JSON.stringify([d.done, d.hidden, d.settings]) !== before) changed();
+      if (JSON.stringify([d.done, d.hidden, d.settings, d.plans]) !== before) changed();
     },
   };
   window.AmbleDone = api;
@@ -414,11 +557,33 @@
       return wrap;
     }
 
+    // "Did you go?" (calendar-voting-PLAN.md, decision 35): a plan for this mission whose day has passed. Mark it done
+    // marks it on that day (changeable after); We didn't go just clears the plan. Asked here only, never as a pop-up.
+    function askPlan() {
+      var p = api.plansFor(info.mission).filter(function (x) { return x.day < today(); })[0];
+      if (!p) return null;
+      var when = new Date(+p.day.slice(0, 4), +p.day.slice(5, 7) - 1, +p.day.slice(8, 10), p.time ? +p.time.slice(0, 2) : 12, p.time ? +p.time.slice(3) : 0);
+      return el("div", { class: "plan-ask-box", role: "group", "aria-label": "Did you go?" },
+        el("p", {}, "You planned this for " + (window.AmblePlans ? window.AmblePlans.prettyDay(p.day) : pretty(when.toISOString())) + ". ", el("b", { text: "Did you go?" })),
+        el("div", { class: "plan-row-acts" },
+          el("button", { type: "button", class: "btn small primary plan-yes", onclick: function () {
+            var c = api.add(info, when); if (!c) return;
+            open = {}; open[c.rid] = 1;
+            var got = stampCheck(); draw("new");
+            say("Marked done for " + pretty(c.done_at) + "." + got + " How was it?");
+          } }, icon("check", 18), "Mark it done"),
+          el("button", { type: "button", class: "btn small plan-no", onclick: function () {
+            api.removePlan(p.id); draw("mark"); say("Cleared. Maybe next time.");
+          } }, "We didn't go")));
+    }
+
     function draw(focus) {
       if (root.contains(document.activeElement) && document.activeElement.tagName === "TEXTAREA" && !focus) return;   // don't redraw under someone typing
       var mine = api.forMission(info.mission);
       root.replaceChildren();
       root.classList.toggle("is-done", mine.length > 0);
+      var ask = askPlan();
+      if (ask) root.append(ask);
       var mark = el("button", { type: "button", class: "btn primary done-mark", onclick: function () {
         var c = api.add(info); if (!c) return;
         open = {}; open[c.rid] = 1;   // the new one opens, ready for how it went

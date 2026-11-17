@@ -65,6 +65,16 @@
     - Flip through the photos and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own
     - Every finished mission becomes a memory, with its photos and a note
 
+- title: Votes with Friends
+  status: next
+  tag: website
+  summary: Can't decide? Pick a few missions, send your friends a link, and everyone votes. The winner lands on a podium, ready to add to your calendar. Plus the odd AmbleBee poll, so you can help pick what we build next.
+ 
+- title: Messages and a Safer Profile
+  status: next
+  tag: website
+  summary: Write to us while signed in and see our replies in one place, with a little dot when we've answered. An optional PIN for your profile, too.
+ 
 - title: Seasonal Themes
   status: next
   tag: website
@@ -87,6 +97,17 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Add to Calendar and My Plans
+  status: done
+  date: 2026-11-17
+  tag: website
+  summary: Found a mission you like? Tap **Add to calendar** at the bottom of it, pick a day, and send it to Google Calendar, Outlook, or Apple and other calendars. After the day, we'll ask if you went.
+  items:
+    - "Pick a day, all day or a start time, and a reminder. If the mission is out of season that day, it gently says so"
+    - "[My plans](/me/plans/) lists what's coming up. Once a day has passed, **Did you go?** lets you mark it done in one tap, or just clear it"
+    - "Tap the profile button at the top for a new little menu: your profile, My plans and Support"
+    - "With a free profile, your plans follow you to every device. And there's a new stamp to find"
+    - "Nothing is sent anywhere until you pick a calendar. The [privacy page](/privacy/#calendar) has the details"
 - title: Mark It Done, Collect Stamps
   status: done
   date: 2026-11-16

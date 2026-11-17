@@ -28,6 +28,7 @@
     { id: "master-of-the-seasons", name: "Master of the Seasons", page: "seasons" },
     { id: "our-anniversary", name: "Our Anniversary", page: "together" },
     { id: "old-favorites", name: "Old Favorites", page: "together" },
+    { id: "planned-ahead", name: "Planned Ahead", page: "together" },
   ];
   // count milestones: surprises, never shown ahead. First Steps is the first one.
   var MILESTONES = [10, 25, 50, 100, 200, 500, 1000];
@@ -55,6 +56,13 @@
   var SEASON_STAMP = { spring: "spring-has-sprung", summer: "summer-lovin", fall: "fall-into-adventure", winter: "winter-wonderland" };
   var OF_A_KIND = 5, HOME_COUNT = 10, STATE_COUNT = 3;
 
+  function ymd(t) { return t.getFullYear() + "-" + ("0" + (t.getMonth() + 1)).slice(-2) + "-" + ("0" + t.getDate()).slice(-2); }
+  // Planned Ahead: marked done from a calendar plan made at least a day before the day it was done (site/js/done.js sets via)
+  function planned(c, t) {
+    if (c.via !== "plan" || !c.planned_at) return false;
+    var p = new Date(c.planned_at);
+    return !isNaN(p.getTime()) && ymd(p) < ymd(t);
+  }
   function isDate(c) { return (c.snapshot && c.snapshot.mode === "date") || c.as_date === true; }
   function mmdd(t) { return ("0" + (t.getMonth() + 1)).slice(-2) + "-" + ("0" + t.getDate()).slice(-2); }
   function leap(y) { return (y % 4 === 0 && y % 100 !== 0) || y % 400 === 0; }
@@ -111,6 +119,7 @@
       if (nSeasonsSeen === 4) earn("master-of-the-seasons");
       if (isDate(c) && onAnniversary(t, settings.anniversary)) earn("our-anniversary");
       if (repeated >= OF_A_KIND) earn("old-favorites");
+      if (planned(c, t)) earn("planned-ahead");
       MILESTONES.forEach(function (n) { if (count >= n) earn("milestone-" + n); });
 
       var ctx = { year: year, season: season, states: stateOrder.slice(0, STATE_COUNT), home: home && STATES[home], t: t };
@@ -147,6 +156,7 @@
       case "master-of-the-seasons": return "A mission in every season: spring, summer, fall and winter.";
       case "our-anniversary": return "A date mission on your anniversary, " + MONTH_NAMES[c.t.getMonth()] + " " + c.t.getDate() + ".";
       case "old-favorites": return "Five different missions you went back and did again.";
+      case "planned-ahead": return "A mission you put on your calendar ahead of time, then went and did.";
     }
     return "";
   }

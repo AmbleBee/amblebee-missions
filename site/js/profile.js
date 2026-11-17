@@ -173,7 +173,7 @@
     if (running) { again = true; return running; }
     var all = !st.since;
     var p = D.pending(all);
-    var nothing = !p.done.length && !p.removed.length && !p.prefs;
+    var nothing = !p.done.length && !p.removed.length && !p.prefs && !p.plans.length && !p.plans_removed.length;
     if (!force && nothing && st.since && Date.now() - (st.last || 0) < QUIET_MS) return Promise.resolve(state());
     live.syncing = true; emit();
     var dk = null;
@@ -186,7 +186,8 @@
         return lockNote(dk, c.note).then(function (n) { o.note = n; return o; });
       }));
     }).then(function (out) {
-      return post("/profile/sync", { since: st.since || null, done: out, removed: p.removed, prefs: p.prefs }, st.key);
+      return post("/profile/sync", { since: st.since || null, done: out, removed: p.removed, prefs: p.prefs,
+                                     plans: p.plans, plans_removed: p.plans_removed }, st.key);
     }).then(function (r) {
         var now = load() || {};
         if (now.key !== st.key) return;                          // signed out or switched while this was on its way
@@ -195,7 +196,8 @@
         }
         if (r.status !== 200 || !r.body.ok) { live.error = (r.body && r.body.error) || OFFLINE; return; }
         // what went without its note stays waiting, so the note goes once it can be locked
-        D.sent(dk ? p : { done: p.done.filter(function (c) { return !c.note; }), removed: p.removed, prefs: p.prefs });
+        D.sent(dk ? p : { done: p.done.filter(function (c) { return !c.note; }), removed: p.removed, prefs: p.prefs,
+                          plans: p.plans, plans_removed: p.plans_removed });
         return Promise.all((r.body.done || []).map(function (c) {
           var o = Object.assign({}, c);
           if (!o.note) return o;

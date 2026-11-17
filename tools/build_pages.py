@@ -64,14 +64,15 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "status": ("Submission status", "Check where your AmbleBee suggestion or report is at."),
     "me": ("Your profile", "Your AmbleBee stamp book and the missions you've marked done, kept on your own device."),
     "me-settings": ("Profile settings", "Your stamp details, missions set aside and a copy of your AmbleBee profile, kept on your own device."),
+    "me-plans": ("My plans", "The missions you've added to your calendar, and whether you went."),
 }
-NOINDEX_PAGES = {"report", "status", "me", "me-settings"}   # useful only through a link: kept out of search engines and the sitemap
-PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/"}   # pages/<name>.html → this address
+NOINDEX_PAGES = {"report", "status", "me", "me-settings", "me-plans"}   # useful only through a link: kept out of search engines and the sitemap
+PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
 CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
                 "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
-                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile"}
+                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile", "me-plans": "Your profile"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -121,7 +122,7 @@ def nav_html(current=""):
               'stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>')
     # Profile: your stamp book and missions (/me/) and their settings (/me/settings/), one tap away on every page.
     # It becomes the way into a saved profile in Phase 3 (claude/profiles-and-stamps-PLAN.md).
-    mine = ' aria-current="page"' if current in ("me", "me-settings") else ""
+    mine = ' aria-current="page"' if current in ("me", "me-settings", "me-plans") else ""
     profile = (f'<a class="nav-profile" href="/me/" title="Profile"{mine}><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" '
                'fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
                '<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6"/></svg><span class="sr">Profile</span></a>')
@@ -284,9 +285,19 @@ def mission_html(m, pack, icons, today):
     <p class="desc">{esc(str(m["description"]).strip())}</p>
     <ul class="tags" aria-label="Details">{tag_html}</ul>
     {notes_html}{caution_html}{place_html}{extras}
+    <div class="plan-slot" data-plan="{esc(plan_info(m))}"></div>
     <div class="ticket-foot"><div>{checked_html(m)}{report_html}</div><div class="foot-acts"><span class="skip-slot" data-mission="{esc(m["full_id"])}"></span></div></div>
   </div>
 </article>"""
+
+
+def plan_info(m):
+    """What "Add to calendar" needs (site/js/plans.js): the same fields catalog.json gives the mission popup."""
+    keep = ("full_id", "id", "name", "short", "season", "duration", "gear")
+    info = {k: m[k] for k in keep if m.get(k) is not None}
+    if m.get("place"):
+        info["place"] = {k: m["place"][k] for k in ("name", "address", "area", "coords") if m["place"].get(k)}
+    return json.dumps(info, ensure_ascii=False, separators=(",", ":"))
 
 
 def done_info(m):
@@ -460,7 +471,8 @@ def build_pages(out):
     until_script = '<script src="/until.js" defer></script>\n'
     done_script = ('<script src="/js/done.js" defer></script>\n'      # the "Mark done" box under each mission (site/js/done.js)
                    '<script src="/js/profile.js" defer></script>\n'   # and the free profile that keeps it safe (site/js/profile.js)
-                   '<script src="/js/stamps.js" defer></script>\n')   # and the stamp that lands when one is earned (site/js/stamps.js)
+                   '<script src="/js/stamps.js" defer></script>\n'    # and the stamp that lands when one is earned (site/js/stamps.js)
+                   '<script src="/js/plans.js" defer></script>\n')    # Add to calendar and "Did you go?" (site/js/plans.js)
 
     missions = catalog["missions"]
     live_ids = {m["id"] for m in missions}   # drafts aren't in the catalog, so a [[link]] to one stays plain text
