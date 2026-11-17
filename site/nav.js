@@ -63,18 +63,48 @@
   function has() {
     try { var st = JSON.parse(localStorage.getItem("amble.profile") || "null"); return !!(st && st.key && !st.gone); } catch (e) { return false; }
   }
-  function item(href, text, here) {
+  // plans whose day has passed, waiting on "Did you go?" (site/js/plans.js): a honey dot on the icon and on My plans
+  // (red dots are only ever for replies from AmbleBee)
+  function waiting() {
+    try {
+      var d = JSON.parse(localStorage.getItem("amble.done") || "null"), t = new Date(), cut = new Date();
+      cut.setDate(cut.getDate() - 60);
+      var day = function (x) { return x.getFullYear() + "-" + ("0" + (x.getMonth() + 1)).slice(-2) + "-" + ("0" + x.getDate()).slice(-2); };
+      var today = day(t), oldest = day(cut);
+      return ((d && d.plans) || []).filter(function (x) { return x && x.day < today && x.day >= oldest; }).length;
+    } catch (e) { return 0; }
+  }
+  var dot = document.createElement("span");
+  dot.className = "nav-dot";
+  dot.setAttribute("aria-hidden", "true");
+  function paintDot() {
+    var n = waiting();
+    dot.hidden = !n;
+    if (!dot.parentNode) btn.appendChild(dot);
+    var sr = btn.querySelector(".sr");
+    if (sr) sr.textContent = sr.textContent.replace(/, \d+ plans? to check$/, "") + (n ? ", " + n + (n === 1 ? " plan" : " plans") + " to check" : "");
+  }
+  paintDot();
+  window.addEventListener("amble:done", paintDot);
+  window.addEventListener("amble:profile", function () { setTimeout(paintDot, 0); });
+  window.addEventListener("storage", function (e) { if (e.key === "amble.done" || e.key === "amble.profile") setTimeout(paintDot, 0); });
+  function item(href, text, here, dots) {
     var a = document.createElement("a");
     a.href = href;
     a.textContent = text;
     if (here) a.setAttribute("aria-current", "page");
+    if (dots) {
+      var d = document.createElement("span"); d.className = "nav-dot"; d.setAttribute("aria-hidden", "true");
+      var sr = document.createElement("span"); sr.className = "sr"; sr.textContent = " (Did you go? " + dots + " waiting)";
+      a.append(d, sr);
+    }
     return a;
   }
   function fill() {
     var path = location.pathname;
     var items = [
       item("/me/", has() ? "My profile" : "My stamps and missions", path === "/me/"),
-      item("/me/plans/", "My plans", path === "/me/plans/"),
+      item("/me/plans/", "My plans", path === "/me/plans/", waiting()),
       item("/contact/", "Support", path === "/contact/"),
     ];
     if (!has()) items.push(item("/me/settings/", "Start a free profile", false));

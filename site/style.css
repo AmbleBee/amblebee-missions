@@ -1356,3 +1356,9 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .coming-up .btn { gap: 6px; }
 #plan-dialog label.check { display: flex; gap: 10px; align-items: center; min-height: 44px; font-weight: 700; color: var(--walnut); cursor: pointer; }
 #plan-dialog label.check input[type="radio"] { width: 20px; height: 20px; margin: 0; flex-shrink: 0; accent-color: var(--fill); }
+/* a honey dot: something waiting for you (a plan to answer). Red is kept for replies from AmbleBee. */
+.top nav a.nav-profile { position: relative; }
+.nav-dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; background: var(--honey); box-shadow: 0 0 0 2.5px var(--paper); }
+.nav-dot[hidden] { display: none; }
+.top nav a.nav-profile .nav-dot { position: absolute; top: 0; right: 0; }
+.top nav .profile-menu a .nav-dot { margin: auto 0 auto 10px; }

@@ -2077,6 +2077,16 @@ def t_profile_menu(site, catalog):
     btn.click()
     page.mouse.click(5, 600)
     assert page.is_hidden("#profile-menu"), "a tap outside closes it"
+    assert page.is_hidden(".nav-profile .nav-dot"), "no dot with nothing waiting"
+    put_plan(page, catalog["missions"][1], -2, -6)                           # a plan whose day has passed: a honey dot
+    page.reload()
+    assert page.is_visible(".nav-profile .nav-dot") and "1 plan to check" in page.inner_text(".nav-profile .sr")
+    page.click(".top nav > a.nav-profile")
+    assert page.is_visible("#profile-menu a[href='/me/plans/'] .nav-dot"), "and next to My plans"
+    page.locator("#profile-menu a", has_text="My plans").click()
+    page.wait_for_selector(".plan-ask")
+    page.click(".plan-ask .plan-no")
+    page.wait_for_function("() => document.querySelector('.nav-profile .nav-dot').hidden")
     phone = site.open("/contact/", PHONE)
     phone.click(".top nav > a.nav-profile")
     phone.locator("#profile-menu a", has_text="My plans").click()
