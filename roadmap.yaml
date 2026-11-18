@@ -65,11 +65,6 @@
     - Flip through the photos and keep the good ones. The Hive gently flags dark, blurry and duplicate shots, but never removes anything on its own
     - Every finished mission becomes a memory, with its photos and a note
 
-- title: Votes with Friends
-  status: next
-  tag: website
-  summary: Can't decide? Pick a few missions, send your friends a link, and everyone votes. The winner lands on a podium, ready to add to your calendar. Plus the odd AmbleBee poll, so you can help pick what we build next.
- 
 - title: Seasonal Themes
   status: next
   tag: website
@@ -92,6 +87,17 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Votes with Friends
+  status: done
+  date: 2026-11-18
+  tag: website
+  summary: Can't decide? Tap **Start a vote** on any mission, add a few more, and send your friends the link. Everyone votes, and the winner lands on a podium, ready to add to your calendar.
+  items:
+    - "One pick each, or ranked. A tie is settled by a coin flip or a quick re-vote, your choice"
+    - "Friends don't need a profile to vote, unless you ask for signed-in votes"
+    - "The winner becomes everyone's own plan, so we'll ask each of you if you went"
+    - "A new stamp for going with the winner"
+
 - title: Messages and a Safer Profile
   status: done
   date: 2026-11-18
