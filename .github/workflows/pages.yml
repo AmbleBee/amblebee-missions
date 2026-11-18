@@ -18,6 +18,7 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
+    timeout-minutes: 15   # checks and building take a couple of minutes: anything longer is stuck, so fail fast
     steps:
       - uses: actions/checkout@v7
         with:
@@ -52,20 +53,42 @@ jobs:
           python tools/build_icons.py --out _site/icons.json
           python tools/build_pages.py --out _site
           cp data/zips.json data/cities.json _site/
-      - name: Install the test browsers
-        run: |
-          pip install playwright==1.64.1
-          python -m playwright install --with-deps chromium firefox webkit
+      - name: Hand the built site to the browser job
+        uses: actions/upload-artifact@v6
+        with:
+          name: built-site
+          path: _site
+          retention-days: 1
+
+  # The share cards and the browser tests run inside Microsoft's Playwright image, which already has the three browsers
+  # and everything they need. That skips "playwright install --with-deps", which downloads ~100 Ubuntu packages and
+  # can crawl for half an hour when the Ubuntu mirror is slow. Keep the image's version the same as the pip install.
+  browsers:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    container:
+      image: mcr.microsoft.com/playwright/python:v1.64.1-noble
+    env:
+      HOME: /root   # Firefox won't start as root when HOME belongs to another user (Playwright's CI docs)
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/download-artifact@v6
+        with:
+          name: built-site
+          path: _site
+      - name: Install Playwright for Python (the browsers are already in the image)
+        run: python3 -m pip install playwright==1.64.1 pyyaml==6.0.1
       - name: Draw the share cards
-        run: python tools/build_cards.py --out _site   # the picture shown when someone shares a mission, pack or idea page
+        run: python3 tools/build_cards.py --out _site   # the picture shown when someone shares a mission, pack or idea page
       - name: Test the site in Chromium
-        run: python tools/smoke_test.py
+        run: python3 tools/smoke_test.py
       - name: Test the site in Firefox
-        run: python tools/smoke_test.py
+        run: python3 tools/smoke_test.py
         env:
           SMOKE_ENGINE: firefox
       - name: Test the site in WebKit (Safari's engine)
-        run: python tools/smoke_test.py
+        run: python3 tools/smoke_test.py
         env:
           SMOKE_ENGINE: webkit
       - name: Upload site
@@ -75,7 +98,7 @@ jobs:
           path: _site
 
   deploy:
-    needs: build
+    needs: browsers
     if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     concurrency:
