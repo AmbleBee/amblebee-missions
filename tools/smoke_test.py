@@ -2752,6 +2752,15 @@ def t_feedback_after_thumbs(site, catalog):
     assert site.intake.feedback[0]["consent"] == "no"
 
 
+def t_every_page_may_reach_intake(site, catalog):
+    """The homepage and the Bee trail keep their own copy of the security policy: each must let the page reach
+    amblebee-intake, or profile sync and feedback from those pages are refused by the browser."""
+    for path in ("/", "/roadmap.html", f"/missions/{catalog['missions'][0]['id']}/", "/poll/", "/contribute/"):
+        page = site.open(path)
+        csp = page.get_attribute("meta[http-equiv='Content-Security-Policy']", "content") or ""
+        assert "https://amblebee-intake.tail58116.ts.net" in csp.split("connect-src", 1)[-1].split(";", 1)[0], path
+
+
 def main():
     folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
     if not (folder / "catalog.json").exists():
