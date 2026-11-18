@@ -50,7 +50,8 @@
     var st = load() || {};
     return { has: !!(st.key && !st.gone), gone: !!st.gone, email: !!st.email, last: st.last || 0, created: st.created || "",
              locked: !!(st.key && !st.gone && st.locked), syncing: live.syncing, error: live.error,
-             pin: !!st.pin, pinNeeded: !!(st.key && !st.gone && st.pinNeeded), unread: st.unread || 0 };
+             pin: !!st.pin, pinNeeded: !!(st.key && !st.gone && st.pinNeeded), unread: st.unread || 0,
+             hadMySay: (st.key && !st.gone && st.hadMySay) || "" };
   }
 
   // ---- locking notes ----
@@ -230,6 +231,7 @@
           now.since = r.body.now; now.email = !!r.body.email; now.created = r.body.created_at || now.created; now.last = Date.now();
           if (r.body.device) now.device = r.body.device;
           now.pin = !!r.body.pin; now.pinNeeded = false; now.unread = r.body.messages_unread || 0;
+          now.hadMySay = r.body.had_my_say || null;          // the day of your first AmbleBee poll vote (the Had My Say stamp)
           live.error = "";
           save(now);
         });

@@ -71,15 +71,6 @@
   when: Planning since Nov 4, 2026
   summary: Special looks for the website around holidays and seasons, shown only for a short window each time. The rest of the year the site stays its plain self, and a switch in the footer turns the seasonal look off if you'd rather not see it.
  
-- title: AmbleBee Polls and a Contribute Page
-  status: doing
-  tag: website
-  summary: A new **Contribute** page with AmbleBee's own polls, suggesting a mission and reporting a problem, all in one place.
-  items:
-    - "Vote on what we build next. We make the final call, and always say why"
-    - "Suggesting a mission moved here from its own page"
-    - "A new stamp for having your say"
-
 - title: Testing Mission Management
   status: doing
   tag: missions
@@ -96,6 +87,21 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: AmbleBee Polls and a Contribute Page
+  status: done
+  date: 2026-11-18
+  tag: website
+  summary: A new **Contribute** page brings it all together. Vote in AmbleBee's own polls on what we build next, suggest a mission, or report a problem.
+  items:
+    - "Every poll has its own page and link, with a flip-clock countdown. Polls can be scheduled, so the link shows when it opens"
+    - "Pick one, or rank them, and every option says what it is right on the card"
+    - "Something we missed? Pick **Other** and tell us. Only we see it"
+    - "When a poll closes, we look it over and make the final call, then post both: the most votes, and our pick with the reason"
+    - "Results show as the same cards, with a bar for each one's share and a check on the most votes"
+    - "Some polls need a profile, so each person counts once"
+    - "A new stamp, **Had My Say**, for voting in your first poll while signed in"
+    - "Suggest a mission moved here, and Report a problem is one tap away"
+
 - title: Votes with Friends
   status: done
   date: 2026-11-18

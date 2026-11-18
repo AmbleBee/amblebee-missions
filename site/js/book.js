@@ -59,8 +59,10 @@
     dialog.replaceChildren(el("div", { class: "dialog-body stamp-dialog-body" },
       el("img", { class: "stamp-img", src: s.art, alt: "", width: "240", height: "312" }),
       el("h2", { id: "stamp-dialog-title", text: s.name }),
-      el("p", {}, "Earned ", el("time", { datetime: s.earned_at, text: pretty(s.earned_at) }), " with ",
-        el("a", { href: "/missions/" + encodeURIComponent(s.slug) + "/", text: s.mission_name }), "."),
+      s.slug ? el("p", {}, "Earned ", el("time", { datetime: s.earned_at, text: pretty(s.earned_at) }), " with ",
+        el("a", { href: "/missions/" + encodeURIComponent(s.slug) + "/", text: s.mission_name }), ".")
+        : el("p", {}, "Earned ", el("time", { datetime: s.earned_at, text: pretty(s.earned_at) }), " by voting in ",
+          el("a", { href: "/contribute/#polls", text: "an AmbleBee poll" }), "."),
       s.year ? el("p", { class: "stamp-year-count", text: yearCount(s, true) }) : null,
       s.how ? el("div", { class: "stamp-how" }, el("h3", { text: "How you earned it" }), el("p", { text: s.how })) : null,
       el("form", { method: "dialog" }, el("button", { class: "btn small", type: "submit", text: "Close" }))));

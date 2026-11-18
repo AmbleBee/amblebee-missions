@@ -146,14 +146,20 @@
       if (otherOn && !other.value.trim()) { say("Type your idea in the Other box.", true); other.focus(); return; }
       if (!pick.length && !otherOn) { say(ranked ? "Tap your favorite first." : "Tap the one you'd pick.", true); return; }
       cast.disabled = true;
+      if (window.AmbleStamps) window.AmbleStamps.fresh();   // what's earned so far counts as seen, so only Had My Say lands
       var body = otherOn ? { choice: [], other: other.value.trim() } : { choice: pick };
       K.api("/polls/" + v.pub + "/ballot", "POST", body).then(function (r) {
         cast.disabled = false;
         if (r.status !== 200) { say(K.problem(r), true); return; }
-        if (P && P.has() && P.sync) P.sync();   // brings Had My Say along
         draw(document.querySelector(".poll-app"), r.body, by, again);
         var s = document.querySelector(".poll-app .form-status");
         if (s) s.textContent = "Your vote is in. Thanks for helping us decide!";
+        // signed in: the sync brings Had My Say along, and it lands right here the first time
+        if (P && P.has() && P.sync) P.sync(true).then(function () {
+          var ST = window.AmbleStamps, news = ST ? ST.fresh().filter(function (x) { return x.id === "had-my-say"; }) : [];
+          var box = news.length && ST.landing(news, true), st = document.querySelector(".poll-app .form-status");
+          if (box && st) st.parentNode.insertBefore(box, st.nextSibling);
+        });
       });
     });
     return form;

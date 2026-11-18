@@ -30,6 +30,7 @@
     { id: "old-favorites", name: "Old Favorites", page: "together" },
     { id: "planned-ahead", name: "Planned Ahead", page: "together" },
     { id: "put-it-to-a-vote", name: "Put It to a Vote", page: "together" },
+    { id: "had-my-say", name: "Had My Say", page: "together" },   // from the profile, not a mission: see extras()
   ];
   // count milestones: surprises, never shown ahead. First Steps is the first one.
   var MILESTONES = [10, 25, 50, 100, 200, 500, 1000];
@@ -183,7 +184,19 @@
     compute(list.filter(function (c) { return c.rid !== rid; }), settings()).forEach(function (s) { after[s.key] = 1; });
     return compute(list, settings()).filter(function (s) { return !after[s.key]; });
   }
-  function earned() { return window.AmbleDone ? compute(window.AmbleDone.list(), settings()) : []; }
+  // Stamps that don't come from marking a mission done. Had My Say (calendar-voting-PLAN.md, decision 43): voting in an
+  // AmbleBee poll while signed in; the server keeps only the day, never which poll or how you voted.
+  function extras() {
+    var P = window.AmbleProfile, day = P && P.state ? P.state().hadMySay : "";
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(day || "")) return [];
+    return [{ how: "You voted in an AmbleBee poll and helped decide what comes next.", key: "had-my-say", id: "had-my-say",
+              page: "together", year: null, name: "Had My Say", art: "/stamps/had-my-say.svg", mission: null, slug: null,
+              mission_name: "An AmbleBee poll", earned_at: day + "T12:00:00", rid: null }];
+  }
+  function earned() {
+    var all = (window.AmbleDone ? compute(window.AmbleDone.list(), settings()) : []).concat(extras());
+    return all.sort(function (a, b) { return a.earned_at < b.earned_at ? -1 : a.earned_at > b.earned_at ? 1 : 0; });
+  }
 
   // ---- which stamps have already been shown, so only new ones land ----
   var SEEN_KEY = "amble.stamps.seen";

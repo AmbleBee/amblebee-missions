@@ -212,6 +212,8 @@ class FakeIntake:
         if len(parts) == 3 and parts[2] == "ballot":
             if v["kind"] == "official" and v.get("profile_required") and who not in self.profiles:
                 return reply(403, {"ok": False, "error": "This poll needs a profile.", "reason": "profile"})
+            if v["kind"] == "official" and who in self.profiles:
+                self.profiles[who].setdefault("had_my_say", datetime.now().strftime("%Y-%m-%d"))
             v["ballots"][who] = {"choice": data.get("choice"), "name": data.get("name") or None, **({"other": data["other"]} if data.get("other") else {})}
         elif len(parts) == 5 and parts[2] == "names" and who == v["creator"]:
             list(v["ballots"].values())[int(parts[3])]["hidden"] = parts[4] == "hide"
@@ -320,6 +322,7 @@ class FakeIntake:
                            "prefs": prof["prefs"], "email": prof["email"], "created_at": now, "vault": prof["vault"],
                            "plans": list(plans.values()), "plans_removed": gone, "pin": bool(prof.get("pin")),
                            "messages_unread": sum(1 for c in prof.get("messages", {}).values() if c["unread"]),
+                           "had_my_say": prof.get("had_my_say"),
                            **({"device": new_device} if new_device else {})})
 
 
@@ -2658,6 +2661,41 @@ def t_contribute_page_polls(site, catalog):
     assert contact.locator(".contact-paths a[href='#message']").count() == 0, "no Send a message card: the form is right below"
     assert contact.locator(".contact-paths a[href='/report/']").count() == 1, "report a problem stays on Contact"
 
+
+
+def t_had_my_say_stamp(site, catalog):
+    """Voting in an AmbleBee poll while signed in earns Had My Say: it lands on the poll page and sits in the stamp book."""
+    page = site.open("/")
+    give_profile(site, page)
+    pub = "Opoll00000000002"
+    site.intake.votes[pub] = {"pub": pub, "kind": "official", "style": "pick", "name": "Next pack?", "for_date": None, "status": "open",
+                              "closes_at": (datetime.now(timezone.utc) + timedelta(days=3)).isoformat(), "profiles_only": False,
+                              "names_public": False, "creator": None, "ballots": {},
+                              "options": [{"id": 1, "mission": None, "name": "Montana", "explain": None}, {"id": 2, "mission": None, "name": "Utah", "explain": None}]}
+    page.goto(site.base + "/poll/?p=" + pub)
+    page.wait_for_selector(".vote-option")
+    page.click(".vote-option >> nth=1 >> .vote-option-tap")
+    page.click(".vote-cast")
+    page.wait_for_selector(".stamp-landing")
+    assert "Had My Say" in page.inner_html(".stamp-landing") or page.locator(".stamp-landing img[src='/stamps/had-my-say.svg']").count() == 1
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".stamp[data-key='had-my-say']")
+    page.click(".stamp[data-key='had-my-say']")
+    assert "by voting in an AmbleBee poll" in page.inner_text(".stamp-dialog-body")
+
+
+def t_home_notes_for_signed_in(site, catalog):
+    """Signed in, the homepage offers Start a vote, and says when one of your votes is over."""
+    page = site.open("/")
+    assert page.locator(".home-notes").is_hidden(), "nothing without a profile"
+    give_profile(site, page)
+    page.wait_for_selector(".home-notes a[href='/vote/new/']")
+    page.evaluate("""localStorage.setItem('amble.votes', JSON.stringify([{pub: 'Vtestvote0000009', role: 'voter', name: 'Game night',
+                     closes_at: new Date(Date.now() - 60000).toISOString(), status: 'open'}]))""")
+    page.reload()
+    page.wait_for_selector(".home-notes-list a")
+    assert "Voting's over for Game night" in page.inner_text(".home-notes") and \
+        page.get_attribute(".home-notes-list a", "href") == "/vote/?v=Vtestvote0000009"
 
 
 def main():
