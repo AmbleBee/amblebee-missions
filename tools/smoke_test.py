@@ -49,6 +49,7 @@ class FakeIntake:
     def __init__(self):
         self.mode, self.posts, self.answered = "up", [], False
         self.headers = []          # (path, request headers) for every POST: the forms carry the profile when signed in
+        self.votes = {}            # pub -> a vote, like amblebee-intake's app/polls.py (which has its own tests)
         self.profiles = {}   # key -> {"done": {rid: completion}, "removed": [], "prefs": None, "email": False}
         self.closed = False
         self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
@@ -58,7 +59,7 @@ class FakeIntake:
         req = route.request
         path = req.url.split(INTAKE, 1)[1].split("?")[0]
         cors = {"access-control-allow-origin": "*", "access-control-allow-methods": "GET, POST",
-                "access-control-allow-headers": "Content-Type, Authorization, X-Amble-Device", "content-type": "application/json"}
+                "access-control-allow-headers": "Content-Type, Authorization, X-Amble-Device, X-Amble-Voter", "content-type": "application/json"}
         if self.mode == "down":
             return route.abort()
         if req.method == "OPTIONS":
@@ -70,6 +71,9 @@ class FakeIntake:
             return reply(200, {"ok": True, "accepting": self.mode == "up"})
         if path == "/schema":
             return reply(200, {"ok": True, **SCHEMA})
+        if path.startswith("/polls"):
+            data = json.loads(req.post_data or "{}") if req.method == "POST" else {}
+            return self.polls_api(path, req.method, data, req.headers, reply)
         if path.startswith("/messages"):
             data = json.loads(req.post_data or "{}") if req.method == "POST" else {}
             return self.messages(path, data, req.headers.get("authorization", ""), req.headers.get("x-amble-device"), reply)
@@ -154,6 +158,60 @@ class FakeIntake:
             new = (new + "x" * 22)[:22]
             devices.add(new)
         return prof, new
+
+    def vote_view(self, v, who):
+        """What GET /polls/<pub> answers, for the person `who` (a profile key or a voter token)."""
+        mine = who == v["creator"]
+        b = v["ballots"].get(who)
+        out = {k: v[k] for k in ("pub", "kind", "style", "name", "for_date", "status", "closes_at", "profiles_only", "names_public", "options")}
+        out.update(now=datetime.now(timezone.utc).isoformat(), ended_at=v.get("ended_at"), started_by=v.get("started_by", ""), voters=len(v["ballots"]),
+                   you={"voted": bool(b), "choice": b["choice"] if b else None, "name": b["name"] if b else None, "creator": mine,
+                        "signed_in": who in self.profiles})
+        out["names"] = ([{"id": i, "name": x["name"], "hidden": False} for i, x in enumerate(v["ballots"].values()) if x["name"]] if mine
+                        else [{"name": x["name"]} for x in v["ballots"].values() if x["name"]])
+        if mine:
+            out["hours"] = {"cap": 48, "free": 24}
+        if v["status"] == "finished":
+            out["result"], out["coin_flip"] = v["result"], False
+        return out
+
+    def polls_api(self, path, method, data, headers, reply):
+        auth = headers.get("authorization", "")
+        key = auth[8:] if auth.startswith("Profile ") else ""
+        who = key if key in self.profiles else headers.get("x-amble-voter", "")
+        parts = path.strip("/").split("/")
+        if path == "/polls" and method == "POST":
+            if key not in self.profiles:
+                return reply(403, {"ok": False, "error": "Start a free profile to make a vote.", "reason": "profile"})
+            pub = ("V" + secrets.token_hex(8))[:16]
+            self.votes[pub] = {"pub": pub, "kind": "friends", "style": data["style"], "name": data["name"], "for_date": data["for_date"],
+                               "status": "open", "closes_at": (datetime.now(timezone.utc) + timedelta(hours=data["hours"])).isoformat(),
+                               "profiles_only": bool(data.get("profiles_only")), "names_public": data.get("names_public", True),
+                               "creator": key, "ballots": {}, "sent": data,
+                               "options": [{"id": i + 1, "mission": m["id"], "slug": m["id"].split("/")[1], "name": m["name"], "place": m.get("place"),
+                                            "season": ["any"]} for i, m in enumerate(data["missions"])]}
+            return reply(201, {"ok": True, **self.vote_view(self.votes[pub], who)})
+        if path == "/polls/mine":
+            return reply(200, {"ok": True, "votes": [self.vote_view(v, who) for v in self.votes.values() if v["creator"] == key],
+                               "hours": {"cap": 48, "used": 0, "free": 48}})
+        v = self.votes.get(parts[1]) if len(parts) > 1 else None
+        if v is None:
+            return reply(404, {"ok": False, "error": "This vote has been removed.", "removed": True})
+        if len(parts) == 3 and parts[2] == "ballot":
+            v["ballots"][who] = {"choice": data.get("choice"), "name": data.get("name") or None}
+        elif len(parts) == 3 and parts[2] == "finish" and who == v["creator"]:
+            self.finish_vote(v)
+        return reply(200, {"ok": True, **self.vote_view(v, who)})
+
+    def finish_vote(self, v):
+        counts = {o["id"]: 0 for o in v["options"]}
+        for b in v["ballots"].values():
+            counts[b["choice"][0]] += 1
+        scores = sorted(({"option": k, "points": n, "first": n} for k, n in counts.items()), key=lambda x: -x["points"])
+        for i, x in enumerate(scores):
+            x["place"] = i + 1
+        v.update(status="finished", ended_at=datetime.now(timezone.utc).isoformat(),
+                 result={"scores": scores, "voters": len(v["ballots"]), "winner": scores[0]["option"] if v["ballots"] else None})
 
     def messages(self, path, data, auth, device, reply):
         """GET /messages, GET /messages/<ref>, POST /messages/<ref>/reply, like amblebee-intake's app/messages.py."""
@@ -2157,7 +2215,7 @@ def t_profile_menu(site, catalog):
     page.wait_for_selector("#profile-menu:not([hidden])")
     assert btn.get_attribute("aria-expanded") == "true"
     labels = page.locator("#profile-menu a").all_inner_texts()
-    assert labels == ["My stamps and missions", "My plans", "Support", "Start a free profile"], labels
+    assert labels == ["My stamps and missions", "My plans", "Votes", "Support", "Start a free profile"], labels
     assert page.evaluate("document.activeElement.textContent") == "My stamps and missions", "the keyboard lands on the first item"
     page.keyboard.press("ArrowDown")
     assert page.evaluate("document.activeElement.textContent") == "My plans"
@@ -2324,6 +2382,19 @@ def t_messages_red_dot_and_reply(site, catalog):
     assert "Start a new message" in page.inner_text(".messages-app")
 
 
+def t_display_name_fills_in_the_forms(site, catalog):
+    page = site.open("/contact/")
+    give_profile(site, page)
+    page.evaluate("AmbleDone.setSettings({ display_name: 'Max' })")
+    page.reload()
+    page.wait_for_selector(".intake-form", state="visible")
+    assert page.input_value("#contact-name") == "Max", "the display name fills in the contact name"
+    assert "Filled in from your profile" in page.inner_text(".intake-form")
+    page.goto(site.base + "/suggest/idea/")
+    page.wait_for_selector(".intake-form", state="visible")
+    assert page.input_value(".intake-form input[name=name]") == "Max", "and the suggestion form's"
+
+
 def t_forms_sign_in_box_and_link(site, catalog):
     page = site.open("/contact/")
     page.wait_for_selector(".intake-form", state="visible")
@@ -2345,6 +2416,94 @@ def t_forms_sign_in_box_and_link(site, catalog):
     page.wait_for_selector(".intake-done", state="visible")
     sent = [h for p_, h in site.intake.headers if p_ == "/contact"][-1]
     assert sent.get("authorization") == "Profile " + key and sent.get("x-amble-device"), sent
+
+# ---------- branch 3: votes with friends (calendar-voting-PLAN.md §3) ----------
+
+def t_start_a_vote_from_a_mission(site, catalog):
+    m1, m2 = catalog["missions"][2], catalog["missions"][3]
+    page = site.open(f"/missions/{m1['id']}/")
+    key = give_profile(site, page)
+    page.click(".plan-slot .vote-start")
+    page.wait_for_selector(".vote-builder")
+    assert m1["name"] in page.inner_text(".vote-picks"), "the mission comes along"
+    page.fill("#v-search", m2["name"][:6])
+    page.click(f".vote-add:has-text('{m2['name']}')")
+    page.fill("#v-name", "4th of July plans")
+    page.fill("#v-day", "2027-07-04")
+    page.dispatch_event("#v-day", "change")
+    page.click(".vote-go")
+    page.wait_for_selector(".vote-shared #vote-link")
+    v = list(site.intake.votes.values())[-1]
+    assert v["creator"] == key and [o["mission"] for o in v["options"]] == [m1["full_id"], m2["full_id"]], v["options"]
+    assert v["sent"]["for_date"] == "2027-07-04" and v["sent"]["hours"] == 24 and v["sent"]["names_public"] is True
+    assert page.input_value("#vote-link").endswith("/vote/#" + v["pub"])
+    assert page.evaluate("JSON.parse(localStorage.getItem('amble.vote.draft'))") is None, "the draft is cleared once it starts"
+
+
+def t_vote_then_the_results_become_a_plan(site, catalog):
+    m1, m2 = catalog["missions"][2], catalog["missions"][3]
+    page = site.open("/")
+    owner = give_profile(site, page)
+    pub = "Vtestvote0000001"
+    site.intake.votes[pub] = {"pub": pub, "kind": "friends", "style": "pick", "name": "Saturday plans", "for_date": "2026-01-03",
+                              "status": "open", "closes_at": (datetime.now(timezone.utc) + timedelta(hours=5)).isoformat(),
+                              "profiles_only": False, "names_public": True, "creator": owner, "started_by": "Max", "ballots": {},
+                              "options": [{"id": 1, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]},
+                                          {"id": 2, "mission": m2["full_id"], "slug": m2["id"], "name": m2["name"], "place": "", "season": ["any"]}]}
+    friend = site.open("/vote/#" + pub)
+    friend.wait_for_selector(".vote-option")
+    head = friend.inner_text(".vote-head")
+    assert "You're invited to vote!" in head and "Saturday plans" in head and "Started by Max" in head, head
+    assert friend.locator(".flip-clock .flip").count() == 3, "the flip-clock countdown"
+    assert "0 people have voted" in friend.inner_text(".vote-count")
+    friend.click(".vote-option >> nth=1 >> .vote-option-tap")
+    friend.fill("#vote-name", "Sam")
+    friend.click(".vote-cast")
+    friend.wait_for_selector(".vote-in")
+    token = friend.evaluate("JSON.parse(localStorage.getItem('amble.voter'))")
+    assert site.intake.votes[pub]["ballots"][token] == {"choice": [2], "name": "Sam"}, site.intake.votes[pub]["ballots"]
+    assert "Sam" in friend.inner_text(".vote-voted"), "Voted so far shows the name"
+    friend.click(".vote-option >> nth=1 >> .vote-expand")
+    assert friend.locator(".vote-option >> nth=1 >> .vote-more").is_visible(), "each mission opens for its details"
+    site.intake.finish_vote(site.intake.votes[pub])
+    friend.reload()
+    friend.wait_for_selector(".podium")
+    assert "And the winner is" in friend.inner_text(".vote-head") and m2["name"] in friend.inner_text(".vote-plan")
+    plans = friend.evaluate("JSON.parse(localStorage.getItem('amble.done')).plans")
+    assert any(p["source"] == "vote" and p["vote_id"] == pub and p["mission"] == m2["full_id"] for p in plans), "the winner is this voter's own plan"
+    assert friend.locator(".vote-didyougo").count() == 1, "the day has passed: Did you go?"
+    assert friend.evaluate(f"JSON.parse(localStorage.getItem('amble.votes')).find(x => x.pub === '{pub}').seen") is True, "the ended vote's been seen"
+
+
+def t_put_it_to_a_vote_stamp(site, catalog):
+    m = plan_mission(catalog)
+    page = site.open(f"/missions/{m['id']}/")
+    put_plan(page, m, -2, -2, "vvvvvv01")
+    page.evaluate("""() => { const st = JSON.parse(localStorage.getItem('amble.done'));
+        st.plans.forEach(p => { p.source = 'vote'; p.vote_id = 'Vtestvote0000003'; p.vote_name = 'Saturday plans'; });
+        localStorage.setItem('amble.done', JSON.stringify(st)); }""")
+    page.reload()
+    page.wait_for_selector(".done-box .plan-ask-box")
+    page.click(".plan-ask-box .plan-yes")
+    page.wait_for_selector(".done-entry")
+    assert page.evaluate("AmbleDone.list()[0].via") == "vote"
+    earned = [s["id"] for s in page.evaluate("AmbleStamps.earned()")]
+    assert "put-it-to-a-vote" in earned and "planned-ahead" not in earned, earned
+    assert "Put It to a Vote" in page.inner_text(".done-box")
+
+
+def t_votes_in_the_menu(site, catalog):
+    page = site.open("/")
+    page.evaluate("""localStorage.setItem('amble.votes', JSON.stringify([{ pub: 'Vtestvote0000002', name: 'Movie night', role: 'voter',
+                     closes_at: new Date(Date.now() - 60000).toISOString() }]))""")
+    page.reload()
+    page.wait_for_selector(".top .nav-profile .nav-dot", state="visible")
+    page.click(".top .nav-profile")
+    page.wait_for_selector(".profile-menu a[href='/me/votes/'] .nav-dot")
+    page.click(".profile-menu a[href='/me/votes/']")
+    page.wait_for_selector(".vote-app .vote-row")
+    assert "Movie night" in page.inner_text(".vote-app")
+
 def main():
     folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
     if not (folder / "catalog.json").exists():

@@ -29,6 +29,7 @@
     { id: "our-anniversary", name: "Our Anniversary", page: "together" },
     { id: "old-favorites", name: "Old Favorites", page: "together" },
     { id: "planned-ahead", name: "Planned Ahead", page: "together" },
+    { id: "put-it-to-a-vote", name: "Put It to a Vote", page: "together" },
   ];
   // count milestones: surprises, never shown ahead. First Steps is the first one.
   var MILESTONES = [10, 25, 50, 100, 200, 500, 1000];
@@ -120,6 +121,9 @@
       if (isDate(c) && onAnniversary(t, settings.anniversary)) earn("our-anniversary");
       if (repeated >= OF_A_KIND) earn("old-favorites");
       if (planned(c, t)) earn("planned-ahead");
+      // Put It to a Vote (calendar-voting-PLAN.md, decision 38): marked done the winner of a friends vote you were
+      // part of, from your own plan for it. Earned by going, never by how many people voted.
+      if (c.via === "vote") earn("put-it-to-a-vote");
       MILESTONES.forEach(function (n) { if (count >= n) earn("milestone-" + n); });
 
       var ctx = { year: year, season: season, states: stateOrder.slice(0, STATE_COUNT), home: home && STATES[home], t: t };
@@ -157,6 +161,7 @@
       case "our-anniversary": return "A date mission on your anniversary, " + MONTH_NAMES[c.t.getMonth()] + " " + c.t.getDate() + ".";
       case "old-favorites": return "Five different missions you went back and did again.";
       case "planned-ahead": return "A mission you put on your calendar ahead of time, then went and did.";
+      case "put-it-to-a-vote": return "The winner of a vote with friends, and you went.";
     }
     return "";
   }

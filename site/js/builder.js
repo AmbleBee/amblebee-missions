@@ -21,6 +21,9 @@
   S.you = S.you || {};
   var fromProfile = "";   // the email saved with a profile (site/js/profile.js) fills in an empty one
   if (!S.you.email) { try { S.you.email = fromProfile = localStorage.getItem("amble.email") || ""; } catch (e) { /* private mode */ } }
+  // ...and the profile's display name (decision 39) fills in an empty name, the same way
+  var nameFromProfile = "";
+  if (!S.you.you_name && window.AmbleProfile && window.AmbleProfile.has()) S.you.you_name = nameFromProfile = window.AmbleProfile.displayName() || "";
   S.step = S.step || 0;
   S.seen = S.seen || 0;
   var errors = {};
@@ -243,13 +246,14 @@
     } },
 
     { id: "you", title: "About you", fields: ["you_name", "email"], render: function () {
-      var n = text("you_name", S.you.you_name, SC.limits.credit, function (v) { S.you.you_name = v; }, { autocomplete: "name", placeholder: "First L." });
+      var n = text("you_name", S.you.you_name, SC.limits.credit, function (v) { S.you.you_name = v; if (v !== nameFromProfile) nameFromProfile = ""; }, { autocomplete: "name", placeholder: "First L." });
       X.tidyName(n.input);
       var credit = el("input", { type: "checkbox", id: "b-credit" });
       credit.checked = !!S.you.credit;
       credit.addEventListener("change", function () { S.you.credit = credit.checked; persist(); });
       var em = text("email", S.you.email, 254, function (v) { S.you.email = v; if (v !== fromProfile) fromProfile = ""; }, { type: "email", autocomplete: "email" });
       var nameField = field("you_name", "Your name", n.input, { optional: true });
+      if (nameFromProfile && S.you.you_name === nameFromProfile) nameField.append(el("p", { class: "filled-note", text: "✓ Filled in from your profile" }));
       nameField.append(el("label", { class: "check" }, [credit, el("span", { text: "Credit me on the mission (\"Suggested by …\")" })]));
       return [nameField, field("email", "Email", em.input, { optional: true }),
         fromProfile && S.you.email === fromProfile ? el("p", { class: "filled-note", text: "✓ Filled in from your profile" }) : null,

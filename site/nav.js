@@ -66,6 +66,14 @@
   }
   // plans whose day has passed, waiting on "Did you go?" (site/js/plans.js): a honey dot on the icon and on My plans
   // (red dots are only ever for replies from AmbleBee)
+  // ended votes nobody's looked at yet (site/js/votes.js keeps the list): a honey dot next to Votes and on the icon
+  function votesWaiting() {
+    try {
+      var now = Date.now();
+      return (JSON.parse(localStorage.getItem("amble.votes") || "[]") || []).filter(function (x) {
+        return x && !x.seen && (x.ended || (x.closes_at && new Date(x.closes_at).getTime() < now)); }).length;
+    } catch (e) { return 0; }
+  }
   function waiting() {
     try {
       var d = JSON.parse(localStorage.getItem("amble.done") || "null"), t = new Date(), cut = new Date();
@@ -83,7 +91,7 @@
   dot.className = "nav-dot";
   dot.setAttribute("aria-hidden", "true");
   function paintDot() {
-    var n = waiting(), r = unread();
+    var n = waiting() + votesWaiting(), r = unread();
     dot.hidden = !n && !r;
     dot.classList.toggle("is-reply", !!r);          // a reply wins: red
     if (!dot.parentNode) btn.appendChild(dot);
@@ -93,6 +101,7 @@
   }
   paintDot();
   window.addEventListener("amble:done", paintDot);
+  window.addEventListener("amble:votes", paintDot);
   window.addEventListener("amble:profile", function () { setTimeout(paintDot, 0); });
   window.addEventListener("storage", function (e) { if (e.key === "amble.done" || e.key === "amble.profile") setTimeout(paintDot, 0); });
   function item(href, text, here, dots, red) {
@@ -115,6 +124,7 @@
       item("/me/plans/", "My plans", path === "/me/plans/", waiting()),
     ];
     if (has()) items.push(item("/me/messages/", "Messages", path === "/me/messages/", unread(), true));
+    items.push(item("/me/votes/", "Votes", path === "/me/votes/" || path === "/vote/", votesWaiting()));
     items.push(item("/contact/", "Support", path === "/contact/"));
     if (!has()) items.push(item("/me/settings/", "Start a free profile", false));
     panel.replaceChildren.apply(panel, items);

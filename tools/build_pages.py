@@ -66,14 +66,17 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "me-settings": ("Profile settings", "Your stamp details, missions set aside and a copy of your AmbleBee profile, kept on your own device."),
     "me-plans": ("My plans", "The missions you've added to your calendar, and whether you went."),
     "me-messages": ("Messages", "Your conversations with AmbleBee, with our replies."),
+    "me-votes": ("Your votes", "The votes you've started with friends, and the ones you've joined."),
+    "vote": ("You're invited to vote!", "Help your crew pick the plan. Cast your vote!"),
+    "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),
 }
-NOINDEX_PAGES = {"report", "status", "me", "me-settings", "me-plans", "me-messages"}   # useful only through a link: kept out of search engines and the sitemap
-PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/"}   # pages/<name>.html → this address
+NOINDEX_PAGES = {"report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new"}   # useful only through a link: kept out of search engines and the sitemap
+PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
 CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
                 "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
-                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile", "me-plans": "Your profile", "me-messages": "Your profile"}
+                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile", "me-plans": "Your profile", "me-messages": "Your profile", "me-votes": "Your profile", "vote": "Votes with friends", "vote-new": "Votes with friends"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -123,7 +126,7 @@ def nav_html(current=""):
               'stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>')
     # Profile: your stamp book and missions (/me/) and their settings (/me/settings/), one tap away on every page.
     # It becomes the way into a saved profile in Phase 3 (claude/profiles-and-stamps-PLAN.md).
-    mine = ' aria-current="page"' if current in ("me", "me-settings", "me-plans", "me-messages") else ""
+    mine = ' aria-current="page"' if current in ("me", "me-settings", "me-plans", "me-messages", "me-votes") else ""
     profile = (f'<a class="nav-profile" href="/me/" title="Profile"{mine}><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" '
                'fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">'
                '<circle cx="12" cy="8" r="4"/><path d="M4.5 20.5c1.2-4 4.2-6 7.5-6s6.3 2 7.5 6"/></svg><span class="sr">Profile</span></a>')

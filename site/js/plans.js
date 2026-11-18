@@ -308,6 +308,8 @@
     var wrap = el("div", { class: "plan-acts" });
     var b = el("button", { type: "button", class: "btn small plan-btn" }, icon("calendar", 20), "Add to calendar");
     b.addEventListener("click", function () { open(m, { from: b }); });
+    // Start a vote, the other "plan it" button (calendar-voting-PLAN.md §3), styled differently (site/js/votes.js)
+    var vote = el("a", { class: "btn small vote-start", href: "/vote/new/#add=" + m.full_id }, "Start a vote");
     var note = el("p", { class: "plan-note" });
     function paint() {
       var D = window.AmbleDone, next = D ? D.plansFor(m.full_id).filter(function (x) { return x.day >= today(); })[0] : null;
@@ -318,7 +320,7 @@
     }
     paint();
     window.addEventListener("amble:done", function () { if (wrap.isConnected) paint(); });
-    wrap.append(b, note);
+    wrap.append(el("div", { class: "plan-row" }, b, vote), note);
     return wrap;
   }
 
