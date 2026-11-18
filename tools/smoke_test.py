@@ -2598,7 +2598,8 @@ def t_contribute_page_polls(site, catalog):
                               "status": "open", "closes_at": (datetime.now(timezone.utc) + timedelta(days=10)).isoformat(),
                               "profiles_only": False, "names_public": False, "creator": None, "ballots": {}, "allow_other": True,
                               "options": [{"id": 1, "mission": None, "slug": None, "name": "Montana", "place": None, "explain": "Big skies", "season": ["any"]},
-                                          {"id": 2, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]}]}
+                                          {"id": 2, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]},
+                                          {"id": 3, "mission": None, "slug": None, "name": "Utah", "place": None, "explain": None, "season": ["any"]}]}
     page = site.open("/contribute/")
     page.wait_for_selector(".poll-list a")
     assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1, "suggesting a mission moved here"
@@ -2609,22 +2610,42 @@ def t_contribute_page_polls(site, catalog):
     page.wait_for_selector(".poll-list a")
     assert "Coming up" in page.inner_text(".poll-app"), "a scheduled poll is listed as coming up"
     page.click(".poll-list a:has-text('Which pack next?')")
+    page.wait_for_url("**/poll/?p=" + pub)
     page.wait_for_selector(".poll-clock")
+    assert page.locator(".suggest-paths").count() == 0, "a poll has its own page, not inside Contribute"
     clock = page.inner_text(".poll-clock")
-    assert clock.startswith("Poll opens in 2 hours and 6 minutes"), clock
-    assert page.locator(".vote-cast").count() == 0 and page.locator(".vote-option").count() == 2, "options shown, no voting yet"
+    assert "Poll opens in" in clock and page.locator(".poll-clock .flip").count() == 3, "the flip clock: hours, minutes, seconds"
+    assert page.inner_text(".poll-clock .flip >> nth=0") .startswith("02"), clock
+    assert page.get_attribute(".vote-share .link-box", "value").endswith("/poll/?p=" + pub), "share links to the poll itself"
+    assert page.locator("meta[property='og:url']").count() == 0, "link previews open the poll that was shared, not Contribute"
+    assert page.locator(".vote-cast").count() == 0 and page.locator(".vote-option").count() == 3, "options shown, no voting yet"
     v["opens_at"] = None
     page.reload()
     page.wait_for_selector(".vote-option")
-    assert page.inner_text(".poll-clock").startswith("Poll closes in 10 days"), page.inner_text(".poll-clock")
+    assert "Poll closes in" in page.inner_text(".poll-clock") and page.locator(".poll-clock .flip").count() == 4, "a days card while days are left"
+    assert page.inner_text(".poll-clock .flip >> nth=0").replace("\n", " ").lower().startswith(("09 days", "10 days")), page.inner_text(".poll-clock")
+    assert page.locator(".vote-option >> nth=0 >> .vote-expand").count() == 1, "Montana has an explanation: it opens"
+    page.click(".vote-option >> nth=0 >> .vote-expand")
+    assert "Big skies" in page.inner_text(".vote-option >> nth=0 >> .vote-more")
+    assert page.locator(".vote-option >> nth=1 >> .vote-expand").count() == 1, "a mission option still opens"
+    assert page.locator(".vote-option >> nth=2 >> .vote-expand").count() == 0, "one line, nothing more: no arrow"
     head = page.inner_text(".vote-head")
     assert "AmbleBee poll" in head and "AmbleBee makes the final call" in head, head
+    assert page.eval_on_selector("#poll-other", "e => getComputedStyle(e).borderTopLeftRadius") == "12px", "the Other box is rounded"
+    box = page.locator(".poll-other-card #poll-other").bounding_box(); tap = page.locator(".poll-other-card .vote-option-tap").bounding_box()
+    card = page.locator(".poll-other-card").bounding_box()
+    assert box["y"] >= tap["y"] + tap["height"] - 2 and box["y"] + box["height"] <= card["y"] + card["height"], "two rows: Other and its line, then the box, inside the card"
+    assert "your opinion matters" in page.inner_text(".poll-other-card")
     page.click(".vote-option >> nth=0 >> .vote-option-tap")
-    page.fill("#poll-other", "Utah")
+    page.fill("#poll-other", "Idaho")
+    assert page.locator(".vote-option.is-picked").count() == 1 and "Other" in page.inner_text(".vote-option.is-picked"), \
+        "typing an idea picks Other and drops Montana: never both"
+    page.click(".vote-option >> nth=0 >> .vote-option-tap")
+    assert "Montana" in page.inner_text(".vote-option.is-picked") and page.locator(".vote-option.is-picked").count() == 1, "and back"
     page.click(".vote-cast")
     page.wait_for_selector(".vote-in")
     b = list(site.intake.votes[pub]["ballots"].values())[0]
-    assert b["choice"] == [1] and b["other"] == "Utah", b
+    assert b["choice"] == [1] and "other" not in b, b
     v = site.intake.votes[pub]
     v.update(status="finished", result={"scores": [{"option": 1, "points": 1, "place": 1}, {"option": 2, "points": 0, "place": 2}], "voters": 1, "winner": 1},
              staff={"pick": 2, "reason": "Closer for most of you.", "decided_at": datetime.now(timezone.utc).isoformat()})

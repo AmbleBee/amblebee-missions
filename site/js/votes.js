@@ -276,14 +276,18 @@
     fetchIt();
   }
 
-  function countdown(v, onZero) {
+  // opts (AmbleBee polls): {at: the time counted down to, days: true adds a days card while a day or more is left, label}
+  function countdown(v, onZero, opts) {
+    opts = opts || {};
     var box = el("div", { class: "flip-clock", role: "timer", "aria-live": "off" });
-    var end = new Date(v.closes_at).getTime(), skew = Date.now() - new Date(v.now).getTime();
+    var end = new Date(opts.at || v.closes_at).getTime(), skew = Date.now() - new Date(v.now).getTime();
     function paint() {
       var left = Math.max(0, Math.floor((end - (Date.now() - skew)) / 1000));
-      var h = Math.floor(left / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
-      box.replaceChildren.apply(box, [el("span", { class: "sr", text: "Voting closes in " + h + " hours " + m + " minutes " + s + " seconds" })].concat(
-        [[h, "hours"], [m, "minutes"], [s, "seconds"]].map(function (p) {
+      var d = opts.days ? Math.floor(left / 86400) : 0;
+      var h = Math.floor((left - d * 86400) / 3600), m = Math.floor(left % 3600 / 60), s = left % 60;
+      var cards = (d ? [[d, d === 1 ? "day" : "days"]] : []).concat([[h, "hours"], [m, "minutes"], [s, "seconds"]]);
+      box.replaceChildren.apply(box, [el("span", { class: "sr", text: (opts.label || "Voting closes in") + " " + (d ? d + " days " : "") + h + " hours " + m + " minutes " + s + " seconds" })].concat(
+        cards.map(function (p) {
           return el("span", { class: "flip", "aria-hidden": "true" }, el("b", { text: pad(p[0]) }), el("small", { text: p[1] }));
         })));
       if (left <= 0) { clearInterval(tick); tick = null; setTimeout(onZero, 1500); }   // the server decides: ask again
@@ -295,7 +299,7 @@
   }
 
   function details(m, o) {
-    if (!m) return el("p", { class: "hint", text: o.place || "" });
+    if (!m) return el("p", { class: "vote-more hint", text: o.explain || o.place || "" });
     return el("div", { class: "vote-more" },
       m.short ? el("p", { text: m.short }) : null,
       m.description ? el("p", { text: m.description }) : null,
@@ -391,9 +395,10 @@
 
   function optionCard(o, by, at, onTap, ranked, i) {
     var m = by[o.mission];
-    var more = details(m, o);
-    more.hidden = true;
-    var expand = el("button", { type: "button", class: "vote-expand", "aria-expanded": "false", "aria-label": "More about " + o.name, text: "⌄",
+    // the arrow only when there's more to read: a mission's details, or the explanation after a | in an AmbleBee poll
+    var more = (m || o.explain) ? details(m, o) : null;
+    if (more) more.hidden = true;
+    var expand = !more ? null : el("button", { type: "button", class: "vote-expand", "aria-expanded": "false", "aria-label": "More about " + o.name, text: "⌄",
                                 onclick: function () { more.hidden = !more.hidden; expand.setAttribute("aria-expanded", String(!more.hidden)); expand.classList.toggle("open", !more.hidden); } });
     var badge = at == null ? null : at >= 0 ? honeycomb(ranked ? ORD[at] : "✓", "on") : honeycomb(ranked ? "tap" : "", "off");
     var main = onTap ? el("button", { type: "button", class: "vote-option-tap", "aria-pressed": String(at >= 0), onclick: onTap },
@@ -414,17 +419,19 @@
         (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function () { note.textContent = "Copied."; },
           function () { var i = document.getElementById(id); if (i) i.select(); note.textContent = "Select it and copy."; }); } }), note);
   }
-  function shareCard(v) {
-    var url = voteUrl(v.pub);
+  // opts (AmbleBee polls): {url, title, text, scan}
+  function shareCard(v, opts) {
+    opts = opts || {};
+    var url = opts.url || voteUrl(v.pub);
     var qrBox = el("div", { class: "vote-qr", hidden: true });
     var card = el("section", { class: "vote-card vote-share tilt-r", "aria-labelledby": "share-title" },
-      el("h2", { id: "share-title", class: "hand-title", text: "Share this vote" }),
-      copyRow("vote-share-link", url, "The vote's link"),
+      el("h2", { id: "share-title", class: "hand-title", text: opts.title || "Share this vote" }),
+      copyRow("vote-share-link", url, opts.title ? "The link" : "The vote's link"),
       el("div", { class: "backup-row" },
         navigator.share ? el("button", { type: "button", class: "btn small", text: "Share", onclick: function () {
-          navigator.share({ title: v.name, text: "Help pick the plan: " + v.name, url: url }).catch(function () { /* closed */ }); } }) : null,
+          navigator.share({ title: v.name, text: (opts.text || "Help pick the plan: ") + v.name, url: url }).catch(function () { /* closed */ }); } }) : null,
         el("button", { type: "button", class: "btn small vote-qr-show", text: "Show a QR code", onclick: function (e) {
-          if (!qrBox.firstChild) { var q = qrOf(url, "QR code for the vote link"); if (q) qrBox.append(q, el("p", { class: "hint", text: "Friends can scan this to open the vote." })); }
+          if (!qrBox.firstChild) { var q = qrOf(url, "QR code for the vote link"); if (q) qrBox.append(q, el("p", { class: "hint", text: opts.scan || "Friends can scan this to open the vote." })); }
           qrBox.hidden = !qrBox.hidden; e.currentTarget.textContent = qrBox.hidden ? "Show a QR code" : "Hide the QR code"; } })),
       qrBox);
     if (v.you.creator && P && P.linkTo) {
@@ -600,7 +607,7 @@
 
   window.AmbleVotes = { startButton: startButton, waiting: waiting, mine: mine,
     // shared with the Contribute page's AmbleBee polls (contribute.js)
-    kit: { el: el, api: api, problem: problem, optionCard: optionCard, honeycomb: honeycomb, missions: missions, has: has, prettyDay: prettyDay } };
+    kit: { countdown: countdown, shareCard: shareCard, el: el, api: api, problem: problem, optionCard: optionCard, honeycomb: honeycomb, missions: missions, has: has, prettyDay: prettyDay } };
 
   function mount() {
     var app = document.querySelector(".vote-app");

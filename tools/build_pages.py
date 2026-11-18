@@ -68,16 +68,17 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "me-plans": ("My plans", "The missions you've added to your calendar, and whether you went."),
     "me-messages": ("Messages", "Your conversations with AmbleBee, with our replies."),
     "me-votes": ("Your votes", "The votes you've started with friends, and the ones you've joined."),
+    "poll": ("AmbleBee poll", "Help AmbleBee decide what comes next. Cast your vote!"),
     "vote": ("You're invited to vote!", "Help your crew pick the plan. Cast your vote!"),
     "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),
 }
-NOINDEX_PAGES = {"suggest", "report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new"}   # useful only through a link: kept out of search engines and the sitemap
-PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/"}   # pages/<name>.html → this address
+NOINDEX_PAGES = {"suggest", "report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new", "poll"}   # useful only through a link: kept out of search engines and the sitemap
+PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/", "poll": "/poll/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
 CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
                 "contribute": "Help shape AmbleBee", "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
-                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile", "me-plans": "Your profile", "me-messages": "Your profile", "me-votes": "Your profile", "vote": "Votes with friends", "vote-new": "Votes with friends"}
+                "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile", "me-plans": "Your profile", "me-messages": "Your profile", "me-votes": "Your profile", "vote": "Votes with friends", "vote-new": "Votes with friends", "poll": "AmbleBee poll"}
 
 # the same wording as the labels at the top of site/js/core.js
 MODE = {"date": "Date", "adventure": "Adventure", "both": "Date or adventure"}
@@ -152,12 +153,17 @@ def faq_jsonld(body, path):
     return {"@context": "https://schema.org", "@type": "FAQPage", "url": BASE + path, "mainEntity": items}
 
 
+SHARED_BY_LINK = {"/poll/", "/vote/"}
+
+
 def page(title, description, path, main, jsonld, brand, extra_script="", current="", image=None):
     url = BASE + path
     if 'class="card"' in main and "/js/done.js" not in main + extra_script:
         extra_script += ('<script src="/js/done.js" defer></script>\n'      # the "Done" chip on cards of missions you've done
                          '<script src="/js/profile.js" defer></script>\n')  # kept up to date with the profile
     image = image or OG_IMAGE
+    # pages shared with a ?p= or ?v= link: no og:url, so a link preview (Discord, iMessage) opens the poll or vote that was shared
+    og_url = "" if path in SHARED_BY_LINK else f'<meta property="og:url" content="{esc(url)}">\n'
     data = json.dumps(jsonld, ensure_ascii=False, separators=(",", ":")).replace("<", "\\u003c")
     return f"""<!doctype html>
 <html lang="en">
@@ -174,8 +180,7 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <meta property="og:description" content="{esc(description)}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{SITE_NAME}">
-<meta property="og:url" content="{esc(url)}">
-<meta property="og:image" content="{esc(image["url"])}">
+{og_url}<meta property="og:image" content="{esc(image["url"])}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="{esc(image["alt"])}">

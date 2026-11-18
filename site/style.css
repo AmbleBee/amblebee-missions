@@ -1486,10 +1486,10 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .vote-row { display: flex; flex-wrap: wrap; gap: 4px 12px; align-items: baseline; padding: 10px 0; border-bottom: 1px solid var(--line, #E4D9C6); }
 .vote-row small { color: var(--walnut-soft, #7A5A42); }
 .vote-qr svg { width: 180px; height: 180px; }
-.vote-app input[type=text], .vote-app input[type=date], .vote-app input[type=search], .vote-app select {
+.vote-app input[type=text], .vote-app input[type=date], .vote-app input[type=search], .vote-app select, .poll-app input[type=text] {
   font: inherit; color: var(--ink, #4A3323); background: #fff; border: 2px solid var(--line-strong, #D9CDB6); border-radius: 12px; padding: 10px 12px; }
-.vote-app input:focus-visible, .vote-app select:focus-visible { outline: 3px solid var(--honey, #D8A65A); outline-offset: 1px; }
-.vote-app #vote-name { width: 100%; max-width: 22rem; }
+.vote-app input:focus-visible, .vote-app select:focus-visible, .poll-app input:focus-visible { outline: 3px solid var(--honey, #D8A65A); outline-offset: 1px; }
+.vote-app #vote-name, .poll-app #poll-other { width: 100%; max-width: 22rem; }
 .vote-card fieldset .check { display: flex; align-items: center; gap: 8px; margin: 6px 0; }
 .vote-lengths .check { display: inline-flex; margin: 4px 0; }
 .vote-share .backup-row { margin-top: 10px; }
@@ -1507,4 +1507,6 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .poll-list small{color:var(--muted,#7a6a5c)}
 .poll-stamp{display:inline-block;transform:rotate(-3deg);margin:0 0 6px}
 .poll-results .hand-title{margin:4px 0 8px}
-.poll-clock{font-size:1.15rem;margin:6px 0 10px}
+.poll-clock{margin:6px 0 14px}
+.poll-other-card { grid-template-columns: 1fr; }
+.poll-other-card #poll-other { width: auto; max-width: none; min-width: 0; margin: 0 6px 6px; }
