@@ -2387,7 +2387,11 @@ def t_messages_red_dot_and_reply(site, catalog):
 def t_display_name_fills_in_the_forms(site, catalog):
     page = site.open("/contact/")
     give_profile(site, page)
+    # let the new profile's first sync (and its notes key) finish: a reload mid-request is reported by WebKit as an
+    # "access control" error, which isn't one
+    page.wait_for_function("() => { const p = JSON.parse(localStorage.getItem('amble.profile') || 'null'); return p && p.last > 0 && p.dk; }")
     page.evaluate("AmbleDone.setSettings({ display_name: 'Max' })")
+    page.wait_for_function("() => !JSON.parse(localStorage.getItem('amble.done')).prefs_dirty")
     page.reload()
     page.wait_for_selector(".intake-form", state="visible")
     assert page.input_value("#contact-name") == "Max", "the display name fills in the contact name"
