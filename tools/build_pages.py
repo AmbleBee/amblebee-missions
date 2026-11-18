@@ -67,7 +67,7 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "me-settings": ("Profile settings", "Your stamp details, missions set aside and a copy of your AmbleBee profile, kept on your own device."),
     "me-plans": ("My plans", "The missions you've added to your calendar, and whether you went."),
     "me-messages": ("Messages", "Your conversations with AmbleBee, with our replies."),
-    "me-votes": ("Your votes", "The votes you've started with friends, and the ones you've joined."),
+    "me-votes": ("Voting", "The votes you've started with friends, and the ones you've joined."),
     "poll": ("AmbleBee poll", "Help AmbleBee decide what comes next. Cast your vote!"),
     "vote": ("You're invited to vote!", "Help your crew pick the plan. Cast your vote!"),
     "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),

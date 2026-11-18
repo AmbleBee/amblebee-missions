@@ -1514,12 +1514,12 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .poll-result { background: linear-gradient(90deg, #F6E2B0 var(--share, 0%), #FFFBEF var(--share, 0%)); }
 .poll-result.is-winner { border-color: var(--honey, #D8A65A); background: linear-gradient(90deg, #EDC56F var(--share, 0%), #FFF3D6 var(--share, 0%)); }
 .poll-result .vote-option-tap { cursor: default; }
-/* homepage strip for signed-in people (home-notes.js) */
-.home-notes { margin: 14px auto 0; max-width: 46rem; padding: 12px 16px; border-radius: 18px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); }
+/* homepage notice: a vote you started has ended (home-notes.js) */
+.home-notes { margin: 14px auto 0; max-width: 46rem; }
 .home-notes[hidden] { display: none; }
-.home-notes-list { list-style: none; margin: 0 0 10px; padding: 0; }
-.home-notes-list li + li { margin-top: 4px; }
-.home-notes-row { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; }
+.home-note-link { display: block; padding: 12px 18px; border-radius: 999px; background: #FFF3D6; box-shadow: inset 0 0 0 2px var(--honey, #D8A65A);
+  color: var(--ink); text-decoration: none; text-align: center; }
+.home-note-link:hover, .home-note-link:focus-visible { background: #FBE7B4; }
 /* Feedback for AmbleBee (done.js): honey edge, so it never looks like the private personal note */
 .done-fb { margin: 12px 0; padding: 12px 14px; border-radius: 16px; background: #FFF8E6; box-shadow: inset 0 0 0 2px var(--honey, #D8A65A); }
 .done-fb:focus { outline: none; }

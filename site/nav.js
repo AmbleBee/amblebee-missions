@@ -148,7 +148,7 @@
       item("/me/plans/", "My plans", path === "/me/plans/", waiting()),
     ];
     if (has()) items.push(item("/me/messages/", "Messages", path === "/me/messages/", unread(), true));
-    items.push(item("/me/votes/", "Votes", path === "/me/votes/" || path === "/vote/", votesWaiting()));
+    items.push(item("/me/votes/", "Voting", path === "/me/votes/" || path === "/vote/", votesWaiting()));
     items.push(item("/contact/", "Support", path === "/contact/"));
     if (!has()) items.push(item("/me/settings/", "Start a free profile", false));
     panel.replaceChildren.apply(panel, items);

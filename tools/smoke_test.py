@@ -2262,7 +2262,7 @@ def t_profile_menu(site, catalog):
     page.wait_for_selector("#profile-menu:not([hidden])")
     assert btn.get_attribute("aria-expanded") == "true"
     labels = page.locator("#profile-menu a").all_inner_texts()
-    assert labels == ["My stamps and missions", "My plans", "Votes", "Support", "Start a free profile"], labels
+    assert labels == ["My stamps and missions", "My plans", "Voting", "Support", "Start a free profile"], labels
     assert page.evaluate("document.activeElement.textContent") == "My stamps and missions", "the keyboard lands on the first item"
     page.keyboard.press("ArrowDown")
     assert page.evaluate("document.activeElement.textContent") == "My plans"
@@ -2706,18 +2706,22 @@ def t_had_my_say_stamp(site, catalog):
     assert "by voting in an AmbleBee poll" in page.inner_text(".stamp-dialog-body")
 
 
-def t_home_notes_for_signed_in(site, catalog):
-    """Signed in, the homepage offers Start a vote, and says when one of your votes is over."""
+def t_home_notice_when_your_vote_ends(site, catalog):
+    """The homepage shows one line only when a vote you started has ended, until you open it."""
     page = site.open("/")
-    assert page.locator(".home-notes").is_hidden(), "nothing without a profile"
-    give_profile(site, page)
-    page.wait_for_selector(".home-notes a[href='/vote/new/']")
-    page.evaluate("""localStorage.setItem('amble.votes', JSON.stringify([{pub: 'Vtestvote0000009', role: 'voter', name: 'Game night',
-                     closes_at: new Date(Date.now() - 60000).toISOString(), status: 'open'}]))""")
+    assert page.locator(".home-notes").is_hidden() and "null" not in page.inner_text("main"), "nothing (and no stray text) by default"
+    page.evaluate("""localStorage.setItem('amble.votes', JSON.stringify([
+        {pub: 'Vtestvote0000008', role: 'voter', name: 'Not mine', closes_at: new Date(Date.now() - 60000).toISOString(), status: 'open'},
+        {pub: 'Vtestvote0000009', role: 'creator', name: 'Game night', closes_at: new Date(Date.now() - 60000).toISOString(), status: 'open'}]))""")
     page.reload()
-    page.wait_for_selector(".home-notes-list a")
+    page.wait_for_selector(".home-note-link")
     assert "Voting's over for Game night" in page.inner_text(".home-notes") and \
-        page.get_attribute(".home-notes-list a", "href") == "/vote/?v=Vtestvote0000009"
+        page.get_attribute(".home-note-link", "href") == "/vote/?v=Vtestvote0000009", "only votes you started"
+    page.evaluate("""(() => { const l = JSON.parse(localStorage.getItem('amble.votes')); l[1].seen = true;
+                     localStorage.setItem('amble.votes', JSON.stringify(l)); })()""")
+    page.reload()
+    page.wait_for_timeout(300)
+    assert page.locator(".home-notes").is_hidden(), "gone once you've opened it"
 
 
 def t_feedback_after_thumbs(site, catalog):
