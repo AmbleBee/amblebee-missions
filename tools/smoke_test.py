@@ -2619,16 +2619,14 @@ def t_contribute_page_polls(site, catalog):
     assert page.get_attribute(".vote-share .link-box", "value").endswith("/poll/?p=" + pub), "share links to the poll itself"
     assert page.locator("meta[property='og:url']").count() == 0, "link previews open the poll that was shared, not Contribute"
     assert page.locator(".vote-cast").count() == 0 and page.locator(".vote-option").count() == 3, "options shown, no voting yet"
+    assert page.locator(".vote-option.is-picked").count() == 0, "shown, not picked"
     v["opens_at"] = None
     page.reload()
     page.wait_for_selector(".vote-option")
     assert "Poll closes in" in page.inner_text(".poll-clock") and page.locator(".poll-clock .flip").count() == 4, "a days card while days are left"
     assert page.inner_text(".poll-clock .flip >> nth=0").replace("\n", " ").lower().startswith(("09 days", "10 days")), page.inner_text(".poll-clock")
-    assert page.locator(".vote-option >> nth=0 >> .vote-expand").count() == 1, "Montana has an explanation: it opens"
-    page.click(".vote-option >> nth=0 >> .vote-expand")
-    assert "Big skies" in page.inner_text(".vote-option >> nth=0 >> .vote-more")
-    assert page.locator(".vote-option >> nth=1 >> .vote-expand").count() == 1, "a mission option still opens"
-    assert page.locator(".vote-option >> nth=2 >> .vote-expand").count() == 0, "one line, nothing more: no arrow"
+    assert page.locator(".vote-expand").count() == 0, "no dropdowns on AmbleBee polls"
+    assert "Big skies" in page.inner_text(".vote-option >> nth=0 >> small"), "the explanation shows right under the name"
     head = page.inner_text(".vote-head")
     assert "AmbleBee poll" in head and "AmbleBee makes the final call" in head, head
     assert page.eval_on_selector("#poll-other", "e => getComputedStyle(e).borderTopLeftRadius") == "12px", "the Other box is rounded"
@@ -2652,6 +2650,9 @@ def t_contribute_page_polls(site, catalog):
     page.reload()
     page.wait_for_selector(".poll-results")
     text = page.inner_text(".poll-results")
+    assert page.locator(".poll-results .vote-option.is-winner").count() == 1 and "Montana" in page.inner_text(".poll-results .is-winner"), "✓ on the most votes"
+    assert page.locator(".poll-results button.vote-option-tap").count() == 0, "results can't be tapped"
+    assert page.get_attribute(".poll-results .is-winner", "style").replace(" ", "") == "--share:100%;", "the bar shows its share"
     assert "Montana" in text and ("Staff pick: " + m1["name"]) in text and "Closer for most of you." in text, text
     contact = site.open("/contact/")
     assert contact.locator(".contact-paths a[href='#message']").count() == 0, "no Send a message card: the form is right below"

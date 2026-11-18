@@ -72,16 +72,17 @@
         v.profile_required ? el("p", { class: "chip vote-signed", text: "Profile required: one vote per profile" }) : null)];
     if (v.status === "open" && v.opens_at) {
       parts.push(countdown(v, again), el("p", { class: "hint", text: "Here's what you'll be choosing from. Voting starts when it opens." }),
-        el("ul", { class: "vote-options" }, v.options.map(function (o) { return K.optionCard(o, by, null, null, v.style === "ranked"); })), share(v));
+        el("ul", { class: "vote-options" }, v.options.map(function (o) { return K.optionCard(o, by, null, null, v.style === "ranked", null, true); })), share(v));
     } else if (v.status === "open") {
       if (v.closes_at) parts.push(countdown(v, again));
       parts.push(el("p", { class: "vote-count" }, el("b", { text: v.voters + (v.voters === 1 ? " person has voted" : " people have voted") })));
       parts.push(ballot(v, by, say, again), share(v));
     } else if (v.status === "closed") {
       parts.push(el("div", { class: "vote-card tilt-l" }, el("p", { class: "hand-title", text: "Poll closed" }),
-        el("p", { text: "Results are being reviewed. They'll show here with AmbleBee's pick and the reason for it." })));
+        el("p", { text: "Results are being reviewed. They'll show here with AmbleBee's pick and the reason for it." })),
+        el("ul", { class: "vote-options" }, v.options.map(function (o, i) { return K.optionCard(o, by, null, null, v.style === "ranked", i, true); })));
     } else if (v.status === "finished") {
-      parts.push(results(v));
+      parts.push(results(v, by));
     } else if (v.status === "rerun") {
       parts.push(el("p", {}, "This poll got more votes than expected from people without a profile, so it's being run again with profiles required. ",
         v.rerun_by ? el("a", { href: "/poll/?p=" + v.rerun_by, text: "Vote in the new poll" }) : null));
@@ -99,7 +100,7 @@
         el("div", { class: "backup-row" },
           P ? el("button", { type: "button", class: "btn primary", text: "Start a free profile", onclick: function () { P.offer(false, { done: function () { setTimeout(again, 0); } }); } }) : null,
           el("a", { class: "btn small", href: "/me/settings/#profile", text: "Sign in" })),
-        el("ul", { class: "vote-options" }, opts.map(function (o) { return K.optionCard(o, by, null, null, ranked); })));
+        el("ul", { class: "vote-options" }, opts.map(function (o) { return K.optionCard(o, by, null, null, ranked, null, true); })));
     }
     var pick = (v.you.voted && v.you.choice) ? v.you.choice.slice() : [];
     // Other is a card like the rest: picking it clears the options, picking an option clears it (never both)
@@ -124,7 +125,7 @@
           if (ranked) { if (at >= 0) pick.splice(at, 1); else pick.push(o.id); } else pick = at >= 0 ? [] : [o.id];
           if (pick.length) otherOn = false;
           paint();
-        }, ranked, i);
+        }, ranked, i, true);
       });
       if (other) cards.push(otherCard());
       ul.replaceChildren.apply(ul, cards);
@@ -158,15 +159,31 @@
     return form;
   }
 
-  function results(v) {
-    var r = v.result || {}, n = names(v), st = v.staff || {};
-    var unit = function (p) { return v.style === "ranked" ? (p === 1 ? " point" : " points") : (p === 1 ? " vote" : " votes"); };
-    var top = (r.scores || []).filter(function (x) { return x.place === 1; }).map(function (x) { return n[x.option]; });
-    var same = top.length === 1 && n[st.pick] === top[0];
+  // Results: the same cards as voting, not tappable, with a bar behind each for its share and ✓ on the most votes
+  function results(v, by) {
+    var r = v.result || {}, n = names(v), st = v.staff || {}, ranked = v.style === "ranked";
+    var unit = function (p) { return ranked ? (p === 1 ? " point" : " points") : (p === 1 ? " vote" : " votes"); };
+    var scores = {}; (r.scores || []).forEach(function (x) { scores[x.option] = x; });
+    var total = (r.scores || []).reduce(function (t, x) { return t + x.points; }, 0);
+    var top = (r.scores || []).filter(function (x) { return x.place === 1 && r.voters; }).map(function (x) { return x.option; });
+    var order = v.options.slice().sort(function (a, b) { return ((scores[b.id] || {}).points || 0) - ((scores[a.id] || {}).points || 0); });
+    var cards = order.map(function (o, i) {
+      var x = scores[o.id] || { points: 0 }, share = total ? Math.round(x.points * 100 / total) : 0, won = top.indexOf(o.id) >= 0;
+      var card = K.optionCard(o, by, null, null, ranked, i, true);
+      card.classList.add("poll-result");
+      if (won) card.classList.add("is-winner");
+      card.style.setProperty("--share", share + "%");
+      var tap = card.querySelector(".vote-option-tap");
+      tap.insertBefore(K.honeycomb(won ? "✓" : "", won ? "on" : "off"), tap.firstChild);
+      card.querySelector(".vote-option-name").append(el("small", { text: x.points + unit(x.points) + " · " + share + "%" +
+        (st.pick === o.id ? " · Staff pick" : "") }));
+      card.setAttribute("aria-label", o.name + ": " + x.points + unit(x.points) + ", " + share + " percent" + (won ? ", most votes" : ""));
+      return card;
+    });
+    var same = top.length === 1 && st.pick === top[0];
     return el("section", { class: "vote-results poll-results" },
-      el("h3", { text: "Most votes" }),
-      el("p", { class: "hand-title", text: r.voters ? top.join(" and ") : "No one voted" }),
-      r.voters ? el("ol", { class: "vote-rest" }, (r.scores || []).map(function (x) { return el("li", { text: n[x.option] + " · " + x.points + unit(x.points) }); })) : null,
+      el("p", { class: "vote-count" }, el("b", { text: r.voters ? r.voters + (r.voters === 1 ? " person voted" : " people voted") : "No one voted" })),
+      el("ul", { class: "vote-options" }, cards),
       el("div", { class: "vote-card vote-plan tilt-r" },
         el("p", { class: "hand-title", text: same ? "Staff pick: the same!" : "Staff pick: " + n[st.pick] }),
         st.reason ? el("p", { text: st.reason }) : null,

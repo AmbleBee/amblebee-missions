@@ -393,18 +393,20 @@
     return form;
   }
 
-  function optionCard(o, by, at, onTap, ranked, i) {
+  // flat (AmbleBee polls): no arrow; the description shows as small text under the name, where people will read it
+  function optionCard(o, by, at, onTap, ranked, i, flat) {
     var m = by[o.mission];
-    // the arrow only when there's more to read: a mission's details, or the explanation after a | in an AmbleBee poll
-    var more = (m || o.explain) ? details(m, o) : null;
+    var small = flat ? (o.explain || (m && m.short) || o.place) : o.place;
+    // the arrow (friends votes) only when there's more to read: a mission's details
+    var more = !flat && (m || o.explain) ? details(m, o) : null;
     if (more) more.hidden = true;
     var expand = !more ? null : el("button", { type: "button", class: "vote-expand", "aria-expanded": "false", "aria-label": "More about " + o.name, text: "⌄",
                                 onclick: function () { more.hidden = !more.hidden; expand.setAttribute("aria-expanded", String(!more.hidden)); expand.classList.toggle("open", !more.hidden); } });
     var badge = at == null ? null : at >= 0 ? honeycomb(ranked ? ORD[at] : "✓", "on") : honeycomb(ranked ? "tap" : "", "off");
     var main = onTap ? el("button", { type: "button", class: "vote-option-tap", "aria-pressed": String(at >= 0), onclick: onTap },
-      badge, el("span", { class: "vote-option-name" }, el("b", { text: o.name }), o.place ? el("small", { text: o.place }) : null))
-      : el("div", { class: "vote-option-tap" }, el("span", { class: "vote-option-name" }, el("b", { text: o.name })));
-    return el("li", { class: "vote-option tilt-" + ((i || 0) % 2 ? "r" : "l") + (at >= 0 ? " is-picked" : "") }, main, expand, more);
+      badge, el("span", { class: "vote-option-name" }, el("b", { text: o.name }), small ? el("small", { text: small }) : null))
+      : el("div", { class: "vote-option-tap" }, el("span", { class: "vote-option-name" }, el("b", { text: o.name }), flat && small ? el("small", { text: small }) : null));
+    return el("li", { class: "vote-option tilt-" + ((i || 0) % 2 ? "r" : "l") + (at != null && at >= 0 ? " is-picked" : "") }, main, expand, more);
   }
 
   // Share this vote: the link, Copy, Share and a QR code, for anyone who needs it after it starts. The person who
