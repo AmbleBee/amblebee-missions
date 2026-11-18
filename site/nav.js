@@ -11,6 +11,30 @@
   menu.addEventListener("click", function (e) { if (e.target.closest("a")) close(); });
 })();
 
+/* The header stays on the logo's line: when the links don't fit beside it, the lowest-priority ones (data-fold, highest
+   number first, set in tools/build_pages.py) move into More until they do. On phones every link is in Menu anyway. */
+(function () {
+  var top = document.querySelector(".top"), nav = top && top.querySelector("nav");
+  var brand = top && top.querySelector(".brand");
+  if (!nav || !brand) return;
+  var links = Array.prototype.slice.call(nav.querySelectorAll(":scope > a[data-fold]"))
+    .sort(function (a, b) { return +b.getAttribute("data-fold") - +a.getAttribute("data-fold"); });
+  function copyOf(a) { return nav.querySelector('.menu-panel a.phone-only[data-fold="' + a.getAttribute("data-fold") + '"]'); }
+  function oneLine() {
+    var b = brand.getBoundingClientRect(), n = nav.getBoundingClientRect();
+    return n.top < b.bottom && n.height < 64;                      // beside the logo, and not wrapped inside itself
+  }
+  function fold(a, on) { a.classList.toggle("is-folded", on); var c = copyOf(a); if (c) c.classList.toggle("is-folded", on); }
+  function layout() {
+    links.forEach(function (a) { fold(a, false); });
+    if (window.innerWidth <= 860) return;                          // phones: Menu already has everything
+    for (var i = 0; i < links.length && !oneLine(); i++) fold(links[i], true);
+  }
+  var t = null;
+  window.addEventListener("resize", function () { clearTimeout(t); t = setTimeout(layout, 80); });
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(layout);   // widths change once the fonts load
+  layout();
+})();
 /* "New to AmbleBee?" is for first-timers who land on a mission page from Google or a shared link. Once
    someone has opened a mission here or looked around a few pages, it's hidden. Only a page count and a
    yes/no are kept, in this browser; nothing is sent anywhere, and search engines always see the box. */

@@ -117,11 +117,15 @@ def nav_html(current=""):
         main.insert(0, ("/", "Open a mission"))
     extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
 
+    # When the links don't fit beside the logo, site/nav.js folds them into More, highest number first; 0 never folds
+    FOLD = {"Bee trail": 5, "About": 4, "Search": 3, "Every mission": 2, "Open a mission": 1}
+
     def link(href, text, cls=""):
         cls = " nav-share" if cls != "phone-only" and text.startswith("Know") else cls
         here = ' aria-current="page"' if (href, current) in (("/roadmap.html", "roadmap"), ("/about/", "about")) else ""
         attr = f' class="{cls.strip()}"' if cls else ""
-        return f'<a href="{href}"{attr}{here}>{text}</a>'
+        fold = f' data-fold="{FOLD[text]}"' if text in FOLD else ""
+        return f'<a href="{href}"{attr}{fold}{here}>{text}</a>'
     burger = ('<svg class="menu-burger" aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
               'stroke-width="2.6" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>')
     # Profile: your stamp book and missions (/me/) and their settings (/me/settings/), one tap away on every page.

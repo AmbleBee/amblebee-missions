@@ -2552,6 +2552,24 @@ def t_votes_in_the_menu(site, catalog):
     page.wait_for_selector(".vote-app .vote-row")
     assert "Movie night" in page.inner_text(".vote-app")
 
+
+def t_header_stays_on_one_line(site, catalog):
+    page = site.open("/about/", viewport={"width": 1000, "height": 700})
+    page.wait_for_function("() => document.querySelectorAll('.top nav > a.is-folded').length > 0")
+    brand = page.locator(".top .brand").bounding_box()
+    nav = page.locator(".top nav").bounding_box()
+    assert nav["y"] < brand["y"] + brand["height"] and nav["height"] < 64, "the links sit beside the logo, not on a line below"
+    folded = page.eval_on_selector_all(".top nav > a.is-folded", "els => els.map(e => e.textContent)")
+    assert "Bee trail" in folded, folded
+    assert page.locator(".top .menu summary .menu-burger").is_visible(), "More shows its three lines"
+    page.click(".top .menu summary")
+    assert page.locator(".menu-panel a.is-folded:has-text('Bee trail')").is_visible(), "what didn't fit is in More"
+    wide = site.open("/about/", viewport={"width": 1400, "height": 700})
+    wide.wait_for_selector(".top nav > a")
+    wide.wait_for_timeout(300)
+    left = wide.eval_on_selector_all(".top nav > a.is-folded", "els => els.map(e => e.textContent)")
+    assert left in ([], ["Bee trail"]), f"with room, everything (or all but the last) stays in the bar: {left}"   # browsers measure text a little differently
+
 def main():
     folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
     if not (folder / "catalog.json").exists():
