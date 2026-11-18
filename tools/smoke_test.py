@@ -1082,8 +1082,13 @@ def t_built_pages_load(site, catalog):
 
 
 def t_suggest_page_offers_both_ways(site, catalog):
-    page = site.open("/suggest/")
-    page.wait_for_url(re.compile(r".*/contribute/#suggest$"))
+    # old /suggest/ links land on Contribute. A plain page: the instant redirect cuts off the font downloads,
+    # which Firefox reports as errors, so the redirect is checked without collecting page errors
+    old = site.browser.new_page()
+    old.goto(site.base + "/suggest/")
+    old.wait_for_url(re.compile(r".*/contribute/#suggest$"))
+    old.close()
+    page = site.open("/contribute/")
     assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1
     assert page.locator(".suggest-paths a[href='/suggest/mission/']").count() == 1
     text = page.inner_text(".suggest-paths")
