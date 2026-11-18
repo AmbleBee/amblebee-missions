@@ -521,6 +521,8 @@
       return m < 1 ? "just now" : m < 60 ? m + (m === 1 ? " minute ago" : " minutes ago") : "earlier today";
     };
     if (st.pinNeeded) {
+      // already asking: leave it, so a sync that answers "PIN needed" again doesn't wipe what's typed or the error shown
+      if (bar.querySelector(".me-pin-open")) return;
       bar.className = "profile-bar is-gone";
       bar.replaceChildren(el("p", {}, el("b", { text: "This profile has a PIN. " }), "Your missions show here once you've entered it."),
         pinOpenForm(function () { profileBar(); draw(); }));
