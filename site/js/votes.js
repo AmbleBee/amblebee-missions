@@ -598,7 +598,9 @@
     return mine().filter(function (x) { return !x.seen && (x.ended || (x.closes_at && new Date(x.closes_at).getTime() < now)); }).length;
   }
 
-  window.AmbleVotes = { startButton: startButton, waiting: waiting, mine: mine };
+  window.AmbleVotes = { startButton: startButton, waiting: waiting, mine: mine,
+    // shared with the Contribute page's AmbleBee polls (contribute.js)
+    kit: { el: el, api: api, problem: problem, optionCard: optionCard, honeycomb: honeycomb, missions: missions, has: has, prettyDay: prettyDay } };
 
   function mount() {
     var app = document.querySelector(".vote-app");

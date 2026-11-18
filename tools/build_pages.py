@@ -57,6 +57,7 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "privacy": ("Privacy", "What AmbleBee keeps, what stays on your device, and what goes to Google or GitHub."),
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
     "faq": ("Questions and answers", "Quick answers about AmbleBee missions, suggesting a place, what each status means, and your information."),
+    "contribute": ("Contribute", "Vote in AmbleBee polls, suggest a mission, or report a problem."),
     "suggest": ("Suggest a mission", "Know a great date spot or adventure? Suggest it for AmbleBee and it might become a mission."),
     "suggest-idea": ("Share an idea", "Tell AmbleBee about a date spot or adventure you love, in your own words."),
     "suggest-mission": ("Build a mission", "Build a full AmbleBee mission step by step, with tips along the way."),
@@ -70,12 +71,12 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "vote": ("You're invited to vote!", "Help your crew pick the plan. Cast your vote!"),
     "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),
 }
-NOINDEX_PAGES = {"report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new"}   # useful only through a link: kept out of search engines and the sitemap
+NOINDEX_PAGES = {"suggest", "report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new"}   # useful only through a link: kept out of search engines and the sitemap
 PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
 CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
-                "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
+                "contribute": "Help shape AmbleBee", "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
                 "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile", "me-plans": "Your profile", "me-messages": "Your profile", "me-votes": "Your profile", "vote": "Votes with friends", "vote-new": "Votes with friends"}
 
 # the same wording as the labels at the top of site/js/core.js
@@ -112,7 +113,7 @@ def nav_html(current=""):
     """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
     home = current == "index"
     main = [("/about/", "About"), ("/#browse" if home else "/missions/", "Every mission"), ("/#search", "Search"),
-            ("/roadmap.html", "Bee trail"), ("/suggest/", "Know a great spot?")]
+            ("/roadmap.html", "Bee trail"), ("/contribute/", "Contribute")]
     if not home:
         main.insert(0, ("/", "Open a mission"))
     extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
@@ -121,7 +122,7 @@ def nav_html(current=""):
     FOLD = {"Bee trail": 5, "About": 4, "Search": 3, "Every mission": 2, "Open a mission": 1}
 
     def link(href, text, cls=""):
-        cls = " nav-share" if cls != "phone-only" and text.startswith("Know") else cls
+        cls = " nav-share" if cls != "phone-only" and text == "Contribute" else cls
         here = ' aria-current="page"' if (href, current) in (("/roadmap.html", "roadmap"), ("/about/", "about")) else ""
         attr = f' class="{cls.strip()}"' if cls else ""
         fold = f' data-fold="{FOLD[text]}"' if text in FOLD else ""

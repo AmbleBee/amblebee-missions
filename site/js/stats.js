@@ -29,7 +29,7 @@
       var url;
       try { url = new URL(a.href); } catch (err) { return; }
       if (url.origin !== location.origin) return;
-      if (url.pathname === "/suggest/") window.ambleTrack("suggest_click");
+      if (url.pathname === "/suggest/" || url.pathname === "/contribute/") window.ambleTrack("suggest_click");
       else if (url.pathname === "/report/") {
         var id = url.searchParams.get("id");
         window.ambleTrack("report_click", id ? { mission_id: id } : {});

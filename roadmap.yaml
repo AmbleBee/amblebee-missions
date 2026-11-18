@@ -71,6 +71,15 @@
   when: Planning since Nov 4, 2026
   summary: Special looks for the website around holidays and seasons, shown only for a short window each time. The rest of the year the site stays its plain self, and a switch in the footer turns the seasonal look off if you'd rather not see it.
  
+- title: AmbleBee Polls and a Contribute Page
+  status: doing
+  tag: website
+  summary: A new **Contribute** page with AmbleBee's own polls, suggesting a mission and reporting a problem, all in one place.
+  items:
+    - "Vote on what we build next. We make the final call, and always say why"
+    - "Suggesting a mission moved here from its own page"
+    - "A new stamp for having your say"
+
 - title: Testing Mission Management
   status: doing
   tag: missions

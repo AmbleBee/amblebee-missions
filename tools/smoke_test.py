@@ -173,6 +173,11 @@ class FakeIntake:
             out["hours"] = {"cap": 48, "free": 24}
         if v["status"] == "finished":
             out["result"], out["coin_flip"] = v["result"], False
+        if v["kind"] == "official":
+            out.update(profile_required=v.get("profile_required", False), allow_other=v.get("allow_other", False), opens_at=v.get("opens_at"))
+            out.pop("names", None)
+            if v["status"] == "finished":
+                out["staff"] = v["staff"]
         return out
 
     def polls_api(self, path, method, data, headers, reply):
@@ -191,6 +196,13 @@ class FakeIntake:
                                "options": [{"id": i + 1, "mission": m["id"], "slug": m["id"].split("/")[1], "name": m["name"], "place": m.get("place"),
                                             "season": ["any"]} for i, m in enumerate(data["missions"])]}
             return reply(201, {"ok": True, **self.vote_view(self.votes[pub], who)})
+        if path == "/polls/official":
+            off = [v for v in self.votes.values() if v["kind"] == "official"]
+            item = lambda v: {"pub": v["pub"], "name": v["name"], "closes_at": v["closes_at"], "voters": len(v["ballots"]),
+                              "profile_required": v.get("profile_required", False)}
+            return reply(200, {"ok": True, "upcoming": [{**item(v), "opens_at": v["opens_at"]} for v in off if v["status"] == "open" and v.get("opens_at")],
+                               "open": [item(v) for v in off if v["status"] == "open" and not v.get("opens_at")],
+                               "reviewing": [item(v) for v in off if v["status"] == "closed"], "results": []})
         if path == "/polls/mine":
             return reply(200, {"ok": True, "votes": [self.vote_view(v, who) for v in self.votes.values() if v["creator"] == key],
                                "hours": {"cap": 48, "used": 0, "free": 48}})
@@ -198,7 +210,9 @@ class FakeIntake:
         if v is None:
             return reply(404, {"ok": False, "error": "This vote has been removed.", "removed": True})
         if len(parts) == 3 and parts[2] == "ballot":
-            v["ballots"][who] = {"choice": data.get("choice"), "name": data.get("name") or None}
+            if v["kind"] == "official" and v.get("profile_required") and who not in self.profiles:
+                return reply(403, {"ok": False, "error": "This poll needs a profile.", "reason": "profile"})
+            v["ballots"][who] = {"choice": data.get("choice"), "name": data.get("name") or None, **({"other": data["other"]} if data.get("other") else {})}
         elif len(parts) == 5 and parts[2] == "names" and who == v["creator"]:
             list(v["ballots"].values())[int(parts[3])]["hidden"] = parts[4] == "hide"
         elif len(parts) == 3 and parts[2] == "finish" and who == v["creator"]:
@@ -893,7 +907,7 @@ def t_phone_menu_reaches_everything_from_any_page(site, catalog):
     for path in ("/", "/roadmap.html", f"/missions/{mission['id']}/", "/contact/"):
         page = site.open(path, PHONE)
         page.click(".top .menu summary")
-        for text in ("Every mission", "Search", "About", "Bee trail", "Know a great spot?", "Safety", "Privacy", "Contact"):
+        for text in ("Every mission", "Search", "About", "Bee trail", "Contribute", "Safety", "Privacy", "Contact"):
             assert page.locator(".menu-panel a", has_text=text).first.is_visible(), f"{text} missing on {path}"
         page.keyboard.press("Escape")
         assert not page.is_visible(".menu-panel")
@@ -918,10 +932,10 @@ def t_computer_menu_and_search_link(site, catalog):
     assert page.locator(".top .brand img[src*='logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "the logo loads"
     assert page.locator('.menu-panel a[href="/me/"]').count() == 0, "Your missions moved out of More"
     profile = page.locator('.top nav > a.nav-profile')
-    assert profile.is_visible() and profile.evaluate("a => a.previousElementSibling.textContent") == "Know a great spot?", \
-        "Profile sits right of Know a great spot?"
-    page.click('.top nav > a:has-text("Know a great spot?")')
-    page.wait_for_url("**/suggest/")
+    assert profile.is_visible() and profile.evaluate("a => a.previousElementSibling.textContent") == "Contribute", \
+        "Profile sits right of Contribute"
+    page.click('.top nav > a:has-text("Contribute")')
+    page.wait_for_url("**/contribute/")
     page.get_by_role("link", name="Profile").click()     # opens the profile menu (site/nav.js)
     page.locator("#profile-menu a", has_text="My stamps and missions").click()
     page.wait_for_url("**/me/")
@@ -1069,6 +1083,7 @@ def t_built_pages_load(site, catalog):
 
 def t_suggest_page_offers_both_ways(site, catalog):
     page = site.open("/suggest/")
+    page.wait_for_url(re.compile(r".*/contribute/#suggest$"))
     assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1
     assert page.locator(".suggest-paths a[href='/suggest/mission/']").count() == 1
     text = page.inner_text(".suggest-paths")
@@ -2570,6 +2585,54 @@ def t_header_stays_on_one_line(site, catalog):
     left = wide.eval_on_selector_all(".top nav > a.is-folded", "els => els.map(e => e.textContent)")
     assert left in ([], ["Bee trail"]), f"with room, everything (or all but the last) stays in the bar: {left}"   # browsers measure text a little differently
 
+def t_contribute_page_polls(site, catalog):
+    """AmbleBee's own polls live on Contribute, with suggesting a mission and a link to report a problem."""
+    m1 = catalog["missions"][2]
+    pub = "Opoll00000000001"
+    site.intake.votes[pub] = {"pub": pub, "kind": "official", "style": "pick", "name": "Which pack next?", "for_date": None,
+                              "status": "open", "closes_at": (datetime.now(timezone.utc) + timedelta(days=10)).isoformat(),
+                              "profiles_only": False, "names_public": False, "creator": None, "ballots": {}, "allow_other": True,
+                              "options": [{"id": 1, "mission": None, "slug": None, "name": "Montana", "place": None, "explain": "Big skies", "season": ["any"]},
+                                          {"id": 2, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]}]}
+    page = site.open("/contribute/")
+    page.wait_for_selector(".poll-list a")
+    assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1, "suggesting a mission moved here"
+    assert page.locator("#report ~ .contact-paths a[href='/report/']").count() == 1, "report a problem is linked"
+    v = site.intake.votes[pub]
+    v["opens_at"] = (datetime.now(timezone.utc) + timedelta(hours=2, minutes=5, seconds=30)).isoformat()
+    page.reload()
+    page.wait_for_selector(".poll-list a")
+    assert "Coming up" in page.inner_text(".poll-app"), "a scheduled poll is listed as coming up"
+    page.click(".poll-list a:has-text('Which pack next?')")
+    page.wait_for_selector(".poll-clock")
+    clock = page.inner_text(".poll-clock")
+    assert clock.startswith("Poll opens in 2 hours and 6 minutes"), clock
+    assert page.locator(".vote-cast").count() == 0 and page.locator(".vote-option").count() == 2, "options shown, no voting yet"
+    v["opens_at"] = None
+    page.reload()
+    page.wait_for_selector(".vote-option")
+    assert page.inner_text(".poll-clock").startswith("Poll closes in 10 days"), page.inner_text(".poll-clock")
+    head = page.inner_text(".vote-head")
+    assert "AmbleBee poll" in head and "AmbleBee makes the final call" in head, head
+    page.click(".vote-option >> nth=0 >> .vote-option-tap")
+    page.fill("#poll-other", "Utah")
+    page.click(".vote-cast")
+    page.wait_for_selector(".vote-in")
+    b = list(site.intake.votes[pub]["ballots"].values())[0]
+    assert b["choice"] == [1] and b["other"] == "Utah", b
+    v = site.intake.votes[pub]
+    v.update(status="finished", result={"scores": [{"option": 1, "points": 1, "place": 1}, {"option": 2, "points": 0, "place": 2}], "voters": 1, "winner": 1},
+             staff={"pick": 2, "reason": "Closer for most of you.", "decided_at": datetime.now(timezone.utc).isoformat()})
+    page.reload()
+    page.wait_for_selector(".poll-results")
+    text = page.inner_text(".poll-results")
+    assert "Montana" in text and ("Staff pick: " + m1["name"]) in text and "Closer for most of you." in text, text
+    contact = site.open("/contact/")
+    assert contact.locator(".contact-paths a[href='#message']").count() == 0, "no Send a message card: the form is right below"
+    assert contact.locator(".contact-paths a[href='/report/']").count() == 1, "report a problem stays on Contact"
+
+
+
 def main():
     folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
     if not (folder / "catalog.json").exists():
@@ -2608,3 +2671,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

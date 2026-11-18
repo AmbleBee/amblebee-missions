@@ -1499,3 +1499,12 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
   text-decoration: underline dotted var(--line-strong, #D9CDB6); text-underline-offset: 3px; }
 .voted-name:hover { text-decoration-color: var(--honey, #D8A65A); }
 .voted-name.is-hidden { opacity: .5; text-decoration: line-through; }
+
+/* Contribute: AmbleBee polls (contribute.js) */
+.contribute-jump{display:flex;flex-wrap:wrap;gap:8px 16px;margin:0 0 8px}
+.poll-list{list-style:none;padding:0;margin:8px 0 16px;display:grid;gap:8px}
+.poll-list li{padding:10px 14px;border:2px solid var(--ink,#5A3E2B);border-radius:14px;background:#fff}
+.poll-list small{color:var(--muted,#7a6a5c)}
+.poll-stamp{display:inline-block;transform:rotate(-3deg);margin:0 0 6px}
+.poll-results .hand-title{margin:4px 0 8px}
+.poll-clock{font-size:1.15rem;margin:6px 0 10px}

@@ -7,7 +7,7 @@
 
 
 // ---- settings you might edit -----------------------------------------------------------------
-const FORM_URL = "/suggest/";   // "Suggest a mission" (pages/suggest.html, sent to AmbleBee Intake)
+const FORM_URL = "/contribute/#suggest";   // "Suggest a mission" (pages/contribute.html, sent to AmbleBee Intake)
 const REPO_URL = "https://github.com/AmbleBee/amblebee-missions";
 // "Report a problem" page: opens with the mission's id and name already filled in (pages/report.html)
 const REPORT_PAGE = "/report/";
