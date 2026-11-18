@@ -70,11 +70,6 @@
   tag: website
   summary: Can't decide? Pick a few missions, send your friends a link, and everyone votes. The winner lands on a podium, ready to add to your calendar. Plus the odd AmbleBee poll, so you can help pick what we build next.
  
-- title: Messages and a Safer Profile
-  status: next
-  tag: website
-  summary: Write to us while signed in and see our replies in one place, with a little dot when we've answered. An optional PIN for your profile, too.
- 
 - title: Seasonal Themes
   status: next
   tag: website
@@ -97,6 +92,17 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Messages and a Safer Profile
+  status: done
+  date: 2026-11-18
+  tag: website
+  summary: Write to us while signed in and see our replies in one place, under **Messages** in your profile menu, with a red dot when we've answered. Plus an optional PIN for your profile.
+  items:
+    - "Starting a profile now asks for an email and a display name, and makes sure you know what going without an email means"
+    - "Messages: your conversations with us, open ones first, with our replies, and you can reply right there"
+    - "An optional PIN, asked when your profile is opened on a new device, plus Your devices and Sign out other devices"
+    - "The contact and suggestion forms offer to sign you in, so everything you send stays in one conversation"
+
 - title: Add to Calendar and My Plans
   status: done
   date: 2026-11-17
