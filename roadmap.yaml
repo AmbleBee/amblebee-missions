@@ -97,6 +97,10 @@
     - "Friends don't need a profile to vote, unless you ask for signed-in votes"
     - "The winner becomes everyone's own plan, so we'll ask each of you if you went"
     - "A new stamp for going with the winner"
+    - "**Share this vote** on every open vote: copy the link, share it, or show a QR code, even after it's started"
+    - "**Open on my phone** on votes you start: one scan signs your phone in and opens the vote, so you can share it from there"
+    - "**Voted so far** is one tidy line of names. The person who started the vote can tap a name to hide it"
+    - "Vote links now work when shared on Discord and other apps that trim links"
 
 - title: Messages and a Safer Profile
   status: done
@@ -108,6 +112,8 @@
     - "Messages: your conversations with us, open ones first, with our replies, and you can reply right there"
     - "An optional PIN, asked when your profile is opened on a new device, plus Your devices and Sign out other devices"
     - "The contact and suggestion forms offer to sign you in, so everything you send stays in one conversation"
+    - "Your display name fills in your name on the contact, suggestion and report forms"
+    - "The PIN box matches the other fields, and stays put while you type on slower phones"
 
 - title: Add to Calendar and My Plans
   status: done

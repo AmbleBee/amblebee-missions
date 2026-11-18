@@ -355,7 +355,7 @@
     return call("/profile/unlock", { pin: pin }).then(function (b) {
       var st = load() || {};
       st.device = b.device; st.pinNeeded = false; st.since = null; save(st);
-      return sync(true);
+      return sync(true).then(function (s) { goNext(); return s; });
     });
   }
   function setPin(pin, current) {
@@ -514,17 +514,33 @@
   }
 
   // ---- a profile link opened on this device: /me/#<key> ----
+  // "?next=/vote/#<id>" on a profile link (the "Open on my phone" QR code on a vote): once this device is signed in,
+  // go there. Only AmbleBee's own vote pages, never anywhere else. With a PIN, it waits until the PIN is given.
+  var NEXT = "amble.next";
+  function nextFrom(search) {
+    var n = new URLSearchParams(search || "").get("next") || "";
+    return /^\/vote\/(#|\?v=)[A-Za-z0-9_-]{16}$/.test(n) ? n : "";
+  }
+  function goNext() {
+    var n = "";
+    try { n = sessionStorage.getItem(NEXT) || ""; sessionStorage.removeItem(NEXT); } catch (e) { n = ""; }
+    if (n && /^\/vote\/(#|\?v=)[A-Za-z0-9_-]{16}$/.test(n) && state().has && !state().pinNeeded) { location.replace(n); return true; }
+    return false;
+  }
   function fromAddress() {
     var h = location.hash.slice(1);
     if (!/^\/me\//.test(location.pathname) || !KEY_RE.test(h)) return;
-    history.replaceState(null, "", location.pathname + location.search);   // the key doesn't stay in the address bar or history
+    var next = nextFrom(location.search);
+    history.replaceState(null, "", location.pathname);   // the key (and where it was headed) doesn't stay in the address bar or history
+    try { if (next) sessionStorage.setItem(NEXT, next); } catch (e) { /* private mode: it just stays here */ }
     var st = load();
-    if (st && st.key === h && !st.gone) { sync(true); return; }
+    if (st && st.key === h && !st.gone) { sync(true).then(goNext); return; }
     var other = st && st.key && !st.gone;
     if (other && !window.confirm("This device already has a different profile. Switch to the one in this link? " +
                                  "The missions here stay in the other profile, so you can switch back with its link.")) return;
     open(h).then(function () {
       try { window.dispatchEvent(new CustomEvent("amble:profile-opened")); } catch (e) { /* old browser */ }
+      goNext();
     });
   }
 
@@ -532,7 +548,10 @@
                           setEmail: setEmail, lost: lost, unlock: unlock, remove: remove, signOut: signOut, link: link, offer: offer,
                           unlockPin: unlockPin, setPin: setPin, devices: devices, signOutDevices: signOutDevices,
                           messages: messages, message: message, reply: reply, displayName: displayName, setDisplayName: setDisplayName,
-                          headers: function () { var st = load(); return st && st.key && !st.gone ? headers(st.key) : {}; }, key: function () {
+                          headers: function () { var st = load(); return st && st.key && !st.gone ? headers(st.key) : {}; },
+                          // a link that signs another device in to this profile, then opens `next` (a vote page)
+                          linkTo: function (next) { var st = load(); return st && st.key && !st.gone ? location.origin + "/me/?next=" + encodeURIComponent(next) + "#" + st.key : ""; },
+                          key: function () {
                             var st = load(); return st && st.key && !st.gone ? st.key : ""; } };
 
   window.addEventListener("amble:done", function () { if (state().has) schedule(); });

@@ -167,8 +167,8 @@ class FakeIntake:
         out.update(now=datetime.now(timezone.utc).isoformat(), ended_at=v.get("ended_at"), started_by=v.get("started_by", ""), voters=len(v["ballots"]),
                    you={"voted": bool(b), "choice": b["choice"] if b else None, "name": b["name"] if b else None, "creator": mine,
                         "signed_in": who in self.profiles})
-        out["names"] = ([{"id": i, "name": x["name"], "hidden": False} for i, x in enumerate(v["ballots"].values()) if x["name"]] if mine
-                        else [{"name": x["name"]} for x in v["ballots"].values() if x["name"]])
+        out["names"] = ([{"id": i, "name": x["name"], "hidden": bool(x.get("hidden"))} for i, x in enumerate(v["ballots"].values()) if x["name"]] if mine
+                        else [{"name": x["name"]} for x in v["ballots"].values() if x["name"] and not x.get("hidden")])
         if mine:
             out["hours"] = {"cap": 48, "free": 24}
         if v["status"] == "finished":
@@ -199,6 +199,8 @@ class FakeIntake:
             return reply(404, {"ok": False, "error": "This vote has been removed.", "removed": True})
         if len(parts) == 3 and parts[2] == "ballot":
             v["ballots"][who] = {"choice": data.get("choice"), "name": data.get("name") or None}
+        elif len(parts) == 5 and parts[2] == "names" and who == v["creator"]:
+            list(v["ballots"].values())[int(parts[3])]["hidden"] = parts[4] == "hide"
         elif len(parts) == 3 and parts[2] == "finish" and who == v["creator"]:
             self.finish_vote(v)
         return reply(200, {"ok": True, **self.vote_view(v, who)})
@@ -2436,7 +2438,7 @@ def t_start_a_vote_from_a_mission(site, catalog):
     v = list(site.intake.votes.values())[-1]
     assert v["creator"] == key and [o["mission"] for o in v["options"]] == [m1["full_id"], m2["full_id"]], v["options"]
     assert v["sent"]["for_date"] == "2027-07-04" and v["sent"]["hours"] == 24 and v["sent"]["names_public"] is True
-    assert page.input_value("#vote-link").endswith("/vote/#" + v["pub"])
+    assert page.input_value("#vote-link").endswith("/vote/?v=" + v["pub"]), "the link keeps the vote where apps like Discord can't drop it"
     assert page.evaluate("JSON.parse(localStorage.getItem('amble.vote.draft'))") is None, "the draft is cleared once it starts"
 
 
@@ -2490,6 +2492,48 @@ def t_put_it_to_a_vote_stamp(site, catalog):
     earned = [s["id"] for s in page.evaluate("AmbleStamps.earned()")]
     assert "put-it-to-a-vote" in earned and "planned-ahead" not in earned, earned
     assert "Put It to a Vote" in page.inner_text(".done-box")
+
+
+def t_share_a_vote_and_open_it_on_a_phone(site, catalog):
+    m1, m2 = catalog["missions"][2], catalog["missions"][3]
+    page = site.open("/")
+    key = give_profile(site, page)
+    pub = "Vtestvote0000004"
+    site.intake.votes[pub] = {"pub": pub, "kind": "friends", "style": "pick", "name": "Game night", "for_date": "2027-01-09",
+                              "status": "open", "closes_at": (datetime.now(timezone.utc) + timedelta(hours=5)).isoformat(),
+                              "profiles_only": False, "names_public": True, "creator": key, "ballots": {},
+                              "options": [{"id": 1, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]},
+                                          {"id": 2, "mission": m2["full_id"], "slug": m2["id"], "name": m2["name"], "place": "", "season": ["any"]}]}
+    page.goto(site.base + "/vote/#" + pub)
+    page.wait_for_selector(".vote-share")
+    assert page.input_value("#vote-share-link").endswith("/vote/?v=" + pub), "anyone can copy the vote's link"
+    page.click(".vote-qr-show")
+    assert page.locator(".vote-share .vote-qr svg").count() == 1, "and show its QR code"
+    page.click(".vote-phone-show")
+    phone_link = page.input_value("#vote-phone-link")
+    assert "/me/?next=" in phone_link and phone_link.endswith("#" + key) and page.locator(".vote-phone svg").count() == 1, phone_link
+    phone = site.open("/about/")                                      # another device
+    phone.goto(phone_link)
+    phone.wait_for_url("**/vote/?v=" + pub)
+    phone.wait_for_selector(".vote-share")
+    assert phone.evaluate("JSON.parse(localStorage.getItem('amble.profile')).key") == key, "signed in on the phone"
+    assert phone.locator(".vote-phone-show").count() == 1, "as the person who started it"
+    friend = site.open("/vote/?v=" + pub)                                  # the link as shared now
+    friend.wait_for_selector(".vote-share")
+    assert friend.locator(".vote-phone-show").count() == 0, "friends get the vote's link, never the profile one"
+
+    # Voted so far, for the person who started it: one line of names; a tap hides one (greyed here, gone for others)
+    site.intake.votes[pub]["ballots"] = {"a": {"choice": [1], "name": "Max W"}, "b": {"choice": [2], "name": "Chelsie"},
+                                         "c": {"choice": [1], "name": "LE"}, "d": {"choice": [2], "name": None}}
+    page.reload()
+    page.wait_for_selector(".vote-voted .voted-name")
+    assert page.inner_text(".vote-voted .voted-line") == "Max W, Chelsie, LE, plus 1 other person", page.inner_text(".vote-voted .voted-line")
+    page.click(".voted-name:has-text('LE')")
+    page.wait_for_selector(".voted-name.is-hidden:has-text('LE')")
+    assert page.get_attribute(".voted-name.is-hidden", "aria-pressed") == "true"
+    friend.reload()
+    friend.wait_for_selector(".vote-voted .voted-line")
+    assert friend.inner_text(".vote-voted .voted-line") == "Max W, Chelsie, plus 2 other people", "others don't see a hidden name"
 
 
 def t_votes_in_the_menu(site, catalog):

@@ -54,6 +54,16 @@
     }
     return v;
   }
+  // A vote's link: amblebee.com/vote/?v=<id>. The id is in the address itself, not after a #, because some apps
+  // (Discord, for one) drop everything after the # when they open a link. Older #<id> links keep working.
+  var ID_RE = /^[A-Za-z0-9_-]{16}$/;
+  function voteUrl(pub) { return location.origin + "/vote/?v=" + pub; }
+  function voteId() {
+    var h = location.hash.slice(1);
+    if (ID_RE.test(h)) return h;
+    var q = new URLSearchParams(location.search).get("v") || "";
+    return ID_RE.test(q) ? q : "";
+  }
   function has() { return !!(P && P.has() && !P.state().pinNeeded); }
   function api(path, method, body) {
     var h = Object.assign({}, P && has() ? P.headers() : {}, { "X-Amble-Voter": voter() });
@@ -222,7 +232,7 @@
 
   // after starting: the link, Copy, Share and a QR code
   function shared(app, v) {
-    var url = location.origin + "/vote/#" + v.pub;
+    var url = voteUrl(v.pub);
     var note = el("span", { class: "copy-note", role: "status" });
     var qr = null;
     try { qr = window.AmbleQR ? window.AmbleQR.svg(url, { label: "QR code for the vote link" }) : null; } catch (e) { qr = null; }
@@ -236,15 +246,15 @@
       navigator.share ? el("button", { type: "button", class: "btn small", text: "Share", onclick: function () {
         navigator.share({ title: v.name, text: "Help pick the plan: " + v.name, url: url }).catch(function () { /* closed */ }); } }) : null,
       qr ? el("div", { class: "vote-qr" }, qr) : null,
-      el("p", {}, el("a", { class: "btn primary", href: "/vote/#" + v.pub, text: "Open the vote and cast yours" }))));
+      el("p", {}, el("a", { class: "btn primary", href: "/vote/?v=" + v.pub, text: "Open the vote and cast yours" }))));
     var b = document.getElementById("vote-link"); if (b) b.select();
   }
 
   // ================================= the vote page: /vote/#<id> =================================
   var tick = null;
   function votePage(app) {
-    var pub = location.hash.slice(1);
-    if (!/^[A-Za-z0-9_-]{16}$/.test(pub)) {
+    var pub = voteId();
+    if (!pub) {
       app.replaceChildren(el("div", { class: "vote-card" }, el("h2", { class: "hand-title", text: "No vote here" }),
         el("p", {}, "This link is missing its vote. Check that the whole link was copied, or ", el("a", { href: "/vote/new/", text: "start your own vote" }), ".")));
       return;
@@ -319,6 +329,7 @@
       markSeen(v.pub);
       parts.push(el("p", {}, "The person who started it cancelled it, so there are no results. ", el("a", { href: "/vote/new/", text: "Start a new vote" }), "."));
     }
+    if (v.status === "open" || v.status === "runoff") parts.push(shareCard(v));
     parts.push(votedSoFar(v, say, again), status);
     if (v.status === "finished") parts.push(el("p", { class: "hint", text: "These results stay at this link for 30 days." }));
     app.replaceChildren.apply(app, parts);
@@ -391,6 +402,44 @@
     return el("li", { class: "vote-option tilt-" + ((i || 0) % 2 ? "r" : "l") + (at >= 0 ? " is-picked" : "") }, main, expand, more);
   }
 
+  // Share this vote: the link, Copy, Share and a QR code, for anyone who needs it after it starts. The person who
+  // started it also gets "Open on my phone": a QR code that signs their phone in and opens this vote.
+  function qrOf(url, label) {
+    try { return window.AmbleQR ? window.AmbleQR.svg(url, { label: label }) : null; } catch (e) { return null; }
+  }
+  function copyRow(id, url, label) {
+    var note = el("span", { class: "copy-note", role: "status" });
+    return el("div", { class: "copy-row" }, el("input", { class: "link-box", id: id, readonly: true, value: url, "aria-label": label }),
+      el("button", { type: "button", class: "btn small", text: "Copy", onclick: function () {
+        (navigator.clipboard ? navigator.clipboard.writeText(url) : Promise.reject()).then(function () { note.textContent = "Copied."; },
+          function () { var i = document.getElementById(id); if (i) i.select(); note.textContent = "Select it and copy."; }); } }), note);
+  }
+  function shareCard(v) {
+    var url = voteUrl(v.pub);
+    var qrBox = el("div", { class: "vote-qr", hidden: true });
+    var card = el("section", { class: "vote-card vote-share tilt-r", "aria-labelledby": "share-title" },
+      el("h2", { id: "share-title", class: "hand-title", text: "Share this vote" }),
+      copyRow("vote-share-link", url, "The vote's link"),
+      el("div", { class: "backup-row" },
+        navigator.share ? el("button", { type: "button", class: "btn small", text: "Share", onclick: function () {
+          navigator.share({ title: v.name, text: "Help pick the plan: " + v.name, url: url }).catch(function () { /* closed */ }); } }) : null,
+        el("button", { type: "button", class: "btn small vote-qr-show", text: "Show a QR code", onclick: function (e) {
+          if (!qrBox.firstChild) { var q = qrOf(url, "QR code for the vote link"); if (q) qrBox.append(q, el("p", { class: "hint", text: "Friends can scan this to open the vote." })); }
+          qrBox.hidden = !qrBox.hidden; e.currentTarget.textContent = qrBox.hidden ? "Show a QR code" : "Hide the QR code"; } })),
+      qrBox);
+    if (v.you.creator && P && P.linkTo) {
+      var mine = P.linkTo("/vote/?v=" + v.pub);
+      var phone = el("div", { class: "vote-phone", hidden: true },
+        el("p", {}, el("b", { text: "Scan this with your own phone." }),
+          " It signs your phone in to your profile and opens this vote, so you can share it from there. Anyone who scans it can open your profile, so don't share a photo of it."),
+        qrOf(mine, "QR code that opens this vote on your phone, signed in"),
+        copyRow("vote-phone-link", mine, "A link that opens this vote on another device, signed in to your profile"));
+      card.append(el("button", { type: "button", class: "btn small vote-phone-show", text: "Open on my phone", onclick: function (e) {
+        phone.hidden = !phone.hidden; e.currentTarget.textContent = phone.hidden ? "Open on my phone" : "Hide"; } }), phone);
+    }
+    return card;
+  }
+
   function creatorBar(v, say, again) {
     function act(path, body, ok) {
       return api("/polls/" + v.pub + "/" + path, "POST", body).then(function (r) {
@@ -420,14 +469,24 @@
     var box = el("section", { class: "vote-card vote-voted", "aria-labelledby": "voted-title" },
       el("h2", { id: "voted-title", class: "hand-title", text: v.status === "finished" ? "Voted" : "Voted so far" }));
     if (v.you.creator) {
-      var ul = el("ul", { class: "voted-names" }, names.map(function (n) {
-        return el("li", { class: n.hidden ? "is-hidden" : "" }, n.name,
-          el("button", { type: "button", class: "linkish", text: n.hidden ? "Show" : "Hide", onclick: function () {
+      // one line, like everyone else sees, so a long list never takes over the page; tap a name to hide or show it
+      var line = el("p", { class: "voted-line" });
+      names.forEach(function (n, i) {
+        if (i) line.append(", ");
+        line.append(el("button", { type: "button", class: "voted-name" + (n.hidden ? " is-hidden" : ""), "aria-pressed": String(!!n.hidden),
+          title: n.hidden ? "Hidden from others. Tap to show it again." : "Tap to hide this name from others", text: n.name,
+          onclick: function (e) {
+            e.currentTarget.disabled = true;
             api("/polls/" + v.pub + "/names/" + n.id + "/" + (n.hidden ? "show" : "hide"), "POST", {}).then(function (r) {
-              if (r.status !== 200) say(problem(r), true); else again(); }); } }));
-      }));
-      box.append(names.length ? ul : el("p", { text: count + (count === 1 ? " person" : " people") }),
-        el("p", { class: "hint", text: v.names_public ? "Hidden names show to others as \"another person\". Their votes still count." : "Only you see these names." }));
+              if (r.status !== 200) { say(problem(r), true); e.currentTarget.disabled = false; } else again(); });
+          } }));
+      });
+      var unnamed = count - names.length;
+      if (!names.length) line.append(count + (count === 1 ? " person" : " people"));
+      else if (unnamed > 0) line.append(", plus " + unnamed + (unnamed === 1 ? " other person" : " other people"));
+      box.append(line, el("p", { class: "hint", text: v.names_public
+        ? "Tap a name to hide it from others (it greys out here). Their vote still counts."
+        : "Only you see these names." }));
       return box;
     }
     var shown = names.map(function (n) { return n.name; });
@@ -510,7 +569,7 @@
           if (!del.dataset.sure) { del.dataset.sure = "1"; del.textContent = "Delete for good? The link stops working"; return; }
           api("/polls/" + v.pub + "/delete", "POST", {}).then(function () { forget(v.pub); yourVotes(app); });
         } });
-        return el("li", { class: "vote-row" }, el("a", { href: "/vote/#" + v.pub }, el("b", { text: v.name })),
+        return el("li", { class: "vote-row" }, el("a", { href: "/vote/?v=" + v.pub }, el("b", { text: v.name })),
           el("small", { text: prettyDay(v.for_date) + " · " + state + " · " + v.voters + (v.voters === 1 ? " voter" : " voters") }), del);
       }));
       var others = mine().filter(function (x) { return x.role !== "creator"; });
@@ -524,7 +583,7 @@
     list.forEach(function (x) { if (x.ended) markSeen(x.pub); });
     return el("section", {}, el("h2", { text: "Votes you joined" }),
       el("ul", { class: "vote-list" }, list.map(function (x) {
-        return el("li", { class: "vote-row" }, el("a", { href: "/vote/#" + x.pub }, el("b", { text: x.name || "A vote" })),
+        return el("li", { class: "vote-row" }, el("a", { href: "/vote/?v=" + x.pub }, el("b", { text: x.name || "A vote" })),
           x.for_date ? el("small", { text: prettyDay(x.for_date) }) : null);
       })));
   }
