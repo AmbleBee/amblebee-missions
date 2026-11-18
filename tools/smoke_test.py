@@ -12,7 +12,7 @@ import http.server
 import json
 import secrets
 import string
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 import re
 import sys
 import threading
@@ -48,6 +48,7 @@ class FakeIntake:
 
     def __init__(self):
         self.mode, self.posts, self.answered = "up", [], False
+        self.headers = []          # (path, request headers) for every POST: the forms carry the profile when signed in
         self.profiles = {}   # key -> {"done": {rid: completion}, "removed": [], "prefs": None, "email": False}
         self.closed = False
         self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
@@ -57,7 +58,7 @@ class FakeIntake:
         req = route.request
         path = req.url.split(INTAKE, 1)[1].split("?")[0]
         cors = {"access-control-allow-origin": "*", "access-control-allow-methods": "GET, POST",
-                "access-control-allow-headers": "Content-Type, Authorization", "content-type": "application/json"}
+                "access-control-allow-headers": "Content-Type, Authorization, X-Amble-Device", "content-type": "application/json"}
         if self.mode == "down":
             return route.abort()
         if req.method == "OPTIONS":
@@ -69,11 +70,15 @@ class FakeIntake:
             return reply(200, {"ok": True, "accepting": self.mode == "up"})
         if path == "/schema":
             return reply(200, {"ok": True, **SCHEMA})
+        if path.startswith("/messages"):
+            data = json.loads(req.post_data or "{}") if req.method == "POST" else {}
+            return self.messages(path, data, req.headers.get("authorization", ""), req.headers.get("x-amble-device"), reply)
         if req.method == "POST":
             data = json.loads(req.post_data or "{}")
             self.posts.append((path, data))
+            self.headers.append((path, dict(req.headers)))
             if path.startswith("/profile"):
-                return self.profile(path, data, req.headers.get("authorization", ""), reply)
+                return self.profile(path, data, req.headers.get("authorization", ""), reply, req.headers.get("x-amble-device"))
             if path == "/status/msg123/close":
                 self.closed = True
                 return reply(200, {"ok": True})
@@ -132,7 +137,45 @@ class FakeIntake:
         return reply(404, {"ok": False, "error": "not found"})
 
 
-    def profile(self, path, data, auth, reply):
+    def _gate(self, auth, device, reply):
+        """The profile for this key, or an answer already sent (gone, or PIN needed). Gives a device token when asked."""
+        key = auth[8:] if auth.startswith("Profile ") else ""
+        prof = self.profiles.get(key)
+        if prof is None:
+            reply(401, {"ok": False, "error": "We couldn't find that profile.", "gone": True})
+            return None, None
+        devices = prof.setdefault("devices", set())
+        if prof.get("pin") and device not in devices:
+            reply(403, {"ok": False, "error": "Enter your PIN to open this profile on this device.", "pin_needed": True})
+            return None, None
+        new = None
+        if device is not None and device not in devices:
+            new = "d" + secrets.token_hex(8)[:21]
+            new = (new + "x" * 22)[:22]
+            devices.add(new)
+        return prof, new
+
+    def messages(self, path, data, auth, device, reply):
+        """GET /messages, GET /messages/<ref>, POST /messages/<ref>/reply, like amblebee-intake's app/messages.py."""
+        prof, _ = self._gate(auth, device, reply)
+        if prof is None:
+            return
+        convos = prof.setdefault("messages", {})
+        if path == "/messages":
+            return reply(200, {"ok": True, "conversations": [{k: v for k, v in c.items() if k != "thread"} for c in convos.values()]})
+        ref = path.split("/")[2]
+        c = convos.get(ref)
+        if c is None:
+            return reply(404, {"ok": False, "error": "We couldn't find that conversation."})
+        if path.endswith("/reply"):
+            if c["closed"]:
+                return reply(400, {"ok": False, "error": "Please check your reply.", "errors": {"message": "This conversation is closed. Need more help? Start a new message."}})
+            c["thread"].append({"who": "them", "at": datetime.now(timezone.utc).isoformat(), "body": data.get("message", "")})
+        c["unread"] = False
+        view = {**c, "ok": True, "can_reply": not c["closed"], "headline": c["status"], "text": "", "kind": c["kind"]}
+        return reply(201 if path.endswith("/reply") else 200, view)
+
+    def profile(self, path, data, auth, reply, device=None):
         """Website profiles, like amblebee-intake's app/profiles.py (which has its own tests for the details)."""
         now = datetime.now(timezone.utc).isoformat()
         if path == "/profile":
@@ -147,9 +190,31 @@ class FakeIntake:
         if path == "/profile/lost":
             return reply(200, {"ok": True})
         key = auth[8:] if auth.startswith("Profile ") else ""
-        prof = self.profiles.get(key)
+        if path == "/profile/unlock":
+            prof = self.profiles.get(key)
+            if prof is None:
+                return reply(401, {"ok": False, "gone": True})
+            if data.get("pin") != prof.get("pin"):
+                return reply(403, {"ok": False, "error": "That's not the right PIN.", "wrong_pin": True})
+            tok = ("u" + secrets.token_hex(12))[:22]
+            prof.setdefault("devices", set()).add(tok)
+            return reply(200, {"ok": True, "device": tok})
+        prof, new_device = self._gate(auth, device, reply)
         if prof is None:
-            return reply(401, {"ok": False, "error": "We couldn't find that profile.", "gone": True})
+            return
+        if path == "/profile/pin":
+            if prof.get("pin") and data.get("current") != prof["pin"]:
+                return reply(403, {"ok": False, "error": "That's not the right PIN.", "wrong_pin": True})
+            prof["pin"] = data.get("pin") or None
+            return reply(200, {"ok": True, "pin": bool(prof["pin"]), **({"device": new_device} if new_device else {})})
+        if path == "/profile/devices":
+            if data.get("sign_out") == "others":
+                prof["devices"] = {device} & prof["devices"]
+            if data.get("sign_out") == "this":
+                prof["devices"].discard(device)
+            return reply(200, {"ok": True, "devices": [{"id": i, "label": "Chrome on Linux", "first_seen": "2026-11-18T10:00:00+00:00",
+                                                         "last_seen": "2026-11-18T10:00:00+00:00", "this": d == device}
+                                                        for i, d in enumerate(sorted(prof["devices"]))]})
         if path == "/profile/remove":
             del self.profiles[key]
             return reply(200, {"ok": True})
@@ -179,7 +244,9 @@ class FakeIntake:
                 plans[x["id"]] = x
         return reply(200, {"ok": True, "now": now, "done": list(prof["done"].values()), "removed": prof["removed"],
                            "prefs": prof["prefs"], "email": prof["email"], "created_at": now, "vault": prof["vault"],
-                           "plans": list(plans.values()), "plans_removed": gone})
+                           "plans": list(plans.values()), "plans_removed": gone, "pin": bool(prof.get("pin")),
+                           "messages_unread": sum(1 for c in prof.get("messages", {}).values() if c["unread"]),
+                           **({"device": new_device} if new_device else {})})
 
 
 SCHEMA = {   # a small stand-in for AmbleBee Intake's GET /schema
@@ -1416,14 +1483,20 @@ def t_profile_nudges_for_a_recovery_email_and_masks_it(site, catalog):
     key = give_profile(site, page)
     page.wait_for_selector(".profile-bar.is-saved")
     assert "has-profile" in page.get_attribute(".top .nav-profile", "class"), "the header shows there's a profile"
-    assert "No recovery email yet" in page.inner_text(".profile-bar")
+    assert "your link is the only way back in" in page.inner_text(".profile-bar"), "the gentle nudge (decision 49)"
+    page.click(".profile-bar .nudge-later")
+    assert page.locator(".profile-bar-nudge").count() == 0, "Not now hides it"
+    page.reload()
+    page.wait_for_selector(".profile-bar.is-saved")
+    assert page.locator(".profile-bar-nudge").count() == 0, "for 30 days, not just this visit"
+    page.evaluate("localStorage.removeItem('amble.nudge.email')")
     site.intake.profiles[key]["email"] = True
     page.evaluate("localStorage.setItem('amble.email', 'maxwell@example.com');"
                   "const p = JSON.parse(localStorage.getItem('amble.profile')); p.email = true;"
                   "localStorage.setItem('amble.profile', JSON.stringify(p))")
     page.reload()
     page.wait_for_selector(".profile-bar.is-saved")
-    assert "No recovery email yet" not in page.inner_text(".profile-bar")
+    assert "only way back in" not in page.inner_text(".profile-bar")
     assert "null" not in page.inner_text(".profile-bar"), "no stray null where the nudge was"
     page.goto(site.base + "/me/settings/")
     page.wait_for_selector("label[for=me-email]")
@@ -1450,10 +1523,12 @@ def t_mark_done_offers_a_free_profile_until_not_now(site, catalog):
     page.click(".done-mark")
     page.wait_for_selector(".profile-dlg[open]")
     text = page.inner_text(".profile-dlg")
-    assert "Marked done! Keep it safe?" in text and "no name, no password" in text.lower(), text
+    assert "Marked done! Keep it safe?" in text and "no password" in text.lower(), text
     assert "only keep your mission log" in text.lower() and "notes you write" in text, "it says what's kept"
-    assert "scrambled fingerprint" in text and "(optional)" in text, "and how the email is handled"
     assert page.locator(".done-entry").count() == 1, "the mission is marked whatever they choose"
+    page.click(".profile-dlg .profile-start")
+    text = page.inner_text(".profile-dlg")
+    assert "Add an email and display name" in text and "scrambled fingerprint" in text and "optional" in text, "step 2, and how the email is handled"
     page.keyboard.press("Escape")
     page.wait_for_selector(".profile-dlg[open]", state="detached")
     page.click(".done-mark")
@@ -1478,13 +1553,27 @@ def t_mark_done_offers_a_free_profile_until_not_now(site, catalog):
     assert not [p for p, _ in site.intake.posts[before:] if p.startswith("/profile")], "nothing goes to the server without a profile"
 
 
+def start_profile(page, email="", name=""):
+    """The start-a-profile steps (decision 44): Start my profile, then an email and display name. Without an email it
+    takes "I understand" first."""
+    page.click(".profile-dlg .profile-start")
+    page.wait_for_selector("#profile-email")
+    if email:
+        page.fill("#profile-email", email)
+    if name:
+        page.fill("#profile-name", name)
+    page.click(".profile-dlg .profile-continue")
+    if not email:
+        page.check("#profile-understand")
+        page.click(".profile-dlg .profile-without")
+
+
 def t_start_a_profile_and_it_keeps_up(site, catalog):
     mission = catalog["missions"][6]
     page = site.open(f"/missions/{mission['id']}/")
     page.click(".done-mark")
     page.wait_for_selector(".profile-dlg[open]")
-    page.fill("#profile-email", "max@example.com")
-    page.click(".profile-start")
+    start_profile(page, "max@example.com")
     page.wait_for_selector("#profile-link")
     link = page.input_value("#profile-link")
     key = link.split("#", 1)[1]
@@ -1549,7 +1638,7 @@ def t_notes_are_locked_with_the_link(site, catalog):
     mission = catalog["missions"][9]
     page = site.open(f"/missions/{mission['id']}/")
     page.click(".done-mark")
-    page.click(".profile-start")
+    start_profile(page)
     page.wait_for_selector("#profile-link")
     key = page.input_value("#profile-link").split("#", 1)[1]
     page.click(".profile-dlg .btn.primary")
@@ -1566,7 +1655,7 @@ def t_notes_are_locked_with_the_link(site, catalog):
 def t_opening_a_profile_link_keeps_its_settings(site, catalog):
     page = site.open(f"/missions/{catalog['missions'][7]['id']}/")
     page.click(".done-mark")
-    page.click(".profile-start")
+    start_profile(page)
     page.wait_for_selector("#profile-link")
     key = page.input_value("#profile-link").split("#", 1)[1]
     page.goto(site.base + "/me/settings/")
@@ -2033,7 +2122,7 @@ def t_plans_sync_with_the_profile(site, catalog):
     put_plan(page, catalog["missions"][4], 30, -1, "pppppp06")               # made before the profile: it moves in
     page.reload()
     page.click(".done-mark")
-    page.click(".profile-start")
+    start_profile(page)
     page.wait_for_selector("#profile-link")
     key = page.input_value("#profile-link").split("#", 1)[1]
     page.click(".profile-dlg .btn.primary")
@@ -2114,6 +2203,148 @@ def t_add_to_calendar_in_the_popup(site, catalog):
     assert b["width"] > 300, "a full-width row on phones"
 
 
+
+
+# ---------- branch 2: profiles and messages (calendar-voting-PLAN.md, decisions 39 and 44 to 49) ----------
+
+def t_no_email_needs_i_understand(site, catalog):
+    page = site.open(f"/missions/{catalog['missions'][3]['id']}/")
+    page.click(".done-mark")
+    page.click(".profile-dlg .profile-start")
+    page.fill("#profile-name", "Max")
+    page.click(".profile-dlg .profile-continue")
+    page.wait_for_selector(".profile-caution", state="visible")
+    assert "gone for good" in page.inner_text(".profile-caution")
+    assert page.is_disabled(".profile-without"), "Continue without an email waits for I understand"
+    page.click(".profile-add-email")
+    assert page.locator(".profile-caution").is_hidden() and page.evaluate("document.activeElement.id") == "profile-email"
+    page.click(".profile-dlg .profile-continue")
+    assert not page.is_checked("#profile-understand"), "the tick isn't remembered"
+    page.check("#profile-understand")
+    page.click(".profile-without")
+    page.wait_for_selector("#profile-link")
+    assert "only way back in" in page.inner_text(".profile-dlg")
+    made = [d for p_, d in site.intake.posts if p_ == "/profile"][-1]
+    assert made["email"] == ""
+    key = page.input_value("#profile-link").split("#", 1)[1]
+    page.click(".profile-dlg .btn.primary")
+    page.wait_for_function("() => !JSON.parse(localStorage.getItem('amble.done')).prefs_dirty")
+    assert (site.intake.profiles[key]["prefs"] or {}).get("settings", {}).get("display_name") == "Max", "the display name goes to the profile"
+
+
+def t_pin_on_a_new_device(site, catalog):
+    key = "".join(secrets.choice(string.ascii_letters + string.digits) for _ in range(22))
+    m = catalog["missions"][2]
+    site.intake.profiles[key] = {"done": {"r1": {"rid": "r1aaaa", "mission": m["full_id"], "slug": m["id"],
+                                               "name": "A mission", "done_at": "2026-11-01T12:00:00Z", "snapshot": {}, "as_date": False,
+                                               "rating": None, "note": "", "updated_at": "2026-11-01T12:00:00Z"}},
+                                 "removed": [], "prefs": None, "email": True, "vault": {"wk": None, "we": None, "salt": None},
+                                 "pin": "482913", "devices": set()}
+    page = site.open("/me/#" + key)
+    page.wait_for_selector(".profile-bar .me-pin-open")
+    assert page.locator(".me-list li").count() == 0, "nothing comes in before the PIN"
+    page.fill("#me-pin-open", "111222")
+    page.click(".me-pin-open button[type=submit]")
+    page.wait_for_selector(".pin-error:has-text('not the right PIN')")
+    page.fill("#me-pin-open", "482913")
+    page.click(".me-pin-open button[type=submit]")
+    page.wait_for_selector(".profile-bar.is-saved")
+    page.wait_for_selector(".me-list li")
+    assert page.evaluate("JSON.parse(localStorage.getItem('amble.profile')).device"), "this device keeps its token"
+
+
+def t_settings_pin_and_devices(site, catalog):
+    page = site.open("/me/settings/")
+    key = give_profile(site, page)
+    page.wait_for_selector(".me-pin-add")
+    page.wait_for_function("() => !!JSON.parse(localStorage.getItem('amble.profile')).device")
+    page.click(".me-pin-add")
+    page.fill("#me-pin-new", "1234")
+    page.fill("#me-pin-again", "1234")
+    assert page.locator(".pin-four").is_visible(), "4 digits: 6 is safer"
+    page.click(".me-pin-form button[type=submit]")
+    page.wait_for_selector(".me-security .form-status.bad:has-text('too easy')")
+    page.fill("#me-pin-new", "5823")
+    page.fill("#me-pin-again", "5832")
+    page.click(".me-pin-form button[type=submit]")
+    page.wait_for_selector(".me-security .form-status.bad:has-text(\"don't match\")")
+    page.fill("#me-pin-again", "5823")
+    page.click(".me-pin-form button[type=submit]")
+    page.wait_for_selector(".me-security .form-status.bad:has-text('I understand')")   # no recovery email: the caution first
+    page.check("#me-pin-understand")
+    page.click(".me-pin-form button[type=submit]")
+    page.wait_for_selector(".me-pin-change")
+    assert site.intake.profiles[key]["pin"] == "5823"
+    site.intake.profiles[key]["devices"].add("o" * 22)
+    page.click(".me-devices-show")
+    page.wait_for_selector(".device-list li")
+    assert page.locator(".device-list li").count() == 2 and "This device" in page.inner_text(".device-list")
+    page.click(".me-signout-others")
+    page.wait_for_function("() => document.querySelectorAll('.device-list li').length === 1")
+    assert len(site.intake.profiles[key]["devices"]) == 1
+
+
+def t_messages_red_dot_and_reply(site, catalog):
+    page = site.open("/me/")
+    key = give_profile(site, page)
+    now = datetime.now(timezone.utc)
+    site.intake.profiles[key]["messages"] = {
+        "c7": {"ref": "c7", "kind": "contact", "label": "Message", "title": "Winter pack?", "first_line": "Is there a winter pack?",
+               "status": "Waiting on you", "created_at": (now - timedelta(days=2)).isoformat(), "last_at": now.isoformat(), "unread": True,
+               "closed": False, "closed_at": None, "leaves_at": None,
+               "thread": [{"who": "them", "at": (now - timedelta(days=2)).isoformat(), "body": "Is there a winter pack?"},
+                          {"who": "us", "at": now.isoformat(), "body": "Not yet, but soon!"}]},
+        "s3": {"ref": "s3", "kind": "idea", "label": "Suggestion", "title": "Lava caves", "first_line": "Great in winter",
+               "status": "Declined", "created_at": (now - timedelta(days=100)).isoformat(), "last_at": (now - timedelta(days=85)).isoformat(),
+               "unread": False, "closed": True, "closed_at": (now - timedelta(days=85)).isoformat(), "leaves_at": (now + timedelta(days=5)).isoformat(),
+               "thread": [{"who": "them", "at": (now - timedelta(days=100)).isoformat(), "body": "Great in winter"}]}}
+    page.evaluate("() => { const p = JSON.parse(localStorage.getItem('amble.profile')); p.last = 0; localStorage.setItem('amble.profile', JSON.stringify(p)); }")
+    page.reload()
+    page.wait_for_selector(".top .nav-profile .nav-dot.is-reply", state="visible")
+    assert "1 new reply" in page.inner_text(".top .nav-profile .sr")
+    page.click(".top .nav-profile")
+    page.wait_for_selector(".profile-menu a[href='/me/messages/'] .nav-dot.is-reply")
+    page.click(".profile-menu a[href='/me/messages/']")
+    page.wait_for_selector(".msg-list li")
+    assert page.locator(".msg-list li").count() == 2 and "is-unread" in page.get_attribute(".msg-list li >> nth=0", "class")
+    closed = page.inner_text(".msg-list li.is-closed")
+    assert "removed in 5 days" in closed and page.locator(".msg-list li.is-closed .msg-countdown.is-soon").count() == 1, closed
+    page.click(".msg-list a[href='#c7']")
+    page.wait_for_selector(".msg-thread li >> nth=1")
+    assert "AmbleBee" in page.inner_text(".msg-thread .msg-us") and "Not yet, but soon!" in page.inner_text(".msg-thread")
+    page.fill("#msg-reply", "Thanks!")
+    page.click(".msg-reply button[type=submit]")
+    page.wait_for_function("() => document.querySelectorAll('.msg-thread li').length === 3")
+    page.click(".msg-back a")
+    page.wait_for_selector(".msg-list li")
+    page.wait_for_selector(".top .nav-profile .nav-dot.is-reply", state="hidden")
+    page.click(".msg-list a[href='#s3']")
+    page.wait_for_selector(".msg-about")
+    assert "removed from Messages" in page.inner_text(".msg-about") and page.locator("#msg-reply").count() == 0
+    assert "Start a new message" in page.inner_text(".messages-app")
+
+
+def t_forms_sign_in_box_and_link(site, catalog):
+    page = site.open("/contact/")
+    page.wait_for_selector(".intake-form", state="visible")
+    assert page.locator(".signin-box").is_visible(), "no profile: the sign-in box"
+    page.click(".signin-skip")
+    assert page.locator(".signin-box").count() == 0, "Continue without hides it"
+    rep = site.open("/report/")
+    rep.wait_for_selector(".intake-form", state="visible")
+    assert rep.locator(".signin-box").count() == 0, "reports stay one tap away"
+    key = give_profile(site, page)
+    page.wait_for_selector(".intake-form", state="visible")
+    assert page.locator(".signin-box").count() == 0 and "Linked to your profile" in page.inner_text(".signed-in-line")
+    page.fill("#contact-name", "Max")
+    page.fill("#contact-email", "max@example.com")
+    page.fill("#contact-subject", "Hello")
+    page.fill("#contact-message", "Is there a winter pack?")
+    page.wait_for_timeout(1200)                                   # the bot check wants a person-sized pause
+    page.click(".intake-form button[type=submit]")
+    page.wait_for_selector(".intake-done", state="visible")
+    sent = [h for p_, h in site.intake.headers if p_ == "/contact"][-1]
+    assert sent.get("authorization") == "Profile " + key and sent.get("x-amble-device"), sent
 def main():
     folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
     if not (folder / "catalog.json").exists():
@@ -2139,6 +2370,8 @@ def main():
             except Exception as e:  # noqa: BLE001  every failure gets reported, not just the first
                 failed.append(label)
                 print(f"  FAIL  {label}\n        {str(e).splitlines()[0] if str(e) else type(e).__name__}")
+                if os.environ.get("SMOKE_TRACE"):
+                    import traceback; traceback.print_exc()
             for ctx in browser.contexts:
                 ctx.close()
         browser.close()

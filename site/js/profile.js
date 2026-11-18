@@ -12,7 +12,13 @@
      if you add a recovery email, with a key made from that email (PBKDF2). After "I lost my link" the new link can't
      open the first lock, so the site asks for the recovery email once, opens the second, and locks it with the new
      link. Without a recovery email there's no "I lost my link" at all: the link is the only way back in.
-   window.AmbleProfile: { has, state, sync, create, setEmail, lost, remove, signOut, link, offer, open } */
+   - Branch 2 (calendar-voting-PLAN.md, decisions 44 to 47): every request also carries this device's token
+     (X-Amble-Device; "new" asks the server for one). With a PIN on the profile, a device without a token gets only
+     "PIN needed" until the PIN is given here once. The sync answer also says how many conversations in Messages have
+     a reply not yet seen (the red dot). Starting a profile is three short steps, with an "I understand" check before
+     going without a recovery email.
+   window.AmbleProfile: { has, state, sync, create, setEmail, lost, remove, signOut, link, offer, open, unlockPin, setPin,
+                          devices, signOutDevices, messages, message, reply, displayName, setDisplayName } */
 (function () {
   "use strict";
 
@@ -43,7 +49,8 @@
   function state() {
     var st = load() || {};
     return { has: !!(st.key && !st.gone), gone: !!st.gone, email: !!st.email, last: st.last || 0, created: st.created || "",
-             locked: !!(st.key && !st.gone && st.locked), syncing: live.syncing, error: live.error };
+             locked: !!(st.key && !st.gone && st.locked), syncing: live.syncing, error: live.error,
+             pin: !!st.pin, pinNeeded: !!(st.key && !st.gone && st.pinNeeded), unread: st.unread || 0 };
   }
 
   // ---- locking notes ----
@@ -117,10 +124,12 @@
     if (st.dk) return Promise.resolve(st.dk);
     return post("/profile/sync", { since: null, done: [], removed: [], prefs: null }, st.key).then(function (r) {
       if (r.status === 401) throw { gone: true };
+      if (r.status === 403 && r.body && r.body.pin_needed) throw { pinNeeded: true };
       if (r.status !== 200 || !r.body.ok) throw new Error(OFFLINE);
       var v = r.body.vault || {};
       var now = load() || {};
       if (now.key !== st.key) return null;
+      if (r.body.device && !now.device) { now.device = r.body.device; now.pinNeeded = false; save(now); }   // keep it: never ask twice
       if (v.wk) {
         return linkLock(st.key).then(function (k) { return unseal(k, v.wk); }).then(function (b) {
           now.dk = b64u(b); now.locked = false; delete now.vault; save(now); return now.dk;
@@ -151,13 +160,22 @@
     return key ? location.origin + "/me/#" + key : "";
   }
 
-  function post(path, body, key) {
+  function headers(key) {
+    var h = {};
+    if (key) {
+      var st = load() || {};
+      h.Authorization = "Profile " + key;
+      h["X-Amble-Device"] = (st.key === key && st.device) || "new";
+    }
+    return h;
+  }
+  function post(path, body, key, method) {
     var ctl = "AbortController" in window ? new AbortController() : null;
     var timer = ctl ? setTimeout(function () { ctl.abort(); }, 15000) : null;
-    var headers = { "Content-Type": "application/json" };
-    if (key) headers.Authorization = "Profile " + key;
-    return fetch(API + path, { method: "POST", headers: headers, body: JSON.stringify(body || {}), cache: "no-store",
-                               credentials: "omit", signal: ctl ? ctl.signal : undefined })
+    var h = headers(key);
+    if (method !== "GET") h["Content-Type"] = "application/json";
+    return fetch(API + path, { method: method || "POST", headers: h, body: method === "GET" ? undefined : JSON.stringify(body || {}),
+                               cache: "no-store", credentials: "omit", signal: ctl ? ctl.signal : undefined })
       .then(function (r) {
         clearTimeout(timer);
         return r.json().catch(function () { return {}; }).then(function (b) { return { status: r.status, body: b }; });
@@ -194,6 +212,9 @@
         if (r.status === 401 && r.body && r.body.gone) {
           now.gone = true; live.error = ""; save(now); return;
         }
+        if (r.status === 403 && r.body && r.body.pin_needed) {               // a PIN, and this device hasn't given it yet
+          now.pinNeeded = true; live.error = ""; save(now); return;
+        }
         if (r.status !== 200 || !r.body.ok) { live.error = (r.body && r.body.error) || OFFLINE; return; }
         // what went without its note stays waiting, so the note goes once it can be locked
         D.sent(dk ? p : { done: p.done.filter(function (c) { return !c.note; }), removed: p.removed, prefs: p.prefs,
@@ -207,11 +228,14 @@
           D.merge(Object.assign({}, r.body, { done: opened }));
           now = load() || {};
           now.since = r.body.now; now.email = !!r.body.email; now.created = r.body.created_at || now.created; now.last = Date.now();
+          if (r.body.device) now.device = r.body.device;
+          now.pin = !!r.body.pin; now.pinNeeded = false; now.unread = r.body.messages_unread || 0;
           live.error = "";
           save(now);
         });
       }).then(null, function (ex) {
         if (ex && ex.gone) { var g = load() || {}; g.gone = true; save(g); live.error = ""; return; }
+        if (ex && ex.pinNeeded) { var q = load() || {}; q.pinNeeded = true; save(q); live.error = ""; return; }
         live.error = OFFLINE;
       })
       .then(function () {
@@ -227,7 +251,8 @@
   }
 
   // ---- starting, opening and leaving a profile ----
-  function create(email) {
+  function create(email, name) {
+    if (name != null) D.setSettings({ display_name: name || "" });     // goes up with the first sync
     var key = newKey();
     var made = subtle ? newVault(key, email) : Promise.resolve({ dk: null, vault: {} });
     return made.then(function (nv) {
@@ -299,7 +324,67 @@
       save(null); keepEmail("");
     }, function () { throw new Error("We couldn't reach our server, so nothing was removed. Please try again in a little while."); });
   }
-  function signOut() { save(null); keepEmail(""); D.removeAll(); }
+  function signOut() {
+    var st = load();
+    if (st && st.key && st.device && !st.gone) post("/profile/devices", { sign_out: "this" }, st.key).then(null, function () { /* offline: it's dropped after 90 days unseen */ });
+    save(null); keepEmail(""); D.removeAll();
+  }
+
+  // ---- the PIN and signed-in devices (decision 47) ----
+  function answer(r, fallback) {
+    if (r.status === 200 || r.status === 201) return r.body;
+    var st = load() || {};
+    if (r.status === 401 && r.body && r.body.gone) { st.gone = true; save(st); }
+    if (r.status === 403 && r.body && r.body.pin_needed) { st.pinNeeded = true; save(st); }
+    var e = new Error((r.body && ((r.body.errors && (r.body.errors.pin || r.body.errors.message)) || r.body.error)) || fallback || OFFLINE);
+    e.status = r.status; e.body = r.body || {};
+    throw e;
+  }
+  function call(path, body, method) {
+    var st = load();
+    if (!st || !st.key || st.gone) return Promise.reject(new Error("There's no profile on this device."));
+    // a device without its token gets one from a sync first, so this call doesn't ask for a second one
+    var first = st.device || st.pinNeeded ? Promise.resolve() : sync(true);
+    return first.then(function () {
+      var now = load() || {};
+      if (!now.key || now.gone) throw new Error("There's no profile on this device.");
+      return post(path, body, now.key, method).then(function (r) { return answer(r); }, function () { throw new Error(OFFLINE); });
+    });
+  }
+  function unlockPin(pin) {
+    return call("/profile/unlock", { pin: pin }).then(function (b) {
+      var st = load() || {};
+      st.device = b.device; st.pinNeeded = false; st.since = null; save(st);
+      return sync(true);
+    });
+  }
+  function setPin(pin, current) {
+    return call("/profile/pin", { pin: pin || "", current: current || "" }).then(function (b) {
+      var st = load() || {};
+      st.pin = !!b.pin; if (b.device) st.device = b.device; save(st);
+      return st.pin;
+    });
+  }
+  function devices() { return call("/profile/devices", {}).then(function (b) { return b.devices || []; }); }
+  function signOutDevices(which) { return call("/profile/devices", { sign_out: which }).then(function (b) { return b.devices || []; }); }
+
+  // ---- Messages (decision 46): this profile's own conversations ----
+  function setUnread(list) {
+    var st = load() || {};
+    var n = list.filter(function (c) { return c.unread; }).length;
+    if (st.unread !== n) { st.unread = n; save(st); }
+  }
+  function messages() { return call("/messages", null, "GET").then(function (b) { var l = b.conversations || []; setUnread(l); return l; }); }
+  function message(ref) {
+    return call("/messages/" + encodeURIComponent(ref), null, "GET").then(function (b) {
+      var st = load() || {};
+      if (st.unread && b.unread === false) sync(true);   // opening it read the replies: the dot catches up
+      return b;
+    });
+  }
+  function reply(ref, text) { return call("/messages/" + encodeURIComponent(ref) + "/reply", { message: text }); }
+  function displayName() { return (D.settings() || {}).display_name || ""; }
+  function setDisplayName(v) { var s = D.setSettings({ display_name: v || "" }); if (state().has) schedule(); return s.display_name || ""; }
 
   // ---- "Start a free profile?" (after Mark done, every time, until there's a profile) ----
   var dlg = null, opener = null;
@@ -337,12 +422,16 @@
       copyBox("profile-link", link(key), "Your profile link"),
       el("p", { class: "hint" }, "Your recovery code is the end of the link: ", el("code", { class: "recovery-code", text: key }),
         email ? " We've emailed both to you; check your spam folder if it doesn't arrive." :
-          " Without a recovery email, this link is the only way back, so save it somewhere, like a note to yourself. You can add an email in your profile's Settings."),
+          " You can add an email any time in your profile's Settings."),
+      email ? null : el("p", { class: "profile-noemail-ready" }, el("b", { text: "Save this link somewhere safe. It's the only way back in." })),
       el("form", { method: "dialog", class: "profile-dlg-actions" }, el("button", { class: "btn primary", type: "submit", text: "Done" }))];
   }
   function declined() { try { return !!localStorage.getItem(DECLINED); } catch (e) { return !!memDeclined; } }
   var memDeclined = false;
-  function offer(fromMark) {
+  // Starting a profile (decision 44): 1. what it is, 2. an email and a display name (both optional; no email needs
+  // "I understand" first), 3. your profile is ready. opts.done(key) runs once it's started (back to a form or a vote).
+  function offer(fromMark, opts) {
+    opts = opts || {};
     if (state().has) return;
     if (fromMark && declined()) return;
     if (!dlg) {
@@ -351,39 +440,77 @@
       document.body.append(dlg);
     }
     opener = document.activeElement;
-    var email = el("input", { id: "profile-email", type: "email", autocomplete: "email", maxlength: "200", placeholder: "you@example.com" });
-    var err = el("p", { class: "form-status bad", role: "alert" });
-    var start = el("button", { type: "submit", class: "btn primary profile-start" }, "Start my free profile");
-    var form = el("form", { class: "profile-offer" },
+    function show(node, focus) {
+      dlg.replaceChildren(el("div", { class: "dialog-body profile-dlg-body" }, node));
+      if (!dlg.open) dlg.showModal();
+      var f = dlg.querySelector(focus); if (f) f.focus();
+    }
+    // step 1
+    var first = el("div", { class: "profile-offer profile-step1" },
       el("h2", { id: "profile-dlg-title", text: fromMark ? "Marked done! Keep it safe?" : "Start a free profile" }),
       el("p", {}, "A free AmbleBee profile keeps your missions and stamps safe, even if you clear your browser or get a new phone. ",
-        "There's nothing to sign up for: no name, no password."),
+        "There's nothing to sign up for: no password."),
       el("p", {}, el("b", { text: "We only keep your mission log: " }),
         "the missions you mark done, the days, your thumbs up or down, and any notes you write. Nothing else, and it's never shared or sold."),
-      el("div", { class: "done-field" },
-        el("label", { for: "profile-email" }, "Email me my profile link and recovery code ", el("span", { class: "opt", text: "(optional)" })),
-        email,
-        el("p", { class: "hint", text: "We send them there once. We don't keep your address, only a scrambled fingerprint of it, so we can send you a new link if you ever lose yours. We'll never email you for anything else." })),
-      err,
-      el("div", { class: "profile-dlg-actions" }, start,
+      el("div", { class: "profile-dlg-actions" },
+        el("button", { type: "button", class: "btn primary profile-start", onclick: function () { show(second(), "#profile-email"); } }, "Start my profile"),
         el("button", { type: "button", class: "btn small profile-later", onclick: function () {
           memDeclined = true;
           try { localStorage.setItem(DECLINED, new Date().toISOString()); } catch (e) { /* in memory */ }
           dlg.close();
         } }, "Not now")));
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      err.textContent = ""; start.disabled = true; start.textContent = "Starting…";
-      create(email.value.trim()).then(function (key) {
-        dlg.replaceChildren(el.apply(null, ["div", { class: "dialog-body profile-dlg-body" }].concat(ready(key, !!email.value.trim()))));
-        var b = dlg.querySelector("#profile-link"); if (b) b.focus();
-      }, function (ex) {
-        err.textContent = ex.message; start.disabled = false; start.textContent = "Start my free profile"; email.focus();
+    // step 2
+    function second() {
+      var email = el("input", { id: "profile-email", type: "email", autocomplete: "email", maxlength: "200", placeholder: "you@example.com" });
+      var name = el("input", { id: "profile-name", type: "text", autocomplete: "nickname", maxlength: "30" });
+      var err = el("p", { class: "form-status bad", role: "alert" });
+      var go = el("button", { type: "submit", class: "btn primary profile-continue" }, "Continue");
+      var sure = el("input", { type: "checkbox", id: "profile-understand" });
+      var without = el("button", { type: "button", class: "btn primary profile-without", disabled: true }, "Continue without an email");
+      var caution = el("div", { class: "caution profile-caution", hidden: true },
+        el("p", {}, el("b", { text: "Without an email, your link is the only way into your profile. If you lose it, your profile, missions and stamps are gone for good, and we can't get them back." })),
+        el("label", { class: "check", for: "profile-understand" }, sure, " I understand"),
+        el("div", { class: "profile-dlg-actions" }, without,
+          el("button", { type: "button", class: "btn small profile-add-email", onclick: function () {
+            caution.hidden = true; go.hidden = false; email.focus();
+          } }, "Add an email")));
+      sure.addEventListener("change", function () { without.disabled = !sure.checked; });
+      function start(withEmail) {
+        err.textContent = "";
+        var btn = withEmail ? go : without;
+        btn.disabled = true; var was = btn.textContent; btn.textContent = "Starting…";
+        var mail = withEmail ? email.value.trim() : "";
+        create(mail, name.value.trim()).then(function (key) {
+          show(el.apply(null, ["div", {}].concat(ready(key, !!mail))), "#profile-link");
+          if (opts.done) try { opts.done(key); } catch (e) { /* the page's own business */ }
+        }, function (ex) {
+          err.textContent = ex.message; btn.disabled = withEmail ? false : !sure.checked; btn.textContent = was;
+          (withEmail ? email : without).focus();
+        });
+      }
+      without.addEventListener("click", function () { if (sure.checked) start(false); });
+      var form = el("form", { class: "profile-offer profile-step2", novalidate: true },
+        el("h2", { id: "profile-dlg-title", text: "Add an email and display name" }),
+        el("p", { class: "hint", text: "Both are optional." }),
+        el("div", { class: "done-field" },
+          el("label", { for: "profile-email" }, "Email ", el("span", { class: "opt", text: "(so you can get back in if you lose your link)" })),
+          email,
+          el("p", { class: "hint", text: "We send your link and recovery code there once. We don't keep your address, only a scrambled fingerprint of it, so we can send you a new link if you ever lose yours. We'll never email you for anything else." }),
+          el("p", { class: "hint", text: "You can add a PIN later in Your profile for extra security." })),
+        el("div", { class: "done-field" },
+          el("label", { for: "profile-name" }, "Display name ", el("span", { class: "opt", text: "(optional)" })),
+          name,
+          el("p", { class: "hint", text: "A first name or nickname. Fills in your name when you vote with friends." })),
+        err, el("div", { class: "profile-dlg-actions" }, go), caution);
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        if (email.value.trim()) { caution.hidden = true; start(true); return; }
+        go.hidden = true; caution.hidden = false; sure.checked = false; without.disabled = true;   // the tick isn't remembered
+        sure.focus();
       });
-    });
-    dlg.replaceChildren(el("div", { class: "dialog-body profile-dlg-body" }, form));
-    if (!dlg.open) dlg.showModal();
-    form.querySelector(".profile-start").focus();
+      return form;
+    }
+    show(first, ".profile-start");
   }
 
   // ---- a profile link opened on this device: /me/#<key> ----
@@ -402,7 +529,10 @@
   }
 
   window.AmbleProfile = { has: function () { return state().has; }, state: state, sync: sync, create: create, open: open,
-                          setEmail: setEmail, lost: lost, unlock: unlock, remove: remove, signOut: signOut, link: link, offer: offer, key: function () {
+                          setEmail: setEmail, lost: lost, unlock: unlock, remove: remove, signOut: signOut, link: link, offer: offer,
+                          unlockPin: unlockPin, setPin: setPin, devices: devices, signOutDevices: signOutDevices,
+                          messages: messages, message: message, reply: reply, displayName: displayName, setDisplayName: setDisplayName,
+                          headers: function () { var st = load(); return st && st.key && !st.gone ? headers(st.key) : {}; }, key: function () {
                             var st = load(); return st && st.key && !st.gone ? st.key : ""; } };
 
   window.addEventListener("amble:done", function () { if (state().has) schedule(); });

@@ -34,6 +34,7 @@
     for (var i = 2; i < arguments.length; i++) {
       var kid = arguments[i];
       if (kid == null || kid === false) continue;
+      if (Array.isArray(kid)) { kid.forEach(function (k) { if (k != null && k !== false) e.append(k instanceof Node ? k : document.createTextNode(String(k))); }); continue; }
       e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
     }
     return e;
@@ -93,7 +94,8 @@
     // ---- the profile: link, recovery email, another device, signing out ----
     if (P) app.append(profileSection());
     // the rest belongs to a profile: until there is one, Settings is only "Your profile"
-    if (P && !P.has()) { app.append(status); return; }
+    if (P && (!P.has() || P.state().pinNeeded)) { app.append(status); return; }
+    app.append(nameSection(), securitySection());
     // ---- the two things stamps need ----
     if (ST) app.append(stampsSection());
 
@@ -234,6 +236,14 @@
       el("h2", { id: "me-profile-title", text: "Your profile" }));
     var busy = function (b, text) { b.disabled = true; b.dataset.was = b.textContent; b.textContent = text; };
     var free = function (b) { b.disabled = false; if (b.dataset.was) b.textContent = b.dataset.was; };
+    if (st.pinNeeded) {
+      sec.append(el("p", {}, "This profile has a PIN. Enter it once to open the profile on this device."),
+        pinOpenForm(function () { say("Your profile is open on this device."); draw(); refocus("me-profile-title"); }),
+        lostForm(busy, free, "Forgot your PIN? Type your recovery email for a new link"),
+        el("p", {}, el("button", { type: "button", class: "linkish", text: "Not my profile? Sign out of this device", onclick: function () {
+          P.signOut(); draw(); refocus("me-profile-title"); } })));
+      return sec;
+    }
     if (st.has && st.locked) {
       var uIn = el("input", { id: "me-unlock", type: "email", autocomplete: "email", placeholder: "you@example.com" });
       var uBtn = el("button", { type: "submit", class: "btn small", text: "Unlock my notes" });
@@ -324,14 +334,19 @@
         draw(); refocus("me-profile-title");
       });
     });
+    sec.append(openForm, lostForm(busy, free));
+    return sec;
+  }
+
+  function lostForm(busy, free, label) {
     var startedAt = Date.now();
     var lostIn = el("input", { id: "me-lost", type: "email", autocomplete: "email", placeholder: "you@example.com" });
     var lostBtn = el("button", { type: "submit", class: "btn small", text: "Email me a new link" });
-    var lostForm = el("form", { class: "me-lost-form" },
-      el("label", { for: "me-lost", text: "Lost your link? Type your recovery email" }),
+    var form = el("form", { class: "me-lost-form", id: "lost" },
+      el("label", { for: "me-lost", text: label || "Lost your link? Type your recovery email" }),
       el("div", { class: "backup-row" }, lostIn, lostBtn),
       el("p", { class: "hint", text: "If a profile has that recovery email, we'll email it a new link. Once you open it, the old link stops working." }));
-    lostForm.addEventListener("submit", function (e) {
+    form.addEventListener("submit", function (e) {
       e.preventDefault();
       busy(lostBtn, "Sending…");
       P.lost(lostIn.value.trim(), startedAt).then(function () {
@@ -339,8 +354,133 @@
         say("If a profile has that recovery email, a new link is on its way. Check your spam folder too.");
       }, function (ex) { free(lostBtn); say(ex.message, true); lostIn.focus(); });
     });
-    sec.append(openForm, lostForm);
+    return form;
+  }
+
+  // ---- the PIN (calendar-voting-PLAN.md, decision 47) ----
+  var EASY = ["0000", "1111", "2222", "3333", "4444", "5555", "6666", "7777", "8888", "9999", "1234", "4321", "1212", "2580", "0123",
+              "000000", "111111", "123456", "654321", "123123", "121212", "112233", "999999", "12345", "54321", "11111", "00000"];
+  function pinInput(id, label) {
+    return [el("label", { for: id, text: label }),
+      el("input", { id: id, type: "password", inputmode: "numeric", pattern: "[0-9]*", autocomplete: id === "me-pin-open" ? "one-time-code" : "off",
+                    maxlength: "6", class: "pin-input" })];
+  }
+  // a new device: "Enter your PIN to open this profile on this device"
+  function pinOpenForm(onDone) {
+    var parts = pinInput("me-pin-open", "Enter your PIN to open this profile on this device");
+    var btn = el("button", { type: "submit", class: "btn small", text: "Open my profile" });
+    var err = el("p", { class: "form-status bad pin-error", role: "alert" });
+    var form = el("form", { class: "me-pin-open" }, parts[0], el("div", { class: "backup-row" }, parts[1], btn), err,
+      el("p", { class: "hint" }, el("a", { href: "/me/settings/#lost", text: "Forgot your PIN?" }),
+        " Ask for a new link with your recovery email: it opens without the PIN, and you can set a new one."));
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = parts[1].value.trim();
+      if (!/^\d{4,6}$/.test(v)) { err.textContent = "Your PIN is 4 to 6 digits."; parts[1].focus(); return; }
+      btn.disabled = true; err.textContent = "";
+      P.unlockPin(v).then(function () { btn.disabled = false; if (onDone) onDone(); }, function (ex) {
+        btn.disabled = false; err.textContent = ex.message; parts[1].value = ""; parts[1].focus();
+      });
+    });
+    return form;
+  }
+
+  function securitySection() {
+    var st = P.state();
+    var sec = el("section", { class: "me-security", id: "security", "aria-labelledby": "me-security-title" },
+      el("h2", { id: "me-security-title", text: "Security" }),
+      el("p", { class: "hint", text: "A PIN adds a check when your profile is opened on a new device. It doesn't lock this device, and devices that are already signed in won't ask." }));
+    var box = el("div", { class: "me-pin" });
+    var err = el("p", { class: "form-status bad", role: "alert" });
+    function setForm(change) {
+      var cur = change ? pinInput("me-pin-current", "Your current PIN") : null;
+      var one = pinInput("me-pin-new", change ? "New PIN (4 to 6 digits)" : "Add a PIN (4 to 6 digits)");
+      var two = pinInput("me-pin-again", "Type it again");
+      var four = el("p", { class: "hint pin-four", hidden: true }, el("b", { text: "6 digits is safer." }), " A 4-digit PIN is easier to guess.");
+      one[1].addEventListener("input", function () { four.hidden = one[1].value.length !== 4; });
+      var sure = el("input", { type: "checkbox", id: "me-pin-understand" });
+      var caution = st.email ? null : el("div", { class: "caution" },
+        el("p", {}, el("b", { text: "If you forget your PIN and lose access on this device, there's no way to get your profile back without a recovery email." })),
+        el("label", { class: "check", for: "me-pin-understand" }, sure, " I understand"));
+      var save = el("button", { type: "submit", class: "btn small", text: change ? "Change PIN" : "Save PIN" });
+      var form = el("form", { class: "me-pin-form" },
+        el("p", { class: "hint", text: "We'll ask for it when your profile is opened on a new device." }),
+        cur ? el("div", { class: "done-field" }, cur[0], cur[1]) : null,
+        el("div", { class: "done-field" }, one[0], one[1], four), el("div", { class: "done-field" }, two[0], two[1]), caution, err, save);
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var a = one[1].value.trim(), b = two[1].value.trim();
+        err.textContent = "";
+        if (!/^\d{4,6}$/.test(a)) { err.textContent = "Use 4 to 6 digits."; one[1].focus(); return; }
+        if (EASY.indexOf(a) >= 0) { err.textContent = "That one's too easy to guess."; one[1].focus(); return; }
+        if (a !== b) { err.textContent = "The two PINs don't match."; two[1].focus(); return; }
+        if (caution && !sure.checked) { err.textContent = "Tick \"I understand\" first, or add a recovery email."; sure.focus(); return; }
+        save.disabled = true;
+        P.setPin(a, cur ? cur[1].value.trim() : "").then(function () {
+          say(change ? "PIN changed." : "PIN added. This device won't ask for it."); draw(); refocus("me-security-title");
+        }, function (ex) { save.disabled = false; err.textContent = ex.message; (cur ? cur[1] : one[1]).focus(); });
+      });
+      box.replaceChildren(form);
+      (cur ? cur[1] : one[1]).focus();
+    }
+    function removeForm() {
+      var cur = pinInput("me-pin-current", "Your current PIN");
+      var go = el("button", { type: "submit", class: "btn small", text: "Remove PIN" });
+      var form = el("form", { class: "me-pin-form" }, el("div", { class: "done-field" }, cur[0], cur[1]), err, go);
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        go.disabled = true;
+        P.setPin("", cur[1].value.trim()).then(function () { say("PIN removed."); draw(); refocus("me-security-title"); },
+          function (ex) { go.disabled = false; err.textContent = ex.message; cur[1].focus(); });
+      });
+      box.replaceChildren(form);
+      cur[1].focus();
+    }
+    if (st.pin) {
+      box.append(el("p", {}, el("b", { text: "A PIN is set." })),
+        el("div", { class: "backup-row" },
+          el("button", { type: "button", class: "btn small me-pin-change", text: "Change PIN", onclick: function () { setForm(true); } }),
+          el("button", { type: "button", class: "linkish me-pin-remove", text: "Remove PIN", onclick: removeForm })));
+    } else {
+      box.append(el("button", { type: "button", class: "btn small me-pin-add", text: "Add a PIN", onclick: function () { setForm(false); } }));
+    }
+    // your devices
+    var devs = el("div", { class: "me-devices" });
+    function list(items) {
+      var fmt = function (iso) { return pretty(iso); };
+      devs.replaceChildren(el("h3", { text: "Your devices" }),
+        el("ul", { class: "device-list" }, items.map(function (d) {
+          return el("li", {}, el("b", { text: d.label }), " · last seen " + fmt(d.last_seen), d.this ? el("span", { class: "chip", text: "This device" }) : null);
+        })),
+        items.length > 1 ? el("button", { type: "button", class: "btn small me-signout-others", text: "Sign out other devices", onclick: function (e) {
+          e.target.disabled = true;
+          P.signOutDevices("others").then(function (left) { list(left); say("Your other devices are signed out." + (P.state().pin ? " They'll need your PIN to open your profile again." : "")); },
+            function (ex) { e.target.disabled = false; say(ex.message, true); });
+        } }) : el("p", { class: "hint", text: "Only this device is signed in." }),
+        el("p", { class: "hint", text: "Think your link got out? Add a PIN, then sign out your other devices." }));
+    }
+    var load = el("button", { type: "button", class: "btn small me-devices-show", text: "Show your devices", onclick: function () {
+      load.disabled = true;
+      P.devices().then(list, function (ex) { load.disabled = false; say(ex.message, true); });
+    } });
+    devs.append(load);
+    sec.append(box, devs);
     return sec;
+  }
+
+  function nameSection() {
+    var input = el("input", { id: "me-name", type: "text", maxlength: "30", autocomplete: "nickname", value: P.displayName() });
+    var form = el("form", { class: "me-name-form" },
+      el("label", { for: "me-name" }, "Display name ", el("span", { class: "opt", text: "(optional)" })),
+      el("div", { class: "backup-row" }, input, el("button", { type: "submit", class: "btn small", text: "Save" })),
+      el("p", { class: "hint", text: "A first name or nickname. Fills in your name when you vote with friends. Only shows on votes." }));
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = P.setDisplayName(input.value);
+      input.value = v;
+      say(v ? "Display name saved." : "Display name cleared.");
+    });
+    return el("section", { class: "me-name", "aria-label": "Display name" }, form);
   }
   // the recovery email as this browser remembers it (site/js/profile.js), partly hidden, first and last letters showing: m•••••l@e•••••e.com.
   // Another device opened from the link doesn't have it: the server only keeps a fingerprint.
@@ -366,6 +506,12 @@
   }
 
   // ---- the profile line at the top of /me/ ----
+  // "Not now" on the no-email nudge hides it for 30 days (decision 49)
+  var NUDGE = "amble.nudge.email", nudgeHidden = false;
+  function nudgeLater() {
+    if (nudgeHidden) return true;
+    try { var t = parseInt(localStorage.getItem(NUDGE) || "0", 10); return !!t && Date.now() - t < 30 * 864e5; } catch (e) { return false; }
+  }
   function profileBar() {
     var bar = document.querySelector(".profile-bar");
     if (!bar || !P) return;
@@ -374,7 +520,11 @@
       var m = Math.round((Date.now() - ms) / 60000);
       return m < 1 ? "just now" : m < 60 ? m + (m === 1 ? " minute ago" : " minutes ago") : "earlier today";
     };
-    if (st.has && st.locked) {
+    if (st.pinNeeded) {
+      bar.className = "profile-bar is-gone";
+      bar.replaceChildren(el("p", {}, el("b", { text: "This profile has a PIN. " }), "Your missions show here once you've entered it."),
+        pinOpenForm(function () { profileBar(); draw(); }));
+    } else if (st.has && st.locked) {
       bar.className = "profile-bar is-gone";
       bar.replaceChildren(el("p", {}, el("b", { text: "Your notes are locked. " }),
         "You opened a new link, so your recovery email is needed once to unlock them."),
@@ -384,8 +534,13 @@
       bar.replaceChildren(el("p", {}, el("b", { text: "✓ Saved to your profile" }),
         st.syncing ? " · saving…" : st.error ? " · " + st.error : st.last ? " · synced " + ago(st.last) : ""),
         el("a", { href: "/me/settings/#profile", text: "Profile link and recovery" }),
-        st.email ? "" : el("p", { class: "profile-bar-nudge" }, el("b", { text: "No recovery email yet. " }),
-          "If you lose your link, there's no way back in. ", el("a", { href: "/me/settings/#profile", text: "Add a recovery email" })));
+        st.email || nudgeLater() ? "" : el("p", { class: "profile-bar-nudge" },
+          "Without an email, your link is the only way back in. If you lose it, your profile, missions and stamps are gone for good. ",
+          el("a", { href: "/me/settings/#profile", text: "Add an email" }), " ",
+          el("button", { type: "button", class: "linkish nudge-later", text: "Not now", onclick: function () {
+            try { localStorage.setItem(NUDGE, String(Date.now())); } catch (e) { /* this visit only */ }
+            nudgeHidden = true; profileBar();
+          } })));
     } else if (st.gone) {
       bar.className = "profile-bar is-gone";
       bar.replaceChildren(el("p", {}, el("b", { text: "This profile's link has stopped working." }),

@@ -52,6 +52,11 @@
     if (x && typeof x === "object") {
       if (typeof x.home_state === "string" && x.home_state.length <= 30 && STATE_RE.test(x.home_state)) out.home_state = x.home_state;
       if (typeof x.anniversary === "string" && ANNIV_RE.test(x.anniversary)) out.anniversary = x.anniversary;
+      // the display name (calendar-voting-PLAN.md, decision 39): plain text, one line, 30 characters at most
+      if (typeof x.display_name === "string") {
+        var nm = x.display_name.replace(/[<>\u0000-\u001f\u007f]/g, "").replace(/\s+/g, " ").trim().slice(0, 30).trim();
+        if (nm) out.display_name = nm;
+      }
     }
     return out;
   }
@@ -258,7 +263,7 @@
       return false;
     },
     settings: function () { return read().settings; },
-    // patch: { home_state?, anniversary? }; null or "" clears one
+    // patch: { home_state?, anniversary?, display_name? }; null or "" clears one
     setSettings: function (patch) {
       var d = read(), next = Object.assign({}, d.settings);
       Object.keys(patch || {}).forEach(function (k) { if (patch[k] == null || patch[k] === "") delete next[k]; else next[k] = patch[k]; });

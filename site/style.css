@@ -1362,3 +1362,38 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .nav-dot[hidden] { display: none; }
 .top nav a.nav-profile .nav-dot { position: absolute; top: 0; right: 0; }
 .top nav .profile-menu a .nav-dot { margin: auto 0 auto 10px; }
+
+/* ---- branch 2: start-a-profile steps, the PIN, devices, Messages (calendar-voting-PLAN.md, decisions 44 to 48) ---- */
+.nav-dot.is-reply { background: #C0392B; }                       /* red: only ever for replies from AmbleBee */
+.profile-caution, .me-security .caution { margin: 12px 0; }
+.profile-dlg [hidden], .signin-box [hidden] { display: none !important; }
+.profile-caution .check, .me-security .check { display: flex; gap: 8px; align-items: center; margin: 8px 0; font-weight: 700; }
+.profile-noemail-ready { margin: 10px 0; }
+.pin-input { width: 9ch; letter-spacing: .3em; font-size: 1.15rem; }
+.me-pin-open { margin: 10px 0; }
+.pin-four { color: var(--walnut); background: var(--honey-tint, #F6E6C6); border-radius: 8px; padding: 6px 10px; }
+.device-list { list-style: none; padding: 0; margin: 6px 0 10px; }
+.device-list li { padding: 6px 0; border-bottom: 1px solid var(--line, #E4D9C6); }
+.device-list .chip { margin-left: 8px; }
+.profile-bar-nudge .nudge-later { margin-left: 4px; }
+.msg-list { list-style: none; padding: 0; margin: 12px 0; display: grid; gap: 10px; }
+.msg-list a { display: grid; gap: 4px; padding: 14px 16px; border-radius: 14px; background: var(--paper, #FFFDF8);
+  border: 1px solid var(--line, #E4D9C6); text-decoration: none; color: inherit; }
+.msg-list li.is-unread a { border-color: #C0392B; }
+.msg-list li.is-closed a { opacity: .85; }
+.msg-head { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+.msg-first { color: var(--walnut-soft, #7A5A42); }
+.msg-countdown.is-soon { color: var(--walnut); background: var(--honey-tint, #F6E6C6); border-radius: 6px; padding: 0 6px; }
+.msg-convo-head { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 8px; }
+.msg-convo-head h2 { margin: 0; }
+.msg-thread { list-style: none; padding: 0; margin: 16px 0; display: grid; gap: 12px; }
+.msg-thread li { padding: 12px 14px; border-radius: 14px; max-width: 46rem; }
+.msg-thread .msg-them { background: var(--paper, #FFFDF8); border: 1px solid var(--line, #E4D9C6); justify-self: end; }
+.msg-thread .msg-us { background: var(--sage-tint, #E3EAD6); }
+.msg-thread .who { display: block; font-size: .85rem; font-weight: 700; margin-bottom: 4px; }
+.msg-thread .body { white-space: pre-wrap; }
+.msg-reply { display: grid; gap: 8px; max-width: 46rem; }
+.msg-reply textarea { width: 100%; }
+.signin-box { margin: 0 0 18px; padding: 14px 16px; border-radius: 14px; background: var(--paper, #FFFDF8); border: 1px solid var(--line, #E4D9C6); }
+.signin-box .backup-row { margin-top: 8px; }
+.signed-in-line { font-size: .92rem; }

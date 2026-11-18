@@ -11,6 +11,7 @@
   var el = X.el, $ = X.$, $$ = X.$$;
   var DRAFT = "amble.draft.mission";
   var box = $(".builder"), form = $(".builder-form", box), panel = $(".builder-panel", box);
+  if (form && X.signin) X.signin(form, true);      // the sign-in box (decision 45), as on Share an idea and Contact
   var stepsList = $(".builder-steps", box), status = $(".form-status", box);
   var back = $(".builder-back", box), next = $(".builder-next", box);
   var SC = null, couple = null;

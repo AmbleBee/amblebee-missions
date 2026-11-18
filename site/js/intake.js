@@ -40,10 +40,15 @@
   }
   function track(name) { if (window.ambleTrack) window.ambleTrack(name); }
 
+  // sent while signed in, these carry the profile (calendar-voting-PLAN.md, decision 45), so the message joins that
+  // profile's conversations in Messages. The server never refuses a message over it.
+  var LINKED = ["/contact", "/submit/idea", "/submit/mission", "/report"];
   function request(path, options, ms) {
     var ctl = "AbortController" in window ? new AbortController() : null;
     var timer = ctl ? setTimeout(function () { ctl.abort(); }, ms || 15000) : null;
     var opts = Object.assign({ cache: "no-store", credentials: "omit" }, options || {});
+    if (LINKED.indexOf(path) >= 0 && window.AmbleProfile && window.AmbleProfile.has())
+      opts.headers = Object.assign({}, opts.headers || {}, window.AmbleProfile.headers());
     if (ctl) opts.signal = ctl.signal;
     return fetch(API + path, opts).then(function (r) {
       clearTimeout(timer);
@@ -183,10 +188,66 @@
     contact: ["Thanks! Your message is on its way.", "We read every message, usually within a few days. Our reply shows up on your private page below, and we'll email you when it does."]
   };
 
+  // ---- signing in on Suggest a mission and Contact (decision 45) ----
+  // No profile: a short box at the top (never blocking): Sign in, Start a free profile, or Continue without. Signed in:
+  // a quiet line above Send. Report a problem never shows the box, but is linked when already signed in.
+  function signin(form, ask) {
+    var P = window.AmbleProfile;
+    if (!P) return;
+    var send = $("button[type=submit]", form) || $(".builder-next", form);
+    var line = null, box = null;
+    function paint() {
+      if (line) line.remove();
+      if (box) box.remove();
+      line = box = null;
+      var st = P.state();
+      if (st.has && !st.pinNeeded) {
+        line = el("p", { class: "signed-in-line hint", text: "Linked to your profile, so we can see your earlier messages. " +
+          "Anyone with your profile link can read your messages, so keep it private. You can add a PIN in Your profile." });
+        if (send && send.parentNode) send.parentNode.insertBefore(line, send); else form.append(line);
+        return;
+      }
+      if (!ask || form.dataset.without) return;
+      if (st.has && st.pinNeeded) {
+        box = el("div", { class: "signin-box" }, [el("p", {}, [document.createTextNode("Your profile needs its PIN on this device before messages can be linked to it. "),
+          el("a", { href: "/me/settings/#profile", text: "Enter your PIN" })])]);
+        form.insertBefore(box, form.firstChild);
+        return;
+      }
+      var code = el("input", { type: "text", class: "signin-code", autocomplete: "off", spellcheck: "false", placeholder: "Your profile link or recovery code", "aria-label": "Your profile link or recovery code" });
+      var err = el("p", { class: "form-status bad", role: "alert" });
+      var paste = el("div", { class: "backup-row", hidden: "" }, [code, el("button", { type: "button", class: "btn small signin-open", text: "Open it here" })]);
+      var btnIn = el("button", { type: "button", class: "btn small signin-show", text: "Sign in" });
+      var btnNew = el("button", { type: "button", class: "btn primary small signin-start", text: "Start a free profile" });
+      var btnSkip = el("button", { type: "button", class: "linkish signin-skip", text: "Continue without" });
+      box = el("div", { class: "signin-box", role: "group", "aria-label": "Sign in" }, [
+        el("p", {}, [el("b", { text: "Sign in or start a free profile" }),
+          document.createTextNode(" so everything you send us stays in one conversation, and you won't have to explain again next time.")]),
+        el("div", { class: "backup-row" }, [btnIn, btnNew, btnSkip]), paste, err]);
+      btnIn.addEventListener("click", function () { paste.hidden = false; code.focus(); });
+      $(".signin-open", box).addEventListener("click", function () {
+        var m = /([A-Za-z0-9_-]{22})\s*$/.exec(code.value.trim());
+        if (!m) { err.textContent = "That doesn't look like a profile link or recovery code. Check you copied all of it."; code.focus(); return; }
+        err.textContent = "";
+        P.open(m[1]).then(function (s2) { if (s2 && s2.gone) err.textContent = "That link has stopped working. If you asked for a new one, use the link in your newest email."; else paint(); });
+      });
+      btnNew.addEventListener("click", function () { P.offer(false, { done: function () { setTimeout(paint, 0); } }); });
+      btnSkip.addEventListener("click", function () { form.dataset.without = "1"; paint(); var f = form.querySelector("input, textarea"); if (f) f.focus(); });
+      form.insertBefore(box, form.firstChild);
+    }
+    paint();
+    window.addEventListener("amble:profile", function () {
+      var st = P.state(), was = form.dataset.mood, now = [st.has, st.pinNeeded].join();
+      if (was !== now) { form.dataset.mood = now; paint(); }
+    });
+    form.dataset.mood = [P.state().has, P.state().pinNeeded].join();
+  }
+
   function setup(box) {
     var kind = box.getAttribute("data-intake");
     var form = $("form", box), wait = $(".intake-wait", box), down = $(".intake-down", box), done = $(".intake-done", box);
     var status = $(".form-status", form);
+    signin(form, kind === "contact" || kind === "idea");
     restoreDraft(form, kind);
     // the email saved with a profile on this device (site/js/profile.js) fills in an empty email box
     var emailInput = $('input[name="email"]', form), mine = null;
@@ -472,7 +533,7 @@
   }
 
   // shared with site/js/builder.js (the full mission builder)
-  window.AmbleIntake = { API: API, BACKUP: BACKUP, request: request, health: health, el: el, $: $, $$: $$, load: load,
+  window.AmbleIntake = { API: API, BACKUP: BACKUP, request: request, health: health, el: el, $: $, $$: $$, load: load, signin: signin,
     save: save, track: track, linkPanel: linkPanel, renderMine: renderMine, spamNote: spamNote, started: started, shortName: shortName, tidyName: tidyName };
 
   $$(".intake[data-intake]").forEach(setup);

@@ -46,7 +46,8 @@
 })();
 
 /* The profile menu (calendar-voting-PLAN.md, decision 46): the profile button opens a short menu instead of going
-   straight to Your profile. Without JavaScript it's still a plain link to /me/. Messages and Votes join it later. */
+   straight to Your profile. Without JavaScript it's still a plain link to /me/. Messages joined in branch 2, with a red
+   dot when AmbleBee has replied (the only red dots on the site); Votes joins later. */
 (function () {
   var btn = document.querySelector(".top nav > a.nav-profile");
   var nav = btn && btn.parentElement;
@@ -74,28 +75,35 @@
       return ((d && d.plans) || []).filter(function (x) { return x && x.day < today && x.day >= oldest; }).length;
     } catch (e) { return 0; }
   }
+  // conversations with a reply from AmbleBee not yet read (site/js/profile.js keeps the count from each sync)
+  function unread() {
+    try { var st = JSON.parse(localStorage.getItem("amble.profile") || "null"); return st && st.key && !st.gone ? st.unread || 0 : 0; } catch (e) { return 0; }
+  }
   var dot = document.createElement("span");
   dot.className = "nav-dot";
   dot.setAttribute("aria-hidden", "true");
   function paintDot() {
-    var n = waiting();
-    dot.hidden = !n;
+    var n = waiting(), r = unread();
+    dot.hidden = !n && !r;
+    dot.classList.toggle("is-reply", !!r);          // a reply wins: red
     if (!dot.parentNode) btn.appendChild(dot);
     var sr = btn.querySelector(".sr");
-    if (sr) sr.textContent = sr.textContent.replace(/, \d+ plans? to check$/, "") + (n ? ", " + n + (n === 1 ? " plan" : " plans") + " to check" : "");
+    if (sr) sr.textContent = sr.textContent.replace(/(, \d+ new repl(y|ies))?(, \d+ plans? to check)?$/, "") +
+      (r ? ", " + r + (r === 1 ? " new reply" : " new replies") : "") + (n ? ", " + n + (n === 1 ? " plan" : " plans") + " to check" : "");
   }
   paintDot();
   window.addEventListener("amble:done", paintDot);
   window.addEventListener("amble:profile", function () { setTimeout(paintDot, 0); });
   window.addEventListener("storage", function (e) { if (e.key === "amble.done" || e.key === "amble.profile") setTimeout(paintDot, 0); });
-  function item(href, text, here, dots) {
+  function item(href, text, here, dots, red) {
     var a = document.createElement("a");
     a.href = href;
     a.textContent = text;
     if (here) a.setAttribute("aria-current", "page");
     if (dots) {
-      var d = document.createElement("span"); d.className = "nav-dot"; d.setAttribute("aria-hidden", "true");
-      var sr = document.createElement("span"); sr.className = "sr"; sr.textContent = " (Did you go? " + dots + " waiting)";
+      var d = document.createElement("span"); d.className = "nav-dot" + (red ? " is-reply" : ""); d.setAttribute("aria-hidden", "true");
+      var sr = document.createElement("span"); sr.className = "sr";
+      sr.textContent = red ? " (" + dots + (dots === 1 ? " new reply)" : " new replies)") : " (Did you go? " + dots + " waiting)";
       a.append(d, sr);
     }
     return a;
@@ -105,8 +113,9 @@
     var items = [
       item("/me/", has() ? "My profile" : "My stamps and missions", path === "/me/"),
       item("/me/plans/", "My plans", path === "/me/plans/", waiting()),
-      item("/contact/", "Support", path === "/contact/"),
     ];
+    if (has()) items.push(item("/me/messages/", "Messages", path === "/me/messages/", unread(), true));
+    items.push(item("/contact/", "Support", path === "/contact/"));
     if (!has()) items.push(item("/me/settings/", "Start a free profile", false));
     panel.replaceChildren.apply(panel, items);
     if (!has()) panel.lastChild.className = "profile-menu-start";
