@@ -95,7 +95,7 @@
     if (P) app.append(profileSection());
     // the rest belongs to a profile: until there is one, Settings is only "Your profile"
     if (P && (!P.has() || P.state().pinNeeded)) { app.append(status); return; }
-    app.append(nameSection(), securitySection());
+    app.append(nameSection(), securitySection(), feedbackSection());
     // ---- the two things stamps need ----
     if (ST) app.append(stampsSection());
 
@@ -385,6 +385,24 @@
     return form;
   }
 
+  // Mission feedback sent while signed in is linked to the profile, so it can be deleted any time (mission-feedback-PLAN.md)
+  function feedbackSection() {
+    var n = P.state().feedback || 0;
+    var msg = el("p", { class: "form-status", role: "status" });
+    var sec = el("section", { class: "me-feedback", id: "feedback", "aria-labelledby": "me-feedback-title" },
+      el("h2", { id: "me-feedback-title", text: "Your feedback" }),
+      el("p", { class: "hint", text: n ? "You've sent AmbleBee " + n + (n === 1 ? " piece" : " pieces") + " of feedback on missions while signed in. You can delete it any time. Feedback sent without a profile can't be tied back to you, so it stays." :
+        "Feedback you send AmbleBee on a mission while signed in shows up here, and you can delete it any time. Your personal notes are separate and never sent." }));
+    if (n) {
+      var btn = el("button", { type: "button", class: "btn small me-feedback-delete", text: "Delete my feedback", onclick: function () {
+        btn.disabled = true;
+        P.deleteFeedback().then(function (k) { msg.textContent = k === 1 ? "Deleted 1 piece of feedback." : "Deleted " + k + " pieces of feedback."; btn.hidden = true; },
+          function () { btn.disabled = false; msg.textContent = "That didn't work. Try again in a bit."; });
+      } });
+      sec.append(el("div", { class: "backup-row" }, btn), msg);
+    }
+    return sec;
+  }
   function securitySection() {
     var st = P.state();
     var sec = el("section", { class: "me-security", id: "security", "aria-labelledby": "me-security-title" },

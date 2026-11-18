@@ -51,7 +51,7 @@
     return { has: !!(st.key && !st.gone), gone: !!st.gone, email: !!st.email, last: st.last || 0, created: st.created || "",
              locked: !!(st.key && !st.gone && st.locked), syncing: live.syncing, error: live.error,
              pin: !!st.pin, pinNeeded: !!(st.key && !st.gone && st.pinNeeded), unread: st.unread || 0,
-             hadMySay: (st.key && !st.gone && st.hadMySay) || "" };
+             hadMySay: (st.key && !st.gone && st.hadMySay) || "", feedback: (st.key && !st.gone && st.feedback) || 0 };
   }
 
   // ---- locking notes ----
@@ -231,7 +231,8 @@
           now.since = r.body.now; now.email = !!r.body.email; now.created = r.body.created_at || now.created; now.last = Date.now();
           if (r.body.device) now.device = r.body.device;
           now.pin = !!r.body.pin; now.pinNeeded = false; now.unread = r.body.messages_unread || 0;
-          now.hadMySay = r.body.had_my_say || null;          // the day of your first AmbleBee poll vote (the Had My Say stamp)
+          now.hadMySay = r.body.had_my_say || null;
+          now.feedback = r.body.feedback || 0;                // mission feedback sent while signed in (Delete my feedback)          // the day of your first AmbleBee poll vote (the Had My Say stamp)
           live.error = "";
           save(now);
         });
@@ -368,6 +369,9 @@
     });
   }
   function devices() { return call("/profile/devices", {}).then(function (b) { return b.devices || []; }); }
+  function deleteFeedback() {
+    return call("/profile/feedback/delete", {}).then(function (b) { var st = load() || {}; st.feedback = 0; save(st); emit(); return b.deleted || 0; });
+  }
   function signOutDevices(which) { return call("/profile/devices", { sign_out: which }).then(function (b) { return b.devices || []; }); }
 
   // ---- Messages (decision 46): this profile's own conversations ----
@@ -548,7 +552,7 @@
 
   window.AmbleProfile = { has: function () { return state().has; }, state: state, sync: sync, create: create, open: open,
                           setEmail: setEmail, lost: lost, unlock: unlock, remove: remove, signOut: signOut, link: link, offer: offer,
-                          unlockPin: unlockPin, setPin: setPin, devices: devices, signOutDevices: signOutDevices,
+                          unlockPin: unlockPin, setPin: setPin, devices: devices, signOutDevices: signOutDevices, deleteFeedback: deleteFeedback,
                           messages: messages, message: message, reply: reply, displayName: displayName, setDisplayName: setDisplayName,
                           headers: function () { var st = load(); return st && st.key && !st.gone ? headers(st.key) : {}; },
                           // a link that signs another device in to this profile, then opens `next` (a vote page)

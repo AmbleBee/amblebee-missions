@@ -475,6 +475,57 @@
     }
     var open = {};   // which chips are open, kept across redraws
 
+    // ---- Feedback for AmbleBee (claude/mission-feedback-PLAN.md): written TO the team, unlike the personal note ----
+    // Optional, under the thumbs. Only if something was sent does it ask "Can AmbleBee use your feedback?", with
+    // nothing pre-chosen. The personal note is never copied in or sent.
+    var FB_API = "https://amblebee-intake.tail58116.ts.net";
+    var fb = {};   // per time done: {text, step: "write" | "ask" | "thanks", ref, error}
+    function fbPost(path, body) {
+      var h = Object.assign({ "Content-Type": "application/json" }, window.AmbleProfile && window.AmbleProfile.headers ? window.AmbleProfile.headers() : {});
+      return fetch(FB_API + path, { method: "POST", headers: h, body: JSON.stringify(body) })
+        .then(function (r) { return r.json().catch(function () { return {}; }).then(function (b) { return { status: r.status, body: b }; }); },
+              function () { return { status: 0, body: {} }; });
+    }
+    function feedbackBox(c) {
+      var st = fb[c.rid] || (fb[c.rid] = { text: "", step: "write" });
+      var up = c.rating === "up", id = "done-fb-" + c.rid;
+      function redraw(focusSel) { draw(); var f = root.querySelector('[data-rid="' + c.rid + '"] ' + (focusSel || ".done-fb")); if (f) f.focus(); }
+      var head = el("p", { class: "done-fb-label" }, el("b", { text: "Feedback for AmbleBee" }), el("span", { text: ": the AmbleBee team reads this" }));
+      if (st.step === "thanks") {
+        return el("div", { class: "done-fb", tabindex: "-1" }, head, el("p", { class: "done-fb-thanks", text: "Thank you! We read every one." }));
+      }
+      if (st.step === "ask") {
+        function answer(use) {
+          fbPost("/feedback/" + encodeURIComponent(st.ref) + "/consent", { use: use }).then(function () { st.step = "thanks"; redraw(); say("Thank you for your feedback."); });
+        }
+        return el("div", { class: "done-fb", role: "group", "aria-labelledby": id + "-ask", tabindex: "-1" }, head,
+          el("p", { id: id + "-ask" }, el("b", { text: "Can AmbleBee use your feedback?" })),
+          el("p", { class: "done-note-hint", text: "We'd quote it as \u201can AmbleBee user\u201d, never with your name. If it's about a problem, we may pass it on to the place so they can fix it. This is only about the feedback you just sent: your personal notes stay private." }),
+          el("div", { class: "backup-row" },
+            el("button", { type: "button", class: "btn small done-fb-yes", text: "Yes, you can use it", onclick: function () { answer(true); } }),
+            el("button", { type: "button", class: "btn small done-fb-no", text: "No, just for you to read", onclick: function () { answer(false); } })));
+      }
+      var box = el("textarea", { id: id, maxlength: "2000", rows: "3", placeholder: up ? "What did you like?" : "What didn't work?",
+        oninput: function (e) { st.text = e.target.value; send.disabled = !st.text.trim(); } });
+      box.value = st.text;
+      var send = el("button", { type: "button", class: "btn small primary done-fb-send", text: "Send to AmbleBee", onclick: function () {
+        send.disabled = true;
+        var info2 = { mission: c.mission, name: c.name, thumb: c.rating, text: st.text.trim() };
+        fbPost("/feedback", info2).then(function (r) {
+          if (r.status === 201 && r.body.ref) { st.ref = r.body.ref; st.step = "ask"; st.text = ""; st.error = ""; redraw(); return; }
+          st.error = r.status === 0 ? "We couldn't reach AmbleBee. Try again in a bit." : ((r.body.errors && Object.values(r.body.errors)[0]) || r.body.error || "Something went wrong.");
+          redraw("#" + id);
+        });
+      } });
+      send.disabled = !st.text.trim();
+      return el("div", { class: "done-fb" }, head,
+        el("label", { for: id }, up ? "What did you like? " : "What didn't work? ", el("span", { class: "opt", text: "(optional)" })),
+        box,
+        el("p", { class: "done-note-hint", text: "We read every bit of feedback. A thumbs down tells us something needs fixing, a warning, or a better place, and if you loved it, we want to hear that too. Please leave out names and contact details." }),
+        st.error ? el("p", { class: "form-status bad", role: "alert", text: st.error }) : null,
+        el("div", { class: "backup-row" }, send));
+    }
+
     function entry(c) {
       // when: today by default, or an earlier day for missions done before they were marked
       var dateId = "done-date-" + c.rid;
@@ -530,8 +581,10 @@
           el("div", { class: "done-grid" },
             el("div", { class: "done-field" }, el("label", { for: dateId, text: "Day you did it" }), date),
             rate),
+          c.rating ? feedbackBox(c) : null,
           hide, asDate,
-          el("div", { class: "done-field" }, el("label", { for: noteId }, "Anything to remember? ", el("span", { class: "opt", text: "(optional)" })), note),
+          el("div", { class: "done-field done-note" }, el("label", { for: noteId }, "Personal note: only you can read this ", el("span", { class: "opt", text: "(optional)" })), note,
+            el("p", { class: "done-note-hint", text: "Kept on your device, and locked if you have a profile. AmbleBee never sees it." })),
           removeBit(c)));
       d.addEventListener("toggle", function () { if (d.open) open[c.rid] = 1; else delete open[c.rid]; });
       return d;

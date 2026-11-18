@@ -49,7 +49,8 @@ class FakeIntake:
     def __init__(self):
         self.mode, self.posts, self.answered = "up", [], False
         self.headers = []          # (path, request headers) for every POST: the forms carry the profile when signed in
-        self.votes = {}            # pub -> a vote, like amblebee-intake's app/polls.py (which has its own tests)
+        self.votes = {}
+        self.feedback = []         # mission feedback, like amblebee-intake's app/feedback.py            # pub -> a vote, like amblebee-intake's app/polls.py (which has its own tests)
         self.profiles = {}   # key -> {"done": {rid: completion}, "removed": [], "prefs": None, "email": False}
         self.closed = False
         self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
@@ -74,6 +75,22 @@ class FakeIntake:
         if path.startswith("/polls"):
             data = json.loads(req.post_data or "{}") if req.method == "POST" else {}
             return self.polls_api(path, req.method, data, req.headers, reply)
+        if path == "/feedback" or (path.startswith("/feedback/") and path.endswith("/consent")):
+            data = json.loads(req.post_data or "{}")
+            auth = req.headers.get("authorization", "")
+            key = auth[8:] if auth.startswith("Profile ") else ""
+            if path == "/feedback":
+                if len((data.get("text") or "").strip()) < 2:
+                    return reply(400, {"ok": False, "error": "Please check the highlighted fields.", "errors": {"text": "Write a few words first."}})
+                ref = "F" + secrets.token_hex(8)
+                self.feedback.append({**data, "ref": ref, "consent": None, "profile": key if key in self.profiles else None})
+                return reply(201, {"ok": True, "ref": ref, "linked": key in self.profiles})
+            ref = path.split("/")[2]
+            for f in self.feedback:
+                if f["ref"] == ref and isinstance(data.get("use"), bool):
+                    f["consent"] = "yes" if data["use"] else "no"
+                    return reply(200, {"ok": True})
+            return reply(404, {"ok": False, "error": "We couldn't find that feedback."})
         if path.startswith("/messages"):
             data = json.loads(req.post_data or "{}") if req.method == "POST" else {}
             return self.messages(path, data, req.headers.get("authorization", ""), req.headers.get("x-amble-device"), reply)
@@ -283,6 +300,10 @@ class FakeIntake:
                 return reply(403, {"ok": False, "error": "That's not the right PIN.", "wrong_pin": True})
             prof["pin"] = data.get("pin") or None
             return reply(200, {"ok": True, "pin": bool(prof["pin"]), **({"device": new_device} if new_device else {})})
+        if path == "/profile/feedback/delete":
+            n = sum(1 for f in self.feedback if f["profile"] == key)
+            self.feedback = [f for f in self.feedback if f["profile"] != key]
+            return reply(200, {"ok": True, "deleted": n})
         if path == "/profile/devices":
             if data.get("sign_out") == "others":
                 prof["devices"] = {device} & prof["devices"]
@@ -323,6 +344,7 @@ class FakeIntake:
                            "plans": list(plans.values()), "plans_removed": gone, "pin": bool(prof.get("pin")),
                            "messages_unread": sum(1 for c in prof.get("messages", {}).values() if c["unread"]),
                            "had_my_say": prof.get("had_my_say"),
+                           "feedback": sum(1 for f in self.feedback if f["profile"] == key),
                            **({"device": new_device} if new_device else {})})
 
 
@@ -1370,8 +1392,8 @@ def t_mark_done_keeps_the_mission_and_how_it_went(site, catalog):
     assert page.evaluate("document.activeElement.closest('.done-entry') !== null")
     page.click('[data-rate="up"]')
     assert page.get_attribute('[data-rate="up"]', "aria-pressed") == "true"
-    page.fill(".done-box textarea", "Best sandwich of the year.")
-    page.locator(".done-box textarea").blur()
+    page.fill(".done-note textarea", "Best sandwich of the year.")
+    page.locator(".done-note textarea").blur()
     page.reload()
     page.wait_for_selector(".done-head")
     assert page.locator(".done-entry[open]").count() == 0, "after a reload each time is a closed chip"
@@ -1379,7 +1401,7 @@ def t_mark_done_keeps_the_mission_and_how_it_went(site, catalog):
     assert summary.startswith("Done ") and "Loved it" in summary and "Note" in summary
     page.click(".done-entry summary")
     assert page.get_attribute('[data-rate="up"]', "aria-pressed") == "true", "the rating survives a reload"
-    assert page.input_value(".done-box textarea") == "Best sandwich of the year.", "and so does the note"
+    assert page.input_value(".done-note textarea") == "Best sandwich of the year.", "and so does the note"
     page.goto(site.base + "/me/")
     page.wait_for_selector(".me-list li")
     row = page.locator(".me-list li").first
@@ -1725,8 +1747,8 @@ def t_notes_are_locked_with_the_link(site, catalog):
     page.wait_for_selector("#profile-link")
     key = page.input_value("#profile-link").split("#", 1)[1]
     page.click(".profile-dlg .btn.primary")
-    page.fill(".done-box textarea", "Sarah's birthday, best cocoa")
-    page.locator(".done-box textarea").blur()
+    page.fill(".done-note textarea", "Sarah's birthday, best cocoa")
+    page.locator(".done-note textarea").blur()
     page.wait_for_function("() => !JSON.parse(localStorage.getItem('amble.done')).dirty.length")
     stored = list(site.intake.profiles[key]["done"].values())[0]["note"]
     assert stored.startswith("n1:") and "Sarah" not in stored and "cocoa" not in stored, f"the server only gets a locked note: {stored[:40]}"
@@ -2696,6 +2718,34 @@ def t_home_notes_for_signed_in(site, catalog):
     page.wait_for_selector(".home-notes-list a")
     assert "Voting's over for Game night" in page.inner_text(".home-notes") and \
         page.get_attribute(".home-notes-list a", "href") == "/vote/?v=Vtestvote0000009"
+
+
+def t_feedback_after_thumbs(site, catalog):
+    """Thumbs alone ask nothing; written feedback goes to AmbleBee, then asks permission with nothing pre-chosen.
+    The personal note is separate and never sent."""
+    mission = catalog["missions"][1]
+    page = site.open(f"/missions/{mission['id']}/")
+    mark(page)
+    assert page.locator(".done-fb").count() == 0, "no feedback box before a thumbs up or down"
+    page.fill(".done-note textarea", "Secret: our first kiss here.")
+    page.locator(".done-note textarea").blur()
+    page.click('[data-rate="down"]')
+    assert page.locator(".done-fb").count() == 1 and "the AmbleBee team reads this" in page.inner_text(".done-fb")
+    assert "only you can read this" in page.inner_text(".done-note"), "the note says it's private"
+    assert page.input_value(".done-fb textarea") == "", "nothing copied from the note"
+    assert page.is_disabled(".done-fb-send"), "Send only when something's typed"
+    assert site.intake.feedback == [], "a thumbs alone sends no feedback and asks nothing"
+    page.fill(".done-fb textarea", "Parking was full by nine.")
+    page.click(".done-fb-send")
+    page.wait_for_selector(".done-fb-yes")
+    sent = site.intake.feedback[0]
+    assert sent["text"] == "Parking was full by nine." and sent["thumb"] == "down" and sent["mission"] == mission["full_id"], sent
+    assert sent["consent"] is None, "nothing pre-chosen"
+    assert not any("first kiss" in json.dumps(x) for x in site.intake.feedback + [d for _, d in site.intake.posts]), "the note is never sent"
+    assert "your personal notes stay private" in page.inner_text(".done-fb")
+    page.click(".done-fb-no")
+    page.wait_for_selector(".done-fb-thanks")
+    assert site.intake.feedback[0]["consent"] == "no"
 
 
 def main():
