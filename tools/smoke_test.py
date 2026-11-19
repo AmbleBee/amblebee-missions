@@ -2487,13 +2487,20 @@ def t_start_a_vote_from_a_mission(site, catalog):
     page.fill("#v-search", m2["name"][:6])
     page.click(f".vote-add:has-text('{m2['name']}')")
     page.fill("#v-name", "4th of July plans")
-    page.fill("#v-day", "2027-07-04")
+    before = len(site.intake.votes)
+    page.fill("#v-day", "0002-10-31")                             # a year typed by hand skips the picker's limits
+    page.dispatch_event("#v-day", "change")
+    page.click(".vote-go")
+    page.wait_for_selector(".vote-builder .form-status.bad:has-text('two years ahead')")
+    assert len(site.intake.votes) == before, "a day in year 2 never reaches the server"
+    july4 = f"{datetime.now().year + 1}-07-04"
+    page.fill("#v-day", july4)
     page.dispatch_event("#v-day", "change")
     page.click(".vote-go")
     page.wait_for_selector(".vote-shared #vote-link")
     v = list(site.intake.votes.values())[-1]
     assert v["creator"] == key and [o["mission"] for o in v["options"]] == [m1["full_id"], m2["full_id"]], v["options"]
-    assert v["sent"]["for_date"] == "2027-07-04" and v["sent"]["hours"] == 24 and v["sent"]["names_public"] is True
+    assert v["sent"]["for_date"] == july4 and v["sent"]["hours"] == 24 and v["sent"]["names_public"] is True
     assert page.input_value("#vote-link").endswith("/vote/?v=" + v["pub"]), "the link keeps the vote where apps like Discord can't drop it"
     assert page.evaluate("JSON.parse(localStorage.getItem('amble.vote.draft'))") is None, "the draft is cleared once it starts"
 

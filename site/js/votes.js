@@ -126,7 +126,8 @@
       }
       var err = el("p", { class: "form-status bad", role: "alert" });
       var name = el("input", { id: "v-name", type: "text", maxlength: "60", placeholder: "4th of July plans", value: d.name });
-      var day = el("input", { id: "v-day", type: "date", min: ymd(new Date()), value: d.for_date });
+      var far = new Date(); far.setFullYear(far.getFullYear() + 2);
+      var day = el("input", { id: "v-day", type: "date", min: ymd(new Date()), max: ymd(far), value: d.for_date });
       name.addEventListener("input", function () { d.name = name.value; save(DRAFT, d); });
       day.addEventListener("change", function () { d.for_date = day.value; save(DRAFT, d); draw(by); document.getElementById("v-day").focus(); });
 
@@ -207,6 +208,8 @@
                                                                                                place: m.place && m.place.name }; }) };
         if (!body.name) { err.textContent = "Give your vote a name."; name.focus(); return; }
         if (!body.for_date) { err.textContent = "Pick the day it's for."; day.focus(); return; }
+        // typing a year by hand skips the picker's limits (a vote "for" Oct 31 of year 2 got through)
+        if (body.for_date < day.min || body.for_date > day.max) { err.textContent = "Pick a day from today to two years ahead."; day.focus(); return; }
         if (body.missions.length < 2) { err.textContent = "Pick at least 2 missions."; search.focus(); return; }
         start.disabled = true; start.textContent = "Starting…";
         api("/polls", "POST", body).then(function (r) {
