@@ -344,6 +344,7 @@ class FakeIntake:
                            "plans": list(plans.values()), "plans_removed": gone, "pin": bool(prof.get("pin")),
                            "messages_unread": sum(1 for c in prof.get("messages", {}).values() if c["unread"]),
                            "had_my_say": prof.get("had_my_say"),
+                           "gifts": prof.get("gifts") or {},
                            "feedback": sum(1 for f in self.feedback if f["profile"] == key),
                            **({"device": new_device} if new_device else {})})
 
@@ -2775,6 +2776,31 @@ def t_had_my_say_stamp(site, catalog):
     page.wait_for_selector(".stamp[data-key='had-my-say']")
     page.click(".stamp[data-key='had-my-say']")
     assert "by voting in an AmbleBee poll" in page.inner_text(".stamp-dialog-body")
+
+
+def t_thank_you_stamp_lands_once(site, catalog):
+    """A thank-you stamp given from the admin (Valuable Feedback, for Adam) lands on the homepage once, with its reason,
+    then lives in the stamp book."""
+    page = site.open("/")
+    key = give_profile(site, page)
+    page.wait_for_function("() => { const p = JSON.parse(localStorage.getItem('amble.profile') || 'null'); return p && p.last > 0; }")
+    site.intake.profiles[key]["gifts"] = {"valuable-feedback": "2026-11-19"}
+    # a page checks for news at most every 30 seconds; pretend the last check was long ago
+    page.evaluate("() => { const p = JSON.parse(localStorage.getItem('amble.profile')); p.last = 1; localStorage.setItem('amble.profile', JSON.stringify(p)); }")
+    page.reload()
+    page.wait_for_selector(".home-gift")
+    text = page.inner_text(".home-gift")
+    assert "Valuable Feedback" in text and "Your feedback made real changes to AmbleBee." in text and "Thank you!" in text, text
+    assert page.locator(".home-gift img[src^='/stamps/valuable-feedback.svg']").count() == 1
+    page.reload()
+    page.wait_for_function("() => { const p = JSON.parse(localStorage.getItem('amble.profile') || 'null'); return p && p.gifts && p.gifts['valuable-feedback']; }")
+    page.wait_for_timeout(300)
+    assert page.locator(".home-gift").count() == 0, "it lands once"
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".stamp[data-key='valuable-feedback']")
+    page.click(".stamp[data-key='valuable-feedback']")
+    body = page.inner_text(".stamp-dialog-body")
+    assert "A thank-you from AmbleBee, given Nov 19, 2026" in body and "Your feedback made real changes" in body, body
 
 
 def t_home_notice_when_your_vote_ends(site, catalog):

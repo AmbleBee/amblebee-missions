@@ -33,6 +33,14 @@
     { id: "put-it-to-a-vote", name: "Put It to a Vote", page: "together" },
     { id: "had-my-say", name: "Had My Say", page: "together" },   // from the profile, not a mission: see extras()
   ];
+  // Thank-you stamps: given by hand from the admin (an account's page) to someone who helped make AmbleBee better.
+  // The profile keeps only which stamp and the day. Same ids as GIFTS in amblebee-intake's app/profiles.py.
+  var GIFTS = [
+    { id: "valuable-feedback", name: "Valuable Feedback", how: "Your feedback made real changes to AmbleBee." },
+    { id: "mission-maker", name: "Mission Maker", how: "A mission you suggested is now live on AmbleBee." },
+    { id: "the-reporter", name: "The Reporter", how: "You reported a problem, and the fix is now live." },
+  ];
+  GIFTS.forEach(function (g) { STAMPS.push({ id: g.id, name: g.name, page: "together", gift: true }); });
   // count milestones: surprises, never shown ahead. First Steps is the first one.
   var MILESTONES = [10, 25, 50, 100, 200, 500, 1000];
   MILESTONES.forEach(function (n) { STAMPS.push({ id: "milestone-" + n, name: n.toLocaleString("en-US") + " Missions", page: "memories", count: n }); });
@@ -187,11 +195,29 @@
   // Stamps that don't come from marking a mission done. Had My Say (calendar-voting-PLAN.md, decision 43): voting in an
   // AmbleBee poll while signed in; the server keeps only the day, never which poll or how you voted.
   function extras() {
-    var P = window.AmbleProfile, day = P && P.state ? P.state().hadMySay : "";
-    if (!/^\d{4}-\d{2}-\d{2}$/.test(day || "")) return [];
-    return [{ how: "You voted in an AmbleBee poll and helped decide what comes next.", key: "had-my-say", id: "had-my-say",
-              page: "together", year: null, name: "Had My Say", art: "/stamps/had-my-say.svg", mission: null, slug: null,
-              mission_name: "An AmbleBee poll", earned_at: day + "T12:00:00", rid: null }];
+    var P = window.AmbleProfile, st = P && P.state ? P.state() : {}, out = [];
+    var day = st.hadMySay || "", gifts = st.gifts || {};
+    var isDay = function (d) { return /^\d{4}-\d{2}-\d{2}$/.test(d || ""); };
+    if (isDay(day)) {
+      out.push({ how: "You voted in an AmbleBee poll and helped decide what comes next.", key: "had-my-say", id: "had-my-say",
+                 page: "together", year: null, name: "Had My Say", art: "/stamps/had-my-say.svg", mission: null, slug: null,
+                 mission_name: "An AmbleBee poll", earned_at: day + "T12:00:00", rid: null });
+    }
+    GIFTS.forEach(function (g) {
+      if (!isDay(gifts[g.id])) return;
+      out.push({ how: g.how, key: g.id, id: g.id, page: "together", year: null, name: g.name, art: "/stamps/" + g.id + ".svg",
+                 mission: null, slug: null, mission_name: "A thank-you from AmbleBee", earned_at: gifts[g.id] + "T12:00:00", rid: null, gift: true });
+    });
+    return out;
+  }
+  // Thank-you stamps given since this browser last looked: the homepage lands them (site/js/home-notes.js). Only these
+  // are marked seen here, so a stamp from a mission still lands under its own Mark done box.
+  function freshGifts() {
+    var seen = readSeen();
+    if (!Array.isArray(seen)) return [];
+    var news = extras().filter(function (s) { return s.gift && seen.indexOf(s.key) < 0; });
+    if (news.length) writeSeen(seen.concat(news.map(function (s) { return s.key; })));
+    return news;
   }
   function earned() {
     var all = (window.AmbleDone ? compute(window.AmbleDone.list(), settings()) : []).concat(extras());
@@ -251,6 +277,6 @@
 
   window.AmbleStamps = {
     all: STAMPS, pages: PAGES, states: STATES,
-    compute: compute, earned: earned, fresh: fresh, landing: landing, wouldLose: wouldLose,
+    compute: compute, earned: earned, fresh: fresh, freshGifts: freshGifts, landing: landing, wouldLose: wouldLose,
   };
 })();

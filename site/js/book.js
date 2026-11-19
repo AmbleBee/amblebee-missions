@@ -45,6 +45,7 @@
       el("h2", { id: "stamp-dialog-title", text: s.name }),
       s.slug ? el("p", {}, "Earned ", el("time", { datetime: s.earned_at, text: pretty(s.earned_at) }), " with ",
         el("a", { href: "/missions/" + encodeURIComponent(s.slug) + "/", text: s.mission_name }), ".")
+        : s.gift ? el("p", {}, "A thank-you from AmbleBee, given ", el("time", { datetime: s.earned_at, text: pretty(s.earned_at) }), ".")
         : el("p", {}, "Earned ", el("time", { datetime: s.earned_at, text: pretty(s.earned_at) }), " by voting in ",
           el("a", { href: "/contribute/#polls", text: "an AmbleBee poll" }), "."),
       s.year ? el("p", { class: "stamp-year-count", text: yearCount(s, true) }) : null,
@@ -54,7 +55,7 @@
   }
   function tile(s) {
     var btn = el("button", { type: "button", class: "stamp", "data-key": s.key,
-      "aria-label": s.name + ", earned " + pretty(s.earned_at) + " with " + s.mission_name + (s.year ? ", " + yearCount(s) : ""),
+      "aria-label": s.name + (s.gift ? ", a thank-you from AmbleBee, given " + pretty(s.earned_at) : ", earned " + pretty(s.earned_at) + " with " + s.mission_name) + (s.year ? ", " + yearCount(s) : ""),
       onclick: function () { open(s, btn); } },
       el("img", { class: "stamp-img", src: s.art, alt: "", width: "120", height: "156", loading: "lazy", style: "transform: rotate(" + tilt(s.key) + "deg)" }));
     return el("li", { class: "stamp-spot" }, btn,
