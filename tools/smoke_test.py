@@ -19,7 +19,7 @@ import threading
 from pathlib import Path
 import os
 
-from playwright.sync_api import sync_playwright
+from playwright.sync_api import TimeoutError as PlaywrightTimeout, sync_playwright
 
 ROOT = Path(__file__).resolve().parent.parent
 PHONE = {"width": 375, "height": 812}
@@ -1381,6 +1381,13 @@ def give_profile(site, page):
     site.intake.profiles[key] = {"done": {}, "removed": [], "prefs": None, "email": False, "vault": {"wk": None, "we": None, "salt": None}}
     page.evaluate("k => localStorage.setItem('amble.profile', JSON.stringify({ key: k, since: null, email: false, last: 0 }))", key)
     page.reload()
+    # Let the first sync and the notes key (/profile/vault) finish before the test moves on: a request cut off by
+    # leaving the page is reported as an error in WebKit. Pages that don't sync just go on after 5 seconds.
+    try:
+        page.wait_for_function("() => { const p = JSON.parse(localStorage.getItem('amble.profile') || 'null'); return p && p.last > 0 && p.dk; }",
+                               timeout=5000)
+    except PlaywrightTimeout:
+        pass
     return key
 def t_mark_done_keeps_the_mission_and_how_it_went(site, catalog):
     mission = catalog["missions"][0]
