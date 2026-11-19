@@ -155,6 +155,12 @@ def faq_jsonld(body, path):
 
 SHARED_BY_LINK = {"/poll/", "/vote/"}
 
+# The link-preview pictures for polls and votes: the same for every poll and every vote, so they're drawn once
+# (tools/vote-preview.html and tools/vote-preview-friends.html, by tools/draw_vote_previews.py) and kept in site/.
+POLL_PIC = ("vote-preview.png", "AmbleBee poll: Your vote matters! Help us pick the next big thing. Three option cards, the first one ticked")
+FRIENDS_PIC = ("vote-preview-friends.png", "You're invited to vote! Help your crew pick the plan. Three mission cards ranked 1st, 2nd and tap")
+VOTE_PREVIEWS = {"poll": POLL_PIC, "contribute": POLL_PIC, "vote": FRIENDS_PIC, "vote-new": FRIENDS_PIC}
+
 
 def page(title, description, path, main, jsonld, brand, extra_script="", current="", image=None):
     url = BASE + path
@@ -699,8 +705,13 @@ def build_pages(out):
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         if name == "faq":
             ld = faq_jsonld(body, path)
-        image = share_card(f"page-{name}", f"{title}: {desc}", badge="hive", eyebrow=CARD_EYEBROW.get(name, "AmbleBee"),
-                           title=title, text=desc, note="amblebee.com" + path.rstrip("/"))
+        if name in VOTE_PREVIEWS:   # drawn once from tools/vote-preview*.html (tools/draw_vote_previews.py)
+            pic, alt = VOTE_PREVIEWS[name]
+            v = hashlib.sha1((ROOT / "site" / pic).read_bytes()).hexdigest()[:8]
+            image = {"url": f"{BASE}/{pic}?v={v}", "alt": alt}
+        else:
+            image = share_card(f"page-{name}", f"{title}: {desc}", badge="hive", eyebrow=CARD_EYEBROW.get(name, "AmbleBee"),
+                               title=title, text=desc, note="amblebee.com" + path.rstrip("/"))
         text = page(f"{title} · {SITE_NAME}", desc, path, main, ld, brand, current=name, image=image)
         if name in NOINDEX_PAGES:
             f = Path(out) / path.strip("/") / "index.html"
