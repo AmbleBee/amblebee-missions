@@ -198,6 +198,7 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <script src="/nav.js" defer></script>
 <script src="/js/stats.js" defer></script>
+<script src="/js/count.js" defer></script>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{data}</script>
