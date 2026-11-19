@@ -87,6 +87,18 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Mission Feedback
+  status: done
+  date: 2026-11-18
+  tag: website
+  summary: After a thumbs up or down on a mission you've done, you can tell us what you liked or what didn't work. We read every bit of it.
+  items:
+    - "Optional, right under the thumbs. A thumbs up or down on its own is still all it takes"
+    - "Only if you write something do we ask whether we can use it, and nothing is pre-chosen"
+    - "If you say yes, we may quote it as \"an AmbleBee user\", never with your name, or pass a problem on to the place"
+    - "Your **personal note** is clearly separate: it's locked to you and we never see it"
+    - "Signed in, you can delete your feedback any time in Settings"
+
 - title: AmbleBee Polls and a Contribute Page
   status: done
   date: 2026-11-18
