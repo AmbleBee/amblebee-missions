@@ -389,7 +389,8 @@
       var past = all.filter(function (p) { return p.day < t; }), next = all.filter(function (p) { return p.day >= t; }).slice(0, 3);
       root.hidden = !all.length;
       if (!all.length) { root.replaceChildren(); return; }
-      root.replaceChildren(
+      // (the browser writes "null" for an empty slot, so the parts left out are filtered first)
+      root.replaceChildren.apply(root, [
         el("h2", { id: "coming-up-title", text: "Coming up" }),
         past.length ? el("p", { class: "plan-ask-line" }, icon("check", 18),
           el("a", { href: "/me/plans/" }, past.length === 1 ? "Did you go to " + past[0].name + "?" : "Did you go? " + past.length + " plans have passed.")) : null,
@@ -397,7 +398,7 @@
           return el("li", {}, el("time", { datetime: p.day, text: prettyDay(p.day) }), " · ",
             el("a", { href: "/missions/" + encodeURIComponent(p.slug) + "/" }, p.name));
         })) : null,
-        el("p", {}, el("a", { class: "btn small", href: "/me/plans/" }, "See all my plans", icon("arrow", 18))));
+        el("p", {}, el("a", { class: "btn small", href: "/me/plans/" }, "See all my plans", icon("arrow", 18)))].filter(Boolean));
     }
     draw();
     window.addEventListener("amble:done", draw);

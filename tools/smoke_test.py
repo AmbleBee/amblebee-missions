@@ -777,6 +777,7 @@ def t_zip_can_be_remembered_and_units_keep_distance(site, catalog):
     page.click("text=Remember on this device")
     page.reload()
     page.wait_for_selector(".zip-set")
+    assert "null" not in page.inner_text("#zip-status"), "remembered: no stray text where the Remember button was"
     page.click(".zip-clear")
     page.reload()
     page.wait_for_selector("#packs .card", state="attached")
@@ -2196,6 +2197,7 @@ def t_my_plans_and_coming_up(site, catalog):
     page.goto(site.base + "/me/")
     page.wait_for_selector(".coming-up li")
     assert page.locator(".coming-up li").count() == 2 and m["name"] in page.inner_text(".coming-up li >> nth=0"), "soonest first"
+    assert "null" not in page.inner_text(".coming-up"), "no past plans: nothing stray where 'Did you go?' would be"
     page.click(".coming-up a:has-text('See all my plans')")
     page.wait_for_url("**/me/plans/")
     page.wait_for_selector(".plan-item")

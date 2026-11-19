@@ -13,11 +13,11 @@ function renderWithin() {
 }
 function zipLine() {
   const canSave = !S.located && readPref("zip") !== S.zip;
-  $("#zip-status").replaceChildren(h("span", { class: "zip-set" }, `Near ${S.zip}`),
+  $("#zip-status").replaceChildren(...[h("span", { class: "zip-set" }, `Near ${S.zip}`),
     ": places close by plus missions you can do anywhere. Distances are as the bee flies.",
     h("button", { type: "button", class: "linkish zip-clear", onclick: clearZip }, "Clear"),
     canSave ? h("button", { type: "button", class: "linkish zip-clear",
-      onclick: () => { writePref("zip", S.zip); zipLine(); } }, "Remember on this device") : null);
+      onclick: () => { writePref("zip", S.zip); zipLine(); } }, "Remember on this device") : null].filter(Boolean));   // the browser writes "null" for an empty slot
 }
 function setPlace(lat, lon, label, located = false) {
   const first = !S.here;
