@@ -108,21 +108,35 @@
       var far = new Date(); far.setFullYear(far.getFullYear() + 2);
       var day = el("input", { id: "v-day", type: "date", min: ymd(new Date()), max: ymd(far), value: d.for_date });
       name.addEventListener("input", function () { d.name = name.value; save(DRAFT, d); });
-      day.addEventListener("change", function () { d.for_date = day.value; save(DRAFT, d); draw(by); document.getElementById("v-day").focus(); });
+      // Only the "out of season" notes depend on the day, so a new day updates just those. (Rebuilding the whole form
+      // here threw the box away mid-typing: a year typed digit by digit is a valid date at every digit, 0001 to 2026,
+      // so the year only ever took one digit. Adam, 2026-11-19.)
+      var seasonNotes = [];
+      function showSeason() {
+        seasonNotes.forEach(function (x) {
+          var warn = [];
+          if (PL && PL.outOfSeason(x.m, ymd(new Date()))) warn.push("Out of season right now");
+          if (PL && /^\d{4}-/.test(d.for_date) && d.for_date >= ymd(new Date()) && PL.outOfSeason(x.m, d.for_date))
+            warn.push("Out of season on " + shortDay(d.for_date) + ", " + d.for_date.slice(0, 4));
+          x.p.textContent = warn.join(" · ");
+          x.p.hidden = !warn.length;
+        });
+      }
+      day.addEventListener("change", function () { d.for_date = day.value; save(DRAFT, d); showSeason(); });
 
       var list = el("ul", { class: "vote-picks" });
       d.missions.forEach(function (id, i) {
         var m = by[id];
         if (!m) return;
-        var warn = [];
-        if (PL && PL.outOfSeason(m, ymd(new Date()))) warn.push("Out of season right now");
-        if (PL && d.for_date && PL.outOfSeason(m, d.for_date)) warn.push("Out of season on " + shortDay(d.for_date) + ", " + d.for_date.slice(0, 4));
+        var note = el("p", { class: "vote-season", hidden: true });
+        seasonNotes.push({ m: m, p: note });
         list.append(el("li", { class: "vote-pick tilt-" + (i % 2 ? "r" : "l") },
           el("span", { class: "vote-pick-name" }, el("b", { text: m.name }), m.place && m.place.name ? el("small", { text: m.place.name }) : null),
-          warn.length ? el("p", { class: "vote-season" }, warn.join(" · ")) : null,
+          note,
           el("button", { type: "button", class: "linkish vote-remove", "aria-label": "Remove " + m.name, text: "Remove",
                          onclick: function () { d.missions.splice(i, 1); save(DRAFT, d); draw(by); } })));
       });
+      showSeason();
       var search = el("input", { id: "v-search", type: "search", placeholder: "Search missions by name", autocomplete: "off" });
       var found = el("ul", { class: "vote-found" });
       search.addEventListener("input", function () {

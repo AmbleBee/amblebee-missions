@@ -2513,6 +2513,14 @@ def t_start_a_vote_from_a_mission(site, catalog):
     page.fill("#v-search", m2["name"][:6])
     page.click(f".vote-add:has-text('{m2['name']}')")
     page.fill("#v-name", "4th of July plans")
+    # typed by hand, digit by digit, the whole year fits (it used to stop after one digit: 05/20/1997 became 09/09/0001)
+    if os.environ.get("SMOKE_ENGINE", "chromium") == "chromium":
+        page.evaluate("document.getElementById('v-day').dataset.mark = 'same'")
+        page.click("#v-day")
+        page.keyboard.press("Home")
+        page.keyboard.type(f"0520{datetime.now().year + 1}", delay=40)
+        assert page.input_value("#v-day") == f"{datetime.now().year + 1}-05-20", page.input_value("#v-day")
+        assert page.evaluate("document.getElementById('v-day').dataset.mark") == "same", "the box isn't rebuilt while typing"
     before = len(site.intake.votes)
     page.fill("#v-day", "0002-10-31")                             # a year typed by hand skips the picker's limits
     page.dispatch_event("#v-day", "change")
