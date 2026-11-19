@@ -2689,6 +2689,8 @@ def t_had_my_say_stamp(site, catalog):
     """Voting in an AmbleBee poll while signed in earns Had My Say: it lands on the poll page and sits in the stamp book."""
     page = site.open("/")
     give_profile(site, page)
+    # let the homepage's first sync (and its notes key) finish: leaving mid-request is reported as an error in WebKit
+    page.wait_for_function("() => { const p = JSON.parse(localStorage.getItem('amble.profile') || 'null'); return p && p.last > 0 && p.dk; }")
     pub = "Opoll00000000002"
     site.intake.votes[pub] = {"pub": pub, "kind": "official", "style": "pick", "name": "Next pack?", "for_date": None, "status": "open",
                               "closes_at": (datetime.now(timezone.utc) + timedelta(days=3)).isoformat(), "profiles_only": False,
