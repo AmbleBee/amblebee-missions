@@ -769,6 +769,10 @@ main:focus { outline: none; }
 .info h2 { font-size: 1.45rem; margin: 1.6rem 0 .4rem; }
 .info p, .info ul { margin: 0 0 .8rem; }
 .info li { margin: .25rem 0; }
+.info h3 { font-size: 1.12rem; margin: 1.2rem 0 .35rem; }
+.info hr { border: 0; border-top: 2px dashed var(--line); margin: 2rem 0 .4rem; }
+.info .short-version { background: var(--paper); border: 2px solid var(--line); border-radius: 16px; padding: 14px 20px 6px; margin: 1rem 0 1.2rem; }
+.info .short-version h2 { font-size: 1.2rem; margin: 0 0 .35rem; }
 
 /* ---- the FAQ: a search box, then each question as a chip that opens its answer (pages/faq.html, js/faq.js) ---- */
 .faq-search { margin: 1.1rem 0 .6rem; }
