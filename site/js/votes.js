@@ -439,10 +439,24 @@
         say(ok); again();
       });
     }
-    var cancel = el("button", { type: "button", class: "linkish vote-cancel", text: "Cancel the vote", onclick: function () {
-      if (!cancel.dataset.sure) { cancel.dataset.sure = "1"; cancel.textContent = "Cancel it? There'll be no results"; return; }
-      act("cancel", {}, "Cancelled.");
-    } });
+    // Finishing or cancelling can't be undone, and both are easy to tap by mistake on a phone (Adam), so each asks
+    // first: the first tap changes the button to the question, a second tap does it. Left alone, it goes back.
+    function twice(btn, label, question, go) {
+      var timer = null;
+      btn.addEventListener("click", function () {
+        if (!btn.dataset.sure) {
+          btn.dataset.sure = "1"; btn.textContent = question;
+          timer = setTimeout(function () { delete btn.dataset.sure; btn.textContent = label; }, 6000);
+          return;
+        }
+        clearTimeout(timer); go();
+      });
+      return btn;
+    }
+    var cancel = twice(el("button", { type: "button", class: "linkish vote-cancel", text: "Cancel the vote" }),
+      "Cancel the vote", "Cancel it? There'll be no results", function () { act("cancel", {}, "Cancelled."); });
+    var finish = twice(el("button", { type: "button", class: "btn small vote-finish", text: "Finish voting now" }),
+      "Finish voting now", "Finish now? Nobody else can vote", function () { act("finish", {}, "Voting's finished."); });
     var free = v.hours ? v.hours.free : 0;
     return el("div", { class: "vote-card vote-creator" },
       el("h2", { class: "hand-title", text: "Your vote" }),
@@ -450,8 +464,7 @@
         [1, 6, 12].map(function (h) { return el("button", { type: "button", class: "btn small vote-extend", disabled: h > free, text: "+" + h + (h === 1 ? " hour" : " hours"),
                                                            onclick: function () { act("extend", { hours: h }, "Added " + h + (h === 1 ? " hour." : " hours.")); } }); })),
       el("div", { class: "backup-row" },
-        el("button", { type: "button", class: "btn small vote-finish", text: "Finish voting now", onclick: function () { act("finish", {}, "Voting's finished."); } }),
-        cancel),
+        finish, cancel),
       el("p", { class: "hint", text: "You vote too, and you can't see any tallies until it ends either." }));
   }
 

@@ -1523,6 +1523,32 @@ def done_list(page, ids):
                   "done: ids.map(i => ({mission: i, done_at: '2026-11-01T18:00:00Z'}))}))", ids)
 
 
+def t_rolls_skip_a_look_alike(site, catalog):
+    """Adam rolled the Oregon Symphony, then Dress-Up Orchestra Night. The next roll skips a mission too much like
+    the one just shown (it goes back to the bottom of the deck), and still deals when only look-alikes are left."""
+    page = site.open("/")
+    page.wait_for_selector("#packs .card", state="attached")
+    r = page.evaluate("""() => {
+      const by = (id) => S.missions.find((m) => m.full_id === id);
+      const sym = by("amblebee/oregon-symphony-night"), orch = by("amblebee/dress-up-orchestra-night");
+      const out = { known: !!(sym && orch) && tooAlike(sym, orch) && tooAlike(orch, sym) };
+      const all = pool();
+      let a = null, b = null;
+      for (const x of all) { for (const y of all) { if (!a && x !== y && tooAlike(x, y)) { a = x; b = y; } } }
+      if (!a) return out;
+      const c = all.find((x) => x !== a && x !== b && !tooAlike(a, x));
+      S.current = a;
+      saveDeck({ key: deckFor(readFilters()), order: [b.full_id, c.full_id], pos: 0 });
+      const picked = pickMission();
+      out.pair = true; out.skipped = picked.full_id !== b.full_id && !tooAlike(a, picked);
+      out.stillThere = loadDeck().order.includes(b.full_id);
+      return out;
+    }""")
+    assert r["known"], "the two symphony missions count as look-alikes"
+    assert r.get("pair"), "the Anywhere pack has at least one look-alike pair to test with"
+    assert r["skipped"] and r["stillThere"], r
+
+
 def t_rolls_pick_something_new_until_asked(site, catalog):
     anywhere = [m for m in catalog["missions"] if m["pack"] == "anywhere"]   # with no ZIP set, a roll deals from Anywhere
     keep = anywhere[0]
@@ -2538,6 +2564,27 @@ def t_vote_then_the_results_become_a_plan(site, catalog):
     assert any(p["source"] == "vote" and p["vote_id"] == pub and p["mission"] == m2["full_id"] for p in plans), "the winner is this voter's own plan"
     assert friend.locator(".vote-didyougo").count() == 1, "the day has passed: Did you go?"
     assert friend.evaluate(f"JSON.parse(localStorage.getItem('amble.votes')).find(x => x.pub === '{pub}').seen") is True, "the ended vote's been seen"
+
+
+def t_finishing_a_vote_asks_first(site, catalog):
+    """Finish is easy to tap by mistake on a phone and can't be undone (Adam), so the first tap asks, the second finishes."""
+    m1, m2 = catalog["missions"][2], catalog["missions"][3]
+    page = site.open("/")
+    owner = give_profile(site, page)
+    pub = "Vtestfinish00001"
+    site.intake.votes[pub] = {"pub": pub, "kind": "friends", "style": "pick", "name": "Friday plans", "for_date": "2027-01-08",
+                              "status": "open", "closes_at": (datetime.now(timezone.utc) + timedelta(hours=5)).isoformat(),
+                              "profiles_only": False, "names_public": True, "creator": owner, "started_by": "Max", "ballots": {},
+                              "options": [{"id": 1, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]},
+                                          {"id": 2, "mission": m2["full_id"], "slug": m2["id"], "name": m2["name"], "place": "", "season": ["any"]}]}
+    page.goto(site.base + "/vote/#" + pub)
+    page.wait_for_selector(".vote-finish")
+    page.click(".vote-finish")
+    assert "Finish now?" in page.inner_text(".vote-finish"), "the first tap asks"
+    assert site.intake.votes[pub]["status"] == "open", "and finishes nothing"
+    page.click(".vote-finish")
+    page.wait_for_selector(".vote-finish", state="detached")
+    assert site.intake.votes[pub]["status"] == "finished", "the second tap finishes it"
 
 
 def t_put_it_to_a_vote_stamp(site, catalog):

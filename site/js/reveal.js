@@ -79,6 +79,36 @@ function saveDeck(d) { memDeck = d; try { sessionStorage.setItem(DECK_KEY, JSON.
 const REPEATS_KEY = "amble.roll.repeats";
 function rollRepeats() { try { return localStorage.getItem(REPEATS_KEY) === "1"; } catch (e) { return false; } }
 function setRollRepeats(on) { try { if (on) localStorage.setItem(REPEATS_KEY, "1"); else localStorage.removeItem(REPEATS_KEY); } catch (e) { /* fine */ } }
+// Too alike to roll back to back (Adam rolled the Oregon Symphony, then Dress-Up Orchestra Night): three or more
+// uncommon words shared between their names and tags, or two plus a shared theme. "Uncommon" means in at most 3% of
+// missions, so places and words like "park" or "sunset" don't count. Checked across the catalog: no mission has more
+// than 9 look-alikes out of 300, so skipping them never empties a roll.
+const ALIKE_SKIP = new Set("and the for with from your our its you out".split(" "));
+let wordCache = null;
+function missionWords(m) {
+  if (!wordCache) {
+    wordCache = { words: new Map(), seen: new Map() };
+    S.missions.forEach((x) => {
+      const ws = new Set();
+      [x.name, ...(x.tags || [])].join(" ").toLowerCase().match(/[a-z]+/g)?.forEach((w) => {
+        if (w.length < 3 || ALIKE_SKIP.has(w)) return;
+        ws.add(w.length > 4 && w.endsWith("s") && !w.endsWith("ss") ? w.slice(0, -1) : w);
+      });
+      wordCache.words.set(x.full_id, ws);
+      ws.forEach((w) => wordCache.seen.set(w, (wordCache.seen.get(w) || 0) + 1));
+    });
+    wordCache.rare = Math.max(2, 0.03 * S.missions.length);
+  }
+  return wordCache.words.get(m.full_id) || new Set();
+}
+function tooAlike(a, b) {
+  if (!a || !b || a.full_id === b.full_id) return false;
+  const wb = missionWords(b);
+  let shared = 0;
+  missionWords(a).forEach((w) => { if (wb.has(w) && wordCache.seen.get(w) <= wordCache.rare) shared++; });
+  const theme = (a.themes || []).some((t) => (b.themes || []).includes(t));
+  return shared >= 3 || (shared >= 2 && theme);
+}
 function pickMission() {
   // "Not for us" missions (site/js/done.js) are never dealt, unless they're all that's left
   const hidden = window.AmbleDone ? window.AmbleDone.hidden() : new Set();
@@ -96,16 +126,23 @@ function pickMission() {
     const dealt = new Set(d.order);
     d.order.push(...shuffled(p.map((m) => m.full_id).filter((id) => !dealt.has(id))));
   }
-  let m = null;
+  let m = null, lookalike = null;
   for (let tries = 0; tries < 2 && !m; tries++) {
     while (d.pos < d.order.length && !m) {
-      const next = byId.get(d.order[d.pos++]);
-      if (next && (p.length === 1 || !S.current || next.full_id !== S.current.full_id)) m = next;
+      const id = d.order[d.pos++], next = byId.get(id);
+      if (!next || (p.length > 1 && S.current && next.full_id === S.current.full_id)) continue;
+      if (S.current && tooAlike(next, S.current)) {   // too close to the one just shown: back to the bottom of the deck
+        lookalike = lookalike || next;
+        d.order.push(id);
+        if (d.order.length > 4 * p.length + 8) break;  // only look-alikes left: stop going round
+        continue;
+      }
+      m = next;
     }
     if (!m) d = { key, order: dealOrder(p, f), pos: 0 };      // went through them all: reshuffle
   }
   saveDeck(d);
-  return m || p[0];
+  return m || lookalike || p[0];
 }
 function renderTeaser() {
   const n = pool().length;
