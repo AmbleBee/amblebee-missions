@@ -38,6 +38,28 @@
   dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });   // a tap outside closes it
   var opener = null;
   dialog.addEventListener("close", function () { if (opener && opener.isConnected) opener.focus(); });
+  // "12% of AmbleBee profiles have this stamp": totals from the server, fetched once. Nothing until enough profiles have
+  // stamps (the server sends no counts before then), and nothing if it can't be reached.
+  var shares = null;
+  function loadShares() {
+    if (shares) return shares;
+    shares = fetch(window.AmbleUtil.API + "/stamps").then(function (r) { return r.ok ? r.json() : null; }, function () { return null; });
+    return shares;
+  }
+  function shareLine(key) {
+    var p = el("p", { class: "stamp-share", hidden: true });
+    loadShares().then(function (c) {
+      if (!c || !c.counts || !c.profiles) return;
+      var n = c.counts[key] || 0;
+      if (!n) return;
+      var pct = n * 100 / c.profiles;
+      p.textContent = n === 1 ? "You're the only one with this stamp so far!"
+        : pct < 1 ? "Fewer than 1% of AmbleBee profiles have this stamp."
+        : Math.round(pct) + "% of AmbleBee profiles have this stamp.";
+      p.hidden = false;
+    });
+    return p;
+  }
   function open(s, from) {
     opener = from;
     dialog.replaceChildren(el("div", { class: "dialog-body stamp-dialog-body" },
@@ -50,6 +72,7 @@
           el("a", { href: "/contribute/#polls", text: "an AmbleBee poll" }), "."),
       s.year ? el("p", { class: "stamp-year-count", text: yearCount(s, true) }) : null,
       s.how ? el("div", { class: "stamp-how" }, el("h3", { text: "How you earned it" }), el("p", { text: s.how })) : null,
+      shareLine(s.key),
       el("form", { method: "dialog" }, el("button", { class: "btn small", type: "submit", text: "Close" }))));
     dialog.showModal();
   }

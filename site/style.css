@@ -1152,6 +1152,8 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .stamp-dialog-body h2 { font-size: 1.4rem; margin: 0 0 .3rem; }
 .stamp-dialog-body p { margin: 0; }
 .stamp-how { margin: 14px 0 4px; padding: 12px 14px; border-radius: 14px; background: var(--sage-tint); color: var(--sage-ink); text-align: left; }
+.stamp-share { margin: 12px 0 0; font-weight: 700; color: var(--walnut-soft); }
+.stamp-share[hidden] { display: none; }
 .stamp-how h3 { margin: 0 0 2px; font: 800 .8rem/1.2 var(--body); letter-spacing: .04em; text-transform: uppercase; }
 @media (max-width: 759px) {
   .book-wrap { grid-template-columns: 1fr; gap: 12px; }

@@ -187,6 +187,12 @@
   var OFFLINE = "We couldn't reach our server just now. Your missions are safe on this device; we'll try again.";
 
   // ---- syncing ----
+  // the names of the stamps in this book ("first-steps", "our-year-2026"), nothing else: the server only counts them, for
+  // "x% have this stamp". Left out on pages without the stamp book's script, so the server keeps what it had.
+  function stampNames() {
+    var ST = window.AmbleStamps;
+    return ST && ST.earned ? ST.earned().map(function (s) { return s.key; }) : undefined;
+  }
   var running = null, again = false, timer = null;
   function sync(force) {
     var st = load();
@@ -194,7 +200,9 @@
     if (running) { again = true; return running; }
     var all = !st.since;
     var p = D.pending(all);
-    var nothing = !p.done.length && !p.removed.length && !p.prefs && !p.plans.length && !p.plans_removed.length;
+    var names = stampNames(), stampList = names ? names.join(",") : null;
+    var nothing = !p.done.length && !p.removed.length && !p.prefs && !p.plans.length && !p.plans_removed.length &&
+      (stampList === null || stampList === st.stampsSent);   // a changed stamp book is news too
     if (!force && nothing && st.since && Date.now() - (st.last || 0) < QUIET_MS) return Promise.resolve(state());
     live.syncing = true; emit();
     var dk = null;
@@ -208,7 +216,7 @@
       }));
     }).then(function (out) {
       return post("/profile/sync", { since: st.since || null, done: out, removed: p.removed, prefs: p.prefs,
-                                     plans: p.plans, plans_removed: p.plans_removed }, st.key);
+                                     plans: p.plans, plans_removed: p.plans_removed, stamps: names }, st.key);
     }).then(function (r) {
         var now = load() || {};
         if (now.key !== st.key) return;                          // signed out or switched while this was on its way
@@ -236,6 +244,7 @@
           now.hadMySay = r.body.had_my_say || null;          // the day of your first AmbleBee poll vote (the Had My Say stamp)
           now.feedback = r.body.feedback || 0;                // mission feedback sent while signed in (Delete my feedback)
           now.gifts = r.body.gifts || {};                     // thank-you stamps from AmbleBee: {stamp id: day given}
+          if (stampList !== null) now.stampsSent = stampList;
           live.error = "";
           save(now);
         });
@@ -551,6 +560,8 @@
   window.addEventListener("storage", function (e) { if (e.key === STORE) emit(); });
   document.addEventListener("visibilitychange", function () { if (document.visibilityState === "visible") sync(); });
   window.addEventListener("online", function () { sync(true); });
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", function () { fromAddress(); sync(); });
+  // start once every script on the page has run (the stamp book's included, so the first sync carries its stamp names):
+  // deferred scripts run while the page is still "interactive", before DOMContentLoaded
+  if (document.readyState !== "complete") document.addEventListener("DOMContentLoaded", function () { fromAddress(); sync(); });
   else { fromAddress(); sync(); }
 })();

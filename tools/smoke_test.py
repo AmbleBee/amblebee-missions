@@ -53,6 +53,7 @@ class FakeIntake:
         self.feedback = []         # mission feedback, like amblebee-intake's app/feedback.py            # pub -> a vote, like amblebee-intake's app/polls.py (which has its own tests)
         self.profiles = {}   # key -> {"done": {rid: completion}, "removed": [], "prefs": None, "email": False}
         self.closed = False
+        self.stamp_counts = {"profiles": None, "counts": None}
         self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
                        {"who": "us", "at": "2026-11-13T16:00:00+00:00", "body": "We'd love one! Any favorite spots?"}]
 
@@ -72,6 +73,8 @@ class FakeIntake:
             return reply(200, {"ok": True, "accepting": self.mode == "up"})
         if path == "/schema":
             return reply(200, {"ok": True, **SCHEMA})
+        if path == "/stamps":   # the stamp book's "x% have this stamp" (None until enough profiles have stamps)
+            return reply(200, {"ok": True, **self.stamp_counts})
         if path.startswith("/polls"):
             data = json.loads(req.post_data or "{}") if req.method == "POST" else {}
             return self.polls_api(path, req.method, data, req.headers, reply)
@@ -323,6 +326,8 @@ class FakeIntake:
         if path == "/profile/vault":
             prof["vault"]["wk"] = (data.get("vault") or {}).get("wk")
             return reply(200, {"ok": True})
+        if isinstance(data.get("stamps"), list):
+            prof["stamps"] = data["stamps"]
         for rid in data.get("removed") or []:
             prof["done"].pop(rid, None)
             prof["removed"].append(rid)
@@ -2803,6 +2808,30 @@ def t_thank_you_stamp_lands_once(site, catalog):
     page.click(".stamp[data-key='valuable-feedback']")
     body = page.inner_text(".stamp-dialog-body")
     assert "A thank-you from AmbleBee, given Nov 19, 2026" in body and "Your feedback made real changes" in body, body
+
+
+def t_stamp_share_and_counts_from_the_sync(site, catalog):
+    """The sync sends the book's stamp names (only), and the pop-up shows how common a stamp is once the server has totals."""
+    page = site.open("/")
+    key = give_profile(site, page)
+    done_list(page, [catalog["missions"][0]["full_id"]])
+    page.evaluate("() => { const p = JSON.parse(localStorage.getItem('amble.profile')); p.last = 1; p.since = null; localStorage.setItem('amble.profile', JSON.stringify(p)); }")
+    site.intake.stamp_counts = {"profiles": 40, "counts": {"first-steps": 10, "our-year-2026": 1}}
+    page.goto(site.base + "/me/")
+    page.wait_for_selector(".stamp[data-key='first-steps']")
+    page.wait_for_timeout(1500)
+    sent = site.intake.profiles[key].get("stamps") or []
+    assert "first-steps" in sent and all(isinstance(x, str) for x in sent), sent
+    page.click(".stamp[data-key='first-steps']")
+    page.wait_for_selector(".stamp-share:not([hidden])")
+    assert page.inner_text(".stamp-share") == "25% of AmbleBee profiles have this stamp."
+    page.keyboard.press("Escape")
+    site.intake.stamp_counts = {"profiles": None, "counts": None}
+    page.reload()
+    page.wait_for_selector(".stamp[data-key='first-steps']")
+    page.click(".stamp[data-key='first-steps']")
+    page.wait_for_timeout(600)
+    assert page.locator(".stamp-share:not([hidden])").count() == 0, "no totals yet: no line"
 
 
 def t_home_notice_when_your_vote_ends(site, catalog):
