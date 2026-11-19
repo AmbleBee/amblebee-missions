@@ -2769,12 +2769,17 @@ def t_feedback_after_thumbs(site, catalog):
 
 
 def t_every_page_may_reach_intake(site, catalog):
-    """The homepage and the Bee trail keep their own copy of the security policy: each must let the page reach
-    amblebee-intake, or profile sync and feedback from those pages are refused by the browser."""
-    for path in ("/", "/roadmap.html", f"/missions/{catalog['missions'][0]['id']}/", "/poll/", "/contribute/"):
+    """Every page gets the same <head> start from tools/build_pages.py (the homepage and the Bee trail too): the
+    security policy must let the page reach amblebee-intake, and the shared helpers (util.js) must load before
+    any other script, or profile sync, feedback and votes break."""
+    for path in ("/", "/roadmap.html", f"/missions/{catalog['missions'][0]['id']}/", "/poll/", "/contribute/", "/vote/new/", "/me/plans/"):
         page = site.open(path)
         csp = page.get_attribute("meta[http-equiv='Content-Security-Policy']", "content") or ""
         assert "https://amblebee-intake.tail58116.ts.net" in csp.split("connect-src", 1)[-1].split(";", 1)[0], path
+        srcs = page.eval_on_selector_all("script[src]", "ss => ss.map(s => s.getAttribute('src').split('?')[0])")
+        first = next(i for i, x in enumerate(srcs) if x.startswith("/js/") or x.startswith("js/"))
+        assert srcs[first] == "/js/util.js", (path, srcs)
+        assert page.evaluate("typeof window.AmbleUtil.el") == "function", path
 
 
 def t_count_js_stays_quiet_off_the_real_site(site, catalog):

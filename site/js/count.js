@@ -4,7 +4,7 @@
    Only on amblebee.com itself, never in test browsers, and not for browsers that send Global Privacy Control.
    Max's own browsers: open amblebee.com/?nocount=1 once to stop counting this browser (?nocount=0 to undo). */
 (function () {
-  var API = "https://amblebee-intake.tail58116.ts.net/hit";
+  var API = window.AmbleUtil.API + "/hit";
   try {
     var q = new URLSearchParams(location.search).get("nocount");
     if (q === "1") localStorage.setItem("amble.nocount", "1");

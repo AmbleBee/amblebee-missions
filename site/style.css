@@ -1430,7 +1430,7 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .vote-card input[type=text], .vote-card input[type=date], .vote-card input[type=search] { width: 100%; max-width: 30rem; }
 .vote-card fieldset { border: 0; padding: 0; margin: 0 0 12px; }
 .vote-card legend { font-weight: 800; margin-bottom: 4px; }
-.vote-picks, .vote-found, .vote-options, .vote-list, .voted-names, .vote-rest { list-style: none; padding: 0; margin: 10px 0; }
+.vote-picks, .vote-found, .vote-options, .vote-list, .vote-rest { list-style: none; padding: 0; margin: 10px 0; }
 .vote-pick { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 4px 12px; padding: 10px 14px; margin: 8px 0;
   background: #FFF8E3; border: 1px solid var(--line, #E4D9C6); border-radius: 12px; }
 .vote-pick-name small { display: block; color: var(--walnut-soft, #7A5A42); }
@@ -1468,8 +1468,6 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .vote-ballot .vote-cast { font-size: 1.15rem; padding: 12px 28px; margin-top: 10px; }
 .vote-in { font-weight: 700; color: var(--sage-deep, #566B48); }
 .vote-voted .voted-line { margin: 0; }
-.voted-names li { display: flex; gap: 10px; align-items: center; padding: 4px 0; }
-.voted-names li.is-hidden { opacity: .55; text-decoration: line-through; }
 .vote-results { text-align: center; position: relative; }
 .podium { list-style: none; padding: 0; margin: 24px auto 8px; display: grid; grid-template-columns: repeat(3, 1fr); align-items: end; gap: 10px; max-width: 34rem; }
 .podium.two { grid-template-columns: repeat(2, 1fr); max-width: 24rem; }

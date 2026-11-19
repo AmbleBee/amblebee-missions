@@ -7,8 +7,9 @@
    - Status links you get are saved in this browser under "Your submissions". Nothing else is kept. */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, load = U.load, save = U.save;
 
-  var API = "https://amblebee-intake.tail58116.ts.net";   // also in connect-src in tools/build_pages.py
+  var API = U.API;
   // Backups for when our server can't be reached: the old Google Forms. Slower for us to see, and no status link.
   // (Not used when intake is paused on purpose: then the forms just say they're closed.)
   var BACKUP = {
@@ -31,12 +32,6 @@
     });
     (kids || []).forEach(function (c) { if (c) n.append(c); });
     return n;
-  }
-  function load(key, fallback) {
-    try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : fallback; } catch (e) { return fallback; }
-  }
-  function save(key, value) {
-    try { if (value == null) localStorage.removeItem(key); else localStorage.setItem(key, JSON.stringify(value)); } catch (e) { /* storage blocked: fine */ }
   }
   function track(name) { if (window.ambleTrack) window.ambleTrack(name); }
 

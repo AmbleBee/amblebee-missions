@@ -13,6 +13,7 @@
    m is a mission as in catalog.json: { full_id, id, name, short, season, duration, gear, place } */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, el = U.el, pad = U.pad, ymd = U.ymd, today = U.today;
 
   var SITE = "https://amblebee.com";
   var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -24,24 +25,6 @@
   var TIME_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
 
   function track(name, params) { if (window.ambleTrack) window.ambleTrack(name, params); }
-  function el(tag, attrs) {
-    var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      var v = attrs[k];
-      if (v == null || v === false) return;
-      if (k === "class") e.className = v;
-      else if (k === "text") e.textContent = v;
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v === true ? "" : v);
-    });
-    for (var i = 2; i < arguments.length; i++) {
-      var kid = arguments[i];
-      if (kid == null || kid === false) continue;
-      if (Array.isArray(kid)) { kid.forEach(function (x) { if (x != null && x !== false) e.append(x instanceof Node ? x : String(x)); }); continue; }
-      e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
-    }
-    return e;
-  }
   var ICONS = {
     calendar: '<rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/><path d="M9 15l2 2 4-4"/>',
     x: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
@@ -56,15 +39,12 @@
   }
 
   // ---- days ------------------------------------------------------------------------------------------------
-  function pad(n) { return ("0" + n).slice(-2); }
-  function ymd(t) { return t.getFullYear() + "-" + pad(t.getMonth() + 1) + "-" + pad(t.getDate()); }
   function dateOf(day, time) {            // the person's own clock, never pinned to a time zone
     var p = time && TIME_RE.test(time) ? time.split(":") : [12, 0];
     return new Date(+day.slice(0, 4), +day.slice(5, 7) - 1, +day.slice(8, 10), +p[0], +p[1]);
   }
   function realDay(v) { return typeof v === "string" && DAY_RE.test(v) && ymd(dateOf(v)) === v; }
   function addDays(day, n) { var t = dateOf(day); t.setDate(t.getDate() + n); return ymd(t); }
-  function today() { return ymd(new Date()); }
   function nextSaturday() { var t = new Date(); t.setDate(t.getDate() + ((6 - t.getDay() + 7) % 7 || 7)); return ymd(t); }
   // "Saturday, November 21" this year, "Sunday, July 4, 2027" otherwise
   function prettyDay(day, withYear) {

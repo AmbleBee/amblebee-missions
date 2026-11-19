@@ -48,7 +48,16 @@ COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked on
 NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
 OG_IMAGE = {"url": f"{BASE}/og-image.png?v=3",   # for pages without their own share card; the same as site/index.html
             "alt": "AmbleBee: date ideas and adventures near you. A sealed envelope with a honey wax seal, and a bee flying off to deliver it"}
-CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # also in site/index.html and site/roadmap.html; the Google hosts are for the optional stats in site/js/stats.js; amblebee-intake is the server behind the Suggest, Report, Contact and Status pages (site/js/intake.js)
+CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # the Google hosts are for the optional stats in site/js/stats.js; amblebee-intake is the server behind the forms, profiles and votes (AmbleUtil.API in site/js/util.js)
+# Every page's <head> starts with this: generated pages here, and site/index.html and site/roadmap.html at their
+# <!--shared-head--> line, so the security policy and the site-wide scripts are written once. util.js comes first:
+# the other scripts use its helpers.
+SHARED_HEAD = (f'<meta http-equiv="Content-Security-Policy" content="{CSP}">\n'
+               '<script src="/nav.js" defer></script>\n'
+               '<script src="/js/util.js" defer></script>\n'
+               '<script src="/js/stats.js" defer></script>\n'
+               '<script src="/js/count.js" defer></script>')
+
 # the same "Report a problem" page as site/js/core.js: opens with the mission's id and name already filled in
 REPORT_PAGE = "/report/"
 INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
@@ -175,7 +184,7 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="{CSP}">
+{SHARED_HEAD}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{esc(title)}</title>
 <meta name="description" content="{esc(description)}">
@@ -196,9 +205,6 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="icon" href="/favicon-192.png" sizes="192x192" type="image/png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-<script src="/nav.js" defer></script>
-<script src="/js/stats.js" defer></script>
-<script src="/js/count.js" defer></script>
 <link rel="stylesheet" href="/fonts/fonts.css">
 <link rel="stylesheet" href="/style.css">
 <script type="application/ld+json">{data}</script>
@@ -747,7 +753,9 @@ def build_pages(out):
     (Path(out) / "robots.txt").write_text(f"User-agent: *\nAllow: /\n\nSitemap: {BASE}/sitemap.xml\n", encoding="utf-8")
     for name, current in (("index.html", "index"), ("roadmap.html", "roadmap")):
         f = Path(out) / name
-        text = f.read_text(encoding="utf-8").replace("<!--site-nav-->", nav_html(current)).replace("<!--ideas-->", ideas_html(collections))
+        text = f.read_text(encoding="utf-8")
+        assert "<!--shared-head-->" in text, f"site/{name} lost its <!--shared-head--> line"
+        text = text.replace("<!--shared-head-->", SHARED_HEAD).replace("<!--site-nav-->", nav_html(current)).replace("<!--ideas-->", ideas_html(collections))
         if name == "roadmap.html":   # the Bee trail gets its own share card; the home page keeps the envelope
             old = re.search(r'<meta property="og:image" content="[^"]*">', text)
             assert old, "site/roadmap.html lost its og:image line"

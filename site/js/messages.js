@@ -5,6 +5,7 @@
    the conversations is kept in this browser. /me/messages/ lists them; /me/messages/#c12 opens one. */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, el = U.el;
   var app = document.querySelector(".messages-app");
   var P = window.AmbleProfile;
   if (!app || !P) return;
@@ -12,24 +13,6 @@
   function short(iso) { var t = new Date(iso); return MONTHS[t.getMonth()].slice(0, 3) + " " + t.getDate(); }
   function long(iso) { var t = new Date(iso); return MONTHS[t.getMonth()] + " " + t.getDate() + ", " + t.getFullYear(); }
   function daysTo(iso) { return Math.max(0, Math.ceil((new Date(iso) - Date.now()) / 864e5)); }
-  function el(tag, attrs) {
-    var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      var v = attrs[k];
-      if (v == null || v === false) return;
-      if (k === "class") e.className = v;
-      else if (k === "text") e.textContent = v;
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v === true ? "" : v);
-    });
-    for (var i = 2; i < arguments.length; i++) {
-      var kid = arguments[i];
-      if (kid == null || kid === false) continue;
-      if (Array.isArray(kid)) { kid.forEach(function (k) { if (k != null && k !== false) e.append(k instanceof Node ? k : document.createTextNode(String(k))); }); continue; }
-      e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
-    }
-    return e;
-  }
   var status = el("p", { class: "form-status", role: "status" });
   function say(text, bad) { status.textContent = text; status.classList.toggle("bad", !!bad); }
 

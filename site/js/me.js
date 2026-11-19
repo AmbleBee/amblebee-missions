@@ -4,6 +4,7 @@
    Reads and writes through site/js/done.js; stamps come from site/js/stamps.js. */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, el = U.el;
   var D = window.AmbleDone;
   var ST = window.AmbleStamps;
   var P = window.AmbleProfile;   // site/js/profile.js
@@ -21,24 +22,6 @@
     return " That earned " + (news.length === 1 ? "a new stamp: " : news.length + " new stamps: ") + news.map(function (x) { return x.name; }).join(", ") + ".";
   }
   function pretty(iso) { var t = new Date(iso); return MONTHS[t.getMonth()] + " " + t.getDate() + ", " + t.getFullYear(); }
-  function el(tag, attrs) {
-    var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      var v = attrs[k];
-      if (v == null || v === false) return;
-      if (k === "class") e.className = v;
-      else if (k === "text") e.textContent = v;
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v === true ? "" : v);
-    });
-    for (var i = 2; i < arguments.length; i++) {
-      var kid = arguments[i];
-      if (kid == null || kid === false) continue;
-      if (Array.isArray(kid)) { kid.forEach(function (k) { if (k != null && k !== false) e.append(k instanceof Node ? k : document.createTextNode(String(k))); }); continue; }
-      e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
-    }
-    return e;
-  }
   var status = el("p", { class: "form-status", role: "status" });
   function say(text, bad) { status.textContent = text; status.classList.toggle("bad", !!bad); }
 

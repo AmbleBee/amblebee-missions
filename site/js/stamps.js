@@ -13,6 +13,7 @@
    window.AmbleStamps: { all, pages, states, compute(list, settings), earned(), fresh(), landing(news) } */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, ymd = U.ymd;
 
   // id, name, the book page it sits on. Listed in the order stamps from the same completion are inked in.
   var STAMPS = [
@@ -58,7 +59,6 @@
   var SEASON_STAMP = { spring: "spring-has-sprung", summer: "summer-lovin", fall: "fall-into-adventure", winter: "winter-wonderland" };
   var OF_A_KIND = 5, HOME_COUNT = 10, STATE_COUNT = 3;
 
-  function ymd(t) { return t.getFullYear() + "-" + ("0" + (t.getMonth() + 1)).slice(-2) + "-" + ("0" + t.getDate()).slice(-2); }
   // Planned Ahead: marked done from a calendar plan made at least a day before the day it was done (site/js/done.js sets via)
   function planned(c, t) {
     if (c.via !== "plan" || !c.planned_at) return false;

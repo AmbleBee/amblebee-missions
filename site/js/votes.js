@@ -7,7 +7,8 @@
    confetti on the results. No tallies while voting is open, for anyone (decisions 6 and 7). */
 (function () {
   "use strict";
-  var API = "https://amblebee-intake.tail58116.ts.net";
+  var U = window.AmbleUtil, add = U.add, el = U.el, pad = U.pad, ymd = U.ymd, load = U.load, save = U.save;
+  var API = U.API;
   var VOTER = "amble.voter", MINE = "amble.votes", DRAFT = "amble.vote.draft";
   var P = window.AmbleProfile, D = window.AmbleDone, PL = window.AmblePlans;
   var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -16,29 +17,7 @@
   var ORD = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th", "9th", "10th"];
 
   // ---- small helpers ----
-  function el(tag, attrs) {
-    var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      var v = attrs[k];
-      if (v == null || v === false) return;
-      if (k === "class") e.className = v;
-      else if (k === "text") e.textContent = v;
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v === true ? "" : v);
-    });
-    for (var i = 2; i < arguments.length; i++) add(e, arguments[i]);
-    return e;
-  }
-  function add(e, kid) {
-    if (kid == null || kid === false) return;
-    if (Array.isArray(kid)) { kid.forEach(function (k) { add(e, k); }); return; }
-    e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
-  }
-  function load(k, d) { try { var v = localStorage.getItem(k); return v ? JSON.parse(v) : d; } catch (e) { return d; } }
-  function save(k, v) { try { if (v == null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch (e) { /* fine */ } }
-  function pad(n) { return ("0" + n).slice(-2); }
   function dayOf(s) { return new Date(+s.slice(0, 4), +s.slice(5, 7) - 1, +s.slice(8, 10), 12); }
-  function ymd(t) { return t.getFullYear() + "-" + pad(t.getMonth() + 1) + "-" + pad(t.getDate()); }
   function prettyDay(s) {
     if (!s) return "";
     var t = dayOf(s);

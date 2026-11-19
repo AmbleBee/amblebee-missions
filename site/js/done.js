@@ -26,6 +26,7 @@
    stamp. Plans more than 60 days past without an answer are cleared quietly. */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, el = U.el, ymd = U.ymd, today = U.today;
 
   var KEY = "amble.done";
   var NOTE_MAX = 300;     // "Anything to remember?"
@@ -121,7 +122,6 @@
       updated_at: !isNaN(new Date(x.updated_at).getTime()) ? new Date(x.updated_at).toISOString() : added.toISOString(),
     };
   }
-  function today() { return ymd(new Date()); }
   function daysAgo(n) { var t = new Date(); t.setDate(t.getDate() - n); return ymd(t); }
   var soonest = function (a, b) { var x = a.day + (a.time || ""), y = b.day + (b.time || ""); return x < y ? -1 : x > y ? 1 : 0; };
   function dropPlan(d, id) {
@@ -238,8 +238,6 @@
       return d.plans.slice().sort(soonest);
     },
     plansFor: function (id) { return api.plans().filter(function (x) { return x.mission === id; }); },
-    // past: their day is before today, so it's time to ask "Did you go?"
-    pastPlans: function () { var t = today(); return api.plans().filter(function (x) { return x.day < t; }); },
     // info: { mission, slug, name }; one plan per mission and day (planning it again for that day updates its time)
     addPlan: function (info, day, time, extra) {
       var d = read();
@@ -426,25 +424,7 @@
   // ---- the "Mark done" box under a mission ---------------------------------------------------------------
   var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
   function pretty(iso) { var t = new Date(iso); return MONTHS[t.getMonth()] + " " + t.getDate() + ", " + t.getFullYear(); }
-  function ymd(t) { return t.getFullYear() + "-" + ("0" + (t.getMonth() + 1)).slice(-2) + "-" + ("0" + t.getDate()).slice(-2); }
 
-  function el(tag, attrs) {
-    var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      var v = attrs[k];
-      if (v == null || v === false) return;
-      if (k === "class") e.className = v;
-      else if (k === "text") e.textContent = v;
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v === true ? "" : v);
-    });
-    for (var i = 2; i < arguments.length; i++) {
-      var kid = arguments[i];
-      if (kid == null || kid === false) continue;
-      e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
-    }
-    return e;
-  }
   var ICONS = {
     check: '<path d="M5 12.5l4.5 4.5L19 7.5"/>',
     x: '<path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/>',
@@ -478,7 +458,7 @@
     // ---- Feedback for AmbleBee (claude/mission-feedback-PLAN.md): written TO the team, unlike the personal note ----
     // Optional, under the thumbs. Only if something was sent does it ask "Can AmbleBee use your feedback?", with
     // nothing pre-chosen. The personal note is never copied in or sent.
-    var FB_API = "https://amblebee-intake.tail58116.ts.net";
+    var FB_API = U.API;
     var fb = {};   // per time done: {text, step: "write" | "ask" | "thanks", ref, error}
     function fbPost(path, body) {
       var h = Object.assign({ "Content-Type": "application/json" }, window.AmbleProfile && window.AmbleProfile.headers ? window.AmbleProfile.headers() : {});

@@ -5,6 +5,7 @@
    Empty spots are plain dashed squares at the end of the book: no names, no "3 more to go". */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, el = U.el;
   var D = window.AmbleDone, ST = window.AmbleStamps;
   var app = document.querySelector(".book-app");
   if (!app || !D || !ST) return;
@@ -19,23 +20,6 @@
     var n = s.year_count + (s.year_count === 1 ? " mission" : " missions");
     if (!long) return n;
     return n + " in " + s.year + (s.year === new Date().getFullYear() ? " so far." : ".");
-  }
-  function el(tag, attrs) {
-    var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      var v = attrs[k];
-      if (v == null || v === false) return;
-      if (k === "class") e.className = v;
-      else if (k === "text") e.textContent = v;
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v === true ? "" : v);
-    });
-    for (var i = 2; i < arguments.length; i++) {
-      var kid = arguments[i];
-      if (kid == null || kid === false) continue;
-      e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
-    }
-    return e;
   }
   // each stamp is inked in at its own slight tilt, the same every time
   function tilt(key) {

@@ -21,8 +21,9 @@
                           devices, signOutDevices, messages, message, reply, displayName, setDisplayName } */
 (function () {
   "use strict";
+  var U = window.AmbleUtil, el = U.el;
 
-  var API = "https://amblebee-intake.tail58116.ts.net";   // the same server as site/js/intake.js
+  var API = U.API;
   var STORE = "amble.profile";
   var DECLINED = "amble.profile.declined";   // "Not now" pressed: Mark done stops asking (Start a free profile still works)
   // The recovery email, kept in this browser only, so the contact, report and suggestion forms can fill it in
@@ -394,23 +395,6 @@
 
   // ---- "Start a free profile?" (after Mark done, every time, until there's a profile) ----
   var dlg = null, opener = null;
-  function el(tag, attrs) {
-    var e = document.createElement(tag);
-    Object.keys(attrs || {}).forEach(function (k) {
-      var v = attrs[k];
-      if (v == null || v === false) return;
-      if (k === "class") e.className = v;
-      else if (k === "text") e.textContent = v;
-      else if (k.slice(0, 2) === "on") e.addEventListener(k.slice(2), v);
-      else e.setAttribute(k, v === true ? "" : v);
-    });
-    for (var i = 2; i < arguments.length; i++) {
-      var kid = arguments[i];
-      if (kid == null || kid === false) continue;
-      e.append(kid instanceof Node ? kid : document.createTextNode(String(kid)));
-    }
-    return e;
-  }
   function copyBox(id, value, label) {
     var box = el("input", { id: id, class: "link-box", type: "text", readonly: true, value: value, "aria-label": label });
     var note = el("span", { class: "copy-note", role: "status" });
