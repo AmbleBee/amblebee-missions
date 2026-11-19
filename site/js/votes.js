@@ -212,6 +212,7 @@
         api("/polls", "POST", body).then(function (r) {
           if (r.status !== 201) { start.disabled = false; start.textContent = "Start the vote"; err.textContent = problem(r); if (r.body && r.body.free != null) { free = r.body.free; } return; }
           save(DRAFT, null);
+          if (window.ambleTrack) window.ambleTrack("vote_started", {});
           remember(r.body, "creator");
           shared(app, r.body);
         });

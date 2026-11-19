@@ -2770,6 +2770,18 @@ def t_every_page_may_reach_intake(site, catalog):
         assert "https://amblebee-intake.tail58116.ts.net" in csp.split("connect-src", 1)[-1].split(";", 1)[0], path
 
 
+def t_count_js_stays_quiet_off_the_real_site(site, catalog):
+    """count.js loads on every page, but only counts on amblebee.com: test browsers and previews send nothing."""
+    page = site.open("/")
+    sent = []
+    page.on("request", lambda r: sent.append(r.url) if r.url.endswith("/hit") else None)
+    assert page.locator("script[src^='/js/count.js']").count() == 1
+    page.goto(site.base + f"/missions/{catalog['missions'][0]['id']}/")
+    page.wait_for_timeout(300)
+    assert not sent, sent
+    assert page.evaluate("typeof window.ambleTrack") == "function", "the site's own actions still work"
+
+
 def main():
     folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
     if not (folder / "catalog.json").exists():
