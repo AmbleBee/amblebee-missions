@@ -1,5 +1,6 @@
 # Missions that share a spot (or a name) on purpose: different goals at the same place.
 # The mission manager's duplicate finder skips these pairs. Its "Different on purpose" button adds them.
+- [algiers-ferry-sunset, audubon-aquarium]
 - [chihuly-garden-and-glass, space-needle-view]
 - [french-quarter-cocktail-walk, french-quarter-walking-tour]
 - [french-quarter-cocktail-walk, ghost-and-vampire-tour]
