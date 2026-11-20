@@ -170,6 +170,41 @@ def git_changes():
     return {"files": files}
 
 
+def publish_states():
+    """Missions whose file here differs from GitHub's copy: {"pack/id": "waiting" | "edits"}.
+
+    "edits": GitHub already has it live (not a draft), so the site shows the old version until a push.
+    "waiting": GitHub doesn't have it, or only as a draft, so it isn't on the site yet.
+    Compared with what's been pushed (the upstream branch, as of the last fetch), so a commit that isn't pushed
+    still counts as waiting. Changes that are only on GitHub (fetched but not pulled) don't count.
+    Drafts here are left to the editor: a draft is a draft, whatever GitHub has."""
+    def git(*args):
+        r = subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True, timeout=5)
+        return r.stdout if r.returncode == 0 else None
+    try:
+        if git("rev-parse", "--is-inside-work-tree") is None:
+            return {}
+        up = git("rev-parse", "--abbrev-ref", "--symbolic-full-name", "@{u}")
+        ref = up.strip() if up else "HEAD"
+        base = (git("merge-base", "HEAD", ref) or "").strip() or ref
+        changed = set((git("diff", "--relative", "--name-only", base, "--", "missions/") or "").split())
+        changed |= set((git("ls-files", "--others", "--exclude-standard", "--", "missions/") or "").split())
+        out = {}
+        for rel in sorted(changed):
+            m = re.fullmatch(r"missions/([a-z0-9][a-z0-9-]*)/([a-z0-9][a-z0-9-]*)\.yaml", rel)
+            if not m or m.group(2) == "pack" or not (ROOT / rel).exists():
+                continue
+            remote = git("show", f"{ref}:./{rel}")
+            try:
+                live = remote is not None and not (yaml.safe_load(remote) or {}).get("draft")
+            except yaml.YAMLError:
+                live = False
+            out[f"{m.group(1)}/{m.group(2)}"] = "edits" if live else "waiting"
+        return out
+    except (OSError, subprocess.SubprocessError):
+        return {}
+
+
 def dashboard_data():
     if not ready():
         return {"setup": setup_repo.status(ROOT)}
@@ -186,7 +221,7 @@ def dashboard_data():
         "source": {k: (lib.load_catalog(MISSIONS)[0] or {}).get(k) for k in ("name", "source_id", "author")},
         "attention": {k: {"label": v[0], "help": v[1]} for k, v in ATTENTION.items()},
         "themes": lib.THEMES, "themeGroups": THEME_GROUPS, "themesMax": lib.THEMES_MAX,
-        "minMissions": settings["min_missions"], "git": git_changes(),
+        "minMissions": settings["min_missions"], "git": git_changes(), "publish": publish_states(),
         "schema": {
             "allowed": {k: sorted(v) for k, v in lib.ALLOWED.items()},
             "lists": {k: sorted(v) for k, v in lib.LIST_ALLOWED.items()},
