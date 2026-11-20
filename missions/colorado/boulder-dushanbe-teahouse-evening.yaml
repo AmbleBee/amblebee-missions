@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 3
 name: Evening Tea at the Dushanbe Teahouse
 mode: date
@@ -6,7 +6,7 @@ place:
   name: Boulder Dushanbe Teahouse
   area: Central Park, Boulder
   address: 1770 13th St, Boulder, CO 80302
-  coords: [40.01560, -105.27670]  # APPROX: set at the entrance before publishing
+  coords: [40.01545, -105.27732]
   website: https://www.boulderteahouse.com
 short: Boulder Dushanbe Teahouse. Share a pot of tea under a hand-carved, hand-painted ceiling.
 description: >

@@ -1,22 +1,23 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 6
 name: Philadelphia Museum of Art
 mode: both
-who: [solo, friends, family]
+who: [solo, friends, family, kids]
 place:
   name: Philadelphia Museum of Art
   area: Fairmount, Philadelphia
   address: 2600 Benjamin Franklin Pkwy, Philadelphia, PA 19130
-  coords: [39.96560, -75.18100]  # APPROX: set at the top of the east steps before publishing
+  coords: [39.96563, -75.18096]
   website: https://philamuseum.org
-short: Run up the Rocky steps, then find a painting each that you'd hang at home.
+short: Philadelphia Museum of Art. Run the Rocky steps, then each pick a painting to hang at home.
 description: >
   Race (or stroll) up the famous steps, throw your arms up at the top, and
   look back at the city skyline. Inside, wander one of the biggest art museums
   in the country, from armor and a whole Japanese teahouse to Van Gogh's
   sunflowers. Each pick one piece you'd hang at home and show it to the other.
-  Check the museum's site for discounted evening hours. The photo to get: you
-  at the top of the steps, arms up, with the skyline behind you.
+  Kids 18 and under get in free, and the first Sunday of every month is pay
+  what you wish. The photo to get: you at the top of the steps, arms up, with
+  the skyline behind you.
 about: >
   The museum's building opened in 1928 on top of Fairmount, and it holds
   roughly 240,000 objects. The steps became famous in the 1976 movie Rocky,
@@ -24,12 +25,16 @@ about: >
   steps to the top.
 
   The museum briefly rebranded as the Philadelphia Art Museum in 2025, then
-  went back to its old name in early 2026. The Rodin Museum and the Barnes
-  Foundation are a short walk down the Parkway.
-steps:
-  - Victory pose at the top of the steps
-  - The skyline from the top
-  - The painting you'd hang at home
+  went back to its old name in early 2026. Your ticket also covers the Rodin
+  Museum for two days, a short walk down the Parkway, and the Barnes
+  Foundation is nearby too.
+for_kids:
+  short: Rocky steps and art hunt! Find each thing.
+  steps:
+    - Arms up at the top of the steps!
+    - A knight in armor
+    - The sunflowers painting
+    - Your favorite painting
 duration: half-day
 effort: moderate
 cost: $$
@@ -39,4 +44,4 @@ time_of_day: any
 travel: local
 check_ahead: [hours, tickets]
 themes: [views, museums, art]
-tags: [art, museum, rocky-steps, views, rainy-day]
+tags: [rocky steps, rocky statue, philadelphia museum of art, van gogh sunflowers, ben franklin parkway, rainy-day]

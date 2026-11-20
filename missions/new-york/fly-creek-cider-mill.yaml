@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 19
 name: Fly Creek Cider Mill Duck Race
 mode: both
@@ -7,22 +7,23 @@ place:
   name: Fly Creek Cider Mill and Orchard
   area: Fly Creek, near Cooperstown
   address: 288 Goose St, Fly Creek, NY 13337
-  coords: [42.71800, -74.98900]  # APPROX: set at the mill parking before publishing
+  coords: [42.72422, -74.97928]
   website: https://www.flycreekcidermill.com
 short: Fly Creek Cider Mill near Cooperstown. Race rubber ducks with water pumps, then taste fresh cider.
 description: >
-  Visit a cider mill from 1856 in the hills of upstate New York, where the
-  original water-powered press still squeezes fresh cider in the fall. Pick
-  your rubber ducks and race them down the water channels by pumping as fast
-  as you can, and best of three wins. Then explore the mill and its history,
-  taste the cider and treats at the marketplace, and visit the farm's ducks and
-  geese. Get a photo of you with your winning duck. The mill opens
-  for the season around Mother's Day and closes just before Christmas. Pair
-  it with a visit to Cooperstown.
+  Visit a cider mill from 1856 in the hills of upstate New York. Pick your
+  rubber ducks and race them down the water channels by pumping as fast as you
+  can: best of three wins. Then explore the mill, taste the cider, fudge and
+  cheddar at the marketplace, and visit the ducks and geese on the millpond.
+  Get a photo of you with your winning duck, and pair it with a visit to
+  Cooperstown.
 about: >
-  The mill was built in 1856, and its water-powered press still squeezes
-  fresh cider in the fall. It's one of the few water-powered cider mills
-  still working in the country.
+  Hosea Williams built the mill on the banks of Fly Creek in 1856. In the fall
+  you can watch cider being made on its 1889 water-powered press: water from
+  the creek spins a restored 1872 turbine, which drives belts and shafts that
+  squeeze the apples with 50 tons of pressure. It nearly closed for good in
+  2021, and it's since been voted one of the best cideries in the country by
+  USA Today readers.
 
   The mill opens for the season around Mother's Day and closes just before
   Christmas. Cooperstown, a few minutes away, is home to the National
@@ -35,14 +36,13 @@ for_kids:
     - Win a race
     - Find a real duck or goose
     - A selfie with your duck!
-duration: half-day
+duration: short
 effort: easy
-cost: free
+cost: $
 setting: either
 season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, seasonal]
-themes: [wildlife, history, drinks, playful]
-tags: [fly creek cider mill, duck races, fresh apple cider, cooperstown, water-powered mill, upstate-new-york]
-credit: Anonymous User
+themes: [wildlife, history, food, playful, small-towns]
+tags: [fly creek cider mill, duck races, fresh apple cider, cooperstown, water-powered mill, upstate new york]

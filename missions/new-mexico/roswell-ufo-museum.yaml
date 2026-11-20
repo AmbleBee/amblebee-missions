@@ -1,13 +1,13 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+draft: true
 number: 3
 name: Roswell UFO Museum
-mode: adventure
-who: [solo, friends, family]
+mode: both
+who: [solo, friends, family, kids]
 place:
   name: International UFO Museum and Research Center
   area: Downtown Roswell
   address: 114 N Main St, Roswell, NM 88203
-  coords: [33.39355, -104.52280]  # APPROX: set at the entrance before publishing
+  coords: [33.39367, -104.52291]
   website: https://www.roswellufomuseum.com
 short: International UFO Museum in Roswell. Investigate the 1947 crash and decide for yourself.
 description: >
@@ -15,16 +15,27 @@ description: >
   reading the timeline, newspaper clippings and witness statements about the
   1947 Roswell Incident. Wander past the crop-circle and abduction exhibits,
   then make up your mind: weather balloon or something else? Get a photo with
-  the alien-and-spaceship display that's the museum's star. Afterward, walk
-  Main Street to spot the alien-shaped streetlights and storefront aliens.
+  the life-size flying saucer and its little green crew, the museum's star.
+  Afterward, walk Main Street to spot the alien-shaped streetlights and
+  storefront aliens.
 about: >
   In July 1947, the Roswell Army Air Field announced it had recovered a
-  "flying disc," then said the next day it was a weather balloon. Decades
-  later, the Air Force said it was a secret balloon project for spying on
-  Soviet nuclear tests. Believers still aren't convinced.
+  "flying disc," then within hours said it was a weather balloon. In 1994 the
+  Air Force said it was really a secret balloon project for spying on Soviet
+  nuclear tests, and in 1997 it said the "alien bodies" people remembered were
+  crash-test dummies. Believers still aren't convinced.
 
-  The museum is in an old downtown movie theater, and the town leans in, with
-  alien-shaped streetlights and a big UFO festival every summer.
+  The museum was started by Walter Haut, the officer who sent out that
+  original "flying disc" press release in 1947. It now fills the old Plains
+  Theater downtown, and the town leans in, with alien-shaped streetlights and
+  a big UFO festival every July.
+for_kids:
+  short: Alien hunt! Find each thing.
+  steps:
+    - A flying saucer
+    - A green alien
+    - An alien streetlight
+    - A selfie with the spaceship!
 steps:
   - The 1947 newspaper headline
   - The best piece of evidence you found

@@ -1,35 +1,36 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 7
 name: New Orleans Jazz Museum
 mode: both
-who: [solo, friends, family]
+who: [friends, family]
 place:
   name: New Orleans Jazz Museum at the Old U.S. Mint
   area: Esplanade Ave, edge of the French Quarter
   address: 400 Esplanade Ave, New Orleans, LA 70116
-  coords: [29.96130, -90.05740]  # APPROX: set at the entrance before publishing
+  coords: [29.96148, -90.05772]
   website: https://nolajazzmuseum.org
 short: New Orleans Jazz Museum at the Old Mint. Learn jazz history, then hear it live on Frenchmen.
 description: >
-  Explore the story of jazz in the city that invented it, inside the old
-  granite U.S. Mint: instruments, recordings and the musicians who made New
-  Orleans sound like New Orleans. Each pick a song from the exhibits you've
-  never heard before. Then walk two blocks to Frenchmen Street and follow the
-  best live band you hear. The photo to get: you outside the band's door
-  with the music going.
+  Go in the afternoon and explore the story of jazz in the city that invented
+  it, inside the old granite U.S. Mint: instruments, recordings and the
+  musicians who made New Orleans sound like New Orleans. Each pick a song from
+  the exhibits you've never heard before. Then stay into the evening, walk two
+  blocks to Frenchmen Street and follow the best live band you hear. The photo
+  to get: you outside the band's door with the music going.
 about: >
-  The jazz museum started in 1961 in the French Quarter, built on a collection
-  the New Orleans Jazz Club spent decades gathering and gave to the state in
-  1977. Today it fills the Old U.S. Mint, and its collection of jazz
-  instruments is billed as the largest in the world, including Louis
-  Armstrong's first cornet and horns played by Sidney Bechet, Kid Ory and
-  Dizzy Gillespie.
+  The world's first jazz museum opened in 1961 on Dumaine Street in the French
+  Quarter, built on a collection the New Orleans Jazz Club had gathered since
+  1948. The club gave it to the state in 1977, and in 2018 it moved into the
+  Old U.S. Mint. It's the largest collection of instruments played by jazz
+  greats, including Louis Armstrong's first cornet, with notches a teenage
+  Armstrong cut into the mouthpiece still visible, and a 1917 disc of the first
+  jazz record ever made.
 
-  The Old U.S. Mint opened in 1838, and it's the only mint to have made both
-  U.S. and Confederate coins. Check the calendar for free concerts upstairs.
-  Frenchmen Street is where locals go for live music, with several clubs in a
-  row and bands on the sidewalk.
-duration: short
+  The Mint started making coins in 1838, and it's the only mint to have made
+  both U.S. and Confederate coins. Check the calendar for free concerts
+  upstairs. Frenchmen Street is where locals go for live music, with several
+  clubs in a row and bands on the sidewalk.
+duration: half-day
 effort: easy
 cost: $$
 setting: indoor
@@ -38,4 +39,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [history, museums, shows]
-tags: [new orleans jazz museum, old us mint, louis armstrong, frenchmen street, live jazz, new-orleans]
+tags: [new orleans jazz museum, old us mint, louis armstrong, frenchmen street, live jazz, new orleans]

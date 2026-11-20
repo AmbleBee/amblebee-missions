@@ -1,46 +1,54 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Bread and Puppet Barn
-mode: adventure
-who: [solo]
+mode: both
+who: [solo, friends, family, kids]
 place:
   name: Bread and Puppet Museum
   area: Glover, Northeast Kingdom
   address: 753 Heights Rd, Glover, VT 05839
-  coords: [44.69050, -72.21830]  # APPROX: set at the barn entrance before publishing
+  coords: [44.68423, -72.17807]
   website: https://breadandpuppet.org/museum
-short: Climb into an old barn packed with giant puppets. Find the one staring right back at you.
+short: Bread and Puppet Museum in Glover. Climb into a barn packed with giant puppets that stare back.
 description: >
   Drive up to Glover in the Northeast Kingdom and wander the Bread and Puppet
   Museum, a creaky old dairy barn crammed floor to rafters with puppets, masks
-  and paintings from sixty years of the theater's shows. Take your time on
-  your own: the biggest figures loom on the second floor, and there's more
-  out in the woodshed and the Cheap Art bus across the road. Get a photo of
-  yourself dwarfed by the tallest puppet you can find. The barn is unheated,
-  so dress for the weather in the cold months, and leave the suggested
-  donation at the door.
+  and paintings from sixty years of the theater's shows. Take your time: giant
+  figures fill both floors and hang from the rafters, and there's more out in
+  the woodshed, the Cheap Art bus and the Paper Mache Cathedral. Get a photo of
+  you dwarfed by the tallest puppet you can find. Some of the puppets are
+  spooky, so it's best for brave kids. The barn is unheated, so dress for the
+  weather in the cold months, and leave a donation at the door.
 about: >
-  Peter Schumann founded the Bread and Puppet Theater in New York City in
-  1963 and moved to a Vermont farm in the 1970s. The name comes from the
-  bread the troupe bakes and hands out to audiences, served with garlic
-  aioli.
+  Peter and Elka Schumann founded the Bread and Puppet Theater on New York
+  City's Lower East Side in 1963, and moved it to a farm in Glover in 1974.
+  The name comes from the fresh bread the troupe bakes and hands out to
+  audiences, served with garlic aioli.
 
-  For decades the farm hosted a huge summer pageant, Our Domestic
-  Resurrection Circus. Shows still run on summer weekends in the outdoor
-  amphitheater, and the barn has held its museum since the 1970s.
+  For almost thirty years the farm hosted Our Domestic Resurrection Circus, a
+  huge outdoor pageant whose last year, 1998, drew around 30,000 people.
+  Smaller shows still run on summer weekends in the outdoor amphitheater, and
+  the 150-year-old hay barn has been a museum for "retired" puppets since the
+  1970s.
+for_kids:
+  short: Puppet barn hunt! Find each one.
+  steps:
+    - A giant puppet
+    - A puppet hanging from the ceiling
+    - A funny face
+    - A selfie next to a giant!
 steps:
   - The barn from the road
-  - The tallest puppet upstairs
+  - The tallest puppet you can find
   - A face that seems to watch you
-  - Yourself next to a giant
+  - You next to a giant
 duration: short
 effort: easy
-cost: $$
+cost: $
 setting: indoor
 season: any
 time_of_day: daytime
 travel: drive
-check_ahead: [hours]
+check_ahead: [hours, seasonal]
 themes: [museums, art, shows, quirky]
-tags: [museum, puppets, art, quirky, barn, northeast-kingdom, glover]
-credit:
+tags: [bread and puppet museum, giant puppets, puppet barn, vermont, northeast kingdom, glover]

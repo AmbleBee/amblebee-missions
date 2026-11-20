@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 7
 name: Breakout KC Escape Room
 mode: both
@@ -6,9 +6,9 @@ who: [friends, family]
 place:
   name: Breakout KC (River Market)
   area: River Market, Kansas City
-  address: 114 W 3rd St, Ste 102, Kansas City, MO 64105
-  coords: [39.10890, -94.58390]  # APPROX: set at the entrance before publishing
-  website: https://www.breakoutkc.com
+  address: 114 W 3rd St, Kansas City, MO 64105
+  coords: [39.10966, -94.58557]
+  website: https://breakoutkc.com/book#river
 short: Breakout KC in Kansas City. Crack codes and solve riddles to escape a themed room in an hour.
 description: >
   Book a room at one of Kansas City's first escape rooms and work together to
@@ -17,14 +17,18 @@ description: >
   after, whether you made it out or not. Then celebrate (or regroup) over food
   in the River Market. Book ahead; rooms run in timed slots.
 about: >
-  Escape rooms started in Japan in the 2000s and spread around the world.
-  Breakout KC was one of Kansas City's first. Tips: split up to search,
-  shout out every number and symbol you find, and ask for a hint before
-  you're totally stuck.
+  Escape rooms started in Japan in the early 2000s, inspired by puzzle video
+  games, and reached Kansas City in 2015, when Breakout KC opened in the
+  River Market as one of the city's first. Tips: split up to search, shout
+  out every number and symbol you find, and ask for a hint before you're
+  totally stuck.
 
-  The River Market is a good place to celebrate after, and the Arabia
-  Steamboat Museum nearby shows treasures from an 1850s steamboat dug out of
-  a Kansas cornfield.
+  For a real-life mystery afterward, walk a few blocks to the Arabia
+  Steamboat Museum. The Arabia hit a submerged tree and sank in the Missouri
+  River in 1856 with 200 tons of cargo. Over the next century the river
+  moved, and in 1988 a local family dug the boat out from 45 feet under a
+  Kansas cornfield, half a mile from the water. Its dishes, tools, boots and
+  even jars of food are on display.
 duration: short
 effort: easy
 cost: $$$
@@ -32,6 +36,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: local
-check_ahead: [reservation]
+check_ahead: [reservation, hours]
 themes: [games, playful]
 tags: [breakout kc, escape room kansas city, puzzle room, river market, team challenge, kansas-city]

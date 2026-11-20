@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 15
 name: Go Ape Treetop Adventure
 mode: both
@@ -7,30 +7,32 @@ place:
   name: Go Ape Zipline and Adventure Park, Swope Park
   area: Swope Park, Kansas City
   address: 7331 Oakwood Dr, Kansas City, MO 64132
-  coords: [38.99800, -94.51000]  # APPROX: set at the Go Ape check-in before publishing
-  website: https://goape.com/Locations/Missouri/Kansas-City
+  coords: [38.99063, -94.51103]
+  website: https://www.goape.com/location/Missouri-Kansas-City/
 short: Go Ape at Swope Park in Kansas City. Zip, swing and climb through the treetops.
 description: >
   Harness up and take on the Treetop Adventure course in Swope Park: rope
   bridges, wobbly ladders, a giant Tarzan swing and five ziplines, the longest
   475 feet, up to 45 feet in the trees. Cheer each other through the scariest
   crossing and get a photo coming off the last zip. Plan two to three hours,
-  wear closed-toe shoes, and book ahead. Younger kids can do the lower Treetop
-  Journey course instead.
+  wear closed-toe shoes, and book ahead. Treetop Adventure is for ages 10 and
+  up; younger kids can do the lower Treetop Journey course instead.
 about: >
   Go Ape started in England in 2002 and now runs treetop courses in forests
-  around the world. Here you're up to about 45 feet in the trees, clipped in
-  the whole time.
+  around the world. You're clipped in the whole time, and staff help you
+  through the Tarzan swing, the one crossing that works differently.
 
-  Swope Park is one of the biggest city parks in the country, given to
-  Kansas City in 1896 by Thomas Swope. The Kansas City Zoo is in the park too.
-  Plan two to three hours, wear closed-toe shoes, and book ahead.
+  Swope Park is more than twice the size of New York's Central Park, making it
+  one of the largest city parks in the country. Thomas Swope gave the land to
+  Kansas City in 1896, and he's buried beneath the Swope Memorial inside the
+  park. The Kansas City Zoo is here too, and part of the park covers the site
+  of the Battle of Byram's Ford, part of the Civil War's Battle of Westport.
 for_kids:
   short: Treetop adventure! Find each thing.
   steps:
     - A rope bridge
+    - A wobbly bridge
     - A zipline
-    - The tallest tree
     - A selfie in your harness!
 duration: half-day
 effort: moderate
@@ -41,4 +43,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [reservation, seasonal]
 themes: [forests, thrills, playful]
-tags: [go ape kansas city, treetop adventure, zipline course, swope park, ropes course, kansas-city]
+tags: [go ape kansas city, treetop adventure, zipline course, swope park, ropes course, kansas city]

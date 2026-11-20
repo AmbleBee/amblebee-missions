@@ -1,29 +1,34 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 11
 name: Billiards of Springfield
 mode: both
-who: [solo, friends]
+who: [friends, family]
 place:
   name: Billiards of Springfield
   area: Downtown Springfield
   address: 541 E St Louis St, Springfield, MO 65806
-  coords: [37.20850, -93.28470]  # APPROX: set at the entrance before publishing
+  coords: [37.20938, -93.28685]
+  website: https://www.billiardsofspringfield.com
 short: Billiards of Springfield. Shoot pool on nine-foot tables at a classic hall; loser buys burgers.
 description: >
-  Grab a table at Springfield's longtime pool hall, with sixteen full-size
+  Grab a table at Springfield's classic pool hall, with sixteen full-size
   nine-foot tables, and play a best-of-five. Loser buys the burgers, which
-  locals swear are some of the best in town. If one of you is new to pool, the
-  other has to teach a trick shot. Get a photo lining up the winning shot.
+  locals swear are some of the best in town. If one of you is new to pool,
+  the other has to teach a trick shot. Get a photo lining up the winning
+  shot.
 about: >
-  Springfield calls itself the Birthplace of Route 66: on April 30, 1926,
-  highway officials meeting at the Colonial Hotel downtown sent the telegram
-  that proposed the number 66 for the new Chicago-to-Los Angeles road.
+  The hall sits on St. Louis Street across from the historic Shrine Mosque,
+  a few blocks from where Route 66 got its name. On April 30, 1926, highway
+  officials sent a telegram from the Colonial Hotel at St. Louis and
+  Jefferson proposing the number 66 for the new Chicago-to-Los Angeles road.
+  The hotel is gone, but Birthplace Plaza and its steel "Ghost of the
+  Colonial Hotel" sculpture mark the spot, an easy walk after your match.
 
-  Nine-foot tables are the size used in professional tournaments, bigger than
-  most bar tables, so long shots are harder than you expect. Beginner tips:
-  keep your bridge hand steady, look at the spot on the ball you want to hit,
-  and follow through smoothly instead of jabbing. Ask a regular for a trick
-  shot; most are happy to show off.
+  Nine-foot tables are the size used in professional tournaments, bigger
+  than most bar tables, so long shots are harder than you expect. Beginner
+  tips: keep your bridge hand steady, look at the spot on the ball you want
+  to hit, and follow through smoothly instead of jabbing. Ask a regular for
+  a trick shot; most are happy to show off.
 duration: short
 effort: easy
 cost: $$
@@ -32,5 +37,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours]
-themes: [food, games, playful]
+themes: [food, games, playful, drinks]
 tags: [billiards of springfield, pool hall, nine-foot tables, best of five, burgers, springfield]

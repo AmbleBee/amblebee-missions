@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 13
 name: Audubon Aquarium
 mode: both
@@ -6,26 +6,25 @@ who: [solo, friends, family, kids]
 place:
   name: Audubon Aquarium
   area: Canal Street riverfront, New Orleans
-  address: 1 Canal St, New Orleans, LA 70130  # verify against audubonnatureinstitute.org
-  coords: [29.95060, -90.06270]  # APPROX: set at the entrance before publishing
+  address: 1 Canal St, New Orleans, LA 70130
+  coords: [29.95047, -90.06292]
   website: https://audubonnatureinstitute.org
-short: Audubon Aquarium in New Orleans. Walk the Gulf tunnel and each find the strangest fish.
+short: Audubon Aquarium in New Orleans. Walk the reef tunnel and each find the strangest fish.
 description: >
-  Explore the aquarium at the foot of Canal Street, from the Gulf of Mexico
-  tank to the Amazon rainforest and the swamp. Walk the underwater tunnel with
-  fish overhead, and each find the strangest creature in the building. Get a
-  photo of you against the big tank. The Algiers ferry leaves right
-  next door if you want to keep going.
+  Explore the aquarium at the foot of Canal Street, from the bayou to the
+  Amazon rainforest and the giant Gulf of Mexico tank. Walk the Caribbean
+  reef tunnel with fish overhead, and each find the strangest creature in
+  the building. Get a photo of you against the big Gulf tank. The Algiers
+  ferry leaves right next door if you want to keep going.
 about: >
   The aquarium opened on the riverfront at the foot of Canal Street in 1990.
-  Its giant Gulf of Mexico tank recreates the base of an offshore oil
-  platform, where sharks, rays and huge fish gather in real life too.
+  Its giant Gulf of Mexico tank recreates the sea floor around an offshore
+  oil platform, where sharks, rays and huge tarpon gather in real life too.
 
   It reopened in June 2023 after a big renovation: now you can see the Gulf
   tank from above and below, touch a stingray, and walk through an aviary in
-  the Amazon exhibit. The Audubon Insectarium moved into the same building at
-  the same time. The Algiers ferry leaves right next door if you want to keep
-  exploring.
+  the Amazon exhibit. The Audubon Insectarium moved into the same building
+  at the same time, so bugs and butterflies are part of the visit now too.
 for_kids:
   short: Aquarium hunt! Find each thing.
   steps:
@@ -42,5 +41,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [wildlife, science]
-tags: [audubon aquarium, gulf of mexico tank, underwater tunnel, canal street, family day out, new-orleans]
+themes: [wildlife, science, museums]
+tags: [audubon aquarium, gulf of mexico tank, underwater tunnel, canal street, family day out, new orleans]

@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 18
 name: Museum of Flight
 mode: both
@@ -7,23 +7,28 @@ place:
   name: The Museum of Flight
   area: Boeing Field, Tukwila / South Seattle
   address: 9404 E Marginal Way S, Seattle, WA 98108
-  coords: [47.51800, -122.29660]  # APPROX: set at the main entrance before publishing
+  coords: [47.51856, -122.29687]
   website: https://www.museumofflight.org
-short: Walk under the planes at the Museum of Flight. Board a real jet and each pick the one you'd fly.
+short: Museum of Flight in Seattle. Board a real Air Force One and each pick the plane you'd fly.
 description: >
   Explore the Great Gallery full of hanging aircraft, then cross to the
-  Aviation Pavilion and walk aboard real planes, from a Concorde to an old Air
-  Force One. Each pick the aircraft you'd take on a dream trip and where you'd
-  fly it. Don't skip the space gallery and its shuttle trainer. The photo to
-  get: you at the door of the old Air Force One.
+  Aviation Pavilion and walk aboard real planes, from a Concorde to the first
+  jet Air Force One. Each pick the aircraft you'd take on a dream trip and
+  where you'd fly it. Don't skip the space gallery and its shuttle trainer.
+  Admission is free on the first Thursday evening of every month. The photo to
+  get: you at the door of Air Force One.
 about: >
-  The museum began in 1965 and grew around the Red Barn, where William
-  Boeing started building airplanes in the 1910s. It's now one of the
-  largest air and space museums in the world.
+  The Museum of Flight began in 1965 and is now the largest independent air
+  and space museum in the world. It grew around the Red Barn, Boeing's first
+  factory, where the company started building airplanes in 1916. In 1975 the
+  whole barn was floated down the Duwamish River on a barge to its spot here.
 
-  The Air Force One on display flew presidents from Eisenhower to Nixon. The
-  Concorde is one of very few outside Europe, and the shuttle trainer is the
-  real one astronauts trained in.
+  The Air Force One on display was the first presidential jet: Eisenhower
+  became the first president to fly by jet on it in 1959, and it carried
+  Kennedy, Johnson and Nixon too. The Concorde set the record for the fastest
+  coast-to-coast flight across the U.S. and is one of only four outside
+  Europe. The shuttle trainer is the real one every space shuttle astronaut
+  trained in.
 for_kids:
   short: Airplane hunt! Find each thing.
   steps:
@@ -35,10 +40,10 @@ for_kids:
 duration: half-day
 effort: easy
 cost: $$
-setting: indoor
+setting: either
 season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [stars, museums, vehicles]
-tags: [aviation, space, museum, rainy-day, seattle]
+themes: [vehicles, museums, history, science, stars]
+tags: [museum of flight seattle, air force one, concorde, space shuttle trainer, boeing red barn, rainy-day, seattle]

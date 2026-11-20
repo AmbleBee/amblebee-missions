@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 8
 name: Brooklyn Botanic Garden
 mode: both
@@ -7,23 +7,26 @@ place:
   name: Brooklyn Botanic Garden
   area: Prospect Heights, Brooklyn
   address: 990 Washington Ave, Brooklyn, NY 11225
-  coords: [40.66940, -73.96240]  # APPROX: set at the Washington Ave entrance before publishing
+  coords: [40.66859, -73.96446]
   website: https://www.bbg.org
 short: Brooklyn Botanic Garden. Wander the Japanese pond garden, the roses and the greenhouses.
 description: >
   Spend a slow afternoon wandering the gardens: the Japanese Hill-and-Pond
-  Garden with its red torii gate and koi, the rose garden, and greenhouses
-  full of desert and tropical plants. Each pick your favorite spot and take
-  the other there. The photo to get: you by the red gate with the pond
-  behind.
+  Garden with its red torii gate and koi, the Cranford Rose Garden, and the
+  Steinhardt Conservatory's greenhouses full of desert and tropical plants.
+  Find your favorite spot, and if you're not alone, take each other to yours.
+  Kids under 12 get in free. The photo to get: you by the red gate with the
+  pond behind.
 about: >
-  The garden opened in 1910. Its Japanese Hill-and-Pond Garden was built in
-  the 1910s and is one of the oldest Japanese gardens in an American public
-  garden. In spring, the cherry trees bloom along the Cherry Esplanade, the
-  garden's busiest and prettiest time.
+  The garden was founded in 1910, laid out by the Olmsted Brothers, and opened
+  in 1911. Its Japanese Hill-and-Pond Garden, designed by Takeo Shiota and
+  opened in 1915, was the first Japanese garden built in an American public
+  botanic garden, and its pond sits in a kettle pond left by a glacier in the
+  last Ice Age.
 
-  The garden has had pay-what-you-wish days in winter and is closed some
-  days, so check the hours before you go.
+  In spring, the cherry trees bloom along the Cherry Esplanade, the garden's
+  busiest and prettiest time. Winter weekdays are pay what you wish, and the
+  garden is closed some days, so check the hours before you go.
 for_kids:
   short: Garden hunt! Find each thing.
   steps:
@@ -35,10 +38,10 @@ for_kids:
 duration: half-day
 effort: easy
 cost: $$
-setting: outdoor
+setting: either
 season: any
 time_of_day: daytime
 travel: local
-check_ahead: [hours, seasonal]
+check_ahead: [hours, tickets, seasonal]
 themes: [gardens, relaxing, walks, romantic]
-tags: [brooklyn botanic garden, japanese hill and pond garden, cherry blossoms, rose garden, prospect heights, nyc]
+tags: [brooklyn botanic garden, japanese hill and pond garden, cherry blossoms, cranford rose garden, prospect heights, nyc]

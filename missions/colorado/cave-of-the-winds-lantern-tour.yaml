@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Lantern Tour and Manitou Springs
 mode: date
@@ -6,8 +6,8 @@ place:
   name: Cave of the Winds Mountain Park
   area: Williams Canyon, Manitou Springs
   address: 100 Cave of the Winds Rd, Manitou Springs, CO 80829
-  coords: [38.87250, -104.91960]  # APPROX: set at the entrance before publishing
-  website: https://caveofthewinds.com/cave-tours/
+  coords: [38.87185, -104.92208]
+  website: https://caveofthewinds.com/#tours
 short: Cave of the Winds lantern tour in Manitou Springs, then taste the town's mineral springs.
 description: >
   Book the Haunted Lantern Tour at Cave of the Winds: no electric lights, just the lanterns you carry
@@ -35,5 +35,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
 discounts: [military]
-themes: [caves, spooky, romantic]
+themes: [caves, spooky, romantic, rocks-fossils]
 tags: [cave of the winds, lantern cave tour, manitou springs, mineral springs, spooky date, colorado-springs]
