@@ -380,6 +380,15 @@
       .then(function () { next.disabled = false; if (STEPS[S.step] && STEPS[S.step].id === "review") next.textContent = "Send my mission"; });
   }
 
+  // ?pack=<id> (from "Add it as a mission" on a state page) picks that pack, unless a draft already has a name and a pack
+  function preselectPack() {
+    var want = new URLSearchParams(location.search).get("pack") || "";
+    if (!SC.packs.some(function (p) { return p.id === want; })) return;
+    if (S.m.pack && String(S.m.name || "").trim()) return;
+    S.m.pack = want;
+    persist();
+  }
+
   // ---------- start: is the mailbox open, and what can be built? ----------
   function start() {
     var wait = $(".intake-wait", box), down = $(".intake-down", box), backup = $(".intake-backup", box);
@@ -391,6 +400,7 @@
         wait.hidden = true;
         if (r.status !== 200 || !r.body.ok) { down.hidden = false; return; }
         SC = r.body;
+        preselectPack();
         try { couple = new RegExp(SC.couple_words, "i"); } catch (e) { couple = null; }
         form.hidden = false;
         render(false);

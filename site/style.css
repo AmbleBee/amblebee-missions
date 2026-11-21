@@ -1537,3 +1537,11 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .done-fb label { display: block; font-weight: 700; margin: 4px 0 6px; }
 .done-fb-thanks { margin: 0; font-weight: 700; }
 .done-note-hint { font-size: .9rem; color: var(--walnut-soft); margin: .4rem 0 0; }
+
+/* "Don't see your favorite place?" under a state's missions */
+.suggest-nudge {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 20px;
+  margin: 2rem 0 0; padding: 18px 22px; border-radius: 18px;
+  border: 2px dashed var(--line-strong); background: var(--linen);
+}
+.suggest-nudge p { margin: 0; font: 700 1.3rem/1.2 var(--hand); color: var(--sage-deep); }

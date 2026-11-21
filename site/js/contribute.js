@@ -1,6 +1,15 @@
 /* AmbleBee's own polls (calendar-voting-PLAN.md §2, decisions 24 to 32).
    /contribute/ lists open polls, ones being reviewed and recent results; each poll has its own page, /poll/?p=<id>.
    Polls help us decide; AmbleBee makes the final call, always with a reason. */
+// "Add it as a mission" on a state page links here with ?pack=<id>; pass it on to the mission builder so the state is picked
+(function () {
+  var pack = new URLSearchParams(location.search).get("pack") || "";
+  if (!/^[a-z0-9][a-z0-9-]{0,40}$/.test(pack)) return;
+  document.querySelectorAll('a.path[href^="/suggest/mission/"]').forEach(function (a) {
+    a.href = "/suggest/mission/?pack=" + encodeURIComponent(pack);
+  });
+})();
+
 (function () {
   "use strict";
   var V = window.AmbleVotes, P = window.AmbleProfile;

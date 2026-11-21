@@ -402,6 +402,19 @@ def state_of(pack):
     return None if pack.get("id") in ("anywhere", "general") or region.lower() in ("", "anywhere") else region
 
 
+NEW_STATE_MISSIONS = 20   # below this many missions, a state page asks for help filling the map
+
+
+def suggest_nudge(pack_id, state, count):
+    """The note under a state's missions asking people to suggest one; none for packs that aren't one place."""
+    if not state:
+        return ""
+    text = (f"We're just getting started in {state}. Help us fill the map!" if count < NEW_STATE_MISSIONS
+            else f"Don't see your favorite place in {state}?")
+    return (f'<aside class="suggest-nudge"><p>{esc(text)}</p>'
+            f'<a class="btn primary small" href="/contribute/?pack={esc(pack_id)}#suggest">Add it as a mission →</a></aside>')
+
+
 def pack_heading(pack):
     """What people actually search for, used as the pack page's title."""
     state = state_of(pack)
@@ -611,6 +624,7 @@ def build_pages(out):
 {f'<div class="pack-about">{long_html}</div>' if long_html else ""}
 <p class="hand">{esc(count_line)}</p>
 <div class="cards">{cards}</div>
+{suggest_nudge(p["id"], state, len(rows))}
 </div>"""
         ld = {"@context": "https://schema.org", "@graph": [
             {"@type": "CollectionPage", "@id": BASE + path, "url": BASE + path, "name": p.get("name"), "description": desc},
