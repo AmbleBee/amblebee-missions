@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Clarksdale Blues Night
 mode: date
@@ -6,7 +6,7 @@ place:
   name: Delta Blues Museum
   area: Downtown, Clarksdale
   address: 1 Blues Alley Ln, Clarksdale, MS 38614
-  coords: [34.19650, -90.57240]  # APPROX: set at the entrance before publishing
+  coords: [34.20026, -90.57326]
   website: https://www.deltabluesmuseum.org
   links:
     - label: Ground Zero Blues Club
@@ -16,20 +16,24 @@ description: >
   Spend the late afternoon at the Delta Blues Museum, where the remains of
   Muddy Waters' sharecropper cabin sit inside the gallery. Then walk next door
   to Ground Zero Blues Club for dinner and live blues, or wander downtown to
-  whichever juke joint has a band that night. The photo to get: the two of
-  you in front of the stage. Then get up and dance to at least one song.
+  whichever juke joint has a band that night. Live music runs mostly late in
+  the week, so check what's playing before you pick your night. The photo to
+  get: the two of you in front of the stage. Then get up and dance to at least
+  one song.
 about: >
   Clarksdale is in the heart of the Mississippi Delta, where the blues was
   born. Legend says bluesman Robert Johnson sold his soul to the devil at
   the crossroads of Highways 61 and 49, right in town. Ground Zero was
-  co-founded by actor Morgan Freeman.
+  co-founded by actor Morgan Freeman in 2001.
 
-  The museum, founded in 1979, is one of the oldest music museums in the
-  state. It's open during the day and closed some days, while the music is
-  mostly at night, so plan for a late afternoon that runs into the evening.
+  The Delta Blues Museum, founded in 1979, is Mississippi's oldest music
+  museum, in a 1918 railroad depot. Muddy Waters lived in his cabin on Stovall
+  Farm until folklorist Alan Lomax recorded him there in 1941. The museum is
+  open during the day and closed some days, while the music is mostly at
+  night, so plan for a late afternoon that runs into the evening.
 steps:
   - The two of you outside the old depot
-  - Muddy Waters' cabin
+  - A sign on Blues Alley
   - The band on stage
   - Your dance
 duration: half-day
@@ -40,5 +44,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
-themes: [history, museums, shows]
+themes: [history, museums, shows, food]
 tags: [clarksdale blues, delta blues museum, ground zero blues club, juke joint, the crossroads, clarksdale]

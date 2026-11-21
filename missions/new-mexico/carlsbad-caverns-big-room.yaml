@@ -1,35 +1,45 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Carlsbad Caverns Big Room
-mode: adventure
-who: [friends]
+mode: both
+who: [solo, friends, family, kids]
 place:
   name: Carlsbad Caverns National Park Visitor Center
   area: Carlsbad Caverns National Park, near Carlsbad
-  address: 727 Carlsbad Caverns Hwy, Carlsbad, NM 88220
-  coords: [32.17530, -104.44370]  # APPROX: set at the entrance before publishing
-  website: https://www.nps.gov/cave/
+  address: 727 Carlsbad Caverns Highway Carlsbad, NM 88220
+  coords: [32.17693, -104.44157]
+  website: https://www.nps.gov/cave/index.htm
 short: Carlsbad Caverns in New Mexico. Drop 750 feet underground and loop the giant Big Room.
 description: >
   Take the elevator down 750 feet, or walk in through the Natural Entrance if
-  your crew wants the steep switchbacks, and follow the paved loop around the
-  Big Room. Lights are low and voices carry, so keep it to whispers, and
-  everyone picks a favorite formation along the way. The photo to get: your
-  group with the Rock of Ages behind you.
+  you want the steep switchbacks, and follow the paved loop around the Big
+  Room. Lights are low and voices carry, so keep it to whispers, and pick a
+  favorite formation along the way. The photo to get: you in front of the Rock
+  of Ages. Book a timed-entry slot ahead, and wear shoes with good grip; some
+  of the trail is wet and steep.
 about: >
   A teenage cowboy named Jim White explored the cave in the late 1890s after
-  spotting a huge cloud of bats pouring out of the ground. The Big Room is
-  one of the largest cave chambers in North America, and its loop is a bit
-  over a mile.
+  spotting a huge cloud of bats pouring out of the ground. The Big Room is the
+  largest single cave chamber by volume in North America, and its loop is
+  about a mile and a quarter. Will Rogers called it "the Grand Canyon with a
+  roof over it."
 
   From late spring to fall, hundreds of thousands of bats fly out of the
   Natural Entrance at dusk, and rangers hold a bat flight program at the
-  amphitheater. A timed-entry reservation is required, and the cave stays
-  cool all year.
+  amphitheater. A timed-entry reservation is required, kids 15 and under get
+  in free, and the cave stays cool all year.
+for_kids:
+  short: Cave hunt! Find each thing.
+  steps:
+    - A giant rock icicle
+    - A rock that looks like an animal
+    - The Rock of Ages
+    - The elevator that goes deep underground
+    - A cave selfie!
 steps:
   - The biggest stalagmite you can find
   - A formation that looks like an animal
-  - The crew in front of the Rock of Ages
+  - You in front of the Rock of Ages
 duration: short
 effort: easy
 cost: $$
@@ -37,7 +47,7 @@ setting: indoor
 season: any
 time_of_day: daytime
 travel: drive
-check_ahead: [hours, reservation]
+check_ahead: [hours, reservation, tickets]
 discounts: [senior, military]
-themes: [caves, rocks-fossils, parks]
+themes: [caves, rocks-fossils, parks, wildlife]
 tags: [carlsbad caverns, big room loop, bat flight program, natural entrance, cave tour, carlsbad]

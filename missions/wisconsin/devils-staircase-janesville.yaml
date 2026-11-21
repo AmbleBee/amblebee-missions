@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+draft: true
+checked: 2026-11-20
 number: 2
 name: Devil's Staircase
 mode: adventure
@@ -6,32 +7,34 @@ who: [solo, friends]
 place:
   name: Ice Age Trail, Devil's Staircase Segment (N. Washington St. trail access)
   area: Riverside Park area, Janesville
-  address: N Washington St (County Rd E), Janesville, WI 53548  # verify: gravel lot north of Riverside Park
+  address: N Washington St (County Rd E), Janesville, WI 53548
   coords: [42.71533, -89.05413]
   website: https://www.iceagetrail.org
-short: Climb the old stone steps of the Devil's Staircase above the Rock River. Out and back, no fee.
+short: Devil's Staircase in Janesville. Climb the rock steps above the Rock River on the Ice Age Trail.
 description: >
   Walk the Devil's Staircase, a short and surprisingly rugged piece of the
   Ice Age National Scenic Trail on the north edge of Janesville. From the
-  lot on County Road E, the path drops into a gully and then climbs and
-  descends steep rock steps, some laid back in the late 1920s, beneath rock
-  faces up to 50 feet tall, before easing out along the Rock River shoreline
-  at Riverside Park. Turn around there for about three and a half miles round
-  trip. Get a photo looking up the rock steps with the cliff wall beside you.
-  The steps get slick and muddy in spring thaw and after rain, and hikers
-  reported a deep washout at the north end in early 2026, so check trail
-  conditions before you go.
+  lot on County Road E, the path drops down a steep switchback into a rocky
+  gully lined with boulders that look like giant steps, then follows a ledge
+  along the limestone bluffs above the Rock River before easing out at
+  Riverside Park. Turn around there for about three and a half miles round
+  trip. Get a photo looking up the rock steps with the bluff beside you. The
+  steps get slick and muddy in spring thaw and after rain, and parts of the
+  trail run close to the edge, so check trail conditions before you go. Dogs
+  are allowed only from mid-September to mid-May.
 about: >
   The Ice Age National Scenic Trail follows the edge of the last glacier
   across Wisconsin for about 1,200 miles. It was named a national scenic
-  trail in 1980 and is still being finished, segment by segment.
+  trail in 1980 and is still being finished, segment by segment. Janesville
+  sits at its southernmost point.
 
-  The Devil's Staircase is one of the shortest segments but one of the most
-  rugged. The rock along the Rock River was shaped as the ice melted back,
-  and spring brings wildflowers along the bluffs.
+  The Devil's Staircase segment is just 1.8 miles long but one of the most
+  rugged. It gets its name from a gully of big rocks that look like they were
+  set as steps on purpose. The bluffs along the Rock River were shaped as the
+  ice melted back, and spring brings wildflowers along the trail.
 steps:
   - The first rock steps going up
-  - A rock wall towering over the trail
+  - The bluff towering over the trail
   - The Rock River from the shoreline
 duration: short
 effort: moderate
@@ -41,6 +44,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [conditions]
-themes: [hiking, lakes-rivers, rocks-fossils]
-tags: [hiking, ice-age-trail, rock-steps, river, cliffs, janesville]
-credit:
+themes: [hiking, lakes-rivers, rocks-fossils, parks]
+tags: [devils staircase, ice age trail janesville, rock river bluffs, riverside park, wisconsin hiking, janesville]

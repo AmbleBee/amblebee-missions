@@ -1,37 +1,41 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Crow Peak Summit
 mode: adventure
 who: [solo, friends, family]
 place:
-  name: Crow Peak Trailhead (Trail
+  name: Crow Peak Trailhead
   area: Higgins Gulch, Spearfish
-  address: Higgins Gulch Rd (FSR 214), about 7 mi southwest of Spearfish, SD  # verify
-  coords: [44.40399, -103.97118]  # SummitPost trailhead coords; confirm at the pullout
-  website: https://www.fs.usda.gov/r02/blackhills
-short: Grind up 1,600 feet to the top of Crow Peak. Sign the summit register and earn that view.
+  address: Higgins Gulch Rd (FSR 214), about 7 mi southwest of Spearfish, SD
+  coords: [44.46703, -103.94785]
+  website: https://www.fs.usda.gov/r02/blackhills/recreation/crow-peak-trailhead-trail-64
+short: Crow Peak near Spearfish. Climb 1,600 feet to the summit and earn a view into three states.
 description: >
   Drive out Higgins Gulch Road from Spearfish and climb Crow Peak, a steep
   Black Hills summit that locals use as their go-to leg-burner. The lower half
   winds gently through pine forest; the upper half turns rocky and steep before
-  you top out with views across the northern Black Hills.
-  Add the short Beaver Ridge spur if your legs still have something left. Sign
-  the summit register and get a photo next to the wooden summit sign with the
-  hills rolling out behind you. Start early: summer afternoons bring sudden
-  thunderstorms, and there's no water on the trail.
+  you top out with views across the northern Black Hills and into Wyoming and
+  Montana. Add the short Beaver Ridge spur if your legs still have something
+  left; it fades out on an old road, so turn back there. Get a photo at the
+  summit with the hills rolling out behind you, and sign the register if
+  there's one. Start early: summer afternoons bring sudden thunderstorms, and
+  there's no water on the trail.
 about: >
-  Crow Peak rises to about 5,760 feet. Its Lakota name is often translated
-  as "the hill where the Crow died," from a story about a battle between
-  Lakota and Crow warriors.
+  Crow Peak rises to about 5,760 feet and dominates the western skyline of
+  Spearfish. Its Lakota name, Paha Karitukateyapi, means "the hill where the
+  Crows were killed," from a battle the Lakota won against Crow warriors. On a
+  clear day the summit looks out to Wyoming's Bearlodge Mountains, the plains
+  of Montana, Terry Peak and Bear Butte.
 
-  The trail is about seven miles round trip with around 1,500 feet of climb.
-  Spearfish Canyon is close by if you still want a drive, and the town of
-  Spearfish has good spots to eat after.
+  The trail is about 6.4 miles round trip with around 1,600 feet of climb, or
+  about a mile more with the Beaver Ridge spur. Spearfish Canyon is close by
+  if you still want a drive, and the town of Spearfish has good spots to eat
+  after.
 steps:
   - The trailhead sign before you start
   - The first big view through the pines
-  - The wooden sign at the summit
-  - Your name in the summit register
+  - You at the summit
+  - The view toward Wyoming
 duration: half-day
 effort: hard
 cost: free
@@ -40,6 +44,5 @@ season: [spring, summer, fall]
 time_of_day: morning
 travel: drive
 check_ahead: [conditions]
-themes: [views, hiking, parks]
-tags: [hiking, summit, views, black-hills, national-forest, spearfish]
-credit:
+themes: [views, hiking, parks, mountains, forests]
+tags: [crow peak trail, black hills hiking, spearfish hikes, beaver ridge, summit views, spearfish]

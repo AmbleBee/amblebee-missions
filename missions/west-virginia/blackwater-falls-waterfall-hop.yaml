@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Blackwater Falls Waterfall Hop
 mode: adventure
@@ -7,27 +7,29 @@ place:
   name: Blackwater Falls State Park
   area: Davis, Tucker County
   address: 1584 Blackwater Lodge Rd, Davis, WV 26260
-  coords: [39.11370, -79.48310]  # APPROX: set at the main falls trailhead before publishing
-  website: https://wvstateparks.com/park/blackwater-falls-state-park/
-short: Hop between amber waterfalls and canyon overlooks. Count the stairs down to the big falls!
+  coords: [39.11249, -79.48259]
+  website: https://wvstateparks.com/parks/blackwater-falls-state-park/
+short: Blackwater Falls in West Virginia. Hop between amber waterfalls; count the stairs to the big one!
 description: >
   Spend a few easy hours bouncing between short walks at Blackwater Falls
   State Park, just outside the small town of Davis. Start with the boardwalk
-  and 200-plus stairs down to the main falls, where the creek runs amber-colored from
-  tannins in the hemlock and spruce forest; the Gentle Trail on the other side
-  gives an easier view. Then walk the short trail from the lodge to Elakala
-  Falls and drive to the Lindy Point trail, a short but rockier walk out to
-  an overlook above the canyon. Get a family photo at the
-  big falls with the spray behind you. Hold little hands near the overlook
+  and 200-plus stairs down to the main falls, where the creek runs amber-colored
+  from tannins in the hemlock and spruce forest; the paved Gentle Trail on the
+  other side gives an easier, stroller-friendly view. Then walk the short trail
+  from the lodge to Elakala Falls and drive to the Lindy Point trail, a short
+  but rockier walk out to an overlook above the canyon. Get a family photo at
+  the big falls with the spray behind you. Hold little hands near the overlook
   edges, and expect slick steps after rain or in winter.
 about: >
   Blackwater Falls drops about 60 feet into an eight-mile canyon. The water
   is stained amber by tannins from the hemlock and red spruce needles that
-  fall into the river upstream.
+  fall into the river upstream. The falls face east, so early risers get
+  sunrise light right on the water.
 
-  The state park opened in 1937. In winter it has one of the longest sled
-  runs on the East Coast, and nearby Canaan Valley is known for skiing and
-  wildlife. Lindy Point is one of the most photographed views in the state.
+  The state park opened in 1937. In winter it has the longest sled run on the
+  East Coast, a quarter mile with a moving carpet to ride back up, and nearby
+  Canaan Valley is known for skiing and wildlife. Lindy Point is one of the
+  most photographed views in the state.
 for_kids:
   short: Find the waterfalls!
   steps:
@@ -44,6 +46,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [conditions]
-themes: [views, hiking, waterfalls, parks]
-tags: [waterfall, state-park, overlook, short-hikes, kids, davis, tucker-county]
-credit:
+themes: [views, hiking, waterfalls, parks, forests]
+tags: [blackwater falls, lindy point overlook, elakala falls, west virginia state parks, family waterfall hike, davis wv, tucker county]

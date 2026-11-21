@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Dino Hunt at the Heritage Center
 mode: adventure
@@ -7,32 +7,36 @@ place:
   name: North Dakota Heritage Center and State Museum
   area: State Capitol grounds, Bismarck
   address: 612 E Boulevard Ave, Bismarck, ND 58505
-  coords: [46.82020, -100.77990]  # APPROX: set at the entrance before publishing
+  coords: [46.81918, -100.77871]
   website: https://statemuseum.nd.gov
-short: Meet a T. rex and a giant squid fossil at Bismarck's free state museum.
+short: ND Heritage Center in Bismarck. Meet a T. rex and the world's biggest giant squid fossil, free.
 description: >
   The state museum on the Capitol grounds is free every day and packs 600
   million years into four galleries. Start with the fossils: a life-size
-  T. rex skeleton cast and the world's largest giant squid fossil. Then climb
+  T. rex skeleton cast, the world's largest giant squid fossil, and out in the
+  hallway, Dakota, a rare dinosaur with its skin turned to stone. Then climb
   into the tractor cab simulator, check out the Mars spacesuit, and let little
-  ones loose in the Treehouse play area. Get a photo of everyone doing their
-  best roar in front of the T. rex.
+  ones loose in the Treehouse, with its lookout, kid-size fire station and
+  grocery store. Get a photo of everyone doing their best roar in front of the
+  T. rex.
 about: >
   The North Dakota Heritage Center first opened in 1981 and roughly doubled
-  in size with a 2014 expansion. Its galleries run from the age of dinosaurs
-  through the people who first lived on the plains to modern farming and
-  oil.
+  in size with an expansion that opened on the state's 125th birthday in
+  2014. Its galleries run from the age of dinosaurs through the people who
+  first lived on the plains to modern farming and oil.
 
   Many of the fossils came out of North Dakota's own badlands, which were
-  ancient seas and swamps millions of years ago. Admission is free, and it's
-  a good indoor plan for a cold or rainy day in Bismarck.
+  ancient seas and swamps millions of years ago; even the giant squid fossil
+  was found in the state. The Mars spacesuit was built by a team at the
+  University of North Dakota. Admission is free, and it's a good indoor plan
+  for a cold or rainy day in Bismarck.
 for_kids:
   short: Go on a dinosaur hunt in the big museum!
   steps:
     - The T. rex skeleton
     - The giant squid fossil
+    - The dinosaur with stone skin
     - You driving the tractor
-    - A spacesuit
     - A selfie with your grown-up!
 duration: short
 effort: easy
@@ -43,5 +47,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [rocks-fossils, museums, history, science]
-tags: [museum, dinosaurs, fossils, kids, rainy-day, free, bismarck]
-credit:
+tags: [north dakota heritage center, state museum bismarck, t rex skeleton, giant squid fossil, free museum, rainy-day, bismarck]

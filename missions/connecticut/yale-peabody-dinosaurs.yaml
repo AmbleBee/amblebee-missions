@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Dinosaurs at the Peabody
 mode: adventure
@@ -7,31 +7,35 @@ place:
   name: Yale Peabody Museum
   area: Science Hill, New Haven
   address: 170 Whitney Ave, New Haven, CT 06511
-  coords: [41.31580, -72.92100]  # APPROX: set at the entrance before publishing
+  coords: [41.31583, -72.92089]
   website: https://peabody.yale.edu
 short: Yale Peabody Museum in New Haven. A free dinosaur hall with a giant Brontosaurus.
 description: >
-  Head straight for the dinosaur hall, with its giant Brontosaurus, a
-  Stegosaurus and a huge Triceratops skull, then let the kids pick the next
-  gallery: minerals and gems, animals or whatever catches their eye. Make it
-  a scavenger hunt and see who finds the smallest thing on display. The
-  photo to get: the family doing its best dinosaur roar in front of the
-  biggest skeleton.
+  Head straight for the dinosaur hall, where the very first Brontosaurus,
+  Stegosaurus and Triceratops ever found stand under a mural as long as a
+  city block. Then let the kids pick the next gallery: minerals and gems,
+  animals or whatever catches their eye. Make it a scavenger hunt and see who
+  finds the smallest thing on display. The photo to get: the family doing its
+  best dinosaur roar in front of the biggest skeleton, plus one with the
+  life-size Torosaurus out front on Whitney Avenue.
 about: >
   The Peabody was founded in 1866, and its Brontosaurus has stood here since
-  1931. Yale scientist Othniel Marsh named Brontosaurus in the 1870s. Look
-  up at The Age of Reptiles, a huge mural along the wall of the dinosaur
-  hall, painted in the 1940s.
+  1931. Yale scientist Othniel Marsh named Brontosaurus in the 1870s, and the
+  hall holds the first Brontosaurus, Stegosaurus and Triceratops specimens
+  ever discovered. Look up at The Age of Reptiles, a 110-foot mural along the
+  wall of the dinosaur hall, finished in 1947.
 
-  The museum reopened in 2024 after a big renovation, and admission is now
-  free. Check the hours before you go, since it's closed some days.
+  The museum reopened in 2024 after a four-year renovation that more than
+  doubled its exhibit space, and the Brontosaurus now holds its tail up the way
+  scientists think it really did. Admission is now free for good. Check the
+  hours before you go, since it's closed some days.
 for_kids:
   short: Dinosaur hunt! Can you find them all?
   steps:
     - The biggest dinosaur
     - A dinosaur with horns
     - A shiny rock or crystal
-    - Your favorite animal
+    - The giant dinosaur statue outside
     - A selfie with your grown-up!
 duration: short
 effort: easy
@@ -42,4 +46,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [rocks-fossils, museums, science]
-tags: [yale peabody museum, free dinosaur museum, brontosaurus, age of reptiles mural, family day out, new-haven]
+tags: [yale peabody museum, free dinosaur museum, brontosaurus, age of reptiles mural, family day out, new haven]

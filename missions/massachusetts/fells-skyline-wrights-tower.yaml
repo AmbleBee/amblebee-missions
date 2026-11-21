@@ -1,34 +1,40 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Fells Skyline Scramble to Wright's Tower
 mode: adventure
-who: [solo, friends]
+who: [solo, friends, family]
 place:
   name: Middlesex Fells Reservation (Bellevue Pond pull-off)
   area: Middlesex Fells, Medford
   address: South Border Rd, Medford, MA 02155
-  coords: [42.43077, -71.10729]  # APPROX: Bellevue Pond pull-off (Hiking Project); set at the lot before publishing
+  coords: [42.43089, -71.10770]
   website: https://www.mass.gov/locations/middlesex-fells-reservation
-short: Middlesex Fells near Boston. Scramble the Skyline Trail up to Wright's Tower and the city view.
+short: Middlesex Fells near Boston. Climb to Wright's Tower for a view of the Boston skyline.
 description: >
   From little Bellevue Pond, climb Pine Hill to Wright's Tower, a stone
   lookout with a view of the Boston skyline across the treetops. Then follow
-  the white blazes of the Skyline Trail over ledges and rocky knobs, and see
-  who spots the next blaze first. The photo to get: the skyline framed by the
-  tower's stone window.
+  the white blazes of the Skyline Trail over a few ledges and rocky knobs for
+  as long as your legs want, and see who spots the next blaze first. The
+  photo to get: the Boston skyline from the top of the tower.
 about: >
-  The tower was built in the 1930s and named for Elizur Wright, a 1800s
-  reformer known as the father of life insurance, who also fought to protect
-  the Fells as a public park. "Fells" is an old word for rocky, hilly land.
+  Wright's Tower was built in 1937 by the Works Progress Administration and
+  named for Elizur Wright, the 1800s reformer known as the father of life
+  insurance. In 1869 he proposed turning the rocky woods north of Boston,
+  then called the Five-Mile Wood, into a public park, and his push helped
+  create the Middlesex Fells Reservation. "Fells" is an old word for rocky,
+  hilly land.
 
-  The full Skyline loop is about 7 miles of short, steep pitches. The blazes
-  are easy to lose, so bring a map or offline trail app, and skip it right
-  after rain, when the rocks get slick.
+  The Skyline Trail is a white-blazed loop of about 7 miles around the
+  western Fells, just north of Boston, with steep climbs to rocky outcrops
+  and views of the city along the way. It's hikers only, no bikes, and most
+  people take around 5 hours. The blazes are easy to lose at trail crossings,
+  so bring a map or offline trail app, and skip it right after rain, when the
+  rocks get slick.
 steps:
   - The skyline from Wright's Tower
   - A white blaze on bare rock
   - The best ledge view on the loop
-duration: half-day
+duration: short
 effort: moderate
 cost: free
 setting: outdoor
@@ -36,5 +42,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [conditions]
-themes: [views, hiking, forests]
-tags: [middlesex fells, skyline trail, wrights tower, boston skyline view, rock scramble hike, boston]
+themes: [views, hiking, forests, history, lakes-rivers]
+tags: [middlesex fells, skyline trail, wright's tower, boston skyline view, rock scramble hike, hikes near boston]
