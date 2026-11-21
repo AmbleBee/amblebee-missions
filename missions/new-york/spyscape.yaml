@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 15
 name: SPYSCAPE
 mode: both
@@ -7,25 +7,25 @@ place:
   name: SPYSCAPE
   area: Eighth Ave at W 55th St, Midtown
   address: 928 8th Ave, New York, NY 10019
-  coords: [40.76550, -73.98340]  # APPROX: set at the entrance before publishing
+  coords: [40.76518, -73.98351]
   website: https://spyscape.com
-short: Test your spy skills at SPYSCAPE. Beat the laser maze, then compare your secret spy profiles.
+short: SPYSCAPE in Midtown NYC. Beat the laser maze, then compare your secret spy profiles.
 description: >
   Go undercover at a spy museum that tests you as you go: crack codes, spot
   liars, and wriggle through a laser maze without tripping a beam. At the end
   each of you gets a spy profile that says which role you're best at, so
   compare them and argue over who'd make the better agent. Get a photo of
-  you in the laser room. Plan on about two hours. It's open late on
-  weekends; buy timed tickets ahead.
+  you in the laser room. The museum takes about 90 minutes, or about two hours
+  with the SPYGAMES add-on. It's for ages 8 and up; buy timed tickets ahead.
 about: >
-  SPYSCAPE opened in Midtown in 2018, built with help from former
-  intelligence officers. Alongside the games, its galleries hold real spy
-  history, from wartime code-breaking to modern surveillance.
+  SPYSCAPE opened in Midtown in 2018. Its challenges and spy profiles were
+  designed with a former head of training at British intelligence and
+  industrial psychologists. The galleries hold real spy history too: one of
+  only about 100 working Enigma machines left from World War II, and a model of
+  the "bombe" Alan Turing designed to crack its code.
 
   The profile you get at the end is based on how you did across the
-  challenges, so play each one properly instead of rushing through. The
-  laser room is the most popular stop, and the line moves faster early in
-  the day.
+  challenges, so play each one properly instead of rushing through.
 for_kids:
   short: Spy mission! Find each thing.
   steps:
@@ -41,6 +41,6 @@ setting: indoor
 season: any
 time_of_day: any
 travel: local
-check_ahead: [tickets]
-themes: [science, games, playful]
-tags: [spies, interactive, games, playful, rainy-day, nyc]
+check_ahead: [hours, tickets]
+themes: [games, playful, museums, history, science]
+tags: [spy museum nyc, laser maze, enigma machine, spy profile, midtown manhattan, rainy-day, nyc]

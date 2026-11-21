@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 3
 name: Dome After Dark
 mode: date
@@ -6,20 +6,22 @@ place:
   name: Greater Des Moines Botanical Garden
   area: East Village riverfront, Des Moines
   address: 909 Robert D. Ray Dr, Des Moines, IA 50309
-  coords: [41.59460, -93.60990]  # APPROX: set at the entrance before publishing
+  coords: [41.59668, -93.61447]
   website: https://dmbotanicalgarden.com
 short: Dome After Dark at the Des Moines Botanical Garden. Trade winter for the glowing tropics.
 description: >
   Trade the snow outside for warm, humid air and tropical plants under the
-  big glass dome, lit up after dark. Grab a glass of wine or a beer, wander
-  the paths slowly, and find the quietest bench under the canopy. Each pick
-  the plant you'd want in your living room. The photo to get: the two of you
-  with the lit-up plants all around.
+  big glass dome, lit up after dark. Grab a glass of wine or a beer from the
+  Flora bar, wander the paths slowly, and find the quietest bench under the
+  canopy. Each pick the plant you'd want in your living room, and hunt for the
+  chocolate tree. For a bigger night, book dinner at Flora or a private heated
+  igloo. The photo to get: the two of you with the lit-up plants all around.
 about: >
   Dome After Dark has run on winter Friday nights, roughly January through
-  March, when the conservatory stays open late. The geodesic dome first
-  opened in the late 1970s and was renovated as part of the garden's
-  makeover in the 2010s.
+  March, when the conservatory and the Gardeners Show House stay open late
+  under colored lights. The geodesic dome, 80 feet tall and 150 feet wide,
+  first opened on a frigid day in December 1979. Inside are banana plants, a
+  chocolate tree, and the plant that gave Iowa its first corpse flower bloom.
 
   Buy tickets ahead or at the door. The garden's restaurant, Flora, has
   offered dinner packages that include Dome After Dark tickets.
@@ -32,5 +34,5 @@ time_of_day: evening
 travel: local
 check_ahead: [seasonal, tickets]
 discounts: [senior, military]
-themes: [gardens, romantic, drinks, relaxing]
-tags: [dome after dark, des moines botanical garden, conservatory date, winter date night, tropical dome, des-moines]
+themes: [gardens, romantic, drinks, relaxing, architecture]
+tags: [dome after dark, des moines botanical garden, conservatory date, winter date night, tropical dome, des moines]

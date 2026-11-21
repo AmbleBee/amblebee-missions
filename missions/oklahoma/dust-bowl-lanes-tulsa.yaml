@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 3
 name: Retro Bowling at Dust Bowl Lanes
 mode: adventure
@@ -7,24 +7,26 @@ place:
   name: Dust Bowl Lanes & Lounge
   area: Blue Dome District, Tulsa
   address: 211 S Elgin Ave, Tulsa, OK 74120
-  coords: [36.15730, -95.98660]  # APPROX: set at the entrance before publishing
+  coords: [36.15560, -95.98626]
   website: https://dustbowllounge.com/locations/tulsa/
-short: Rent a lane at a 70s-style bowling lounge in Tulsa. Worst score picks the next round's song.
+short: Dust Bowl Lanes in Tulsa. Bowl at a 70s-style lounge; the worst score picks the next round's song.
 description: >
   Grab your crew and book a lane at Dust Bowl, a retro bowling lounge in the Blue
-  Dome District with eight lanes, 70s-style decor and a full bar. Lanes rent by
-  the hour, so split one between the group, order some bar food and play a couple
-  of games, with the lowest scorer on the hook for picking the next song or buying
-  the fries. Get a group photo mid-celebration after somebody's strike. Book a lane
-  ahead on weekend nights, and check the age policy if anyone in the group is under 21.
+  Dome District with eight lanes, green plaid carpet, orange booths and a full
+  bar. Lanes rent by the hour, so split one between the group, order some bar
+  food and play a couple of games, with the lowest scorer on the hook for picking
+  the next song or buying the fries. Get a group photo mid-celebration after
+  somebody's strike. Book a lane ahead on weekend nights, and check the age
+  policy if anyone in the group is under 21.
 about: >
-  Dust Bowl sits in Tulsa's Blue Dome District, named for an old Gulf gas
-  station with a bright blue dome that still stands at Second and Elgin. The
-  area is now packed with bars, restaurants and music venues.
+  Dust Bowl sits in Tulsa's Blue Dome District, named for a 1925 Route 66 gas
+  station at Second and Elgin. The White Star Service Station was built to look
+  like the Hagia Sophia in Istanbul, and the attendant lived inside its bright
+  blue dome. The area is now packed with bars, restaurants and music venues.
 
-  The lanes are designed to feel like a 1970s basement rec room, with booth
-  seating and a full menu. Weekend nights are busiest, and the neighborhood
-  is easy to walk for food or drinks after.
+  The lanes are a tribute to 1970s bowling alleys, with a lounge, patio, a
+  small arcade and a private two-lane VIP room. Weekend nights are busiest, and
+  the neighborhood is easy to walk for food or drinks after.
 duration: short
 effort: easy
 cost: $$
@@ -33,6 +35,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, reservation]
-themes: [drinks, games, quirky]
-tags: [bowling, retro, games, drinks, rainy-day, blue-dome, tulsa]
-credit:
+themes: [drinks, games, quirky, playful]
+tags: [dust bowl lanes, retro bowling, blue dome district, route 66, rainy-day, tulsa]

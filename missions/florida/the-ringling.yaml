@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 37
 name: The Ringling, Sarasota
 mode: both
@@ -6,7 +6,8 @@ who: [solo, friends, family, kids]
 place:
   name: The John and Mable Ringling Museum of Art
   area: Sarasota
-  coords: [27.38200, -82.56100]  # APPROX: set at the visitor pavilion before publishing
+  address: 5401 Bay Shore Rd, Sarasota, FL 34243
+  coords: [27.38156, -82.56056]
   website: https://www.ringling.org
 short: The Ringling in Sarasota. Circus king John Ringling's art museum, mansion and circus museum.
 description: >
@@ -14,17 +15,19 @@ description: >
   See his huge art museum full of giant Baroque paintings around a courtyard of
   statues, tour Ca' d'Zan, his Venetian Gothic mansion on the water, and visit
   the Circus Museum with a giant miniature model of an entire circus. Walk the
-  rose garden and the banyan trees. Each pick your favorite part of the circus.
-  Get a photo of you on the mansion's waterfront terrace.
+  rose garden and the banyan trees. Pick your favorite part of the tiny
+  circus. On Mondays, the art museum and gardens are free. Get a photo of you
+  on the mansion's waterfront terrace.
 about: >
-  John Ringling, one of the five Ringling brothers of circus fame, built his
-  mansion, Ca' d'Zan ("House of John" in Venetian dialect), in the 1920s.
-  He left the whole estate and his art collection to the state of Florida
-  when he died.
+  John Ringling, one of the Ringling brothers of circus fame, made Sarasota
+  his circus's winter home and built his 56-room mansion, Ca' d'Zan ("House
+  of John" in Venetian dialect), between 1924 and 1926. He left the whole
+  estate and his art collection to the people of Florida when he died.
 
-  The Circus Museum has the Howard Bros. Circus model, one of the largest
-  miniature circuses in the world, with tens of thousands of tiny pieces.
-  The art museum is known for its giant paintings by Peter Paul Rubens.
+  The Circus Museum has the Howard Bros. Circus model, billed as the world's
+  largest miniature circus, with more than 44,000 pieces built by one man,
+  Howard Tibbals, over 50 years. The art museum is known for its giant
+  paintings by Peter Paul Rubens.
 for_kids:
   short: Circus hunt! Find each thing.
   steps:
@@ -35,11 +38,11 @@ for_kids:
     - A selfie at the mansion!
 duration: half-day
 effort: easy
-cost: $$
-setting: indoor
+cost: $$$
+setting: either
 season: any
 time_of_day: daytime
 travel: day-trip
-check_ahead: [tickets]
-themes: [history, museums, art, shows]
-tags: [the ringling museum, ca d zan mansion, circus museum, sarasota bay, rubens paintings, gulf-coast]
+check_ahead: [hours, tickets]
+themes: [history, museums, art, shows, gardens, architecture]
+tags: [the ringling museum, ca d zan mansion, circus museum, sarasota bay, rubens paintings, gulf coast]

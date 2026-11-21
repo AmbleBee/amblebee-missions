@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 3
 name: Basement Bowling at Maple Hall
 mode: date
@@ -6,21 +6,24 @@ place:
   name: Maple Hall
   area: Downtown Knoxville
   address: 414 S Gay St, Knoxville, TN 37902
-  coords: [35.96320, -83.91790]  # APPROX: set at the entrance before publishing
+  coords: [35.96589, -83.91856]
   website: https://maplehallknox.com
-short: Bowl a few frames in a cozy basement alley under Gay Street. Loser picks the next drinks.
+short: Maple Hall in Knoxville. Bowl in a cozy basement alley under Gay Street; loser picks the drinks.
 description: >
   Head downstairs below Gay Street to Maple Hall, an 11-lane boutique bowling
   alley with leather couches at every lane, craft cocktails and a made-from-scratch
   menu. You pay by the lane and the hour, so it's just the two of you on your own
-  lane: play a game, and the loser picks the next round. Afterward, go upstairs to
-  the cocktail lounge for life-sized board games and the patio. Get a photo of the
+  lane: play a game, and the loser picks the next round. Afterward, head upstairs
+  to the Parlor, the 21+ lounge with board games and a patio. Get a photo of the
   two of you mid-throw with the lanes glowing behind you. They don't take lane
-  reservations, and it turns 21+ at 9 PM on Friday and Saturday nights.
+  reservations, so expect a wait on weekend nights, and check the age policy
+  before you go.
 about: >
-  Maple Hall opened in 2016 in a basement under Gay Street, the heart of
-  downtown Knoxville. Its lanes are built with leather couches and dim
-  lighting, more lounge than bowling alley.
+  Maple Hall opened in 2016 in the basement of the old J.C. Penney building on
+  Gay Street, the heart of downtown Knoxville. The building dates to the 1890s,
+  and the spot is said to be the site of East Tennessee's first baseball field.
+  Its lanes are built with leather couches and dim lighting, more lounge than
+  bowling alley.
 
   Gay Street is lined with restored theaters, including the Tennessee and
   the Bijou, so it's easy to pair bowling with a show. Market Square, a
@@ -34,5 +37,4 @@ time_of_day: evening
 travel: local
 check_ahead: [hours]
 themes: [drinks, games, playful]
-tags: [bowling, games, cocktails, playful, rainy-day, downtown, knoxville]
-credit:
+tags: [maple hall knoxville, basement bowling, craft cocktails, gay street, date night, rainy-day, knoxville]

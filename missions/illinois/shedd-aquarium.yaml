@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 6
 name: Shedd Aquarium
 mode: both
@@ -7,28 +7,34 @@ place:
   name: Shedd Aquarium
   area: Museum Campus, Chicago
   address: 1200 S DuSable Lake Shore Dr, Chicago, IL 60605
-  coords: [41.86760, -87.61400]  # APPROX: set at the main entrance before publishing
+  coords: [41.86759, -87.61403]
   website: https://www.sheddaquarium.org
-short: Shedd Aquarium in Chicago. Meet the belugas, and each find the fish that looks most like the other.
+short: Shedd Aquarium in Chicago. Meet the belugas and find the fish that looks most like you.
 description: >
-  Circle the round coral reef tank full of sharks and sea turtles, walk
-  through the Amazon rainforest, then sit in the Oceanarium with beluga
-  whales and sea otters in front of a wall of windows over Lake Michigan.
-  Each find the fish that looks most like the other one. The photo to get:
-  you in front of the belugas with the lake behind.
+  Start in the grand rotunda at Wonder of Water, two curving habitats with
+  live coral on one side and freshwater fish on the other. Walk through the
+  Amazon rainforest and past the sharks of Wild Reef, then sit in the
+  Oceanarium with beluga whales and sea otters in front of a wall of windows
+  over Lake Michigan. Find the fish that looks most like you (or like each
+  other). Parts of Shedd are being renovated through 2027, so check what's
+  open. The photo to get: you in front of the belugas with the lake behind.
 about: >
   Shedd opened in 1930 as the largest indoor aquarium in the world. Before
-  it opened, its seawater was brought in by railroad tank cars all the way
-  from Key West. The Oceanarium, built in 1991, was designed so its pools seem
-  to flow right into Lake Michigan behind them.
+  it opened, its seawater came by train: 20 railroad tank cars made eight
+  round trips from Key West to bring a million gallons. The Oceanarium, added
+  in 1991, is the largest indoor marine mammal home in the world, designed so
+  its pools seem to flow right into Lake Michigan behind them.
 
-  Book ahead, since it's one of the busiest museums in Chicago. Illinois
-  residents get free days.
+  The aquarium is in the middle of a big renovation ahead of its 100th
+  birthday: the old round Caribbean reef tank became Wonder of Water, and a
+  walk-through Caribbean reef tunnel is coming for Nickel, the rescued green
+  sea turtle named for the coin found in her throat. Book ahead, since it's one
+  of the busiest museums in Chicago. Illinois residents get free days.
 for_kids:
   short: Under the sea! Find each thing.
   steps:
     - A shark
-    - A sea turtle
+    - A coral reef
     - A white whale
     - A sea otter
     - A selfie with a fish!
@@ -39,6 +45,6 @@ setting: indoor
 season: any
 time_of_day: daytime
 travel: local
-check_ahead: [tickets, hours]
-themes: [wildlife, lakes-rivers, science, views]
-tags: [shedd aquarium, beluga whales, museum campus, caribbean reef tank, lake michigan views, chicago]
+check_ahead: [tickets, hours, conditions]
+themes: [wildlife, lakes-rivers, science, views, architecture]
+tags: [shedd aquarium, beluga whales, abbott oceanarium, wonder of water, museum campus, lake michigan views, chicago]

@@ -1,42 +1,46 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 4
 name: Walk the Magnificent Mile
 mode: both
-who: [solo, friends]
+who: [solo, friends, family]
 place:
   name: The Magnificent Mile
   area: Near North Side, Chicago
   address: N Michigan Ave & E Wacker Dr, Chicago, IL 60601
-  coords: [41.88850, -87.62450]  # APPROX: set at the DuSable Bridge before publishing
+  coords: [41.88842, -87.62482]
   website: https://www.themagnificentmile.com
 short: Walk the Magnificent Mile in Chicago, from the river to Oak Street Beach.
 description: >
   Start on the DuSable Bridge over the Chicago River and walk north along
   Michigan Avenue, past the Wrigley Building and Tribune Tower, the castle-like
   Water Tower, and window after window of shops. At Tribune Tower, see how
-  many famous stones you can find set into the walls. Keep going to Oak
+  many famous stones you can find set into the walls. Pick one stop along the
+  way that's all yours, or each pick one for the other. Keep going to Oak
   Street Beach, where the city meets the lake. The photo to get: you in front
   of the old Water Tower.
 about: >
   The Water Tower was built in 1869 and was one of the few buildings to
-  survive the Great Chicago Fire of 1871. Tribune Tower has more than a
-  hundred stones and bricks from famous places set into its walls, including
-  pieces of the Great Wall of China and the Parthenon.
+  survive the Great Chicago Fire of 1871. Tribune Tower has close to 150
+  stones and bricks from famous places set into its walls, all labeled and
+  low enough to touch, including pieces of the Great Wall of China, the
+  Parthenon, the Taj Mahal and the World Trade Center.
 
-  A real estate developer gave the street its "Magnificent Mile" nickname in
-  the 1940s. Each holiday season it lights up with millions of lights.
+  A real estate developer, Arthur Rubloff, gave the street its "Magnificent
+  Mile" nickname in 1947. Each November the Lights Festival kicks off the
+  holidays, and more than a million lights stay up in the trees through the
+  new year.
 steps:
   - The river from the bridge
   - The old Water Tower
   - Your stop
-  - Their stop
+  - A famous stone at Tribune Tower
   - The lake at the end
 duration: short
-effort: moderate
+effort: easy
 cost: free
 setting: outdoor
 season: any
 time_of_day: any
 travel: local
-themes: [walks, architecture, markets]
+themes: [walks, architecture, history, views]
 tags: [magnificent mile, michigan avenue, chicago water tower, tribune tower stones, oak street beach, chicago]

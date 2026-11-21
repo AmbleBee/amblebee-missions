@@ -1,35 +1,44 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 2
 name: Visit Ike's Farm
 mode: both
-who: [solo, friends, family]
+who: [solo, friends, family, kids]
 place:
   name: Eisenhower National Historic Site
   area: Gettysburg
   address: 250 Eisenhower Farm Rd, Gettysburg, PA 17325
-  coords: [39.79430, -77.26290]  # APPROX: set at the visitor parking lot before publishing
-  website: https://www.nps.gov/eise
-short: Tour President Eisenhower's farmhouse, then walk the fields where he hosted world leaders.
+  coords: [39.79387, -77.26327]
+  website: https://www.nps.gov/eise/index.htm
+short: Ike's farm in Gettysburg. Tour his house, then walk the fields where he hosted world leaders.
 description: >
   Just past the Gettysburg battlefield is the farm where Dwight and Mamie
-  Eisenhower retired, and where Ike welcomed world leaders onto the back
-  porch. Drive straight to the site and check in for a ranger-led tour of the
+  Eisenhower retired, and where Ike welcomed world leaders onto his porch.
+  Drive straight to the site and check in for a free ranger-led tour of the
   house, still furnished the way they left it, then wander the barns and
   fields. Home tours run from late spring through fall, plus a few weekends in
   December; the grounds are open year-round. The photo to get: you in front of
   the Eisenhowers' farmhouse.
 about: >
-  Dwight and Mamie Eisenhower bought the farm in 1950, the only home they
-  ever owned. Ike used it as a weekend retreat while he was president,
-  bringing world leaders here, including Soviet leader Nikita Khrushchev in
-  1959.
+  Dwight and Mamie Eisenhower bought the farm in 1950, and it was the only
+  home they ever owned. "We had only one home, our farm," Mamie said. Ike used
+  it as a weekend retreat while he was president and brought world leaders
+  here. When Soviet leader Nikita Khrushchev visited in 1959, he admired the
+  Angus cattle so much that Ike offered to send him one.
 
-  The Eisenhowers gave the farm to the National Park Service in 1967. Ike
-  also raised Angus cattle here, and the barns and show cattle still tell
-  that story.
+  Ike raised prize-winning Angus show cattle on the farm, and the show barn
+  still holds their ribbons. The Eisenhowers gave the farm to the National
+  Park Service in 1967.
+for_kids:
+  short: Farm hunt! Find each thing.
+  steps:
+    - The big white farmhouse
+    - A barn
+    - A tractor
+    - A ribbon a cow won
+    - A selfie by the farmhouse!
 duration: short
 effort: easy
-cost: $
+cost: free
 setting: either
 season: any
 time_of_day: daytime

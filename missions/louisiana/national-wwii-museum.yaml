@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-20
 number: 6
 name: The National WWII Museum
 mode: both
@@ -7,24 +7,27 @@ place:
   name: The National WWII Museum
   area: Warehouse District, New Orleans
   address: 945 Magazine St, New Orleans, LA 70130
-  coords: [29.94310, -90.07050]  # APPROX: set at the main entrance before publishing
+  coords: [29.94309, -90.07053]
   website: https://www.nationalww2museum.org
 short: National WWII Museum in New Orleans. Follow one real person's story through the war.
 description: >
-  At the start, each get a dog tag card linking you to a real person who
-  lived through the war, and follow their story through the galleries. Walk
-  under the planes hanging in the big pavilion, and add the 4D film if you
-  can. Afterward, swap your person's story over lunch. The photo to get: you
-  under the planes in the pavilion. It's heavy in places; take breaks.
+  At the start you get a dog tag card linking you to a real person who lived
+  through the war; follow their story through the galleries. Walk under the
+  planes hanging in the big pavilion, and add the 4D film or the submarine
+  experience if you can. Afterward, talk over the story you followed at lunch,
+  or swap stories if you came together. The photo to get: you under the planes
+  in the pavilion. It's heavy in places; take breaks.
 about: >
   The museum opened on June 6, 2000, the anniversary of D-Day, as the
   National D-Day Museum, founded by historian Stephen Ambrose. Congress later
-  named it America's official WWII museum.
+  named it America's official WWII museum. One of the planes overhead, the
+  B-17 "My Gal Sal," crash-landed in Greenland during the war and was
+  recovered from the ice 53 years later.
 
   It's in New Orleans because the Higgins boats, the landing craft that
-  carried troops onto the beaches, were built here. General Eisenhower
-  credited their builder, Andrew Higgins, with helping win the war. Give it
-  most of a day.
+  carried troops onto the beaches, were built here: more than 20,000 of them.
+  General Eisenhower called their builder, Andrew Higgins, "the man who won
+  the war for us." Give it most of a day.
 duration: all-day
 effort: easy
 cost: $$$
@@ -34,4 +37,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
 themes: [history, museums, vehicles]
-tags: [national wwii museum, d-day museum, higgins boats, warehouse district, history museum, new-orleans]
+tags: [national wwii museum, d-day museum, higgins boats, my gal sal, warehouse district, history museum, new orleans]
