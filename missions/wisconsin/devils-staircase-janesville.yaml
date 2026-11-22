@@ -1,5 +1,5 @@
 draft: true
-checked: 2026-11-20
+checked: 2026-11-22
 number: 2
 name: Devil's Staircase
 mode: adventure
@@ -8,7 +8,7 @@ place:
   name: Ice Age Trail, Devil's Staircase Segment (N. Washington St. trail access)
   area: Riverside Park area, Janesville
   address: N Washington St (County Rd E), Janesville, WI 53548
-  coords: [42.71533, -89.05413]
+  coords: [42.71521, -89.05381]
   website: https://www.iceagetrail.org
 short: Devil's Staircase in Janesville. Climb the rock steps above the Rock River on the Ice Age Trail.
 description: >

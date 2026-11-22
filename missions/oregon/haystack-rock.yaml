@@ -6,7 +6,9 @@ who: [friends, family, kids]
 place:
   name: Haystack Rock
   area: Cannon Beach
+  address: US-101, Cannon Beach, OR 97110
   coords: [45.88479, -123.96337]
+  website: https://www.cannonbeach.org/things-to-do/beaches-and-parks/haystack-rock/
 short: Explore the tide pools at Haystack Rock in Cannon Beach at low tide. Find a starfish and a puffin.
 description: >
   Time your visit for low tide and walk out to the tide pools around Haystack

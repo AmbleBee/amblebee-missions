@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
 number: 2
 name: Duke Farms Bike and Orchid Day
 mode: adventure
@@ -7,28 +7,31 @@ place:
   name: Duke Farms Orientation Center
   area: Hillsborough, Somerset County
   address: 1112 Dukes Pkwy W, Hillsborough, NJ 08844
-  coords: [40.55440, -74.62100]  # APPROX: set at the entrance before publishing
+  coords: [40.54460, -74.62399]
   website: https://www.dukefarms.org
 short: Duke Farms in Hillsborough, NJ. Bike the car-free estate paths and find turtles and orchids.
 description: >
   Duke Farms is Doris Duke's huge former estate, now free to visit, with miles
-  of quiet, car-free paths past lakes, meadows, big outdoor sculptures and old
-  estate buildings. Bring your bikes or a stroller (there's also a pay-per-ride
-  bike share on site), ride a loop at kid speed,
-  and stop at the lakes to look for turtles sunning on logs. Finish inside the
-  glass Orchid Range, a greenhouse full of orchids. Get a photo of the family
-  with the biggest statue you find. It isn't open every day, so check the hours
-  calendar, and on Saturdays from April through October you need a free parking
-  pass reserved ahead.
+  of quiet, car-free paths past lakes, meadows, old statues and historic
+  estate buildings. Bring your bikes or a stroller (there are seasonal bike
+  rentals when they're running), ride a loop at kid speed, and stop at the
+  lakes to look for turtles sunning on logs. Finish inside the glass Orchid
+  Range, a greenhouse full of orchids. Get a photo of the family with the
+  biggest statue you find.
 about: >
-  Doris Duke, heir to a tobacco and energy fortune, grew up on this estate
-  and turned it into a huge private garden. After she died, her foundation
-  opened it to the public for free in 2012, with a focus on nature and
-  sustainability.
+  Duke Farms in Hillsborough, New Jersey, was the childhood estate of Doris
+  Duke, heir to a tobacco and energy fortune. After she died, her foundation
+  turned its 2,700 acres into a nature preserve and opened it to the public
+  for free in 2012. Today there are more than 18 miles of trails through
+  meadows, woodlands and wetlands and around the lakes, some of them paved
+  and stroller-friendly, and bald eagles nest on the property.
 
-  The Orchid Range greenhouse holds orchids she collected. It isn't open
-  every day, so check the hours calendar, and on busy days you may need a
-  free parking pass reserved ahead.
+  The Orchid Range, a glass conservatory from 1899, holds nearly 2,000 orchids
+  in about 1,300 varieties. Doris Duke loved orchids, and in 1940 she created
+  an orchid hybrid here that's the ancestor of the most common orchids sold
+  today. The trails aren't open every day and Saturdays need a free parking
+  pass reserved ahead for much of the year, so check the hours calendar
+  before you go.
 steps:
   - Everyone with the biggest statue
   - A turtle on a log
@@ -43,7 +46,7 @@ for_kids:
     - A selfie with your grown-up!
 gear:
   - item: bikes
-    rent: on-site  # Tandem bike share (pay per ride); kid sizes unconfirmed
+    rent: on-site
 duration: half-day
 effort: easy
 cost: free
@@ -52,5 +55,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
-themes: [wildlife, gardens, biking, history]
-tags: [duke farms, doris duke estate, car-free bike paths, orchid range, family bike ride, hillsborough]
+themes: [biking, gardens, wildlife, lakes-rivers, parks, history]
+tags: [duke farms, doris duke estate, orchid range, car-free bike trails nj, family bike ride, hillsborough nj]
