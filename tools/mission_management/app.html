@@ -597,6 +597,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
           <option value="added:desc">Added, newest first</option>
           <option value="added:asc">Added, oldest first</option>
           <option value="checked:asc">Checked, oldest first</option>
+          <option value="released:desc">Released, newest first</option>
           <option value="name:asc">Name</option>
           <option value="pack:asc">Pack</option>
         </select></label>
@@ -616,7 +617,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
       <b id="bulkCount"></b>
       <select id="bulkAction" aria-label="What to change">
         <option value="">Change them…</option><option value="add_themes">Add themes</option><option value="remove_themes">Remove themes</option>
-        <option value="draft">Make drafts (hide from the site)</option><option value="checked_today">Mark checked today (and publish drafts)</option>
+        <option value="draft">Make drafts (hide from the site)</option><option value="checked_today">Mark checked today (and publish drafts)</option><option value="released_from_checked">Set released to the checked date (if missing)</option>
       </select>
       <button class="btn small primary" type="button" id="bulkGo" disabled>Review changes</button>
       <button class="link" type="button" id="bulkClear">Clear selection</button>
@@ -1392,7 +1393,7 @@ $('#themeBtn').onclick = () => {
 // ================= mission editor =================
 const DEFAULTS = { cost: '$', setting: 'either', season: 'any', time_of_day: 'any', travel: 'local', routine: false };
 // the keys this form owns; anything else in a file is passed through untouched
-const MANAGED = ['draft', 'checked', 'number', 'name', 'mode', 'who', 'place', 'short', 'description', 'about', 'steps',
+const MANAGED = ['draft', 'checked', 'released', 'number', 'name', 'mode', 'who', 'place', 'short', 'description', 'about', 'steps',
   'for_kids', 'gear', 'duration', 'effort', 'cost', 'setting', 'season', 'time_of_day', 'travel', 'check_ahead',
   'discounts', 'routine', 'caution', 'caution_until', 'themes', 'tags', 'credit'];
 const LABELS = {
@@ -1488,8 +1489,10 @@ function renderForm(info = {}) {
   $('#edBody').innerHTML = `${alerts.join('')}
   <fieldset><legend>Status</legend>
     <label class="toggle"><input type="checkbox" id="fDraft" ${m.draft ? 'checked' : ''}> Draft: hidden from the website</label>
-    <div class="row">${field('fChecked', 'Checked on', `<div style="display:flex;gap:8px"><input type="date" id="fChecked" value="${esc(m.checked || '')}"><button type="button" class="btn tiny" id="fToday">Today</button></div>`,
-      'the day you last checked the place, hours and pin')}</div>
+    <div class="row">${field('fChecked', 'Last checked', `<div style="display:flex;gap:8px"><input type="date" id="fChecked" value="${esc(m.checked || '')}"><button type="button" class="btn tiny" id="fToday">Today</button></div>`,
+      'the day you last confirmed the place, hours and pin (the site shows "Checked November 2026")')}
+      ${field('fReleased', 'Released', `<input type="date" id="fReleased" value="${esc(m.released || '')}">`,
+      'the day it went live; filled in when you publish it')}</div>
     <p class="help" style="margin:8px 0 0">A live mission needs a checked date. Untick draft once the pin and address are right.</p>
   </fieldset>
 
@@ -1671,7 +1674,7 @@ function collect() {
     out[k] = val;
   };
   if ($('#fDraft').checked) out.draft = true; else if (ed.orig.draft === false) out.draft = false;
-  set('checked', v('fChecked'));
+  set('checked', v('fChecked')); set('released', v('fReleased'));
   const num = v('fNumber').trim();
   set('number', num === '' ? '' : (Number.isInteger(+num) ? +num : num));
   set('name', v('fName').trim());
@@ -1968,7 +1971,7 @@ function publishYaml(t) {
 }
 function publish() {
   if (ed.mode === 'yaml') { $('#yamlText').value = publishYaml($('#yamlText').value); yamlLines(); }
-  else { $('#fDraft').checked = false; $('#fChecked').value = today(); }
+  else { $('#fDraft').checked = false; $('#fChecked').value = today(); if (!$('#fReleased').value) $('#fReleased').value = today(); }
   ed.dirty = true;
   saveMission(null, 'Publishing: checked is set to today and the draft line is gone.');
 }

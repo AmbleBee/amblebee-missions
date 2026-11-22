@@ -21,14 +21,14 @@ import textwrap
 import yaml
 
 # The order keys appear in the existing files. New keys go into this order; unknown keys go last.
-ORDER = ["draft", "checked", "number", "name", "mode", "who", "place", "short", "description", "about",
+ORDER = ["draft", "checked", "released", "number", "name", "mode", "who", "place", "short", "description", "about",
          "steps", "for_kids", "gear", "duration", "effort", "cost", "setting", "season", "time_of_day", "travel",
          "check_ahead", "discounts", "routine", "caution", "caution_until", "themes", "tags", "credit", "suggestion"]
 PLACE_ORDER = ["name", "area", "address", "coords", "website", "links"]
 FLOW_LISTS = {"who", "season", "check_ahead", "discounts", "themes", "tags"}
 FOLDED = {"description", "about"}
 WIDTH = 76          # what most of the existing description/about blocks wrap at
-DATE_KEYS = {"checked", "caution_until"}
+DATE_KEYS = {"checked", "released", "caution_until"}
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 KEY_LINE = re.compile(r"^([A-Za-z_][A-Za-z0-9_]*):(\s|$)")
 

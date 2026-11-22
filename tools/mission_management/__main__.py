@@ -302,6 +302,7 @@ ATTENTION = {        # code: (label shown on the dashboard, what it means)
     "stale": ("Checked 6+ months ago", "Worth a fresh look: hours, prices and places change"),
     "no-themes": ("No themes", "Won't show under any of the website's theme chips"),
     "no-about": ("No 'About this place'", "Missions with a place only; the page is thinner without it"),
+    "no-released": ("No released date", "Live, but no `released` date yet; the bulk action can copy its checked date"),
     "no-link": ("No link", "Has a place, but no website or extra link to it"),
     "link-broken": ("Broken link", "A website or extra link didn't work the last time links were checked"),
     "link-moved": ("Link moved", "A link now sends people somewhere else; check it still points to the right page"),
@@ -386,6 +387,8 @@ def attention(rows, packs, settings):
             issues.append("no-themes")
         if (rule == "required" or data.get("place")) and not data.get("about"):
             issues.append("no-about")
+        if not data.get("draft") and not data.get("released"):
+            issues.append("no-released")
         if data.get("place") and not linkcheck.mission_links(data):
             issues.append("no-link")
         found = {x["status"] for x in linkcheck.results_for(data, link_marks) if not x.get("manual")}
@@ -508,14 +511,18 @@ def prepare(body):
     lost = []
     if "yaml" in body:                       # YAML mode: saved exactly as typed, comments and all
         text = str(body["yaml"]).replace("\r\n", "\n").rstrip("\n") + "\n"
-        _, err = parse_yaml(text)
+        parsed, err = parse_yaml(text)
         if err:
             return 200, {**err, "diff": [], "lost": [], "text": text}, path, None
+        if isinstance(parsed, dict) and not parsed.get("draft") and (is_new or old.get("draft")) and not parsed.get("released"):
+            text = add_released(text)
     else:                                    # form mode: only the changed lines are rewritten
         base = body.get("base") or original  # the YAML editor's text, when the form was switched back from it
         if base != original and parse_yaml(base)[1]:
             base = original
         data = clean(body.get("data") or {}, old)
+        if not data.get("draft") and (is_new or old.get("draft")) and not data.get("released"):
+            data["released"] = datetime.date.today().isoformat()   # a draft (or a new mission) going live today
         remove = [str(c) for c in (body.get("removeComments") or []) if isinstance(c, str)]
         if base and "draft" in (yaml.safe_load(base) or {}) and "draft" not in data:
             # publishing: the note on the draft line ("delete this line once it's checked") is meant to go
@@ -531,6 +538,14 @@ def prepare(body):
     problems = validate(pack, mid, text) if body.get("check", True) else []   # switching to YAML just needs the text
     return 200, {"diff": diff, "lost": lost, "removing": removing if "yaml" not in body else [],
                  "problems": problems, "text": text}, path, text
+
+
+def add_released(text):
+    """YAML mode: a draft going live gets `released: <today>` under its checked line (or at the top)."""
+    line = f"released: {datetime.date.today().isoformat()}"
+    if re.search(r"(?m)^checked:.*$", text):
+        return re.sub(r"(?m)^(checked:.*)$", lambda m: m.group(1) + "\n" + line, text, count=1)
+    return line + "\n" + text
 
 
 def save(body):

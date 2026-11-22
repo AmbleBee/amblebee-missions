@@ -117,6 +117,7 @@ def edit_pack(root, missions, data, dry=True):
 ACTIONS = {
     "add_themes": "Add themes", "remove_themes": "Remove themes",
     "draft": "Make drafts (hide from the site)", "checked_today": "Mark checked today (and publish drafts)",
+    "released_from_checked": "Set released to the checked date (only missions without one)",
 }
 
 
@@ -134,8 +135,12 @@ def _apply(action, data, value, today):
     elif action == "draft":
         data["draft"] = True
     elif action == "checked_today":
-        data.pop("draft", None)
+        if data.pop("draft", None) and not data.get("released"):
+            data["released"] = today          # a draft going live: today is the day it was released
         data["checked"] = today
+    elif action == "released_from_checked":   # one-time catch-up for missions that went live before `released`
+        if not data.get("released") and not data.get("draft") and data.get("checked"):
+            data["released"] = data["checked"]
     return data
 
 

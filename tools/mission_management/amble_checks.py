@@ -46,7 +46,7 @@ LIST_ALLOWED = {
     "discounts": {"senior", "military", "first-responder", "healthcare", "educator", "student", "government", "local", "birthday"},
 }
 KNOWN = set(REQUIRED) | set(ALLOWED) | set(LIST_ALLOWED) | {"place", "for_kids", "steps", "routine", "tags", "gear", "credit", "suggestion",
-                                                              "caution", "caution_until", "draft", "themes", "checked", "about"}
+                                                              "caution", "caution_until", "draft", "themes", "checked", "released", "about"}
 GEAR = {
     # Water
     "kayak", "canoe", "paddleboard", "life-jackets", "wetsuit", "river-tube", "fishing-gear",
@@ -220,7 +220,7 @@ def load_catalog(root):
                 raise ValueError(f"{f}: has a value that isn't valid ({e}); dates are YYYY-MM-DD") from e
             m = {**DEFAULTS, **m, "id": f.stem, "pack": folder.name, "file": str(f)}
             m["full_id"] = f"{source}/{f.stem}"
-            for key in ("caution_until", "checked"):   # dates travel as plain "YYYY-MM-DD" text
+            for key in ("caution_until", "checked", "released"):   # dates travel as plain "YYYY-MM-DD" text
                 d = caution_until_date(m.get(key))
                 if d:
                     m[key] = d.isoformat()
@@ -476,6 +476,16 @@ def check_catalog(root):
         elif not m.get("draft"):
             problems.append(f"{where}: needs either `checked: YYYY-MM-DD` (the day you last checked it) "
                             f"or `draft: true` (not checked yet, so it stays off the site)")
+        # released: the day it went live (written by Mission Management when a draft is published). Optional; for
+        # "New" badges later. Missions live before it existed just don't have one.
+        if "released" in m and m["released"] not in (None, ""):
+            when = caution_until_date(m["released"])
+            if not when:
+                problems.append(f"{where}: released should be a date like 2026-11-22 (YYYY-MM-DD)")
+            elif when > datetime.date.today() + datetime.timedelta(days=1):
+                problems.append(f"{where}: released is {when.isoformat()}, which hasn't happened yet (typo?)")
+            elif when < CHECKED_EARLIEST:
+                problems.append(f"{where}: released is {when.isoformat()}, before AmbleBee existed (typo in the year?)")
         for g in m.get("gear") or []:
             if not isinstance(g, dict) or g.get("item") not in GEAR:
                 problems.append(f"{where}: gear item {g.get('item') if isinstance(g, dict) else g!r} isn't in the gear list (SCHEMA.md)")

@@ -73,7 +73,7 @@ def load(missions_dir):
             "id": m["id"], "pack": m["pack"], "number": m.get("number"), "name": m.get("name", m["id"]),
             "mode": m.get("mode"), "setting": m.get("setting"), "cost": m.get("cost"), "season": m.get("season"), "time": m.get("time_of_day"),
             "themes": list(m.get("themes") or []), "draft": bool(m.get("draft")),
-            "checked": m.get("checked"), "added": added, "edited": edited, "uncommitted": rel in dirty,
+            "checked": m.get("checked"), "released": m.get("released"), "added": added, "edited": edited, "uncommitted": rel in dirty,
         })
     info = {pid: {"name": p.get("name", pid), "region": p.get("region") or "", "description": p.get("description") or "",
                   "icon": p.get("icon") or "", "places": places_rule(pid, p), "count": p.get("count", 0),
