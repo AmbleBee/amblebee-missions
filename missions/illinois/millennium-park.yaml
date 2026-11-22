@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
 number: 2
 name: Millennium Park and the Bean
 mode: both
@@ -7,26 +7,29 @@ place:
   name: Millennium Park
   area: The Loop, Chicago
   address: 201 E Randolph St, Chicago, IL 60602
-  coords: [41.88270, -87.62330]  # APPROX: set at Cloud Gate (the Bean) before publishing
+  coords: [41.88268, -87.62311]
   website: https://www.chicago.gov/city/en/depts/dca/supp_info/millennium_park.html
 short: Millennium Park in Chicago. Find your reflection in the Bean and get splashed at Crown Fountain.
 description: >
   Start at Cloud Gate, the giant mirrored "Bean," and take a photo of you
   warped in its reflection with the skyline behind. Then walk to Crown
-  Fountain, where huge faces on glass towers spit water in summer, and see
-  who can stand under the spout longest. Wander over to the Lurie Garden and
-  the bandshell lawn.
+  Fountain, where huge faces on glass towers spit water in summer, and dare
+  yourself to stand under the spout. Finish with a slow wander through the
+  Lurie Garden and pick out the wildest flower you can find.
 about: >
-  Millennium Park opened in 2004, built on top of an old rail yard and
-  parking garages, which makes it one of the largest rooftop gardens in the
-  world. Cloud Gate, by artist Anish Kapoor, is made of welded steel plates
-  polished so smooth you can't see the seams.
+  Millennium Park opened in 2004 on top of old rail yards and parking garages,
+  which makes it what's considered the world's largest rooftop garden. Cloud
+  Gate, by artist Anish Kapoor, is 168 stainless steel plates welded together
+  and polished so smooth you can't see the seams. When the park opened, the
+  seams still showed, so the Bean was covered back up until it was finished.
 
   The faces on Crown Fountain belong to about a thousand real Chicagoans. The
-  curvy bandshell by architect Frank Gehry hosts free summer concerts, and in
-  winter there's ice skating.
+  curvy Pritzker Pavilion bandshell by architect Frank Gehry hosts free summer
+  concerts on the lawn, and in winter the park has a free ice skating rink,
+  though you'll need to reserve a time online. It's free to visit and open
+  early until late, and the Bean is just as fun at night.
 for_kids:
-  short: Shiny park hunt! Find each thing.
+  short: Shiny park hunt! Can you find them all?
   steps:
     - Your face in the big silver Bean
     - A giant face on a tower
@@ -39,5 +42,5 @@ setting: outdoor
 season: any
 time_of_day: any
 travel: local
-themes: [views, art, walks, architecture]
-tags: [millennium park, cloud gate bean, crown fountain, pritzker pavilion, free things to do chicago, chicago]
+themes: [art, architecture, views, gardens, walks, playful]
+tags: [millennium park, the bean chicago, cloud gate, crown fountain, pritzker pavilion, free things to do chicago]

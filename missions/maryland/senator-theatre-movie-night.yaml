@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
 number: 2
 name: Movie Night at the Senator
 mode: date
@@ -6,25 +6,32 @@ place:
   name: The Senator Theatre
   area: Govans, Baltimore
   address: 5904 York Rd, Baltimore, MD 21212
-  coords: [39.36361, -76.61083]
+  coords: [39.36342, -76.61007]
   website: https://www.thesenatortheatre.com
 short: The Senator Theatre in Baltimore. See a movie in a 1939 Art Deco palace and share the popcorn.
 description: >
-  The Senator is a round 1939 Art Deco movie palace on York Road, with a
-  glowing neon marquee, a curved lobby, and a grand main
-  auditorium. Pick a showing, ideally one of its classic-film revivals, get
-  a popcorn to share and grab seats right in the middle. Before the lights
-  go down, check out the walk of fame in the sidewalk out front. Get a photo of the
-  two of you under the lit-up marquee after the show. Belvedere Square across
-  the street is an easy spot for a bite before or after.
+  The Senator is a 1939 Art Deco movie palace on York Road, with a glowing
+  neon marquee, a round glass-block lobby and a grand main auditorium. Pick a
+  showing, ideally one in the big main auditorium, get a popcorn to share and
+  grab seats right in the middle. Before the lights go down, find the walk of
+  fame in the sidewalk out front, where stars signed the squares for their
+  films. Get a photo of the two of you under the lit-up marquee after the
+  show. Belvedere Square across the street is an easy spot for a bite before
+  or after.
 about: >
-  The Senator opened in 1939, designed by theater architect John Eberson,
-  with a round auditorium and one of the most famous marquees in Baltimore.
-  Local filmmakers like John Waters and Barry Levinson have held premieres
-  here, and their names are in the walk of fame out front.
+  The Senator opened on October 5, 1939, designed by Baltimore theater
+  architect John J. Zink, and it's one of the oldest movie theaters still
+  running in the city. Its round, glass-block lobby and neon marquee make it
+  one of the best-preserved Art Deco theaters in Maryland, and it's listed on
+  the National Register of Historic Places. Baltimore filmmakers John Waters
+  and Barry Levinson have premiered films here, and the sidewalk walk of fame
+  out front has squares signed by the casts.
 
-  The theater nearly closed more than once and was saved by the community.
-  Belvedere Square across the street is an easy spot for a bite.
+  After years of money troubles, the theater was bought by the local family
+  that also runs the Charles Theatre. They restored it down to the original
+  colors, added three smaller screens and reopened it in 2013 with John
+  Waters' Hairspray. It mostly shows new releases, with special classic
+  screenings in the main auditorium now and then.
 steps:
   - The two of you under the neon marquee
   - The big screen before the lights go down
@@ -36,5 +43,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
-themes: [history, architecture, movies, shows]
-tags: [senator theatre, art deco movie palace, classic film night, belvedere square, historic theater, baltimore]
+themes: [movies, architecture, history, romantic, food]
+tags: [senator theatre, art deco movie palace, classic film night, belvedere square, historic theater, baltimore date night]

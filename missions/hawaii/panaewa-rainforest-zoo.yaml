@@ -1,4 +1,4 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
 number: 2
 name: Pana'ewa Rainforest Zoo
 mode: adventure
@@ -7,35 +7,38 @@ place:
   name: Pana'ewa Rainforest Zoo and Gardens
   area: Pana'ewa, Hilo
   address: 800 Stainback Hwy, Hilo, HI 96720
-  coords: [19.65360, -155.07420]  # APPROX: set at the entrance before publishing
+  coords: [19.65539, -155.07491]
   website: https://parks.hawaiicounty.gov/divisions/pana-ewa-recreational-complex/pana-ewa-rainforest-zoo-gardens
-short: Pana'ewa Rainforest Zoo in Hilo. Wander a small, free zoo in a real rainforest.
+short: Pana'ewa Rainforest Zoo in Hilo. Meet tigers and tortoises at a small zoo in a real rainforest.
 description: >
   Hilo's small county zoo sits right in a rainforest, with paved paths under
-  giant trees, palms and orchids and around 80 kinds of animals, from giant
-  tortoises to native Hawaiian birds. Take it slow, let the kids
-  pick which path to try next, and finish with a break at the playground and
-  picnic pavilions. If you come on a Saturday afternoon, plan around the
-  petting zoo hour. Get a photo of the whole family under the biggest tree
-  you can find. Bring a rain jacket: it's a rainforest for a reason.
+  giant trees, palms and orchids and around 80 kinds of animals, from Bengal
+  tigers and giant tortoises to native Hawaiian birds. Take it slow, let the
+  kids pick which path to try next, and finish with a break at the playground
+  and picnic pavilions. Come on a Saturday afternoon to catch the petting zoo.
+  Get a photo of the whole family under the biggest tree you can find. Bring
+  a rain jacket: it's a rainforest for a reason.
 about: >
-  Pana'ewa says it's the only zoo in the United States set inside a natural
-  tropical rainforest. Hawai'i County runs it on 12 acres just south of Hilo,
-  and admission is free.
+  Pana'ewa is the only zoo in the United States set in a natural tropical
+  rainforest. Hawai'i County has run it since 1978 on 12 acres just south of
+  Hilo, and the grounds are planted with orchids, bamboo and more than a
+  hundred kinds of palms, so it feels like a botanical garden as much as a zoo.
 
-  The paths wind under giant trees, palms and orchids, so it feels like a
-  botanical garden as much as a zoo. Look for native Hawaiian birds like the
-  nēnē, the state bird, a goose that nearly went extinct. Bring a rain jacket;
-  it's a rainforest for a reason.
+  The stars are two Bengal tigers, Tzatziki and Sriracha, but look for native
+  Hawaiian birds too, like the nēnē, the state bird, a goose that nearly went
+  extinct. Hawai'i County residents get in for a few dollars, with kids and
+  seniors free, while visitors pay a modest admission. The small petting zoo
+  opens on Saturday afternoons.
 for_kids:
-  short: Zoo in the rainforest! Find each thing.
+  short: Zoo in the rainforest! Can you find them all?
   steps:
+    - A tiger
     - A giant tortoise
     - A bird with bright feathers
     - The biggest leaf you can find
     - An animal you have never seen before
     - A selfie with your grown-up!
-duration: half-day
+duration: short
 effort: easy
 cost: $$
 setting: outdoor
@@ -44,5 +47,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [local]
-themes: [forests, wildlife, gardens]
-tags: [panaewa rainforest zoo, free zoo hilo, rainforest gardens, nene, kids day out, big-island]
+themes: [wildlife, gardens, forests]
+tags: [panaewa rainforest zoo, hilo zoo, rainforest zoo hawaii, bengal tigers, nene, big island]
