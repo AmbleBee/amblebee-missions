@@ -327,6 +327,20 @@ tr.click:focus-visible td { outline: 2px solid var(--sage); }
 .attn button:disabled { opacity: .45; cursor: default; }
 .chip.issue { background: var(--honey-tint); border-color: transparent; color: var(--ink); }
 .chip.issue.hot { background: var(--bad-tint); }
+/* the Missions table's filters (2026-11-22): one row of four equal drop-downs, then search with the actions on the right */
+.mfilters { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px 14px; margin: 12px 0 0; padding: 12px 14px 6px;
+  background: var(--oat); border-radius: 12px 12px 0 0; }
+.mfilters label { display: flex; flex-direction: column; gap: 4px; min-width: 0; font-size: 12px; font-weight: 700; color: var(--ink-2); }
+.mfilters select { width: 100%; min-width: 0; }
+.mtools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; margin: 0 0 8px; padding: 8px 14px 12px;
+  background: var(--oat); border-radius: 0 0 12px 12px; border-bottom: 1px solid var(--line); }
+.mtools input[type=search] { flex: 0 1 300px; min-width: 180px; }
+.mtools #linkRun { font-size: 13px; }
+.mtools .right { margin-left: auto; display: inline-flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; justify-content: flex-end; }
+@media (max-width: 900px) { .mfilters { grid-template-columns: repeat(2, minmax(0, 1fr)); } .mtools .right { margin-left: 0; } }
+/* the table scrolls with the page (one scroll bar, header stays on top); sideways only on a narrow screen */
+.scroll.pagescroll { max-height: none; overflow: visible; }
+@media (max-width: 900px) { .scroll.pagescroll { overflow-x: auto; } }
 .filters { display: flex; flex-wrap: wrap; gap: 8px 16px; align-items: center; }
 .filters select { max-width: 220px; }
 
@@ -562,15 +576,12 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
   <section class="card" id="missionsCard" data-tab="missions">
     <h2>Missions</h2>
     <p class="sub">Everything you've written, with the last time each file changed. Click a column to sort, click a mission to edit it.</p>
-    <div class="controls filters" style="position:static;border:0;padding:6px 0;margin:8px 0 0">
-      <label>Status <select id="fStatus"><option value="">All</option><option value="live">Live</option><option value="unpublished">Anything to publish</option><option value="waiting">Waiting to publish</option><option value="edits">Live · Edits waiting</option><option value="draft">Drafts</option><option value="suggested">Suggested</option><option value="uncommitted">Not committed</option></select></label>
-      <label>Needs <select id="fIssue"><option value="">Anything or nothing</option><option value="*">Any attention</option></select></label>
-      <label>Theme <select id="fThemeSel"><option value="">Any theme</option></select></label>
-      <button class="link" id="clearFilters" type="button" hidden>Clear filters</button>
-    </div>
-    <div class="controls" style="position:static;border:0;padding:6px 0;margin:0 0 8px">
-      <label>Sort
-        <select id="msort">
+    <!-- four filters the same width in one row; search, the count and the actions under them -->
+    <div class="mfilters">
+      <label><span>Status</span><select id="fStatus"><option value="">All</option><option value="live">Live</option><option value="unpublished">Anything to publish</option><option value="waiting">Waiting to publish</option><option value="edits">Live · Edits waiting</option><option value="draft">Drafts</option><option value="suggested">Suggested</option><option value="uncommitted">Not committed</option></select></label>
+      <label><span>Needs</span><select id="fIssue"><option value="">Anything or nothing</option><option value="*">Any attention</option></select></label>
+      <label><span>Theme</span><select id="fThemeSel"><option value="">Any theme</option></select></label>
+      <label><span>Sort</span><select id="msort">
           <option value="edited:desc">Last edited, newest first</option>
           <option value="edited:asc">Last edited, oldest first</option>
           <option value="added:desc">Added, newest first</option>
@@ -578,16 +589,19 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
           <option value="checked:asc">Checked, oldest first</option>
           <option value="name:asc">Name</option>
           <option value="pack:asc">Pack</option>
-        </select>
-      </label>
-      <input type="search" id="q" placeholder="Search name, theme, id…">
-      <span class="muted" id="mcount"></span>
-      <button class="btn tiny" type="button" id="workBtn" hidden title="Open the first one; the arrows in the editor walk the rest of this list">Work through these</button>
-      <span style="margin-left:auto;display:inline-flex;gap:10px;align-items:center">
-        <span class="muted" id="linkRun" style="font-size:13px"></span>
-        <button class="btn tiny" type="button" id="linkAll" title="Check every mission's website and extra links in the background">Check all links</button></span>
+        </select></label>
     </div>
-    <div class="scroll"><table id="mtable"></table></div>
+    <div class="mtools">
+      <input type="search" id="q" placeholder="Search name, theme, id…" aria-label="Search missions">
+      <span class="muted" id="linkRun"></span>
+      <span class="right">
+        <span class="muted" id="mcount"></span>
+        <button class="btn tiny" type="button" id="workBtn" hidden title="Open the first one; the arrows in the editor walk the rest of this list">Work through these</button>
+        <button class="link" id="clearFilters" type="button" hidden>Clear filters</button>
+        <button class="btn tiny" type="button" id="linkAll" title="Check every mission's website and extra links in the background">Check all links</button>
+      </span>
+    </div>
+    <div class="scroll pagescroll"><table id="mtable"></table></div>
     <div id="bulkBar" hidden>
       <b id="bulkCount"></b>
       <select id="bulkAction" aria-label="What to change">
@@ -1290,13 +1304,26 @@ async function loadData() {
   if (state.issue && !$('#fIssue').value) state.issue = '';      // a remembered filter that no longer exists
   if (state.theme && !$('#fThemeSel').value) state.theme = '';
   $('#q').value = state.q; $('#order').value = state.order;
-  $('#msort').value = [...$('#msort').options].some(o => o.value === state.msort) ? state.msort : '';
+  showSort();
   return true;
 }
 $('#pack').onchange = e => setPack(e.target.value);
 $('#drafts').onchange = e => { state.drafts = e.target.checked; render(); };
 $('#order').onchange = e => { state.order = e.target.value; render(); };
-$('#msort').onchange = e => { state.msort = e.target.value; render(); };
+// a sort picked by clicking a column header that isn't in the list shows as "Column: Mission, A to Z" instead of a blank box
+function showSort() {
+  const sel = $('#msort'), extra = sel.querySelector('option[data-column]');
+  if (extra) extra.remove();
+  if (state.msort && ![...sel.options].some(o => o.value === state.msort)) {
+    const [k, dir] = state.msort.split(':'), col = COLS.find(c => c[0] === k);
+    const o = document.createElement('option');
+    o.value = state.msort; o.dataset.column = '1';
+    o.textContent = `By column: ${col ? col[1] : k} ${dir === 'asc' ? '↑' : '↓'}`;
+    sel.appendChild(o);
+  }
+  sel.value = state.msort || sel.options[0].value;
+}
+$('#msort').onchange = e => { state.msort = e.target.value; showSort(); render(); };
 $('#q').oninput = e => { state.q = e.target.value; state.shown = PAGE; renderTable(missionsNow()); };
 function setFilter(k, v) { state[k] = v; state.shown = PAGE; renderAttention(missionsNow()); renderTable(missionsNow()); }
 function showDraftsFor(v) { if (v === 'draft' && !state.drafts) { state.drafts = true; $('#drafts').checked = true; } }
@@ -1335,8 +1362,7 @@ document.addEventListener('click', e => {
     const k = th.dataset.sort, [key, dir] = state.msort.split(':');
     const def = ['edited', 'added'].includes(k) ? 'desc' : 'asc';
     state.msort = `${k}:${key === k ? (dir === 'asc' ? 'desc' : 'asc') : def}`;
-    const opt = [...$('#msort').options].find(o => o.value === state.msort);
-    $('#msort').value = opt ? state.msort : '';
+    showSort();
     renderTable(missionsNow());
   }
 });
