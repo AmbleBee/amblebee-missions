@@ -1,5 +1,6 @@
 checked: 2026-10-26   # live before the Oct 26 verification sweep; change if you know a better date
 # UPDATED: replaces the original #15 with the same id; keeps number 15
+released: 2026-10-26
 number: 15
 name: Dark Sky Stargazing
 mode: both
