@@ -378,6 +378,19 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
 .difflines .hunk + .hunk, .difflines .ctx + .hunk, .difflines .add + .hunk, .difflines .del + .hunk { border-top: 1px dashed var(--line-strong); margin-top: 6px; }
 .btn.publish { background: var(--honey-tint); box-shadow: inset 0 0 0 2px var(--honey); }
 dialog.small.wide { width: min(760px, calc(100vw - 32px)); }
+/* Preview: the mission's whole web page, nearly full screen; click outside or Close to leave */
+dialog.pvdlg { border: 0; padding: 0; border-radius: 20px; width: min(1180px, calc(100vw - 24px)); height: calc(100dvh - 24px); max-height: none;
+  max-width: none; background: var(--paper); color: var(--ink); box-shadow: var(--shadow); overflow: hidden; }
+dialog.pvdlg::backdrop { background: rgba(40, 28, 20, .45); }
+.pv-in { display: flex; flex-direction: column; height: 100%; }
+.pv-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; padding: 14px 18px; border-bottom: 1px solid var(--line); }
+.pv-head h2 { margin: 0; } .pv-head .sub { flex: 1 1 280px; margin: 0; }
+.pv-size { display: inline-flex; gap: 4px; } .pv-size [aria-pressed=true] { background: var(--fill); color: #FFFDF8; box-shadow: none; }
+dialog.pvdlg #pvBody { flex: 1; min-height: 0; overflow: auto; padding: 16px 18px; }
+dialog.pvdlg #pvBody.page { padding: 0; overflow: hidden; display: flex; flex-direction: column; background: var(--oat); }
+#pvPage { display: block; flex: 1; width: 100%; border: 0; margin: 0 auto; background: var(--oat); }
+#pvPage.phone { flex: none; width: 390px; height: 100%; box-shadow: 0 0 0 1px var(--line-strong), 0 10px 30px rgba(0,0,0,.12); }
+#pvBody .pv-warn { margin: 0; padding: 8px 18px; color: var(--b); background: var(--paper); }
 .setup input, .setup select, dialog.small textarea {
   font: inherit; color: var(--ink); background: var(--linen); border: 1.5px solid var(--line-strong); border-radius: 12px;
   padding: 8px 11px; width: 100%; min-height: 42px; }
@@ -760,11 +773,18 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
   </form>
 </dialog>
 
-<dialog class="small wide" id="pvDlg" aria-labelledby="pvTitle">
-  <h2 id="pvTitle">Preview</h2>
-  <p class="sub" id="pvSub">From what's in the form right now, saved or not.</p>
-  <div class="pv" id="pvBody"></div>
-  <div style="display:flex;justify-content:flex-end;margin-top:16px"><button class="btn small primary" type="button" id="pvClose">Close</button></div>
+<dialog class="pvdlg" id="pvDlg" aria-labelledby="pvTitle">
+  <div class="pv-in">
+    <div class="pv-head">
+      <h2 id="pvTitle">Preview</h2>
+      <p class="sub" id="pvSub">From what's in the form right now, saved or not.</p>
+      <span class="pv-size" role="group" aria-label="Screen size" id="pvSize">
+        <button class="btn tiny" type="button" data-w="" aria-pressed="true">Computer</button>
+        <button class="btn tiny" type="button" data-w="phone" aria-pressed="false">Phone</button></span>
+      <button class="btn small primary" type="button" id="pvClose">Close</button>
+    </div>
+    <div class="pv" id="pvBody"></div>
+  </div>
 </dialog>
 
 <dialog class="small wide" id="bulkDlg" aria-labelledby="bulkTitle">
@@ -2489,13 +2509,17 @@ async function openPreview() {
   const checked = m.checked ? `Checked ${new Date(m.checked + 'T12:00').toLocaleDateString(undefined, { month: 'long', year: 'numeric' })}` : 'Draft: not on the site yet';
   const about = m.about ? `<div><h3>About this place <span class="muted" style="text-transform:none;letter-spacing:0">· the mission's own web page only</span></h3>
     <div class="pv-ticket"><div class="about" style="border:0;margin:0;padding:0">${paras(m.about)}</div></div></div>` : '';
-  $('#pvSub').textContent = D.card ? 'From what\'s in the form right now, saved or not, drawn by the website\'s own card code: exactly what the website and the Hive will show.'
+  $('#pvSub').textContent = D.card ? 'The mission\'s page, drawn by the website\'s own code from what\'s in the form right now, saved or not.'
     : 'From what\'s in the form right now, saved or not. This repo has no website files, so this is a close match, not the real card.';
+  $('#pvSize').hidden = !D.card;
+  $('#pvBody').classList.toggle('page', !!D.card);
   if (D.card) {
-    $('#pvBody').innerHTML = `<div><h3>Mission card <span class="muted" style="text-transform:none;letter-spacing:0">· drawn by the website's own code, the same card the Hive shows</span></h3>
-      <iframe id="pvFrame" title="Mission card preview" src="card-frame" style="width:100%;height:420px;border:0;display:block"></iframe></div>
-      ${over ? `<p class="help" style="margin:0;color:var(--b)">The short line is ${short.length} characters; keep it to ${D.schema.limits.short}.</p>` : ''}${about}`;
-    cardPending = cardMission(m);
+    const r = await api('api/page-preview', { method: 'POST', body: JSON.stringify({ mission: cardMission(m), pack: ed.pack }) });
+    if (!r.ok || typeof r.body.html !== 'string') return toast(r.body.error || 'Couldn\'t draw the page.');
+    $('#pvBody').innerHTML = `${over ? `<p class="help pv-warn">The short line is ${short.length} characters; keep it to ${D.schema.limits.short}.</p>` : ''}
+      <iframe id="pvPage" title="Mission page preview"></iframe>`;
+    $('#pvPage').srcdoc = r.body.html;
+    pvSize(pvSize.w || '');
   } else {
     $('#pvBody').innerHTML = `
     <div><h3>Mission card <span class=\"muted\" style=\"text-transform:none;letter-spacing:0\">· approximate: this repo has no website files (site/js/ticket.js)</span></h3><div class="pv-hivebg"><div class="hv">
@@ -2517,6 +2541,13 @@ async function openPreview() {
 }
 $('#edPreview').onclick = openPreview;
 $('#pvClose').onclick = () => $('#pvDlg').close();
+$('#pvDlg').addEventListener('click', e => { if (e.target === $('#pvDlg')) $('#pvDlg').close(); });   // a click outside it (the backdrop)
+function pvSize(w) {
+  pvSize.w = w;
+  const f = $('#pvPage'); if (f) f.classList.toggle('phone', w === 'phone');
+  $('#pvSize').querySelectorAll('button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.w === w)));
+}
+$('#pvSize').addEventListener('click', e => { const b = e.target.closest('button[data-w]'); if (b) pvSize(b.dataset.w); });
 
 // ---------- show in folder ----------
 async function reveal(file, release = false) {

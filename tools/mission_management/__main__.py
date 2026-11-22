@@ -720,6 +720,46 @@ parent.postMessage({{ type: "card-ready" }}, location.origin);
 </script></body></html>"""
 
 
+# ---------- the mission's whole web page, for the editor's Preview ----------
+
+def page_preview(m, pack_id):
+    """The mission's page as the website build draws it: tools/build_pages.py's own mission_html() and about_html(),
+    with the website's stylesheet. Links are relative (site/...), so it works behind the intake's /missions/ too."""
+    sys.path.insert(0, str(HERE.parent))           # tools/, the same (approved) copy this manager runs from
+    import build_pages as bp
+    packs = {}
+    for f in sorted(MISSIONS.glob("*/pack.yaml")):
+        data, _, _ = file_facts(f)
+        packs[f.parent.name] = data if isinstance(data, dict) else {}
+    pack = {"id": pack_id, **packs.get(pack_id, {})}
+    names, live = {}, set()
+    for f in MISSIONS.glob("*/*.yaml"):
+        if f.name == "pack.yaml":
+            continue
+        data, _, _ = file_facts(f)
+        if isinstance(data, dict):
+            names[f.stem] = data.get("name") or f.stem
+            if not data.get("draft"):
+                live.add(f.stem)
+    today = datetime.date.today().isoformat()
+    try:
+        ticket = bp.mission_html(m, pack, {"packs": pack_icons()}, today)
+    except (KeyError, TypeError, ValueError) as e:
+        ticket = f"<p class='note'>The website can't draw this mission yet: {html_escape(str(e))} is missing or odd.</p>"
+    about = bp.about_html(m, m.get("about"), names, live)
+    acts = (f'<div class="ticket-actions"><a class="btn primary" href="#">{bp.icon(bp.UI_ICON["share"], 20)}Share this mission</a>'
+            f'<a class="btn" href="#">{bp.icon(bp.UI_ICON["download"], 20)}Save as image</a><a class="btn" href="#">Open a different mission</a></div>')
+    crumbs = f'<p class="crumbs"><a href="#">Every mission</a> › <a href="#">{html_escape(pack.get("name") or pack_id)}</a></p>'
+    return f"""<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="site/fonts/fonts.css"><link rel="stylesheet" href="site/style.css">
+<style>a{{pointer-events:none}}</style></head>
+<body><main id="main"><div class="page">{crumbs}{ticket}{acts}{about}</div></main></body></html>"""
+
+
+def html_escape(v):
+    return str(v).replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace('"', "&quot;")
+
+
 # ---------- serving ----------
 
 class Handler(http.server.BaseHTTPRequestHandler):
@@ -856,7 +896,7 @@ class Handler(http.server.BaseHTTPRequestHandler):
         if path == "/api/unlock":               # back to the start-up key, never to no key at all
             LOCK["key"] = START_KEY
             return self._send(200, {"ok": True, "locked": True, "start": True})
-        if path not in ("/api/mission", "/api/delete", "/api/preview", "/api/parse", "/api/setup", "/api/checker", "/api/pack",
+        if path not in ("/api/mission", "/api/delete", "/api/preview", "/api/page-preview", "/api/parse", "/api/setup", "/api/checker", "/api/pack",
                         "/api/scoring", "/api/scoring/reset", "/api/pack/edit", "/api/bulk", "/api/ideas",
                         "/api/release", "/api/reveal", "/api/same-spot", "/api/links",
                         "/api/links/start", "/api/link", "/api/link/mark", "/api/lock"):
@@ -959,6 +999,11 @@ class Handler(http.server.BaseHTTPRequestHandler):
                                   else {"error": note, "path": str(target)})
             if path == "/api/delete":           # remove a mission file ("dry" only says what would go)
                 code, out = delete_mission(body)
+            elif path == "/api/page-preview":   # the mission's web page, drawn from the editor's unsaved form
+                if not card_ready():
+                    code, out = 404, {"error": "This repo has no website files to draw the page with."}
+                else:
+                    code, out = 200, {"html": page_preview(body.get("mission") or {}, str(body.get("pack") or ""))}
             elif path == "/api/preview":        # what a save would change, without writing anything
                 code, out, _, _ = prepare(body)
             elif path == "/api/parse":          # the YAML editor's text, read back for the form
