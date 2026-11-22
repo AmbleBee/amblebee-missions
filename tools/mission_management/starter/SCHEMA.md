@@ -369,6 +369,7 @@ Effort should reflect what visitors reasonably need to complete the mission.
 | `caution` | Important website-only safety or visitor warning | None |
 | `caution_until` | Expiration date for a temporary warning | None |
 | `checked` | Date the mission was last verified | None |
+| `released` | Date the mission went live; Mission Management writes it when a draft is published | None |
 | `draft` | Prevents an unfinished mission from being published | `false` |
 | `routine` | Marks a repeatable activity or routine | `false` |
 | `themes` | Up to six predefined activity themes | None |
