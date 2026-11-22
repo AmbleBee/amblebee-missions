@@ -348,13 +348,13 @@ tr.click:focus-visible td { outline: 2px solid var(--sage); }
 .modeswitch { margin-top: 8px; }
 .modeswitch .seg span { min-height: 30px; padding: 0 12px; font-size: 13px; }
 .code { display: grid; grid-template-columns: auto 1fr; border-radius: 12px; overflow: hidden; margin-top: 14px;
-  box-shadow: inset 0 0 0 1.5px var(--line-strong); background: var(--linen); height: calc(100dvh - 300px); min-height: 320px; }
+  box-shadow: inset 0 0 0 1.5px var(--line-strong); background: var(--linen); min-height: 320px; }
 .code .gutter { padding: 12px 8px 12px 10px; text-align: right; color: var(--ink-3); user-select: none; overflow: hidden;
   font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--oat); }
 .code .gutter .gl { will-change: transform; }
 .code .gutter div.err { color: #FFFDF8; background: var(--bad); border-radius: 4px; padding: 0 4px; margin-right: -4px; }
 .sheet .code textarea { border: 0; box-shadow: none; background: transparent; resize: none; height: 100%; min-height: 0; margin: 0;
-  padding: 12px; font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow: auto; tab-size: 2; color: var(--ink); border-radius: 0; }
+  padding: 12px; font: 13px/1.6 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; white-space: pre; overflow-x: auto; overflow-y: hidden; tab-size: 2; color: var(--ink); border-radius: 0; }
 .sheet .code textarea:focus { outline: none; box-shadow: none; }
 .code:focus-within { box-shadow: inset 0 0 0 2px var(--sage); }
 .yamlstatus { font-size: 13px; margin-top: 8px; min-height: 20px; }
@@ -377,9 +377,6 @@ dialog.diff .df { padding: 14px 22px 18px; display: flex; gap: 10px; justify-con
 .difflines .hunk { color: var(--ink-3); font-style: italic; padding-top: 6px; }
 .difflines .hunk + .hunk, .difflines .ctx + .hunk, .difflines .add + .hunk, .difflines .del + .hunk { border-top: 1px dashed var(--line-strong); margin-top: 6px; }
 .btn.publish { background: var(--honey-tint); box-shadow: inset 0 0 0 2px var(--honey); }
-@media (max-width: 720px) {
-  .code { height: calc(100dvh - 330px); }
-}
 dialog.small.wide { width: min(760px, calc(100vw - 32px)); }
 .setup input, .setup select, dialog.small textarea {
   font: inherit; color: var(--ink); background: var(--linen); border: 1.5px solid var(--line-strong); border-radius: 12px;
@@ -1961,8 +1958,16 @@ function yamlLines(errLine = yamlLines.err) {
   yamlLines.err = errLine;
   const n = $('#yamlText').value.split('\n').length;
   $('#yamlGutter').innerHTML = `<div class="gl">${Array.from({ length: n }, (_, i) => `<div${i + 1 === errLine ? ' class="err"' : ''}>${i + 1}</div>`).join('')}</div>`;
-  syncGutter();
+  fitYaml(); syncGutter();
 }
+// the YAML box grows to fit the whole file, so the editor has one scroll bar (the sheet's), not a second one inside
+function fitYaml() {
+  const ta = $('#yamlText');
+  if (!ta.offsetParent) return;                // hidden (form mode): measured again when YAML shows
+  ta.style.height = 'auto';
+  ta.style.height = `${ta.scrollHeight + ta.offsetHeight - ta.clientHeight}px`;   // + the sideways scroll bar, if any
+}
+addEventListener('resize', () => fitYaml());
 function syncGutter() { const g = $('#yamlGutter .gl'); if (g) g.style.transform = `translateY(${-$('#yamlText').scrollTop}px)`; }
 function yamlStatus(problem, line) {
   $('#yamlStatus').innerHTML = !problem ? '' : problem === true ? '<span class="ok">✓ Reads fine</span>'
@@ -1981,8 +1986,9 @@ async function checkYaml() {
 function gotoLine(n) {
   const ta = $('#yamlText'), lines = ta.value.split('\n');
   const at = lines.slice(0, n - 1).reduce((a, l) => a + l.length + 1, 0);
-  ta.focus(); ta.setSelectionRange(at, at + (lines[n - 1] || '').length);
-  ta.scrollTop = Math.max(0, (n - 4) * parseFloat(getComputedStyle(ta).lineHeight));
+  ta.focus({ preventScroll: true }); ta.setSelectionRange(at, at + (lines[n - 1] || '').length);
+  const body = $('#yamlBody'), lh = parseFloat(getComputedStyle(ta).lineHeight);
+  body.scrollTop += ta.getBoundingClientRect().top - body.getBoundingClientRect().top + Math.max(0, n - 4) * lh;   // the sheet scrolls now, not the box
   syncGutter();
 }
 async function switchMode(to) {
