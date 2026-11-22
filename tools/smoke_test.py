@@ -2729,6 +2729,7 @@ def t_contribute_page_polls(site, catalog):
     assert page.inner_text(".poll-clock .flip >> nth=0").replace("\n", " ").lower().startswith(("09 days", "10 days")), page.inner_text(".poll-clock")
     assert page.locator(".vote-expand").count() == 0, "no dropdowns on AmbleBee polls"
     assert "Big skies" in page.inner_text(".vote-option >> nth=0 >> small"), "the explanation shows right under the name"
+    assert page.locator(".vote-count").count() == 0 and "voted" not in page.inner_text(".poll-app"), "no vote count on a public poll"
     head = page.inner_text(".vote-head")
     assert "AmbleBee poll" in head and "AmbleBee makes the final call" in head, head
     assert page.eval_on_selector("#poll-other", "e => getComputedStyle(e).borderTopLeftRadius") == "12px", "the Other box is rounded"
@@ -2756,6 +2757,7 @@ def t_contribute_page_polls(site, catalog):
     assert page.locator(".poll-results button.vote-option-tap").count() == 0, "results can't be tapped"
     assert page.get_attribute(".poll-results .is-winner", "style").replace(" ", "") == "--share:100%;", "the bar shows its share"
     assert "Montana" in text and ("Staff pick: " + m1["name"]) in text and "Closer for most of you." in text, text
+    assert "100%" in text and "voted" not in text and " vote" not in text, "results show shares, never how many voted"
     contact = site.open("/contact/")
     assert contact.locator(".contact-paths a[href='#message']").count() == 0, "no Send a message card: the form is right below"
     assert contact.locator(".contact-paths a[href='/report/']").count() == 1, "report a problem stays on Contact"

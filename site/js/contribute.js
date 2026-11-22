@@ -40,7 +40,7 @@
       var soon = (d.upcoming || []).map(function (x) { return item(x, "opens " + day(x.opens_at)); });
       function item(x, extra) {
         return el("li", {}, el("a", { href: "/poll/?p=" + x.pub }, el("b", { text: x.name })),
-          el("small", { text: " · " + x.voters + (x.voters === 1 ? " vote" : " votes") + (extra ? " · " + extra : "") }));
+          extra ? el("small", { text: " · " + extra }) : null);   // no vote counts on public polls: a low number reads as "nobody's here"
       }
       if (d.open.length) parts.push(el("ul", { class: "poll-list" }, d.open.map(function (x) {
         return item(x, (x.closes_at ? "closes " + day(x.closes_at) : "open") + (x.profile_required ? " · profile required" : ""));
@@ -84,7 +84,6 @@
         el("ul", { class: "vote-options" }, v.options.map(function (o) { return K.optionCard(o, by, null, null, v.style === "ranked", null, true); })), share(v));
     } else if (v.status === "open") {
       if (v.closes_at) parts.push(countdown(v, again));
-      parts.push(el("p", { class: "vote-count" }, el("b", { text: v.voters + (v.voters === 1 ? " person has voted" : " people have voted") })));
       parts.push(ballot(v, by, say, again), share(v));
     } else if (v.status === "closed") {
       parts.push(el("div", { class: "vote-card tilt-l" }, el("p", { class: "hand-title", text: "Poll closed" }),
@@ -177,7 +176,6 @@
   // Results: the same cards as voting, not tappable, with a bar behind each for its share and ✓ on the most votes
   function results(v, by) {
     var r = v.result || {}, n = names(v), st = v.staff || {}, ranked = v.style === "ranked";
-    var unit = function (p) { return ranked ? (p === 1 ? " point" : " points") : (p === 1 ? " vote" : " votes"); };
     var scores = {}; (r.scores || []).forEach(function (x) { scores[x.option] = x; });
     var total = (r.scores || []).reduce(function (t, x) { return t + x.points; }, 0);
     var top = (r.scores || []).filter(function (x) { return x.place === 1 && r.voters; }).map(function (x) { return x.option; });
@@ -190,14 +188,13 @@
       card.style.setProperty("--share", share + "%");
       var tap = card.querySelector(".vote-option-tap");
       tap.insertBefore(K.honeycomb(won ? "✓" : "", won ? "on" : "off"), tap.firstChild);
-      card.querySelector(".vote-option-name").append(el("small", { text: x.points + unit(x.points) + " · " + share + "%" +
-        (st.pick === o.id ? " · Staff pick" : "") }));
-      card.setAttribute("aria-label", o.name + ": " + x.points + unit(x.points) + ", " + share + " percent" + (won ? ", most votes" : ""));
+      // shares only, never how many voted: the bar and the percent tell the story without a small number
+      card.querySelector(".vote-option-name").append(el("small", { text: share + "%" + (st.pick === o.id ? " · Staff pick" : "") }));
+      card.setAttribute("aria-label", o.name + ": " + share + " percent" + (won ? ", most votes" : ""));
       return card;
     });
     var same = top.length === 1 && st.pick === top[0];
     return el("section", { class: "vote-results poll-results" },
-      el("p", { class: "vote-count" }, el("b", { text: r.voters ? r.voters + (r.voters === 1 ? " person voted" : " people voted") : "No one voted" })),
       el("ul", { class: "vote-options" }, cards),
       el("div", { class: "vote-card vote-plan tilt-r" },
         el("p", { class: "hand-title", text: same ? "Staff pick: the same!" : "Staff pick: " + n[st.pick] }),
