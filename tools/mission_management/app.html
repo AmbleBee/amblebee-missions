@@ -104,6 +104,7 @@ th .arrow { color: var(--sage); }
 .chip.draft { background: var(--honey-tint); border-color: transparent; color: var(--ink); }
 .chip.live { background: var(--sage-tint); border-color: transparent; color: var(--ink); }
 .chip.new { border-style: dashed; }
+.chip.uncommitted { border: 1px dashed var(--b); background: transparent; color: var(--ink); font-weight: 700; }
 .chip.suggested { background: var(--sage-tint); border-color: transparent; color: var(--ink); }
 .chip.waiting { background: var(--a-tint); border-color: var(--a-soft); color: var(--ink); }
 .muted { color: var(--ink-3); }
@@ -562,7 +563,7 @@ td.pick input, th.pick input { width: 17px; height: 17px; cursor: pointer; }
     <h2>Missions</h2>
     <p class="sub">Everything you've written, with the last time each file changed. Click a column to sort, click a mission to edit it.</p>
     <div class="controls filters" style="position:static;border:0;padding:6px 0;margin:8px 0 0">
-      <label>Status <select id="fStatus"><option value="">All</option><option value="live">Live</option><option value="unpublished">Anything to publish</option><option value="waiting">Waiting to publish</option><option value="edits">Live · Edits waiting</option><option value="draft">Drafts</option><option value="suggested">Suggested</option></select></label>
+      <label>Status <select id="fStatus"><option value="">All</option><option value="live">Live</option><option value="unpublished">Anything to publish</option><option value="waiting">Waiting to publish</option><option value="edits">Live · Edits waiting</option><option value="draft">Drafts</option><option value="suggested">Suggested</option><option value="uncommitted">Not committed</option></select></label>
       <label>Needs <select id="fIssue"><option value="">Anything or nothing</option><option value="*">Any attention</option></select></label>
       <label>Theme <select id="fThemeSel"><option value="">Any theme</option></select></label>
       <button class="link" id="clearFilters" type="button" hidden>Clear filters</button>
@@ -1152,18 +1153,39 @@ const COLS = [
 ];
 // ---------- needs attention ----------
 function inPack(ms) { return state.pack === 'all' ? ms : ms.filter(m => m.pack === state.pack); }
+// The counts live in the Status and Needs drop-downs ("Broken link (4)"), so there's no row of chips taking up room.
+// Each count is what you'd get by picking it; picking Draft turns "Show drafts" on, so its count includes them.
+function statusMatch(m, s) {
+  const p = pubState(m);
+  switch (s) {
+    case 'suggested': return !!m.suggestion;
+    case 'draft': return m.draft;
+    case 'uncommitted': return !!m.uncommitted;
+    case 'live': return p === 'live' || p === 'edits';       // on the website now, edits or not
+    case 'unpublished': return p === 'waiting' || p === 'edits';
+    default: return p === s;                                // 'waiting' or 'edits'
+  }
+}
 function renderAttention(ms) {
-  const list = inPack(ms), A = D.attention;
-  const n = code => list.filter(m => m.issues.includes(code)).length;
+  const list = inPack(ms), all = inPack(D.missions), A = D.attention;
+  const pool = v => v === 'draft' ? all : list;
+  const n = code => pool(code).filter(m => m.issues.includes(code)).length;
   const any = list.filter(m => m.issues.some(i => i !== 'draft')).length;
-  $('#attnCard').hidden = false;
-  $('#attnSub').textContent = `${any} of ${list.length} missions${state.pack === 'all' ? '' : ` in ${packName(state.pack)}`} have something to look at` +
-    (state.drafts ? '' : ' (drafts hidden)') + '. Click one to list just those missions.';
-  $('#attn').innerHTML = Object.keys(A).map(code => {
-    const c = n(code);
-    return `<button type="button" data-issue="${code}" aria-pressed="${state.issue === code}" class="${HOT.includes(code) && c ? 'hot' : ''}"
-      title="${esc(A[code].help)}" ${c ? '' : 'disabled'}>${esc(A[code].label)} <span class="n">${c}</span></button>`;
-  }).join('');
+  $('#attnCard').hidden = true;
+  const opt = (code, c) => `<option value="${code}" title="${esc(A[code].help)}">${esc(A[code].label)} (${c})</option>`;
+  const codes = Object.keys(A).map(code => [code, n(code)]);
+  const some = codes.filter(([, c]) => c), none = codes.filter(([, c]) => !c);
+  const sel = $('#fIssue');
+  sel.innerHTML = `<option value="">Anything or nothing</option><option value="*">Any attention (${any})</option>` +
+    some.map(([k, c]) => opt(k, c)).join('') +
+    (none.length ? `<optgroup label="Nothing right now">${none.map(([k, c]) => opt(k, c)).join('')}</optgroup>` : '');
+  sel.value = state.issue;
+  sel.title = `${any} of ${list.length} missions${state.pack === 'all' ? '' : ` in ${packName(state.pack)}`} have something to look at` +
+    (state.drafts ? '' : ' (drafts hidden)');
+  [...$('#fStatus').options].forEach(o => {
+    if (!o.dataset.label) o.dataset.label = o.textContent;
+    o.textContent = o.value ? `${o.dataset.label} (${pool(o.value).filter(m => statusMatch(m, o.value)).length})` : o.dataset.label;
+  });
 }
 const badges = m => m.issues.filter(i => i !== 'draft').map(i =>
   `<span class="chip issue ${HOT.includes(i) ? 'hot' : ''}" title="${esc(D.attention[i].help)}">${esc(D.attention[i].label)}</span>`).join('');
@@ -1179,21 +1201,17 @@ const PUB_CHIP = {
   waiting: ['waiting', 'Waiting', 'Waiting to publish: ready, but not on the website until it\'s pushed'],
   edits: ['waiting', 'Live · Edits waiting', 'Live on the website, but your changes show up only after they\'re pushed'],
 };
-const pubChip = m => { const [c, l, t] = PUB_CHIP[pubState(m)]; return `<span class="chip ${c}" title="${esc(t)}">${l}</span>`; };
+// saved but not committed to git yet: that's the status that matters most, so it takes the chip's place
+const pubChip = m => {
+  const [c, l, t] = PUB_CHIP[pubState(m)];
+  if (m.uncommitted) return `<span class="chip uncommitted" title="${esc(`Saved and ready, but not committed to git yet (${l})`)}">Not committed</span>`;
+  return `<span class="chip ${c}" title="${esc(t)}">${l}</span>`;
+};
 function filtersActive() { return !!(state.status || state.issue || state.theme || state.q); }
 
 function renderTable(ms) {
   let list = inPack(ms);
-  if (state.status) list = list.filter(m => {
-    const p = pubState(m);
-    switch (state.status) {
-      case 'suggested': return !!m.suggestion;
-      case 'draft': return m.draft;
-      case 'live': return p === 'live' || p === 'edits';       // on the website now, edits or not
-      case 'unpublished': return p === 'waiting' || p === 'edits';
-      default: return p === state.status;                     // 'waiting' or 'edits'
-    }
-  });
+  if (state.status) list = list.filter(m => statusMatch(m, state.status));
   if (state.issue) list = list.filter(m => state.issue === '*' ? m.issues.some(i => i !== 'draft') : m.issues.includes(state.issue));
   if (state.theme) list = list.filter(m => m.themes.includes(state.theme));
   $('#clearFilters').hidden = !filtersActive();
@@ -1227,7 +1245,7 @@ function renderTable(ms) {
     <td>${pubChip(m)}${m.suggestion ? `<span class="chip suggested" title="From suggestion #${esc(String(m.suggestion))} in AmbleBee Intake">Suggested</span>` : ''}${badges(m)}</td>
     <td class="num ${m.checked ? '' : 'muted'}">${m.checked || '–'}</td>
     <td class="num">${m.added || ''}</td>
-    <td class="num">${m.edited || ''}${m.uncommitted ? ' <span class="chip new" title="Saved, but not committed to git yet">not committed</span>' : ''}</td>
+    <td class="num">${m.edited || ''}</td>
   </tr>`).join('');
   const more = total > list.length ? `<tfoot><tr><td colspan="${COLS.length + 1}" style="border:0;padding-top:12px">Showing ${list.length} of ${total}.
     <button class="link" id="more">Show ${Math.min(PAGE, total - list.length)} more</button> · <button class="link" id="allrows">Show all</button></td></tr></tfoot>` : '';
@@ -1281,8 +1299,9 @@ $('#order').onchange = e => { state.order = e.target.value; render(); };
 $('#msort').onchange = e => { state.msort = e.target.value; render(); };
 $('#q').oninput = e => { state.q = e.target.value; state.shown = PAGE; renderTable(missionsNow()); };
 function setFilter(k, v) { state[k] = v; state.shown = PAGE; renderAttention(missionsNow()); renderTable(missionsNow()); }
-$('#fStatus').onchange = e => setFilter('status', e.target.value);
-$('#fIssue').onchange = e => setFilter('issue', e.target.value);
+function showDraftsFor(v) { if (v === 'draft' && !state.drafts) { state.drafts = true; $('#drafts').checked = true; } }
+$('#fStatus').onchange = e => { showDraftsFor(e.target.value); setFilter('status', e.target.value); };
+$('#fIssue').onchange = e => { showDraftsFor(e.target.value); setFilter('issue', e.target.value); };
 $('#fThemeSel').onchange = e => setFilter('theme', e.target.value);
 function clearFilters() {
   Object.assign(state, { status: '', issue: '', theme: '', q: '' });

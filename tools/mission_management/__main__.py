@@ -302,6 +302,7 @@ ATTENTION = {        # code: (label shown on the dashboard, what it means)
     "stale": ("Checked 6+ months ago", "Worth a fresh look: hours, prices and places change"),
     "no-themes": ("No themes", "Won't show under any of the website's theme chips"),
     "no-about": ("No 'About this place'", "Missions with a place only; the page is thinner without it"),
+    "no-link": ("No link", "Has a place, but no website or extra link to it"),
     "link-broken": ("Broken link", "A website or extra link didn't work the last time links were checked"),
     "link-moved": ("Link moved", "A link now sends people somewhere else; check it still points to the right page"),
     "twin": ("Possible duplicate", "Very close to, or named like, another mission; open it to compare, or mark them different on purpose"),
@@ -385,6 +386,8 @@ def attention(rows, packs, settings):
             issues.append("no-themes")
         if (rule == "required" or data.get("place")) and not data.get("about"):
             issues.append("no-about")
+        if data.get("place") and not linkcheck.mission_links(data):
+            issues.append("no-link")
         found = {x["status"] for x in linkcheck.results_for(data, link_marks) if not x.get("manual")}
         if "broken" in found:
             issues.append("link-broken")
