@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 3
 name: Earthlodges and Blockhouses at Fort Lincoln
 mode: adventure
@@ -7,25 +8,27 @@ place:
   name: Fort Abraham Lincoln State Park
   area: South of Mandan, Missouri River
   address: 4480 Fort Lincoln Rd, Mandan, ND 58554
-  coords: [46.75450, -100.84550]  # APPROX: set at the park entrance / visitor center before publishing
+  coords: [46.76562, -100.84607]
   website: https://www.parkrec.nd.gov/fort-abraham-lincoln-state-park
-short: Duck into a Mandan earthlodge, then climb the hill to the fort's blockhouses. Spot the river!
+short: Fort Abraham Lincoln near Mandan. Duck into an earthlodge, then climb to the fort's blockhouses.
 description: >
   Spend a few hours at a state park on the Missouri River where two worlds sit
   side by side. Start at On-A-Slant Village, with its six reconstructed Mandan
-  earthlodges, and imagine a whole family living around the fire. Then head up the
-  hill to the wooden blockhouses of the old army post and look out over the river
-  and prairie. From Memorial Day to Labor Day you can add a guided tour that
-  includes the Custer House. Get a photo of everyone in the doorway of an earthlodge.
+  earthlodges, and imagine a whole family living around the fire. Then head up
+  the hill to the wooden blockhouses of the old army post and look out over the
+  river and prairie. In summer you can add a guided tour of the Custer House.
+  Get a photo of everyone in the doorway of an earthlodge.
 about: >
-  On-A-Slant Village was home to Mandan people from about the 1500s until
-  1781, when smallpox swept the Upper Missouri. The earthlodges were rebuilt
-  on their original sites, and families once lived dozens to a lodge.
+  On-A-Slant Village was home to about 1,500 Mandan people in roughly 85
+  earthlodges, from the 1500s until 1781, when smallpox swept the Upper
+  Missouri. In the 1930s, Civilian Conservation Corps crews rebuilt lodges on
+  their original sites with guidance from Scattered Corn, the first woman to
+  serve as a Mandan corn priest.
 
   The army fort above was built in 1872. In 1876 Lt. Col. George Custer rode
   out from here to the Little Bighorn and never came back. His house was
-  rebuilt in 1989, and the blockhouses date to the Civilian Conservation
-  Corps in the 1930s.
+  rebuilt in the 1980s, and the CCC built the blockhouses and the stone
+  visitor center museum in the 1930s. Tours of the Custer House run in summer.
 for_kids:
   short: Explore a dirt house and a wooden fort!
   steps:
@@ -42,6 +45,5 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, seasonal]
-themes: [parks, history, lakes-rivers]
-tags: [history, native-american, fort, state-park, family, mandan, bismarck]
-credit:
+themes: [history, parks, lakes-rivers, views, museums, walks]
+tags: [fort abraham lincoln state park, on-a-slant village, mandan earthlodges, custer house, north dakota history, things to do near bismarck]

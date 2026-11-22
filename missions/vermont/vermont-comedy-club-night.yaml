@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 3
 name: Laugh Night at Vermont Comedy Club
 mode: adventure
@@ -7,26 +8,28 @@ place:
   name: Vermont Comedy Club
   area: Downtown Burlington
   address: 101 Main St, Burlington, VT 05401
-  coords: [44.47590, -73.21390]  # APPROX: set at the entrance before publishing
+  coords: [44.47573, -73.21526]
   website: https://www.vermontcomedyclub.com
-short: Grab a cabaret table with your crew and catch a standup show downtown. Loudest laugher buys snacks.
+short: Vermont Comedy Club in Burlington. Catch a standup show with your crew. Loudest laugher buys snacks.
 description: >
   Round up your friends for a show at the Vermont Comedy Club, the locally owned
-  standup, improv and sketch club at the corner of Main and Pine. Get there early to hang
-  out in the lounge, then grab a cabaret table in the 140-seat showroom with food and
-  drinks from the bar. Pick a touring headliner or a local improv night, and agree that whoever laughs loudest buys the next round of snacks. Snap a
-  group photo in the lounge before the show. Book tickets on the club's own site,
-  arrive on time (more than 30 minutes late and you won't be let in), and check
-  each show's age note: most are all ages but 18+ recommended.
+  standup, improv and sketch club at the corner of Main and Pine. Get there early
+  to hang out in the lounge, then grab a cabaret table in the intimate showroom
+  with food and drinks from the bar. Pick a touring headliner or a local improv
+  night, and agree that whoever laughs loudest buys the next round of snacks.
+  Snap a group photo in the lounge before the show.
 about: >
   The Vermont Comedy Club opened in downtown Burlington in November 2015,
   started by the married couple Nathan Hartswick and Natalie Miller. More than
   1,000 people have taken its standup, improv and sketch classes, and some
   alumni now teach at Second City.
 
-  In 2025 the founders started a nonprofit, Vermont Comedy Arts, which now
-  runs the classes and the yearly Vermont's Funniest Comedian contest. Church
-  Street Marketplace is a block away for dinner before or a walk after.
+  In 2025, for the club's 10th birthday, the founders started a nonprofit,
+  Vermont Comedy Arts, which now runs the classes and the yearly Vermont's
+  Funniest Comedian contest and is opening its own theater across the street.
+  Book tickets on the club's own site, arrive on time, since latecomers may
+  not be let in, and check each show's age note. Church Street Marketplace is
+  a block away for dinner before or a walk after.
 duration: short
 effort: easy
 cost: $$
@@ -35,6 +38,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [tickets]
-themes: [drinks, shows, playful]
-tags: [comedy, standup, improv, nightlife, rainy-day, downtown, burlington]
-credit:
+themes: [drinks, shows, playful, food]
+tags: [vermont comedy club, burlington comedy show, standup comedy vermont, improv comedy, things to do in burlington vt, burlington nightlife]

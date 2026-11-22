@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 10
 name: Inside Frank Lloyd Wright's Dana-Thomas House
 mode: both
@@ -7,7 +8,7 @@ place:
   name: Dana-Thomas House State Historic Site
   area: Downtown Springfield
   address: 301 E Lawrence Ave, Springfield, IL 62703
-  coords: [39.79466, -89.64838]  # APPROX: set at the entrance before publishing
+  coords: [39.79416, -89.65153]
   website: https://www.dana-thomas.org
   links:
     - label: State historic site
@@ -16,20 +17,23 @@ short: Dana-Thomas House in Springfield. Tour Frank Lloyd Wright's prairie house
 description: >
   Book a guided tour of the Dana-Thomas House, a prairie-style home Frank Lloyd
   Wright designed for a Springfield socialite, still holding more than 100 pieces
-  of his custom furniture and over 250 works of original art glass. The guide walks you
-  through the hidden entry, the two-story dining room and the old party gallery
-  in about an hour. Pick one window you'd steal if you could and take a photo of
-  it from the sidewalk afterward, since photos are allowed only outside the
-  house. The tour is free with donations welcome; reserve a spot ahead, and
-  expect lots of stairs and narrow halls.
+  of his custom furniture and over 250 works of original art glass. The guide
+  walks you through the hidden entry, the two-story dining room and the old
+  party gallery in about an hour. Pick one window you'd steal if you could and
+  take a photo of it from the sidewalk afterward, since photos are allowed
+  only outside the house.
 about: >
-  Frank Lloyd Wright designed the house in the early 1900s for Susan
-  Lawrence Dana, a wealthy Springfield woman known for her parties. It still
-  holds the largest collection of Wright's original furniture and art glass
-  in any of his houses, mostly because it stayed in careful hands for decades.
+  Frank Lloyd Wright finished the house in 1904 for Susan Lawrence Dana, a
+  wealthy Springfield woman known for her parties. With 35 rooms, it was the
+  biggest and most lavish home he'd designed up to then, and today it holds
+  the largest collection of his original furniture and art glass still in the
+  house it was made for. After Dana moved out, a publishing company bought it
+  in 1944 and changed almost nothing, which is why so much survived.
 
-  The State of Illinois bought it in 1981 and restored it. Photos are only
-  allowed outside. Reserve a spot ahead, and expect stairs and narrow halls.
+  The State of Illinois bought it in 1981 and restored it. Tours are free,
+  with donations welcome. Reserve ahead when you can, though walk-ups may get
+  a spot, and expect lots of stairs and narrow halls. Wright fans should ask
+  about the longer in-depth tour, which visits rooms the regular tour skips.
 steps:
   - The front of the house from across the street
   - Your favorite art-glass window, from outside
@@ -43,4 +47,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours, reservation]
 themes: [history, architecture, art, museums]
-tags: [dana-thomas house, frank lloyd wright, prairie style house, art glass windows, house tour, springfield]
+tags: [dana-thomas house, frank lloyd wright, prairie style house, art glass windows, free things to do springfield il, springfield illinois]

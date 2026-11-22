@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 18
 name: Ha Ha Tonka Castle Ruins
 mode: both
@@ -6,27 +7,30 @@ who: [solo, friends, family, kids]
 place:
   name: Ha Ha Tonka State Park (castle ruins parking)
   area: Lake of the Ozarks, near Camdenton
-  coords: [37.97300, -92.76700]  # APPROX: set at the castle ruins lot before publishing
+  address: Castle Ruins, Natural Bridge Rd, Camdenton, MO 65020
+  coords: [37.97540, -92.76770]
   website: https://mostateparks.com/park/ha-ha-tonka-state-park
 short: Ha Ha Tonka State Park near Camdenton. Explore stone castle ruins over the Lake of the Ozarks.
 description: >
   Walk out to the shell of a 1900s stone mansion that burned in 1942, standing
   on a bluff high above the Lake of the Ozarks. Explore the ruins and the old
   water tower, then take the boardwalk stairs down to the big blue spring and
-  the natural bridge. Each pick the room you'd have claimed if the castle were
-  still standing, and get a photo framed in one of the empty stone windows. The
-  stairs back up are a workout.
+  the natural bridge. Pick the room you'd have claimed if the castle were
+  still standing, and get a photo framed in one of the empty stone windows.
+  The stairs back up are a workout.
 about: >
   Kansas City businessman Robert Snyder started building his dream castle
-  here in 1905, but he died the next year in one of Missouri's early car
-  crashes. His sons finished it in the 1920s, and a fire, said to have
-  started from fireplace sparks, gutted it in 1942.
+  here in 1905 with Scottish stonemasons, but he died the next year in one of
+  Missouri's early car crashes. His sons finished it in 1922, with a stable
+  big enough for 100 horses and 30 cars. It was later run as a hotel, until
+  sparks from a chimney set the roof on fire in 1942 and gutted it. Vandals
+  burned the water tower in 1976.
 
-  The spring at the bottom of the bluff pours out millions of gallons of
-  water every day. The name Ha Ha Tonka is often said to mean "laughing
-  waters." The stairs back up are a workout.
+  The spring at the bottom of the 250-foot bluff pours out about 48 million
+  gallons of cold water every day. The name Ha Ha Tonka is often said to mean
+  "laughing waters."
 for_kids:
-  short: Castle hunt! Find each thing.
+  short: Castle hunt! Can you find them all?
   steps:
     - A castle window
     - The tall stone tower
@@ -41,5 +45,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [views, hiking, history]
-tags: [ha ha tonka castle ruins, lake of the ozarks, natural bridge, ha ha tonka spring, castle hike, ozarks]
+themes: [views, hiking, history, parks, lakes-rivers]
+tags: [ha ha tonka castle ruins, lake of the ozarks, natural bridge, ha ha tonka spring, missouri castle ruins, camdenton mo]

@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 2
 name: Flying Horses and Napatree Point
 mode: adventure
@@ -7,28 +8,31 @@ place:
   name: Flying Horse Carousel
   area: Watch Hill, Westerly
   address: 151 Bay St, Westerly, RI 02891
-  coords: [41.31110, -71.85810]  # APPROX: set at the entrance before publishing
+  coords: [41.30919, -71.85813]
   website: https://merrygoroundbeach.com
-short: Grab the brass ring on Watch Hill's 1800s flying-horse carousel, then walk Napatree Point.
+short: Watch Hill in Westerly, RI. Ride the 1800s flying-horse carousel, then walk out Napatree Point.
 description: >
   The Flying Horse Carousel in Watch Hill has been spinning since the 1800s,
   and its hand-carved horses hang from chains, so they swing out and "fly" as
-  it turns. It's for kids only (ages 2 to 12, under 100 lb), so grown-ups cheer from
-  the rail while riders on the outside horses reach for the rings and try to
-  catch the brass one for a free ride. Afterward, walk out onto Napatree Point,
-  a sandy strip of beach and dunes with ocean on one side and a calm bay on
-  the other; stay on the marked paths and off the roped-off nesting areas. Get
-  a photo of your rider flying past on their horse. Summer parking in Watch
-  Hill fills up early, so go in the morning.
+  it turns. It's for kids only (ages 2 to 12, under 100 lb), so grown-ups cheer
+  from the rail while riders on the outside horses reach for the rings and try
+  to catch the brass one for a free ride. Afterward, walk out onto Napatree
+  Point, a sandy strip of beach and dunes with ocean on one side and a calm bay
+  on the other; stay on the marked paths and off the roped-off nesting areas.
+  Get a photo of your rider flying past on their horse.
 about: >
-  The Flying Horse Carousel dates to the late 1800s, and it's one of the
-  oldest carousels of its kind in the country. Each horse was carved from a
-  single block of wood, with real horsehair manes and agate eyes. It's a
-  National Historic Landmark.
+  The Flying Horse Carousel is the oldest operating carousel in the country
+  whose horses hang from chains, and it's a National Historic Landmark. Each
+  horse's body was carved from a single block of wood, and the horses still
+  have their original agate eyes, with real horsehair manes and tails. It
+  runs in summer only.
 
-  Napatree Point was once lined with summer houses, until the 1938 hurricane
-  swept nearly all of them away. Walk to the far end and you'll find the
-  ruins of Fort Mansfield, an old army fort from around 1900.
+  Napatree Point once held 39 summer cottages, until the 1938 hurricane swept
+  every one of them away and took 15 lives. Walk to the far end to find the
+  concrete gun pits of Fort Mansfield, an army fort from 1901 that war games
+  soon showed enemy ships could slip right past. The roped-off dunes protect
+  nesting piping plovers, an endangered shorebird. Summer parking in Watch
+  Hill fills up early, so go in the morning.
 for_kids:
   short: Ride a flying horse and look for the brass ring!
   steps:
@@ -45,6 +49,5 @@ season: [summer]
 time_of_day: morning
 travel: local
 check_ahead: [hours, seasonal]
-themes: [walks, beach, history]
-tags: [carousel, beach, history, kids, walking, watch-hill, westerly]
-credit:
+themes: [playful, history, beach, walks, wildlife, views]
+tags: [flying horse carousel, watch hill ri, napatree point, fort mansfield, rhode island beach day, westerly ri]

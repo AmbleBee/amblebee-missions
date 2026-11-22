@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 15
 name: Petersen Automotive Museum
 mode: both
@@ -7,33 +8,35 @@ place:
   name: Petersen Automotive Museum
   area: Museum Row, Miracle Mile, Los Angeles
   address: 6060 Wilshire Blvd, Los Angeles, CA 90036
-  coords: [34.06240, -118.36110]  # APPROX: set at the entrance before publishing
+  coords: [34.06203, -118.36136]
   website: https://www.petersen.org
 short: Petersen Automotive Museum in LA. Tour the galleries and the Vault, and pick your dream garage.
 description: >
   Explore three floors of car history and LA car culture, then add the
   Vault, the basement full of rare classics, supercars, movie cars and
-  presidential limousines. Each pick three cars for your dream garage as you
-  go, then compare lists over lunch. The photo to get: you in front of the
-  wild red-and-steel building outside.
+  presidential limousines. Pick three cars for your dream garage as you go,
+  and if you came with others, compare lists over lunch. The photo to get:
+  you in front of the wild red-and-steel building outside.
 about: >
   The Petersen was founded in 1994 by Robert Petersen, the publisher of Hot
   Rod magazine. In December 2015 it reopened after a $125 million makeover by
   architects Kohn Pedersen Fox, who wrapped the bright red building in curving
   ribbons of stainless steel.
 
-  Inside are more than 25 galleries over three floors, and it has shown famous
+  Inside are more than 25 galleries over three floors, plus a kids' Discovery
+  Center and a 1910 Model T you're allowed to sit in. It has shown famous
   cars like the Magnum, P.I. Ferrari, the 1989 Batmobile and a De Tomaso
-  Pantera that belonged to Elvis. The Vault downstairs holds many more cars
-  that rarely go on display. It needs its own tour ticket, so book it with
-  your admission.
+  Pantera that belonged to Elvis. The Vault downstairs holds more than 300
+  rare cars and motorcycles that rarely go on display. It needs its own
+  ticket, so book it with your admission, and note that kids under 4 and
+  strollers aren't allowed in the Vault.
 for_kids:
-  short: Car hunt! Find each car.
+  short: Car hunt! Can you find them all?
   steps:
     - A really old car
     - A race car
     - A car from a movie
-    - Your favorite color car
+    - You sitting in the Model T
     - A selfie with your favorite car!
 duration: half-day
 effort: easy
@@ -43,5 +46,6 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
+discounts: [senior]
 themes: [museums, vehicles, architecture, movies]
-tags: [petersen automotive museum, the vault, movie cars, car museum, museum row, los-angeles]
+tags: [petersen automotive museum, the vault, movie cars, car museum, museum row, things to do in los angeles]

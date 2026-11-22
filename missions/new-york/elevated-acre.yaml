@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 16
 name: The Elevated Acre
 mode: both
@@ -7,28 +8,29 @@ place:
   name: The Elevated Acre, 55 Water Street
   area: Financial District, Lower Manhattan
   address: 55 Water St, New York, NY 10041
-  coords: [40.70320, -74.00940]  # APPROX: set at the Water St escalators before publishing
+  coords: [40.70335, -74.00855]
 short: The Elevated Acre in the Financial District. Ride the escalators to a hidden lawn over the river.
 description: >
   Find the escalators tucked between the towers at 55 Water Street and ride up
-  to a secret one-acre park three stories above the street, with a lawn,
-  dune grasses and a wooden boardwalk looking out over the East River and the
-  Brooklyn Bridge. Bring a snack, grab a spot on the amphitheater steps, and
-  watch the helicopters and ferries go by. Get a photo of you on the
-  boardwalk with the river behind you. It's free, but it sometimes closes for
-  private events.
+  to a secret one-acre park three stories above the street. Walk up the
+  sloping path through the dune grasses and watch the view open up, until the
+  East River and the Brooklyn Bridge appear in front of you. Bring a snack,
+  grab a spot on the amphitheater steps, and watch the helicopters and
+  ferries go by. Get a photo of you on the boardwalk with the river behind
+  you.
 about: >
   The Elevated Acre is a "privately owned public space," a park a building's
   owners built and keep open to everyone in exchange for being allowed to
   build bigger. Today's design, by Ken Smith and Rogers Marvel Architects, won
-  a design competition and opened in 2005.
+  a design competition and opened in 2005. The slope is designed to hide the
+  river until you reach the top.
 
   It has a lawn ringed by amphitheater steps, a hardwood boardwalk about 30
-  feet above the East River, and a light tower you can spot from the FDR
-  Drive. It's free, but it sometimes closes for private events, so check
-  before you go.
+  feet above the street with views to Governors Island and Brooklyn Heights,
+  and a light tower you can spot from the FDR Drive. It's free, but it
+  sometimes closes for private events, so check before you go.
 for_kids:
-  short: Secret park! Find each thing.
+  short: Secret park! Can you find them all?
   steps:
     - The moving stairs
     - A boat on the river
@@ -44,4 +46,4 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 themes: [views, picnic, lakes-rivers, quirky]
-tags: [elevated acre, hidden park nyc, 55 water street, east river views, privately owned public space, nyc]
+tags: [elevated acre, hidden park nyc, 55 water street, east river views, privately owned public space, free things to do nyc]

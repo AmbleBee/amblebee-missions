@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 16
 name: Edison and Ford Winter Estates
 mode: both
@@ -6,27 +7,31 @@ who: [solo, friends, family, kids]
 place:
   name: Edison and Ford Winter Estates
   area: McGregor Blvd, Fort Myers
-  coords: [26.63500, -81.87800]  # APPROX: set at the entrance before publishing
+  address: 2350 McGregor Blvd, Fort Myers, FL 33901
+  coords: [26.63429, -81.87949]
   website: https://www.edisonfordwinterestates.org
 short: Edison and Ford Winter Estates in Fort Myers. Tour the inventors' homes and Edison's lab.
 description: >
   Explore the riverfront winter homes of Thomas Edison and his friend Henry
   Ford, side by side. Walk through Edison's lab, still full of his bottles
-  and equipment, then the museum of his inventions. Each pick the invention
-  you couldn't live without and defend it. The photo to get: you under the
-  enormous banyan tree.
+  and equipment, then the museum of his inventions. Pick the invention you
+  couldn't live without, and if you're with others, defend it. The photo to
+  get: you under the enormous banyan tree.
 about: >
   Edison bought land here in 1885 and wintered in Fort Myers for decades.
   Ford bought the house next door in 1916. In the late 1920s, Edison, Ford
   and tire maker Harvey Firestone teamed up in this lab to search for a
   plant that could make rubber in America. Edison tested thousands of
-  plants and settled on goldenrod.
+  plants and settled on goldenrod, and the lab is now a National Historic
+  Chemical Landmark.
 
-  The banyan tree, a gift from Firestone, was planted in the 1920s and is
-  now one of the largest in the continental U.S. Buy tickets ahead in
-  winter.
+  The banyan tree, a gift from Firestone in 1925, spreads about 400 feet
+  around and is one of the largest in the continental U.S. A regular ticket
+  covers the gardens, museum and lab, and you see the homes from outside;
+  going inside them takes a separate guided tour for ages 7 and up. Buy
+  tickets ahead in winter.
 for_kids:
-  short: Invention hunt! Find each thing.
+  short: Invention hunt! Can you find them all?
   steps:
     - An old light bulb
     - An old car
@@ -41,5 +46,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [tickets]
-themes: [gardens, history, museums, science]
-tags: [edison ford winter estates, thomas edison lab, henry ford, giant banyan tree, inventors history, southwest-florida]
+themes: [gardens, history, museums, science, vehicles, architecture]
+tags: [edison ford winter estates, thomas edison lab, henry ford, giant banyan tree, inventors history, fort myers fl]

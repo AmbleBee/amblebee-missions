@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 62
 name: Mineral Wells Fossil Hunt
 mode: adventure
@@ -7,23 +8,27 @@ place:
   name: Mineral Wells Fossil Park
   area: Indian Creek Rd, Mineral Wells
   address: 2375 Indian Creek Rd, Mineral Wells, TX 76067
-  coords: [32.8263, -98.1913]  # Visit Mineral Wells map link (parking lot at end of Indian Creek Rd)
+  coords: [32.82597, -98.19055]
   website: https://visitmineralwells.org/mineral-wells-fossil-park
-short: Hunt for 300-million-year-old sea fossils in an old dirt pit, and keep what you find!
+short: Mineral Wells Fossil Park in Texas. Hunt 300-million-year-old sea fossils and keep what you find!
 description: >
   Spend a morning crawling around an old city borrow pit outside Mineral Wells,
   where erosion has uncovered an ancient seafloor full of fossils. The most common
   finds are little crinoid stems (sea lilies), but sharp eyes also turn up shells,
   snails and, if you're lucky, a shark tooth or a trilobite, and you can keep what
-  you find for personal use. It's surface collecting only, so bring zip bags, knee pads, small garden tools (no
-  shovels), lots of water and some shade, since the site is primitive with only
-  portable restrooms. Get a photo of the kids holding up their best find. Stay out
-  of the steep, crumbly edges and enter only at the marked points, and in summer go
-  early or in the evening.
+  you find for personal use. It's surface collecting only, so bring zip bags, knee
+  pads, small garden tools (no shovels), lots of water and some shade, since the
+  site is primitive with only portable restrooms. Get a photo of the kids holding
+  up their best find. Stay out of the steep, crumbly edges and enter only at the
+  marked points, and in summer go early or in the evening.
 about: >
   The fossils here are about 300 million years old, from a shallow sea that
-  covered this part of Texas. The pit was dug for fill dirt, then turned
-  into a fossil park by the city.
+  covered North Texas. The pit was dug for fill dirt for the city landfill,
+  then turned into a free 8-acre fossil park by the city and the Dallas
+  Paleontological Society in 2010. The little round crinoid pieces are
+  sometimes called "Indian beads," and the best hunting is right after a
+  rain, when fresh fossils wash out. The city holds a Crazy Fossil Dig event
+  every October.
 
   Mineral Wells became famous in the late 1800s for its "Crazy Water," sold
   as a cure for just about anything. The town's 1929 Baker Hotel, long
@@ -43,7 +48,6 @@ setting: outdoor
 season: any
 time_of_day: morning
 travel: drive
-check_ahead: [conditions]
+check_ahead: [hours, conditions]
 themes: [rocks-fossils, science, playful]
-tags: [fossils, digging, kids, free, nature, science, mineral-wells]
-credit:
+tags: [mineral wells fossil park, fossil hunting texas, keep what you find, crinoid fossils, dfw day trip with kids, mineral wells tx]

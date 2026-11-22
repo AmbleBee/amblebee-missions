@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 61
 name: Tiffany Glass at the Morse
 mode: adventure
@@ -7,24 +8,26 @@ place:
   name: Charles Hosmer Morse Museum of American Art
   area: Park Avenue, Winter Park
   address: 445 N Park Ave, Winter Park, FL 32789
-  coords: [28.60000, -81.35090]  # APPROX: set at the entrance before publishing
+  coords: [28.60086, -81.35134]
   website: https://www.morsemuseum.org
 short: Morse Museum in Winter Park. Glowing Tiffany glass and a jeweled chapel from 1893.
 description: >
   Wander rooms of glowing leaded-glass windows, lamps and jewelry, then sit
-  in the jeweled Tiffany chapel for a few quiet minutes. Each pick the one
-  window you'd take home if you could. The photo to get: you out front with
-  the museum sign, since photos aren't allowed in some galleries. Then
-  stroll Park Avenue for coffee.
+  in the jeweled Tiffany chapel for a few quiet minutes. Pick the one window
+  you'd take home if you could. The photo to get: you out front with the
+  museum sign. Inside, check the signs before snapping, and never use flash.
+  Then stroll Park Avenue for coffee.
 about: >
-  The Morse holds the world's biggest collection of work by Louis Comfort
-  Tiffany. Its chapel was built for the 1893 World's Fair in Chicago. Many
-  pieces were saved from Tiffany's Long Island estate after a fire in 1957 by
-  the museum's founders, Jeannette and Hugh McKean, and the chapel was put
-  back together here in 1999.
+  The Morse holds the world's most complete collection of work by Louis
+  Comfort Tiffany. Its chapel was built for the 1893 World's Fair in Chicago.
+  Many pieces were saved from Tiffany's Long Island estate after a fire in
+  1957 by the museum's founders, Jeannette and Hugh McKean, and the chapel
+  was put back together here in 1999.
 
-  Admission is cheap, and the museum has had free evenings in the cooler
-  months, so check the schedule.
+  Admission is cheap, and it's free on Friday evenings from November through
+  April. Each December, the museum lights up Tiffany windows in Winter Park's
+  Central Park for the free Christmas in the Park concert. Check the schedule
+  before you go.
 duration: short
 effort: easy
 cost: $
@@ -34,5 +37,5 @@ time_of_day: daytime
 travel: local
 check_ahead: [hours]
 discounts: [senior, student]
-themes: [museums, art, relaxing]
-tags: [morse museum, tiffany glass, tiffany chapel, park avenue winter park, stained glass, winter-park]
+themes: [museums, art, relaxing, history, walks]
+tags: [morse museum, tiffany glass, tiffany chapel, park avenue winter park, things to do near orlando, winter park fl]

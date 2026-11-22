@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 14
 name: Luckenbach, Texas
 mode: both
@@ -6,33 +7,33 @@ who: [solo, friends, family, kids]
 place:
   name: Luckenbach General Store and Dance Hall
   area: Luckenbach, near Fredericksburg
-  coords: [30.18000, -98.75300]  # APPROX: set at the general store before publishing
+  coords: [30.17905, -98.75626]
   website: https://luckenbachtexas.com
-short: Hang out in tiny Luckenbach, where everybody's somebody. Catch a pickers' circle.
+short: Luckenbach, Texas, where everybody's somebody. Grab a cold drink and catch a pickers' circle.
 description: >
   Visit Luckenbach, a town so small it's basically a general store, a dance
   hall and a few shady oak trees, made famous by the country song. Grab a cold
-  drink from the store (which is also the post office) and sit in on a
-  pickers' circle, where local musicians play acoustic songs under the trees.
-  Each pick your favorite song of the afternoon. Get a photo of you
-  at the old general store. Weekends usually have live music; check the
-  schedule.
+  drink from the store, which still wears its old post office sign, and sit in
+  on a pickers' circle, where local musicians play acoustic songs under the
+  trees most days, especially weekends. Pick your favorite song of the
+  afternoon. Get a photo with the bronze bust of Hondo Crouch out front.
 about: >
-  German settlers founded Luckenbach around 1850, and its general store and
-  post office date back to that era. By the 1970s the town was nearly empty,
-  until a local character named Hondo Crouch bought it and made it a party
-  spot.
+  German settlers founded Luckenbach in the 1840s, and its combination general
+  store, post office and beer joint opened in 1886. By 1970 the town was nearly
+  empty and listed in the paper as "town, pop. 3, for sale," so local
+  character Hondo Crouch and two partners bought it for $30,000 and turned it
+  into a party spot. The post office closed for good in 1971.
 
   Waylon Jennings' 1977 hit "Luckenbach, Texas" made it famous. The town's
   motto is "Everybody's Somebody in Luckenbach," and there are bigger
-  concerts at the dance hall on some weekends.
+  concerts at the dance hall on some weekends, so check the schedule.
 for_kids:
-  short: Tiny town hunt! Find each thing.
+  short: Tiny town hunt! Can you find them all?
   steps:
     - The old store
     - A guitar
     - A chicken
-    - A big oak tree
+    - The statue of Hondo
     - A selfie in Luckenbach!
 duration: short
 effort: easy
@@ -42,6 +43,5 @@ season: any
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours]
-themes: [history, shows, quirky, small-towns]
-tags: [music, small-town, quirky, history, hill-country]
-credit:
+themes: [history, shows, quirky, small-towns, romantic]
+tags: [luckenbach texas, pickers circle, texas hill country, live country music, fredericksburg day trip, waylon jennings]

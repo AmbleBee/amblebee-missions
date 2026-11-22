@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 9
 name: Galloping Ghost Arcade
 mode: both
@@ -7,26 +8,28 @@ place:
   name: Galloping Ghost Arcade
   area: Ogden Ave, Brookfield
   address: 9415 Ogden Ave, Brookfield, IL 60513
-  coords: [41.82330, -87.84420]
+  coords: [41.81709, -87.85568]
+  website: https://www.gallopingghostarcade.com
 short: Galloping Ghost Arcade near Chicago. Pay once and play hundreds of arcade games on free play.
 description: >
   Out in suburban Brookfield, one door fee unlocks a huge, dim, packed arcade
-  with hundreds and hundreds of cabinets all set to free play, from 80s classics to
-  fighting games and rare Japanese machines you won't see anywhere else. Split
-  up, each find the strangest game in the building, then bring the others
-  back to play it. Finish with a head-to-head tournament on whatever game you
-  argued about most. Get a photo of the group lit up by the screens. The
-  sister pinball hall, Galloping Ghost Pinball, a short walk down Ogden Ave,
-  has its own separate fee.
+  with more than a thousand cabinets all set to free play, from 80s classics
+  to fighting games and rare Japanese machines you won't see anywhere else.
+  Split up, each find the strangest game in the building, then bring the
+  others back to play it. Finish with a head-to-head tournament on whatever
+  game you argued about most. Get a photo of the group lit up by the screens.
 about: >
-  Galloping Ghost opened in 2010 and has grown into one of the biggest
-  arcades in the country, with hundreds of cabinets. The owners even make
-  their own arcade games, which you can play here.
+  Galloping Ghost opened on Friday the 13th in August 2010 with 130 games
+  rescued from the scrap heap. Today it has more than 1,000 arcade games,
+  which makes it the largest video arcade in the United States, and a new
+  "Monday Mystery Game" joins the floor every week.
 
-  Look for the rare Japanese machines and the games you've never heard of;
-  that's where the weirdest finds are. The sister pinball hall down the
-  street has its own separate fee.
-duration: short
+  The owners even make their own arcade games, like Dark Presence, which you
+  can play here. Look for the rare Japanese machines and the oddities, like a
+  spinning Sega R360 cabinet, one of only about 100 ever made. The sister
+  pinball hall, Galloping Ghost Pinball, is a short walk down Ogden Ave and
+  has its own separate fee.
+duration: half-day
 effort: easy
 cost: $$
 setting: indoor
@@ -35,4 +38,4 @@ time_of_day: any
 travel: drive
 check_ahead: [hours]
 themes: [games, quirky, playful]
-tags: [galloping ghost arcade, retro arcade, free play arcade, brookfield, competitive, chicago-suburbs]
+tags: [galloping ghost arcade, retro arcade, free play arcade, largest arcade in america, brookfield il, things to do near chicago]

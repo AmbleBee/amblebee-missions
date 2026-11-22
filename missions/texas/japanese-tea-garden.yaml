@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 19
 name: Japanese Tea Garden
 mode: both
@@ -6,27 +7,31 @@ who: [solo, friends, family, kids]
 place:
   name: Japanese Tea Garden, Brackenridge Park
   area: Brackenridge Park, San Antonio
-  coords: [29.46100, -98.47800]  # APPROX: set at the entrance before publishing
-short: Wander the stone paths and koi ponds of San Antonio's Japanese Tea Garden, built in an old quarry.
+  address: 3853 N St Mary's St, San Antonio, TX 78212
+  coords: [29.46086, -98.47711]
+  website: https://www.sa.gov/Directory/Departments/Parks/Parks-Facilities/Buildings-Centers/Japanese-Tea-Garden
+short: Japanese Tea Garden in San Antonio. Wander koi ponds and stone bridges in an old quarry.
 description: >
   Explore a lush garden built inside an old limestone quarry, with stone
   bridges, a 60-foot waterfall, shady paths and ponds full of giant koi. Walk
-  down into the sunken garden, cross the bridges, and each pick your favorite
+  down into the sunken garden, cross the bridges, and pick your favorite
   quiet spot. Look up at the old quarry walls and the pagoda pavilion. Get a
-  photo of you on one of the stone bridges. It's free, and the
-  café makes a nice stop for lunch.
+  photo of you on one of the stone bridges. It's free, and the café makes a
+  nice stop for lunch.
 about: >
   The city turned an old limestone quarry into the garden around 1918, using
   prison labor. In 1919 the Japanese-American artist Kimi Eizo Jingu moved
-  in, and his family lived on the grounds and ran its tea house for over 20
-  years.
+  in, and his family lived on the grounds for more than 20 years, opening a
+  tea house in their stone home in 1926. That house turned 100 in 2026.
 
   In 1942, during World War II, the family was evicted and the garden
-  renamed the Chinese Tea Garden. The city restored the original name in
-  1984. The concrete "wood" entrance gate is by Dionicio Rodriguez, a famous
-  faux bois artist.
+  renamed the Chinese Tea Garden. The concrete "wood" entrance gate by faux
+  bois artist Dionicio Rodriguez went up that same year and carried the
+  Chinese name for decades. The city restored the original name in 1984.
+  The upper garden and café are reachable by ramp, but the lower garden is
+  stairs only.
 for_kids:
-  short: Garden hunt! Find each thing.
+  short: Garden hunt! Can you find them all?
   steps:
     - A big koi fish
     - The waterfall
@@ -39,7 +44,6 @@ cost: free
 setting: outdoor
 season: any
 time_of_day: daytime
-travel: day-trip
-themes: [waterfalls, wildlife, gardens, relaxing]
-tags: [gardens, waterfall, koi, calm, free, san-antonio]
-credit:
+travel: local
+themes: [waterfalls, gardens, relaxing, history]
+tags: [japanese tea garden, brackenridge park, koi pond, jingu house, sunken garden, things to do in san antonio]

@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 3
 name: Mastodons and Stars in Ann Arbor
 mode: both
@@ -7,26 +8,30 @@ place:
   name: University of Michigan Museum of Natural History
   area: Central Campus, Ann Arbor
   address: 1105 N University Ave, Ann Arbor, MI 48109
-  coords: [42.27750, -83.73520]  # APPROX: set at the entrance before publishing
+  coords: [42.27930, -83.73377]
   website: https://lsa.umich.edu/ummnh
-short: U-M Museum of Natural History in Ann Arbor. Meet the dueling mastodons, then the planetarium.
+short: U-M Museum of Natural History in Ann Arbor. Meet the mastodon couple, then the planetarium.
 description: >
   Walk into the bright atrium, where a pair of full-size mastodon skeletons
-  face off under two hanging prehistoric whales. Explore the fossil galleries
-  and Michigan nature exhibits, and each find the strangest creature in the
-  building. Then catch a show in the planetarium dome. The photo to get: you
-  looking straight up at the mastodons from under their tusks.
+  stand side by side under hanging prehistoric whales. Step into a real
+  mastodon footprint, explore the dinosaur and fossil galleries and the
+  Michigan nature exhibits, and find the strangest creature in the building.
+  Then catch a show in the planetarium dome. The photo to get: you looking
+  straight up at the mastodons from under their tusks.
 about: >
-  The museum moved into the Biological Sciences Building in 2019. Its
-  mastodons are a male and female shown in a fight, and the mastodon is
-  Michigan's state fossil. The hanging skeletons are early whales that still
-  had small legs, found by a U-M scientist who studied how whales came from
-  land animals.
+  The museum moved into the Biological Sciences Building in 2019, and it's the
+  only place in the world where you can see a male and female mastodon
+  together. The female is real bone, found in Owosso, Michigan, and the male
+  stands over casts of the only mastodon trackway ever found, from nearby
+  Saline. The mastodon is Michigan's state fossil. The whales hanging
+  overhead are early species that still had small legs, and the museum has
+  the biggest dinosaur display in Michigan.
 
   The museum is free; planetarium shows need a ticket and run on certain
   days, so check the schedule. Campus parking is tight, so walk or bus in.
 steps:
   - The mastodons, from underneath
+  - Your foot in the mastodon footprint
   - The weirdest fossil you can find
   - The planetarium dome
 duration: short
@@ -37,5 +42,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours, tickets]
-themes: [rocks-fossils, stars, museums]
-tags: [umich natural history museum, mastodon skeletons, planetarium show, fossil whales, free museum, ann-arbor]
+themes: [rocks-fossils, stars, museums, science, wildlife]
+tags: [umich natural history museum, mastodon skeletons, planetarium show, fossil whales, free things to do ann arbor, ann arbor]

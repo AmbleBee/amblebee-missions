@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 17
 name: Kansas City Jazz Night
 mode: date
@@ -6,14 +7,15 @@ place:
   name: The Black Dolphin
   area: Crossroads, Kansas City
   address: 1813 Grand Blvd, Kansas City, MO 64108
-  coords: [39.08960, -94.58190]  # APPROX: set at the entrance before publishing
-short: Kansas City jazz night at the Black Dolphin. Dress up for live jazz, then one more set next door.
+  coords: [39.09116, -94.58121]
+short: Kansas City jazz night at the Black Dolphin. Dress up for live jazz in a glowing vintage lounge.
 description: >
   Dress up a little and spend an evening at the Black Dolphin, a dark,
-  vintage lounge with live jazz, then walk next door to its sister club, the
-  Green Lady Lounge, for one more set. Put your phones away and really
-  listen; each pick your favorite song of the night. The photo to get: the
-  two of you in the lounge glow.
+  vintage lounge glowing red and purple, with live Kansas City jazz. Grab a
+  table near the band, put your phones away and really listen; each pick
+  your favorite song of the night. If its sister club next door, the Green
+  Lady Lounge, is open, your cover usually gets you in there for one more
+  set. The photo to get: the two of you in the lounge glow.
 about: >
   Kansas City is one of jazz's hometowns. In the 1920s and 30s, under
   political boss Tom Pendergast, clubs around 18th and Vine and 12th Street
@@ -21,9 +23,10 @@ about: >
   up in Bennie Moten's band here, and Kansas City native Charlie Parker pushed
   the sound toward bebop.
 
-  The American Jazz Museum at 18th and Vine tells the story. The Green Lady
-  Lounge is known for live jazz nearly every night of the year. Both clubs are
-  closed some nights, so check before you go.
+  The American Jazz Museum at 18th and Vine tells the story. The Black
+  Dolphin and the Green Lady Lounge next door share an owner and usually a
+  single small cover, but they're 21 and up and closed some nights, so check
+  before you go.
 duration: short
 effort: easy
 cost: $$
@@ -32,5 +35,5 @@ season: any
 time_of_day: night
 travel: local
 check_ahead: [hours]
-themes: [shows, romantic, drinks, history, playful]
-tags: [black dolphin, green lady lounge, kansas city jazz, live jazz lounge, crossroads district, kansas-city]
+themes: [shows, romantic, drinks, history]
+tags: [black dolphin, green lady lounge, kansas city jazz, live jazz lounge, crossroads district, kansas city date night]

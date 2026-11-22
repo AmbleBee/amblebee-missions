@@ -1,27 +1,31 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 14
 name: KC Wheel Date Night
 mode: date
 place:
   name: KC Wheel at Pennway Point
   area: Pennway Point, near Crossroads, Kansas City
-  coords: [39.08180, -94.59200]  # APPROX: set at the KC Wheel entrance before publishing
+  coords: [39.08239, -94.59249]
   website: https://kcwheel.com
 short: KC Wheel at Pennway Point. Ride after dark as the Kansas City skyline lights up, then mini golf.
 description: >
   Book an evening ride on the 150-foot KC Wheel and float up over the city in
-  your own warm, enclosed gondola, with Union Station, the Kauffman Center and
-  the downtown towers lit up around you. Get a photo of the two of you with the
-  skyline behind you at the top. Then play a round of mini golf next door;
-  loser buys dessert. Tickets are for set times, so book ahead.
+  an enclosed, climate-controlled gondola, with Union Station, the Kauffman
+  Center and the downtown towers lit up around you. Sit by the doors for the
+  best skyline view, and get a photo of the two of you with the city behind
+  you at the top. Then play a round at Pennway Putt, the mini golf course
+  right under the wheel; loser buys dessert.
 about: >
-  The KC Wheel opened in 2022 at Pennway Point and stands about 150 feet
-  tall, with enclosed, heated and cooled gondolas, so it works in any season.
-  From the top, look for Union Station, which opened in 1914, and the curved
-  Kauffman Center for the Performing Arts.
+  The KC Wheel opened in December 2023 at Pennway Point and stands about 150
+  feet tall, with 36 enclosed, heated and cooled gondolas, so it works in any
+  season. From the top, look for Union Station, which opened in 1914, and the
+  curved Kauffman Center for the Performing Arts. Pennway Putt below has 16
+  holes, including ones themed for the Royals and the Chiefs.
 
-  Rides are for set times, so book ahead. A clear night after rain gives the
-  sharpest view.
+  Tickets are sold online for set times, so book ahead. For a splurge, the
+  VIP gondola has leather seats, mood lighting and a free drink. A clear
+  night after rain gives the sharpest view.
 duration: short
 effort: easy
 cost: $$
@@ -31,4 +35,4 @@ time_of_day: night
 travel: local
 check_ahead: [tickets]
 themes: [views, games, romantic]
-tags: [kc wheel, pennway point, ferris wheel date, kansas city skyline, mini golf, kansas-city]
+tags: [kc wheel, pennway point, ferris wheel date, kansas city skyline, pennway putt mini golf, kansas city date night]

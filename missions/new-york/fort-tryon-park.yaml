@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 17
 name: Fort Tryon Park
 mode: both
@@ -6,32 +7,36 @@ who: [solo, friends, family, kids]
 place:
   name: Fort Tryon Park (Heather Garden)
   area: Washington Heights, northern Manhattan
-  coords: [40.85950, -73.93300]  # APPROX: set at Margaret Corbin Circle before publishing
-  website: https://www.forttryonparktrust.org
+  address: Margaret Corbin Dr, New York, NY 10040
+  coords: [40.85936, -73.93412]
+  website: https://forttryonpark.org
 short: Fort Tryon Park in northern Manhattan. Walk the Heather Garden and find the Hudson view.
 description: >
   Take the A train to 190th St and ride the elevator straight up into the
   park. Wander the Heather Garden, which has something in bloom almost every
   season, then climb to Linden Terrace, one of the highest points in
-  Manhattan, for a wide view over the Hudson to the Palisades cliffs. Find a
-  bench and get a photo of you with the river behind you. Fall
-  leaves here are some of the best in the city. It's free, and the Cloisters
-  are right at the north end if you want to make a day of it.
+  Manhattan, for a wide view over the Hudson to the Palisades cliffs. Hunt
+  for the hidden stone staircases and grotto in the Alpine Garden, then find
+  a bench and get a photo of you with the river behind you. It's free, and
+  the Cloisters are right at the north end if you want to make a day of it.
 about: >
   John D. Rockefeller Jr. gave this land to the city, and the park, designed
   by the Olmsted Brothers firm, opened in 1935. During the Revolutionary
   War, a fort stood here, and Margaret Corbin took over firing her husband's
   cannon after he was killed in battle in 1776. She became the first woman
-  to receive a U.S. military pension.
+  to receive a U.S. military pension, and the park's main entrance is named
+  for her.
 
-  The Heather Garden is one of the biggest free public gardens in the city.
-  The Cloisters are at the north end of the park, so pair it with
-  [[met-cloisters]] for a whole afternoon.
+  The Heather Garden is the largest public garden in New York City you can
+  walk into without a ticket, with more than 650 kinds of plants, and the
+  biggest heath and heather garden on the East Coast. Fall color here is
+  some of the best in the city. The Cloisters are at the north end of the
+  park, so pair it with [[met-cloisters]] for a whole afternoon.
 for_kids:
-  short: Park hunt! Find each thing.
+  short: Park hunt! Can you find them all?
   steps:
     - A flower garden
-    - A stone wall
+    - A secret stone staircase
     - The big river
     - A squirrel
     - A selfie at the top!
@@ -42,5 +47,5 @@ setting: outdoor
 season: any
 time_of_day: daytime
 travel: local
-themes: [views, forests, gardens]
-tags: [fort tryon park, heather garden, linden terrace, hudson river views, margaret corbin, nyc]
+themes: [views, gardens, forests, walks, history]
+tags: [fort tryon park, heather garden, linden terrace, margaret corbin, the cloisters, washington heights]

@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 3
 name: Fossil Hunt at the NJ State Museum
 mode: adventure
@@ -7,31 +8,33 @@ place:
   name: New Jersey State Museum
   area: Downtown Trenton
   address: 205 W State St, Trenton, NJ 08608
-  coords: [40.22070, -74.77150]  # APPROX: set at the entrance before publishing
+  coords: [40.22148, -74.77373]
   website: https://nj.gov/state/museum/
 short: New Jersey State Museum in Trenton. Meet the state dinosaur at this free museum.
 description: >
-  Walk through the free state museum's natural history hall, where fossils and
-  casts trace life in New Jersey from ancient seas to the Ice Age, including
-  Hadrosaurus, the state dinosaur first dug up in Haddonfield. Let the kids
-  lead the way and hunt for the biggest skull, the sharpest teeth and the
-  strangest sea creature. Get a photo of everyone standing under the tallest
-  skeleton. The planetarium runs weekend shows for an extra fee if you want
-  to add one. Expect a bag check at the door.
+  Head up to the free state museum's fossil hall, where fossils and casts
+  trace life in New Jersey from ancient seas to the Ice Age. Meet
+  Hadrosaurus, the state dinosaur first dug up in Haddonfield, and a 50-foot
+  Mosasaurus, a sea monster found in South Jersey. Let the kids lead the way
+  and hunt for the biggest skull, the sharpest teeth and the strangest sea
+  creature, and look for the rocks and fossils you're allowed to touch. Get a
+  photo of everyone standing under the tallest skeleton.
 about: >
   Hadrosaurus, New Jersey's state dinosaur, was dug up in Haddonfield in
   1858. It was one of the first nearly complete dinosaur skeletons ever
   found, and in 1868 it became the first dinosaur skeleton ever mounted for
-  display, in nearby Philadelphia.
+  display, in nearby Philadelphia. The museum's full-size cast is 25 feet
+  long, and it shares the hall with Dryptosaurus, a meat-eating dinosaur also
+  found in New Jersey, and the giant sea reptile Mosasaurus.
 
   The museum is free, with a bag check at the door. The planetarium has
-  weekend shows for an extra fee if you want to add one.
+  shows for an extra fee if you want to add one.
 for_kids:
-  short: Fossil hunt! Find each one.
+  short: Fossil hunt! Can you find them all?
   steps:
     - A dinosaur
     - Big sharp teeth
-    - A sea creature fossil
+    - A giant sea monster
     - The biggest bone you can find
     - A selfie with your grown-up!
 duration: short
@@ -42,5 +45,5 @@ season: any
 time_of_day: daytime
 travel: local
 check_ahead: [hours]
-themes: [rocks-fossils, museums, science, history]
-tags: [new jersey state museum, hadrosaurus, free dinosaur museum, trenton planetarium, family day out, trenton]
+themes: [rocks-fossils, museums, science, history, stars]
+tags: [new jersey state museum, hadrosaurus, free dinosaur museum, mosasaurus, trenton planetarium, things to do in trenton]

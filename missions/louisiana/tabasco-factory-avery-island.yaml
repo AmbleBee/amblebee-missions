@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 17
 name: Tabasco Factory on Avery Island
 mode: both
@@ -6,8 +7,8 @@ who: [friends]
 place:
   name: TABASCO Factory Tour & Museum
   area: Avery Island, near New Iberia
-  address: Hwy 329, Avery Island, LA 70513
-  coords: [29.91320, -91.91000]  # APPROX: set at the visitor entrance before publishing
+  address: 32 Wisteria Rd, Avery Island, LA 70513
+  coords: [29.90901, -91.90256]
   website: https://www.tabasco.com/visit-avery-island/tabasco-tour
 short: Tabasco Factory on Avery Island. Watch the bottling line, then dare each other at the tasting bar.
 description: >
@@ -17,16 +18,19 @@ description: >
   the windows over the bottling line. Finish in the Country Store, where you can
   sample flavors you never knew existed. Make it a challenge: everyone ranks the
   samples, and the loser tries the hottest one again. Get a group photo with the
-  biggest Tabasco bottle you can find. Reserve tickets online, and stay for lunch at the
-  restaurant on site if you're hungry.
+  biggest Tabasco bottle you can find. Your ticket also covers Jungle Gardens,
+  so drive the loop afterward, and stay for Cajun food and a Bloody Mary at
+  the restaurant on site if you're hungry.
 about: >
   Edmund McIlhenny first made Tabasco sauce here in 1868, and his family
-  still runs the company. The peppers are mashed with salt and aged in oak
-  barrels for up to three years. Avery Island sits on top of a giant salt
-  dome, and salt from the island has long been part of the recipe.
+  still runs the company more than five generations later. The peppers are
+  mashed with salt and aged in oak barrels for up to three years. Avery
+  Island sits on top of a giant salt dome, and salt from the island has long
+  been part of the recipe.
 
   Next door, Jungle Gardens has Bird City, a rookery started in the 1890s to
-  save snowy egrets when they were being hunted for hat feathers. Reserve
+  save snowy egrets when they were being hunted for hat feathers, and you
+  may spot alligators along the way. Reservations are recommended, so book
   tickets online.
 steps:
   - The biggest Tabasco bottle you can find
@@ -40,6 +44,5 @@ season: any
 time_of_day: daytime
 travel: drive
 check_ahead: [hours, tickets]
-discounts: [senior, military]
-themes: [food, quirky, history]
-tags: [tabasco factory tour, avery island, hot sauce tasting, jungle gardens, cajun country, new-iberia]
+themes: [food, quirky, history, gardens, wildlife, drinks]
+tags: [tabasco factory tour, avery island, hot sauce tasting, jungle gardens, cajun country, new iberia la]

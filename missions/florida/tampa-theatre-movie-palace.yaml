@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 62
 name: Movie Night at the Tampa Theatre
 mode: both
@@ -7,27 +8,32 @@ place:
   name: Tampa Theatre
   area: Downtown Tampa
   address: 711 N Franklin St, Tampa, FL 33602
-  coords: [27.95030, -82.45840]  # APPROX: set at the entrance before publishing
+  coords: [27.95030, -82.45901]
   website: https://tampatheatre.org
 short: Tampa Theatre, a 1926 movie palace. Catch a film and get there early for the Wurlitzer.
 description: >
   Grab tickets for whatever's on at the Tampa Theatre, a 1926 movie palace
   downtown with a ceiling made to look like a starry night sky over a
   Mediterranean courtyard. Pick an evening show and come early: a live
-  organist usually plays the original 1926 Mighty Wurlitzer before the film.
-  Pick up popcorn and drinks, then let the group vote on who gets to choose
-  the next movie night. Get a photo of your crew under the stars before the
-  lights go down. The lineup mixes classics, indies and special events, so
-  check the calendar first.
+  organist usually plays the theater's Mighty Wurlitzer as it rises from the
+  stage before the film. Pick up popcorn and drinks, then let the group vote
+  on who gets to choose the next movie night. Get a photo of your crew under
+  the stars before the lights go down.
 about: >
   Architect John Eberson designed the Tampa Theatre as an "atmospheric"
   movie palace, with twinkling stars in a ceiling made to look like a night
-  sky over a Mediterranean courtyard. In the 1970s, it was about to be torn
-  down until the community rallied to save it.
+  sky over a Mediterranean courtyard. He called it his favorite, and it's
+  considered the best-preserved theater of its kind in the world. In the
+  1970s it was about to be torn down until the community rallied and the
+  city saved it, and it reopened in 2026 after a major restoration for its
+  100th birthday.
 
-  There's a ghost story too: a longtime projectionist named Fink Finley is
-  said to still be keeping an eye on the place. Check the calendar, since
-  the lineup mixes classics, indies and special events.
+  Its 1,400-pipe Mighty Wurlitzer played silent films here in 1926, spent
+  decades in a church after talkies took over, and was brought home by
+  volunteers in the 1980s. There's a ghost story too: a longtime
+  projectionist named Fink Finley is said to still be keeping an eye on the
+  place. Check the calendar, since the lineup mixes classics, indies and
+  special events.
 steps:
   - Your crew under the starry ceiling
   - The Mighty Wurlitzer and the organist
@@ -40,5 +46,5 @@ season: any
 time_of_day: evening
 travel: local
 check_ahead: [hours, tickets]
-themes: [history, movies, shows]
-tags: [tampa theatre, movie palace, mighty wurlitzer organ, atmospheric theater, classic films, tampa]
+themes: [history, movies, shows, architecture, romantic]
+tags: [tampa theatre, movie palace, mighty wurlitzer organ, atmospheric theater, tampa date night, things to do in downtown tampa]

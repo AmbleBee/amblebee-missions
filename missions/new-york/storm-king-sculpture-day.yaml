@@ -1,14 +1,15 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 21
 name: A Day at Storm King
 mode: date
 place:
   name: Storm King Art Center
   area: New Windsor, Hudson Valley
-  address: 20 Old Pleasant Hill Rd, New Windsor, NY 12553  # parking lot address from the official site
-  coords: [41.42580, -74.05960]  # APPROX: set at the parking lot entrance before publishing
+  address: 20 Old Pleasant Hill Rd, New Windsor, NY 12553
+  coords: [41.43112, -74.06338]
   website: https://stormking.org
-short: Spend the day wandering giant sculptures in the Hudson Valley hills. Find your favorite.
+short: Storm King in the Hudson Valley. Wander giant sculptures across the hills and find your favorite.
 description: >
   Drive up to Storm King, a 500-acre outdoor museum where huge sculptures sit in
   open meadows, on hilltops and along tree lines with mountains behind them. Walk
@@ -16,17 +17,19 @@ description: >
   wall snaking through the trees to the giant steel pieces on the hills. Pack a
   picnic or grab lunch at the outdoor cafe, then each pick a favorite piece and
   make the case for it. Get a photo of the two of you dwarfed by the biggest
-  sculpture you can find. Buy tickets ahead, since pre-purchased tickets are the
-  only way to guarantee entry and parking, especially on fall weekends.
+  sculpture you can find.
 about: >
   Storm King opened in 1960, first meant as a museum for Hudson River School
   paintings, before its founders started placing big sculptures out on the
-  land. Today it holds more than 100 works across meadows, woods and hills.
+  land. Today it's one of the largest outdoor sculpture parks in the country,
+  with more than 100 works across 500 acres of meadows, woods and hills.
 
-  Andy Goldsworthy's Storm King Wall, finished in 1998, winds through the
-  trees and into a pond for more than 2,000 feet. Maya Lin's Wavefield turns
-  a whole field into rolling grass waves. A tram loops the grounds for
-  anyone who'd rather not walk it all.
+  Andy Goldsworthy's Storm King Wall runs 2,278 feet through the trees and
+  into a pond, built by hand from fieldstone with no mortar. Maya Lin's
+  Wavefield turns 11 acres into rolling grass waves up to 15 feet high. A tram
+  loops the grounds for anyone who'd rather not walk it all. It's open spring
+  through fall and closed Tuesdays, and fall weekends sell out, so buy tickets
+  ahead to guarantee entry and parking.
 steps:
   - Your first sculpture of the day
   - The two of you next to something enormous
@@ -41,10 +44,9 @@ season: [spring, summer, fall]
 time_of_day: daytime
 travel: day-trip
 check_ahead: [hours, tickets, seasonal]
-discounts: [senior, student, military]
+discounts: [senior, student]
 gear:
   - item: bikes
     rent: on-site
-themes: [forests, biking, picnic, art]
-tags: [art, sculpture, hudson-valley, biking, picnic, fall-colors, new-windsor]
-credit:
+themes: [art, views, biking, walks, forests]
+tags: [storm king art center, outdoor sculpture park, andy goldsworthy wall, maya lin wavefield, hudson valley day trip, new york date ideas]

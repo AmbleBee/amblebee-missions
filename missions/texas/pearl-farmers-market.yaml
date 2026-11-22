@@ -1,4 +1,5 @@
-draft: true  # pin or address not verified yet; delete this line once it's checked
+checked: 2026-11-22
+released: 2026-11-22
 number: 18
 name: Pearl Farmers Market
 mode: both
@@ -6,25 +7,30 @@ who: [solo, friends, family, kids]
 place:
   name: The Pearl
   area: North of downtown San Antonio, on the River Walk
-  coords: [29.44200, -98.48000]  # APPROX: set at Pearl Park before publishing
-short: Wander the weekend farmers market at the Pearl, an old brewery turned food hub.
+  address: 303 Pearl Pkwy, San Antonio, TX 78215
+  coords: [29.44222, -98.47936]
+short: Pearl Farmers Market in San Antonio. Wander the stalls at an old brewery turned food hub.
 description: >
-  Spend a weekend morning at the Pearl, an old 1880s brewery complex on the
+  Spend a Saturday morning at the Pearl, an old 1880s brewery complex on the
   San Antonio River turned into shops, restaurants and a big farmers market.
-  Stroll the stalls, each buy one thing the other has never tried, and get
-  coffee and pastries for a breakfast by the river. Walk a stretch of the
-  quieter northern River Walk after. Get a photo of you in front of
-  the old brewhouse tower. The market runs Saturday and Sunday mornings.
+  Stroll the stalls, catch the cooking demo or live music, and buy one thing
+  you've never tried; if you came with others, swap bites. Get coffee and
+  pastries for a breakfast by the river, then walk a stretch of the quieter
+  northern River Walk. Get a photo of you in front of the old brewhouse
+  tower.
 about: >
   The Pearl Brewery made beer here from 1883 until 2001. The old brewhouse
-  and buildings were then restored into shops, restaurants and the Hotel
-  Emma.
+  is now the Hotel Emma, named for Emma Koehler, who ran the brewery after
+  her husband died in 1914. The Culinary Institute of America has a campus
+  here too, so the food scene is serious.
 
-  The Culinary Institute of America has a campus here, so the food scene is
-  serious. The River Walk's Museum Reach runs from the Pearl south toward
-  downtown, past public art and a lock and dam that boats go through.
+  The Saturday farmers market is producer-only, with every vendor from
+  within about 150 miles of the city, and it's been named one of the best in
+  the country. Sunday brings a different makers market. The River Walk's
+  Museum Reach runs from the Pearl south toward downtown, past public art and
+  a lock and dam that boats go through.
 for_kids:
-  short: Market hunt! Find each thing.
+  short: Market hunt! Can you find them all?
   steps:
     - A big pile of fruit
     - Something you never tried
@@ -37,8 +43,7 @@ cost: $
 setting: outdoor
 season: any
 time_of_day: morning
-travel: day-trip
+travel: local
 check_ahead: [hours]
 themes: [food, markets, lakes-rivers, history, walks]
-tags: [pearl farmers market, the pearl san antonio, pearl brewery, river walk, weekend market, san antonio]
-credit:
+tags: [pearl farmers market, the pearl san antonio, pearl brewery, river walk, weekend market, things to do in san antonio]
