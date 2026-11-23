@@ -41,6 +41,29 @@
     return el("img", Object.assign({ src: src, alt: "", width: p.width || null, height: p.height || null, loading: "lazy", decoding: "async" }, attrs || {}));
   }
 
+  // ---- the header: the post's backdrop, darkened, with its Field Note number, title and first topic on top ----
+  // (the intake's editor draws the same thing: app/admin.py headerEl). 1200:630; the post page goes square on phones.
+  function sizeClass(t) { var n = (t || "").length; return n <= 22 ? "s1" : n <= 40 ? "s2" : n <= 60 ? "s3" : n <= 80 ? "s4" : "s5"; }
+  function shadeFill(a) {
+    a = Number(a); if (isNaN(a)) a = 0.5;
+    return "linear-gradient(180deg, rgba(30,20,12," + (a * 0.7).toFixed(2) + "), rgba(30,20,12," + a + ") 45%, rgba(30,20,12," + Math.min(0.9, a + 0.15).toFixed(2) + "))";
+  }
+  function header(p, o) {
+    o = o || {};
+    var h = p.header || {}, n = p.number;
+    var bg = el("img", { class: "bg", src: API + h.backdrop, alt: "", loading: o.eager ? "eager" : "lazy", decoding: "async" });
+    bg.style.objectPosition = ((h.phone_x == null ? 0.5 : h.phone_x) * 100) + "% 50%";
+    var shade = el("div", { class: "sh" }); shade.style.background = shadeFill(h.shade);
+    return el("div", { class: "fnh " + sizeClass(p.title) + (o.compact ? " compact" : "") + (o.page ? " page" : "") },
+      bg, shade,
+      el("div", { class: "tx" },
+        el("div", { class: "no", text: n ? "Field Note No. " + (n < 10 ? "0" + n : n) : "Field Note" }),
+        el(o.page ? "h1" : "div", { class: "tt", text: p.title }),
+        el("div", { class: "mt" }, p.topics[0] ? el("span", { class: "ch", text: p.topics[0] }) : null, el("span", { text: "amblebee.com/fieldnotes" }))),
+      el("img", { class: "bee", src: "/favicon.svg", alt: "" }));
+  }
+  function hasHeader(p) { return !!(p.header && p.header.backdrop); }
+
   // **bold**, *italic* and [a link](https://…), the only formatting the editor has. Built as nodes, never as HTML.
   function inline(text) {
     var out = [], re = /\*\*([^*]+)\*\*|\*([^*]+)\*|\[([^\]]+)\]\(([^)\s]+)\)/g, last = 0, m;
@@ -79,17 +102,17 @@
     search.value = state.q;
 
     function card(p) {
-      var pic = p.cover ? photo(p.cover, "", {}) : stand(p.slug);
+      var pic = hasHeader(p) ? header(p, { compact: true }) : p.cover ? photo(p.cover, "", {}) : stand(p.slug);
       return el("a", { class: "fn-card", href: "/fieldnotes/" + p.slug + "/" },
         el("div", { class: "fn-pic" }, pic),
         el("div", { class: "fn-body" },
           el("span", { class: "fn-meta", text: day(p.posted_at) + " · " + p.minutes + " min read" }),
           el("h3", { text: p.title }),
           p.summary ? el("p", { text: p.summary }) : null,
-          p.topics.length ? el("div", { class: "fn-tags" }, p.topics.map(function (t) { return el("span", { text: t }); })) : null));
+          p.topics.length ? el("div", { class: "fn-tags" }, p.topics.map(function (t, i) { return el("span", { class: i ? null : "g", text: t }); })) : null));
     }
     function feature(p) {
-      var pic = p.cover ? photo(p.cover, "", { loading: "eager" }) : stand(p.slug);
+      var pic = hasHeader(p) ? header(p, { eager: true }) : p.cover ? photo(p.cover, "", { loading: "eager" }) : stand(p.slug);
       return el("a", { class: "fn-feat", href: "/fieldnotes/" + p.slug + "/" },
         el("div", { class: "fn-pic" }, pic),
         el("div", { class: "fn-body" },
@@ -204,7 +227,7 @@
         " This is a draft. Only someone with this link can see it, and it isn't on the Field notes page yet.") : null,
       el("p", { class: "fn-crumb" }, el("a", { href: "/fieldnotes/", text: "← Field notes" })),
       post.topics.length ? el("div", { class: "fn-tags" }, post.topics.map(function (t) { return el("a", { href: topicHref(t), text: t }); })) : null,
-      el("h1", { text: post.title }),
+      hasHeader(post) ? header(post, { page: true, eager: true }) : el("h1", { text: post.title }),
       post.summary ? el("p", { class: "pg-lede", text: post.summary }) : null,
       el("p", { class: "fn-meta", text: bits.join(" · ") }));
     var body = el("div", { class: "fn-prose" });
@@ -212,7 +235,7 @@
     (catalog.packs || []).forEach(function (p) { packs[p.id] = p.name; });
     (catalog.missions || []).forEach(function (m) { byId[m.id] = m; byId[m.full_id] = m; });
     post.blocks.forEach(function (b) { var n = block(b, preview, byId, packs); if (n) body.append(n); });
-    var cover = post.cover ? el("figure", { class: "fn-cover" }, photo(post.cover, preview, { loading: "eager", alt: "" })) : null;
+    var cover = !hasHeader(post) && post.cover ? el("figure", { class: "fn-cover" }, photo(post.cover, preview, { loading: "eager", alt: "" })) : null;
     var firstPhotos = post.blocks.find(function (b) { return b.type === "photos"; });
     if (cover && firstPhotos && firstPhotos.photos[0] && firstPhotos.photos[0].url === post.cover.url && post.blocks.indexOf(firstPhotos) === 0) cover = null;   // it'd show twice in a row
     root.removeAttribute("aria-busy");

@@ -2033,6 +2033,28 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 
 /* ---------- Field notes, the blog: /fieldnotes/ (pages/fieldnotes.html) and each post (404.html + site/js/fieldnotes.js) ---------- */
 .fn-route #nf { display: none; }
+/* Field Notes header: a backdrop, darkened, with the number, title and first topic on top. 1200:630 everywhere (it's also
+   the link-preview size); the post page goes square on phones, using the backdrop's phone square. Sizes in cqw so it reads
+   the same at any width. Keep in step: intake app/admin.py FNH_CSS and amblebee-missions site/style.css. */
+.fnh{position:relative;aspect-ratio:1200/630;overflow:hidden;container-type:inline-size;background:#2A231D;color:#FFFDF8;isolation:isolate}
+.fnh>img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.fnh .sh{position:absolute;inset:0}
+.fnh .tx{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:1.4cqw;padding:0 7.5cqw}
+.fnh .no{font:700 3.5cqw/1 "Caveat",cursive;color:#F6D08A}
+.fnh .tt{margin:0;font-family:"Fraunces Variable","Fraunces",Georgia,serif;font-weight:650;line-height:1.06;letter-spacing:-.01em;text-wrap:balance;color:#FFFDF8;text-shadow:0 .2cqw 1.5cqw rgba(20,12,6,.45);font-size:7cqw}
+.fnh.s2 .tt{font-size:5.85cqw} .fnh.s3 .tt{font-size:5cqw} .fnh.s4 .tt{font-size:4.35cqw} .fnh.s5 .tt{font-size:3.7cqw}
+.fnh .mt{display:flex;align-items:center;gap:.85cqw;font-weight:800;font-size:1.42cqw;color:#F3E9DC}
+.fnh .mt .ch{padding:.4cqw 1.2cqw;border-radius:999px;background:rgba(255,253,248,.18);box-shadow:inset 0 0 0 1px rgba(255,253,248,.4);color:#FFFDF8}
+.fnh .bee{position:absolute;right:3cqw;bottom:2.5cqw;width:4.3cqw;height:auto}
+.fnh.compact .mt{display:none} .fnh.compact .no{font-size:5.3cqw}
+.fnh.compact .tt{font-size:8.7cqw} .fnh.compact.s3 .tt{font-size:7.5cqw} .fnh.compact.s4 .tt,.fnh.compact.s5 .tt{font-size:6.5cqw}
+@media (max-width:600px){.fnh.page{aspect-ratio:1/1} .fnh.page .no{font-size:6.5cqw} .fnh.page .tt{font-size:11cqw}
+ .fnh.page.s3 .tt{font-size:9.5cqw} .fnh.page.s4 .tt,.fnh.page.s5 .tt{font-size:8.2cqw} .fnh.page .mt{font-size:3.3cqw;gap:2cqw} .fnh.page .bee{width:8cqw}}
+.fn-pic > .fnh { width: 100%; height: 100%; }
+/* a header keeps its shape (1200:630) in the cards and the featured post, instead of being cropped to fill */
+.fn-card .fn-pic:has(> .fnh), .fn-feat .fn-pic:has(> .fnh) { height: auto; min-height: 0; aspect-ratio: 1200 / 630; align-self: center; }
+.fn-hero .fnh { margin: 14px 0 16px; border-radius: 20px; box-shadow: var(--shadow); }
+@media (max-width: 600px) { .fn-hero .fnh { border-radius: 14px; } }
 .fn-search-row { margin: 26px 0 0; max-width: 36rem; }
 .fn-chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
 .fn-chips[hidden] { display: none; }
