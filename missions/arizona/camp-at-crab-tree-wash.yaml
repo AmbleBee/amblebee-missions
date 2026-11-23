@@ -1,0 +1,65 @@
+checked: 2026-11-23
+released: 2026-11-23
+number: 5
+name: Lakeside Camp at Crabtree Wash
+mode: adventure
+who: [solo, friends, family, kids]
+place:
+  name: Crabtree Wash Shoreline Area
+  area: Apache Lake, Tonto National Forest
+  address: 229.5 Mile Marker, Roosevelt, AZ 85545
+  coords: [33.57350, -111.25595]
+  website: https://www.fs.usda.gov/r03/tonto/recreation/crabtree-wash-shoreline-area
+  links:
+    - label: Apache Lake Marina
+      url: https://apachelake.com/
+short: Crabtree Wash on Apache Lake. Camp by the water, swim the cove, and catch the cliffs at sunset.
+description: >
+  Pitch a tent right on the shore at Crabtree Wash, a little cove on Apache
+  Lake ringed by desert canyon walls. Swim the cove and float out to the
+  buoys, and if you brought a paddleboard or kayak, take it out when the
+  afternoon wind kicks up a little chop. No boat needed, though you can rent
+  a pontoon at the marina next door to see more of the lake. Stay a night or
+  two. The photo to get: the big rock cliff across the lake, called Indian
+  Head, glowing at sunset, plus a selfie with it behind you.
+about: >
+  Apache Lake was formed in 1927 when Horse Mesa Dam was finished on the Salt
+  River, and Crabtree Wash is a primitive shoreline camping area on it, run by
+  Tonto National Forest. You'll need a Tonto Pass for your vehicle. Camping
+  is first come, first served, and the cove fills up on weekends and
+  holidays, so arrive on a Thursday or early Friday if you want a spot on the
+  water. A short dirt road leads down to the wash and can get washboarded,
+  but regular cars usually make it.
+
+  Come in from Roosevelt Lake on SR 188, where the road is paved. The Apache
+  Trail from Tortilla Flat is a rough four-wheel-drive road. There's little
+  shade and few or no facilities, so pack in water and pack out all trash.
+  Late spring is a local favorite; summer is brutally hot. Cell service is
+  spotty.
+caution: "Come in via Roosevelt Lake; the Apache Trail from Tortilla Flat is 4WD-only. No shade or trash service, and the wash can flood in rain."
+steps:
+  - The rock cliff at sunset
+  - A selfie with the rock behind you
+for_kids:
+  short: Look for animals by the lake!
+  steps:
+    - A red cardinal
+    - A deer
+    - A fish in the water
+    - A selfie by the lake!
+gear:
+  - item: tent
+    rent: "no"
+  - item: sleeping-bags
+    rent: "no"
+duration: all-day
+effort: easy
+cost: $
+setting: outdoor
+season: any
+time_of_day: any
+travel: day-trip
+check_ahead: [conditions]
+themes: [lakes-rivers, swimming, boating, deserts, sunsets, mountains]
+tags: [crabtree wash, apache lake, apache lake camping, tonto national forest, lakeside camping arizona, salt river lakes]
+credit: Jess H.
