@@ -157,7 +157,8 @@ function renderTeaser() {
     return;
   }
   const env = envelope({ title: "Your next mission is sealed inside.", to,
-    sub: `${n} ${n === 1 ? "mission fits" : "missions fit"} what you picked.`,
+    sub: activeFilters(f) || f.mode !== "any" || f.within != null ? `${n} ${n === 1 ? "mission fits" : "missions fit"} what you picked.`
+      : `${n} ${n === 1 ? "mission" : "missions"}, each one checked by hand.`,
     button: "Open", onOpen: () => openFromHome() });
   $("#ticket-slot").replaceChildren(env);
 }
@@ -367,15 +368,15 @@ async function route() {
   if (revealing() || !$("#ticket-slot").firstChild) showHome();
   const after = S.afterHome; S.afterHome = null;
   if (after === "filters") {
-    $("#filters").hidden = true; $("#filters-toggle").click();
+    openSheet();
+  } else if (after && after.zip) {
+    openSheet({ focus: "zip" });
   } else if (after === "top") {
     window.scrollTo({ top: 0 });
   } else if (after && after.id) {
     const el = document.getElementById(after.id);
     requestAnimationFrame(() => {
       if (el) el.scrollIntoView({ behavior: REDUCED() ? "auto" : "smooth" });
-      if (after.search) $("#search-input").focus({ preventScroll: true });
-      if (after.zip) $("#zip-input").focus({ preventScroll: true });
     });
   }
 }
@@ -386,11 +387,4 @@ function roll() {
   S.rolledId = m.full_id;
   history.replaceState({ ...history.state, rolled: m.full_id }, "", `#mission=${encodeURIComponent(m.full_id)}`);
   showReveal(m, { from: "roll", animate: true });
-}
-function openDialog(m) {
-  const body = $("#dialog-body");
-  body.replaceChildren(ticket(m, { titleId: "dialog-title", heading: "h2" }), actions(m));
-  // the pop-up has the mission page's address, so a refresh or copied link lands on the real page
-  history.pushState({ amble: "popup" }, "", `${HOME}missions/${m.id}/`);
-  $("#mission-dialog").showModal();
 }

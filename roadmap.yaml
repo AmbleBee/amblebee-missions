@@ -87,6 +87,17 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: A Simpler Home Page
+  status: done
+  date: 2026-11-22
+  tag: website
+  summary: The home page now leads with one big **Give me a mission** button. Everything else is a tap away.
+  items:
+    - "**Near you** and **Filters** sit right under the button and open one sheet: where you are, then a few quick filters"
+    - "The first time you tap the button, it asks where you are once, so your first mission can be a real place nearby"
+    - "Browse by vibe: Rainy day, At home, Free and With kids"
+    - "Every mission by state lives on its own page, and there's a new **All missions** page with every one in one list, plus search, filters, sorting and distance"
+
 - title: Mission Feedback
   status: done
   date: 2026-11-18

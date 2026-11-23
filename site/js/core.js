@@ -82,7 +82,6 @@ function discountText(m) {
   const keys = [...new Set(m.discounts || [])].sort((a, b) => DISCOUNT_ORDER.indexOf(a) - DISCOUNT_ORDER.indexOf(b));
   return joinList(keys.map((k) => L.discount[k] || k));
 }
-const NEAR_MAX = 24;
 const NEARBY_SHARE = 0.75;      // with a ZIP set, how often a pick is a real place nearby
 const NEARBY_M = 160934;        // "nearby" when no distance is picked: 100 miles
 const NEAREST_ZIP_M = 50000;    // "Use my location" only shows a ZIP within this far
@@ -145,9 +144,7 @@ const S = {
   zip: null,    // what S.here is called on screen: "97201", "Portland, OR" or "your location"
   located: false,   // S.here came from "Use my location", so it's never offered for saving
   zips: null,   // ZIP -> [lat, lon], downloaded whole the first time someone sets a ZIP
-  browse: null, // which pack "Every mission" shows ("all", "near", or a pack id)
-  q: "",        // search box text ("" = not searching)
-  sort: "",     // "Sort by" in Every mission: "" (by pack), distance, cost or duration
+  q: "",        // the All missions page's search box text ("" = not searching)
 };
 function readPref(k) { try { return localStorage.getItem("amble." + k); } catch (e) { return null; } }
 function dropPref(k) { try { localStorage.removeItem("amble." + k); } catch (e) { /* private mode: fine */ } }
@@ -192,3 +189,5 @@ function fmtDist(mt) {
   if (v < 0.1) return `under 0.1 ${S.unit}`;
   return `${v < 10 ? v.toFixed(1) : Math.round(v)} ${S.unit}`;
 }
+// lower case without accents or apostrophes, for matching what someone typed: search, city names
+const fold = (t) => String(t || "").toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/['\u2019]/g, "");

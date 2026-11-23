@@ -1,11 +1,23 @@
-<h1>Questions and answers</h1>
-<p class="hand">The quick answers, before you write in</p>
-<div class="faq-search" hidden>
-  <label for="faq-q">Search the questions</label>
-  <input id="faq-q" type="search" autocomplete="off" placeholder="Try “status”, “credit” or “delete”">
+<section class="pg-hero">
+  <p class="eyebrow">FAQ</p>
+  <h1>Questions and answers</h1>
+  <p class="hand">The quick answers, before you write in</p>
+  <div class="faq-search" hidden>
+  <label class="sr" for="faq-q">Search the questions</label>
+  <input id="faq-q" type="search" autocomplete="off" placeholder="Search 31 questions: try “status”, “credit” or “delete”">
   <p class="faq-count hint" role="status" aria-live="polite"></p>
 </div>
+  <nav class="pg-chips" aria-label="Topics">
+    <a href="#using">Using AmbleBee</a>
+    <a href="#suggesting">Suggesting a mission</a>
+    <a href="#votes">Votes with friends</a>
+    <a href="#yours">Your missions, stamps and profile</a>
+    <a href="#messages">Messages, stats and your information</a>
+    <a href="#camera">The camera and the Hive</a>
+  </nav>
+</section>
 
+<section class="pg-band pg-faq">
 <section class="faq-group" aria-labelledby="using">
 <h2 id="using">Using AmbleBee</h2>
 <details class="faq-item" id="what" data-also="about how it works ideas date adventure">
@@ -225,4 +237,5 @@
 
 <p class="faq-none" hidden>Nothing matches “<span></span>”. Try another word, or <a href="/contact/#message">send us a message</a> and we'll help.</p>
 <p class="faq-more">Can't find yours? <a href="/contact/#message">Send us a message</a>. Every message gets read.</p>
+</section>
 <script src="/js/faq.js" defer></script>

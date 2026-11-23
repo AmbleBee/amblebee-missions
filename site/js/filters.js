@@ -63,7 +63,7 @@ function bestRelax(f) {
   if (f.goNow) tries.push(["Go right now", { ...f, goNow: false }]);
   if (f.hideDone) tries.push(["Hide ones we've done", { ...f, hideDone: false }]);
   if (f.within != null) tries.push(["the distance", { ...f, within: null }]);
-  if (f.mode !== "any") tries.push(["What are you in the mood for?", { ...f, mode: "any" }]);
+  if (f.mode !== "any") tries.push(["I'm in the mood for", { ...f, mode: "any" }]);
   if (f.pack !== "all") tries.push(["Pick from", { ...f, pack: "all" }]);
   let best = null;
   for (const [label, g] of tries) {

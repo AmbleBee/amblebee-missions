@@ -72,18 +72,88 @@
 
 <section class="roll" aria-labelledby="roll-title">
   <div class="roll-intro">
+    <p class="eyebrow">Real-world dates &amp; adventures</p>
     <h1 id="roll-title">Where to next?</h1>
     <p class="hand">A little nudge to get out the door together.</p>
-    <p class="lede">Open a date or an adventure. Go do it, take a few photos, and come home with a story.</p>
-    <p class="about-teaser">Date ideas and small adventures near you, one mission at a time. Open one and go. <a href="#about">What is AmbleBee?</a></p>
+    <p class="lede">Date ideas and small adventures near you, one mission at a time. Open one and go.</p>
 
     <fieldset class="modes">
-      <legend>What are you in the mood for?</legend>
+      <legend>I'm in the mood for</legend>
       <label><input type="radio" name="mode" value="any" checked><span>Anything</span></label>
       <label><input type="radio" name="mode" value="date"><span>A date</span></label>
       <label><input type="radio" name="mode" value="adventure"><span>An adventure</span></label>
     </fieldset>
 
+    <button type="button" class="btn primary roll-btn" id="roll-btn">
+      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
+      Give me a mission
+    </button>
+    <div class="pick-pills">
+      <button type="button" class="pill" id="near-toggle" aria-haspopup="dialog" aria-controls="pick-sheet">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+        <span id="near-label">Near you</span>
+      </button>
+      <button type="button" class="pill" id="filters-toggle" aria-haspopup="dialog" aria-controls="pick-sheet" aria-expanded="false">
+        <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
+        <span id="filters-label">Filters</span>
+        <span class="fcount" id="filters-count" hidden></span>
+      </button>
+    </div>
+    <p class="match" id="match-count"></p>
+    <button type="button" class="linkish" id="match-clear" hidden>Clear all</button>
+  </div>
+
+  <div class="ticket-slot" id="ticket-slot">
+    <p class="loading">Loading missions…</p>
+  </div>
+</section>
+
+<section class="how" aria-labelledby="how-title">
+  <h2 id="how-title">How it works</h2>
+  <ol class="how-steps">
+    <li><span class="how-n" aria-hidden="true">1</span><h3>Open a mission</h3><p>A date or an adventure, picked for your mood. Not feeling it? Open another.</p></li>
+    <li><span class="how-n" aria-hidden="true">2</span><h3>Go do it</h3><p>Together, out in the real world. No streaks, no failing.</p></li>
+    <li><span class="how-n" aria-hidden="true">3</span><h3>Bring back a story</h3><p>Take a few photos, mark it done, and collect a stamp in your book.</p></li>
+  </ol>
+</section>
+
+<section id="browse" class="vibes" aria-labelledby="vibes-title">
+  <div class="vibes-head">
+    <h2 id="vibes-title">Or browse by vibe</h2>
+  </div>
+  <!--vibes-->
+  <a class="every-bar" href="/missions/">
+    <span class="vibe-icon"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span>
+    <span class="every-text"><b>Every mission, every state</b><span>Browse all <!--live-count--> by state, or the ones you can do anywhere</span></span>
+    <svg aria-hidden="true" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+  </a>
+</section>
+
+<section id="about" class="about-card" aria-labelledby="about-title">
+  <div>
+    <h2 id="about-title">Hand-built, just for getting out the door</h2>
+    <p>AmbleBee is a personal project. It started with a little camera that hands out missions and a frame that keeps the photos. The website works on its own, no gadget needed.</p>
+  </div>
+  <a class="about-more" href="/about/">Read our story →</a>
+</section>
+
+<section id="share" class="share" aria-labelledby="share-title">
+  <div>
+    <h2 id="share-title">Know a great spot?</h2>
+    <p>Every suggestion gets read, and you can be credited on the mission.</p>
+    <p class="hint" id="form-note"></p>
+  </div>
+  <a class="btn" id="form-link" href="/contribute/#suggest">Suggest a mission</a>
+</section>
+
+</main>
+
+<!--site-footer-->
+
+<dialog id="pick-sheet" class="pick-sheet" aria-labelledby="sheet-title">
+  <div class="sheet-body">
+    <h2 class="sr" id="sheet-title">Where you are and filters</h2>
+    <p class="sheet-first hand" id="sheet-first" hidden>One quick thing before your first mission:</p>
     <fieldset class="near near-pick is-unset" id="near-you">
       <legend>Where are you?</legend>
       <div class="near-row">
@@ -102,34 +172,15 @@
       </div>
       <button type="button" class="linkish" id="use-location">Use my location</button>
       <p class="hint" id="zip-status" role="status">Add your ZIP or city for real places near you, or skip it for ideas you can do anywhere. It's never sent anywhere.</p>
-    </fieldset>
-
-    <div class="roll-row">
       <label class="pack-pick">
         <span>Pick from</span>
         <select id="pack-select"><option value="all">Every pack</option></select>
       </label>
-      <button type="button" class="btn primary" id="roll-btn">
-        <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5.5" width="18" height="13" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/></svg>
-        Open a mission
-      </button>
-    </div>
-    <p class="match" id="match-count"></p>
-    <button type="button" class="linkish" id="match-clear" hidden>Clear all</button>
-    <button type="button" class="btn filters-btn" id="filters-toggle" aria-expanded="false" aria-controls="filters">
-      <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg>
-      <span id="filters-label">More filters</span>
-      <span class="fcount" id="filters-count" hidden></span>
-    </button>
-  </div>
+    </fieldset>
+    <section id="filters" class="filters" aria-label="Filters">
+      <h3 class="sheet-h">Narrow it down <span>(optional)</span></h3>
+      <div class="filter-grid">
 
-  <div class="ticket-slot" id="ticket-slot">
-    <p class="loading">Loading missions…</p>
-  </div>
-</section>
-
-<section id="filters" class="filters" hidden aria-label="Filters">
-  <div class="filter-grid">
     <fieldset>
       <legend>Who's coming</legend>
       <div class="chips" data-filter="who">
@@ -149,14 +200,6 @@
       </div>
     </fieldset>
     <fieldset>
-      <legend>Effort</legend>
-      <div class="chips" data-filter="effort">
-        <label><input type="checkbox" value="easy"><span>Easy</span></label>
-        <label><input type="checkbox" value="moderate"><span>Moderate</span></label>
-        <label><input type="checkbox" value="hard"><span>Hard</span></label>
-      </div>
-    </fieldset>
-    <fieldset>
       <legend>Cost</legend>
       <div class="chips" data-filter="cost">
         <label><input type="checkbox" value="free"><span>Free</span></label>
@@ -170,6 +213,19 @@
       <div class="chips" data-filter="setting">
         <label><input type="checkbox" value="indoor"><span>Indoors</span></label>
         <label><input type="checkbox" value="outdoor"><span>Outdoors</span></label>
+      </div>
+    </fieldset>
+      </div>
+      <details class="more-filters" id="more-filters">
+        <summary>More filters <span>effort, time of day, themes</span></summary>
+        <div class="filter-grid">
+
+    <fieldset>
+      <legend>Effort</legend>
+      <div class="chips" data-filter="effort">
+        <label><input type="checkbox" value="easy"><span>Easy</span></label>
+        <label><input type="checkbox" value="moderate"><span>Moderate</span></label>
+        <label><input type="checkbox" value="hard"><span>Hard</span></label>
       </div>
     </fieldset>
     <fieldset>
@@ -188,94 +244,29 @@
         <label><input type="checkbox" id="f-gonow"><span>Go right now</span></label>
       </div>
     </fieldset>
+    <p class="hint right-now-hint" id="right-now-hint">"Go right now" skips anything that needs booking, is out of season, or is better at another time of day. Opening hours still vary, so check first.</p>
     <fieldset id="new-field" hidden>
       <legend>Your missions</legend>
       <div class="chips">
         <label><input type="checkbox" id="f-new"><span>Hide ones we've done</span></label>
       </div>
     </fieldset>
-    <p class="hint right-now-hint" id="right-now-hint">"Go right now" skips anything that needs booking, is out of season, or is better at another time of day. Opening hours still vary, so check first.</p>
     <fieldset id="themes-field" hidden>
       <legend>What kind of mission</legend>
       <div class="chips themes" data-filter="themes"></div>
       <p class="hint">Shows missions that fit any of the ones you pick.</p>
     </fieldset>
+        </div>
+      </details>
+    </section>
   </div>
   <div class="filters-bar">
     <p class="fmatch" id="filters-match"></p>
     <button type="button" class="linkish" id="filters-reset">Clear filters</button>
-    <button type="button" class="btn primary small" id="filters-done">Done</button>
+    <button type="button" class="btn small" id="filters-done">Done</button>
+    <button type="button" class="btn primary small" id="sheet-open">Open a mission</button>
+    <button type="button" class="linkish sheet-skip" id="sheet-skip" hidden>Skip: anything, anywhere</button>
   </div>
-</section>
-
-
-<div class="divider big" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
-
-<section id="browse" class="browse" aria-labelledby="browse-title">
-  <div class="browse-head">
-    <h2 id="browse-title">Every mission</h2>
-    <p class="hand" id="browse-count"></p>
-    <button type="button" class="linkish" id="browse-clear" hidden>Clear filters</button>
-    <button type="button" class="linkish" id="browse-share" hidden>Copy a link to this list</button>
-  </div>
-  <!--ideas-->
-  <div class="browse-pick">
-    <div class="search-field" role="search">
-      <label for="search-input">Search missions</label>
-      <input type="search" id="search-input" placeholder="Try waterfall, Seattle, oysters, rainy day…" autocomplete="off" enterkeyhint="search" aria-describedby="search-hint">
-    </div>
-    <div class="pack-field">
-      <label for="browse-pack">Show missions from</label>
-      <select id="browse-pack"></select>
-    </div>
-    <div class="pack-field sort-field">
-      <label for="browse-sort">Sort by</label>
-      <select id="browse-sort"></select>
-    </div>
-    <p class="hint" id="search-hint" hidden>Searching all missions in every pack.</p>
-  </div>
-  <div id="packs"></div>
-</section>
-
-<div class="divider div-about" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
-
-<section id="about" class="about" aria-labelledby="about-title">
-  <div class="about-text">
-    <h2 id="about-title">What is AmbleBee?</h2>
-    <p>AmbleBee is a little camera that hands you a <b>mission</b>: a date or adventure idea to go out and do. Pick a coffee shop you've never tried, hike to a waterfall, get the strangest doughnut on the menu. You take photos along the way, and when you come home the camera docks into the <b>Hive</b>, a picture frame that keeps your photos as memories of where you've been.</p>
-    <p>The camera is a personal project, built by hand and still in progress. The missions are here for everyone, with or without one. No points, no streaks, nothing to fail: just a reason to go.</p>
-    <p><a href="/about/">Read our story</a></p>
-  </div>
-  <ul class="packs-legend" id="pack-legend" aria-label="Mission packs"></ul>
-</section>
-
-<div class="divider big div-share" aria-hidden="true"><svg width="74" height="34" viewBox="0 0 74 34"><path d="M4 26 q14 -20 30 -8 t26 -6" fill="none" stroke="#B8A58B" stroke-width="2" stroke-dasharray="2 5" stroke-linecap="round"/><ellipse cx="62" cy="9" rx="4.5" ry="3" fill="#FFFDF8" stroke="#7A5A42" stroke-width="1.3" transform="rotate(-25 62 9)"/><ellipse cx="64" cy="15" rx="6.5" ry="4.8" fill="#E8B54A"/><path d="M62.5 10.6 v8.8 M66 11 v8" stroke="#5A3E2B" stroke-width="1.8"/><circle cx="70" cy="14.6" r="2.8" fill="#5A3E2B"/></svg></div>
-
-<section id="share" class="share" aria-labelledby="share-title">
-  <h2 id="share-title">Know a great spot?</h2>
-  <p>Suggest a date spot or adventure and it might end up in a pack. It takes about five minutes, and every one gets read.</p>
-  <div class="share-row">
-    <a class="btn primary" id="form-link" href="/contribute/#suggest">Suggest a mission</a>
-    <a class="btn" id="repo-link" href="https://github.com/AmbleBee/amblebee-missions">Or send a pull request</a>
-  </div>
-  <p class="hint" id="form-note"></p>
-</section>
-
-
-
-
-
-</main>
-
-<footer class="foot">
-  <p class="foot-links"><a href="missions/">Every mission by pack</a> <a href="safety/">Safety</a> <a href="privacy/">Privacy</a> <a href="faq/">FAQ</a> <a href="contact/">Contact</a></p>
-  <p class="foot-social">Follow along: <a href="https://www.pinterest.com/AmbleBeeHQ/" target="_blank" rel="me noopener" aria-label="AmbleBee on Pinterest (opens in a new tab)">Pinterest</a> <a href="https://bsky.app/profile/amblebeehq.bsky.social" target="_blank" rel="me noopener" aria-label="AmbleBee on Bluesky (opens in a new tab)">Bluesky</a> <a href="https://x.com/AmbleBeeHQ" target="_blank" rel="me noopener" aria-label="AmbleBee on X (opens in a new tab)">X</a></p>
-  <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
-  <p id="catalog-meta"></p>
-</footer>
-
-<dialog id="mission-dialog" aria-labelledby="dialog-title">
-  <div class="dialog-body" id="dialog-body"></div>
   <form method="dialog" class="x-form"><button class="x-close" aria-label="Close"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></button></form>
 </dialog>
 

@@ -1,44 +1,57 @@
-<h1>Contribute</h1>
-<p class="hand">Help shape AmbleBee</p>
-<p>Vote in our polls, suggest a mission, or tell us when something's off. Every bit of it gets read.</p>
-
-<nav class="contribute-jump" aria-label="On this page">
-  <a href="#polls">AmbleBee polls</a> <a href="#suggest">Suggest a mission</a> <a href="#report">Report a problem</a>
-</nav>
-
-<h2 id="polls">AmbleBee polls</h2>
-<p class="hint">Polls help us decide what to build next. AmbleBee makes the final call, and always says why.</p>
-<div class="poll-app" aria-live="polite"><p class="hint">Loading polls…</p></div>
-<noscript><p>Polls need JavaScript.</p></noscript>
-
-<h2 id="suggest">Suggest a mission</h2>
-<p>Know a great spot? Every suggestion gets read, and if yours becomes a mission, you can be credited on it. There are two ways to send one in.</p>
-<div class="suggest-paths">
-  <a class="path" href="/suggest/idea/">
-    <span class="path-time">About 2 minutes</span>
-    <b>Share an idea</b>
-    <span>Tell us about the place in your own words. Quick for you, but it takes us longer to research, build and verify, so it may be a while before it goes live.</span>
-    <span class="btn small">Share an idea</span>
-  </a>
-  <a class="path featured" href="/suggest/mission/">
-    <span class="path-time">About 10 minutes</span>
-    <b>Build the full mission</b>
-    <span>Fill in the whole mission step by step, with tips along the way. This helps us the most and speeds everything up, since all that's left for us is to check it.</span>
-    <span class="btn primary small">Build the mission</span>
-  </a>
-</div>
-
-<h2 id="report">Report a problem</h2>
-<div class="contact-paths">
-  <a class="path" href="/report/"><b>Report a problem</b><span>Closed, moved or something off? Tip: the button on each mission fills in which one.</span></a>
-</div>
-
-<section class="intake-mine" hidden>
-  <h2>Your submissions</h2>
-  <p class="hint">Saved on this device only.</p>
-  <ul></ul>
+<section class="c-hero">
+  <p class="eyebrow">Contribute</p>
+  <h1>Help shape AmbleBee</h1>
+  <p class="c-lede">Suggest a mission, vote on what we build next, or tell us when something's off. Every bit of it gets read.</p>
+  <nav class="c-jump" aria-label="On this page">
+    <a class="c-opt is-main" href="#suggest"><span class="c-ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Suggest a mission</b><small>Know a great spot?</small></span></a>
+    <a class="c-opt" href="#polls"><span class="c-ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M5 20v-6M12 20V5M19 20v-9"/></svg></span><span><b>Vote in a poll</b><small>Help pick what's next</small></span></a>
+    <a class="c-opt" href="#report"><span class="c-ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span><span><b>Report a problem</b><small>Closed, moved or off?</small></span></a>
+  </nav>
 </section>
-<p class="hint">Sent us something? <a href="/status/">Check its status</a>.</p>
+
+<section class="c-band linen" aria-labelledby="suggest">
+  <h2 id="suggest">Suggest a mission</h2>
+  <p class="c-sub">Every suggestion gets read, and if yours becomes a mission, you can be credited on it. Pick whichever fits your time.</p>
+  <div class="suggest-paths">
+    <a class="path" href="/suggest/idea/">
+      <span class="path-time">About 2 minutes</span>
+      <b>Share an idea</b>
+      <span>Tell us about the place in your own words. Quick for you, but it takes us longer to research, build and check, so it may be a while before it goes live.</span>
+      <span class="btn small">Share an idea</span>
+    </a>
+    <a class="path featured" href="/suggest/mission/">
+      <span class="path-tag">Helps us most</span>
+      <span class="path-time">About 10 minutes</span>
+      <b>Build the full mission</b>
+      <span>Fill in the whole mission step by step, with tips along the way. All that's left for us is to check it, so it goes live sooner.</span>
+      <span class="btn small path-go">Build the mission →</span>
+    </a>
+  </div>
+</section>
+
+<section class="c-band" aria-labelledby="polls">
+  <h2 id="polls">AmbleBee polls</h2>
+  <p class="c-sub">Polls help us decide what to build next. AmbleBee makes the final call, and always says why.</p>
+  <div class="poll-app" aria-live="polite"><p class="hint">Loading polls…</p></div>
+  <noscript><p>Polls need JavaScript.</p></noscript>
+</section>
+
+<section class="c-band linen" aria-labelledby="report">
+  <div class="contact-paths c-report">
+    <span class="c-ic honey"><svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span>
+    <div><h2 id="report">Report a problem</h2><p>Closed, moved or something off? Tip: the button on each mission fills in which one.</p></div>
+    <a class="btn path" href="/report/">Report a problem</a>
+  </div>
+</section>
+
+<section class="c-band c-subs">
+  <section class="intake-mine" hidden>
+    <h2>Your submissions</h2>
+    <p class="hint">Saved on this device only.</p>
+    <ul></ul>
+  </section>
+  <p class="c-status">Sent us something? <a href="/status/">Check its status</a>.</p>
+</section>
 <script src="/js/done.js" defer></script>
 <script src="/js/profile.js" defer></script>
 <script src="/js/plans.js" defer></script>

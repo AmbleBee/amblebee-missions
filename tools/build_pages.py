@@ -40,8 +40,8 @@ from missions_lib import MISSION_LINK, load_catalog  # noqa: E402
 
 BASE = "https://amblebee.com"
 SITE_NAME = "AmbleBee"
-PACK_FOLD_MIN = 20   # packs with fewer live missions fold under "More packs" on /missions/, the same as site/js/browse.js
-PACK_PREVIEW = 4   # missions per pack on /missions/, the same as PACK_PREVIEW in site/js/browse.js
+PACK_FOLD_MIN = 20   # packs with fewer live missions fold under "More packs" on /missions/
+PACK_PREVIEW = 4   # missions per pack on /missions/
 NEARBY = 3         # "More missions nearby" at the bottom of each mission page: one full row on a computer
 META_MAX = 158     # Google cuts search snippets off at about this many characters
 COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked once it has this many live missions
@@ -87,6 +87,7 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "vote": ("You're invited to vote!", "Help your crew pick the plan. Cast your vote!"),
     "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),
 }
+WIDE_PAGES = {"contribute": "page-wide contribute", **{n: "page-wide pg" for n in ("about", "contact", "faq", "privacy", "safety")}}   # laid out across the full width, not as a column of text
 NOINDEX_PAGES = {"suggest", "report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new", "poll"}   # useful only through a link: kept out of search engines and the sitemap
 PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/", "poll": "/poll/"}   # pages/<name>.html → this address
 
@@ -127,15 +128,12 @@ def icon(markup, size):
 
 def nav_html(current=""):
     """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
-    home = current == "index"
-    main = [("/about/", "About"), ("/#browse" if home else "/missions/", "Every mission"), ("/#search", "Search"),
+    main = [("/about/", "About"), ("/missions/", "Every mission"), ("/missions/all/#search", "Search"),
             ("/roadmap.html", "Bee trail"), ("/contribute/", "Contribute")]
-    if not home:
-        main.insert(0, ("/", "Open a mission"))
     extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
 
     # When the links don't fit beside the logo, site/nav.js folds them into More, highest number first; 0 never folds
-    FOLD = {"Bee trail": 5, "About": 4, "Search": 3, "Every mission": 2, "Open a mission": 1}
+    FOLD = {"Bee trail": 5, "About": 4, "Search": 3, "Every mission": 2}
 
     def link(href, text, cls=""):
         cls = " nav-share" if cls != "phone-only" and text == "Contribute" else cls
@@ -224,14 +222,37 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <main id="main">
 {main}
 </main>
-<footer class="foot">
-  <p class="foot-links"><a href="/about/">About</a> <a href="/missions/">Every mission by pack</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/faq/">FAQ</a> <a href="/contact/">Contact</a></p>
-  <p class="foot-social">Follow along: <a href="https://www.pinterest.com/AmbleBeeHQ/" target="_blank" rel="me noopener" aria-label="AmbleBee on Pinterest (opens in a new tab)">Pinterest</a> <a href="https://bsky.app/profile/amblebeehq.bsky.social" target="_blank" rel="me noopener" aria-label="AmbleBee on Bluesky (opens in a new tab)">Bluesky</a> <a href="https://x.com/AmbleBeeHQ" target="_blank" rel="me noopener" aria-label="AmbleBee on X (opens in a new tab)">X</a></p>
-  <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
-</footer>
+{footer_html()}
 {extra_script}</body>
 </html>
 """
+
+
+# The one site footer, on every page (site/index.html and site/roadmap.html at their <!--site-footer--> line).
+# build_pages() fills in the live count and date once the catalog is built.
+FOOT = {"line": ""}
+SOCIAL = [("Pinterest", "https://www.pinterest.com/AmbleBeeHQ/"), ("Bluesky", "https://bsky.app/profile/amblebeehq.bsky.social"),
+          ("X", "https://x.com/AmbleBeeHQ"), ("GitHub", "https://github.com/AmbleBee/amblebee-missions")]
+
+
+def footer_html():
+    col = lambda title, links: (f'<nav class="foot-col" aria-label="{title}"><h2>{title}</h2>'
+                                + "".join(f'<a href="{h}"{extra}>{t}</a>' for t, h, extra in links) + "</nav>")
+    social = "".join(f'<a href="{h}" target="_blank" rel="me noopener" aria-label="AmbleBee on {t} (opens in a new tab)">{t}</a>' for t, h in SOCIAL)
+    clock = ('<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
+             'stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>')
+    return f"""<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-brand"><a class="foot-logo" href="/" aria-label="AmbleBee, home"><img src="/logo.webp" alt="" width="540" height="179" loading="lazy"></a>
+      <p class="foot-tag">A little nudge to get out the door together.</p></div>
+    {col("Missions", [("Give me a mission", "/", ""), ("Every mission", "/missions/", ""), ("All in one list", "/missions/all/", ""),
+                      ("Browse by vibe", "/#browse", ""), ("Suggest a mission →", "/contribute/#suggest", ' class="foot-suggest"')])}
+    {col("AmbleBee", [("About", "/about/", ""), ("Contribute", "/contribute/", ""), ("Bee trail", "/roadmap.html", ""), ("FAQ", "/faq/", ""), ("Contact", "/contact/", "")])}
+    <nav class="foot-col foot-social" aria-label="Follow along"><h2>Follow along</h2>{social}</nav>
+  </div>
+  <p class="foot-safe">{clock}<span>Check hours, tickets and conditions before you go. Places change.</span><a href="/safety/">Safety tips →</a></p>
+  <div class="foot-bottom"><p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><span id="catalog-meta">{FOOT["line"]}</span></p><p><a href="/privacy/">Privacy</a></p></div>
+</footer>"""
 
 
 def crumbs_ld(items):
@@ -493,12 +514,51 @@ def load_collections(missions):
     return out
 
 
+# the little pictures on the home page's "browse by vibe" cards, by collection id (collections.yaml). A new
+# collection without one gets the heart.
+VIBE_ICONS = {
+    "rainy-day-date-ideas": '<path d="M7 15a4 4 0 0 1 .5-8A5.5 5.5 0 0 1 18 8.5a3.5 3.5 0 0 1-.5 6.5z"/><path d="M8 18l-1 2M12 18l-1 2M16 18l-1 2"/>',
+    "at-home-date-ideas": '<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+    "free-date-ideas": '<path d="M20.6 13.4l-7.2 7.2a2 2 0 0 1-2.8 0L3 13V3h10l7.6 7.6a2 2 0 0 1 0 2.8z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+    "kid-friendly-adventures": '<circle cx="9" cy="7" r="3"/><circle cx="17" cy="9" r="2.2"/><path d="M3 20c.8-3.5 3.2-5.5 6-5.5s5.2 2 6 5.5M15 15c2.6 0 4.6 1.6 5.4 4.5"/>',
+}
+VIBE_DEFAULT = '<path d="M12 20s-7-4.4-7-10a4 4 0 0 1 7-2.6A4 4 0 0 1 19 10c0 5.6-7 10-7 10z"/>'
+
+
+VIBES_SHOWN = 4   # more vibe cards than this and they become a row that slides, with < and > buttons (site/js/main.js)
+
+
+def vibes_html(collections):
+    """The home page's "browse by vibe" cards: one per collection page, with its tagline. Up to VIBES_SHOWN fill
+    the row; past that the cards get a little narrower, the next one peeks in, and < > move the row along
+    (a swipe on phones)."""
+    out = []
+    for i, c in enumerate(collections):
+        art = VIBE_ICONS.get(c["id"], VIBE_DEFAULT)
+        tag = c.get("tagline") or f'{len(c["missions"])} ideas'
+        out.append(f'<a class="vibe{" honey" if i % 2 else ""}" href="{c["path"]}"><span class="vibe-icon">'
+                   f'<svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
+                   f'stroke-linecap="round" stroke-linejoin="round">{art}</svg></span><b>{esc(c["label"])}</b><span>{esc(tag)}</span></a>')
+    if len(out) <= VIBES_SHOWN:
+        return f'<div class="vibe-grid">{"".join(out)}</div>'
+    arrow = lambda d, label, path: (f'<button type="button" class="vibe-nav {d}" aria-label="{label}" aria-controls="vibe-row">'
+                                    f'<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" '
+                                    f'stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="{path}"/></svg></button>')
+    return (f'<div class="vibe-slider">{arrow("prev", "Previous vibes", "M15 5l-7 7 7 7")}'
+            f'<div class="vibe-grid vibe-row" id="vibe-row" tabindex="0" aria-label="Vibes, {len(out)} of them">{"".join(out)}</div>'
+            f'{arrow("next", "More vibes", "M9 5l7 7-7 7")}</div>')
+
+
+# the All missions page (/missions/all/): a pack page's filters and sorting, plus search (site/js/search.js)
+ALL_SCRIPTS = PACK_FILTER_SCRIPTS.replace('<script src="/js/packfilter.js"', '<script src="/js/search.js" defer></script>\n<script src="/js/packfilter.js"')
+
+
 def ideas_html(collections, cls="ideas"):
-    """The "Browse by idea" row of links to the collection pages."""
+    """The "Browse by vibe" row of links to the collection pages."""
     if not collections:
         return ""
     links = "".join(f'<a href="{c["path"]}">{esc(c["label"])}</a>' for c in collections)
-    return f'<nav class="{cls}" aria-label="Browse by idea"><span>Browse by idea</span>{links}</nav>'
+    return f'<nav class="{cls}" aria-label="Browse by vibe"><span>Browse by vibe</span>{links}</nav>'
 
 
 def build_pages(out):
@@ -521,6 +581,12 @@ def build_pages(out):
                    '<script src="/js/stamps.js" defer></script>\n'    # and the stamp that lands when one is earned (site/js/stamps.js)
                    '<script src="/js/plans.js" defer></script>\n')    # Add to calendar and "Did you go?" (site/js/plans.js)
 
+    updated = (catalog.get("source") or {}).get("updated")
+    try:
+        when = datetime.date.fromisoformat(updated).strftime("%B %-d, %Y")
+    except (TypeError, ValueError):
+        when = ""
+    FOOT["line"] = f' · {catalog["stats"]["live"]} live missions' + (f", updated {when}" if when else "")
     missions = catalog["missions"]
     live_ids = {m["id"] for m in missions}   # drafts aren't in the catalog, so a [[link]] to one stays plain text
     packs = sorted(catalog["packs"], key=lambda p: (p["id"] != "anywhere", p.get("name") or p["id"]))
@@ -660,7 +726,7 @@ def build_pages(out):
                     f'<span class="badge">{icon(icons["packs"].get(p.get("icon"), ""), 26)}</span>'
                     f'<div><h2><a href="/packs/{p["id"]}/">{esc(p.get("name"))}</a></h2>'
                     f'<p>{len(ms)} {"idea" if len(ms) == 1 else "ideas"}</p></div></div>'
-                    f'<div class="cards">{"".join(mission_card(m, 3) for m in ms)}</div></section>')
+                    f'<div class="cards pack-cards">{"".join(mission_card(m, 3) for m in ms)}</div></section>')
         intro_html = "".join(f"<p>{esc(' '.join(par.split()))}</p>" for par in str(c["intro"]).split("\n") if par.strip())
         states = sum(1 for p in packs if p["id"] not in ("anywhere", "general") and any(m["pack"] == p["id"] for m in rows))
         count_line = f"{len(rows)} ideas" + (f" in {states} {'state' if states == 1 else 'states'}" if states else " you can do anywhere") + \
@@ -671,6 +737,7 @@ def build_pages(out):
 <div class="page-intro"><h1>{esc(c["title"])}</h1></div>
 <div class="pack-about">{intro_html}</div>
 <p class="hand ideas-count">{esc(count_line)}</p>
+<div class="pack-filters" data-pack="all" data-search></div>
 {"".join(groups)}
 {ideas_html(others, "ideas ideas-more")}
 </div>"""
@@ -684,7 +751,8 @@ def build_pages(out):
         image = share_card(f"idea-{c['id']}", f"{c['title']}: {' '.join(str(c['description']).split())}", badge="hive",
                            eyebrow="Ideas from AmbleBee", title=c["title"], text=" ".join(str(c["description"]).split()),
                            note=count_line)
-        write(c["path"], page(f"{c['title']} · {len(rows)} Ideas · AmbleBee", meta, c["path"], main, ld, brand, image=image))
+        write(c["path"], page(f"{c['title']} · {len(rows)} Ideas · AmbleBee", meta, c["path"], main, ld, brand, image=image,
+                              extra_script=ALL_SCRIPTS))
         days = [lastmod[f"/missions/{m['id']}/"] for m in rows if f"/missions/{m['id']}/" in lastmod]
         if dates.get("collections.yaml"):
             days.append(dates["collections.yaml"])
@@ -708,7 +776,8 @@ def build_pages(out):
             f'<section class="pack preview" aria-label="{esc(p.get("name"))}"><div class="pack-head">'
             f'<span class="badge">{icon(icons["packs"].get(p.get("icon"), ""), 26)}</span>'
             f'<div><h2><a href="{link}">{esc(p.get("name"))}</a></h2><p>{esc(p.get("description") or "")}</p></div></div>'
-            f'<div class="cards">{"".join(mission_card(m, 3) for m in rows[:PACK_PREVIEW])}</div>'
+            f'<div class="cards pack-cards">{"".join(mission_card(m, 3) for m in rows[:PACK_PREVIEW])}'
+            f'{"".join(mission_card(m, 3).replace("<a class=", "<a data-extra hidden class=", 1) for m in rows[PACK_PREVIEW:])}</div>'
             + (f'<a class="pack-more" href="{link}">{more} more · Show all {len(rows)}</a>' if more > 0 else "")
             + "</section>")
     intro = f"{stats['live']} live missions in {len(packs)} packs, with {stats['drafts']} more being checked."
@@ -716,22 +785,42 @@ def build_pages(out):
                   f'<span>{folded_missions} {"mission" if folded_missions == 1 else "missions"} in packs that are still growing</span></summary>'
                   f'{"".join(folded)}</details>') if folded else ""
     main = f"""<div class="page page-wide">
-<div class="page-intro"><h1>Every mission</h1><p>{esc(intro)}</p></div>
+<div class="page-intro"><h1>Every mission</h1><p>{esc(intro)} <a href="/missions/all/">See all {stats['live']} in one list</a></p></div>
 {ideas_html(collections)}
+<div class="pack-filters" data-pack="all" data-search data-preview></div>
 {"".join(sections)}
 {more_packs}
 </div>"""
     ld = {"@context": "https://schema.org", "@type": "CollectionPage", "url": f"{BASE}/missions/", "name": "Every mission", "description": intro}
     (Path(out) / "missions").mkdir(parents=True, exist_ok=True)
     (Path(out) / "missions" / "index.html").write_text(
-        page(f"Every mission · {SITE_NAME}", intro, "/missions/", main, ld, brand,
+        page(f"Every mission · {SITE_NAME}", intro, "/missions/", main, ld, brand, extra_script=ALL_SCRIPTS,
              image=share_card("page-missions", f"Every mission: {intro}", badge="hive", eyebrow="Date & adventure ideas",
                               title="Every mission", text=intro, note="amblebee.com/missions")), encoding="utf-8")
+
+    # All missions: every live mission in one list (Amble Anywhere, then each state A to Z), with search, filters,
+    # sorting and "Distance from" from site/js/packfilter.js. Without JavaScript it's the plain list.
+    in_order = [m for p in packs for m in sorted((m for m in missions if m["pack"] == p["id"]), key=lambda m: m["number"])]
+    states = len({state_of(p) for p in packs if state_of(p) and live_count[p["id"]]})
+    all_intro = f"All {len(in_order)} live missions, from every state and the ones you can do anywhere, in one list."
+    main = f"""<div class="page page-wide">
+<p class="crumbs"><a href="/missions/">Every mission</a></p>
+<div class="page-intro"><h1>All missions</h1><p>{esc(all_intro)} Want them by state instead? <a href="/missions/">Browse by state</a>.</p></div>
+<p class="hand">{len(in_order)} missions in {states} states and anywhere</p>
+<div class="pack-filters" data-pack="all" data-search></div>
+<div class="cards pack-cards">{"".join(mission_card(m, with_pack=True) for m in in_order)}</div>
+</div>"""
+    ld = {"@context": "https://schema.org", "@graph": [
+        {"@type": "CollectionPage", "@id": f"{BASE}/missions/all/", "url": f"{BASE}/missions/all/", "name": "All missions", "description": all_intro},
+        crumbs_ld([("Every mission", "/missions/"), ("All missions", "/missions/all/")])]}
+    write("/missions/all/", page(f"All missions · {SITE_NAME}", all_intro, "/missions/all/", main, ld, brand, extra_script=ALL_SCRIPTS,
+                                 image=share_card("page-missions-all", f"All missions: {all_intro}", badge="hive", eyebrow="Date & adventure ideas",
+                                                  title="All missions", text=all_intro, note="amblebee.com/missions/all")))
 
     for name, (title, desc) in INFO_PAGES.items():
         path = PAGE_PATHS.get(name, f"/{name}/")
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
-        main = f'<div class="page info">\n{body}</div>'
+        main = f'<div class="page {WIDE_PAGES.get(name, "info")}">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         if name == "faq":
             ld = faq_jsonld(body, path)
@@ -758,7 +847,7 @@ def build_pages(out):
     (Path(out) / "404.html").write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
 
     newest = max(lastmod.values(), default=None)
-    for u in ("/", "/missions/"):
+    for u in ("/", "/missions/", "/missions/all/"):
         if newest:
             lastmod[u] = newest
     if dates.get("roadmap.yaml"):
@@ -778,7 +867,8 @@ def build_pages(out):
         f = Path(out) / name
         text = f.read_text(encoding="utf-8")
         assert "<!--shared-head-->" in text, f"site/{name} lost its <!--shared-head--> line"
-        text = text.replace("<!--shared-head-->", SHARED_HEAD).replace("<!--site-nav-->", nav_html(current)).replace("<!--ideas-->", ideas_html(collections))
+        text = text.replace("<!--shared-head-->", SHARED_HEAD).replace("<!--site-nav-->", nav_html(current)).replace("<!--site-footer-->", footer_html()).replace("<!--ideas-->", ideas_html(collections))
+        text = text.replace("<!--vibes-->", vibes_html(collections)).replace("<!--live-count-->", str(stats["live"]))
         if name == "roadmap.html":   # the Bee trail gets its own share card; the home page keeps the envelope
             old = re.search(r'<meta property="og:image" content="[^"]*">', text)
             assert old, "site/roadmap.html lost its og:image line"

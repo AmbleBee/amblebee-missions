@@ -385,9 +385,11 @@ class Site:
         self.browser, self.base, self.errors = browser, base, []
         self.intake = FakeIntake()
 
-    def open(self, path="/", viewport=DESKTOP):
+    def open(self, path="/", viewport=DESKTOP, first_visit=False):
         ctx = self.browser.new_context(viewport=viewport, reduced_motion="reduce", accept_downloads=True)
         ctx.route(INTAKE + "/**", self.intake.handle)
+        if not first_visit:   # the home page's first tap asks where you are once; most tests are past that
+            ctx.add_init_script("try { localStorage.setItem('amble.asked', '1') } catch (e) {}")
         page = ctx.new_page()
         page.set_default_timeout(TIMEOUT_MS)
         page.on("pageerror", lambda e: self.errors.append(f"{path}: {e}"))
@@ -395,33 +397,74 @@ class Site:
         page.goto(self.base + path)
         return page
 
-    def home(self, path="/", viewport=DESKTOP):
-        page = self.open(path, viewport)
-        page.wait_for_selector("#packs .card", state="attached")
+    def home(self, path="/", viewport=DESKTOP, first_visit=False):
+        page = self.open(path, viewport, first_visit)
+        page.wait_for_selector("#ticket-slot .env, #reveal:not([hidden])", state="attached")
         return page
+
+
+def sheet(page):
+    """Opens the home page's sheet: Where are you? and the filters (the Filters button under Give me a mission)."""
+    if not page.evaluate("document.querySelector('#pick-sheet').open"):
+        page.click("#filters-toggle")
+    page.wait_for_selector("#pick-sheet[open]")
+
+
+def more_filters(page):
+    """The sheet's More filters fold: effort, time of day, right now, done ones and themes."""
+    sheet(page)
+    if page.get_attribute("#more-filters", "open") is None:
+        page.click("#more-filters summary")
+
+
+def set_place(page, text):
+    """Types a ZIP or city into the sheet's Where are you? and presses Set."""
+    sheet(page)
+    page.fill("#zip-input", text)
+    page.click("#zip-form button")
+
+
+def done(page):
+    """Closes the sheet with Done."""
+    page.click("#filters-done")
+    page.wait_for_selector("#pick-sheet", state="hidden")
+
+
+def shown_cards(page):
+    """The names on the All missions page's cards that aren't hidden by search or filters, in order."""
+    return page.eval_on_selector_all(".pack-cards a.card:not([hidden]) h2", "hs => hs.map(h => h.textContent)")
+
+
+def all_missions(site, path="/missions/all/", viewport=DESKTOP):
+    page = site.open(path, viewport)
+    page.wait_for_selector(".pf-search")
+    return page
 
 
 PREVIEW = 4   # missions per pack in "Every pack" with no filters (PACK_PREVIEW in site/js/browse.js)
 FOLD_MIN = 20   # packs with fewer live missions fold under "More packs" (PACK_FOLD_MIN in site/js/browse.js)
 
 
-def t_home_shows_a_taste_of_every_pack(site, catalog):
+def t_home_leads_with_one_button_and_browses_by_vibe(site, catalog):
     page = site.home()
+    assert page.locator("#packs").count() == 0, "the list moved to /missions/ and /missions/all/"
+    assert page.is_visible("#roll-btn") and page.is_visible("#near-toggle") and page.is_visible("#filters-toggle")
+    assert not page.is_visible("#pick-sheet"), "Where are you? and the filters wait in the sheet"
+    assert page.locator(".how-steps li").count() == 3
+    vibes = page.locator(".vibe-grid a.vibe")
+    assert vibes.count() >= 4 and all(h.startswith("/") and h.endswith("/") for h in vibes.evaluate_all("as => as.map(a => a.getAttribute('href'))"))
+    live = str(len(catalog["missions"]))
+    assert live in page.inner_text(".every-bar") and page.get_attribute(".every-bar", "href") == "/missions/"
     packs = [p for p in catalog["packs"] if p["count"]]
-    assert page.locator("#packs .pack.preview").count() == len(packs)
-    assert page.locator("#packs .card").count() == sum(min(PREVIEW, p["count"]) for p in packs)
     big = [p for p in packs if p["count"] > PREVIEW]
-    assert page.locator("#packs .pack-more").count() == len(big), "only packs with more than a row get a Show all link"
     p = max(big, key=lambda x: x["count"])
-    more = page.locator(f'#packs .pack-more[href="/packs/{p["id"]}/"]')
+    page.goto(site.base + "/missions/")            # by state: a taste of each pack, then its own page
+    more = page.locator(f'.pack-more[href="/packs/{p["id"]}/"]')
     assert more.inner_text().startswith(f'{p["count"] - PREVIEW} more · Show all {p["count"]}')
     first = sorted((m for m in catalog["missions"] if m["pack"] == p["id"]), key=lambda m: m["number"])[:PREVIEW]
-    section = page.locator(f'#packs .pack[aria-label="{p["name"]}"]')
-    assert section.locator(".card h4").all_inner_texts() == [m["name"] for m in first], "the first missions by number"
-    assert f"{len(catalog['missions'])} live missions" in page.inner_text("#browse-count")
-    page.select_option("#browse-pack", p["id"])   # one pack on its own: all of it, no Show all link
-    assert page.locator("#packs .card").count() == p["count"]
-    assert page.locator("#packs .pack-more").count() == 0
+    section = page.locator(f'.pack[aria-label="{p["name"]}"]')
+    assert section.locator(".card:not([hidden]) h3").all_inner_texts() == [m["name"] for m in first], "the first missions by number"
+    assert page.locator('a[href="/missions/all/"]').count() >= 1, "and a way to see them all in one list"
     page.goto(site.base + f'/packs/{p["id"]}/')     # and the Show all page lists every mission in the pack
     assert page.locator(".cards .card").count() == p["count"]
 
@@ -431,27 +474,20 @@ def t_small_packs_fold_under_more_packs(site, catalog):
     is_big = lambda p: p["id"] == "anywhere" or p["count"] >= FOLD_MIN
     lead = [p["name"] for p in sorted((p for p in packs if is_big(p)), key=lambda p: (p["id"] != "anywhere", -p["count"]))]
     small = [p for p in packs if not is_big(p)]
-    for path, root in (("/", "#packs"), ("/missions/", ".page")):
-        page = site.home() if path == "/" else site.open(path)
-        shown = page.locator(f"{root} > section.pack").evaluate_all("els => els.map(e => e.getAttribute('aria-label'))")
-        assert shown == lead, f"{path}: Amble Anywhere, then the big packs, biggest first"
-        fold = page.locator(f"{root} details.more-packs")
-        assert fold.locator("section.pack").count() == len(small)
-        assert f"{len(small)} more packs" in fold.locator("summary").inner_text()
-        assert not fold.locator("section.pack").first.is_visible(), f"{path}: small packs stay folded until asked for"
-        fold.locator("summary").click()
-        assert fold.locator("section.pack").first.is_visible()
-    page = site.home()
-    page.click("#packs details.more-packs summary")
-    page.check('input[name="mode"][value="date"]', force=True)   # a mood is picked: every match shows, nothing folded
-    assert page.locator("#packs details.more-packs").count() == 0
-    page.check('input[name="mode"][value="any"]', force=True)
-    assert page.locator("#packs details.more-packs").get_attribute("open") is not None, "the fold stays the way you left it"
+    page = site.open("/missions/")
+    shown = page.locator(".page > section.pack").evaluate_all("els => els.map(e => e.getAttribute('aria-label'))")
+    assert shown == lead, "Amble Anywhere, then the big packs, biggest first"
+    fold = page.locator(".page details.more-packs")
+    assert fold.locator("section.pack").count() == len(small)
+    assert f"{len(small)} more packs" in fold.locator("summary").inner_text()
+    assert not fold.locator("section.pack").first.is_visible(), "small packs stay folded until asked for"
+    fold.locator("summary").click()
+    assert fold.locator("section.pack").first.is_visible()
 
 
 def t_phone_packs_swipe_sideways(site, catalog):
-    page = site.home(viewport=PHONE)
-    row = page.locator("#packs .pack.preview:has(.pack-more) .cards").first
+    page = site.open("/missions/", PHONE)
+    row = page.locator(".pack.preview:has(.pack-more) .cards").first
     row.scroll_into_view_if_needed()
     assert row.evaluate("r => getComputedStyle(r).overflowX") == "auto"
     assert row.evaluate("r => r.scrollWidth > r.clientWidth + 50"), "the row should be wider than the screen"
@@ -490,59 +526,83 @@ def t_bad_links_get_a_letter(site, catalog):
         page.wait_for_selector("text=This letter got lost in the mail.")
 
 
-def t_filters_narrow_the_list_and_clear(site, catalog):
+def t_filters_narrow_the_pick_and_clear(site, catalog):
     page = site.home()
-    taste = page.locator("#packs .card").count()
-    page.click("#filters-toggle")
-    page.click('[data-filter="cost"] label:has(input[value="free"])')
+    sheet(page)
+    page.select_option("#pack-select", "all")
+    total = len(catalog["missions"])
+    assert str(total) in page.inner_text("#sheet-open")
+    page.click('#pick-sheet [data-filter="cost"] label:has(input[value="free"])')
     free = sum(1 for m in catalog["missions"] if m["cost"] == "free")
-    assert page.locator("#packs .card").count() == free, "with a filter on, every match shows, not a taste"
-    assert page.locator("#packs .pack-more").count() == 0
-    assert "fit your filters" in page.inner_text("#browse-count")
-    page.click("#browse-clear")
-    assert page.locator("#packs .card").count() == taste
+    assert page.inner_text("#sheet-open") == f"Open a mission · {free}", "the button says how many it picks from"
+    assert page.inner_text("#filters-count") == "1"
+    page.click("#filters-reset")
+    assert str(total) in page.inner_text("#sheet-open")
+    done(page)
+    assert page.is_hidden("#filters-count")
 
 
 def t_search_matches_words_and_typos(site, catalog):
-    page = site.home()
+    page = all_missions(site)
+    assert page.evaluate("document.activeElement.id") != "search", "only the Search link puts you in the box"
 
     def search(text):
-        page.fill("#search-input", text)
-        page.wait_for_function("t => document.querySelector('#browse-count').textContent.includes(t)", arg=text)
-        return page.locator("#packs .card h4").all_inner_texts()
+        page.fill(".pf-search", text)
+        page.wait_for_function("t => document.querySelector('.pf-count').textContent.includes(t)", arg=text)
+        return shown_cards(page)
 
     assert not any("Farmers Market" in n for n in search("sea"))
-    assert search("watterfall")
-    assert "close match" in page.inner_text("#browse-count")
+    assert search("watterfall"), "a small typo still finds waterfalls"
     assert search("picnics") == search("picnic")
+    page.keyboard.press("Escape")
+    assert len(shown_cards(page)) == len(catalog["missions"])
 
 
-def t_search_reaches_past_distance_and_filters(site, catalog):
-    page = site.home()
-    page.fill("#zip-input", "97201")
-    page.click("#zip-form button")
-    page.wait_for_selector(".zip-set")
+def t_every_mission_and_vibe_pages_search_and_pick_a_pack(site, catalog):
+    """Every mission, All missions and the vibe pages all get search, filters and a pack menu."""
+    page = site.open("/missions/")
+    page.wait_for_selector(".pf-pack")
+    taste = page.locator("a.card:not([hidden])").count()
+    pack = max((p for p in catalog["packs"] if p["id"] != "anywhere"), key=lambda p: p["count"])
+    assert pack["count"] > PREVIEW
+    page.select_option(".pf-pack", pack["id"])
+    assert page.locator("a.card:not([hidden])").count() == pack["count"], "one pack picked: all of it, not a taste"
+    assert page.locator("section.pack:not([hidden])").count() == 1 and page.locator(".pack-more:not([hidden])").count() == 0
+    page.select_option(".pf-pack", "all")
+    assert page.locator("a.card:not([hidden])").count() == taste, "back to a taste of each pack"
+    page.fill(".pf-search", "waterfall")
+    page.wait_for_function("() => document.querySelector('.pf-count').textContent.includes('waterfall')")
+    assert page.locator("a.card:not([hidden])").count() > PREVIEW
+    kids = [m for m in catalog["missions"] if "kids" in (m.get("who") or [])]
+    page = site.open("/kid-friendly-adventures/")
+    page.wait_for_selector(".pf-pack")
+    some = next(p for p in catalog["packs"] if any(m["pack"] == p["id"] for m in kids) and p["id"] != "anywhere")
+    page.select_option(".pf-pack", some["id"])
+    assert page.locator("a.card:not([hidden])").count() == sum(1 for m in kids if m["pack"] == some["id"])
+    assert page.locator("section.pack:not([hidden])").count() == 1, "other packs' sections hide"
+    page = all_missions(site, f"/missions/all/?pack={some['id']}")
+    assert page.input_value(".pf-pack") == some["id"], "a link can pick the pack"
 
-    def search(text):
-        page.fill("#search-input", text)
-        page.wait_for_function("t => document.querySelector('#browse-count').textContent.includes(t)", arg=text)
 
-    search("crater lake")
-    far = page.locator("#packs .pack.beyond")
-    assert "Crater Lake" in far.locator(".card h4").all_inner_texts(), "a place past the distance still turns up in search"
-    assert "Farther than" in far.locator("h3").inner_text()
-    assert far.locator(".card .d").count(), "and its card says how far away it is"
-    search("multnomah")
-    assert page.locator("#packs .pack.beyond").count() == 0, "a nearby match needs no second list"
-    assert "Multnomah Falls" in page.locator("#packs .card h4").all_inner_texts()
-    page.click(".zip-clear")
-    page.click("#filters-toggle")
-    page.check('[data-filter="cost"] input[value="free"]', force=True)
-    search("symphony")
-    assert "Outside your filters" in page.locator("#packs .pack.beyond h3").inner_text()
-    page.click("#browse-clear")
-    search("symphony")
-    assert page.locator("#packs .pack.beyond").count() == 0 and page.locator("#packs .card").count()
+def t_all_missions_search_works_with_distance_and_filters(site, catalog):
+    page = all_missions(site)
+    assert len(shown_cards(page)) == len(catalog["missions"]), "every live mission, in one list"
+    page.fill(".pf-place", "97201")
+    page.click(".pf-from button")
+    page.wait_for_selector(".pf-dist")
+    page.fill(".pf-search", "multnomah")
+    page.wait_for_function("() => document.querySelector('.pf-count').textContent.includes('multnomah')")
+    assert "Multnomah Falls" in shown_cards(page)
+    card = page.locator(".pack-cards a.card:not([hidden])").first
+    assert "Oregon" in card.inner_text() or "Amble" in card.inner_text(), "cards say which pack they're from"
+    assert card.locator(".pf-dist").count(), "and how far away"
+    page.click(".pf-more")
+    page.click('.pf-panel [data-pf="cost"] label:has(input[value="$$$"])')
+    page.fill(".pf-search", "symphony")
+    page.wait_for_timeout(300)
+    names = shown_cards(page)
+    by_name = {m["name"]: m for m in catalog["missions"]}
+    assert all(by_name[n]["cost"] == "$$$" for n in names)
 
 
 def t_a_pick_without_a_zip_offers_real_places(site, catalog):
@@ -552,37 +612,54 @@ def t_a_pick_without_a_zip_offers_real_places(site, catalog):
     assert page.is_visible("#reveal-near"), "no ZIP yet: the pick says how to get real places"
     page.click("#reveal-near-btn")
     page.wait_for_function("() => document.activeElement && document.activeElement.id === 'zip-input'")
-    assert not page.is_visible("#reveal")
-    page.fill("#zip-input", "97201")
-    page.click("#zip-form button")
+    assert not page.is_visible("#reveal") and page.is_visible("#pick-sheet")
+    set_place(page, "97201")
     page.wait_for_selector(".zip-set")
-    page.click("#roll-btn")
+    page.click("#sheet-open")
     page.wait_for_selector("#reveal-title")
     assert not page.is_visible("#reveal-near"), "with a ZIP set there's nothing to nudge"
 
 
 def t_zip_prefers_nearby_places(site, catalog):
     page = site.home()
-    page.fill("#zip-input", "97201")
-    page.click("#zip-form button")
+    set_place(page, "97201")
     page.wait_for_selector(".zip-set")
     page.evaluate("Math.random = () => 0")
-    page.click("#roll-btn")
+    page.click("#sheet-open")
     page.wait_for_selector("#reveal-title")
     assert page.is_visible(".place .dist"), "with a ZIP set, this pick should be a nearby place"
 
 
+def t_first_tap_asks_where_you_are_once(site, catalog):
+    page = site.home(first_visit=True)
+    page.click("#roll-btn")
+    page.wait_for_selector("#pick-sheet[open]")
+    assert page.is_visible("#sheet-first") and page.is_visible("#sheet-skip")
+    assert page.evaluate("document.activeElement.id") == "zip-input"
+    page.click("#sheet-skip")
+    page.wait_for_selector("#reveal-title")
+    page.goto(site.base + "/")
+    page.wait_for_selector("#ticket-slot .env")
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    assert not page.is_visible("#pick-sheet"), "asked once per device"
+    page = site.home(first_visit=True)
+    page.click("#filters-toggle")
+    assert page.is_hidden("#sheet-first") and page.is_visible("#filters-done"), "Filters opens the plain sheet"
+
+
 def t_note_card_survives_and_seals(site, catalog):
     page = site.home()
-    page.click("#packs .card")
-    page.click('#dialog-body button:has-text("Share this mission")')
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    page.click('#reveal-actions button:has-text("Share this mission")')
     page.fill(".gc-to", "Sam")
     page.fill(".gc-from", "Alex")
     page.fill(".gc-note", "Pack a jacket")
     page.mouse.click(5, 5)   # a tap on the dim area
     assert page.is_visible(".gc-note"), "a card with writing on it must stay open"
     page.click("#gift-dialog .x-close")
-    page.click('#dialog-body button:has-text("Share this mission")')
+    page.click('#reveal-actions button:has-text("Share this mission")')
     assert page.input_value(".gc-note") == "Pack a jacket"
     page.click('.gift-form button[type="submit"]')
     page.wait_for_selector(".gift-link")
@@ -597,8 +674,9 @@ def t_note_card_survives_and_seals(site, catalog):
 
 def t_sealed_letter_stays_sealed_with_a_remembered_zip(site, catalog):
     page = site.home()
-    page.click("#packs .card")
-    page.click('#dialog-body button:has-text("Share this mission")')
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    page.click('#reveal-actions button:has-text("Share this mission")')
     page.fill(".gc-to", "Sam")
     page.fill(".gc-from", "Alex")
     page.click('button:has-text("Seal it")')
@@ -625,31 +703,33 @@ def t_back_closes_the_card(site, catalog):
     assert page.is_visible("#roll-btn")
 
 
-def t_no_places_nearby_says_so_and_offers_more(site, catalog):
+def t_no_places_nearby_says_so(site, catalog):
     page = site.home()
-    page.fill("#zip-input", "59001")
-    page.click("#zip-form button")
-    page.wait_for_selector("text=Nothing within 30 mi of 59001 yet.")
+    set_place(page, "59001")
+    page.wait_for_selector(".zip-set")
     assert "No places within 30 mi" in page.inner_text("#match-count")
     anywhere = sum(1 for m in catalog["missions"] if m["pack"] == "anywhere")
-    assert page.locator("#packs .card").count() == anywhere, "do-anywhere missions still show"
-    page.click(".near-widen")
-    page.wait_for_selector("#packs .card .meta .d")
-    assert page.locator("text=Nothing within").count() == 0
+    assert str(anywhere) in page.inner_text("#sheet-open"), "do-anywhere missions can still be picked"
 
 
-def t_popup_locks_the_page_behind_it(site, catalog):
+def t_sheet_locks_the_page_behind_it(site, catalog):
     page = site.home(viewport=PHONE)
-    page.locator("#packs .card").first.scroll_into_view_if_needed()
-    page.locator("#packs .card").first.click()
+    page.click("#near-toggle")
+    page.wait_for_selector("#pick-sheet[open]")
     assert page.evaluate("getComputedStyle(document.documentElement).overflowY") == "hidden"
+    box = page.locator("#pick-sheet").bounding_box()
+    assert box["x"] == 0 and box["width"] == PHONE["width"], "a full-width sheet on phones"
+    assert page.locator("#sheet-open").bounding_box()["y"] < PHONE["height"], "its Open button is on screen"
+    page.keyboard.press("Escape")
+    assert page.is_hidden("#pick-sheet")
 
 
 def t_saving_an_image_downloads_it(site, catalog):
     page = site.home()
-    page.click("#packs .card")
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
     with page.expect_download() as download:
-        page.click('#dialog-body button:has-text("Save as image")')
+        page.click('#reveal-actions button:has-text("Save as image")')
     assert download.value.suggested_filename.endswith(".png")
 
 
@@ -660,24 +740,24 @@ def t_phone_shows_the_main_button_first(site, catalog):
     assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
 
 
-def t_where_are_you_comes_before_the_button(site, catalog):
-    """On a phone, "Where are you?" sits above Open a mission, short until a place is set; then the button says near you."""
+def t_near_you_says_where_it_picks_from(site, catalog):
+    """Under Give me a mission: Near you (where it's picking from) and Filters, both on screen on a phone."""
     page = site.home(viewport=PHONE)
-    near, btn = page.locator("#near-you").bounding_box(), page.locator("#roll-btn").bounding_box()
-    assert near["y"] < btn["y"] and btn["y"] + btn["height"] <= PHONE["height"]
-    assert not page.locator(".near-pick .within").is_visible() and page.inner_text("#roll-btn").strip() == "Open a mission"
-    page.fill("#zip-input", "97201")
-    page.click("#zip-form button")
+    btn, near = page.locator("#roll-btn").bounding_box(), page.locator("#near-toggle").bounding_box()
+    assert btn["y"] < near["y"] and near["y"] + near["height"] <= PHONE["height"]
+    assert page.inner_text("#near-label") == "Near you"
+    set_place(page, "97201")
     page.wait_for_selector(".near-pick .within", state="visible")
-    assert page.inner_text("#roll-btn").strip() == "Open a mission near you"
-    page.select_option("#pack-select", "anywhere")
-    assert page.inner_text("#roll-btn").strip() == "Open a mission", "one pack picked: not \"near you\""
+    assert page.inner_text("#near-label") == "Near 97201"
+    state = next(p for p in catalog["packs"] if p["count"] and p["id"] not in ("anywhere", "general"))
+    page.select_option("#pack-select", state["id"])
+    assert page.inner_text("#near-label") == state["name"], "one pack picked: it says which"
 
 
 def t_who_is_coming_widens_keeps_kids_safe_and_skips_romantic(site, catalog):
     page = site.home()
+    sheet(page)
     page.select_option("#pack-select", "all")
-    page.click("#filters-toggle")
 
     def fits():
         return page.evaluate("pool().map((m) => m.full_id)")
@@ -706,47 +786,39 @@ def t_who_is_coming_widens_keeps_kids_safe_and_skips_romantic(site, catalog):
     pick("kids")
     pick("friends")
     pick("family")
+    done(page)
     page.check('input[name="mode"][value="adventure"]', force=True)
     assert fits(), "family + adventure should find missions"
 
 
 def t_cards_are_links_with_real_addresses(site, catalog):
-    page = site.home()
-    card = page.locator("#packs .card").first
+    page = all_missions(site)
+    card = page.locator(".pack-cards a.card").first
     href = card.get_attribute("href")
     assert re.fullmatch(r"/missions/[a-z0-9-]+/", href), href
     card.click()
-    page.wait_for_selector("#mission-dialog[open]")
-    assert page.url.endswith(href)
-    page.go_back()
-    page.wait_for_selector("#mission-dialog", state="hidden")
-    assert not page.url.endswith(href)
-    card.click()
-    page.wait_for_selector("#mission-dialog[open]")
-    page.click("#mission-dialog .x-close")
-    page.wait_for_url(lambda u: not u.endswith(href))
-    card.click()
-    page.reload()
     page.wait_for_selector(".ticket h1")
+    assert page.url.endswith(href)
 
 
-def t_popup_links_to_the_full_page(site, catalog):
+def t_reveal_links_to_the_full_page(site, catalog):
     page = site.home()
-    page.click("#packs .card")
-    link = page.locator('#dialog-body a.full-page')
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    link = page.locator('#reveal a.full-page').first
     href = link.get_attribute("href")
-    assert re.fullmatch(r"/missions/[a-z0-9-]+/", href), href
+    assert re.match(r"/missions/[a-z0-9-]+/", href), href
     link.click()
     page.wait_for_selector(".page .ticket h1")
-    assert page.url.endswith(href)
     assert page.locator(".page a.full-page").count() == 0, "no full-page button on the full page itself"
 
 
 def t_share_without_a_note_is_the_mission_page(site, catalog):
     page = site.home()
-    page.click("#packs .card")
-    title = page.inner_text("#dialog-body h1, #dialog-body h2")
-    page.click('#dialog-body button:has-text("Share this mission")')
+    page.click("#roll-btn")
+    page.wait_for_selector("#reveal-title")
+    title = page.inner_text("#reveal-title")
+    page.click('#reveal-actions button:has-text("Share this mission")')
     page.click('button:has-text("Share without a note")')
     page.wait_for_selector(".gift-link")
     link = page.input_value(".gift-link")
@@ -770,11 +842,13 @@ def t_mission_page_shares_in_one_click(site, catalog):
 
 def t_zero_results_offer_a_way_out(site, catalog):
     page = site.home()
+    more_filters(page)
     page.select_option("#pack-select", "all")
-    page.click("#filters-toggle")
     for chip in ('[data-filter="effort"] label:has(input[value="hard"])', '[data-filter="cost"] label:has(input[value="free"])',
                  '[data-filter="setting"] label:has(input[value="indoor"])'):
-        page.click(chip)
+        page.click("#pick-sheet " + chip)
+    assert page.is_disabled("#sheet-open")
+    done(page)
     page.wait_for_selector("text=Nothing matches, yet.")
     assert "would open up" in page.inner_text(".env-sub")
     page.click('#ticket-slot button:has-text("Clear all")')
@@ -783,11 +857,9 @@ def t_zero_results_offer_a_way_out(site, catalog):
 
 def t_zip_can_be_remembered_and_units_keep_distance(site, catalog):
     page = site.home()
-    page.fill("#zip-input", "12")
-    page.click("#zip-form button")
+    set_place(page, "12")
     page.wait_for_selector("text=A ZIP code is 5 numbers")
-    page.fill("#zip-input", "97201")
-    page.click("#zip-form button")
+    set_place(page, "97201")
     page.wait_for_selector(".zip-set")
     assert page.input_value("#within-select") == "30"
     page.click('.units button[data-unit="km"]')
@@ -795,11 +867,13 @@ def t_zip_can_be_remembered_and_units_keep_distance(site, catalog):
     page.click('.units button[data-unit="mi"]')
     page.click("text=Remember on this device")
     page.reload()
-    page.wait_for_selector(".zip-set")
+    page.wait_for_selector(".zip-set", state="attached")
+    assert page.inner_text("#near-label") == "Near 97201", "a remembered ZIP shows under the button"
+    sheet(page)
     assert "null" not in page.inner_text("#zip-status"), "remembered: no stray text where the Remember button was"
     page.click(".zip-clear")
     page.reload()
-    page.wait_for_selector("#packs .card", state="attached")
+    page.wait_for_selector("#ticket-slot .env", state="attached")
     assert page.locator(".zip-set").count() == 0
 
 
@@ -815,9 +889,10 @@ def t_mission_view_has_its_own_title_and_heading(site, catalog):
 
 
 def t_search_results_are_announced(site, catalog):
-    page = site.home()
-    page.fill("#search-input", "museum")
-    page.wait_for_function("() => document.querySelector('#live').textContent.includes('museum')")
+    page = all_missions(site)
+    assert page.get_attribute(".pf-count", "aria-live") == "polite"
+    page.fill(".pf-search", "museum")
+    page.wait_for_function("() => document.querySelector('.pf-count').textContent.includes('museum')")
 
 
 def t_files_have_versions_and_404_is_branded(site, catalog):
@@ -830,15 +905,16 @@ def t_files_have_versions_and_404_is_branded(site, catalog):
 
 def t_time_of_day_filter_keeps_any_time_missions(site, catalog):
     page = site.home()
+    more_filters(page)
     page.select_option("#pack-select", "all")
-    page.click("#filters-toggle")
-    page.click('[data-filter="time"] label:has(input[value="night"])')
+    page.click('#pick-sheet [data-filter="time"] label:has(input[value="night"])')
     picks = page.evaluate("pool().map((m) => m.time_of_day)")
     assert picks and set(picks) <= {"night", "any"}
 
 
 def t_city_search_and_location(site, catalog):
     page = site.home()
+    sheet(page)
     page.fill("#zip-input", "Portland, OR")
     page.click("#zip-form button")
     page.wait_for_selector("text=Near Portland, OR")
@@ -865,6 +941,7 @@ def t_city_search_and_location(site, catalog):
 
 def t_shared_city_names_list_the_likely_one_first(site, catalog):
     page = site.home()
+    sheet(page)
     page.fill("#zip-input", "Albany")
     page.click("#zip-form button")
     page.wait_for_selector("#zip-status >> text=Albany, NY")
@@ -882,6 +959,7 @@ def t_shared_city_names_list_the_likely_one_first(site, catalog):
 def t_location_shows_the_closest_zip(site, catalog):
     def locate(lat, lon, page=None):
         page = page or site.home()
+        sheet(page)
         page.context.grant_permissions(["geolocation"])
         page.context.set_geolocation({"latitude": lat, "longitude": lon})
         page.click("#use-location")
@@ -913,39 +991,19 @@ def t_location_shows_the_closest_zip(site, catalog):
 
 def t_filters_survive_in_the_address(site, catalog):
     page = site.home()
+    sheet(page)
     page.select_option("#pack-select", "all")
-    page.click("#filters-toggle")
-    page.click('[data-filter="cost"] label:has(input[value="free"])')
-    page.fill("#search-input", "waterfall")
-    page.wait_for_function("() => location.search.includes('q=waterfall')")
+    page.click('#pick-sheet [data-filter="cost"] label:has(input[value="free"])')
+    page.wait_for_function("() => location.search.includes('cost=free')")
     url = page.url
-    assert "cost=free" in url
     page.fill("#zip-input", "97201")
     page.click("#zip-form button")
     page.wait_for_selector(".zip-set")
     assert "97201" not in page.url, "a location must never go in the address"
     other = site.home(url.replace(site.base, ""))
-    assert other.input_value("#search-input") == "waterfall"
     assert other.is_checked('[data-filter="cost"] input[value="free"]')
     assert other.input_value("#pack-select") == "all"
-    assert 0 < other.locator("#packs .card").count() < len(catalog["missions"])
-    assert other.is_visible("#browse-share")
-
-
-def t_sort_makes_one_ordered_list(site, catalog):
-    page = site.home()
-    page.select_option("#browse-sort", "cost")
-    costs = page.locator("#packs .card .meta span:last-child").all_inner_texts()
-    order = ["Free", "Under $20", "$20-60", "Over $60"]
-    assert [order.index(c) for c in costs] == sorted(order.index(c) for c in costs)
-    assert page.locator("#packs .pack-head").count() == 0
-    assert "sort=cost" in page.url
-    assert page.locator('#browse-sort option[value="distance"]').count() == 0
-    page.fill("#zip-input", "97201")
-    page.click("#zip-form button")
-    page.wait_for_selector(".zip-set")
-    page.select_option("#browse-sort", "distance")
-    assert "mi" in page.locator("#packs .card .meta .d").first.inner_text()
+    assert other.inner_text("#filters-count") == "1", "and the Filters button says one is on"
 
 
 def t_phone_menu_reaches_everything_from_any_page(site, catalog):
@@ -973,13 +1031,14 @@ def t_computer_menu_and_search_link(site, catalog):
     assert not page.is_visible('.menu-panel a:has-text("Bee trail")')
     page.mouse.click(5, 400)
     assert not page.is_visible(".menu-panel")
-    page.click('.top nav > a[href="/#search"]')
-    page.wait_for_function("() => document.activeElement.id === 'search-input'")
+    page.click('.top nav > a[href="/missions/all/#search"]')
+    page.wait_for_function("() => document.activeElement && document.activeElement.id === 'search'")
     assert page.locator(".top .brand img[src*='logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "the logo loads"
     assert page.locator('.menu-panel a[href="/me/"]').count() == 0, "Your missions moved out of More"
     profile = page.locator('.top nav > a.nav-profile')
     assert profile.is_visible() and profile.evaluate("a => a.previousElementSibling.textContent") == "Contribute", \
         "Profile sits right of Contribute"
+    page.goto(site.base + "/")
     page.click('.top nav > a:has-text("Contribute")')
     page.wait_for_url("**/contribute/")
     page.get_by_role("link", name="Profile").click()     # opens the profile menu (site/nav.js)
@@ -991,14 +1050,22 @@ def t_computer_menu_and_search_link(site, catalog):
     assert page.locator(".top .brand img[src='/logo.webp']").evaluate("i => i.complete && i.naturalWidth > 0"), "and on other pages"
 
 
-def t_menu_links_keep_filters_and_leave_a_mission(site, catalog):
-    page = site.home("/?cost=free")
-    page.click('.top nav > a[href="/#browse"]')
-    assert "cost=free" in page.url
+def t_old_list_links_find_their_new_home(site, catalog):
+    """The list and search used to be on the home page: links to them still land somewhere useful."""
+    page = site.open("/#search")
+    page.wait_for_url("**/missions/all/#search")
+    page.wait_for_function("() => document.activeElement && document.activeElement.id === 'search'")
+    page = site.open("/?q=waterfall")
+    page.wait_for_url("**/missions/all/?q=waterfall#search")
+    page.wait_for_function("() => document.querySelector('.pf-count').textContent.includes('waterfall')")
+    pack = next(p for p in catalog["packs"] if p["count"] and p["id"] != "anywhere")
+    page = site.open(f"/?list={pack['id']}")
+    page.wait_for_url(f"**/packs/{pack['id']}/")
+    page = site.home("/?cost=free")              # filters in the address still work, and Every mission is a page
     page.click("#roll-btn")
     page.wait_for_selector("#reveal-title")
-    page.click('.top nav > a[href="/#browse"]')
-    page.wait_for_selector("#browse", state="visible")
+    page.click('.top nav > a[href="/missions/"]')
+    page.wait_for_url("**/missions/")
 
 
 def t_footer_is_dark_on_short_pages_too(site, catalog):
@@ -1007,9 +1074,14 @@ def t_footer_is_dark_on_short_pages_too(site, catalog):
     assert box["y"] + box["height"] >= 1599, "the footer should reach the bottom of a short page"
     assert page.evaluate("getComputedStyle(document.querySelector('.foot')).backgroundColor") == "rgb(74, 51, 35)"
     for path in ("/contact/", "/", "/roadmap.html"):      # Follow along: the AmbleBeeHQ accounts, in a new tab
-        social = site.open(path).locator(".foot .foot-social a")
-        assert social.count() == 3, f"{path}: the footer should link Pinterest, Bluesky and X"
-        for i in range(3):
+        page = site.open(path)
+        assert page.locator(".foot .foot-logo img").evaluate("i => i.complete && i.naturalWidth > 0") or page.wait_for_function(
+            "() => document.querySelector('.foot-logo img').naturalWidth > 0"), f"{path}: the logo shows in the footer"
+        assert f"{len(catalog['missions'])} live missions" in page.inner_text(".foot-bottom"), f"{path}: the live count"
+        assert page.locator(".foot a[href='/contribute/#suggest']").count() == 1 and page.locator(".foot a[href='/safety/']").count() == 1
+        social = page.locator(".foot .foot-social a")
+        assert social.count() == 4, f"{path}: the footer should link Pinterest, Bluesky, X and GitHub"
+        for i in range(4):
             link = social.nth(i)
             assert link.get_attribute("target") == "_blank" and "AmbleBee on" in (link.get_attribute("aria-label") or "")
 
@@ -1018,7 +1090,7 @@ def t_idea_pages_gather_missions_and_link_both_ways(site, catalog):
     kids = [m for m in catalog["missions"] if "kids" in (m.get("who") or [])]
     page = site.home()
     assert page.title().startswith("AmbleBee: Date Ideas"), "the home page has a searchable title"
-    page.locator("#browse .ideas a[href='/kid-friendly-adventures/']").click()   # Browse by idea, from home
+    page.locator(".vibe-grid a[href='/kid-friendly-adventures/']").click()   # Browse by vibe, from home
     page.wait_for_selector("h1")
     assert page.inner_text("h1") == "Kid-Friendly Adventures"
     assert page.locator(".card").count() == len(kids)
@@ -1029,7 +1101,8 @@ def t_idea_pages_gather_missions_and_link_both_ways(site, catalog):
     page = site.open("/missions/")
     assert page.locator(".ideas a").count() >= 4
     page = site.home()
-    page.locator("#packs .card").first.click()                                     # leaving a mission restores the title
+    page.click("#roll-btn")                                                        # leaving a mission restores the title
+    page.wait_for_selector("#reveal-title")
     page.go_back()
     page.wait_for_function("document.title.startsWith('AmbleBee: Date Ideas')")
 
@@ -1138,7 +1211,7 @@ def t_suggest_page_offers_both_ways(site, catalog):
     assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1
     assert page.locator(".suggest-paths a[href='/suggest/mission/']").count() == 1
     text = page.inner_text(".suggest-paths")
-    assert "takes us longer" in text and "helps us the most" in text, "each way says what it means for us"
+    assert "takes us longer" in text and "Helps us most" in text and "goes live sooner" in text, "each way says what it means for us"
 
 
 def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
@@ -1242,9 +1315,10 @@ def t_report_from_a_mission_fills_it_in(site, catalog):
     path, sent = site.intake.posts[-1]
     assert path == "/report" and sent["mission_id"] == mission["id"] and sent["follow"] is True
     ticket = site.home()
-    ticket.click("#packs .card")
-    href = ticket.get_attribute("#dialog-body .report a", "href")
-    assert href.startswith("/report/?id="), "the pop-up ticket links to the report page too"
+    ticket.click("#roll-btn")
+    ticket.wait_for_selector("#reveal-title")
+    href = ticket.get_attribute("#reveal .report a", "href")
+    assert href.startswith("/report/?id="), "a picked mission links to the report page too"
 
 
 def t_contact_form_sends_and_keeps_a_draft(site, catalog):
@@ -1482,7 +1556,7 @@ def t_not_for_us_is_never_picked(site, catalog):
     page = site.open("/missions/" + keep["id"] + "/")
     page.evaluate("h => localStorage.setItem('amble.done', JSON.stringify({v: 1, done: [], hidden: h}))", hidden)
     page.goto(site.base + "/")
-    page.wait_for_selector("#packs .card", state="attached")
+    page.wait_for_selector("#ticket-slot .env", state="attached")
     page.click("#roll-btn")
     page.wait_for_selector("#reveal-title")
     assert page.inner_text("#reveal-title") == keep["name"], "only the mission that isn't hidden can be picked"
@@ -1548,7 +1622,7 @@ def t_rolls_skip_a_look_alike(site, catalog):
     """Adam rolled the Oregon Symphony, then Dress-Up Orchestra Night. The next roll skips a mission too much like
     the one just shown (it goes back to the bottom of the deck), and still deals when only look-alikes are left."""
     page = site.open("/")
-    page.wait_for_selector("#packs .card", state="attached")
+    page.wait_for_selector("#ticket-slot .env", state="attached")
     r = page.evaluate("""() => {
       const by = (id) => S.missions.find((m) => m.full_id === id);
       const sym = by("amblebee/oregon-symphony-night"), orch = by("amblebee/dress-up-orchestra-night");
@@ -1576,7 +1650,7 @@ def t_rolls_pick_something_new_until_asked(site, catalog):
     page = site.open("/missions/" + keep["id"] + "/")
     done_list(page, [m["full_id"] for m in anywhere[1:]])
     page.goto(site.base + "/")
-    page.wait_for_selector("#packs .card", state="attached")
+    page.wait_for_selector("#ticket-slot .env", state="attached")
     page.click("#roll-btn")
     for _ in range(3):
         page.wait_for_selector("#reveal-title")
@@ -1598,7 +1672,7 @@ def t_rolls_pick_something_new_until_asked(site, catalog):
     # every one done: it says so, and still deals
     done_list(page, [m["full_id"] for m in anywhere])
     page.goto(site.base + "/")
-    page.wait_for_selector("#packs .card", state="attached")
+    page.wait_for_selector("#ticket-slot .env", state="attached")
     page.click("#roll-btn")
     page.wait_for_selector("#reveal-title")
     assert "every mission that fits" in page.inner_text("#reveal-fresh")
@@ -1606,19 +1680,20 @@ def t_rolls_pick_something_new_until_asked(site, catalog):
 
 def t_hide_ones_we_have_done_filter(site, catalog):
     page = site.home()
-    page.click("#filters-toggle")
+    more_filters(page)
     assert page.locator("#new-field").is_hidden(), "nothing done yet: no filter to show"
     done = catalog["missions"][0]
     done_list(page, [done["full_id"]])
     page.reload()
-    page.wait_for_selector("#packs .card", state="attached")
-    page.click("#filters-toggle")
+    page.wait_for_selector("#ticket-slot .env", state="attached")
+    more_filters(page)
+    page.select_option("#pack-select", "all")
     page.click("#new-field label:has(#f-new)")
     page.wait_for_function("location.search.includes('new=1')")
-    assert page.locator("#packs .card").count() == len(catalog["missions"]) - 1, "every mission but the done one"
-    assert page.locator(f'#packs a.card[href*="/missions/{done["id"]}/"]').count() == 0
+    ids = page.evaluate("pool().map((m) => m.id)")
+    assert len(ids) == len(catalog["missions"]) - 1 and done["id"] not in ids, "every mission but the done one"
     page.goto(site.base + "/?new=1")
-    page.wait_for_selector("#packs .card", state="attached")
+    page.wait_for_selector("#ticket-slot .env", state="attached")
     assert page.is_checked("#f-new"), "the filter comes back from the address"
 
 
@@ -2723,7 +2798,7 @@ def t_votes_in_the_menu(site, catalog):
 
 
 def t_header_stays_on_one_line(site, catalog):
-    page = site.open("/about/", viewport={"width": 1000, "height": 700})
+    page = site.open("/about/", viewport={"width": 880, "height": 700})
     page.wait_for_function("() => document.querySelectorAll('.top nav > a.is-folded').length > 0")
     brand = page.locator(".top .brand").bounding_box()
     nav = page.locator(".top nav").bounding_box()
@@ -2849,9 +2924,25 @@ def t_contribute_page_polls(site, catalog):
                                           {"id": 2, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]},
                                           {"id": 3, "mission": None, "slug": None, "name": "Utah", "place": None, "explain": None, "season": ["any"]}]}
     page = site.open("/contribute/")
-    page.wait_for_selector(".poll-list a")
+    page.wait_for_selector(".poll-card .poll-pick")
     assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1, "suggesting a mission moved here"
-    assert page.locator("#report ~ .contact-paths a[href='/report/']").count() == 1, "report a problem is linked"
+    assert page.locator(".contact-paths a[href='/report/']").count() == 1, "report a problem is linked"
+    card = page.locator(".poll-card")
+    assert "Which pack next?" in card.inner_text() and "Closes in" in card.inner_text(), "an open poll: its question and when it closes"
+    assert card.locator(".poll-pick").count() == 4, "its options, and Other"
+    assert page.get_attribute(".poll-go", "href") == f"/poll/?p={pub}", "nothing picked: Vote just opens the poll"
+    card.locator(".poll-pick", has_text="Montana").click()
+    assert page.inner_text(".poll-go") == "Vote for Montana →"
+    assert site.intake.votes[pub]["ballots"] == {}, "picking on Contribute doesn't vote"
+    page.click(".poll-go")
+    page.wait_for_selector(".vote-cast")
+    assert "pick=" not in page.url, "the pick leaves the address once it's filled in"
+    assert "Montana" in page.inner_text(".vote-option.is-picked"), "the poll opens with the pick filled in"
+    assert "filled in" in page.inner_text(".poll-app .form-status")
+    assert site.intake.votes[pub]["ballots"] == {}, "and still waits for Cast my vote"
+    page.goto(site.base + f"/poll/?p={pub}&pick=other")
+    page.wait_for_function("() => document.activeElement && document.activeElement.id === 'poll-other'")
+    page.goto(site.base + "/contribute/")
     v = site.intake.votes[pub]
     v["opens_at"] = (datetime.now(timezone.utc) + timedelta(hours=2, minutes=5, seconds=30)).isoformat()
     page.reload()
