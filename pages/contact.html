@@ -1,16 +1,20 @@
-<h1>Contact</h1>
-<p class="hand">Every message gets read.</p>
-<p>Pick whatever fits. It all comes straight to us.</p>
-<p class="contact-faq">Got a question? <a href="/faq/">The FAQ</a> might answer it right away.</p>
+<section class="pg-hero">
+  <p class="eyebrow">Contact</p>
+  <h1>Contact</h1>
+  <p class="hand">Every message gets read.</p>
+  <p class="pg-lede">Pick whatever fits. It all comes straight to us. <span class="contact-faq">Got a question? <a href="/faq/">The FAQ</a> might answer it right away.</span></p>
+  <nav class="contact-paths pg-paths" aria-label="Other ways in">
+    <a class="path c-opt" href="/contribute/#suggest"><span class="c-ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-7-5.5-7-11a7 7 0 0 1 14 0c0 5.5-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg></span><span><b>Suggest a mission</b><small>Know a great date spot or adventure? It might end up in a pack.</small></span></a>
+    <a class="path c-opt" href="/report/"><span class="c-ic"><svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 21V4M5 4h11l-2 4 2 4H5"/></svg></span><span><b>Report a problem</b><small>Closed, moved or something off? The button on each mission fills in which one.</small></span></a>
+  </nav>
+</section>
 
-<div class="contact-paths">
-  <a class="path" href="/contribute/#suggest"><b>Suggest a mission</b><span>Know a great date spot or adventure? It might end up in a pack.</span></a>
-  <a class="path" href="/report/"><b>Report a problem</b><span>Closed, moved or something off? Tip: the button on each mission fills in which one.</span></a>
-</div>
-
-<h2 id="message">Send a message</h2>
-<p class="hint">Before you write: <a href="/faq/">questions and answers</a> covers statuses, credit names, your information and more.</p>
-<div class="intake" data-intake="contact">
+<section class="pg-band">
+<div class="pg-cols pg-cols-aside">
+  <div class="pg-card pg-form">
+    <h2 id="message">Send a message</h2>
+    <p class="hint">Before you write: <a href="/faq/">questions and answers</a> covers statuses, credit names, your information and more.</p>
+    <div class="intake" data-intake="contact">
   <p class="intake-wait">Checking the mailbox…</p>
   <div class="intake-down" hidden>
     <p class="hand">Our contact form is down right now</p>
@@ -42,16 +46,22 @@
   </form>
   <div class="intake-done" tabindex="-1" hidden></div>
 </div>
-
-<h2>Anything else</h2>
-<p>Prefer email? Write to <a href="mailto:staff@amblebee.com">staff@amblebee.com</a>.</p>
-<p>Have a GitHub account and don't mind posting in public? You can also <a href="https://github.com/AmbleBee/amblebee-missions/issues" target="_blank" rel="noopener">open an issue</a>. Please leave out private details.</p>
-<p>Sent us something? <a href="/status/">Check its status</a>.</p>
-
-<section class="intake-mine" hidden>
+  </div>
+  <aside class="pg-aside" aria-label="Other ways to reach us">
+    <div class="pg-card"><h2>Other ways to reach us</h2>
+      <div class="pg-links">
+      <a href="mailto:staff@amblebee.com"><span class="pg-fi"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/></svg></span><span><b>staff@amblebee.com</b><small>Prefer email? Write any time.</small></span></a>
+      <a href="https://github.com/AmbleBee/amblebee-missions/issues" target="_blank" rel="noopener"><span class="pg-fi"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="6" cy="6" r="2.5"/><circle cx="6" cy="18" r="2.5"/><circle cx="18" cy="8" r="2.5"/><path d="M6 8.5v7M18 10.5c0 4-6 3-10.5 6"/></svg></span><span><b>Open a GitHub issue</b><small>Public, so leave out private details.</small></span></a>
+      <a href="/status/"><span class="pg-fi honey"><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-10"/></svg></span><span><b>Check a status</b><small>Sent us something? See where it is.</small></span></a>
+      </div>
+    </div>
+    <section class="intake-mine" hidden>
   <h2>Your submissions</h2>
   <p class="hint">Saved on this device only.</p>
   <ul></ul>
+</section>
+  </aside>
+</div>
 </section>
 <noscript><p>The message form needs JavaScript. Email <a href="mailto:staff@amblebee.com">staff@amblebee.com</a> instead.</p></noscript>
 <script src="/js/done.js" defer></script>

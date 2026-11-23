@@ -254,8 +254,6 @@ async function start() {
   const sel = $("#pack-select");
   S.packs.forEach((p) => sel.append(h("option", { value: p.id }, p.name)));
   if (S.packById.anywhere) sel.value = "anywhere";
-  const src = data.source || {};
-  $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} live missions · updated ${prettyDate(src.updated)}`;
 
   const form = $("#form-link");
   if (FORM_URL) form.href = FORM_URL;

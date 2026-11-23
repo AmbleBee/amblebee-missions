@@ -42,10 +42,21 @@
         return el("li", {}, el("a", { href: "/poll/?p=" + x.pub }, el("b", { text: x.name })),
           extra ? el("small", { text: " · " + extra }) : null);   // no vote counts on public polls: a low number reads as "nobody's here"
       }
-      if (d.open.length) parts.push(el("ul", { class: "poll-list" }, d.open.map(function (x) {
-        return item(x, (x.closes_at ? "closes " + day(x.closes_at) : "open") + (x.profile_required ? " · profile required" : ""));
-      })));
-      else parts.push(el("p", { class: "hint", text: "No polls open right now. Check back soon." }));
+      // each open poll as a card: its question, when it closes, and its options to pick from. Voting itself happens
+      // on the poll's own page: Vote opens it with the pick already filled in
+      var cards = el("div", { class: "poll-cards" });
+      if (d.open.length) {
+        parts.push(cards);
+        K.missions().then(function (by) {
+          d.open.forEach(function (x) {
+            var slot = el("div", { class: "poll-card" }, el("h3", { text: x.name }));
+            cards.append(slot);
+            K.api("/polls/" + x.pub).then(function (r) {
+              slot.replaceWith(r.status === 200 && r.body.kind === "official" ? pollCard(r.body, by) : simpleCard(x));
+            });
+          });
+        });
+      } else parts.push(el("p", { class: "hint", text: "No polls open right now. Check back soon." }));
       if (soon.length) parts.push(el("h3", { text: "Coming up" }), el("ul", { class: "poll-list" }, soon));
       if (d.reviewing.length) parts.push(el("h3", { text: "Being reviewed" }), el("ul", { class: "poll-list" }, d.reviewing.map(function (x) { return item(x, "results soon"); })));
       if (d.results.length) parts.push(el("h3", { text: "Recent results" }), el("ul", { class: "poll-list" }, d.results.map(function (x) {
@@ -55,6 +66,40 @@
       })));
       app.replaceChildren.apply(app, parts);
     });
+  }
+
+  function closes(v) {
+    if (!v.closes_at) return "Open now";
+    var days = Math.ceil((new Date(v.closes_at) - Date.now()) / 864e5);
+    return days <= 0 ? "Closes soon" : days === 1 ? "Closes in 1 day" : days <= 14 ? "Closes in " + days + " days" : "Closes " + day(v.closes_at);
+  }
+  function simpleCard(x) {
+    return el("div", { class: "poll-card" }, el("div", { class: "poll-card-top" }, el("h3", { text: x.name }), el("span", { class: "poll-left", text: closes(x) })),
+      el("a", { class: "btn primary small", href: "/poll/?p=" + x.pub, text: "Open the poll →" }));
+  }
+  function pollCard(v, by) {
+    var pick = null, link = "/poll/?p=" + v.pub;
+    var go = el("a", { class: "btn primary small poll-go", href: link });
+    var opts = v.options.map(function (o) { return { id: String(o.id), name: o.name, small: o.explain || (by[o.mission] && by[o.mission].short) || o.place || "" }; });
+    if (v.allow_other) opts.push({ id: "other", name: "Other", small: "Tell us your idea. Only we see it." });
+    var list = el("div", { class: "poll-picks", role: "radiogroup", "aria-label": v.name });
+    function paint() {
+      list.replaceChildren.apply(list, opts.map(function (o) {
+        var on = pick === o.id;
+        return el("button", { type: "button", role: "radio", "aria-checked": String(on), class: "poll-pick" + (on ? " is-picked" : ""),
+          onclick: function () { pick = on ? null : o.id; paint(); } }, el("b", { text: o.name }), o.small ? el("small", { text: o.small }) : null);
+      }));
+      var chosen = opts.filter(function (o) { return o.id === pick; })[0];
+      go.href = link + (pick ? "&pick=" + encodeURIComponent(pick) : "");
+      go.textContent = v.you && v.you.voted ? "See your vote →" : chosen ? "Vote for " + chosen.name + " →" : "Vote →";
+    }
+    paint();
+    var note = v.you && v.you.voted ? "You've voted. You can change it on the poll until it closes."
+      : "Pick one here, and the poll opens with it filled in, ready to send." + (v.profile_required ? " This one needs a free profile." : "");
+    return el("div", { class: "poll-card" },
+      el("div", { class: "poll-card-top" }, el("h3", {}, el("a", { href: link, text: v.name })), el("span", { class: "poll-left", text: closes(v) })),
+      v.status === "open" && !v.opens_at ? list : null,
+      el("div", { class: "poll-card-go" }, go, el("p", { class: "hint", text: note })));
   }
 
   // ---------- one poll: /contribute/?p=<id> ----------
@@ -113,6 +158,17 @@
     var pick = (v.you.voted && v.you.choice) ? v.you.choice.slice() : [];
     // Other is a card like the rest: picking it clears the options, picking an option clears it (never both)
     var otherOn = !!(v.you.voted && v.you.other && !pick.length);
+    // picked on Contribute (?pick=): filled in here, once, and only before a vote is in. It leaves the address,
+    // so a refresh or a copied link starts clean
+    var asked = new URLSearchParams(location.search).get("pick"), filled = false;
+    if (asked) {
+      var q = new URLSearchParams(location.search); q.delete("pick");
+      history.replaceState(history.state, "", location.pathname + "?" + q.toString() + location.hash);
+      if (!v.you.voted) {
+        if (asked === "other" && v.allow_other) { otherOn = true; filled = true; }
+        else if (opts.some(function (o) { return String(o.id) === asked; })) { pick = [opts.filter(function (o) { return String(o.id) === asked; })[0].id]; filled = true; }
+      }
+    }
     var other = v.allow_other ? el("input", { id: "poll-other", type: "text", maxlength: "120", placeholder: "Your idea",
                                              "aria-label": "Other: your idea", value: otherOn ? v.you.other : "" }) : null;
     var ul = el("ul", { class: "vote-options" });
@@ -143,6 +199,11 @@
     });
     paint();
     var cast = el("button", { type: "submit", class: "btn primary vote-cast", text: v.you.voted ? "Change my vote" : "Cast my vote!" });
+    if (filled) setTimeout(function () {
+      say(otherOn ? "Other is picked. Type your idea, then cast your vote." : "Your pick from Contribute is filled in. Cast your vote when you're ready.");
+      (otherOn ? other : cast).scrollIntoView({ block: "center" });
+      if (otherOn) other.focus();
+    }, 0);
     var form = el("form", { class: "vote-ballot", novalidate: true },
       el("p", { class: "hand-label", text: ranked ? "Tap your favorite first! Then keep tapping to rank the rest, if you like." : "Tap the one you'd pick." }),
       ul,

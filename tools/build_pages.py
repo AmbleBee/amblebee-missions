@@ -87,6 +87,7 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "vote": ("You're invited to vote!", "Help your crew pick the plan. Cast your vote!"),
     "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),
 }
+WIDE_PAGES = {"contribute": "page-wide contribute", **{n: "page-wide pg" for n in ("about", "contact", "faq", "privacy", "safety")}}   # laid out across the full width, not as a column of text
 NOINDEX_PAGES = {"suggest", "report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new", "poll"}   # useful only through a link: kept out of search engines and the sitemap
 PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/", "poll": "/poll/"}   # pages/<name>.html → this address
 
@@ -221,14 +222,37 @@ def page(title, description, path, main, jsonld, brand, extra_script="", current
 <main id="main">
 {main}
 </main>
-<footer class="foot">
-  <p class="foot-links"><a href="/about/">About</a> <a href="/missions/">Every mission by state</a> <a href="/missions/all/">All missions in one list</a> <a href="/safety/">Safety</a> <a href="/privacy/">Privacy</a> <a href="/faq/">FAQ</a> <a href="/contact/">Contact</a></p>
-  <p class="foot-social">Follow along: <a href="https://www.pinterest.com/AmbleBeeHQ/" target="_blank" rel="me noopener" aria-label="AmbleBee on Pinterest (opens in a new tab)">Pinterest</a> <a href="https://bsky.app/profile/amblebeehq.bsky.social" target="_blank" rel="me noopener" aria-label="AmbleBee on Bluesky (opens in a new tab)">Bluesky</a> <a href="https://x.com/AmbleBeeHQ" target="_blank" rel="me noopener" aria-label="AmbleBee on X (opens in a new tab)">X</a></p>
-  <p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>. Check hours, tickets and conditions before you go; places change.</p>
-</footer>
+{footer_html()}
 {extra_script}</body>
 </html>
 """
+
+
+# The one site footer, on every page (site/index.html and site/roadmap.html at their <!--site-footer--> line).
+# build_pages() fills in the live count and date once the catalog is built.
+FOOT = {"line": ""}
+SOCIAL = [("Pinterest", "https://www.pinterest.com/AmbleBeeHQ/"), ("Bluesky", "https://bsky.app/profile/amblebeehq.bsky.social"),
+          ("X", "https://x.com/AmbleBeeHQ"), ("GitHub", "https://github.com/AmbleBee/amblebee-missions")]
+
+
+def footer_html():
+    col = lambda title, links: (f'<nav class="foot-col" aria-label="{title}"><h2>{title}</h2>'
+                                + "".join(f'<a href="{h}"{extra}>{t}</a>' for t, h, extra in links) + "</nav>")
+    social = "".join(f'<a href="{h}" target="_blank" rel="me noopener" aria-label="AmbleBee on {t} (opens in a new tab)">{t}</a>' for t, h in SOCIAL)
+    clock = ('<svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" '
+             'stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>')
+    return f"""<footer class="foot">
+  <div class="foot-top">
+    <div class="foot-brand"><a class="foot-logo" href="/" aria-label="AmbleBee, home"><img src="/logo.webp" alt="" width="540" height="179" loading="lazy"></a>
+      <p class="foot-tag">A little nudge to get out the door together.</p></div>
+    {col("Missions", [("Give me a mission", "/", ""), ("Every mission", "/missions/", ""), ("All in one list", "/missions/all/", ""),
+                      ("Browse by vibe", "/#browse", ""), ("Suggest a mission →", "/contribute/#suggest", ' class="foot-suggest"')])}
+    {col("AmbleBee", [("About", "/about/", ""), ("Contribute", "/contribute/", ""), ("Bee trail", "/roadmap.html", ""), ("FAQ", "/faq/", ""), ("Contact", "/contact/", "")])}
+    <nav class="foot-col foot-social" aria-label="Follow along"><h2>Follow along</h2>{social}</nav>
+  </div>
+  <p class="foot-safe">{clock}<span>Check hours, tickets and conditions before you go. Places change.</span><a href="/safety/">Safety tips →</a></p>
+  <div class="foot-bottom"><p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><span id="catalog-meta">{FOOT["line"]}</span></p><p><a href="/privacy/">Privacy</a></p></div>
+</footer>"""
 
 
 def crumbs_ld(items):
@@ -557,6 +581,12 @@ def build_pages(out):
                    '<script src="/js/stamps.js" defer></script>\n'    # and the stamp that lands when one is earned (site/js/stamps.js)
                    '<script src="/js/plans.js" defer></script>\n')    # Add to calendar and "Did you go?" (site/js/plans.js)
 
+    updated = (catalog.get("source") or {}).get("updated")
+    try:
+        when = datetime.date.fromisoformat(updated).strftime("%B %-d, %Y")
+    except (TypeError, ValueError):
+        when = ""
+    FOOT["line"] = f' · {catalog["stats"]["live"]} live missions' + (f", updated {when}" if when else "")
     missions = catalog["missions"]
     live_ids = {m["id"] for m in missions}   # drafts aren't in the catalog, so a [[link]] to one stays plain text
     packs = sorted(catalog["packs"], key=lambda p: (p["id"] != "anywhere", p.get("name") or p["id"]))
@@ -790,7 +820,7 @@ def build_pages(out):
     for name, (title, desc) in INFO_PAGES.items():
         path = PAGE_PATHS.get(name, f"/{name}/")
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
-        main = f'<div class="page info">\n{body}</div>'
+        main = f'<div class="page {WIDE_PAGES.get(name, "info")}">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         if name == "faq":
             ld = faq_jsonld(body, path)
@@ -837,7 +867,7 @@ def build_pages(out):
         f = Path(out) / name
         text = f.read_text(encoding="utf-8")
         assert "<!--shared-head-->" in text, f"site/{name} lost its <!--shared-head--> line"
-        text = text.replace("<!--shared-head-->", SHARED_HEAD).replace("<!--site-nav-->", nav_html(current)).replace("<!--ideas-->", ideas_html(collections))
+        text = text.replace("<!--shared-head-->", SHARED_HEAD).replace("<!--site-nav-->", nav_html(current)).replace("<!--site-footer-->", footer_html()).replace("<!--ideas-->", ideas_html(collections))
         text = text.replace("<!--vibes-->", vibes_html(collections)).replace("<!--live-count-->", str(stats["live"]))
         if name == "roadmap.html":   # the Bee trail gets its own share card; the home page keeps the envelope
             old = re.search(r'<meta property="og:image" content="[^"]*">', text)

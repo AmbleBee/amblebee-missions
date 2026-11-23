@@ -1074,9 +1074,14 @@ def t_footer_is_dark_on_short_pages_too(site, catalog):
     assert box["y"] + box["height"] >= 1599, "the footer should reach the bottom of a short page"
     assert page.evaluate("getComputedStyle(document.querySelector('.foot')).backgroundColor") == "rgb(74, 51, 35)"
     for path in ("/contact/", "/", "/roadmap.html"):      # Follow along: the AmbleBeeHQ accounts, in a new tab
-        social = site.open(path).locator(".foot .foot-social a")
-        assert social.count() == 3, f"{path}: the footer should link Pinterest, Bluesky and X"
-        for i in range(3):
+        page = site.open(path)
+        assert page.locator(".foot .foot-logo img").evaluate("i => i.complete && i.naturalWidth > 0") or page.wait_for_function(
+            "() => document.querySelector('.foot-logo img').naturalWidth > 0"), f"{path}: the logo shows in the footer"
+        assert f"{len(catalog['missions'])} live missions" in page.inner_text(".foot-bottom"), f"{path}: the live count"
+        assert page.locator(".foot a[href='/contribute/#suggest']").count() == 1 and page.locator(".foot a[href='/safety/']").count() == 1
+        social = page.locator(".foot .foot-social a")
+        assert social.count() == 4, f"{path}: the footer should link Pinterest, Bluesky, X and GitHub"
+        for i in range(4):
             link = social.nth(i)
             assert link.get_attribute("target") == "_blank" and "AmbleBee on" in (link.get_attribute("aria-label") or "")
 
@@ -1206,7 +1211,7 @@ def t_suggest_page_offers_both_ways(site, catalog):
     assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1
     assert page.locator(".suggest-paths a[href='/suggest/mission/']").count() == 1
     text = page.inner_text(".suggest-paths")
-    assert "takes us longer" in text and "helps us the most" in text, "each way says what it means for us"
+    assert "takes us longer" in text and "Helps us most" in text and "goes live sooner" in text, "each way says what it means for us"
 
 
 def t_suggest_form_sends_and_keeps_the_status_link(site, catalog):
@@ -2919,9 +2924,25 @@ def t_contribute_page_polls(site, catalog):
                                           {"id": 2, "mission": m1["full_id"], "slug": m1["id"], "name": m1["name"], "place": "", "season": ["any"]},
                                           {"id": 3, "mission": None, "slug": None, "name": "Utah", "place": None, "explain": None, "season": ["any"]}]}
     page = site.open("/contribute/")
-    page.wait_for_selector(".poll-list a")
+    page.wait_for_selector(".poll-card .poll-pick")
     assert page.locator(".suggest-paths a[href='/suggest/idea/']").count() == 1, "suggesting a mission moved here"
-    assert page.locator("#report ~ .contact-paths a[href='/report/']").count() == 1, "report a problem is linked"
+    assert page.locator(".contact-paths a[href='/report/']").count() == 1, "report a problem is linked"
+    card = page.locator(".poll-card")
+    assert "Which pack next?" in card.inner_text() and "Closes in" in card.inner_text(), "an open poll: its question and when it closes"
+    assert card.locator(".poll-pick").count() == 4, "its options, and Other"
+    assert page.get_attribute(".poll-go", "href") == f"/poll/?p={pub}", "nothing picked: Vote just opens the poll"
+    card.locator(".poll-pick", has_text="Montana").click()
+    assert page.inner_text(".poll-go") == "Vote for Montana →"
+    assert site.intake.votes[pub]["ballots"] == {}, "picking on Contribute doesn't vote"
+    page.click(".poll-go")
+    page.wait_for_selector(".vote-cast")
+    assert "pick=" not in page.url, "the pick leaves the address once it's filled in"
+    assert "Montana" in page.inner_text(".vote-option.is-picked"), "the poll opens with the pick filled in"
+    assert "filled in" in page.inner_text(".poll-app .form-status")
+    assert site.intake.votes[pub]["ballots"] == {}, "and still waits for Cast my vote"
+    page.goto(site.base + f"/poll/?p={pub}&pick=other")
+    page.wait_for_function("() => document.activeElement && document.activeElement.id === 'poll-other'")
+    page.goto(site.base + "/contribute/")
     v = site.intake.votes[pub]
     v["opens_at"] = (datetime.now(timezone.utc) + timedelta(hours=2, minutes=5, seconds=30)).isoformat()
     page.reload()
