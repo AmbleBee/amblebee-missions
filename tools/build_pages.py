@@ -48,7 +48,7 @@ COLLECTION_MIN = 8 # a collection page (collections.yaml) is built and linked on
 NEARBY_KM = 160    # about 100 miles; past that, a mission page shows more from its own pack instead
 OG_IMAGE = {"url": f"{BASE}/og-image.png?v=3",   # for pages without their own share card; the same as site/index.html
             "alt": "AmbleBee: date ideas and adventures near you. A sealed envelope with a honey wax seal, and a bee flying off to deliver it"}
-CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # the Google hosts are for the optional stats in site/js/stats.js; amblebee-intake is the server behind the forms, profiles and votes (AmbleUtil.API in site/js/util.js)
+CSP = "default-src 'self'; script-src 'self' https://www.googletagmanager.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob: https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com; connect-src 'self' https://amblebee-intake.tail58116.ts.net https://www.googletagmanager.com https://*.google-analytics.com https://*.google.com; object-src 'none'; base-uri 'self'; form-action 'self'"  # the Google hosts are for the optional stats in site/js/stats.js; amblebee-intake is the server behind the forms, profiles, votes and Field notes, whose photos it also serves (AmbleUtil.API in site/js/util.js)
 # Every page's <head> starts with this: generated pages here, and site/index.html and site/roadmap.html at their
 # <!--shared-head--> line, so the security policy and the site-wide scripts are written once. util.js comes first:
 # the other scripts use its helpers.
@@ -73,6 +73,7 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "contact": ("Contact", "How to reach AmbleBee: report a problem, suggest a place, or ask for a change."),
     "faq": ("Questions and answers", "Quick answers about AmbleBee missions, suggesting a place, what each status means, and your information."),
     "contribute": ("Contribute", "Vote in AmbleBee polls, suggest a mission, or report a problem."),
+    "fieldnotes": ("Field notes", "The AmbleBee blog: mission round-ups, how the missions get made, and progress on the camera and the Hive."),
     "suggest": ("Suggest a mission", "Know a great date spot or adventure? Suggest it for AmbleBee and it might become a mission."),
     "suggest-idea": ("Share an idea", "Tell AmbleBee about a date spot or adventure you love, in your own words."),
     "suggest-mission": ("Build a mission", "Build a full AmbleBee mission step by step, with tips along the way."),
@@ -88,13 +89,14 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),
 }
 WIDE_PAGES = {"contribute": "page-wide contribute", **{n: "page-wide pg" for n in ("about", "contact", "faq", "privacy", "safety")},
+              "fieldnotes": "page-wide pg fieldnotes",
               **{n: "page-wide pg me-page" for n in ("me", "me-plans", "me-messages", "me-votes", "me-settings")}}   # laid out across the full width, not as a column of text
 NOINDEX_PAGES = {"suggest", "report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new", "poll"}   # useful only through a link: kept out of search engines and the sitemap
 PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/", "poll": "/poll/"}   # pages/<name>.html → this address
 
 # the small line above the title on each info page's share card
 CARD_EYEBROW = {"about": "Our story", "safety": "Before you go", "privacy": "Your info", "contact": "Say hello", "faq": "Quick answers",
-                "contribute": "Help shape AmbleBee", "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
+                "contribute": "Help shape AmbleBee", "fieldnotes": "The AmbleBee blog", "suggest": "Know a great spot?", "report": "Help keep it accurate", "status": "Your submission",
                 "suggest-idea": "Know a great spot?", "suggest-mission": "Know a great spot?", "me": "Your profile", "me-settings": "Your profile", "me-plans": "Your profile", "me-messages": "Your profile", "me-votes": "Your profile", "vote": "Votes with friends", "vote-new": "Votes with friends", "poll": "AmbleBee poll"}
 
 # the same wording as the labels at the top of site/js/core.js
@@ -131,7 +133,7 @@ def nav_html(current=""):
     """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
     main = [("/about/", "About"), ("/missions/", "Every mission"), ("/missions/all/#search", "Search"),
             ("/roadmap.html", "Bee trail"), ("/contribute/", "Contribute")]
-    extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
+    extra = [("/fieldnotes/", "Field notes"), ("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
 
     # When the links don't fit beside the logo, site/nav.js folds them into More, highest number first; 0 never folds
     FOLD = {"Bee trail": 5, "About": 4, "Search": 3, "Every mission": 2}
@@ -248,7 +250,7 @@ def footer_html():
       <p class="foot-tag">A little nudge to get out the door together.</p></div>
     {col("Missions", [("Give me a mission", "/", ""), ("Every mission", "/missions/", ""), ("All in one list", "/missions/all/", ""),
                       ("Browse by vibe", "/#browse", ""), ("Suggest a mission →", "/contribute/#suggest", ' class="foot-suggest"')])}
-    {col("AmbleBee", [("About", "/about/", ""), ("Contribute", "/contribute/", ""), ("Bee trail", "/roadmap.html", ""), ("FAQ", "/faq/", ""), ("Contact", "/contact/", "")])}
+    {col("AmbleBee", [("About", "/about/", ""), ("Contribute", "/contribute/", ""), ("Field notes", "/fieldnotes/", ""), ("Bee trail", "/roadmap.html", ""), ("FAQ", "/faq/", ""), ("Contact", "/contact/", "")])}
     <nav class="foot-col foot-social" aria-label="Follow along"><h2>Follow along</h2>{social}</nav>
   </div>
   <p class="foot-safe">{clock}<span>Check hours, tickets and conditions before you go. Places change.</span><a href="/safety/">Safety tips →</a></p>
@@ -883,6 +885,10 @@ def build_pages(out):
     body = (ROOT / "pages" / "404.html").read_text(encoding="utf-8")
     text = page(f"Page not found · {SITE_NAME}", "This page doesn't exist on AmbleBee.", "/404.html",
                 f'<div class="page info">\n{body}</div>', {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found"}, brand)
+    # Field notes posts are shown by this page too (site/js/fieldnotes.js), so a shared post's link preview reads as
+    # AmbleBee rather than "Page not found". The tab's own title still says what happened.
+    for old, new in ((f"Page not found · {SITE_NAME}", SITE_NAME), ("This page doesn't exist on AmbleBee.", "A little nudge to get out the door together.")):
+        text = text.replace(f'content="{esc(old)}"', f'content="{esc(new)}"')
     (Path(out) / "404.html").write_text(text.replace("<title>", '<meta name="robots" content="noindex">\n<title>', 1), encoding="utf-8")
 
     newest = max(lastmod.values(), default=None)

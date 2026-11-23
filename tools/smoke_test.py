@@ -27,7 +27,9 @@ DESKTOP = {"width": 1280, "height": 800}
 TIMEOUT_MS = 8000
 
 
-class QuietHandler(http.server.SimpleHTTPRequestHandler):
+from serve import PagesHandler  # noqa: E402  tools/serve.py
+
+class QuietHandler(PagesHandler):   # GitHub Pages' 404.html for unknown addresses, like tools/serve.py
     def log_message(self, *args):
         pass
 
@@ -57,6 +59,52 @@ class FakeIntake:
         self.thread = [{"who": "them", "at": "2026-11-12T16:00:00+00:00", "body": "Any plans for a Montana pack?"},
                        {"who": "us", "at": "2026-11-13T16:00:00+00:00", "body": "We'd love one! Any favorite spots?"}]
 
+    # Field notes, like amblebee-intake's app/fieldnotes.py (which has its own tests): one pinned post, two more, a draft
+    FN_PHOTO = bytes.fromhex("89504e470d0a1a0a0000000d4948445200000001000000010802000000907753de0000000c49444154789c63b8b12c0a00043201d98fd8f44f0000000049454e44ae426082")   # a 1×1 honey-colored PNG
+    FN_POSTS = [
+        {"slug": "first-fall", "title": "Our first fall on the trail", "summary": "Where AmbleBee is now and what's next.",
+         "topics": ["Site updates"], "pinned": True, "posted_at": "2026-11-20T18:00:00+00:00", "edited_at": "2026-11-21T18:00:00+00:00",
+         "minutes": 6, "cover": {"url": "/fieldnotes/photo/aaa.png", "width": 1, "height": 1}, "draft": False,
+         "blocks": [{"type": "p", "text": "Hello **there**, see [Safety](/safety/) and [evil](javascript:alert(1))."}]},
+        {"slug": "rainy-day-dates", "title": "Five rainy-day dates that beat the couch", "summary": "Indoor ideas for wet weekends.",
+         "topics": ["Dates", "Oregon"], "pinned": False, "posted_at": "2026-11-12T18:00:00+00:00", "edited_at": "2026-11-15T18:00:00+00:00",
+         "minutes": 4, "cover": None, "draft": False,
+         "blocks": [{"type": "p", "text": "The rain's back."}, {"type": "h2", "text": "1. The old theater"},
+                    {"type": "photos", "photos": [{"url": "/fieldnotes/photo/bbb.png", "width": 1, "height": 1, "caption": "The marquee"},
+                                                  {"url": "/fieldnotes/photo/ccc.png", "width": 1, "height": 1, "caption": ""},
+                                                  {"url": "/fieldnotes/photo/ddd.png", "width": 1, "height": 1, "caption": "Row F"}]},
+                    {"type": "quote", "text": "It's become our rainy Sunday."}, {"type": "list", "items": ["Popcorn", "A coin to flip"]},
+                    {"type": "mission", "mission": "@@MISSION@@"}, {"type": "mission", "mission": "gone-mission"}]},
+        {"slug": "camera-take-three", "title": "The camera, take three", "summary": "What broke and what worked.",
+         "topics": ["Hive"], "pinned": False, "posted_at": "2026-10-28T18:00:00+00:00", "edited_at": "2026-10-28T18:00:00+00:00",
+         "minutes": 3, "cover": None, "draft": False, "blocks": [{"type": "p", "text": "Take three."}]},
+    ]
+    FN_DRAFT = {"slug": "holiday-gifts", "title": "Holiday gift missions", "summary": "", "topics": [], "pinned": False,
+                "posted_at": None, "edited_at": "2026-11-21T18:00:00+00:00", "minutes": 1, "cover": None, "draft": True,
+                "blocks": [{"type": "photos", "photos": [{"url": "/fieldnotes/photo/eee.png", "width": 1, "height": 1, "caption": ""}]}]}
+
+    def fieldnotes_api(self, path, url, route, cors, reply):
+        from urllib.parse import parse_qs, urlsplit
+        q = {k: v[0] for k, v in parse_qs(urlsplit(url).query).items()}
+        self.fn_asks = getattr(self, "fn_asks", []) + [url]
+        if path.startswith("/fieldnotes/photo/"):
+            if path.endswith("eee.png") and q.get("preview") != "tok":
+                return route.fulfill(status=404, headers=cors, body="Not found")
+            return route.fulfill(status=200, headers={**cors, "content-type": "image/png"}, body=self.FN_PHOTO)
+        if path == "/fieldnotes":
+            posts = [p for p in self.FN_POSTS if (not q.get("q") or q["q"].lower() in json.dumps(p).lower())
+                     and (not q.get("topic") or q["topic"] in p["topics"])]
+            topics = sorted({t for p in self.FN_POSTS for t in p["topics"]}, key=str.lower)
+            return reply(200, {"ok": True, "posts": [{k: v for k, v in p.items() if k not in ("blocks", "draft")} for p in posts],
+                               "total": len(posts), "more": False, "topics": topics})
+        slug = path.split("/")[2]
+        post = next((p for p in self.FN_POSTS if p["slug"] == slug), None)
+        if slug == self.FN_DRAFT["slug"] and q.get("preview") == "tok":
+            post = self.FN_DRAFT
+        if not post:
+            return reply(404, {"ok": False, "error": "We couldn't find that post."})
+        return reply(200, {"ok": True, "post": post})
+
     def handle(self, route):
         req = route.request
         path = req.url.split(INTAKE, 1)[1].split("?")[0]
@@ -75,6 +123,8 @@ class FakeIntake:
             return reply(200, {"ok": True, **SCHEMA})
         if path == "/stamps":   # the stamp book's "x% have this stamp" (None until enough profiles have stamps)
             return reply(200, {"ok": True, **self.stamp_counts})
+        if path.startswith("/fieldnotes"):
+            return self.fieldnotes_api(path, req.url, route, cors, reply)
         if path.startswith("/polls"):
             data = json.loads(req.post_data or "{}") if req.method == "POST" else {}
             return self.polls_api(path, req.method, data, req.headers, reply)
@@ -375,6 +425,8 @@ def expected(message):
     """The browser logs an API's 400 (a form with a mistake) or an outage as an error. Those are the forms
     working as designed, so they don't fail a test; every other console error still does."""
     where = (message.location or {}).get("url", "")
+    if "404" in message.text and where.split("?")[0].endswith("/"):   # an address that isn't a file gets 404.html with a 404 status, as on
+        return True                                                    # GitHub Pages: that's how a Field notes post opens
     return message.type == "error" and (INTAKE in where or INTAKE in message.text)   # Chromium and WebKit word it differently
 
 
@@ -3163,6 +3215,104 @@ def t_profile_pages_share_tabs(site, catalog):
     page.click('.me-tab[data-tab="settings"]')
     page.wait_for_url("**/me/settings/")
     assert page.inner_text('.me-tab[aria-current="page"]') == "Settings"
+
+
+# ---------- Field notes, the blog: /fieldnotes/ and each post, read live from the intake ----------
+def fn_mission(catalog):
+    m = catalog["missions"][0]
+    FakeIntake.FN_POSTS[1]["blocks"][5]["mission"] = m["id"]
+    return m
+
+
+def t_fieldnotes_list_pinned_search_and_topics(site, catalog):
+    page = site.open("/fieldnotes/")
+    page.wait_for_selector(".fn-feat")
+    assert "Our first fall" in page.inner_text(".fn-feat h2") and "Pinned" in page.inner_text(".fn-feat")
+    assert page.locator(".fn-feat img").get_attribute("src") == INTAKE + "/fieldnotes/photo/aaa.png"
+    titles = page.locator("#fn-list .fn-card h3").all_inner_texts()
+    assert titles == ["Five rainy-day dates that beat the couch", "The camera, take three"], titles
+    assert page.locator("#fn-list .fn-card").first.get_attribute("href") == "/fieldnotes/rainy-day-dates/"
+    assert page.locator("#fn-list .fn-ph").count() == 2          # no cover: a placeholder picture
+    assert page.locator(".fn-chip").all_inner_texts() == ["All", "Dates", "Hive", "Oregon", "Site updates"]
+    page.click('.fn-chip:has-text("Hive")')
+    page.wait_for_function("() => document.querySelectorAll('#fn-list .fn-card').length === 1")
+    assert page.locator(".fn-feat").is_hidden() and "topic=Hive" in page.url
+    assert page.inner_text("#fn-latest") == "Matching posts"
+    page.click('.fn-chip:has-text("All")')
+    page.wait_for_selector(".fn-feat")
+    page.fill("#fn-search", "theater")
+    page.wait_for_function("() => document.querySelectorAll('#fn-list .fn-card').length === 1 && document.querySelector('#fn-feature').hidden")
+    assert page.inner_text("#fn-list .fn-card h3") == "Five rainy-day dates that beat the couch"
+    page.fill("#fn-search", "zzz-nothing")
+    page.wait_for_selector(".fn-empty")
+    page.click(".fn-empty button")
+    page.wait_for_selector(".fn-feat")
+    assert page.input_value("#fn-search") == ""
+
+
+def t_fieldnotes_post_opens_at_its_own_address(site, catalog):
+    m = fn_mission(catalog)
+    page = site.open("/fieldnotes/rainy-day-dates/")
+    page.wait_for_selector(".fn-post h1")
+    assert page.inner_text(".fn-post h1") == "Five rainy-day dates that beat the couch"
+    assert page.locator("#nf").is_hidden()                        # the "page not found" words never show
+    assert page.title().startswith("Five rainy-day dates")
+    meta = page.inner_text(".fn-post .fn-meta")
+    assert "Posted November 12, 2026" in meta and "Last edited November 15, 2026" in meta and "4 min read" in meta, meta
+    assert page.locator(".fn-prose h2").inner_text() == "1. The old theater"
+    assert page.locator(".fn-gallery figure").count() == 3 and page.locator(".fn-gallery figcaption").all_inner_texts() == ["The marquee", "Row F"]
+    assert page.locator(".fn-quote").count() == 1 and page.locator(".fn-prose li").count() == 2
+    card = page.locator(".fn-mission")
+    assert card.count() == 1, "a mission no longer on the site is left out"
+    assert card.get_attribute("href") == f"/missions/{m['id']}/" and m["name"] in card.inner_text()
+    assert page.locator(".fn-post .fn-tags a").first.get_attribute("href") == "/fieldnotes/?topic=Dates"
+    assert page.locator(".fn-draft").count() == 0
+
+
+def t_fieldnotes_post_formatting_is_safe(site, catalog):
+    page = site.open("/fieldnotes/first-fall/")
+    page.wait_for_selector(".fn-prose p")
+    p = page.locator(".fn-prose p").first
+    assert p.locator("strong").inner_text() == "there"
+    assert p.locator("a").count() == 1 and p.locator("a").get_attribute("href") == "/safety/"
+    assert "[evil](javascript:alert(1))" not in p.inner_text() and "evil" in p.inner_text()
+
+
+def t_fieldnotes_draft_preview_and_missing_post(site, catalog):
+    page = site.open("/fieldnotes/holiday-gifts/?preview=tok")
+    page.wait_for_selector(".fn-draft")
+    assert "Not published yet" in page.inner_text(".fn-post .fn-meta")
+    img = page.locator(".fn-gallery img")
+    assert img.get_attribute("src").endswith("/fieldnotes/photo/eee.png?preview=tok")
+    page.wait_for_function("() => document.querySelector('.fn-gallery img').naturalWidth === 1")
+    page = site.open("/fieldnotes/holiday-gifts/")
+    page.wait_for_selector(".fn-post h1")
+    assert page.inner_text(".fn-post h1") == "This post isn't here"
+    page = site.open("/no-such-page/")
+    page.wait_for_selector("#nf h1")
+    assert "doesn't go anywhere" in page.inner_text("#nf h1") and page.locator(".fn-post").count() == 0
+
+
+def t_fieldnotes_when_the_intake_is_down(site, catalog):
+    site.intake.mode = "down"
+    try:
+        page = site.open("/fieldnotes/")
+        page.wait_for_selector(".fn-empty")
+        assert "couldn't load" in page.inner_text(".fn-empty")
+        page = site.open("/fieldnotes/rainy-day-dates/")
+        page.wait_for_selector(".fn-post h1")
+        assert page.inner_text(".fn-post h1") == "This post couldn't load"
+    finally:
+        site.intake.mode = "up"
+
+
+def t_fieldnotes_is_in_the_menu_and_footer(site, catalog):
+    page = site.open("/about/")
+    assert page.locator('.menu-panel a[href="/fieldnotes/"]').count() == 1
+    assert page.locator('.foot a[href="/fieldnotes/"]').count() == 1
+    page = site.open("/fieldnotes/", viewport=PHONE)
+    page.wait_for_selector(".fn-feat")
+    assert page.evaluate("document.documentElement.scrollWidth <= innerWidth"), "nothing wider than a phone"
 
 
 def main():

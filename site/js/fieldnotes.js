@@ -1,0 +1,257 @@
+/* Field notes, the AmbleBee blog. The posts and their photos live on AmbleBee Intake (app/fieldnotes.py there), so
+   publishing or editing one never rebuilds this site:
+     /fieldnotes/          pages/fieldnotes.html: the list, with search and topic chips
+     /fieldnotes/<post>/   isn't a file here, so GitHub Pages answers with 404.html, and this script turns that page
+                           into the post. ?preview=<token> (the intake's Preview button) shows a draft. */
+(function () {
+  "use strict";
+  var U = window.AmbleUtil, el = U.el, API = U.API;
+  var POST_PATH = /^\/fieldnotes\/([a-z0-9][a-z0-9-]{0,79})\/?$/;
+  var LABEL = {   // the same words as the labels at the top of site/js/core.js
+    mode: { date: "Date", adventure: "Adventure", both: "Date or adventure" },
+    duration: { short: "1-3 hours", "half-day": "Half day", "all-day": "All day" },
+    cost: { free: "Free", "$": "Under $20", "$$": "$20-60", "$$$": "Over $60" }
+  };
+  var MTN = '<svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100 L0 60 L40 30 L70 55 L110 15 L150 50 L175 35 L200 55 L200 100Z"/></svg>';
+  var PIN = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6l-1 5 3 3H7l3-3zM12 12v8"/></svg>';
+  var TINTS = ["sage", "honey", "walnut", "sky"];
+
+  function get(path) {
+    return fetch(API + path, { cache: "no-cache" }).then(function (r) {
+      return r.json().catch(function () { return {}; }).then(function (b) { b.status = r.status; return b; });
+    });
+  }
+  function day(iso, long) {
+    var t = new Date(iso);
+    if (isNaN(t)) return "";
+    return t.toLocaleDateString("en-US", long ? { month: "long", day: "numeric", year: "numeric" } : { month: "short", day: "numeric", year: "numeric" });
+  }
+  function svg(markup) { var s = document.createElement("span"); s.innerHTML = markup; return s.firstChild; }   // our own fixed icons only
+  function topicHref(t) { return "/fieldnotes/?topic=" + encodeURIComponent(t); }
+
+  // a post with no photos still gets a picture: a soft mountain on one of the brand colors
+  function stand(seed, label) {
+    var n = 0; for (var i = 0; i < seed.length; i++) n = (n + seed.charCodeAt(i)) % TINTS.length;
+    var box = el("div", { class: "fn-ph " + TINTS[n] }, svg(MTN));
+    if (label) box.append(el("span", { text: label }));
+    return box;
+  }
+  function photo(p, preview, attrs) {
+    var src = API + p.url + (preview ? "?preview=" + encodeURIComponent(preview) : "");
+    return el("img", Object.assign({ src: src, alt: "", width: p.width || null, height: p.height || null, loading: "lazy", decoding: "async" }, attrs || {}));
+  }
+
+  // **bold**, *italic* and [a link](https://…), the only formatting the editor has. Built as nodes, never as HTML.
+  function inline(text) {
+    var out = [], re = /\*\*([^*]+)\*\*|\*([^*]+)\*|\[([^\]]+)\]\(([^)\s]+)\)/g, last = 0, m;
+    while ((m = re.exec(text))) {
+      if (m.index > last) out.push(text.slice(last, m.index));
+      if (m[1]) out.push(el("strong", { text: m[1] }));
+      else if (m[2]) out.push(el("em", { text: m[2] }));
+      else out.push(link(m[3], m[4]));
+      last = re.lastIndex;
+    }
+    if (last < text.length) out.push(text.slice(last));
+    return out;
+  }
+  function link(text, href) {
+    if (/^\/(?!\/)/.test(href)) return el("a", { href: href, text: text });
+    if (/^https?:\/\//i.test(href)) {
+      var here = /^https?:\/\/(www\.)?amblebee\.com(\/|$)/i.test(href);
+      return el("a", { href: href, text: text, target: here ? null : "_blank", rel: here ? null : "noopener" });
+    }
+    return text;   // anything else (javascript:, mailto: typos) stays plain words
+  }
+
+  // ======================================== the list: /fieldnotes/ ========================================
+  function listPage(root) {
+    var box = root.querySelector("#fn-list"), feat = root.querySelector("#fn-feature"), chips = root.querySelector("#fn-topics");
+    var search = root.querySelector("#fn-search"), count = root.querySelector("#fn-count"), moreBtn = root.querySelector("#fn-more");
+    var heading = root.querySelector("#fn-latest");
+    var params = new URLSearchParams(location.search);
+    var state = { q: params.get("q") || "", topic: params.get("topic") || "", page: 1 }, ask = 0, timer = null;
+    search.value = state.q;
+
+    function card(p) {
+      var pic = p.cover ? photo(p.cover, "", {}) : stand(p.slug);
+      return el("a", { class: "fn-card", href: "/fieldnotes/" + p.slug + "/" },
+        el("div", { class: "fn-pic" }, pic),
+        el("div", { class: "fn-body" },
+          el("span", { class: "fn-meta", text: day(p.posted_at) + " · " + p.minutes + " min read" }),
+          el("h3", { text: p.title }),
+          p.summary ? el("p", { text: p.summary }) : null,
+          p.topics.length ? el("div", { class: "fn-tags" }, p.topics.map(function (t) { return el("span", { text: t }); })) : null));
+    }
+    function feature(p) {
+      var pic = p.cover ? photo(p.cover, "", { loading: "eager" }) : stand(p.slug);
+      return el("a", { class: "fn-feat", href: "/fieldnotes/" + p.slug + "/" },
+        el("div", { class: "fn-pic" }, pic),
+        el("div", { class: "fn-body" },
+          el("span", { class: "fn-pin" }, svg(PIN), "Pinned"),
+          el("span", { class: "fn-meta", text: day(p.posted_at, true) + " · " + p.minutes + " min read" }),
+          el("h2", { text: p.title }),
+          p.summary ? el("p", { text: p.summary }) : null,
+          p.topics.length ? el("div", { class: "fn-tags" }, p.topics.map(function (t, i) { return el("span", { class: i ? null : "g", text: t }); })) : null,
+          el("span", { class: "btn primary fn-read", text: "Read the post →" })));
+    }
+    function drawChips(topics) {
+      var all = [""].concat(topics);
+      if (state.topic && all.indexOf(state.topic) < 0) all.push(state.topic);
+      chips.replaceChildren.apply(chips, all.map(function (t) {
+        return el("button", { type: "button", class: "fn-chip", "aria-pressed": String(t === state.topic), text: t || "All",
+          onclick: function () { state.topic = t; load(false); } });
+      }));
+      chips.hidden = topics.length === 0;
+    }
+    function remember() {
+      var p = new URLSearchParams();
+      if (state.q) p.set("q", state.q);
+      if (state.topic) p.set("topic", state.topic);
+      history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : ""));
+    }
+    function load(more) {
+      state.page = more ? state.page + 1 : 1;
+      remember();
+      var mine = ++ask;
+      if (!more) box.setAttribute("aria-busy", "true");
+      moreBtn.disabled = true;
+      var p = new URLSearchParams({ page: state.page });
+      if (state.q) p.set("q", state.q);
+      if (state.topic) p.set("topic", state.topic);
+      get("/fieldnotes?" + p).then(function (b) {
+        if (mine !== ask) return;
+        box.removeAttribute("aria-busy");
+        if (!b.ok) throw new Error("bad");
+        drawChips(b.topics || []);
+        var posts = b.posts || [], filtered = state.q || state.topic;
+        if (!more) {
+          var top = !filtered && posts[0] && posts[0].pinned ? posts.shift() : null;
+          feat.replaceChildren(top ? feature(top) : "");
+          feat.hidden = !top;
+          box.replaceChildren();
+        }
+        posts.forEach(function (p) { box.append(card(p)); });
+        heading.textContent = filtered ? "Matching posts" : "Latest posts";
+        count.textContent = b.total + (b.total === 1 ? " post" : " posts");
+        if (!b.total) box.replaceChildren(el("p", { class: "fn-empty" }, filtered
+          ? ["Nothing matches that yet. ", el("button", { type: "button", class: "linkish", text: "Show every post",
+              onclick: function () { state.q = ""; state.topic = ""; search.value = ""; load(false); } })]
+          : "The first field notes are on their way. Check back soon."));
+        moreBtn.hidden = !b.more;
+        moreBtn.disabled = false;
+      }).catch(function () {
+        if (mine !== ask) return;
+        box.removeAttribute("aria-busy");
+        moreBtn.hidden = true;
+        count.textContent = "";
+        if (!more) box.replaceChildren(el("p", { class: "fn-empty" }, "Field notes couldn't load right now. Try again in a little while."));
+      });
+    }
+    search.addEventListener("input", function () {
+      clearTimeout(timer);
+      timer = setTimeout(function () { state.q = search.value.trim(); load(false); }, 300);
+    });
+    root.querySelector("#fn-search-form").addEventListener("submit", function (e) {
+      e.preventDefault(); clearTimeout(timer); state.q = search.value.trim(); load(false);
+    });
+    moreBtn.addEventListener("click", function () { load(true); });
+    load(false);
+  }
+
+  // ===================================== one post: /fieldnotes/<post>/ =====================================
+  function postPage(slug) {
+    var preview = new URLSearchParams(location.search).get("preview") || "";
+    var wrap = document.querySelector("main .page");
+    var gone = document.getElementById("nf");
+    var root = el("article", { class: "fn-post", "aria-busy": "true" }, el("p", { class: "fn-loading", text: "Opening the post…" }));
+    wrap.className = "page page-wide pg fieldnotes";
+    if (gone) gone.hidden = true;
+    wrap.append(root);
+    document.title = "Field notes · AmbleBee";
+
+    var catalog = fetch("/catalog.json", { cache: "force-cache" }).then(function (r) { return r.json(); }).catch(function () { return {}; });
+    get("/fieldnotes/" + slug + (preview ? "?preview=" + encodeURIComponent(preview) : "")).then(function (b) {
+      if (!b.ok) return missing(root, b.status === 404);
+      var needs = b.post.blocks.some(function (x) { return x.type === "mission"; });
+      return (needs ? catalog : Promise.resolve({})).then(function (c) { draw(root, b.post, preview, c); });
+    }).catch(function () { missing(root, false); });
+  }
+
+  function missing(root, gone) {
+    root.removeAttribute("aria-busy");
+    root.replaceChildren(el("section", { class: "pg-hero" },
+      el("p", { class: "eyebrow", text: "Field notes" }),
+      el("h1", { text: gone ? "This post isn't here" : "This post couldn't load" }),
+      el("p", { class: "hand", text: gone ? "It may have moved or been taken down." : "Try again in a little while." }),
+      el("div", { class: "ticket-actions" }, el("a", { class: "btn primary", href: "/fieldnotes/", text: "See all field notes" }),
+        el("a", { class: "btn", href: "/", text: "Give me a mission" }))));
+  }
+
+  function draw(root, post, preview, catalog) {
+    document.title = post.title + " · Field notes · AmbleBee";
+    var bits = ["Posted " + day(post.posted_at || new Date().toISOString(), true)];
+    if (post.edited_at && day(post.edited_at, true) !== day(post.posted_at, true)) bits.push("Last edited " + day(post.edited_at, true));
+    bits.push(post.minutes + " min read");
+    if (post.draft) bits[0] = "Not published yet";
+    var hero = el("section", { class: "pg-hero fn-hero" },
+      post.draft ? el("p", { class: "fn-draft", role: "note" }, el("b", { text: "Preview" }),
+        " This is a draft. Only someone with this link can see it, and it isn't on the Field notes page yet.") : null,
+      el("p", { class: "fn-crumb" }, el("a", { href: "/fieldnotes/", text: "← Field notes" })),
+      post.topics.length ? el("div", { class: "fn-tags" }, post.topics.map(function (t) { return el("a", { href: topicHref(t), text: t }); })) : null,
+      el("h1", { text: post.title }),
+      post.summary ? el("p", { class: "pg-lede", text: post.summary }) : null,
+      el("p", { class: "fn-meta", text: bits.join(" · ") }));
+    var body = el("div", { class: "fn-prose" });
+    var packs = {}, byId = {};
+    (catalog.packs || []).forEach(function (p) { packs[p.id] = p.name; });
+    (catalog.missions || []).forEach(function (m) { byId[m.id] = m; byId[m.full_id] = m; });
+    post.blocks.forEach(function (b) { var n = block(b, preview, byId, packs); if (n) body.append(n); });
+    var cover = post.cover ? el("figure", { class: "fn-cover" }, photo(post.cover, preview, { loading: "eager", alt: "" })) : null;
+    var firstPhotos = post.blocks.find(function (b) { return b.type === "photos"; });
+    if (cover && firstPhotos && firstPhotos.photos[0] && firstPhotos.photos[0].url === post.cover.url && post.blocks.indexOf(firstPhotos) === 0) cover = null;   // it'd show twice in a row
+    root.removeAttribute("aria-busy");
+    root.replaceChildren(hero, el("section", { class: "pg-band fn-band" }, el("div", { class: "fn-article" }, cover, body,
+      el("p", { class: "fn-end" }, el("a", { class: "btn", href: "/fieldnotes/", text: "More field notes" }),
+        el("a", { class: "btn primary", href: "/", text: "Give me a mission" })))));
+  }
+
+  function block(b, preview, byId, packs) {
+    if (b.type === "p") return el("p", {}, inline(b.text));
+    if (b.type === "h2" || b.type === "h3") return el(b.type, { text: b.text });
+    if (b.type === "quote") return el("blockquote", { class: "fn-quote" }, el("p", {}, inline(b.text)));
+    if (b.type === "list") return el("ul", {}, b.items.map(function (t) { return el("li", {}, inline(t)); }));
+    if (b.type === "photos") return gallery(b.photos, preview);
+    if (b.type === "mission") return missionCard(byId[b.mission], packs);
+    return null;
+  }
+
+  function gallery(photos, preview) {
+    if (!photos.length) return null;
+    var g = el("div", { class: "fn-gallery n" + Math.min(photos.length, 3) });
+    photos.forEach(function (p, i) {
+      var img = photo(p, preview, { alt: p.caption || "" });
+      g.append(el("figure", { class: i === 0 ? "first" : null },
+        el("a", { href: img.src, target: "_blank", rel: "noopener", "aria-label": "Open the photo full size" + (p.caption ? ": " + p.caption : "") }, img),
+        p.caption ? el("figcaption", { text: p.caption }) : null));
+    });
+    return g;
+  }
+
+  function missionCard(m, packs) {
+    if (!m) return null;   // a mission that's no longer on the site
+    var tags = [LABEL.mode[m.mode], LABEL.duration[m.duration], LABEL.cost[m.cost]].filter(Boolean);
+    return el("a", { class: "fn-mission", href: "/missions/" + m.id + "/" },
+      el("small", { text: (packs[m.pack] || "AmbleBee") + " · Mission " + m.number }),
+      el("b", { text: m.name }),
+      m.short ? el("span", { class: "fn-mshort", text: m.short }) : null,
+      el("span", { class: "fn-tags" }, tags.map(function (t, i) { return el("span", { class: i ? null : "g", text: t }); })),
+      el("span", { class: "fn-mgo", text: "Open the mission →" }));
+  }
+
+  var list = document.getElementById("fn-page");
+  if (list) listPage(list);
+  else {
+    var m = POST_PATH.exec(location.pathname);
+    if (m) postPage(m[1]);
+  }
+})();

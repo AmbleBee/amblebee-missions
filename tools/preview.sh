@@ -13,5 +13,4 @@ cp data/zips.json data/cities.json _site/
 if python3 -c "import playwright" 2>/dev/null; then python3 tools/build_cards.py --out _site
 else echo "Skipping share cards (they need Playwright, see README.md)"; rm -f _site/cards/cards.json; fi
 [ -f tools/build_roadmap.py ] && python3 tools/build_roadmap.py --out _site/roadmap.json
-echo "Open http://localhost:8811  (Ctrl+C to stop)"
-cd _site && python3 -m http.server 8811
+python3 tools/serve.py 8811 _site   # like GitHub Pages: unknown addresses get 404.html (Field notes posts need that)
