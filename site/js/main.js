@@ -10,6 +10,14 @@ function renderWithin() {
   sel.value = WITHIN[S.unit].includes(Number(keep)) ? keep : "";
   sel.disabled = !S.here;
   document.querySelectorAll(".units button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.unit === S.unit)));
+  rollLabel();
+}
+// "Where are you?" stays short until a place is set (no distance or units yet), and the main button says "near you"
+// once it means that: a place is set and it's picking from every pack
+function rollLabel() {
+  $("#near-you").classList.toggle("is-unset", !S.here);
+  const btn = $("#roll-btn"), text = [...btn.childNodes].reverse().find((n) => n.nodeType === 3 && n.textContent.trim());
+  if (text) text.textContent = S.here && $("#pack-select").value === "all" ? " Open a mission near you" : " Open a mission";
 }
 function zipLine() {
   const canSave = !S.located && readPref("zip") !== S.zip;
@@ -108,7 +116,7 @@ function clearZip() {
   S.packWidened = false;
   if (S.browse === "near") S.browse = null;
   $("#within-select").value = "";
-  $("#zip-status").textContent = "Add a ZIP or city to see places close by, plus missions you can do anywhere. It's never sent anywhere.";
+  $("#zip-status").textContent = "Add your ZIP or city for real places near you, or skip it for ideas you can do anywhere. It's never sent anywhere.";
   renderWithin(); refresh();
   rerenderReveal();
 }
@@ -219,7 +227,7 @@ async function start() {
 
   document.querySelectorAll('input[name="mode"], #filters input[type="checkbox"], #pack-select, #within-select')
     .forEach((el) => el.addEventListener("change", () => refresh()));
-  $("#pack-select").addEventListener("change", () => { S.packWidened = false; });
+  $("#pack-select").addEventListener("change", () => { S.packWidened = false; rollLabel(); });
   $("#roll-btn").addEventListener("click", () => roll());
   $("#zip-form").addEventListener("submit", setZip);
   $("#browse-pack").addEventListener("change", (e) => { S.browse = e.target.value; renderBrowse(); });

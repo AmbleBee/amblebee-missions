@@ -696,6 +696,8 @@ html.arriving #reveal-slot:empty::before {
 .near-pick .zip-form { flex: 1 1 100%; max-width: 24rem; display: flex; }
 .near-pick .zip-form input { flex: 1 1 auto; width: 0; }
 .near-pick .hint { max-width: 34rem; }
+/* before a place is set: just the box, Use my location and one line (no distance or units yet) */
+.near-pick.is-unset .within, .near-pick.is-unset .units { display: none; }
 
 /* ---- "Know a great spot?" now sits at the end, after Every mission, with its own bee trail ---- */
 .divider.div-share { margin-top: 56px; }
@@ -810,13 +812,13 @@ main:focus { outline: none; }
   .roll-intro .about-teaser { margin: .6rem 0 1rem; }
   .roll-row { display: contents; }
   .roll-intro .modes { order: 1; margin-bottom: 14px; }
-  .roll-intro #roll-btn { order: 2; width: 100%; }
-  .roll-intro #match-count { order: 3; align-self: flex-start; margin-bottom: 14px; }
-  .roll-intro .near-pick { order: 4; }
+  .roll-intro .near-pick { order: 2; margin-bottom: 14px; }   /* "Where are you?" first, so the first mission can be a real place nearby */
+  .roll-intro #roll-btn { order: 3; width: 100%; }
+  .roll-intro #match-count { order: 4; align-self: flex-start; margin-bottom: 14px; }
   .roll-intro .pack-pick { order: 5; margin-bottom: 4px; }
   .roll-intro #filters-toggle { order: 6; width: 100%; }
   .ticket-slot .env:not(.nothing) .env-open { display: none; }   /* one main button: "Open a mission" above does the same thing */
-  .roll-intro #match-clear { order: 3; align-self: flex-start; }
+  .roll-intro #match-clear { order: 4; align-self: flex-start; }
 }
 @media (max-width: 560px) {
   .brand { min-width: 0; }

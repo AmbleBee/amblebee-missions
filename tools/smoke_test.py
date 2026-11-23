@@ -660,6 +660,20 @@ def t_phone_shows_the_main_button_first(site, catalog):
     assert page.evaluate("document.documentElement.scrollWidth <= document.documentElement.clientWidth")
 
 
+def t_where_are_you_comes_before_the_button(site, catalog):
+    """On a phone, "Where are you?" sits above Open a mission, short until a place is set; then the button says near you."""
+    page = site.home(viewport=PHONE)
+    near, btn = page.locator("#near-you").bounding_box(), page.locator("#roll-btn").bounding_box()
+    assert near["y"] < btn["y"] and btn["y"] + btn["height"] <= PHONE["height"]
+    assert not page.locator(".near-pick .within").is_visible() and page.inner_text("#roll-btn").strip() == "Open a mission"
+    page.fill("#zip-input", "97201")
+    page.click("#zip-form button")
+    page.wait_for_selector(".near-pick .within", state="visible")
+    assert page.inner_text("#roll-btn").strip() == "Open a mission near you"
+    page.select_option("#pack-select", "anywhere")
+    assert page.inner_text("#roll-btn").strip() == "Open a mission", "one pack picked: not \"near you\""
+
+
 def t_who_is_coming_widens_keeps_kids_safe_and_skips_romantic(site, catalog):
     page = site.home()
     page.select_option("#pack-select", "all")
