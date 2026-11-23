@@ -494,6 +494,11 @@
         }
       } else if (v.status === "needs_info" && v.question) card.append(answerForm(token, v));
       if (v.reason) card.append(el("p", { class: "status-reason", text: v.reason }));
+      // general messages from AmbleBee (the admin's Status card, "General message"), oldest first
+      (v.notes || []).forEach(function (n) {
+        card.append(el("p", { class: "hint status-note-from", text: "A message from AmbleBee · " + when(n.at) }),
+          el("p", { class: "status-reason status-note", text: n.body }));
+      });
       if (v.mission_url) card.append(el("p", {}, [el("a", { class: "btn primary small", href: v.mission_url, text: "See the mission" })]));
       out.append(card);
       if (stepIdx !== -1) out.append(steps);
