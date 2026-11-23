@@ -1,12 +1,18 @@
-/* Filters and sorting on a pack page (/packs/<id>/), on the cards tools/build_pages.py already put there.
+/* Filters and sorting on the cards tools/build_pages.py already put on a page: a pack page (/packs/<id>/), and with
+   search (site/js/search.js) and a pack menu, Every mission (/missions/), All missions (/missions/all/) and each
+   vibe page (/<collection>/). On pages with a section per pack, a section with nothing left in it hides, and on
+   Every mission (data-preview) the rest of each pack only shows once something is searched, picked or filtered.
    The rules are the homepage's own: passes() from site/js/filters.js, labels from site/js/core.js. Without JavaScript
    (or before catalog.json loads) the page is just the full list, as search engines see it. */
 "use strict";
 (function () {
   const box = document.querySelector(".pack-filters[data-pack]");
-  const grid = document.querySelector(".pack-cards");
-  if (!box || !grid || typeof passes !== "function") return;
-  const cards = [...grid.querySelectorAll("a.card")];
+  const grids = [...document.querySelectorAll(".pack-cards")];
+  if (!box || !grids.length || typeof passes !== "function") return;
+  const grid = grids[grids.length - 1];   // "nothing fits" goes after the last list
+  const cards = grids.flatMap((g) => [...g.querySelectorAll("a.card")]);
+  const preview = box.hasAttribute("data-preview");
+  const sections = [...document.querySelectorAll(".page section.pack")].filter((sec) => sec.querySelector(".pack-cards"));
   if (cards.length < 2) return;   // nothing to sort or narrow
 
   const GROUPS = [
@@ -17,13 +23,18 @@
     ["setting", "Inside or out", [["indoor", "Indoors"], ["outdoor", "Outdoors"]]],
     ["time", "Time of day", [["morning", "Morning"], ["daytime", "Daytime"], ["evening", "Evening"], ["night", "Night"]]],
   ];
-  const SORTS = [["pack", "Pack order"], ["near", "Closest first"], ["far", "Farthest first"], ["new", "Newest first"], ["az", "A to Z"]];
+  const everything = box.dataset.pack === "all";
+  const searchable = box.hasAttribute("data-search") && typeof searchScore === "function";
+  const SORTS = [["pack", everything ? "By state" : "Pack order"], ["near", "Closest first"], ["far", "Farthest first"], ["new", "Newest first"], ["az", "A to Z"]];
 
   fetch("/catalog.json", { cache: "force-cache" }).then((r) => r.json()).then(init, () => { /* no filters, the full list stays */ });
 
   function init(cat) {
     const byId = {};
     (cat.missions || []).forEach((m) => { byId[m.id] = m; });
+    // what search.js reads to know a mission's pack and theme names
+    S.packById = Object.fromEntries((cat.packs || []).map((p) => [p.id, p]));
+    S.themeLabel = Object.fromEntries((cat.themes || []).map((t) => [t.id, t.label]));
     const rows = cards.map((c, i) => {
       const id = (/\/missions\/([^/]+)\//.exec(c.getAttribute("href") || "") || [])[1];
       return { c, m: byId[id], i };
@@ -40,6 +51,16 @@
       chip("pf-mode", "any", "Anything", "radio"), chip("pf-mode", "date", "A date", "radio"), chip("pf-mode", "adventure", "An adventure", "radio"));
     moods.querySelector("input").checked = true;
     const sort = h("select", { class: "pf-sort", "aria-label": "Sort" }, SORTS.map(([v, l]) => h("option", { value: v }, l)));
+    // the pack menu, on pages with missions from more than one pack: Amble Anywhere first, then A to Z, with counts
+    const onPage = {};
+    rows.forEach((r) => { onPage[r.m.pack] = (onPage[r.m.pack] || 0) + 1; });
+    const packIds = Object.keys(onPage).sort((a, b) => (b === "anywhere") - (a === "anywhere")
+      || ((S.packById[a] || {}).name || a).localeCompare((S.packById[b] || {}).name || b));
+    const packSel = packIds.length > 1 ? h("select", { class: "pf-sort pf-pack", "aria-label": "Show missions from" },
+      h("option", { value: "all" }, `Every state (${rows.length})`),
+      packIds.map((id) => h("option", { value: id }, `${(S.packById[id] || {}).name || id} (${onPage[id]})`))) : null;
+    const wanted = new URLSearchParams(location.search).get("pack");   // e.g. from a link to one state
+    if (packSel && onPage[wanted]) packSel.value = wanted;
     // "Distance from": a ZIP (or "City, ST"), the same lookup files as the homepage; remembered ZIPs fill it in
     const placeIn = h("input", { class: "pf-place", placeholder: "ZIP or city", autocomplete: "postal-code", "aria-label": "Distance from: ZIP code or city" });
     const placeMsg = h("p", { class: "pf-place-msg", role: "status" });
@@ -60,10 +81,16 @@
         themes.length > 1 ? h("fieldset", { class: "pf-themes" }, h("legend", {}, "What kind of mission"), themeChips) : null),
       h("div", { class: "filters-bar" }, clear,
         h("button", { type: "button", class: "btn primary small", onclick: () => toggle(false) }, "Done")));
-    const empty = h("p", { class: "pf-empty", hidden: true }, "Nothing in this pack fits these filters. ",
+    // All missions: a search box over the same words the old home page list searched
+    const search = searchable ? h("input", { type: "search", id: "search", class: "pf-search", placeholder: "Search: waterfall, Seattle, oysters, rainy day…",
+      autocomplete: "off", enterkeyhint: "search", "aria-label": everything ? "Search these missions" : "Search this pack" }) : null;
+    const empty = h("p", { class: "pf-empty", hidden: true }, everything ? "Nothing fits. " : "Nothing in this pack fits these filters. ",
       h("button", { type: "button", class: "linkish", onclick: () => clearAll() }, "Clear filters"));
-    box.replaceChildren(h("div", { class: "pf-bar" }, moods, h("div", { class: "pf-right" }, sort, more)),
-      h("div", { class: "pf-place-row" }, placeForm, placeMsg), panel, count);
+    // line 1: search (where there is one) with the moods beside it; line 2: Distance from, then the pack menu, sort
+    // and Filters on the right
+    box.replaceChildren(h("div", { class: "pf-bar" }, search ? h("div", { class: "pf-search-row", role: "search" }, search) : "", moods),
+      h("div", { class: "pf-bar pf-bar2" }, placeForm, h("div", { class: "pf-right" }, packSel, sort, more)),
+      placeMsg, panel, count);
     grid.after(empty);
 
     function toggle(on) {
@@ -82,6 +109,8 @@
     }
     function clearAll() {
       box.querySelectorAll(".pf-panel input").forEach((i) => { i.checked = false; });
+      if (search) search.value = "";
+      if (packSel) packSel.value = "all";
       moods.querySelector("input").checked = true;
       apply();
     }
@@ -135,7 +164,27 @@
       const f = read(), n = activeFilters(f);
       doneField.hidden = !f.doneIds.size && !f.hideDone;
       let shown = 0;
-      rows.forEach((r) => { r.c.hidden = !passes(r.m, f); if (!r.c.hidden) shown++; });
+      // search: every word has to match (search.js). Nothing exact? Then short word starts and small typos count
+      const words = search ? searchWords(search.value) : [];
+      const score = new Map();
+      if (words.length) {
+        rows.forEach((r) => score.set(r, searchScore(r.m, words, false)));
+        if (![...score.values()].some(Boolean)) rows.forEach((r) => score.set(r, searchScore(r.m, words, true)));
+      }
+      const pack = packSel ? packSel.value : "all";
+      // Every mission: a taste of each pack until something narrows it, then every match
+      const narrowing = n > 0 || f.mode !== "any" || words.length > 0 || pack !== "all" || f.hideDone || f.inSeason;
+      rows.forEach((r) => {
+        r.c.hidden = !passes(r.m, f) || (words.length && !score.get(r)) || (pack !== "all" && r.m.pack !== pack)
+          || (preview && !narrowing && r.c.hasAttribute("data-extra"));
+        if (!r.c.hidden) shown++;
+      });
+      sections.forEach((sec) => { sec.hidden = !sec.querySelector(".pack-cards a.card:not([hidden])"); });
+      document.querySelectorAll(".page .pack-more").forEach((a) => { a.hidden = preview && narrowing; });
+      document.querySelectorAll(".page details.more-packs").forEach((d) => {
+        if (narrowing) d.open = true;
+        d.hidden = !d.querySelector("section.pack:not([hidden])");
+      });
       // theme counts follow the other picks, like the homepage's chips
       themeChips.querySelectorAll("label").forEach((l) => {
         const t = l.querySelector("input").value, g = { ...f, themes: [t] };
@@ -153,13 +202,24 @@
           return x == null && y == null ? a.i - b.i : x == null ? 1 : y == null ? -1 : sign * (x - y) || a.i - b.i; });
       } else if (sort.value === "new") order.sort((a, b) => (newest(b.m) > newest(a.m) ? 1 : newest(b.m) < newest(a.m) ? -1 : a.i - b.i));
       else if (sort.value === "az") order.sort((a, b) => a.m.name.localeCompare(b.m.name));
+      else if (words.length) order.sort((a, b) => score.get(b) - score.get(a) || a.i - b.i);   // best matches first
       else order.sort((a, b) => a.i - b.i);
-      order.forEach((r) => grid.append(r.c));
+      order.forEach((r) => r.c.parentElement.append(r.c));   // each card stays in its own pack's list
       more.replaceChildren("Filters", n ? h("span", { class: "pf-n" }, String(n)) : "");
-      count.textContent = shown === rows.length ? "" : `Showing ${shown} of ${rows.length}`;
+      const all = preview ? rows.filter((r) => !r.c.hasAttribute("data-extra")).length : rows.length;
+      count.textContent = !narrowing && shown === all ? "" : words.length ? `${shown} ${shown === 1 ? "mission matches" : "missions match"} "${search.value.trim()}"`
+        : `Showing ${shown} of ${rows.length}`;
       empty.hidden = shown > 0;
     }
-    box.addEventListener("change", (e) => { if (e.target !== placeIn) apply(); });
+    box.addEventListener("change", (e) => { if (e.target !== placeIn && e.target !== search) apply(); });
+    if (search) {
+      let timer = null;
+      search.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(apply, 120); });
+      search.addEventListener("keydown", (e) => { if (e.key === "Escape") { search.value = ""; apply(); } });
+      const q = new URLSearchParams(location.search).get("q");   // an old home page search link lands here
+      if (q) search.value = q.slice(0, 80);
+      if (location.hash === "#search" || q) search.focus();
+    }
     window.addEventListener("amble:done", apply);
     distances();
     const remembered = readPref("zip");   // the ZIP you chose to remember on the homepage

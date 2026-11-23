@@ -12,12 +12,13 @@ function renderWithin() {
   document.querySelectorAll(".units button").forEach((b) => b.setAttribute("aria-pressed", String(b.dataset.unit === S.unit)));
   rollLabel();
 }
-// "Where are you?" stays short until a place is set (no distance or units yet), and the main button says "near you"
-// once it means that: a place is set and it's picking from every pack
+// "Where are you?" stays short until a place is set (no distance or units yet), and the Near you button under
+// the big one says where it's picking from: "Near 97201", a pack's name, or just "Near you" before anything is set
 function rollLabel() {
   $("#near-you").classList.toggle("is-unset", !S.here);
-  const btn = $("#roll-btn"), text = [...btn.childNodes].reverse().find((n) => n.nodeType === 3 && n.textContent.trim());
-  if (text) text.textContent = S.here && $("#pack-select").value === "all" ? " Open a mission near you" : " Open a mission";
+  const pack = $("#pack-select").value, p = S.packById[pack];
+  $("#near-label").textContent = S.here && pack === "all" ? `Near ${S.zip}` : pack !== "all" && pack !== "anywhere" && p ? p.name : "Near you";
+  $("#near-toggle").classList.toggle("is-set", !!S.here || (pack !== "all" && pack !== "anywhere"));
 }
 function zipLine() {
   const canSave = !S.located && readPref("zip") !== S.zip;
@@ -33,7 +34,6 @@ function setPlace(lat, lon, label, located = false) {
   if (first && $("#pack-select").value === "anywhere") { $("#pack-select").value = "all"; S.packWidened = true; }
   renderWithin();
   if ((first || located) && !$("#within-select").value) $("#within-select").value = String(WITHIN[S.unit][2]);
-  if (first && (S.browse === "anywhere" || S.browse === "all" || !S.browse)) S.browse = "near";
   zipLine();
   renderWithin(); refresh();
   rerenderReveal();
@@ -114,7 +114,6 @@ function clearZip() {
   dropPref("zip");
   if (S.packWidened && $("#pack-select").value === "all") $("#pack-select").value = "anywhere";
   S.packWidened = false;
-  if (S.browse === "near") S.browse = null;
   $("#within-select").value = "";
   $("#zip-status").textContent = "Add your ZIP or city for real places near you, or skip it for ideas you can do anywhere. It's never sent anywhere.";
   renderWithin(); refresh();
@@ -132,9 +131,6 @@ function filterQuery() {
   if (f.inSeason) q.set("season", "now");
   if (f.goNow) q.set("go", "now");
   if (f.hideDone) q.set("new", "1");
-  if (S.browse && !["all", "near"].includes(S.browse)) q.set("list", S.browse);
-  if (S.q.trim()) q.set("q", S.q.trim());
-  if (S.sort) q.set("sort", S.sort);
   const text = q.toString();
   return text ? `?${text}` : "";
 }
@@ -155,10 +151,52 @@ function readQuery() {
   $("#f-season").checked = q.get("season") === "now";
   $("#f-gonow").checked = q.get("go") === "now";
   $("#f-new").checked = q.get("new") === "1";
-  if (S.packById[q.get("list")]) S.browse = q.get("list");
-  S.q = (q.get("q") || "").slice(0, 80);
-  $("#search-input").value = S.q;
-  if (SORTS[q.get("sort")]) S.sort = q.get("sort");
+}
+// the list and search moved off the home page: an old link with a search or a pack list goes to where they live now
+function movedList() {
+  const q = new URLSearchParams(location.search);
+  if (location.hash === "#search" || q.get("q")) {
+    location.replace(`${HOME}missions/all/${q.get("q") ? `?q=${encodeURIComponent(q.get("q").slice(0, 80))}` : ""}#search`);
+    return true;
+  }
+  if (S.packById[q.get("list")]) { location.replace(`${HOME}packs/${encodeURIComponent(q.get("list"))}/`); return true; }
+  return false;
+}
+
+// ---- the sheet: Where are you? and the filters, from Near you, Filters, or the first tap of the big button ----
+// The first tap asks once (per device), so someone new gets missions near them instead of only the anywhere ones
+function openSheet({ first = false, focus = null } = {}) {
+  const d = $("#pick-sheet");
+  $("#sheet-first").hidden = !first;
+  $("#sheet-skip").hidden = !first;
+  $("#filters-done").hidden = first;
+  if (first) writePref("asked", "1");
+  renderBrowse();
+  if (!d.open) d.showModal();
+  $("#filters-toggle").setAttribute("aria-expanded", "true");
+  if (focus === "zip" || first) $("#zip-input").focus();
+  else if (focus) focus.focus();
+}
+const closeSheet = () => { if ($("#pick-sheet").open) $("#pick-sheet").close(); };
+// "browse by vibe" with more than 4: < and > slide the row about a screenful, and stop at each end
+function vibeSlider() {
+  const row = $("#vibe-row");
+  if (!row) return;
+  const prev = $(".vibe-nav.prev"), next = $(".vibe-nav.next");
+  const ends = () => {
+    prev.disabled = row.scrollLeft <= 2;
+    next.disabled = row.scrollLeft + row.clientWidth >= row.scrollWidth - 2;
+  };
+  const step = (dir) => row.scrollBy({ left: dir * row.clientWidth * 0.75, behavior: REDUCED() ? "auto" : "smooth" });
+  prev.addEventListener("click", () => step(-1));
+  next.addEventListener("click", () => step(1));
+  row.addEventListener("scroll", ends, { passive: true });
+  window.addEventListener("resize", ends);
+  ends();
+}
+function tapRoll() {
+  if (!revealing() && !S.here && !readPref("asked") && !readPref("zip")) { openSheet({ first: true }); return; }
+  roll();
 }
 
 // ---- wiring --------------------------------------------------------------------------------------
@@ -216,72 +254,44 @@ async function start() {
   const sel = $("#pack-select");
   S.packs.forEach((p) => sel.append(h("option", { value: p.id }, p.name)));
   if (S.packById.anywhere) sel.value = "anywhere";
-  renderLegend();
   const src = data.source || {};
   $("#catalog-meta").textContent = `${src.name || "Missions"} · ${S.missions.length} live missions · updated ${prettyDate(src.updated)}`;
 
   const form = $("#form-link");
   if (FORM_URL) form.href = FORM_URL;
   else { form.href = REPO_URL; $("#form-note").textContent = "The submission form opens soon. Until then, a pull request on GitHub works, or check back."; }
-  $("#repo-link").href = REPO_URL;
 
   document.querySelectorAll('input[name="mode"], #filters input[type="checkbox"], #pack-select, #within-select')
     .forEach((el) => el.addEventListener("change", () => refresh()));
   $("#pack-select").addEventListener("change", () => { S.packWidened = false; rollLabel(); });
-  $("#roll-btn").addEventListener("click", () => roll());
+  $("#roll-btn").addEventListener("click", tapRoll);
   $("#zip-form").addEventListener("submit", setZip);
-  $("#browse-pack").addEventListener("change", (e) => { S.browse = e.target.value; renderBrowse(); });
-  $("#browse-sort").addEventListener("change", (e) => { S.sort = e.target.value; renderBrowse(); });
   $("#use-location").addEventListener("click", useLocation);
-  $("#browse-share").addEventListener("click", async (e) => {
-    const b = e.target;
-    try { await navigator.clipboard.writeText(`${location.origin}${HOME}${filterQuery()}`); b.textContent = "Copied!"; }
-    catch (err) { b.textContent = "Copy it from the address bar"; }
-    setTimeout(() => { b.textContent = "Copy a link to this list"; }, 2200);
-  });
-  let searchTimer = null;
-  const sInput = $("#search-input");
-  sInput.addEventListener("input", () => {
-    clearTimeout(searchTimer);
-    searchTimer = setTimeout(() => { S.q = sInput.value; renderBrowse(); }, 120);
-  });
-  sInput.addEventListener("keydown", (e) => { if (e.key === "Escape") { sInput.value = ""; S.q = ""; renderBrowse(); } });
   document.querySelectorAll(".units button").forEach((b) => b.addEventListener("click", () => {
     const sel = $("#within-select"), at = WITHIN[S.unit].indexOf(Number(sel.value));   // keep the same step: 30 mi becomes 50 km
     S.unit = b.dataset.unit; writePref("unit", S.unit); renderWithin();
     if (at >= 0) sel.value = String(WITHIN[S.unit][at]);
     refresh(); rerenderReveal();
   }));
-  const toggle = $("#filters-toggle");
-  const setPanel = (open) => {
-    const panel = $("#filters"); panel.hidden = !open;
-    toggle.setAttribute("aria-expanded", String(open));
-    $("#filters-label").textContent = open ? "Hide filters" : "More filters";
-  };
-  toggle.addEventListener("click", () => {
-    const opening = $("#filters").hidden;
-    setPanel(opening);
-    if (opening) $("#filters").scrollIntoView({ behavior: "smooth", block: "nearest" });
-  });
-  $("#filters-done").addEventListener("click", () => {
-    setPanel(false);
-    $(".roll").scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-  ["#browse-clear", "#filters-reset", "#match-clear"].forEach((id) => $(id).addEventListener("click", clearAll));
+  $("#filters-toggle").addEventListener("click", () => openSheet({ focus: $("#filters .chips input") }));
+  $("#near-toggle").addEventListener("click", () => openSheet({ focus: "zip" }));
+  $("#pick-sheet").addEventListener("close", () => $("#filters-toggle").setAttribute("aria-expanded", "false"));
+  $("#filters-done").addEventListener("click", closeSheet);
+  $("#sheet-open").addEventListener("click", () => { closeSheet(); roll(); });
+  $("#sheet-skip").addEventListener("click", () => { closeSheet(); roll(); });
+  ["#filters-reset", "#match-clear"].forEach((id) => $(id).addEventListener("click", clearAll));
   // a tap on the dim area closes a pop-up, but only if the press began there (dragging out of a text box doesn't count)
   const closeOnBackdrop = (d, keepOpen) => {
     let began = false;
     d.addEventListener("pointerdown", (e) => { began = e.target === d; });
     d.addEventListener("click", (e) => { if (e.target === d && began && !(keepOpen && keepOpen())) d.close(); });
   };
-  closeOnBackdrop($("#mission-dialog"));
+  closeOnBackdrop($("#pick-sheet"));
   // a card with writing on it stays open; X, Cancel and Escape still close it, and the draft is kept
   closeOnBackdrop($("#gift-dialog"), () => [...document.querySelectorAll("#gift-body .gc-to, #gift-body .gc-note")].some((el) => el.value.trim()));
-  $("#mission-dialog").addEventListener("close", () => { if (history.state && history.state.amble === "popup") history.back(); });
   window.addEventListener("popstate", () => {
-    if (history.state && history.state.amble === "popup") { location.reload(); return; }   // Forward: show the real page
-    if ($("#mission-dialog").open) $("#mission-dialog").close();
     if ($("#gift-dialog").open) $("#gift-dialog").close();   // the draft is kept
+    closeSheet();
     route();
   });
   window.addEventListener("hashchange", route);
@@ -297,12 +307,14 @@ async function start() {
   // header links to sections of this page: stay here, so filters in the address survive
   document.querySelectorAll('.top a[href^="/#"]').forEach((a) => a.addEventListener("click", (e) => {
     e.preventDefault();
-    const id = a.getAttribute("href").slice(2), search = id === "search", target = search ? "browse" : id;
-    if (revealing()) { startOver({ then: { id: target, search } }); return; }
-    $(`#${target}`).scrollIntoView({ behavior: REDUCED() ? "auto" : "smooth" });
-    if (search) setTimeout(() => sInput.focus({ preventScroll: true }), 300);
+    const id = a.getAttribute("href").slice(2);
+    if (!document.getElementById(id)) { location.href = a.href; return; }
+    if (revealing()) { startOver({ then: { id } }); return; }
+    $(`#${id}`).scrollIntoView({ behavior: REDUCED() ? "auto" : "smooth" });
   }));
 
+  if (movedList()) return;
+  vibeSlider();
   readQuery();
   syncNewFilter();
   // marking something done changes what "Hide ones we've done" hides, and whether it shows at all
@@ -312,7 +324,6 @@ async function start() {
   renderTeaser();
   try { await route(); }
   finally { document.documentElement.classList.remove("arriving"); }   // the letter (or home page) is ready; see arrive.js
-  if (location.hash === "#search") { $("#browse").scrollIntoView(); sInput.focus({ preventScroll: true }); }   // from another page's menu
   const zip = readPref("zip");
   if (zip) { $("#zip-input").value = zip; setZip(); }
 }

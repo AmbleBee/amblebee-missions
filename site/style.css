@@ -803,22 +803,11 @@ main:focus { outline: none; }
 .faq-none { font-weight: 700; padding: 6px 2px; }
 .faq-more { margin-top: 1.6rem !important; }
 
-/* ---- phones and small tablets: the main button comes right after the mood picker, the rest follows ---- */
+/* ---- phones and small tablets: everything in one column, the envelope after the buttons ---- */
 @media (max-width: 860px) {
-  .roll { padding-top: 14px; }
-  .roll-intro { display: flex; flex-direction: column; }
-  .roll-intro .lede { display: none; }
   .roll-intro .hand { font-size: 1.5rem; }
-  .roll-intro .about-teaser { margin: .6rem 0 1rem; }
-  .roll-row { display: contents; }
-  .roll-intro .modes { order: 1; margin-bottom: 14px; }
-  .roll-intro .near-pick { order: 2; margin-bottom: 14px; }   /* "Where are you?" first, so the first mission can be a real place nearby */
-  .roll-intro #roll-btn { order: 3; width: 100%; }
-  .roll-intro #match-count { order: 4; align-self: flex-start; margin-bottom: 14px; }
-  .roll-intro .pack-pick { order: 5; margin-bottom: 4px; }
-  .roll-intro #filters-toggle { order: 6; width: 100%; }
-  .ticket-slot .env:not(.nothing) .env-open { display: none; }   /* one main button: "Open a mission" above does the same thing */
-  .roll-intro #match-clear { order: 4; align-self: flex-start; }
+  .roll-intro .lede { margin: .7rem 0 1.1rem; font-size: 1rem; }
+  .roll-intro .modes { margin-bottom: 14px; }
 }
 @media (max-width: 560px) {
   .brand { min-width: 0; }
@@ -1649,3 +1638,160 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .pf-place-msg:empty { display: none; }
 .card .meta .pf-dist { background: var(--sage-tint); color: var(--sage-ink, var(--ink)); }
 @media (max-width: 640px) { .pf-from { width: 100%; flex-wrap: nowrap; } .pf-place { flex: 1; width: auto; min-width: 0; } }
+
+/* ---- home page, simplified (November 2026): one big button, Near you + Filters in a sheet, then how it works,
+   browse by vibe, the story and suggestions. The list and search live on /missions/ and /missions/all/ now. ---- */
+.roll { align-items: center; padding: 34px 0 56px; }
+.eyebrow { margin: 0 0 .7rem; font: 800 .85rem var(--body); letter-spacing: .12em; text-transform: uppercase; color: var(--sage-deep); }
+.roll .lede { margin: 1rem 0 1.4rem; font-size: 1.12rem; max-width: 30rem; }
+.roll-btn { min-height: 62px; padding: 0 34px; font-size: 1.2rem; border-radius: 34px; }
+.pick-pills { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+.pill {
+  appearance: none; border: 0; cursor: pointer; text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px; min-height: 46px; padding: 0 18px; border-radius: 999px;
+  font: 800 1rem var(--body); color: var(--ink); background: var(--paper); box-shadow: inset 0 0 0 2px var(--line-strong);
+}
+.pill:hover { background: var(--linen); color: var(--ink); }
+.pill svg { color: var(--sage-deep); flex-shrink: 0; }
+.pill:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+.pill.is-set { background: var(--sage-tint); color: var(--sage-ink); box-shadow: inset 0 0 0 2px var(--sage); }
+#near-label { max-width: 16rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.pill .fcount { min-width: 24px; height: 24px; font-size: .82rem; }
+.roll .match:empty { display: none; }
+
+/* how it works: a band across the whole page */
+.how { margin: 0 calc(50% - 50vw); padding: 52px max(20px, calc(50vw - 580px)); background: var(--linen);
+  border-top: 2px dashed var(--line-strong); border-bottom: 2px dashed var(--line-strong); }
+.how h2, .vibes h2 { font-size: clamp(1.8rem, 3.6vw, 2.2rem); }
+.how h2 { margin-bottom: 26px; }
+.how-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+.how-steps li { display: flex; flex-direction: column; gap: 8px; }
+.how-n { font: 700 2.8rem/1 var(--display); color: var(--honey-deep); }
+.how-steps h3 { font: 800 1.3rem var(--body); color: var(--walnut); }
+.how-steps p { margin: 0; }
+
+/* browse by vibe */
+.vibes { padding: 60px 0 10px; }
+.vibes-head { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 14px; margin-bottom: 22px; }
+.vibe-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+.vibe, .every-bar { display: flex; text-decoration: none; border-radius: 18px; }
+.vibe { flex-direction: column; gap: 8px; padding: 20px; background: var(--paper); color: var(--ink);
+  box-shadow: 0 2px 0 var(--line), 0 6px 14px rgba(90, 62, 43, .06); transition: transform .15s; }
+.vibe:hover { color: var(--ink); transform: translateY(-2px); box-shadow: 0 2px 0 var(--line-strong), 0 10px 18px rgba(90, 62, 43, .1); }
+.vibe b { font-size: 1.2rem; font-weight: 800; }
+.vibe > span:last-child { font-size: .95rem; color: var(--walnut-soft); }
+.vibe-icon { display: grid; place-items: center; width: 46px; height: 46px; border-radius: 14px; flex-shrink: 0;
+  background: var(--sage-tint); color: var(--sage-ink); }
+.vibe.honey .vibe-icon { background: var(--honey-tint); color: var(--honey-deep); }
+.every-bar { align-items: center; gap: 16px; margin-top: 16px; padding: 18px 22px; background: var(--fill); color: #FFFDF8;
+  box-shadow: 0 4px 0 var(--fill-shadow); }
+.every-bar:hover { background: var(--fill-hover); color: #FFFDF8; }
+.every-bar:active { transform: translateY(2px); box-shadow: 0 2px 0 var(--fill-shadow); }
+.every-bar .vibe-icon { background: rgba(255, 253, 248, .16); color: #FFFDF8; }
+.every-text { flex: 1; min-width: 0; display: flex; flex-direction: column; gap: 2px; }
+.every-text b { font-size: 1.2rem; font-weight: 800; }
+.every-text span { opacity: .92; }
+/* more than 4 vibes: a sliding row, cards a little narrower so the next one peeks in, < > at the ends */
+.vibe-slider { position: relative; display: flex; align-items: stretch; gap: 8px; }
+.vibe-row { flex: 1; min-width: 0; display: flex; gap: 16px;
+  overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; padding: 2px 2px 10px; margin-bottom: -8px; }
+.vibe-row::-webkit-scrollbar { display: none; }
+.vibe-row .vibe { flex: 0 0 calc((100% - 3 * 16px) / 4.35); scroll-snap-align: start; }
+.vibe-row:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; border-radius: 18px; }
+.vibe-nav { appearance: none; border: 0; cursor: pointer; flex: 0 0 34px; display: grid; place-items: center; border-radius: 14px;
+  background: var(--linen); color: var(--sage-deep); box-shadow: inset 0 0 0 2px var(--line-strong); margin-bottom: 2px; }
+.vibe-nav:hover { background: var(--sage-tint); color: var(--sage-ink); }
+.vibe-nav:disabled { opacity: .35; cursor: default; background: var(--linen); color: var(--sage-deep); }
+.vibe-nav:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+
+/* the story, then suggestions */
+.about-card { display: flex; flex-wrap: wrap; align-items: center; gap: 18px 40px; margin: 44px 0 0; padding: 30px 34px;
+  border-radius: 24px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); }
+.about-card > div { flex: 1 1 26rem; min-width: 0; }
+.about-card h2 { font-size: clamp(1.5rem, 3vw, 1.8rem); margin-bottom: 8px; }
+.about-card p { margin: 0; max-width: 38rem; }
+.about-more { font-weight: 800; }
+.roll ~ .share { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px;
+  margin-top: 40px; background: transparent; box-shadow: none; padding: 0 0 20px; }
+.roll ~ .share h2 { font-size: clamp(1.6rem, 3.2vw, 1.9rem); margin-bottom: 4px; }
+.roll ~ .share p { margin: 0; }
+.roll ~ .share #form-note:empty { display: none; }
+
+/* the sheet: Where are you? and the filters */
+.pick-sheet { width: min(720px, calc(100vw - 24px)); }
+.pick-sheet[open] { display: flex; flex-direction: column; max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px); border-radius: 26px;
+  background: var(--linen); box-shadow: 0 20px 50px rgba(42, 30, 22, .3), inset 0 0 0 2.5px var(--honey); overflow: hidden; }
+.sheet-body { overflow: auto; overscroll-behavior: contain; padding: 26px 26px 8px; }
+.pick-sheet .x-form { position: absolute; top: 12px; right: 12px; margin: 0; z-index: 3; }
+.sheet-first { font-size: 1.7rem; margin: 0 52px 14px 0; }
+.pick-sheet .near-pick { margin: 0 0 6px; padding-right: 48px; }
+.pick-sheet .near-pick legend { font: 600 1.6rem var(--display); color: var(--ink); margin-bottom: 12px; }
+.pick-sheet .pack-pick { margin-top: 14px; flex-direction: row; align-items: center; gap: 10px; }
+.pick-sheet .filters { background: transparent; box-shadow: none; padding: 0; margin: 18px 0 0; border-radius: 0; border-top: 2px dashed var(--line-strong); }
+.pick-sheet [hidden] { display: none !important; }
+.sheet-h { margin: 18px 0 14px; font-size: 1.35rem; }
+.sheet-h span { font: 700 .95rem var(--body); color: var(--walnut-soft); }
+.pick-sheet .filter-grid { grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 18px 24px; }
+.more-filters { margin: 18px 0 6px; }
+.more-filters > summary { cursor: pointer; font-weight: 800; color: var(--sage-deep); padding: 8px 0; }
+.more-filters > summary span { font-weight: 600; color: var(--walnut-soft); margin-left: 6px; }
+.more-filters[open] > summary { margin-bottom: 14px; }
+.pick-sheet .filters-bar { position: static; margin: 0; padding: 14px 26px; border-radius: 0; flex-shrink: 0; }
+.pick-sheet .fmatch { flex: 1 1 auto; font-size: 1rem; }
+.pick-sheet .fmatch b { font-size: 1.15rem; }
+#sheet-open { margin-left: auto; }
+#sheet-open:disabled { opacity: .55; cursor: default; }
+.sheet-skip { flex: 1 1 100%; text-align: right; }
+
+/* All missions (/missions/all/): the search box over the filters */
+.pf-search-row { margin: 0 0 12px; }
+.pf-search { width: 100%; max-width: 36rem; min-height: 52px; padding: 0 18px; border: 0; border-radius: 16px;
+  background: var(--paper); color: var(--ink); font: 700 1.05rem var(--body); box-shadow: inset 0 0 0 2px var(--line-strong); }
+.pf-search::placeholder { color: var(--walnut-soft); font-weight: 600; }
+.pf-search:focus-visible { outline: 3px solid var(--honey); outline-offset: 2px; }
+
+@media (max-width: 860px) {
+  .roll { padding: 22px 0 40px; }
+  .ticket-slot .env:not(.nothing) .env-open { display: none; }   /* the big button is right above it */
+  .how-steps { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+  .how-steps li { display: grid; grid-template-columns: 52px minmax(0, 1fr); column-gap: 12px; }
+  .how-n { grid-row: span 2; font-size: 2.4rem; }
+}
+@media (max-width: 560px) {
+  .roll-btn { width: 100%; }
+  .pick-pills .pill { flex: 1 1 0; justify-content: center; min-width: 0; }
+  .vibe-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
+  .vibe-row .vibe { flex-basis: 44%; }
+  .vibe-row { gap: 12px; margin: 0 -16px -8px; padding: 2px 16px 10px; scroll-padding: 0 16px; }
+  .vibe-nav { display: none; }   /* a swipe does it on phones */
+  .vibe { padding: 16px; }
+  .about-card { padding: 24px 22px; }
+  .roll ~ .share .btn { width: 100%; }
+  .pick-sheet[open] { width: 100vw; max-width: 100vw; margin: auto 0 0; max-height: 92dvh; border-radius: 26px 26px 0 0; }
+  .sheet-body { padding: 22px 18px 6px; }
+  .pick-sheet .filters-bar { padding: 12px 18px calc(12px + env(safe-area-inset-bottom)); }
+  #sheet-open { flex: 1 1 auto; }
+}
+.pick-sheet .pack-pick > span { white-space: nowrap; }
+.pick-sheet .pack-pick { color: var(--walnut); }
+/* with a pack menu too: on phones it gets its own line, then sort + Filters */
+@media (max-width: 640px) {
+  .pf-right { flex-wrap: wrap; }
+  .pf-right .pf-pack { flex: 1 1 100%; }
+  .pf-sort { min-width: 0; }
+}
+
+/* the toolbar in two lines: search + moods, then Distance from + pack, sort and Filters */
+.pf-bar .pf-search-row { flex: 1 1 22rem; margin: 0; }
+.pf-bar .pf-search { max-width: none; height: 44px; min-height: 44px; border-radius: 12px; }   /* the same height as the mood chips */
+.pf-bar .pf-modes { margin: 0; }
+.pf-bar2 { margin-top: 12px; }
+.pf-bar2 .pf-place { width: 9.5rem; }
+.pf-place-msg { margin-top: 6px; }
+@media (max-width: 640px) {
+  .pf-bar .pf-search-row { flex-basis: 100%; }
+  .pf-bar2 .pf-from { width: 100%; }
+}
+/* a line under the toolbar, so it's clear where the filters end and the missions begin */
+.pack-filters { padding-bottom: 18px; margin-bottom: 26px; border-bottom: 2px dashed var(--line-strong); }
+.pack-filters:empty { border: 0; padding: 0; }
