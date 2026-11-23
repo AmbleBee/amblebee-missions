@@ -56,7 +56,13 @@ SHARED_HEAD = (f'<meta http-equiv="Content-Security-Policy" content="{CSP}">\n'
                '<script src="/nav.js" defer></script>\n'
                '<script src="/js/util.js" defer></script>\n'
                '<script src="/js/stats.js" defer></script>\n'
-               '<script src="/js/count.js" defer></script>')
+               '<script src="/js/count.js" defer></script>\n'
+               '<script src="/js/current.js" defer></script>')   # the "On a mission" bar, on every page
+
+# a pack page's filters and sorting (site/js/packfilter.js): the homepage's own rules from core.js and filters.js
+PACK_FILTER_SCRIPTS = ('<script src="/js/core.js" defer></script>\n'
+                       '<script src="/js/filters.js" defer></script>\n'
+                       '<script src="/js/packfilter.js" defer></script>\n')
 
 # the same "Report a problem" page as site/js/core.js: opens with the mission's id and name already filled in
 REPORT_PAGE = "/report/"
@@ -320,7 +326,8 @@ def mission_html(m, pack, icons, today):
 
 def plan_info(m):
     """What "Add to calendar" needs (site/js/plans.js): the same fields catalog.json gives the mission popup."""
-    keep = ("full_id", "id", "name", "short", "season", "duration", "gear")
+    keep = ("full_id", "id", "name", "short", "season", "duration", "gear",
+            "pack", "mode", "setting", "time_of_day", "themes", "steps")   # the last ones are for Start mission (site/js/current.js)
     info = {k: m[k] for k in keep if m.get(k) is not None}
     if m.get("place"):
         info["place"] = {k: m["place"][k] for k in ("name", "address", "area", "coords") if m["place"].get(k)}
@@ -623,7 +630,8 @@ def build_pages(out):
 <div><h1>{esc(p.get("name"))}</h1><p>{esc(desc)}</p></div></div>
 {f'<div class="pack-about">{long_html}</div>' if long_html else ""}
 <p class="hand">{esc(count_line)}</p>
-<div class="cards">{cards}</div>
+<div class="pack-filters" data-pack="{esc(p["id"])}"></div>
+<div class="cards pack-cards">{cards}</div>
 {suggest_nudge(p["id"], state, len(rows))}
 </div>"""
         ld = {"@context": "https://schema.org", "@graph": [
@@ -634,7 +642,8 @@ def build_pages(out):
         image = share_card(f"pack-{p['id']}", f"{p.get('name')}: {desc}", badge=icons["packs"].get(p.get("icon"), ""),
                            eyebrow="Date & adventure ideas", title=p.get("name"), text=desc,
                            note=f"{len(rows)} ideas" + (f" in {state}" if state else " you can do anywhere"))
-        write(path, page(f"{pack_heading(p)} · {p.get('name')}", meta, path, main, ld, brand, image=image))
+        write(path, page(f"{pack_heading(p)} · {p.get('name')}", meta, path, main, ld, brand, image=image,
+                         extra_script=PACK_FILTER_SCRIPTS))
         days = [lastmod[f"/missions/{m['id']}/"] for m in rows if f"/missions/{m['id']}/" in lastmod]
         days += [d for d in [dates.get(f"missions/{p['id']}/pack.yaml")] if d]
         if days:

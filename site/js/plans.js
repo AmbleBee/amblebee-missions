@@ -300,7 +300,8 @@
     }
     paint();
     window.addEventListener("amble:done", function () { if (wrap.isConnected) paint(); });
-    wrap.append(el("div", { class: "plan-row" }, b, vote), note);
+    // Start mission (site/js/current.js) leads the row: it's the "we're doing this now" button
+    wrap.append(el("div", { class: "plan-row" }, window.AmbleCurrent ? window.AmbleCurrent.button(m) : null, b, vote), note);
     return wrap;
   }
 

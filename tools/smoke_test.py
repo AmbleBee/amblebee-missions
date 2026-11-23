@@ -2692,6 +2692,79 @@ def t_header_stays_on_one_line(site, catalog):
     left = wide.eval_on_selector_all(".top nav > a.is-folded", "els => els.map(e => e.textContent)")
     assert left in ([], ["Bee trail"]), f"with room, everything (or all but the last) stays in the bar: {left}"   # browsers measure text a little differently
 
+def t_start_mission_bar(site, catalog):
+    """Start mission puts a small bar at the top of every page, with the photo prompts to tick off, until the
+    mission is marked done or stopped; Your profile shows it too (site/js/current.js)."""
+    m = next(x for x in catalog["missions"] if len(x.get("steps") or []) >= 3 and x["pack"] != "anywhere")
+    page = site.open(f"/missions/{m['id']}/")
+    page.on("dialog", lambda d: d.accept())
+    page.click(".mstart")
+    page.wait_for_selector("#on-mission .mbar-step")
+    assert m["name"] in page.inner_text("#on-mission") and page.inner_text(".mstart") == "You're on this one"
+    assert page.locator(".mbar-step").count() == len(m["steps"][:12]), "the prompts show right away"
+    assert "null" not in page.inner_text("body"), "no stray text"
+    page.click(".mbar-step >> nth=0")
+    assert page.inner_text(".mbar-prog").startswith("1 of "), page.inner_text(".mbar-prog")
+    other = page
+    other.goto(site.base + "/about/")   # a page without done.js: the bar still shows, with the tick
+    other.wait_for_selector("#on-mission")
+    assert other.inner_text(".mbar-prog").startswith("1 of ") and "null" not in other.inner_text("body")
+    other.click(".mbar-done")
+    other.wait_for_url(f"**/missions/{m['id']}/#done")
+    other.wait_for_timeout(400)
+    assert other.evaluate("document.activeElement.className").find("done-mark") >= 0, "the bar's Mark done points at the mission's own"
+    other.click(".done-mark")
+    other.wait_for_selector("#on-mission", state="detached")
+    d = other.evaluate("JSON.parse(localStorage.getItem('amble.done'))")
+    assert any(c["mission"] == m["full_id"] for c in d["done"]) and "current" not in d["settings"], "done ends the mission"
+    other.keyboard.press("Escape")
+    other.click(".mstart")
+    other.wait_for_selector("#on-mission")
+    other.goto(site.base + "/me/")
+    other.wait_for_selector(".current-card")
+    assert m["name"] in other.inner_text(".current-slot") and other.locator(".current-slot .mbar-step").count() == len(m["steps"][:12])
+    other.click(".mbar-x")
+    other.click(".mbar-stop-yes")
+    other.wait_for_selector("#on-mission", state="detached")
+    assert "current" not in other.evaluate("JSON.parse(localStorage.getItem('amble.done')).settings"), "stopping clears it"
+    phone = site.open(f"/missions/{m['id']}/", PHONE)
+    phone.click(".mstart")
+    phone.wait_for_selector("#on-mission")
+    assert phone.evaluate("document.documentElement.scrollWidth <= innerWidth"), "the bar fits a phone"
+
+
+def t_pack_page_filters_and_sort(site, catalog):
+    """A pack page narrows and sorts its own cards with the homepage's filters (site/js/packfilter.js), and the
+    popup ticket's "Mission 3 in Amble Oregon" links to the pack page."""
+    pack = max({x["pack"] for x in catalog["missions"]}, key=lambda p: sum(1 for x in catalog["missions"] if x["pack"] == p))
+    ms = [x for x in catalog["missions"] if x["pack"] == pack]
+    page = site.open(f"/packs/{pack}/")
+    page.wait_for_selector(".pf-bar")
+    total = page.locator(".pack-cards a.card").count()
+    assert total == len(ms), (total, len(ms))
+    page.click(".pf-modes label:has-text('A date')")
+    dates = sum(1 for x in ms if x["mode"] in ("date", "both"))
+    assert page.locator(".pack-cards a.card:visible").count() == dates, "mood: dates and both"
+    page.click(".pf-more")
+    page.click(".pf-panel [data-pf=cost] label:has-text('Free')")
+    free = sum(1 for x in ms if x["mode"] in ("date", "both") and x["cost"] == "free")
+    assert page.locator(".pack-cards a.card:visible").count() == free
+    assert (page.inner_text(".pf-count") == f"Showing {free} of {total}") if free < total else True
+    page.click(".pf-panel .filters-bar .linkish")
+    assert page.locator(".pack-cards a.card:visible").count() == total and page.inner_text(".pf-count") == ""
+    page.select_option(".pf-sort", "az")
+    names = page.eval_on_selector_all(".pack-cards a.card h2", "e => e.map(x => x.textContent)")
+    assert names == sorted(names, key=str.lower) or names[0] <= names[-1], names[:3]
+    page.select_option(".pf-sort", "new")
+    first = page.get_attribute(".pack-cards a.card >> nth=0", "href")
+    newest = max(ms, key=lambda x: (x.get("released") or x.get("checked") or ""))
+    assert (newest.get("released") or newest.get("checked") or "") == max((x.get("released") or x.get("checked") or "") for x in ms)
+    assert first.strip("/").split("/")[-1] in {x["id"] for x in ms if (x.get("released") or x.get("checked") or "") == (newest.get("released") or newest.get("checked") or "")}
+    home = site.home(f"/#mission={ms[0]['full_id']}")
+    home.wait_for_selector(".ticket .source a")
+    assert home.get_attribute(".ticket .source a", "href") == f"/packs/{pack}/"
+
+
 def t_contribute_page_polls(site, catalog):
     """AmbleBee's own polls live on Contribute, with suggesting a mission and a link to report a problem."""
     m1 = catalog["missions"][2]

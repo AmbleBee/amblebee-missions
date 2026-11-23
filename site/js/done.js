@@ -58,8 +58,32 @@
         var nm = x.display_name.replace(/[<>\u0000-\u001f\u007f]/g, "").replace(/\s+/g, " ").trim().slice(0, 30).trim();
         if (nm) out.display_name = nm;
       }
+      var cur = cleanCurrent(x.current);
+      if (cur) out.current = cur;
     }
     return out;
+  }
+  // The mission you're on right now (Start mission, site/js/current.js): one at a time, until it's marked done or
+  // cancelled. It rides along in the settings so the profile carries it to your other devices.
+  //   { mission, slug, name, pack, mode, setting, time_of_day, themes, steps: ["…"], got: [0, 2], started_at }
+  // "got" is which photo prompts you've ticked off. The prompts are copied in, so the bar works on every page
+  // without loading the whole catalog.
+  var STEP_MAX = 12, STEP_LEN = 240;
+  function cleanCurrent(c) {
+    if (!c || typeof c !== "object" || typeof c.mission !== "string" || !ID_RE.test(c.mission)) return null;
+    var t = new Date(c.started_at);
+    if (isNaN(t.getTime())) return null;
+    var str = function (v, max) { return typeof v === "string" ? v.replace(/[\u0000-\u001f\u007f]/g, " ").slice(0, max) : ""; };
+    var steps = (Array.isArray(c.steps) ? c.steps : []).filter(function (x) { return typeof x === "string" && x.trim(); })
+      .slice(0, STEP_MAX).map(function (x) { return str(x, STEP_LEN); });
+    var got = (Array.isArray(c.got) ? c.got : []).filter(function (i, k, a) {
+      return typeof i === "number" && i % 1 === 0 && i >= 0 && i < steps.length && a.indexOf(i) === k; });
+    return {
+      mission: c.mission, slug: str(c.slug, 80) || c.mission.split("/")[1], name: str(c.name, 120) || c.mission.split("/")[1],
+      pack: str(c.pack, 40), mode: str(c.mode, 20), setting: str(c.setting, 20), time_of_day: str(c.time_of_day, 20),
+      themes: (Array.isArray(c.themes) ? c.themes : []).filter(function (x) { return typeof x === "string"; }).slice(0, 12).map(function (x) { return x.slice(0, 30); }),
+      steps: steps, got: got.sort(function (a, b) { return a - b; }), started_at: t.toISOString(),
+    };
   }
   function read() {
     var raw = null;
@@ -200,6 +224,9 @@
       d.done.push(c);
       dirty(d, c.rid);
       d.done = d.done.slice(-KEEP_MAX);
+      if (d.settings.current && d.settings.current.mission === c.mission) {   // the mission you were on: finished
+        delete d.settings.current; prefsChanged(d);
+      }
       write(d); changed();
       track("mission_done", { mission_id: c.slug });
       return c;
@@ -259,6 +286,34 @@
       var d = read();
       if (dropPlan(d, id)) { write(d); changed(); return true; }
       return false;
+    },
+    // ---- the mission you're on (site/js/current.js) ----
+    current: function () { return read().settings.current || null; },
+    // info: { mission, slug, name, pack, mode, setting, time_of_day, themes, steps }. Replaces any other current mission.
+    start: function (info) {
+      var d = read(), cur = cleanCurrent(Object.assign({}, info, { got: [], started_at: stamp() }));
+      if (!cur) return null;
+      d.settings.current = cur; prefsChanged(d);
+      write(d); changed();
+      track("mission_start", { mission_id: cur.slug });
+      return cur;
+    },
+    stop: function () {
+      var d = read();
+      if (!d.settings.current) return;
+      track("mission_cancel", { mission_id: d.settings.current.slug });
+      delete d.settings.current; prefsChanged(d);
+      write(d); changed();
+    },
+    // tick (or untick) photo prompt i
+    got: function (i, yes) {
+      var d = read(), cur = d.settings.current;
+      if (!cur) return null;
+      cur.got = cur.got.filter(function (x) { return x !== i; });
+      if (yes) cur.got.push(i);
+      d.settings.current = cleanCurrent(cur); prefsChanged(d);
+      write(d); changed();
+      return d.settings.current;
     },
     settings: function () { return read().settings; },
     // patch: { home_state?, anniversary?, display_name? }; null or "" clears one
