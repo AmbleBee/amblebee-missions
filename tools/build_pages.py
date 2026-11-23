@@ -87,7 +87,8 @@ INFO_PAGES = {   # pages/<name>.html holds the words; edit those, not this
     "vote": ("You're invited to vote!", "Help your crew pick the plan. Cast your vote!"),
     "vote-new": ("Start a vote", "Pick a few AmbleBee missions, send your friends a link, and everyone votes."),
 }
-WIDE_PAGES = {"contribute": "page-wide contribute", **{n: "page-wide pg" for n in ("about", "contact", "faq", "privacy", "safety")}}   # laid out across the full width, not as a column of text
+WIDE_PAGES = {"contribute": "page-wide contribute", **{n: "page-wide pg" for n in ("about", "contact", "faq", "privacy", "safety")},
+              **{n: "page-wide pg me-page" for n in ("me", "me-plans", "me-messages", "me-votes", "me-settings")}}   # laid out across the full width, not as a column of text
 NOINDEX_PAGES = {"suggest", "report", "status", "me", "me-settings", "me-plans", "me-messages", "me-votes", "vote", "vote-new", "poll"}   # useful only through a link: kept out of search engines and the sitemap
 PAGE_PATHS = {"suggest-idea": "/suggest/idea/", "suggest-mission": "/suggest/mission/", "me-settings": "/me/settings/", "me-plans": "/me/plans/", "me-messages": "/me/messages/", "me-votes": "/me/votes/", "vote": "/vote/", "vote-new": "/vote/new/", "poll": "/poll/"}   # pages/<name>.html → this address
 
@@ -253,6 +254,42 @@ def footer_html():
   <p class="foot-safe">{clock}<span>Check hours, tickets and conditions before you go. Places change.</span><a href="/safety/">Safety tips →</a></p>
   <div class="foot-bottom"><p>Missions are shared under <a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a><span id="catalog-meta">{FOOT["line"]}</span></p><p><a href="/privacy/">Privacy</a></p></div>
 </footer>"""
+
+
+# Your profile: one top for its five pages, with tabs between them (and metabs.js for the Plans count and the
+# Messages dot). Each page keeps its own title; the line under it comes from the page itself.
+ME_TABS = [("me", "/me/", "Stamps", "Your profile",
+            '<circle cx="12" cy="12" r="8"/><path d="M12 7l1.5 3.2 3.5.4-2.6 2.3.8 3.4L12 14.6 8.8 16.3l.8-3.4L7 10.6l3.5-.4z"/>'),
+           ("me-plans", "/me/plans/", "Plans", "My plans", '<rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4"/>'),
+           ("me-messages", "/me/messages/", "Messages", "Messages", '<path d="M4 5h16v11H9l-5 4z"/>'),
+           ("me-votes", "/me/votes/", "Votes", "Votes with friends", '<path d="M5 20v-6M12 20V5M19 20v-9"/>'),
+           ("me-settings", "/me/settings/", "Settings", "Profile settings",
+            '<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M4.9 19.1L7 17M17 7l2.1-2.1"/>')]
+ME_PAGES = {t[0] for t in ME_TABS}
+CURRENT = ' aria-current="page"'
+
+
+def profile_page(name, body):
+    """A Your profile page: the shared top (title, its line, the tabs), then the page's own content on a band."""
+    head = re.search(r'<h1>(.*?)</h1>', body, re.S)
+    line = re.search(r'<p class="hand">(.*?)</p>', body, re.S) if name == "me" else re.search(r'</h1>\s*<p>(.*?)</p>', body, re.S)
+    body = re.sub(r'<p class="crumbs">.*?</p>\s*', "", body, count=1, flags=re.S)
+    if name == "me":
+        body = re.sub(r'<div class="me-head">.*?</a>\s*</div>\s*', "", body, count=1, flags=re.S)   # the title, line and Settings button
+    else:
+        body = re.sub(r'<h1>.*?</h1>\s*<p>.*?</p>\s*', "", body, count=1, flags=re.S)
+    title = next(t[3] for t in ME_TABS if t[0] == name)
+    tabs = "".join(
+        f'<a class="me-tab{" me-settings-link" if n == "me-settings" else ""}" data-tab="{label.lower()}" href="{href}"'
+        f'{CURRENT if n == name else ""}><svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" '
+        f'stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">{art}</svg>{label}'
+        + ('<span class="me-tab-n" hidden></span>' if label == "Plans" else "")
+        + ('<span class="me-tab-dot" hidden><span class="sr">New reply</span></span>' if label == "Messages" else "") + "</a>"
+        for n, href, label, _, art in ME_TABS)
+    return (f'<section class="pg-hero me-hero">\n  <p class="eyebrow">Your profile</p>\n  <h1>{title}</h1>\n'
+            f'  <p class="hand">{line.group(1).strip() if line else ""}</p>\n'
+            f'  <nav class="me-tabs" aria-label="Your profile">{tabs}</nav>\n</section>\n'
+            f'<section class="pg-band me-band">\n{body.strip()}\n</section>\n')
 
 
 def crumbs_ld(items):
@@ -820,6 +857,8 @@ def build_pages(out):
     for name, (title, desc) in INFO_PAGES.items():
         path = PAGE_PATHS.get(name, f"/{name}/")
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
+        if name in ME_PAGES:
+            body = profile_page(name, body) + '<script src="/js/metabs.js" defer></script>\n'
         main = f'<div class="page {WIDE_PAGES.get(name, "info")}">\n{body}</div>'
         ld = {"@context": "https://schema.org", "@type": "WebPage", "url": BASE + path, "name": title, "description": desc}
         if name == "faq":

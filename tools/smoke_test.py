@@ -3149,6 +3149,21 @@ def t_count_js_stays_quiet_off_the_real_site(site, catalog):
     assert page.evaluate("typeof window.ambleTrack") == "function", "the site's own actions still work"
 
 
+def t_profile_pages_share_tabs(site, catalog):
+    """Your profile's five pages share one top with tabs, and Plans counts what's coming up."""
+    page = site.open("/me/plans/")
+    tabs = page.locator(".me-tabs .me-tab")
+    assert tabs.all_inner_texts() == ["Stamps", "Plans", "Messages", "Votes", "Settings"], tabs.all_inner_texts()
+    assert page.inner_text('.me-tab[aria-current="page"]').startswith("Plans") and page.inner_text("h1") == "My plans"
+    assert page.is_hidden(".me-tab-n"), "no plans yet: no count"
+    m = catalog["missions"][0]
+    page.evaluate("m => window.AmbleDone.addPlan({mission: m.full_id, slug: m.id, name: m.name}, '', '')", m)
+    page.wait_for_function("() => document.querySelector('.me-tab-n').textContent === '1'")
+    page.click('.me-tab[data-tab="settings"]')
+    page.wait_for_url("**/me/settings/")
+    assert page.inner_text('.me-tab[aria-current="page"]') == "Settings"
+
+
 def main():
     folder = Path(sys.argv[1]) if len(sys.argv) > 1 else ROOT / "_site"
     if not (folder / "catalog.json").exists():
