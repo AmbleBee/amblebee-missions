@@ -2947,6 +2947,7 @@ def t_contribute_page_polls(site, catalog):
     page.goto(site.base + f"/poll/?p={pub}&pick=other")
     page.wait_for_function("() => document.activeElement && document.activeElement.id === 'poll-other'")
     page.goto(site.base + "/contribute/")
+    page.wait_for_selector(".poll-card .poll-pick")   # let the card's request finish: WebKit reports one cut off by a reload
     v = site.intake.votes[pub]
     v["opens_at"] = (datetime.now(timezone.utc) + timedelta(hours=2, minutes=5, seconds=30)).isoformat()
     page.reload()
