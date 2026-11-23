@@ -1,4 +1,4 @@
-/* Plans (claude/calendar-voting-PLAN.md, branch 1): "Add to calendar" on every mission, My plans (/me/plans/) and the
+/* Plans (claude/calendar-voting-PLAN.md, branch 1): "Plan this mission" (with "Add to calendar" inside it) on every mission, My plans (/me/plans/) and the
    Coming up preview on Your profile.
 
    One button covers every calendar: it opens "Plan this mission" (day, optional start time, length, reminder) with
@@ -183,13 +183,15 @@
   // ---- the "Plan this mission" dialog -----------------------------------------------------------------------
   var dlg = null;
   function info(m) { return { mission: m.full_id, slug: m.id || String(m.full_id).split("/")[1], name: m.name }; }
-  // opts: { day, time, vote_name, from }   (from: what to focus after closing)
+  // "Plan this mission": a day (or Someday, no day yet) saved to My plans, and then, optionally, to a calendar.
+  // opts: { day, time, someday, vote_name, from }   (from: what to focus after closing)
   function open(m, opts) {
     opts = opts || {};
     var D = window.AmbleDone;
     if (!m || !m.full_id) return;
     var mine = D ? D.plansFor(m.full_id).filter(function (x) { return x.day >= today(); }) : [];
     var start = opts.day && realDay(opts.day) ? opts.day : mine.length ? mine[0].day : nextSaturday();
+    var someday = el("input", { type: "checkbox", id: "plan-someday", checked: !!opts.someday });
     var startTime = opts.time || (mine.length && mine[0].day === start ? mine[0].time : null);
     if (!dlg) {
       dlg = el("dialog", { id: "plan-dialog", "aria-labelledby": "plan-title" });
@@ -211,9 +213,16 @@
       el("option", { value: "none" }, "No reminder"), el("option", { value: "morning" }, "The morning of"),
       el("option", { value: "day-before", selected: true }, "The day before"));
     var lengthRow = el("div", { class: "done-field plan-length" }, el("label", { for: "plan-length", text: "How long" }), length);
+    var whenRow = el("fieldset", { class: "plan-when" }, el("legend", { text: "Time" }),
+      el("label", { class: "check" }, allDay, "All day"),
+      el("label", { class: "check plan-at" }, timed, "Start at ", time));
+    var remindRow = el("div", { class: "done-field" }, el("label", { for: "plan-remind", text: "Reminder" }), remind,
+      el("p", { class: "hint", text: "The reminder is in the Apple and other calendars file. Google and Outlook use your calendar's usual reminder." }));
+    var keep = el("button", { type: "button", class: "btn primary plan-keep" }, icon("check", 20), "Save to My plans");
     var done = el("p", { class: "plan-done", role: "status", "aria-live": "polite" });
 
     function current() {
+      if (someday.checked) return { day: "", time: null, hours: +length.value, remind: "none", vote_name: opts.vote_name || null };
       return { day: day.value, time: timed.checked && TIME_RE.test(time.value) ? time.value : null, hours: +length.value,
                remind: remind.value, vote_name: opts.vote_name || null };
     }
@@ -222,11 +231,18 @@
     var outlookWork = el("a", { class: "btn plan-cal plan-outlook-work", target: "_blank", rel: "noopener" }, "Outlook for work or school");
     var file = el("button", { type: "button", class: "btn plan-cal plan-ics" }, icon("file", 18), "Apple and other calendars");
     var links = [google, outlook, outlookWork];
+    var calPart = null;   // "Add it to your calendar too": there's nothing to add for a Someday plan
     function refresh() {
-      var ok = realDay(day.value) && day.value >= today();
+      var later = someday.checked;
+      day.disabled = later;
+      [whenRow, remindRow].forEach(function (x) { x.hidden = later; });
+      if (calPart) calPart.hidden = later;
+      var ok = later || (realDay(day.value) && day.value >= today());
       day.setAttribute("aria-invalid", ok ? "false" : "true");
       time.disabled = !timed.checked;
-      lengthRow.hidden = !timed.checked;
+      lengthRow.hidden = later || !timed.checked;
+      keep.disabled = !ok;
+      if (later) { season.textContent = ""; return; }
       season.textContent = ok && outOfSeason(m, day.value) ? "Out of season on " + prettyDay(day.value, true) + ". It may be closed or not at its best, so check before you go." : "";
       if (!ok) season.textContent = "Pick a day from today on.";
       var ev = ok ? event(m, current()) : null;
@@ -238,14 +254,16 @@
     }
     function save(via) {
       var p = current();
-      if (!realDay(p.day) || p.day < today()) return false;
+      if (p.day !== "" && (!realDay(p.day) || p.day < today())) return false;
       var made = D ? D.addPlan(info(m), p.day, p.time, opts.vote_name ? { source: "vote", vote_name: opts.vote_name, vote_id: opts.vote_id } : null) : null;
-      track("calendar_added", { mission_id: info(m).slug, via: via });
+      track(via === "plan" ? "plan_added" : "calendar_added", { mission_id: info(m).slug, via: via, someday: p.day === "" });
       done.replaceChildren(icon("check", 18), el("span", {},
-        made ? "Saved to My plans. We'll ask how it went after " + prettyDay(p.day) + ". " : "Added. ",
+        !made ? "Added. " : p.day === "" ? "Saved to My plans as Someday. Pick a day there whenever you're ready. "
+          : "Saved to My plans. We'll ask how it went after " + prettyDay(p.day) + ". ",
         made ? el("a", { href: "/me/plans/" }, "See My plans") : null));
       return true;
     }
+    keep.addEventListener("click", function () { save("plan"); });
     google.addEventListener("click", function (e) { if (!save("google")) e.preventDefault(); });
     outlook.addEventListener("click", function (e) { if (!save("outlook")) e.preventDefault(); });
     outlookWork.addEventListener("click", function (e) { if (!save("outlook_work")) e.preventDefault(); });
@@ -255,6 +273,7 @@
     });
     [day, time, length, remind].forEach(function (x) { x.addEventListener("input", refresh); x.addEventListener("change", refresh); });
     [allDay, timed].forEach(function (x) { x.addEventListener("change", function () { refresh(); if (timed.checked) time.focus(); }); });
+    someday.addEventListener("change", refresh);
     time.addEventListener("focus", function () { if (!timed.checked) { timed.checked = true; refresh(); } });
 
     var sheet = el("div", { class: "plan-sheet" },
@@ -263,18 +282,16 @@
       el("h2", { id: "plan-title", class: "plan-kicker" }, "Plan this mission"),
       el("p", { class: "gift-mission" }, icon("calendar", 18), opts.vote_name ? opts.vote_name + ": " + m.name : m.name),
       el("div", { class: "plan-grid" },
-        el("div", { class: "done-field" }, el("label", { for: "plan-day", text: "Day" }), day),
-        el("fieldset", { class: "plan-when" }, el("legend", { text: "Time" }),
-          el("label", { class: "check" }, allDay, "All day"),
-          el("label", { class: "check plan-at" }, timed, "Start at ", time)),
-        lengthRow,
-        el("div", { class: "done-field" }, el("label", { for: "plan-remind", text: "Reminder" }), remind,
-          el("p", { class: "hint", text: "The reminder is in the Apple and other calendars file. Google and Outlook use your calendar's usual reminder." }))),
+        el("div", { class: "done-field" }, el("label", { for: "plan-day", text: "Day" }), day,
+          el("label", { class: "check plan-someday" }, someday, "Someday (no day yet)")),
+        whenRow, lengthRow, remindRow),
       season,
-      el("p", { class: "plan-label", text: "Add it to" }),
-      el("div", { class: "plan-cals" }, google, outlook, outlookWork, file),
+      el("div", { class: "plan-keep-row" }, keep),
       done,
-      el("p", { class: "plan-privacy", text: "Nothing is sent anywhere until you pick a calendar, and then only this event goes to it. The Apple file is made on your device." }));
+      calPart = el("div", { class: "plan-cal-part" },
+        el("p", { class: "plan-label", text: "Add it to your calendar too (optional)" }),
+        el("div", { class: "plan-cals" }, google, outlook, outlookWork, file),
+        el("p", { class: "plan-privacy", text: "Nothing is sent anywhere until you pick a calendar, and then only this event goes to it. The Apple file is made on your device." })));
     dlg.replaceChildren(sheet);
     refresh();
     if (!dlg.open) dlg.showModal();
@@ -282,21 +299,23 @@
   }
 
   // ---- the button at the bottom of a mission ---------------------------------------------------------------
-  // "Add to calendar" on the left, a filled honey button, well away from Not for us; with the next plan under it
+  // "Plan this mission" (with the calendars inside it), a filled honey button, well away from Not for us; with the next plan under it
   function button(m) {
     if (!m || !m.full_id) return null;
     var wrap = el("div", { class: "plan-acts" });
-    var b = el("button", { type: "button", class: "btn small plan-btn" }, icon("calendar", 20), "Add to calendar");
+    var b = el("button", { type: "button", class: "btn small plan-btn" }, icon("calendar", 20), "Plan this mission");
     b.addEventListener("click", function () { open(m, { from: b }); });
     // Start a vote, the other "plan it" button (calendar-voting-PLAN.md §3), styled differently (site/js/votes.js)
     var vote = el("a", { class: "btn small vote-start", href: "/vote/new/#add=" + m.full_id }, "Start a vote");
     var note = el("p", { class: "plan-note" });
     function paint() {
-      var D = window.AmbleDone, next = D ? D.plansFor(m.full_id).filter(function (x) { return x.day >= today(); })[0] : null;
+      var D = window.AmbleDone, mine = D ? D.plansFor(m.full_id) : [];
+      var next = mine.filter(function (x) { return x.day >= today(); })[0], later = mine.filter(function (x) { return x.day === ""; })[0];
       note.replaceChildren();
-      note.hidden = !next;
+      note.hidden = !next && !later;
       if (next) note.append(icon("check", 16), "Planned for " + prettyDay(next.day) + (next.time ? " at " + prettyTime(next.time) : "") + " · ",
                             el("a", { href: "/me/plans/" }, "My plans"));
+      else if (later) note.append(icon("check", 16), "In your plans for someday · ", el("a", { href: "/me/plans/" }, "My plans"));
     }
     paint();
     window.addEventListener("amble:done", function () { if (wrap.isConnected) paint(); });
@@ -317,7 +336,7 @@
     return { mission: p.mission, slug: p.slug, name: p.name, pack: m.pack || "", mode: m.mode || "", setting: m.setting || "either",
              time_of_day: m.time_of_day || "any", themes: m.themes || [] };
   }
-  function fromLine(p) { return p.source === "vote" && p.vote_name ? "From " + p.vote_name : "From your calendar"; }
+  function fromLine(p) { return p.source === "vote" && p.vote_name ? "From " + p.vote_name : ""; }
 
   // "Did you go?" for one plan whose day has passed: Mark it done (on that day) or We didn't go
   function askRow(p, by, say) {
@@ -343,16 +362,18 @@
     return row;
   }
   function upcomingRow(p, by) {
-    var m = by[p.mission];
-    var again = el("button", { type: "button", class: "btn small plan-again" }, icon("calendar", 18), "Add to calendar");
+    var m = by[p.mission], later = p.day === "";
+    // a Someday plan gets a day here; a dated one can go on a calendar (or change its day)
+    var again = el("button", { type: "button", class: "btn small plan-again" }, icon("calendar", 18), later ? "Pick a day" : "Add to calendar");
     again.disabled = !m;
-    again.addEventListener("click", function () { if (m) open(m, { day: p.day, time: p.time, vote_name: p.vote_name, from: again }); });
+    again.addEventListener("click", function () { if (m) open(m, { day: later ? null : p.day, time: p.time, vote_name: p.vote_name, from: again }); });
     var remove = el("button", { type: "button", class: "linkish plan-remove" }, "Remove");
     remove.addEventListener("click", function () { if (window.AmbleDone) window.AmbleDone.removePlan(p.id); });
     return el("li", { class: "plan-item", "data-plan": p.id },
-      el("p", { class: "plan-when-big" }, el("time", { datetime: p.day, text: prettyDay(p.day) }), p.time ? el("span", { text: " · " + prettyTime(p.time) }) : null),
+      later ? el("p", { class: "plan-when-big", text: "Someday" })
+        : el("p", { class: "plan-when-big" }, el("time", { datetime: p.day, text: prettyDay(p.day) }), p.time ? el("span", { text: " · " + prettyTime(p.time) }) : null),
       el("p", { class: "plan-name" }, el("a", { href: "/missions/" + encodeURIComponent(p.slug) + "/" }, p.name)),
-      el("p", { class: "plan-from", text: fromLine(p) }),
+      fromLine(p) ? el("p", { class: "plan-from", text: fromLine(p) }) : null,
       el("div", { class: "plan-row-acts" }, again, remove));
   }
   function mountPlansPage(root) {
@@ -364,7 +385,8 @@
       if (!D) return;
       loadCatalog().then(function (by) {
         var all = D.plans(), t = today();
-        var past = all.filter(function (p) { return p.day < t; }), next = all.filter(function (p) { return p.day >= t; });
+        var past = all.filter(function (p) { return p.day && p.day < t; }), next = all.filter(function (p) { return p.day >= t; });
+        var later = all.filter(function (p) { return p.day === ""; }).sort(function (a, b) { return a.added_at < b.added_at ? 1 : -1; });
         var kids = [];
         if (lastSaid) kids.push(el("p", { class: "plan-said", role: "status" }, icon("check", 18), lastSaid), landed);
         if (past.length) kids.push(el("section", { class: "plan-section", "aria-labelledby": "plans-ask" },
@@ -373,7 +395,11 @@
         kids.push(el("section", { class: "plan-section", "aria-labelledby": "plans-next" },
           el("h2", { id: "plans-next", text: "Coming up" }),
           next.length ? el("ul", { class: "plan-list" }, next.map(function (p) { return upcomingRow(p, by); }))
-            : el("p", { class: "plan-empty" }, "Nothing planned yet. Open any mission and tap ", el("b", { text: "Add to calendar" }), ", and it shows up here.")));
+            : el("p", { class: "plan-empty" }, "Nothing planned yet. Open any mission and tap ", el("b", { text: "Plan this mission" }), ", and it shows up here.")));
+        if (later.length) kids.push(el("section", { class: "plan-section", "aria-labelledby": "plans-later" },
+          el("h2", { id: "plans-later", text: "Someday" }),
+          el("p", { class: "hint", text: "No day yet, so no reminders. Pick a day when you're ready, then add it to your calendar." }),
+          el("ul", { class: "plan-list" }, later.map(function (p) { return upcomingRow(p, by); }))));
         kids.push(el("p", { class: "hint", text: window.AmbleProfile && window.AmbleProfile.has() ? "Saved to your profile, so they show on all your devices." :
           "Saved on this device only. Start a free profile in Settings to keep them on all your devices." }), live);
         root.replaceChildren.apply(root, kids.filter(Boolean));
@@ -387,7 +413,8 @@
       var D = window.AmbleDone;
       if (!D) return;
       var all = D.plans(), t = today();
-      var past = all.filter(function (p) { return p.day < t; }), next = all.filter(function (p) { return p.day >= t; }).slice(0, 3);
+      var past = all.filter(function (p) { return p.day && p.day < t; }), next = all.filter(function (p) { return p.day >= t; }).slice(0, 3);
+      var later = all.filter(function (p) { return p.day === ""; });
       root.hidden = !all.length;
       if (!all.length) { root.replaceChildren(); return; }
       // (the browser writes "null" for an empty slot, so the parts left out are filtered first)
@@ -399,6 +426,8 @@
           return el("li", {}, el("time", { datetime: p.day, text: prettyDay(p.day) }), " · ",
             el("a", { href: "/missions/" + encodeURIComponent(p.slug) + "/" }, p.name));
         })) : null,
+        later.length ? el("p", { class: "plan-someday-line" }, later.length === 1 ? "Someday: " : later.length + " for someday, like ",
+          el("a", { href: "/missions/" + encodeURIComponent(later[0].slug) + "/" }, later[0].name)) : null,
         el("p", {}, el("a", { class: "btn small", href: "/me/plans/" }, "See all my plans", icon("arrow", 18)))].filter(Boolean));
     }
     draw();

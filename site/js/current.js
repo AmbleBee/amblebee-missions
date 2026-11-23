@@ -5,7 +5,7 @@
    carry it to your other devices, and marking it done anywhere (the bar, its page, the popup) ends it.
    Pages that don't load done.js get it loaded here. Also fills the "On a mission" card on Your profile (/me/).
 
-   Used by site/js/plans.js: AmbleCurrent.button(m) puts "Start mission" next to "Add to calendar". */
+   Used by site/js/plans.js: AmbleCurrent.button(m) puts "Start mission" next to "Plan this mission". */
 (function () {
   "use strict";
   var U = window.AmbleUtil, el = U.el;

@@ -2203,7 +2203,7 @@ def t_my_plans_and_coming_up(site, catalog):
     m = plan_mission(catalog)
     page = site.open("/me/plans/")
     page.wait_for_selector(".plan-empty")
-    assert "Add to calendar" in page.inner_text(".plan-empty")
+    assert "Plan this mission" in page.inner_text(".plan-empty")
     page.goto(site.base + "/me/")
     assert not page.is_visible(".coming-up"), "no plans, no Coming up"
     page.goto(site.base + f"/missions/{m['id']}/")
@@ -2221,7 +2221,7 @@ def t_my_plans_and_coming_up(site, catalog):
     page.wait_for_url("**/me/plans/")
     page.wait_for_selector(".plan-item")
     first = page.inner_text(".plan-item >> nth=0")
-    assert "Sunday, July 4, 2027" in first and m["name"] in first and "From your calendar" in first, first
+    assert "Sunday, July 4, 2027" in first and m["name"] in first and "From your calendar" not in first, first
     assert page.locator('.nav-profile[aria-current="page"]').count() == 1
     page.click(".plan-item >> nth=0 >> .plan-again")
     page.wait_for_selector("#plan-dialog[open]")
@@ -2231,6 +2231,39 @@ def t_my_plans_and_coming_up(site, catalog):
     page.wait_for_function("() => document.querySelectorAll('.plan-item').length === 1")
     assert page.evaluate("JSON.parse(localStorage.getItem('amble.done')).plans_removed").count("pppppp02") == 0
     assert page.evaluate("AmbleDone.plans().length") == 1
+
+
+def t_add_to_plan_someday_then_pick_a_day(site, catalog):
+    """Plan this mission saves straight to My plans; Someday saves it with no day (no calendar, no "Did you go?"), and
+    picking a day later moves that same plan rather than adding a second one."""
+    m = plan_mission(catalog)
+    page = site.open(f"/missions/{m['id']}/")
+    assert page.inner_text(".ticket .plan-btn").strip() == "Plan this mission"
+    page.click(".ticket .plan-btn")
+    page.wait_for_selector("#plan-dialog[open]")
+    assert not page.is_checked("#plan-someday"), "Someday starts unticked"
+    page.check("#plan-someday")
+    assert page.is_disabled("#plan-day") and not page.is_visible(".plan-cal-part") and not page.is_visible("#plan-remind")
+    page.click(".plan-keep")
+    assert "Someday" in page.inner_text(".plan-done")
+    plans = page.evaluate("AmbleDone.plans()")
+    assert len(plans) == 1 and plans[0]["day"] == "" and plans[0]["time"] is None, plans
+    page.keyboard.press("Escape")
+    assert "someday" in page.inner_text(".ticket .plan-note").lower()
+    page.goto(site.base + "/me/plans/")
+    page.wait_for_selector("#plans-later")
+    item = page.inner_text(".plan-section:has(#plans-later) .plan-item")
+    assert "Someday" in item and m["name"] in item and "Did you go" not in page.inner_text(".plans-app")
+    page.click(".plan-section:has(#plans-later) .plan-again")
+    page.wait_for_selector("#plan-dialog[open]")
+    page.fill("#plan-day", "2027-08-14")
+    page.click(".plan-keep")
+    assert page.is_visible(".plan-cal-part"), "with a day, the calendars are offered"
+    plans = page.evaluate("AmbleDone.plans()")
+    assert len(plans) == 1 and plans[0]["day"] == "2027-08-14", "the Someday plan got its day, not a second plan"
+    page.keyboard.press("Escape")
+    page.wait_for_selector("#plans-next ~ .plan-list .plan-item")
+    assert page.locator("#plans-later").count() == 0
 
 
 def t_did_you_go_marks_it_done_and_planned_ahead(site, catalog):
@@ -2777,6 +2810,32 @@ def t_pack_page_filters_and_sort(site, catalog):
     home = site.home(f"/#mission={ms[0]['full_id']}")
     home.wait_for_selector(".ticket .source a")
     assert home.get_attribute(".ticket .source a", "href") == f"/packs/{pack}/"
+
+
+def t_pack_page_distance_from_a_zip(site, catalog):
+    """A pack page's Distance from box sorts closest or farthest first and shows each card's distance."""
+    pack = "oregon" if any(x["pack"] == "oregon" for x in catalog["missions"]) else catalog["missions"][0]["pack"]
+    page = site.open(f"/packs/{pack}/")
+    page.wait_for_selector(".pf-place")
+    assert page.is_disabled(".pf-sort option[value=near]"), "no place yet: no distance sorts"
+    page.fill(".pf-place", "97201")
+    page.click(".pf-from button")
+    page.wait_for_selector(".pack-cards .pf-dist")
+    assert page.input_value(".pf-sort") == "near" and "97201" in page.inner_text(".pf-place-msg")
+    def miles():
+        out = []
+        for t in page.eval_on_selector_all(".pack-cards a.card", "e => e.map(c => (c.querySelector('.pf-dist') || {}).textContent || '')"):
+            if t:
+                out.append(0.05 if t.startswith("under") else float(t.split()[0]))
+        return out
+    near = miles()
+    assert near == sorted(near) and len(near) > 1, near[:5]
+    page.select_option(".pf-sort", "far")
+    far = miles()
+    assert far == sorted(far, reverse=True), far[:5]
+    page.fill(".pf-place", "Nowhere Special, ZZ")
+    page.click(".pf-from button")
+    page.wait_for_selector(".pf-place-msg >> text=Couldn't find")
 
 
 def t_contribute_page_polls(site, catalog):

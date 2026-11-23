@@ -130,7 +130,8 @@
     return t.getMonth() === +v.slice(5, 7) - 1;   // not 2027-02-30
   }
   function cleanPlan(x) {
-    if (!x || typeof x !== "object" || typeof x.mission !== "string" || !ID_RE.test(x.mission) || !realDay(x.day)) return null;
+    // day "" is a Someday plan: saved to My plans with no day, so no calendar, reminder or "Did you go?" yet
+    if (!x || typeof x !== "object" || typeof x.mission !== "string" || !ID_RE.test(x.mission) || !(x.day === "" || realDay(x.day))) return null;
     var added = new Date(x.added_at);
     if (isNaN(added.getTime())) return null;
     var str = function (v, max) { return typeof v === "string" ? v.slice(0, max) : ""; };
@@ -138,7 +139,7 @@
     return {
       id: typeof x.id === "string" && ID6.test(x.id) ? x.id : newId(),
       mission: x.mission, slug: str(x.slug, 80) || x.mission.split("/")[1], name: str(x.name, 120) || x.mission.split("/")[1],
-      day: x.day, time: typeof x.time === "string" && TIME_RE.test(x.time) ? x.time : null,
+      day: x.day, time: x.day && typeof x.time === "string" && TIME_RE.test(x.time) ? x.time : null,
       source: vote ? "vote" : "calendar",
       vote_id: vote && typeof x.vote_id === "string" && /^[A-Za-z0-9_-]{8,24}$/.test(x.vote_id) ? x.vote_id : null,
       vote_name: vote ? (str(x.vote_name, 60).trim() || null) : null,
@@ -164,7 +165,7 @@
   }
   function stalePlans(d) {
     var cut = daysAgo(PLAN_STALE_DAYS), gone = false;
-    d.plans.slice().forEach(function (x) { if (x.day < cut) gone = dropPlan(d, x.id) || gone; });
+    d.plans.slice().forEach(function (x) { if (x.day && x.day < cut) gone = dropPlan(d, x.id) || gone; });   // Someday plans stay
     return gone;
   }
   function clean(d) {
@@ -268,7 +269,9 @@
     // info: { mission, slug, name }; one plan per mission and day (planning it again for that day updates its time)
     addPlan: function (info, day, time, extra) {
       var d = read();
-      var same = d.plans.find(function (x) { return x.mission === info.mission && x.day === day; });
+      // the same mission and day is the same plan; picking a day for a Someday plan moves it rather than adding another
+      var same = d.plans.find(function (x) { return x.mission === info.mission && x.day === day; }) ||
+                 (day ? d.plans.find(function (x) { return x.mission === info.mission && x.day === ""; }) : null);
       var now = stamp();
       var x = cleanPlan(Object.assign({ id: same ? same.id : newId(), mission: info.mission, slug: info.slug, name: info.name, day: day,
                                         time: time || null, source: "calendar", added_at: same ? same.added_at : now }, extra || {}));
@@ -653,7 +656,7 @@
     // "Did you go?" (calendar-voting-PLAN.md, decision 35): a plan for this mission whose day has passed. Mark it done
     // marks it on that day (changeable after); We didn't go just clears the plan. Asked here only, never as a pop-up.
     function askPlan() {
-      var p = api.plansFor(info.mission).filter(function (x) { return x.day < today(); })[0];
+      var p = api.plansFor(info.mission).filter(function (x) { return x.day && x.day < today(); })[0];
       if (!p) return null;
       var when = new Date(+p.day.slice(0, 4), +p.day.slice(5, 7) - 1, +p.day.slice(8, 10), p.time ? +p.time.slice(0, 2) : 12, p.time ? +p.time.slice(3) : 0);
       return el("div", { class: "plan-ask-box", role: "group", "aria-label": "Did you go?" },
