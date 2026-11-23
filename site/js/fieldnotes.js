@@ -54,6 +54,12 @@
     if (last < text.length) out.push(text.slice(last));
     return out;
   }
+  // a paragraph or quote: each line through inline(), with a line break between them
+  function lines(text) {
+    var out = [];
+    String(text || "").split("\n").forEach(function (line, i) { if (i) out.push(el("br")); out = out.concat(inline(line)); });
+    return out;
+  }
   function link(text, href) {
     if (/^\/(?!\/)/.test(href)) return el("a", { href: href, text: text });
     if (/^https?:\/\//i.test(href)) {
@@ -216,9 +222,9 @@
   }
 
   function block(b, preview, byId, packs) {
-    if (b.type === "p") return el("p", {}, inline(b.text));
+    if (b.type === "p") return el("p", {}, lines(b.text));
     if (b.type === "h2" || b.type === "h3") return el(b.type, { text: b.text });
-    if (b.type === "quote") return el("blockquote", { class: "fn-quote" }, el("p", {}, inline(b.text)));
+    if (b.type === "quote") return el("blockquote", { class: "fn-quote" }, el("p", {}, lines(b.text)));
     if (b.type === "list") return el("ul", {}, b.items.map(function (t) { return el("li", {}, inline(t)); }));
     if (b.type === "photos") return gallery(b.photos, preview);
     if (b.type === "mission") return missionCard(byId[b.mission], packs);
