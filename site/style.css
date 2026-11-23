@@ -1232,11 +1232,11 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .copy-row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0; }
 .copy-note { font-weight: 800; color: var(--sage-deep); }
 .recovery-code { font: 700 .95rem/1.4 ui-monospace, monospace; padding: 2px 8px; border-radius: 8px; background: var(--linen); overflow-wrap: anywhere; }
-.profile-dlg { width: min(520px, calc(100vw - 24px)); }
+.profile-dlg { width: min(600px, calc(100vw - 24px)); }
 .profile-dlg-body { padding: 24px 24px 20px; background: var(--paper); }
 .profile-dlg h2 { font-size: 1.5rem; margin: 0 0 .5rem; }
 .profile-dlg p { margin: 0 0 .7rem; }
-.profile-dlg input[type="email"] {
+.profile-dlg input[type="email"], .profile-dlg .done-field input[type="text"] {
   width: 100%; min-height: 46px; padding: 10px 14px; border: 0; border-radius: 14px;
   font: 600 1rem/1.4 var(--body); color: var(--ink); background: var(--linen); box-shadow: inset 0 0 0 2px var(--line-strong);
 }
@@ -1993,3 +1993,14 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
   .pg-note .btn { width: 100%; justify-content: center; }
   .pg-toc { display: none; }   /* on a phone the sections just follow one another */
 }
+
+/* "Start a free profile", step 2: the no-email warning reads top to bottom (warning, I understand, then the two
+   buttons), not squeezed into three columns, and the plan pop-up gets a little more room for its calendar buttons */
+.profile-dlg .profile-caution { display: block; margin: 14px 0 0; padding: 16px 18px; }
+.profile-dlg .profile-caution p { margin: 0; }
+.profile-dlg .profile-caution label.check { display: flex; align-items: center; gap: 10px; margin: 12px 0 0; min-height: 44px; font-weight: 800; color: var(--ink); cursor: pointer; }
+.profile-dlg .profile-caution label.check input { width: 22px; height: 22px; margin: 0; flex-shrink: 0; accent-color: var(--fill); }
+.profile-dlg .profile-caution .profile-dlg-actions { margin-top: 8px !important; }
+.profile-dlg .profile-dlg-actions .btn { white-space: nowrap; }
+@media (max-width: 480px) { .profile-dlg .profile-dlg-actions .btn { flex: 1 1 100%; justify-content: center; white-space: normal; } }
+#plan-dialog { width: min(640px, calc(100vw - 24px)); }
