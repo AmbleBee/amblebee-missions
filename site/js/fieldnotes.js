@@ -64,15 +64,17 @@
   }
   function hasHeader(p) { return !!(p.header && p.header.backdrop); }
 
-  // **bold**, *italic*, ~~strikethrough~~ and [a link](https://…), the only formatting the editor has (paragraphs, quotes and lists; headings stay plain). Built as nodes, never as HTML.
+  // **bold**, *italic*, ~~strikethrough~~, `code` and [a link](https://…), the only formatting the editor has (paragraphs, quotes and lists; headings stay plain). Built as nodes, never as HTML.
   function inline(text) {
-    var out = [], re = /\*\*([^*]+)\*\*|~~([^~]+)~~|\*([^*]+)\*|\[([^\]]+)\]\(([^)\s]+)\)/g, last = 0, m;
+    // `code` comes first, so nothing inside it is read as formatting
+    var out = [], re = /`([^`]+)`|\*\*([^*]+)\*\*|~~([^~]+)~~|\*([^*]+)\*|\[([^\]]+)\]\(([^)\s]+)\)/g, last = 0, m;
     while ((m = re.exec(text))) {
       if (m.index > last) out.push(text.slice(last, m.index));
-      if (m[1]) out.push(el("strong", { text: m[1] }));
-      else if (m[2]) out.push(el("s", { text: m[2] }));
-      else if (m[3]) out.push(el("em", { text: m[3] }));
-      else out.push(link(m[4], m[5]));
+      if (m[1]) out.push(el("code", { text: m[1] }));
+      else if (m[2]) out.push(el("strong", { text: m[2] }));
+      else if (m[3]) out.push(el("s", { text: m[3] }));
+      else if (m[4]) out.push(el("em", { text: m[4] }));
+      else out.push(link(m[5], m[6]));
       last = re.lastIndex;
     }
     if (last < text.length) out.push(text.slice(last));
@@ -252,6 +254,7 @@
     if (b.type === "list") return el("ul", {}, b.items.map(function (t) { return el("li", {}, inline(t)); }));
     if (b.type === "photos") return gallery(b.photos, preview);
     if (b.type === "mission") return missionCard(byId[b.mission], packs);
+    if (b.type === "code") return el("pre", { class: "fn-code" }, el("code", { text: b.text }));   // exactly as typed
     return null;
   }
 
