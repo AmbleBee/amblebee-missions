@@ -64,14 +64,15 @@
   }
   function hasHeader(p) { return !!(p.header && p.header.backdrop); }
 
-  // **bold**, *italic* and [a link](https://…), the only formatting the editor has. Built as nodes, never as HTML.
+  // **bold**, *italic*, ~~strikethrough~~ and [a link](https://…), the only formatting the editor has (paragraphs, quotes and lists; headings stay plain). Built as nodes, never as HTML.
   function inline(text) {
-    var out = [], re = /\*\*([^*]+)\*\*|\*([^*]+)\*|\[([^\]]+)\]\(([^)\s]+)\)/g, last = 0, m;
+    var out = [], re = /\*\*([^*]+)\*\*|~~([^~]+)~~|\*([^*]+)\*|\[([^\]]+)\]\(([^)\s]+)\)/g, last = 0, m;
     while ((m = re.exec(text))) {
       if (m.index > last) out.push(text.slice(last, m.index));
       if (m[1]) out.push(el("strong", { text: m[1] }));
-      else if (m[2]) out.push(el("em", { text: m[2] }));
-      else out.push(link(m[3], m[4]));
+      else if (m[2]) out.push(el("s", { text: m[2] }));
+      else if (m[3]) out.push(el("em", { text: m[3] }));
+      else out.push(link(m[4], m[5]));
       last = re.lastIndex;
     }
     if (last < text.length) out.push(text.slice(last));

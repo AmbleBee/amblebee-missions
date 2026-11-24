@@ -65,7 +65,8 @@ class FakeIntake:
         {"slug": "first-fall", "title": "Our first fall on the trail", "summary": "Where AmbleBee is now and what's next.",
          "topics": ["Site updates"], "pinned": True, "posted_at": "2026-11-20T18:00:00+00:00", "edited_at": "2026-11-21T18:00:00+00:00",
          "minutes": 6, "cover": {"url": "/fieldnotes/photo/aaa.png", "width": 1, "height": 1}, "draft": False,
-         "blocks": [{"type": "p", "text": "Hello **there**, see [Safety](/safety/) and [evil](javascript:alert(1))."}]},
+         "blocks": [{"type": "p", "text": "Hello **there**, ~~don't~~ see [Safety](/safety/) and [evil](javascript:alert(1))."},
+                    {"type": "h2", "text": "A ~~plain~~ heading"}]},
         {"slug": "rainy-day-dates", "title": "Five rainy-day dates that beat the couch", "summary": "Indoor ideas for wet weekends.",
          "topics": ["Dates", "Oregon"], "pinned": False, "posted_at": "2026-11-12T18:00:00+00:00", "edited_at": "2026-11-15T18:00:00+00:00",
          "minutes": 4, "cover": None, "draft": False,
@@ -3274,6 +3275,8 @@ def t_fieldnotes_post_formatting_is_safe(site, catalog):
     page.wait_for_selector(".fn-prose p")
     p = page.locator(".fn-prose p").first
     assert p.locator("strong").inner_text() == "there"
+    assert p.locator("s").inner_text() == "don't" and "~~" not in p.inner_text()
+    assert page.inner_text(".fn-prose h2") == "A ~~plain~~ heading"   # headings stay plain words
     assert p.locator("a").count() == 1 and p.locator("a").get_attribute("href") == "/safety/"
     assert "[evil](javascript:alert(1))" not in p.inner_text() and "evil" in p.inner_text()
 
