@@ -84,8 +84,29 @@
     // All missions: a search box over the same words the old home page list searched
     const search = searchable ? h("input", { type: "search", id: "search", class: "pf-search", placeholder: "Search: waterfall, Seattle, oysters, rainy day…",
       autocomplete: "off", enterkeyhint: "search", "aria-label": everything ? "Search these missions" : "Search this pack" }) : null;
-    const empty = h("p", { class: "pf-empty", hidden: true }, everything ? "Nothing fits. " : "Nothing in this pack fits these filters. ",
-      h("button", { type: "button", class: "linkish", onclick: () => clearAll() }, "Clear filters"));
+    // An empty search can offer to send its words to AmbleBee as a mission idea ("Want us to look into it?"). Only the
+    // words, only when you tap it: nothing you type is sent otherwise (app/wishes.py in AmbleBee Intake).
+    const askLine = h("span", { class: "pf-ask" });
+    const empty = h("div", { class: "pf-empty", hidden: true },
+      h("p", {}, everything ? "Nothing fits. " : "Nothing in this pack fits these filters. ",
+        h("button", { type: "button", class: "linkish", onclick: () => clearAll() }, "Clear filters")), askLine);
+    const asked = new Set();
+    let noneTimer = null, noneCounted = "";
+    function drawAsk(q) {
+      if (!q) { askLine.replaceChildren(); return; }
+      if (asked.has(q.toLowerCase())) { askLine.replaceChildren(h("p", { class: "pf-asked" }, "Thanks! We'll look into it.")); return; }
+      const btn = h("button", { type: "button", class: "btn small" }, "Look into it");
+      const msg = h("span", { role: "status" });
+      btn.addEventListener("click", () => {
+        btn.disabled = true;
+        fetch(window.AmbleUtil.API + "/look-into", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ q }) })
+          .then((r) => r.json())
+          .then((b) => { if (!b.ok) throw new Error(b.error || "bad"); asked.add(q.toLowerCase()); drawAsk(q); },
+                () => { btn.disabled = false; msg.textContent = " That didn't go through. Try again in a moment."; });
+      });
+      askLine.replaceChildren(h("p", { class: "pf-ask-q" }, `Nothing yet for “${q}”. Want us to look into it? `, btn, msg),
+        h("p", { class: "pf-ask-note" }, "Only these words are sent, with nothing about you."));
+    }
     // line 1: search (where there is one) with the moods beside it; line 2: Distance from, then the pack menu, sort
     // and Filters on the right
     box.replaceChildren(h("div", { class: "pf-bar" }, search ? h("div", { class: "pf-search-row", role: "search" }, search) : "", moods),
@@ -210,6 +231,14 @@
       count.textContent = !narrowing && shown === all ? "" : words.length ? `${shown} ${shown === 1 ? "mission matches" : "missions match"} "${search.value.trim()}"`
         : `Showing ${shown} of ${rows.length}`;
       empty.hidden = shown > 0;
+      // a search that found nothing: offer to look into it, and count it (the count has no words in it)
+      const q = search && words.length && shown === 0 && !n ? search.value.trim().slice(0, 80) : "";
+      drawAsk(q);
+      clearTimeout(noneTimer);
+      if (q && q.toLowerCase() !== noneCounted) noneTimer = setTimeout(() => {
+        noneCounted = q.toLowerCase();
+        if (window.ambleTrack) window.ambleTrack("search_none", {});
+      }, 1500);
     }
     box.addEventListener("change", (e) => { if (e.target !== placeIn && e.target !== search) apply(); });
     if (search) {

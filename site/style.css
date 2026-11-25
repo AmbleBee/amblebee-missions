@@ -1595,6 +1595,12 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .pf-count { margin: 10px 0 0; font-weight: 800; color: var(--sage-deep); }
 .pf-count:empty { display: none; }
 .pf-empty { margin: 8px 0 0; padding: 16px 18px; border-radius: 16px; background: var(--linen); }
+.pf-empty > p { margin: 0; }
+.pf-empty[hidden] { display: none; }
+.pf-ask-q { margin: 12px 0 0 !important; padding-top: 12px; border-top: 1px dashed var(--line-strong); font-weight: 700; }
+.pf-ask-q .btn { margin-left: 6px; vertical-align: middle; }
+.pf-ask-note { margin: 6px 0 0 !important; font-size: .85rem; color: var(--walnut-soft); }
+.pf-asked { margin: 12px 0 0 !important; padding-top: 12px; border-top: 1px dashed var(--line-strong); font-weight: 800; color: var(--sage-ink); }
 .cards .card[hidden] { display: none; }
 @media (max-width: 640px) { .pf-right { margin-left: 0; width: 100%; } .pf-sort { flex: 1; } }
 

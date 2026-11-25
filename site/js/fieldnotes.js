@@ -268,7 +268,17 @@
       post.draft ? null : thumbs(post),
       el("p", { class: "fn-end" }, el("a", { class: "btn", href: "/fieldnotes/", text: "More field notes" }),
         el("a", { class: "btn primary", href: "/", text: "Give me a mission" })))));
-    if (!post.draft && !preview) watchRead(post, body);
+    if (!post.draft && !preview) {
+      watchRead(post, body);
+      // a mission opened from this post (a mission card, a mission link, or "Give me a mission"): one count for the post
+      root.addEventListener("click", function (e) {
+        var a = e.target.closest && e.target.closest("a[href]");
+        if (!a || a.host !== location.host) return;
+        if (a.pathname === "/" || /^\/missions\/[a-z0-9-]+\/$/.test(a.pathname)) {
+          if (window.ambleTrack) window.ambleTrack("fieldnote_mission", { item: post.slug });
+        }
+      });
+    }
   }
 
   // ---- a read, and time on the page. A read: three quarters of the way down the post, after most of its reading time on
