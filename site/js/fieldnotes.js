@@ -271,32 +271,41 @@
     if (!post.draft && !preview) watchRead(post, body);
   }
 
-  // ---- a read: three quarters of the way down the post, after most of its reading time on screen ----
-  // Counted once per page load through site/js/count.js (no cookies, nothing kept in this browser), and the server counts
-  // the same person once a day per post. Time only runs while the page is on screen; a fast reader gets credit at 60% of
-  // the "min read" estimate, and never under 20 seconds.
+  // ---- a read, and time on the page. A read: three quarters of the way down the post, after most of its reading time on
+  // screen. Time: seconds the post is on screen, sent when the page is hidden or left (in pieces, if you come back).
+  // Both go through site/js/count.js (no cookies, nothing kept in this browser); the server counts the same person once a
+  // day per post for reads, and only adds up seconds for time. A fast reader gets a read at 60% of the "min read"
+  // estimate, and never under 20 seconds.
   var READ_DEPTH = 0.75, READ_SHARE = 0.6, READ_MIN_SECONDS = 20;
   function watchRead(post, body) {
-    var need = Math.max(READ_MIN_SECONDS, (Number(post.minutes) || 1) * 60 * READ_SHARE), seen = 0, deep = false, done = false;
+    var need = Math.max(READ_MIN_SECONDS, (Number(post.minutes) || 1) * 60 * READ_SHARE), seen = 0, sent = 0, deep = false, done = false;
+    function track(name, params) { if (window.ambleTrack) window.ambleTrack(name, params); }
     function depth() {
       var r = body.getBoundingClientRect();
-      if (!r.height) return;
-      if ((window.innerHeight - r.top) / r.height >= READ_DEPTH) deep = true;
+      if (r.height && (window.innerHeight - r.top) / r.height >= READ_DEPTH) deep = true;
     }
     function check() {
       if (done || !deep || seen < need) return;
       done = true;
-      clearInterval(tick);
       window.removeEventListener("scroll", onScroll);
-      if (window.ambleTrack) window.ambleTrack("fieldnote_read", { item: post.slug });
+      track("fieldnote_read", { item: post.slug });
+    }
+    function report() {
+      var s = seen - sent;
+      if (s < 1) return;
+      track("fieldnote_time", { item: post.slug, seconds: s, first: sent === 0 });
+      sent = seen;
     }
     function onScroll() { depth(); check(); }
-    var tick = setInterval(function () {
-      if (document.visibilityState === "visible") seen += 1;
+    setInterval(function () {
+      if (document.visibilityState !== "visible") return;
+      seen += 1;
       depth();
       check();
     }, 1000);
     window.addEventListener("scroll", onScroll, { passive: true });
+    document.addEventListener("visibilitychange", function () { if (document.visibilityState === "hidden") report(); });
+    window.addEventListener("pagehide", report);
     depth();
   }
 
