@@ -2053,6 +2053,7 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .fn-pic > .fnh { width: 100%; height: 100%; }
 /* a header keeps its shape (1200:630) in the cards and the featured post, instead of being cropped to fill */
 .fn-card .fn-pic:has(> .fnh), .fn-feat .fn-pic:has(> .fnh) { height: auto; min-height: 0; aspect-ratio: 1200 / 630; align-self: center; }
+.fn-card .fn-pic:has(> .fnh) { align-self: stretch; }   /* a card is a flex column: "center" shrank the picture to nothing */
 .fn-hero .fnh { margin: 14px 0 16px; border-radius: 20px; box-shadow: var(--shadow); }
 @media (max-width: 600px) { .fn-hero .fnh { border-radius: 14px; } }
 .fn-search-row { margin: 26px 0 0; max-width: 36rem; }
@@ -2103,6 +2104,7 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .fn-empty { grid-column: 1 / -1; margin: 0; padding: 30px; border-radius: 20px; background: var(--paper); text-align: center; font-weight: 700; }
 .fn-empty button.linkish { font-size: inherit; }
 .fn-more-row { margin: 28px 0 0; text-align: center; }
+#fn-more[hidden] { display: none; }   /* .btn sets display, which would win over the hidden attribute */
 @media (max-width: 900px) { .fn-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .fn-feat { grid-template-columns: 1fr; } .fn-feat .fn-pic { min-height: 220px; } }
 @media (max-width: 560px) { .fn-grid { grid-template-columns: 1fr; } .fn-feat .fn-body { padding: 24px 22px; } }
 

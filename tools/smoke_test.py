@@ -69,7 +69,8 @@ class FakeIntake:
                     {"type": "h2", "text": "A ~~plain~~ heading"}]},
         {"slug": "rainy-day-dates", "title": "Five rainy-day dates that beat the couch", "summary": "Indoor ideas for wet weekends.",
          "topics": ["Dates", "Oregon"], "pinned": False, "posted_at": "2026-11-12T18:00:00+00:00", "edited_at": "2026-11-15T18:00:00+00:00",
-         "minutes": 4, "cover": None, "draft": False,
+         "minutes": 4, "cover": None, "draft": False, "number": 2,
+         "header": {"backdrop": "/fieldnotes/photo/hhh.png", "shade": 0.5, "phone_x": 0.5},
          "blocks": [{"type": "p", "text": "The rain's back."}, {"type": "h2", "text": "1. The old theater"},
                     {"type": "photos", "photos": [{"url": "/fieldnotes/photo/bbb.png", "width": 1, "height": 1, "caption": "The marquee"},
                                                   {"url": "/fieldnotes/photo/ccc.png", "width": 1, "height": 1, "caption": ""},
@@ -3233,7 +3234,10 @@ def t_fieldnotes_list_pinned_search_and_topics(site, catalog):
     titles = page.locator("#fn-list .fn-card h3").all_inner_texts()
     assert titles == ["Five rainy-day dates that beat the couch", "The camera, take three"], titles
     assert page.locator("#fn-list .fn-card").first.get_attribute("href") == "/fieldnotes/rainy-day-dates/"
-    assert page.locator("#fn-list .fn-ph").count() == 2          # no cover: a placeholder picture
+    assert page.locator("#fn-list .fn-ph").count() == 1          # no cover or header: a placeholder picture
+    pic = page.locator("#fn-list .fn-card").first.locator(".fn-pic").bounding_box()
+    assert page.locator("#fn-list .fn-card .fnh").count() == 1 and pic["width"] > 200 and pic["height"] > 100, pic   # the header shows on its card
+    assert page.locator("#fn-more").is_hidden(), "no 'Show older posts' when there aren't any"
     assert page.locator(".fn-chip").all_inner_texts() == ["All", "Dates", "Hive", "Oregon", "Site updates"]
     page.click('.fn-chip:has-text("Hive")')
     page.wait_for_function("() => document.querySelectorAll('#fn-list .fn-card').length === 1")
