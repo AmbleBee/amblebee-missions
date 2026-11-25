@@ -1,6 +1,6 @@
 /* Visits, counted by AmbleBee's own server (amblebee-intake's app/visits.py): no cookies, nothing stored in this
    browser, no IP addresses kept. One short note per page (which page, and the site you came from), and a few actions
-   by name: a mission opened, a plan added to a calendar, a vote started.
+   by name: a mission opened, a plan added to a calendar, a vote started, a Field notes post read most of the way.
    Only on amblebee.com itself, never in test browsers, and not for browsers that send Global Privacy Control.
    Max's own browsers: open amblebee.com/?nocount=1 once to stop counting this browser (?nocount=0 to undo). */
 (function () {
@@ -27,11 +27,11 @@
   send({ p: location.pathname, r: ref });
 
   // a few actions the site already names (site/js/stats.js's ambleTrack), counted here too
-  var ACTIONS = { mission_open: "open", calendar_added: "plan", vote_started: "vote" };
+  var ACTIONS = { mission_open: "open", calendar_added: "plan", vote_started: "vote", fieldnote_read: "read" };
   var before = window.ambleTrack;
   window.ambleTrack = function (name, params) {
     var a = ACTIONS[name];
-    if (a) send({ a: a, i: (params && (params.mission_id || "")) || "" });
+    if (a) send({ a: a, i: (params && (params.mission_id || params.item || "")) || "" });
     if (before) before(name, params);
   };
 })();

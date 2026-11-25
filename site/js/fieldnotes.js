@@ -268,6 +268,36 @@
       post.draft ? null : thumbs(post),
       el("p", { class: "fn-end" }, el("a", { class: "btn", href: "/fieldnotes/", text: "More field notes" }),
         el("a", { class: "btn primary", href: "/", text: "Give me a mission" })))));
+    if (!post.draft && !preview) watchRead(post, body);
+  }
+
+  // ---- a read: three quarters of the way down the post, after most of its reading time on screen ----
+  // Counted once per page load through site/js/count.js (no cookies, nothing kept in this browser), and the server counts
+  // the same person once a day per post. Time only runs while the page is on screen; a fast reader gets credit at 60% of
+  // the "min read" estimate, and never under 20 seconds.
+  var READ_DEPTH = 0.75, READ_SHARE = 0.6, READ_MIN_SECONDS = 20;
+  function watchRead(post, body) {
+    var need = Math.max(READ_MIN_SECONDS, (Number(post.minutes) || 1) * 60 * READ_SHARE), seen = 0, deep = false, done = false;
+    function depth() {
+      var r = body.getBoundingClientRect();
+      if (!r.height) return;
+      if ((window.innerHeight - r.top) / r.height >= READ_DEPTH) deep = true;
+    }
+    function check() {
+      if (done || !deep || seen < need) return;
+      done = true;
+      clearInterval(tick);
+      window.removeEventListener("scroll", onScroll);
+      if (window.ambleTrack) window.ambleTrack("fieldnote_read", { item: post.slug });
+    }
+    function onScroll() { depth(); check(); }
+    var tick = setInterval(function () {
+      if (document.visibilityState === "visible") seen += 1;
+      depth();
+      check();
+    }, 1000);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    depth();
   }
 
   // ---- thumbs up: one tap, and tap again to take it back. Nothing about you is kept (app/fieldnotes.py thumb()) ----
