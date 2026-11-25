@@ -3262,7 +3262,8 @@ def t_fieldnotes_post_opens_at_its_own_address(site, catalog):
     assert page.inner_text(".fn-post h1") == "Five rainy-day dates that beat the couch"
     assert page.locator("#nf").is_hidden()                        # the "page not found" words never show
     assert page.title().startswith("Five rainy-day dates")
-    meta = page.inner_text(".fn-post .fn-meta")
+    meta = page.text_content(".fn-post .fn-meta")   # the words, not the small capitals they show in
+    assert page.inner_text(".fn-dek.lift .fn-dek-sum") == "Indoor ideas for wet weekends."   # the summary in its card under the header
     assert "Posted November 12, 2026" in meta and "Last edited November 15, 2026" in meta and "4 min read" in meta, meta
     assert page.locator(".fn-prose h2").inner_text() == "1. The old theater"
     assert page.locator(".fn-gallery figure").count() == 3 and page.locator(".fn-gallery figcaption").all_inner_texts() == ["The marquee", "Row F"]

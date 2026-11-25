@@ -2149,3 +2149,11 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .fn-mission:hover .fn-mgo { text-decoration: underline; }
 .fn-end { display: flex; flex-wrap: wrap; gap: 12px; margin: 40px 0 0; padding-top: 26px; border-top: 2px dashed var(--line-strong); }
 .fn-hero .fn-tags > * { background: var(--paper); box-shadow: inset 0 0 0 1.5px var(--line-strong); }   /* on the oat top, not the linen band */
+
+/* a post's summary and dates: a paper card under the header (tucked up into it when there's a header picture) */
+.fn-dek { position: relative; z-index: 1; margin: 16px 0 0; padding: 18px 24px 20px; border-radius: 18px; background: var(--paper);
+  box-shadow: 0 2px 0 var(--line), 0 10px 24px rgba(90, 62, 43, .10), inset 5px 0 0 var(--honey); }
+.fn-dek.lift { margin: -30px 28px 0; }   /* tucked up, but clear of the bee in the header's corner */
+.fn-post .fn-dek .fn-meta { margin: 0 0 8px; font-size: .78rem; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--walnut-soft); }
+.fn-dek-sum { margin: 0; font: italic 500 clamp(1.12rem, 2.2vw, 1.3rem)/1.45 var(--display); color: var(--ink); text-wrap: pretty; }
+@media (max-width: 600px) { .fn-dek { padding: 14px 16px 16px; } .fn-dek.lift { margin: -22px 10px 0; } }

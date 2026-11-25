@@ -231,8 +231,12 @@
       el("p", { class: "fn-crumb" }, el("a", { href: "/fieldnotes/", text: "← Field notes" })),
       post.topics.length ? el("div", { class: "fn-tags" }, post.topics.map(function (t) { return el("a", { href: topicHref(t), text: t }); })) : null,
       hasHeader(post) ? header(post, { page: true, eager: true }) : el("h1", { text: post.title }),
-      post.summary ? el("p", { class: "pg-lede", text: post.summary }) : null,
-      el("p", { class: "fn-meta", text: bits.join(" · ") }));
+      // the summary and the dates in a paper card that tucks up under the header, instead of loose text below it
+      post.summary
+        ? el("div", { class: "fn-dek" + (hasHeader(post) ? " lift" : "") },
+            el("p", { class: "fn-meta", text: bits.join(" · ") }),
+            el("p", { class: "fn-dek-sum", text: post.summary }))
+        : el("p", { class: "fn-meta", text: bits.join(" · ") }));
     var body = el("div", { class: "fn-prose" });
     var packs = {}, byId = {};
     (catalog.packs || []).forEach(function (p) { packs[p.id] = p.name; });
