@@ -3301,17 +3301,47 @@ def t_fieldnotes_draft_preview_and_missing_post(site, catalog):
     assert "doesn't go anywhere" in page.inner_text("#nf h1") and page.locator(".fn-post").count() == 0
 
 
+def built_posts(site):
+    """The Field notes posts this site was built with (data/fieldnotes/, sent by the intake): their folder names."""
+    return sorted(f.parent.name for f in (site.folder / "fieldnotes").glob("*/index.html"))
+
+
 def t_fieldnotes_when_the_intake_is_down(site, catalog):
     site.intake.mode = "down"
     try:
         page = site.open("/fieldnotes/")
-        page.wait_for_selector(".fn-empty")
-        assert "couldn't load" in page.inner_text(".fn-empty")
+        page.wait_for_function("() => !document.querySelector('#fn-list').hasAttribute('aria-busy')")
+        if built_posts(site):   # the cards it was built with stay
+            assert page.locator("#fn-list .fn-card").count() == len(built_posts(site)) and page.locator(".fn-empty").count() == 0
+        else:
+            assert "couldn't load" in page.inner_text(".fn-empty")
         page = site.open("/fieldnotes/rainy-day-dates/")
         page.wait_for_selector(".fn-post h1")
         assert page.inner_text(".fn-post h1") == "This post couldn't load"
     finally:
         site.intake.mode = "up"
+
+
+def t_fieldnotes_built_posts_open_without_the_intake(site, catalog):
+    """Each published post is a real page (tools/build_fieldnotes.py): its words and its photos (small copies on this
+    site) are there even when the intake is down."""
+    posts = built_posts(site)
+    if not posts:
+        return   # nothing published yet when this was built
+    site.intake.mode = "down"
+    try:
+        page = site.open(f"/fieldnotes/{posts[0]}/")
+        page.wait_for_selector(".fn-post h1")
+        assert page.locator("#fn-static").count() == 1 and page.locator(".fn-prose").count() == 1
+        assert "couldn't load" not in page.inner_text(".fn-post") and "isn't here" not in page.inner_text(".fn-post")
+        page.wait_for_timeout(500)
+        assert page.evaluate("[...document.querySelectorAll('.fn-gallery img')].every(i => i.src.includes('/fn-photos/') && i.naturalWidth > 0)"), \
+            "every photo in a built post comes from this site"
+        assert page.locator(".fn-photo-miss").count() == 0
+    finally:
+        site.intake.mode = "up"
+    page = site.open(f"/fieldnotes/{posts[0]}/")   # the intake says that post doesn't exist (its fake has other posts)
+    page.wait_for_function("() => /isn't here/.test(document.querySelector('.fn-post').innerText)")
 
 
 def t_fieldnotes_is_in_the_menu_and_footer(site, catalog):
@@ -3337,6 +3367,7 @@ def main():
         engine = getattr(p, os.environ.get("SMOKE_ENGINE", "chromium"))
         browser = engine.launch(channel="chrome" if os.environ.get("SMOKE_CHROME") else None)
         site = Site(browser, f"http://127.0.0.1:{server.server_address[1]}")
+        site.folder = folder   # the built site, for tests that depend on what was built (Field notes posts)
         for name, fn in tests:
             label = re.sub(r"^t_", "", name).replace("_", " ")
             site.errors = []

@@ -1,8 +1,16 @@
-/* Field notes, the AmbleBee blog. The posts and their photos live on AmbleBee Intake (app/fieldnotes.py there), so
-   publishing or editing one never rebuilds this site:
-     /fieldnotes/          pages/fieldnotes.html: the list, with search and topic chips
-     /fieldnotes/<post>/   isn't a file here, so GitHub Pages answers with 404.html, and this script turns that page
-                           into the post. ?preview=<token> (the intake's Preview button) shows a draft. */
+/* Field notes, the AmbleBee blog. The posts and their photos live on AmbleBee Intake (app/fieldnotes.py there), which
+   also sends each published post's words here, so the build makes it a real page (tools/build_fieldnotes.py):
+     /fieldnotes/          pages/fieldnotes.html: the list, with search and topic chips. Built with every post as a card,
+                           which the live list replaces (and which stays if the intake can't be reached).
+     /fieldnotes/<post>/   built with the post on it (#fn-static, and the post as data in #fn-data). This script draws it
+                           again from the intake's live copy: newer edits and the thumbs up count. If the intake doesn't
+                           answer, the built post stays; if it says the post is gone, the page says so.
+                           A post published in the last few minutes has no page yet: GitHub Pages answers with 404.html,
+                           and this script turns that page into the post. ?preview=<token> (the intake's Preview) shows a draft.
+   Photos and header backdrops load from this site (fn-photos/, fn-backdrops/: small copies the intake sends with the
+   posts), when the build's #fn-local says it has them; otherwise, or if they fail, from the intake. A header with
+   neither falls back to the default backdrop. A photo in a post that can't load says so where it would be; a cover
+   that can't load becomes the soft mountain picture. Draft previews always use the intake. */
 (function () {
   "use strict";
   var U = window.AmbleUtil, el = U.el, API = U.API;
@@ -17,7 +25,14 @@
   var TINTS = ["sage", "honey", "walnut", "sky"];
   var THUMB = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10.5V20H4.5a1 1 0 0 1-1-1v-7.5a1 1 0 0 1 1-1z"/><path d="M7 10.5l3.6-6.6a1.8 1.8 0 0 1 3.3 1.3L13 9.5h5.4a2 2 0 0 1 2 2.4l-1.4 6.4a2 2 0 0 1-2 1.7H7"/></svg>';
   var SORT = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"/></svg>';
-  var THUMBS_KEY = "amble.fieldnotes.thumbs";   // {post: the token its thumbs up got}, so this browser can take it back
+  var THUMBS_KEY = "amble.fieldnotes.thumbs";
+  // the photos and backdrops this site was built with (tools/build_fieldnotes.py): only those are asked for here
+  var LOCAL = (function () {
+    var e = document.getElementById("fn-local");
+    function set(a) { var o = {}; (a || "").split(" ").forEach(function (x) { if (x) o[x] = true; }); return o; }
+    return { photos: set(e && e.getAttribute("data-photos")), backdrops: set(e && e.getAttribute("data-backdrops")) };
+  })();
+  var PHOTO_URL = /^\/fieldnotes\/photo\/([A-Za-z0-9_-]+)\.[a-z]+$/;   // {post: the token its thumbs up got}, so this browser can take it back
 
   function get(path) {
     return fetch(API + path, { cache: "no-cache" }).then(function (r) {
@@ -39,9 +54,30 @@
     if (label) box.append(el("span", { text: label }));
     return box;
   }
-  function photo(p, preview, attrs) {
-    var src = API + p.url + (preview ? "?preview=" + encodeURIComponent(preview) : "");
-    return el("img", Object.assign({ src: src, alt: "", width: p.width || null, height: p.height || null, loading: "lazy", decoding: "async" }, attrs || {}));
+  function photo(p, preview, attrs, onfail) {
+    var api = API + p.url + (preview ? "?preview=" + encodeURIComponent(preview) : "");
+    var m = !preview && PHOTO_URL.exec(p.url || ""), tries = m && LOCAL.photos[m[1]] ? ["/fn-photos/" + m[1] + ".webp", api] : [api];
+    var img = el("img", Object.assign({ src: tries.shift(), alt: "", width: p.width || null, height: p.height || null, loading: "lazy", decoding: "async" }, attrs || {}));
+    img.addEventListener("error", function next() {
+      if (tries.length) { img.src = tries.shift(); return; }
+      img.removeEventListener("error", next);
+      if (onfail) onfail(img);
+    });
+    return img;
+  }
+  // a cover or card picture that can't load: the soft mountain instead, without a fuss
+  function orStand(seed) {
+    return function (img) { var box = img.closest(".fn-pic, .fn-cover") || img.parentNode; box.replaceChildren(stand(seed)); };
+  }
+  // a photo in the post that can't load: a box the same shape, saying so
+  function missing_photo(p) {
+    return function (img) {
+      var box = el("div", { class: "fn-photo-miss", role: "img", "aria-label": "This photo didn't load" },
+        el("span", { text: "Problem loading photo, check back later" }));
+      if (p.width && p.height) box.style.aspectRatio = p.width + " / " + p.height;
+      var link = img.closest("a");
+      (link || img).replaceWith(box);
+    };
   }
 
   // ---- the header: the post's backdrop, darkened, with its Field Note number, title and first topic on top ----
@@ -54,7 +90,16 @@
   function header(p, o) {
     o = o || {};
     var h = p.header || {}, n = p.number;
-    var bg = el("img", { class: "bg", src: API + h.backdrop, alt: "", loading: o.eager ? "eager" : "lazy", decoding: "async" });
+    // this site's copy of the backdrop first (tools/build_fieldnotes.py), then the intake's, then the default backdrop
+    var pub = /^\/fieldnotes\/backdrop\/([A-Za-z0-9_-]+)\.jpg$/.exec(h.backdrop || ""), tries = [];
+    if (pub && LOCAL.backdrops[pub[1]]) tries.push("/fn-backdrops/" + pub[1] + ".jpg");
+    tries.push(API + h.backdrop);
+    if (LOCAL.backdrops["default"]) tries.push("/fn-backdrops/default.jpg");
+    var bg = el("img", { class: "bg", src: tries.shift(), alt: "", loading: o.eager ? "eager" : "lazy", decoding: "async" });
+    bg.addEventListener("error", function next() {
+      if (tries.length) bg.src = tries.shift();
+      else { bg.removeEventListener("error", next); bg.hidden = true; }   // no picture at all: the header's own color shows
+    });
     bg.style.objectPosition = ((h.phone_x == null ? 0.5 : h.phone_x) * 100) + "% 50%";
     var shade = el("div", { class: "sh" }); shade.style.background = shadeFill(h.shade);
     return el("div", { class: "fnh " + sizeClass(p.title) + (o.compact ? " compact" : "") + (o.page ? " page" : "") },
@@ -104,6 +149,17 @@
     var search = root.querySelector("#fn-search"), count = root.querySelector("#fn-count"), moreBtn = root.querySelector("#fn-more");
     var heading = root.querySelector("#fn-latest"), orderBtn = root.querySelector("#fn-order");
     var params = new URLSearchParams(location.search);
+    // the cards the build put here (every post, newest first): kept if the live list can't load
+    var built = Array.prototype.slice.call(box.children), builtCount = count.textContent;
+    built.forEach(function (a) {
+      a.querySelectorAll("img").forEach(function (img) {
+        var seed = (/\/fieldnotes\/([^/]+)\//.exec(a.getAttribute("href")) || [])[1] || "x";
+        if (img.classList.contains("bg")) return;
+        if (img.complete && !img.naturalWidth) orStand(seed)(img);
+        else img.addEventListener("error", function () { orStand(seed)(img); }, { once: true });
+      });
+      a.querySelectorAll("img.bg").forEach(builtBackdrop);
+    });
     var state = { q: params.get("q") || "", topic: params.get("topic") || "", order: params.get("order") === "old" ? "old" : "new", page: 1 },
       ask = 0, timer = null;
     search.value = state.q;
@@ -120,7 +176,7 @@
     drawOrder();
 
     function card(p) {
-      var pic = hasHeader(p) ? header(p, { compact: true }) : p.cover ? photo(p.cover, "", {}) : stand(p.slug);
+      var pic = hasHeader(p) ? header(p, { compact: true }) : p.cover ? photo(p.cover, "", {}, orStand(p.slug)) : stand(p.slug);
       return el("a", { class: "fn-card", href: "/fieldnotes/" + p.slug + "/" },
         el("div", { class: "fn-pic" }, pic),
         el("div", { class: "fn-body" },
@@ -130,7 +186,7 @@
           p.topics.length ? el("div", { class: "fn-tags" }, p.topics.map(function (t, i) { return el("span", { class: i ? null : "g", text: t }); })) : null));
     }
     function feature(p) {
-      var pic = hasHeader(p) ? header(p, { eager: true }) : p.cover ? photo(p.cover, "", { loading: "eager" }) : stand(p.slug);
+      var pic = hasHeader(p) ? header(p, { eager: true }) : p.cover ? photo(p.cover, "", { loading: "eager" }, orStand(p.slug)) : stand(p.slug);
       return el("a", { class: "fn-feat", href: "/fieldnotes/" + p.slug + "/" },
         el("div", { class: "fn-pic" }, pic),
         el("div", { class: "fn-body" },
@@ -194,7 +250,14 @@
         box.removeAttribute("aria-busy");
         moreBtn.hidden = true;
         count.textContent = "";
-        if (!more) box.replaceChildren(el("p", { class: "fn-empty" }, "Field notes couldn't load right now. Try again in a little while."));
+        if (more) return;
+        if (built.length && !state.q && !state.topic) {   // the posts this page was built with, rather than nothing
+          box.replaceChildren.apply(box, built);
+          count.textContent = builtCount;
+          feat.hidden = true;
+          return;
+        }
+        box.replaceChildren(el("p", { class: "fn-empty" }, "Field notes couldn't load right now. Try again in a little while."));
       });
     }
     search.addEventListener("input", function () {
@@ -209,22 +272,73 @@
   }
 
   // ===================================== one post: /fieldnotes/<post>/ =====================================
+  // a header the build drew (the list's cards): this site's backdrop, else the intake's, else the default
+  function builtBackdrop(img) {
+    var m = /\/fn-backdrops\/([A-Za-z0-9_-]+)\.jpg/.exec(img.getAttribute("src") || ""), tries = [];
+    if (m && m[1] !== "default") tries.push(API + "/fieldnotes/backdrop/" + m[1] + ".jpg");
+    if (LOCAL.backdrops["default"] && !(m && m[1] === "default")) tries.push("/fn-backdrops/default.jpg");
+    function next() {
+      if (tries.length) img.src = tries.shift();
+      else { img.removeEventListener("error", next); img.hidden = true; }
+    }
+    img.addEventListener("error", next);
+    if (img.complete && !img.naturalWidth) next();
+  }
+
+  // the post's words, for telling whether the intake's copy differs from the one this page was built with
+  function canon(v) {
+    if (Array.isArray(v)) return "[" + v.map(canon).join(",") + "]";
+    if (v && typeof v === "object") return "{" + Object.keys(v).sort().filter(function (k) {
+      return ["thumbs", "pinned", "draft"].indexOf(k) < 0;
+    }).map(function (k) { return JSON.stringify(k) + ":" + canon(v[k]); }).join(",") + "}";
+    return JSON.stringify(v === undefined ? null : v);
+  }
+
   function postPage(slug) {
     var preview = new URLSearchParams(location.search).get("preview") || "";
-    var wrap = document.querySelector("main .page");
-    var gone = document.getElementById("nf");
-    var root = el("article", { class: "fn-post", "aria-busy": "true" }, el("p", { class: "fn-loading", text: "Opening the post…" }));
-    wrap.className = "page page-wide pg fieldnotes";
-    if (gone) gone.hidden = true;
-    wrap.append(root);
-    document.title = "Field notes · AmbleBee";
+    var built = document.getElementById("fn-static"), data = document.getElementById("fn-data"), root, post = null;
+    if (built && data && !preview) {
+      // a built page: the post is already here. Draw it again (the same thing, with the photo fallbacks and the thumbs
+      // button), then swap in the intake's live copy if it's newer.
+      root = built;
+      try { post = JSON.parse(data.textContent); } catch (e) { post = null; }
+    } else {
+      var wrap = document.querySelector("main .page");
+      var gone = document.getElementById("nf");
+      root = el("article", { class: "fn-post", "aria-busy": "true" }, el("p", { class: "fn-loading", text: "Opening the post…" }));
+      wrap.className = "page page-wide pg fieldnotes";
+      if (gone) gone.hidden = true;
+      if (built) built.remove();
+      wrap.append(root);
+      document.title = "Field notes · AmbleBee";
+    }
 
-    var catalog = fetch("/catalog.json", { cache: "force-cache" }).then(function (r) { return r.json(); }).catch(function () { return {}; });
+    var catalog = null;
+    function withCatalog(p) {
+      if (!p.blocks.some(function (x) { return x.type === "mission"; })) return Promise.resolve({});
+      catalog = catalog || fetch("/catalog.json", { cache: "force-cache" }).then(function (r) { return r.json(); }).catch(function () { return {}; });
+      return catalog;
+    }
+    var shown = null, tracking = false;
+    function show(p) {
+      return withCatalog(p).then(function (c) {
+        shown = p;
+        draw(root, p, preview, c);
+        if (!tracking && !p.draft && !preview) { tracking = true; track(root, p); }
+      });
+    }
+    var first = post ? show(post) : Promise.resolve();
     get("/fieldnotes/" + slug + (preview ? "?preview=" + encodeURIComponent(preview) : "")).then(function (b) {
-      if (!b.ok) return missing(root, b.status === 404);
-      var needs = b.post.blocks.some(function (x) { return x.type === "mission"; });
-      return (needs ? catalog : Promise.resolve({})).then(function (c) { draw(root, b.post, preview, c); });
-    }).catch(function () { missing(root, false); });
+      return first.then(function () {
+        if (!b.ok) {
+          // the intake says it's gone (unpublished or deleted since this page was built); any other trouble, keep the built post
+          if (b.status === 404 || !post) missing(root, b.status === 404);
+          return;
+        }
+        if (shown && canon(shown) === canon(b.post)) { setThumbs(root, b.post.thumbs); return; }
+        return show(b.post);
+      });
+    }).catch(function () { return first.then(function () { if (!post) missing(root, false); }); });
   }
 
   function missing(root, gone) {
@@ -260,7 +374,7 @@
     (catalog.packs || []).forEach(function (p) { packs[p.id] = p.name; });
     (catalog.missions || []).forEach(function (m) { byId[m.id] = m; byId[m.full_id] = m; });
     post.blocks.forEach(function (b) { var n = block(b, preview, byId, packs); if (n) body.append(n); });
-    var cover = !hasHeader(post) && post.cover ? el("figure", { class: "fn-cover" }, photo(post.cover, preview, { loading: "eager", alt: "" })) : null;
+    var cover = !hasHeader(post) && post.cover ? el("figure", { class: "fn-cover" }, photo(post.cover, preview, { loading: "eager", alt: "" }, orStand(post.slug))) : null;
     var firstPhotos = post.blocks.find(function (b) { return b.type === "photos"; });
     if (cover && firstPhotos && firstPhotos.photos[0] && firstPhotos.photos[0].url === post.cover.url && post.blocks.indexOf(firstPhotos) === 0) cover = null;   // it'd show twice in a row
     root.removeAttribute("aria-busy");
@@ -268,17 +382,19 @@
       post.draft ? null : thumbs(post),
       el("p", { class: "fn-end" }, el("a", { class: "btn", href: "/fieldnotes/", text: "More field notes" }),
         el("a", { class: "btn primary", href: "/", text: "Give me a mission" })))));
-    if (!post.draft && !preview) {
-      watchRead(post, body);
-      // a mission opened from this post (a mission card, a mission link, or "Give me a mission"): one count for the post
-      root.addEventListener("click", function (e) {
-        var a = e.target.closest && e.target.closest("a[href]");
-        if (!a || a.host !== location.host) return;
-        if (a.pathname === "/" || /^\/missions\/[a-z0-9-]+\/$/.test(a.pathname)) {
-          if (window.ambleTrack) window.ambleTrack("fieldnote_mission", { item: post.slug });
-        }
-      });
-    }
+  }
+
+  // once per page, however many times the post is drawn: reads, time on the page, and missions opened from it
+  function track(root, post) {
+    watchRead(post, function () { return root.querySelector(".fn-prose"); });
+    // a mission opened from this post (a mission card, a mission link, or "Give me a mission"): one count for the post
+    root.addEventListener("click", function (e) {
+      var a = e.target.closest && e.target.closest("a[href]");
+      if (!a || a.host !== location.host) return;
+      if (a.pathname === "/" || /^\/missions\/[a-z0-9-]+\/$/.test(a.pathname)) {
+        if (window.ambleTrack) window.ambleTrack("fieldnote_mission", { item: post.slug });
+      }
+    });
   }
 
   // ---- a read, and time on the page. A read: three quarters of the way down the post, after most of its reading time on
@@ -287,10 +403,12 @@
   // day per post for reads, and only adds up seconds for time. A fast reader gets a read at 60% of the "min read"
   // estimate, and never under 20 seconds.
   var READ_DEPTH = 0.75, READ_SHARE = 0.6, READ_MIN_SECONDS = 20;
-  function watchRead(post, body) {
+  function watchRead(post, prose) {
     var need = Math.max(READ_MIN_SECONDS, (Number(post.minutes) || 1) * 60 * READ_SHARE), seen = 0, sent = 0, deep = false, done = false;
     function track(name, params) { if (window.ambleTrack) window.ambleTrack(name, params); }
     function depth() {
+      var body = prose();
+      if (!body) return;
       var r = body.getBoundingClientRect();
       if (r.height && (window.innerHeight - r.top) / r.height >= READ_DEPTH) deep = true;
     }
@@ -359,7 +477,13 @@
         });
     });
     show();
-    return el("div", { class: "fn-thumbs" }, say, btn);
+    var box = el("div", { class: "fn-thumbs" }, say, btn);
+    box.setCount = function (n) { if (!busy && n != null) { count = Number(n) || 0; show(); } };   // the live count, once the intake answers
+    return box;
+  }
+  function setThumbs(root, n) {
+    var box = root.querySelector(".fn-thumbs");
+    if (box && box.setCount) box.setCount(n);
   }
 
   function block(b, preview, byId, packs) {
@@ -377,7 +501,7 @@
     if (!photos.length) return null;
     var g = el("div", { class: "fn-gallery n" + Math.min(photos.length, 3) });
     photos.forEach(function (p, i) {
-      var img = photo(p, preview, { alt: p.caption || "" });
+      var img = photo(p, preview, { alt: p.caption || "" }, missing_photo(p));
       g.append(el("figure", { class: i === 0 ? "first" : null },
         el("a", { href: img.src, target: "_blank", rel: "noopener", "aria-label": "Open the photo full size" + (p.caption ? ": " + p.caption : "") }, img),
         p.caption ? el("figcaption", { text: p.caption }) : null));

@@ -78,6 +78,16 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Field Notes Get Their Own Pages
+  status: done
+  date: 2026-11-25
+  tag: website
+  summary: "Every [Field notes](/fieldnotes/) post is now a real page on the site, so search engines can find it and it opens fast, photos and all, even when the server behind it is taking a nap."
+  items:
+    - "Each post is built into the site when it's published, with its own title and share picture"
+    - "Photos and headers load straight from the site, as small copies sized for the page, so posts open fast"
+    - "If a photo still can't load, it says so instead of leaving a broken picture"
+
 - title: Thumbs Up for Field Notes, and Better Stats Behind the Scenes
   status: done
   date: 2026-11-25

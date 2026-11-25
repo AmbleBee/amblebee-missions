@@ -9,6 +9,7 @@ Writes, inside the built site:
     missions/<id>/index.html     one mission, with its own title, preview, structured data and nearby missions
     about/, safety/, privacy/, contact/, suggest/, report/, status/  written in pages/, wrapped in the same header and footer
                                  (report/ and status/ are noindex and left out of the sitemap)
+    fieldnotes/<post>/index.html one Field notes post, from data/fieldnotes/ (sent by AmbleBee Intake; tools/build_fieldnotes.py)
     404.html                     shown by GitHub Pages for any address that doesn't exist
     sitemap.xml, robots.txt      with each page's last-changed date from git, when there's a full checkout
     cards/cards.json             what each share card says; tools/build_cards.py then draws them
@@ -36,6 +37,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from build_cards import look_version  # noqa: E402
 from build_catalog import build  # noqa: E402
 from build_icons import load as load_icons  # noqa: E402
+import build_fieldnotes as fieldnotes  # noqa: E402
 from missions_lib import MISSION_LINK, load_catalog  # noqa: E402
 
 BASE = "https://amblebee.com"
@@ -856,9 +858,32 @@ def build_pages(out):
                                  image=share_card("page-missions-all", f"All missions: {all_intro}", badge="hive", eyebrow="Date & adventure ideas",
                                                   title="All missions", text=all_intro, note="amblebee.com/missions/all")))
 
+    # Field notes posts, as the intake last sent them (tools/build_fieldnotes.py): each its own page, and cards on /fieldnotes/
+    fn_posts, fn_default = fieldnotes.load(ROOT)
+    fieldnotes.copy_files(ROOT, out, fn_default)
+    pack_names = {p["id"]: p.get("name") for p in packs}
+    for post in fn_posts:
+        path = f"/fieldnotes/{post['slug']}/"
+        desc = fieldnotes.description(post, META_MAX)
+        n = post.get("number")
+        image = share_card(f"fieldnote-{post['slug']}", f"{post['title']}: {desc}", badge="hive",
+                           eyebrow=f"Field Note No. {n:02d}" if n else "Field notes", title=post["title"],
+                           text=post.get("summary") or desc, note="amblebee.com/fieldnotes")
+        ld = fieldnotes.post_jsonld(post, BASE, BASE + path, image["url"], desc)
+        ld = {"@context": "https://schema.org", "@graph": [{k: v for k, v in ld.items() if k != "@context"},
+              crumbs_ld([("Field notes", "/fieldnotes/"), (post["title"], path)])]}
+        text = page(f"{post['title']} · Field notes · {SITE_NAME}", desc, path, fieldnotes.post_main(post, missions, pack_names),
+                    ld, brand, current="fieldnotes", image=image)
+        write(path, text.replace('<meta property="og:type" content="website">', '<meta property="og:type" content="article">', 1))
+        day = fieldnotes.ymd(post.get("edited_at") or post.get("posted_at"))
+        if day:
+            lastmod[path] = day
+
     for name, (title, desc) in INFO_PAGES.items():
         path = PAGE_PATHS.get(name, f"/{name}/")
         body = (ROOT / "pages" / f"{name}.html").read_text(encoding="utf-8")
+        if name == "fieldnotes":
+            body = fieldnotes.list_fill(body, fn_posts)
         if name in ME_PAGES:
             body = profile_page(name, body) + '<script src="/js/metabs.js" defer></script>\n'
         main = f'<div class="page {WIDE_PAGES.get(name, "info")}">\n{body}</div>'
@@ -881,11 +906,16 @@ def build_pages(out):
         write(path, text)
         if dates.get(f"pages/{name}.html"):
             lastmod[path] = dates[f"pages/{name}.html"]
+        if name == "fieldnotes":   # the list changes whenever a post does
+            days = [lastmod[u] for u in [path] + [f"/fieldnotes/{p['slug']}/" for p in fn_posts] if u in lastmod]
+            if days:
+                lastmod[path] = max(days)
 
     body = (ROOT / "pages" / "404.html").read_text(encoding="utf-8")
     text = page(f"Page not found · {SITE_NAME}", "This page doesn't exist on AmbleBee.", "/404.html",
-                f'<div class="page info">\n{body}</div>', {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found"}, brand)
-    # Field notes posts are shown by this page too (site/js/fieldnotes.js), so a shared post's link preview reads as
+                f'<div class="page info">\n{body}{fieldnotes.local_marker()}</div>', {"@context": "https://schema.org", "@type": "WebPage", "name": "Page not found"}, brand)
+    # A Field notes post published in the last few minutes, before its own page is built, is shown by this page too
+    # (site/js/fieldnotes.js), so a shared post's link preview reads as
     # AmbleBee rather than "Page not found". The tab's own title still says what happened.
     for old, new in ((f"Page not found · {SITE_NAME}", SITE_NAME), ("This page doesn't exist on AmbleBee.", "A little nudge to get out the door together.")):
         text = text.replace(f'content="{esc(old)}"', f'content="{esc(new)}"')

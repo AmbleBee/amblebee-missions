@@ -2162,6 +2162,10 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .fn-gallery a { display: block; border-radius: 16px; overflow: hidden; background: var(--sand); }
 .fn-gallery img { display: block; width: 100%; height: auto; }
 .fn-gallery.n2 img, .fn-gallery.n3 figure:not(.first) img { aspect-ratio: 4 / 3; object-fit: cover; }
+/* a photo that couldn't load from the intake: a box the same shape, saying so (site/js/fieldnotes.js) */
+.fn-photo-miss { display: grid; place-items: center; width: 100%; aspect-ratio: 4 / 3; padding: 16px; border-radius: 16px;
+  background: var(--sand); border: 2px dashed var(--line); color: var(--walnut-soft); font-size: .92rem; text-align: center; }
+.fn-gallery.n2 .fn-photo-miss, .fn-gallery.n3 figure:not(.first) .fn-photo-miss { aspect-ratio: 4 / 3 !important; }
 .fn-gallery figcaption { margin: 6px 2px 0; font-size: .88rem; font-style: italic; line-height: 1.4; color: var(--walnut-soft); }
 .fn-mission { display: flex; flex-direction: column; gap: 6px; margin: 22px 0; padding: 18px 20px; border-radius: 18px; background: var(--paper);
   color: var(--walnut); text-decoration: none; box-shadow: 0 2px 0 var(--line), inset 0 0 0 2px var(--sage-tint); font-size: 1rem; line-height: 1.45; }
