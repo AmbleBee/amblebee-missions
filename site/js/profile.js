@@ -244,6 +244,13 @@
           now.hadMySay = r.body.had_my_say || null;          // the day of your first AmbleBee poll vote (the Had My Say stamp)
           now.feedback = r.body.feedback || 0;                // mission feedback sent while signed in (Delete my feedback)
           now.gifts = r.body.gifts || {};                     // thank-you stamps from AmbleBee: {stamp id: day given}
+          // the AmbleBee team's own profile (set in the intake): stop counting this browser's visits, the same switch as
+          // amblebee.com/?nocount=1 (site/js/count.js). A switch turned on by hand ("1") is left alone either way.
+          try {
+            var nc = localStorage.getItem("amble.nocount");
+            if (r.body.nocount && !nc) localStorage.setItem("amble.nocount", "profile");
+            else if (!r.body.nocount && nc === "profile") localStorage.removeItem("amble.nocount");
+          } catch (e) { /* private mode: nothing to keep */ }
           if (stampList !== null) now.stampsSent = stampList;
           live.error = "";
           save(now);

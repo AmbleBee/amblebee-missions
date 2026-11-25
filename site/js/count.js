@@ -13,6 +13,11 @@
     var q = new URLSearchParams(location.search).get("nocount");
     if (q === "1") localStorage.setItem("amble.nocount", "1");
     if (q === "0") localStorage.removeItem("amble.nocount");
+    if (q !== null && history.replaceState) {   // out of the address bar, so a copied or shared link doesn't carry it
+      var u = new URL(location.href);
+      u.searchParams.delete("nocount");
+      history.replaceState(history.state, "", u.pathname + u.search + u.hash);
+    }
     if (localStorage.getItem("amble.nocount")) return;
   } catch (e) { /* private mode: count as usual */ }
   if (!/^(www\.)?amblebee\.com$/.test(location.hostname) || navigator.webdriver || navigator.globalPrivacyControl) return;
