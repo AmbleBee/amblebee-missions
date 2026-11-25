@@ -78,6 +78,19 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
+- title: Thumbs Up for Field Notes, and Better Stats Behind the Scenes
+  status: done
+  date: 2026-11-25
+  tag: website
+  summary: "You can now give a [Field notes](/fieldnotes/) post a thumbs up, and the stats page that helps decide what comes next got a big tune-up."
+  items:
+    - "Give any Field notes post a thumbs up, and tap again to take it back. No cookies, no profile needed ([how it works](/privacy/#fieldnotes-thumbs))"
+    - "Field notes now list newest first by number, with a button to flip it and start from No. 01"
+    - "Stats can look at any stretch of dates, not just the last week, month or year"
+    - "Every mission's numbers can be searched and sorted, to see what people open, finish and love"
+    - "Each bar on the done-over-time chart shows which missions were finished that week"
+    - "Every stamp in the stats now explains how it's earned"
+
 - title: Field Notes, Our New Blog
   status: done
   date: 2026-11-24

@@ -15,6 +15,9 @@
   var MTN = '<svg viewBox="0 0 200 100" preserveAspectRatio="none" aria-hidden="true"><path d="M0 100 L0 60 L40 30 L70 55 L110 15 L150 50 L175 35 L200 55 L200 100Z"/></svg>';
   var PIN = '<svg aria-hidden="true" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 4h6l-1 5 3 3H7l3-3zM12 12v8"/></svg>';
   var TINTS = ["sage", "honey", "walnut", "sky"];
+  var THUMB = '<svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10.5V20H4.5a1 1 0 0 1-1-1v-7.5a1 1 0 0 1 1-1z"/><path d="M7 10.5l3.6-6.6a1.8 1.8 0 0 1 3.3 1.3L13 9.5h5.4a2 2 0 0 1 2 2.4l-1.4 6.4a2 2 0 0 1-2 1.7H7"/></svg>';
+  var SORT = '<svg aria-hidden="true" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4v16M3 16l4 4 4-4M17 20V4M13 8l4-4 4 4"/></svg>';
+  var THUMBS_KEY = "amble.fieldnotes.thumbs";   // {post: the token its thumbs up got}, so this browser can take it back
 
   function get(path) {
     return fetch(API + path, { cache: "no-cache" }).then(function (r) {
@@ -99,10 +102,22 @@
   function listPage(root) {
     var box = root.querySelector("#fn-list"), feat = root.querySelector("#fn-feature"), chips = root.querySelector("#fn-topics");
     var search = root.querySelector("#fn-search"), count = root.querySelector("#fn-count"), moreBtn = root.querySelector("#fn-more");
-    var heading = root.querySelector("#fn-latest");
+    var heading = root.querySelector("#fn-latest"), orderBtn = root.querySelector("#fn-order");
     var params = new URLSearchParams(location.search);
-    var state = { q: params.get("q") || "", topic: params.get("topic") || "", page: 1 }, ask = 0, timer = null;
+    var state = { q: params.get("q") || "", topic: params.get("topic") || "", order: params.get("order") === "old" ? "old" : "new", page: 1 },
+      ask = 0, timer = null;
     search.value = state.q;
+    // newest first (by Field Note number), or flip it to start from No. 01
+    if (!orderBtn) {
+      orderBtn = el("button", { type: "button", class: "fn-order", id: "fn-order" });
+      count.parentNode.append(orderBtn);
+    }
+    function drawOrder() {
+      orderBtn.replaceChildren(svg(SORT), state.order === "old" ? "Oldest first" : "Newest first");
+      orderBtn.setAttribute("aria-label", state.order === "old" ? "Showing oldest first. Show newest first" : "Showing newest first. Show oldest first");
+    }
+    orderBtn.addEventListener("click", function () { state.order = state.order === "old" ? "new" : "old"; drawOrder(); load(false); });
+    drawOrder();
 
     function card(p) {
       var pic = hasHeader(p) ? header(p, { compact: true }) : p.cover ? photo(p.cover, "", {}) : stand(p.slug);
@@ -139,6 +154,7 @@
       var p = new URLSearchParams();
       if (state.q) p.set("q", state.q);
       if (state.topic) p.set("topic", state.topic);
+      if (state.order === "old") p.set("order", "old");
       history.replaceState(null, "", location.pathname + (p.toString() ? "?" + p : ""));
     }
     function load(more) {
@@ -150,6 +166,7 @@
       var p = new URLSearchParams({ page: state.page });
       if (state.q) p.set("q", state.q);
       if (state.topic) p.set("topic", state.topic);
+      if (state.order === "old") p.set("order", "old");
       get("/fieldnotes?" + p).then(function (b) {
         if (mine !== ask) return;
         box.removeAttribute("aria-busy");
@@ -157,18 +174,19 @@
         drawChips(b.topics || []);
         var posts = b.posts || [], filtered = state.q || state.topic;
         if (!more) {
-          var top = !filtered && posts[0] && posts[0].pinned ? posts.shift() : null;
+          var top = !filtered && state.order !== "old" && posts[0] && posts[0].pinned ? posts.shift() : null;
           feat.replaceChildren(top ? feature(top) : "");
           feat.hidden = !top;
           box.replaceChildren();
         }
         posts.forEach(function (p) { box.append(card(p)); });
-        heading.textContent = filtered ? "Matching posts" : "Latest posts";
+        heading.textContent = filtered ? "Matching posts" : state.order === "old" ? "From the first post" : "Latest posts";
         count.textContent = b.total + (b.total === 1 ? " post" : " posts");
         if (!b.total) box.replaceChildren(el("p", { class: "fn-empty" }, filtered
           ? ["Nothing matches that yet. ", el("button", { type: "button", class: "linkish", text: "Show every post",
               onclick: function () { state.q = ""; state.topic = ""; search.value = ""; load(false); } })]
           : "The first field notes are on their way. Check back soon."));
+        moreBtn.textContent = state.order === "old" ? "Show newer posts" : "Show older posts";
         moreBtn.hidden = !b.more;
         moreBtn.disabled = false;
       }).catch(function () {
@@ -247,8 +265,52 @@
     if (cover && firstPhotos && firstPhotos.photos[0] && firstPhotos.photos[0].url === post.cover.url && post.blocks.indexOf(firstPhotos) === 0) cover = null;   // it'd show twice in a row
     root.removeAttribute("aria-busy");
     root.replaceChildren(hero, el("section", { class: "pg-band fn-band" }, el("div", { class: "fn-article" }, cover, body,
+      post.draft ? null : thumbs(post),
       el("p", { class: "fn-end" }, el("a", { class: "btn", href: "/fieldnotes/", text: "More field notes" }),
         el("a", { class: "btn primary", href: "/", text: "Give me a mission" })))));
+  }
+
+  // ---- thumbs up: one tap, and tap again to take it back. Nothing about you is kept (app/fieldnotes.py thumb()) ----
+  function thumbs(post) {
+    var mine = U.load(THUMBS_KEY, {}) || {}, count = Number(post.thumbs) || 0, busy = false;
+    var num = el("span", { class: "fn-thumbs-n" });
+    var btn = el("button", { type: "button", class: "fn-thumb" }, svg(THUMB), num);
+    var say = el("span", { class: "fn-thumbs-say", "aria-live": "polite" });
+    function show() {
+      var on = !!mine[post.slug];
+      btn.setAttribute("aria-pressed", String(on));
+      btn.setAttribute("aria-label", on ? "You gave this a thumbs up. Tap to take it back" : "Give this post a thumbs up");
+      num.textContent = count ? String(count) : "";
+      say.textContent = on ? "Thanks! Glad you enjoyed it." : "Enjoyed this one?";
+    }
+    btn.addEventListener("click", function () {
+      if (busy) return;
+      busy = true;
+      var on = !mine[post.slug], token = mine[post.slug];
+      // show it straight away; the server's count replaces this guess
+      if (on) { mine[post.slug] = "…"; count += 1; } else { delete mine[post.slug]; count = Math.max(0, count - 1); }
+      show();
+      fetch(API + "/fieldnotes/" + post.slug + "/thumb", { method: "POST", headers: { "Content-Type": "text/plain" },
+        body: JSON.stringify(on ? { on: true } : { on: false, token: token }) })
+        .then(function (r) { return r.json(); })
+        .then(function (b) {
+          if (!b.ok) throw new Error("bad");
+          if (on) mine[post.slug] = b.token; else delete mine[post.slug];
+          count = b.count;
+        })
+        .catch(function () {   // didn't go through: put it back how it was
+          if (on) { delete mine[post.slug]; count = Math.max(0, count - 1); } else { mine[post.slug] = token; count += 1; }
+          say.textContent = "That didn't go through. Try again in a moment.";
+        })
+        .then(function () {
+          busy = false;
+          U.save(THUMBS_KEY, mine);
+          var keep = say.textContent; show();
+          if (/didn't go through/.test(keep)) say.textContent = keep;
+        });
+    });
+    show();
+    return el("div", { class: "fn-thumbs" }, say, btn);
   }
 
   function block(b, preview, byId, packs) {

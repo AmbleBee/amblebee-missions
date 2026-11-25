@@ -2091,6 +2091,22 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .fn-sec { display: flex; align-items: baseline; justify-content: space-between; gap: 12px; margin: 0 0 18px; }
 .fn-sec h2 { margin: 0; font-size: clamp(1.5rem, 3vw, 1.9rem); }
 .fn-count { font-size: .9rem; font-weight: 700; color: var(--walnut-soft); }
+.fn-sec h2 { margin-right: auto; }
+.fn-order { display: inline-flex; align-items: center; gap: 6px; align-self: center; padding: 6px 14px; border: 0; border-radius: 999px; background: var(--paper, #FFFDF8);
+  box-shadow: inset 0 0 0 2px var(--line-strong); color: var(--ink); font-family: inherit; font-weight: 800; font-size: .85rem; line-height: 1.2; cursor: pointer; white-space: nowrap; }
+.fn-order:hover { box-shadow: inset 0 0 0 2px var(--walnut-soft); }
+.fn-order:focus-visible { outline: 3px solid var(--honey, #E8B04B); outline-offset: 2px; }
+@media (max-width: 520px) { .fn-sec { flex-wrap: wrap; } .fn-sec h2 { flex-basis: 100%; } }
+.fn-thumbs { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 40px 0 0; padding: 18px; border-radius: 18px; background: var(--sage-tint); color: var(--sage-ink); }
+.fn-thumbs-say { font-weight: 800; }
+.fn-thumb { display: inline-flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 18px; border: 0; border-radius: 999px; cursor: pointer;
+  background: var(--paper, #FFFDF8); color: var(--ink); box-shadow: inset 0 0 0 2px var(--sage); font-family: inherit; font-weight: 800; font-size: 1rem; line-height: 1; transition: transform .12s, background .12s; }
+.fn-thumb:hover { transform: translateY(-1px); }
+.fn-thumb:active { transform: scale(.96); }
+.fn-thumb[aria-pressed="true"] { background: var(--fill); color: #FFFDF8; box-shadow: none; }
+.fn-thumb:focus-visible { outline: 3px solid var(--honey, #E8B04B); outline-offset: 2px; }
+.fn-thumbs-n:empty { display: none; }
+.fn-thumbs + .fn-end { margin-top: 26px; }
 .fn-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; }
 .fn-grid[aria-busy="true"]:empty { min-height: 200px; }
 .fn-card { display: flex; flex-direction: column; border-radius: 20px; overflow: hidden; background: var(--paper); color: var(--walnut);
