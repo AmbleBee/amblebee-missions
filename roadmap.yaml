@@ -71,15 +71,6 @@
   when: Planning since Nov 4, 2026
   summary: Special looks for the website around holidays and seasons, shown only for a short window each time. The rest of the year the site stays its plain self, and a switch in the footer turns the seasonal look off if you'd rather not see it.
  
-- title: Testing Mission Management
-  status: doing
-  tag: missions
-  summary: Putting the new mission workshop through real use, editing missions and adding new ones, and filling the gaps it finds first.
-  items:
-    - More free and cheap missions for Louisiana, Missouri, New York and Pennsylvania
-    - A few more indoor, rainy-day missions for Idaho
-    - Smoothing out anything that feels clunky along the way
-
 - title: Exact Map Pins for Every Place
   status: doing
   progress: live
@@ -87,16 +78,43 @@
   summary: Replace the approximate coordinates with real entrance, trailhead and parking pins.
 
 # ---------- Done ----------
-- title: A Simpler Home Page
+- title: Field Notes, Our New Blog
+  status: done
+  date: 2026-11-24
+  tag: website
+  summary: "AmbleBee has a blog! [Field notes](/fieldnotes/) is where we'll share mission round-ups, how missions get made, and progress on the Hive and the camera."
+  items:
+    - "Search every post, or tap a topic to see just those"
+    - "One post can be pinned to the top, and each one gets its own Field Note number"
+    - "Posts have photo headers, photo galleries with captions, and mission cards you can tap straight into"
+    - "Headings, quotes, lists, **bold**, italics, strikethrough and `code`, so posts are easy to read"
+    - "Each post has its own link, like amblebee.com/fieldnotes/our-gear/, ready to share"
+
+- title: Testing Mission Management
+  status: done
+  date: 2026-11-23
+  tag: missions
+  summary: The new mission workshop got its real-world test drive, with batches of missions edited, checked and released, and the clunky parts smoothed out along the way.
+  items:
+    - "Every mission now has a released date, alongside when it was last checked"
+    - "Clearer statuses for missions waiting to go live, with filters to find them fast"
+    - "A preview that shows the full mission page, on a computer or a phone, before anything is published"
+
+- title: A Simpler, Warmer AmbleBee
   status: done
   date: 2026-11-22
   tag: website
-  summary: The home page now leads with one big **Give me a mission** button. Everything else is a tap away.
+  summary: The home page now leads with one big **Give me a mission** button, and the rest of the site caught up with warmer pages, a new footer and tidier pop-ups everywhere.
   items:
-    - "**Near you** and **Filters** sit right under the button and open one sheet: where you are, then a few quick filters"
-    - "The first time you tap the button, it asks where you are once, so your first mission can be a real place nearby"
+    - "**Near you** and **Filters** sit right under the button and open one sheet: where you are, then a few quick filters. The first tap asks where you are once, so your first mission can be a real place nearby"
     - "Browse by vibe: Rainy day, At home, Free and With kids"
-    - "Every mission by state lives on its own page, and there's a new **All missions** page with every one in one list, plus search, filters, sorting and distance"
+    - "A new **All missions** page with every mission in one list, and search, filters and a pack menu at the top of every list"
+    - "Heading out? Tap **Start mission**, and a small bar keeps your mission one tap away on every page until you mark it done"
+    - "**Plan this mission** has a new **Someday** option: save it to My plans with no date, and pick a day when you're ready"
+    - "Pack pages get their own filters and sorting, and every ticket links back to its pack"
+    - "A new footer with the AmbleBee logo, and fresh looks for Contribute, About, Contact, FAQ, Safety and Privacy"
+    - "Your profile is now in tabs: Stamps, Plans, Messages, Votes and Settings"
+    - "Poll results show each choice's share instead of raw vote counts, and messages from AmbleBee now show on your status page"
 
 - title: Mission Feedback
   status: done
