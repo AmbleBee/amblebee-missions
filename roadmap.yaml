@@ -92,14 +92,19 @@
   status: done
   date: 2026-11-25
   tag: website
-  summary: "You can now give a [Field notes](/fieldnotes/) post a thumbs up, and the stats page that helps decide what comes next got a big tune-up."
+  summary: "You can now give a [Field notes](/fieldnotes/) post a thumbs up, ask us to look into a search that came up empty, and the stats that help decide what comes next got a big tune-up."
   items:
     - "Give any Field notes post a thumbs up, and tap again to take it back. No cookies, no profile needed ([how it works](/privacy/#fieldnotes-thumbs))"
     - "Field notes now list newest first by number, with a button to flip it and start from No. 01"
+    - "Search for something we don't have yet and you can tap **Look into it** to ask us to add it. Only the words you searched are sent, and only when you tap ([privacy](/privacy/#look-into))"
+    - "Field notes count reads and time on the page as plain daily totals, with nothing about who read them ([privacy](/privacy/))"
     - "Stats can look at any stretch of dates, not just the last week, month or year"
     - "Every mission's numbers can be searched and sorted, to see what people open, finish and love"
+    - "Each mission has its own stats page, and missions people have stopped finishing get flagged for a fresh look"
+    - "Stats are split into tabs, with a new Insights view for spotting what's working and what isn't"
     - "Each bar on the done-over-time chart shows which missions were finished that week"
     - "Every stamp in the stats now explains how it's earned"
+    - "Suggestions, reports, messages and searches each get their own tab behind the scenes, so nothing slips through"
 
 - title: Field Notes, Our New Blog
   status: done
