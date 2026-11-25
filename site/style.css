@@ -2126,9 +2126,10 @@ button.linkish { background: none; border: 0; padding: 0; font: inherit; font-si
 .fn-prose strong { color: var(--ink); }
 .fn-quote { margin: 26px 0; padding: 20px 24px; border-radius: 20px; background: var(--honey-tint); box-shadow: inset 4px 0 0 var(--honey); }
 .fn-quote p { margin: 0; font: italic 600 1.2rem/1.5 var(--display); color: var(--ink); }
-.fn-prose code { font: .92em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--linen); padding: 1px 6px; border-radius: 6px; color: var(--ink); }
-.fn-code { margin: 0 0 18px; padding: 16px 18px; border-radius: 14px; background: #3B2A1E; color: #F6EBD8; overflow-x: auto; white-space: pre; }
-.fn-code code { background: none; padding: 0; color: inherit; font-size: .92rem; line-height: 1.6; }
+/* code: light sage, so it stands apart from the oat page (dark mode swaps the sage variables) */
+.fn-prose code { font: .92em ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; background: var(--sage-tint); color: var(--sage-ink); padding: 2px 7px; border-radius: 6px; box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--sage) 45%, transparent); }
+.fn-code { margin: 0 0 18px; padding: 14px 18px; border-radius: 14px; background: var(--sage-tint); color: var(--sage-ink); box-shadow: inset 4px 0 0 var(--sage); overflow-x: auto; white-space: pre; }
+.fn-code code { background: none; box-shadow: none; padding: 0; color: inherit; font-size: .92rem; line-height: 1.6; }
 .fn-gallery { display: grid; gap: 12px; margin: 26px 0; }
 .fn-gallery.n2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .fn-gallery.n3 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
