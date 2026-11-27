@@ -1,6 +1,7 @@
 /* Field notes, the AmbleBee blog. The posts and their photos live on AmbleBee Intake (app/fieldnotes.py there), which
    also sends each published post's words here, so the build makes it a real page (tools/build_fieldnotes.py):
-     /fieldnotes/          pages/fieldnotes.html: the list, with search and topic chips. Built with every post as a card,
+     /fieldnotes/          pages/fieldnotes.html: the list, with search and topic chips, 12 posts at a time (See more posts
+                           adds 12 more; the pinned post sits above them). Built with every post as a card,
                            which the live list replaces (and which stays if the intake can't be reached).
      /fieldnotes/<post>/   built with the post on it (#fn-static, and the post as data in #fn-data). This script draws it
                            again from the intake's live copy: newer edits and the thumbs up count. If the intake doesn't
@@ -172,7 +173,20 @@
       a.querySelectorAll("img.bg").forEach(builtBackdrop);
     });
     var state = { q: params.get("q") || "", topic: params.get("topic") || "", order: params.get("order") === "old" ? "old" : "new", page: 1 },
-      ask = 0, timer = null;
+      ask = 0, timer = null, offline = false, builtShown = 0;
+    var PAGE = 12;   // the intake sends 12 posts at a time (PAGE in its app/fieldnotes.py), plus the pinned one above the grid
+    // how many are on screen, when there are more to see
+    function counted(shown, total) {
+      count.textContent = shown < total ? "Showing " + shown + " of " + total : total + (total === 1 ? " post" : " posts");
+    }
+    // the intake can't be reached: the built cards, 12 at a time like the live list
+    function drawBuilt(n) {
+      builtShown = Math.min(n, built.length);
+      box.replaceChildren.apply(box, built.slice(0, builtShown));
+      if (built.length > PAGE) counted(builtShown, built.length); else count.textContent = builtCount;
+      moreBtn.hidden = builtShown >= built.length;
+      moreBtn.disabled = false;
+    }
     search.value = state.q;
     // newest first (by Field Note number), or flip it to start from No. 01
     if (!orderBtn) {
@@ -240,6 +254,7 @@
         if (mine !== ask) return;
         box.removeAttribute("aria-busy");
         if (!b.ok) throw new Error("bad");
+        offline = false;
         drawChips(b.topics || []);
         var posts = b.posts || [], filtered = state.q || state.topic;
         if (!more) {
@@ -250,12 +265,11 @@
         }
         posts.forEach(function (p) { box.append(card(p)); });
         heading.textContent = filtered ? "Matching posts" : state.order === "old" ? "From the first post" : "Latest posts";
-        count.textContent = b.total + (b.total === 1 ? " post" : " posts");
+        counted(box.querySelectorAll(".fn-card").length + (feat.hidden ? 0 : 1), b.total);
         if (!b.total) box.replaceChildren(el("p", { class: "fn-empty" }, filtered
           ? ["Nothing matches that yet. ", el("button", { type: "button", class: "linkish", text: "Show every post",
               onclick: function () { state.q = ""; state.topic = ""; search.value = ""; load(false); } })]
           : "The first field notes are on their way. Check back soon."));
-        moreBtn.textContent = state.order === "old" ? "Show newer posts" : "Show older posts";
         moreBtn.hidden = !b.more;
         moreBtn.disabled = false;
       }).catch(function () {
@@ -265,9 +279,9 @@
         count.textContent = "";
         if (more) return;
         if (built.length && !state.q && !state.topic) {   // the posts this page was built with, rather than nothing
-          box.replaceChildren.apply(box, built);
-          count.textContent = builtCount;
+          offline = true;
           feat.hidden = true;
+          drawBuilt(PAGE);
           return;
         }
         box.replaceChildren(el("p", { class: "fn-empty" }, "Field notes couldn't load right now. Try again in a little while."));
@@ -280,7 +294,7 @@
     root.querySelector("#fn-search-form").addEventListener("submit", function (e) {
       e.preventDefault(); clearTimeout(timer); state.q = search.value.trim(); load(false);
     });
-    moreBtn.addEventListener("click", function () { load(true); });
+    moreBtn.addEventListener("click", function () { if (offline) drawBuilt(builtShown + PAGE); else load(true); });
     load(false);
   }
 

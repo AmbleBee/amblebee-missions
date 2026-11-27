@@ -85,6 +85,8 @@ class FakeIntake:
                 "posted_at": None, "edited_at": "2026-11-21T18:00:00+00:00", "minutes": 1, "cover": None, "draft": True,
                 "blocks": [{"type": "photos", "photos": [{"url": "/fieldnotes/photo/eee.png", "width": 1, "height": 1, "caption": ""}]}]}
 
+    FN_PAGE = 12
+
     def fieldnotes_api(self, path, url, route, cors, reply):
         from urllib.parse import parse_qs, urlsplit
         q = {k: v[0] for k, v in parse_qs(urlsplit(url).query).items()}
@@ -97,8 +99,15 @@ class FakeIntake:
             posts = [p for p in self.FN_POSTS if (not q.get("q") or q["q"].lower() in json.dumps(p).lower())
                      and (not q.get("topic") or q["topic"] in p["topics"])]
             topics = sorted({t for p in self.FN_POSTS for t in p["topics"]}, key=str.lower)
-            return reply(200, {"ok": True, "posts": [{k: v for k, v in p.items() if k not in ("blocks", "draft")} for p in posts],
-                               "total": len(posts), "more": False, "topics": topics})
+            if q.get("order") == "old":
+                posts = posts[::-1]
+            # pages like the intake's: FN_PAGE posts for the grid, plus the pinned one above it on page 1
+            page, size = int(q.get("page", 1)), self.FN_PAGE
+            lead = 1 if q.get("order") != "old" and not q.get("q") and not q.get("topic") and posts and posts[0]["pinned"] else 0
+            start = lead + (page - 1) * size
+            shown = (posts[:lead] if page == 1 else []) + posts[start:start + size]
+            return reply(200, {"ok": True, "posts": [{k: v for k, v in p.items() if k not in ("blocks", "draft")} for p in shown],
+                               "total": len(posts), "more": start + size < len(posts), "topics": topics})
         slug = path.split("/")[2]
         post = next((p for p in self.FN_POSTS if p["slug"] == slug), None)
         if slug == self.FN_DRAFT["slug"] and q.get("preview") == "tok":
@@ -3237,7 +3246,8 @@ def t_fieldnotes_list_pinned_search_and_topics(site, catalog):
     assert page.locator("#fn-list .fn-ph").count() == 1          # no cover or header: a placeholder picture
     pic = page.locator("#fn-list .fn-card").first.locator(".fn-pic").bounding_box()
     assert page.locator("#fn-list .fn-card .fnh").count() == 1 and pic["width"] > 200 and pic["height"] > 100, pic   # the header shows on its card
-    assert page.locator("#fn-more").is_hidden(), "no 'Show older posts' when there aren't any"
+    assert page.locator("#fn-more").is_hidden(), "no 'See more posts' when there aren't any"
+    assert page.inner_text("#fn-count") == "3 posts", "everything's showing: just the count"
     assert page.locator(".fn-chip").all_inner_texts() == ["All", "Dates", "Hive", "Oregon", "Site updates"]
     page.click('.fn-chip:has-text("Hive")')
     page.wait_for_function("() => document.querySelectorAll('#fn-list .fn-card').length === 1")
@@ -3253,6 +3263,30 @@ def t_fieldnotes_list_pinned_search_and_topics(site, catalog):
     page.click(".fn-empty button")
     page.wait_for_selector(".fn-feat")
     assert page.input_value("#fn-search") == ""
+
+
+def t_fieldnotes_see_more_posts(site, catalog):
+    """The list shows a page of posts at a time (12 on the real intake; 1 here) with one wide See more posts button,
+    and the pinned post above the grid doesn't use up a place in it."""
+    site.intake.FN_PAGE = 1
+    try:
+        page = site.open("/fieldnotes/")
+        page.wait_for_selector(".fn-feat")
+        assert page.locator("#fn-list .fn-card h3").all_inner_texts() == ["Five rainy-day dates that beat the couch"]
+        assert page.inner_text("#fn-count") == "Showing 2 of 3"
+        more = page.locator("#fn-more")
+        assert more.is_visible() and more.inner_text() == "See more posts"
+        grid = page.locator("#fn-list").bounding_box()
+        assert abs(more.bounding_box()["width"] - grid["width"]) < 2, "as wide as the grid"
+        more.click()
+        page.wait_for_function("() => document.querySelectorAll('#fn-list .fn-card').length === 2")
+        assert page.locator("#fn-list .fn-card h3").all_inner_texts()[1] == "The camera, take three"
+        assert more.is_hidden() and page.inner_text("#fn-count") == "3 posts"
+        page.click("#fn-order")                    # oldest first: no pinned card, so one a page
+        page.wait_for_function("() => document.querySelector('#fn-count').textContent === 'Showing 1 of 3'")
+        assert page.locator(".fn-feat").is_hidden() and more.is_visible()
+    finally:
+        site.intake.FN_PAGE = FakeIntake.FN_PAGE
 
 
 def t_fieldnotes_post_opens_at_its_own_address(site, catalog):
@@ -3311,8 +3345,9 @@ def t_fieldnotes_when_the_intake_is_down(site, catalog):
     try:
         page = site.open("/fieldnotes/")
         page.wait_for_function("() => !document.querySelector('#fn-list').hasAttribute('aria-busy')")
-        if built_posts(site):   # the cards it was built with stay
-            assert page.locator("#fn-list .fn-card").count() == len(built_posts(site)) and page.locator(".fn-empty").count() == 0
+        if built_posts(site):   # the cards it was built with stay, 12 at a time like the live list
+            assert page.locator("#fn-list .fn-card").count() == min(12, len(built_posts(site))) and page.locator(".fn-empty").count() == 0
+            assert page.locator("#fn-more").is_hidden() == (len(built_posts(site)) <= 12)
         else:
             assert "couldn't load" in page.inner_text(".fn-empty")
         page = site.open("/fieldnotes/rainy-day-dates/")
