@@ -101,8 +101,8 @@
         btn.disabled = true;
         fetch(window.AmbleUtil.API + "/look-into", { method: "POST", headers: { "Content-Type": "text/plain" }, body: JSON.stringify({ q }) })
           .then((r) => r.json())
-          .then((b) => { if (!b.ok) throw new Error(b.error || "bad"); asked.add(q.toLowerCase()); drawAsk(q); },
-                () => { btn.disabled = false; msg.textContent = " That didn't go through. Try again in a moment."; });
+          .then((b) => { if (!b.ok) throw new Error(b.error || "bad"); asked.add(q.toLowerCase()); drawAsk(q); })
+          .catch(() => { btn.disabled = false; msg.textContent = " That didn't go through. Try again in a moment."; });   // a refusal too, not just the network
       });
       askLine.replaceChildren(h("p", { class: "pf-ask-q" }, `Nothing yet for “${q}”. Want us to look into it? `, btn, msg),
         h("p", { class: "pf-ask-note" }, "Only these words are sent, with nothing about you."));

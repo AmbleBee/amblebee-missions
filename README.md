@@ -112,7 +112,7 @@ Each mission is stored as an individual YAML file, making it possible to maintai
 
 ### Privacy and Visit Counting
 
-Most of the site runs in the visitor's browser: ZIP codes, locations, and mission history stay there unless someone starts an optional profile. Visits are counted by AmbleBee's own server (`site/js/count.js`), with no cookies and no IP addresses kept, only daily totals. That includes whether a visitor acted like a person, whether an opened mission was actually looked at, and the state (never the ZIP code or city) of a place someone typed in. `pages/privacy.html` explains all of it in plain language. If you change what the site counts, update that page in the same pull request.
+Most of the site runs in the visitor's browser: ZIP codes, locations, and mission history stay there unless someone starts an optional profile. Visits are counted by AmbleBee's own server (`site/js/count.js`), with no cookies and no IP addresses kept, only daily totals. That includes whether a visitor acted like a person, whether an opened mission was actually looked at, and the state (never the ZIP code or city) of a place someone typed in. Two buttons send a little more, only when tapped: "Look into it" after a search that found nothing (the words), and after filters that left nothing (the ZIP code, distance and filters). `pages/privacy.html` explains all of it in plain language. If you change what the site counts, update that page in the same pull request.
 
 ## Development
 

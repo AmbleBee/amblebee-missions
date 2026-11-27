@@ -153,7 +153,7 @@ function renderTeaser() {
     const env = envelope({ title: "Nothing matches, yet.", to, button: "Clear all", onOpen: clearAll,
       sub: best ? `Changing "${best.label}" would open up ${best.n} ${best.n === 1 ? "mission" : "missions"}.` : "Try clearing your filters." });
     env.classList.add("nothing");
-    $("#ticket-slot").replaceChildren(env);
+    $("#ticket-slot").replaceChildren(env, h("div", { class: "zero-ask" }, zeroAsk()));   // site/js/browse.js
     return;
   }
   const env = envelope({ title: "Your next mission is sealed inside.", to,

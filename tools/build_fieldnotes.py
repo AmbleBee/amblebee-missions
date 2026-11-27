@@ -249,7 +249,25 @@ def meta_bits(p):
     if p.get("edited_at") and _day(p["edited_at"]) != _day(p.get("posted_at")):
         bits.append(f"Last edited {_day(p['edited_at'])}")
     bits.append(f"{p.get('minutes') or 1} min read")
+    if p.get("series"):
+        bits.append(series_part(p["series"]))
     return " · ".join(bits)
+
+
+# ---------- a series: posts that belong together (AmbleBee Intake, app/fieldnotes.py _series_public) ----------
+def series_part(s):
+    """"Part 2 of Developing AmbleBee", or just the series' name while it has one part."""
+    return f"Part {s['part']} of {s['name']}" if s.get("of", 1) > 1 else f"The {s['name']} series"
+
+
+def series_box(s):
+    """At the end of a post: every part of its series in order, linked, with this one marked."""
+    if not s or s.get("of", 1) < 2:
+        return ""
+    items = "".join(f'<li aria-current="page"><b>{esc(x["title"])}</b> <span>You\'re here</span></li>' if x.get("current")
+                    else f'<li><a href="/fieldnotes/{esc(x["slug"])}/">{esc(x["title"])}</a></li>' for x in s.get("posts") or [])
+    return (f'<nav class="fn-series" aria-label="The {esc(s["name"])} series"><p class="fn-series-k">A series in {s["of"]} parts</p>'
+            f'<h2>{esc(s["name"])}</h2><ol>{items}</ol></nav>')
 
 
 def description(p, limit):
@@ -287,7 +305,7 @@ def post_main(p, missions, packs):
     return (f'<div class="page page-wide pg fieldnotes">\n<article class="fn-post" id="fn-static" data-slug="{esc(p["slug"])}">'
             f'<section class="pg-hero fn-hero"><p class="fn-crumb"><a href="/fieldnotes/">← Field notes</a></p>{tags}{top}{dek}</section>'
             f'<section class="pg-band fn-band"><div class="fn-article">{cover}<div class="fn-prose">{body}</div>'
-            f'<p class="fn-end"><a class="btn" href="/fieldnotes/">More field notes</a><a class="btn primary" href="/">Give me a mission</a></p>'
+            f'{series_box(p.get("series"))}<p class="fn-end"><a class="btn" href="/fieldnotes/">More field notes</a><a class="btn primary" href="/">Give me a mission</a></p>'
             f'</div></section></article>\n<script type="application/json" id="fn-data">{data}</script>\n{local_marker()}\n</div>\n'
             '<script src="/js/fieldnotes.js" defer></script>')
 
@@ -322,6 +340,7 @@ def card(p):
             + "</div>") if topics else ""
     return (f'<a class="fn-card" href="/fieldnotes/{esc(p["slug"])}/"><div class="fn-pic">{pic}</div><div class="fn-body">'
             f'<span class="fn-meta">{esc(_day(p.get("posted_at"), long=False))} · {p.get("minutes") or 1} min read</span>'
+            + (f'<span class="fn-ser">{esc(series_part(p["series"]))}</span>' if p.get("series") else "") +
             f'<h3>{esc(p.get("title"))}</h3>' + (f"<p>{esc(p['summary'])}</p>" if p.get("summary") else "") + f"{tags}</div></a>")
 
 

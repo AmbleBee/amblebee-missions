@@ -20,6 +20,43 @@ function renderThemeCounts(f) {
   rows.sort((a, b) => (a.n === 0) - (b.n === 0) || a.name.localeCompare(b.name));
   labels[0].parentElement.append(...rows.map((r) => r.l));
 }
+// When the filters leave nothing: "Want us to look into it?" sends the ZIP (or the city typed), the distance and the
+// filters to AmbleBee, only when tapped (AmbleBee Intake, app/nomatch.py). Nothing about the person, and never sent otherwise.
+function zeroPayload() {
+  const f = readFilters(), here = S.here ? S.zip || "" : "";
+  const zip = /^\d{5}$/.test(here) ? here : "";
+  const city = !zip && /,\s*[A-Z]{2}$/.test(here) ? here : "";
+  const picks = { mode: f.mode, pack: f.pack, season: f.inSeason, go: f.goNow, new: f.hideDone };
+  QUERY_LISTS.forEach((k) => { if (f[k].length) picks[k] = f[k]; });
+  return { zip, city, state: window.AmbleUtil.placeState(zip || city), within: (zip || city) && f.within != null ? f.within : null,
+    unit: S.unit, f: picks };
+}
+function zeroAsk() {
+  const p = zeroPayload(), key = JSON.stringify(p), where = p.zip || p.city;
+  S.askedZero = S.askedZero || new Set();
+  const thanks = () => h("p", { class: "zero-asked" }, "Thanks! We'll look into it.");
+  if (S.askedZero.has(key)) return thanks();
+  const btn = h("button", { type: "button", class: "btn small" }, "Look into it");
+  const msg = h("span", { role: "status" });
+  const near = !where ? "" : p.within != null ? ` within ${p.within} ${p.unit} of ${where}` : ` near ${where}`;
+  const box = h("div", { class: "zero-ask-in", "data-key": key },
+    h("p", { class: "zero-ask-q" }, `Nothing fits${near}. Want us to look into it? `, btn, msg),
+    h("p", { class: "zero-ask-note" }, p.zip ? "Sends your ZIP and these filters to AmbleBee, nothing else."
+      : p.city ? "Sends the city you typed and these filters to AmbleBee, nothing else." : "Sends these filters to AmbleBee, nothing else."));
+  btn.addEventListener("click", () => {
+    btn.disabled = true; msg.textContent = "";
+    fetch(window.AmbleUtil.API + "/no-match", { method: "POST", headers: { "Content-Type": "text/plain" }, body: key })
+      .then((r) => r.json())
+      .then((b) => {
+        if (!b.ok) throw new Error(b.error || "bad");
+        S.askedZero.add(key);
+        // every copy of it (the sheet's, and the envelope's behind it) says thanks
+        document.querySelectorAll(".zero-ask-in").forEach((el) => { if (el.dataset.key === key) el.replaceWith(thanks()); });
+      })
+      .catch(() => { btn.disabled = false; msg.textContent = " That didn't go through. Try again in a moment."; });   // a refusal too, not just the network
+  });
+  return box;
+}
 function renderBrowse() {
   const f = readFilters();
   renderThemeCounts(f);
@@ -43,6 +80,8 @@ function renderBrowse() {
   go.textContent = n ? `Open a mission · ${n}` : "Nothing fits yet";
   go.disabled = !n;
   $("#match-clear").hidden = n > 0;
+  const za = $("#zero-ask");   // in "Where are you?": offer to look into it when nothing fits
+  if (za) { za.hidden = n > 0; za.replaceChildren(...(n ? [] : [zeroAsk()])); }
   if (S.booted && mc.textContent) announce(mc.textContent);
   const fc = $("#filters-count");
   fc.hidden = !active; fc.textContent = String(active);

@@ -111,6 +111,17 @@
       el("img", { class: "bee", src: "/favicon.svg", alt: "" }));
   }
   function hasHeader(p) { return !!(p.header && p.header.backdrop); }
+  // a series: posts that belong together (AmbleBee Intake, app/fieldnotes.py _series_public; tools/build_fieldnotes.py too)
+  function seriesPart(s) { return s.of > 1 ? "Part " + s.part + " of " + s.name : "The " + s.name + " series"; }
+  function seriesBox(s) {
+    if (!s || s.of < 2) return null;
+    return el("nav", { class: "fn-series", "aria-label": "The " + s.name + " series" },
+      el("p", { class: "fn-series-k", text: "A series in " + s.of + " parts" }), el("h2", { text: s.name }),
+      el("ol", {}, (s.posts || []).map(function (x) {
+        return x.current ? el("li", { "aria-current": "page" }, el("b", { text: x.title }), " ", el("span", { text: "You're here" }))
+          : el("li", {}, el("a", { href: "/fieldnotes/" + x.slug + "/", text: x.title }));
+      })));
+  }
 
   // **bold**, *italic*, ~~strikethrough~~, `code` and [a link](https://…), the only formatting the editor has (paragraphs, quotes and lists; headings stay plain). Built as nodes, never as HTML.
   function inline(text) {
@@ -181,6 +192,7 @@
         el("div", { class: "fn-pic" }, pic),
         el("div", { class: "fn-body" },
           el("span", { class: "fn-meta", text: day(p.posted_at) + " · " + p.minutes + " min read" }),
+          p.series ? el("span", { class: "fn-ser", text: seriesPart(p.series) }) : null,
           el("h3", { text: p.title }),
           p.summary ? el("p", { text: p.summary }) : null,
           p.topics.length ? el("div", { class: "fn-tags" }, p.topics.map(function (t, i) { return el("span", { class: i ? null : "g", text: t }); })) : null));
@@ -192,6 +204,7 @@
         el("div", { class: "fn-body" },
           el("span", { class: "fn-pin" }, svg(PIN), "Pinned"),
           el("span", { class: "fn-meta", text: day(p.posted_at, true) + " · " + p.minutes + " min read" }),
+          p.series ? el("span", { class: "fn-ser", text: seriesPart(p.series) }) : null,
           el("h2", { text: p.title }),
           p.summary ? el("p", { text: p.summary }) : null,
           p.topics.length ? el("div", { class: "fn-tags" }, p.topics.map(function (t, i) { return el("span", { class: i ? null : "g", text: t }); })) : null,
@@ -356,6 +369,7 @@
     var bits = ["Posted " + day(post.posted_at || new Date().toISOString(), true)];
     if (post.edited_at && day(post.edited_at, true) !== day(post.posted_at, true)) bits.push("Last edited " + day(post.edited_at, true));
     bits.push(post.minutes + " min read");
+    if (post.series) bits.push(seriesPart(post.series));
     if (post.draft) bits[0] = "Not published yet";
     var hero = el("section", { class: "pg-hero fn-hero" },
       post.draft ? el("p", { class: "fn-draft", role: "note" }, el("b", { text: "Preview" }),
@@ -379,7 +393,7 @@
     if (cover && firstPhotos && firstPhotos.photos[0] && firstPhotos.photos[0].url === post.cover.url && post.blocks.indexOf(firstPhotos) === 0) cover = null;   // it'd show twice in a row
     root.removeAttribute("aria-busy");
     root.replaceChildren(hero, el("section", { class: "pg-band fn-band" }, el("div", { class: "fn-article" }, cover, body,
-      post.draft ? null : thumbs(post),
+      post.draft ? null : thumbs(post), seriesBox(post.series),
       el("p", { class: "fn-end" }, el("a", { class: "btn", href: "/fieldnotes/", text: "More field notes" }),
         el("a", { class: "btn primary", href: "/", text: "Give me a mission" })))));
   }
