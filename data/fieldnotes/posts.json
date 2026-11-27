@@ -245,7 +245,7 @@
     }
    ],
    "cover": null,
-   "edited_at": "2026-11-23T21:11:32+00:00",
+   "edited_at": "2026-11-27T17:00:10+00:00",
    "header": {
     "backdrop": "/fieldnotes/backdrop/jVnDOvU6UtTreQUH.jpg",
     "phone_x": 0.5,
@@ -254,6 +254,19 @@
    "minutes": 14,
    "number": 1,
    "posted_at": "2026-11-25T04:00:00+00:00",
+   "series": {
+    "name": "Developing AmbleBee",
+    "of": 1,
+    "part": 1,
+    "posts": [
+     {
+      "current": true,
+      "number": 1,
+      "slug": "amblebee-a-developing-story",
+      "title": "AmbleBee: A Developing Story"
+     }
+    ]
+   },
    "slug": "amblebee-a-developing-story",
    "summary": "A Magic 8 Ball, a lake that wasn’t there, and 346 missions I had to take down. Here’s how AmbleBee went from a list on my phone to something people actually use.",
    "title": "AmbleBee: A Developing Story",
