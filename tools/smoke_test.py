@@ -3344,9 +3344,11 @@ def t_fieldnotes_built_posts_open_without_the_intake(site, catalog):
     page.wait_for_function("() => /isn't here/.test(document.querySelector('.fn-post').innerText)")
 
 
-def t_fieldnotes_is_in_the_menu_and_footer(site, catalog):
+def t_fieldnotes_is_in_the_header_menu_and_footer(site, catalog):
     page = site.open("/about/")
     assert page.locator('.menu-panel a[href="/fieldnotes/"]').count() == 1
+    bar = page.eval_on_selector_all(".top nav > a:not(.nav-profile)", "els => els.map(e => e.getAttribute('href'))")
+    assert bar[:2] == ["/about/", "/fieldnotes/"], f"Field notes sits in the header, right after About: {bar}"
     assert page.locator('.foot a[href="/fieldnotes/"]').count() == 1
     page = site.open("/fieldnotes/", viewport=PHONE)
     page.wait_for_selector(".fn-feat")

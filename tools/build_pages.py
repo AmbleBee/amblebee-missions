@@ -133,16 +133,17 @@ def icon(markup, size):
 
 def nav_html(current=""):
     """The one site menu, on every page: links on computers with a More menu, one Menu button on phones."""
-    main = [("/about/", "About"), ("/missions/", "Every mission"), ("/missions/all/#search", "Search"),
+    # About and Field notes side by side: both are "more about AmbleBee"
+    main = [("/about/", "About"), ("/fieldnotes/", "Field notes"), ("/missions/", "Every mission"), ("/missions/all/#search", "Search"),
             ("/roadmap.html", "Bee trail"), ("/contribute/", "Contribute")]
-    extra = [("/fieldnotes/", "Field notes"), ("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
+    extra = [("/safety/", "Safety"), ("/privacy/", "Privacy"), ("/faq/", "FAQ"), ("/contact/", "Contact")]
 
     # When the links don't fit beside the logo, site/nav.js folds them into More, highest number first; 0 never folds
-    FOLD = {"Bee trail": 5, "About": 4, "Search": 3, "Every mission": 2}
+    FOLD = {"Bee trail": 6, "Field notes": 5, "About": 4, "Search": 3, "Every mission": 2}
 
     def link(href, text, cls=""):
         cls = " nav-share" if cls != "phone-only" and text == "Contribute" else cls
-        here = ' aria-current="page"' if (href, current) in (("/roadmap.html", "roadmap"), ("/about/", "about")) else ""
+        here = ' aria-current="page"' if (href, current) in (("/roadmap.html", "roadmap"), ("/about/", "about"), ("/fieldnotes/", "fieldnotes")) else ""
         attr = f' class="{cls.strip()}"' if cls else ""
         fold = f' data-fold="{FOLD[text]}"' if text in FOLD else ""
         return f'<a href="{href}"{attr}{fold}{here}>{text}</a>'
