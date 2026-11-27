@@ -461,7 +461,12 @@ body.revealing main > :not(#reveal) { display: none !important; }
 .reveal-head .hand { font-size: 2.1rem; margin: 0; }
 .reveal-summary { display: inline-block; margin: .6rem 0 0; padding: 6px 14px; border-radius: 14px; background: var(--sage-tint); color: var(--sage-ink); font-weight: 700; }
 .reveal-near { margin: .5rem auto 0; font-size: .95rem; color: var(--walnut-soft); }
-.reveal-near .linkish { display: block; margin: 0 auto; font-size: .95rem; }
+.reveal-near .linkish { display: inline; font-size: .95rem; }
+/* "These work anywhere" on Anywhere missions, closed for good with ✕ (site/js/util.js) */
+.note-x { border: 0; background: none; color: var(--walnut-soft); font: inherit; font-size: .9rem; line-height: 1; padding: 6px 8px; margin-left: 2px; border-radius: 8px; cursor: pointer; vertical-align: baseline; }
+.note-x:hover, .note-x:focus-visible { color: var(--ink); background: var(--line); }
+.near-note { margin: 0 0 14px; padding: 10px 14px; border-radius: 14px; background: var(--paper); box-shadow: inset 0 0 0 2px var(--line); color: var(--walnut-soft); font-size: .95rem; }
+.near-note[hidden] { display: none; }
 #near-you { scroll-margin-top: 16px; }
 .reveal-near[hidden] { display: none; }
 .reveal .ticket-actions { justify-content: center; padding-left: 0; margin-top: 26px; }

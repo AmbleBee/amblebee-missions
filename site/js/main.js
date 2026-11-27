@@ -28,7 +28,16 @@ function zipLine() {
     canSave ? h("button", { type: "button", class: "linkish zip-clear",
       onclick: () => { writePref("zip", S.zip); zipLine(); } }, "Remember on this device") : null].filter(Boolean));   // the browser writes "null" for an empty slot
 }
+// which state a ZIP or city is in, counted once per state per visit (AmbleBee Intake, app/visits.py): the state only,
+// never the ZIP, the city or the location. A ZIP set right after tapping the Anywhere note counts for the note too.
+function countPlace(label) {
+  const st = window.AmbleUtil.placeState(label);
+  if (!window.ambleTrack) return;
+  if (st && !(S.statesSent = S.statesSent || new Set()).has(st)) { S.statesSent.add(st); window.ambleTrack("zip_state", { item: st }); }
+  if (label !== "your location" && window.AmbleUtil.noteFollowed()) window.ambleTrack("near_note", { item: "zip" });
+}
 function setPlace(lat, lon, label, located = false) {
+  countPlace(label);
   const first = !S.here;
   S.here = { lat, lon }; S.zip = label; S.located = located;
   if (first && $("#pack-select").value === "anywhere") { $("#pack-select").value = "all"; S.packWidened = true; }
@@ -115,7 +124,7 @@ function clearZip() {
   if (S.packWidened && $("#pack-select").value === "all") $("#pack-select").value = "anywhere";
   S.packWidened = false;
   $("#within-select").value = "";
-  $("#zip-status").textContent = "Add your ZIP or city for real places near you, or skip it for ideas you can do anywhere. It's never sent anywhere.";
+  $("#zip-status").textContent = "Add your ZIP or city for real places near you, or skip it for ideas you can do anywhere. Only its state is ever counted, never the ZIP or city.";
   renderWithin(); refresh();
   rerenderReveal();
 }
@@ -294,7 +303,8 @@ async function start() {
   });
   window.addEventListener("hashchange", route);
   $("#reveal-adjust").addEventListener("click", () => startOver({ filters: true }));
-  $("#reveal-near-btn").addEventListener("click", () => startOver({ then: { id: "near-you", zip: true } }));
+  $("#reveal-near-btn").addEventListener("click", () => { window.AmbleUtil.noteTapped(); startOver({ then: { id: "near-you", zip: true } }); });
+  $("#reveal-near-x").addEventListener("click", () => { window.AmbleUtil.hideNote(); $("#reveal-near").hidden = true; });
   // skip link: move focus without touching the address, which would close an open mission
   $(".skip").addEventListener("click", (e) => {
     e.preventDefault();
@@ -320,8 +330,12 @@ async function start() {
   renderWithin();
   renderBrowse();
   renderTeaser();
+  // from the Anywhere note on a mission's own page (/#where): straight to "Where are you?"
+  const where = location.hash === "#where";
+  if (where) history.replaceState(null, "", location.pathname + location.search);
   try { await route(); }
   finally { document.documentElement.classList.remove("arriving"); }   // the letter (or home page) is ready; see arrive.js
+  if (where) openSheet({ focus: "zip" });
   const zip = readPref("zip");
   if (zip) { $("#zip-input").value = zip; setZip(); }
 }

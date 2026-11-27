@@ -110,6 +110,10 @@ For the mission format and pack structure, see [SCHEMA.md](missions/SCHEMA.md).
 
 Each mission is stored as an individual YAML file, making it possible to maintain, validate, and organize the collection without requiring a database.
 
+### Privacy and Visit Counting
+
+Most of the site runs in the visitor's browser: ZIP codes, locations, and mission history stay there unless someone starts an optional profile. Visits are counted by AmbleBee's own server (`site/js/count.js`), with no cookies and no IP addresses kept, only daily totals. That includes whether a visitor acted like a person, whether an opened mission was actually looked at, and the state (never the ZIP code or city) of a place someone typed in. `pages/privacy.html` explains all of it in plain language. If you change what the site counts, update that page in the same pull request.
+
 ## Development
 
 AmbleBee is built as a static website using Python build scripts, HTML, CSS, and JavaScript.

@@ -211,8 +211,9 @@ function showReveal(m, { from = "roll", sealed = false, animate = false, growFro
   $("#reveal-summary").textContent = gift ? `Sealed just for ${gift.t || "you"}. Open your own any time.`
     : linked ? "Someone sent you this one. Open your own any time." : rollSummary();
   $("#reveal-summary").hidden = sealed || from === "mine";   // "mine": reopened, so the old picks are gone
-  // no ZIP yet, so every pick comes from the do-anywhere pack: say so, and offer the step that brings real places in
-  $("#reveal-near").hidden = sealed || animate || from !== "roll" || !!S.here || $("#pack-select").value !== "anywhere";
+  // an Anywhere mission and no ZIP yet: say there are real places too, and offer the step that brings them in.
+  // Closed once, it stays closed (site/js/util.js keeps that in this browser).
+  $("#reveal-near").hidden = sealed || animate || !!S.here || m.pack !== "anywhere" || window.AmbleUtil.noteHidden();
   freshLine(sealed || animate ? null : from);
   window.scrollTo({ top: 0 });
   const slot = $("#reveal-slot");

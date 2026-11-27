@@ -1,7 +1,7 @@
 <section class="pg-hero">
   <p class="eyebrow">Privacy</p>
   <h1>Privacy</h1>
-  <p class="hand">Last updated November 25, 2026</p>
+  <p class="hand">Last updated November 27, 2026</p>
   <p class="pg-lede">At AmbleBee, we think you should know what happens to your information, why we collect it, and how long we keep it.</p>
 </section>
 
@@ -40,10 +40,11 @@
 <h2 id="device">What stays on your device</h2>
 <p>A lot of AmbleBee works entirely in your browser, so the information it uses is saved there and never sent to us.</p>
 <ul>
-  <li><b>Your ZIP code or city</b> helps you find nearby missions. It's forgotten when you close the tab, unless you choose "Remember on this device." Then it stays in your browser until you press Clear. The lookup happens in your browser, not on our server.</li>
+  <li><b>Your ZIP code or city</b> helps you find nearby missions. It's forgotten when you close the tab, unless you choose "Remember on this device." Then it stays in your browser until you press Clear. The lookup happens in your browser, not on our server. The ZIP code or city itself is never sent to us. We only count which state it's in, like "Oregon," so we know where people are looking and where to add missions next (<a href="#visits">how that's counted</a>).</li>
   <li><b>Your location</b> is only used if you press "Use my location" and allow it. It stays in the open tab, is used to work out distances and show the nearest ZIP code, and is never saved or sent to us.</li>
   <li><b>Your preferences:</b> miles or kilometers, the name, theme and sign-off you last used on a card, and whether opening a mission should include ones you've done.</li>
   <li><b>Whether you've been here before:</b> a count of pages you've opened, whether you've opened a mission, and whether the home page has already asked where you are, so returning visitors don't see the "New to AmbleBee?" introduction or that question again.</li>
+  <li><b>Whether you closed the "These work anywhere" tip</b> on Amble Anywhere missions, so it stays closed. If your browser won't keep it, it stays closed until you close the tab.</li>
   <li><b>A card you're writing</b> stays in that browser tab until the tab closes, so it isn't lost by accident.</li>
   <li><b>Your Field notes thumbs up:</b> which posts you gave one, and the random code that lets you take it back. The count itself is kept on our server, with nothing about you (<a href="#fieldnotes-thumbs">how that works</a>).</li>
   <li><b>Your Google Analytics answer</b> (yes or no), so we don't keep asking.</li>
@@ -78,11 +79,15 @@
   <li>The site you came from, like Google or Pinterest, never the full link.</li>
   <li>Whether you're on a phone, tablet or computer.</li>
   <li>A few actions by name: opening a mission, adding one to a calendar, starting a vote.</li>
+  <li>Whether an opened mission was actually looked at: it stayed on screen for 8 seconds, or you scrolled it or tapped something in it. That tells a quick skim to the next mission apart from real interest. It counts once a day per mission, never what you tapped.</li>
+  <li>The state a ZIP code or city you type in is in, like "Oregon," and never the ZIP code, the city or your location. Your browser works out the state and sends only that. The same person counts once a day per state.</li>
+  <li>The "These work anywhere" tip on Amble Anywhere missions: how often it's closed, tapped, or followed by setting a ZIP code. To link a tap to the ZIP code you set right after it, your browser keeps a note that you tapped it until you set one or close the tab.</li>
   <li>A few more daily totals, never the words or anything about you: a search that found nothing (just that it happened), directions or a place's website opened from a mission, how many missions you opened with "Open another" in one visit, which filters get picked, a mission opened from a Field notes post, and a link to a page that doesn't exist.</li>
+  <li>Whether a real person was here, so we can tell people from scripts: once per page, a note that you did something a person does (tapped, clicked, typed, moved the mouse or scrolled with the wheel) or kept the page on screen for 10 seconds. Just that it happened, never what you clicked or typed. We also note how quickly pages were opened, so a script racing through dozens of pages stands out.</li>
   <li>Whether a <a href="/fieldnotes/">Field notes</a> post was read: once you've scrolled three quarters of the way through it and had it on screen for most of its reading time, we count one read for that post. The same person counts once a day per post. We also add up how long Field notes posts are on screen, as one running total per post, with nothing about who.</li>
 </ul>
-<p><b>What we don't keep:</b> no cookies, nothing saved in your browser, and no IP addresses. To count each visitor once a day, our server mixes your IP address and browser details with a secret that changes every day, and keeps only the scrambled result. Both the result and the secret are deleted after two days, so it can't be turned back into your address, and the next day you're counted as someone new.</p>
-<p><b>What we keep for good:</b> only daily totals, like "184 visitors on November 19." Nothing in them points to a person.</p>
+<p><b>What we don't keep:</b> no cookies, nothing saved in your browser beyond the tip note above, and no IP addresses. To count each visitor once a day, our server mixes your IP address and browser details with a secret that changes every day, and keeps only the scrambled result. With that scrambled result we also keep, for the same two days, how many pages it opened, when the first one was, and whether it acted like a person. Both the result and the secret are deleted after two days, so it can't be turned back into your address, and the next day you're counted as someone new.</p>
+<p><b>What we keep for good:</b> only daily totals, like "184 visitors on November 19, 150 of them real people." Nothing in them points to a person.</p>
 <p><b>What we don't count:</b> bots, and browsers that send the Global Privacy Control signal. None of this is sent to any other company.</p>
 
 <h3 id="fieldnotes-thumbs">A thumbs up on a Field notes post</h3>

@@ -5,7 +5,14 @@
    Stats → Insights: a search that found nothing (not the words), directions or a place's website opened from a mission,
    how many missions one homepage visit dealt, a filter picked, a mission opened from a Field notes post, and a link to
    a page that doesn't exist.
-   Only on amblebee.com itself, never in test browsers, and not for browsers that send Global Privacy Control.
+   Only on amblebee.com itself, never in test or scripted browsers, and not for browsers that send Global Privacy Control.
+   Real visitors: once per page, a note that someone did something a person does here (tapped, clicked, typed, moved the
+   mouse or turned the wheel) or kept the page on screen for 10 seconds. Just that it happened, nothing about what. Stats
+   shows real visitors next to everyone counted, so scripts that load pages without ever acting like a person stand out.
+   Looked at: a mission opened and then actually looked at (8 seconds on screen, scrolled, or something in it tapped), so a
+   quick skim to the next one doesn't read as interest. Once per mission per page.
+   Two more daily totals: the "These work anywhere" note (closed, tapped, or a ZIP set after tapping it), and the state a
+   typed ZIP or city is in (the state only: site/js/main.js works it out here, and the ZIP never leaves the browser).
    Max's own browsers: open amblebee.com/?nocount=1 once to stop counting this browser (?nocount=0 to undo). */
 (function () {
   var API = window.AmbleUtil.API + "/hit";
@@ -21,6 +28,9 @@
     if (localStorage.getItem("amble.nocount")) return;
   } catch (e) { /* private mode: count as usual */ }
   if (!/^(www\.)?amblebee\.com$/.test(location.hostname) || navigator.webdriver || navigator.globalPrivacyControl) return;
+  // scripted browsers that don't say so with navigator.webdriver
+  if (/HeadlessChrome|PhantomJS|jsdom/i.test(navigator.userAgent || "") || window.callPhantom || window._phantom ||
+      window.__nightmare || window.domAutomation || window.domAutomationController) return;
 
   function send(data) {
     var body = JSON.stringify(data);
@@ -38,9 +48,54 @@
   var missing = document.getElementById("nf") && !/^\/fieldnotes\/[^/]+\/$/.test(location.pathname);
   send(missing ? { p: location.pathname, r: ref, nf: 1 } : { p: location.pathname, r: ref });
 
+  // a real visitor: the first thing a person does here (the browser marks it isTrusted; a script's events aren't), or
+  // 10 seconds with the page on screen. Sent once per page.
+  var human = false, shown = 0, clock = null;
+  var KINDS = ["pointerdown", "pointermove", "keydown", "touchstart", "wheel"];
+  function person(e) {
+    if (human || (e && e.isTrusted === false)) return;
+    human = true;
+    KINDS.forEach(function (k) { document.removeEventListener(k, person, true); });
+    if (clock) clearInterval(clock);
+    send({ a: "human" });
+  }
+  KINDS.forEach(function (k) { document.addEventListener(k, person, { capture: true, passive: true }); });
+  clock = setInterval(function () {
+    if (document.visibilityState === "visible" && ++shown >= 10) person();
+  }, 1000);
+
+  // looked at: the mission on screen now (the homepage's open one, or a mission's own page) counts as looked at after 8
+  // seconds in view, a scroll, or a tap or key inside it. Tapping "Open another" isn't looking, so a skim doesn't count.
+  var looking = null, lookSecs = 0, looked = {};
+  var slugOf = function (id) { return String(id || "").split("/").pop(); };
+  function watch(id) { looking = looked[slugOf(id)] ? null : id; lookSecs = 0; }
+  function lookedAt() {
+    if (!looking) return;
+    looked[slugOf(looking)] = 1;
+    send({ a: "look", i: looking });
+    looking = null;
+  }
+  setInterval(function () {
+    if (!looking) return;
+    if (slugOf(looking) !== missionHere()) { looking = null; return; }   // moved on before it counted
+    if (document.visibilityState === "visible" && ++lookSecs >= 8) lookedAt();
+  }, 1000);
+  var INSIDE = "#reveal-slot, #reveal-done, .ticket, .done-slot, .mission-about";
+  document.addEventListener("pointerdown", function (e) {
+    if (looking && e.isTrusted && e.target.closest && e.target.closest(INSIDE)) lookedAt();
+  }, true);
+  ["wheel", "touchmove"].forEach(function (k) {
+    document.addEventListener(k, function (e) { if (looking && e.isTrusted) lookedAt(); }, { capture: true, passive: true });
+  });
+  document.addEventListener("keydown", function (e) {
+    if (looking && e.isTrusted && /^(ArrowDown|PageDown|End| )$/.test(e.key)) lookedAt();
+  }, true);
+  var own = location.pathname.match(/^\/missions\/([a-z0-9-]+)\/$/);
+  if (own) watch(own[1]);
+
   // a few actions the site already names (site/js/stats.js's ambleTrack), counted here too
   var ACTIONS = { mission_open: "open", calendar_added: "plan", vote_started: "vote", fieldnote_read: "read" };
-  var OURS = { search_none: "nores", fieldnote_mission: "fnclick" };   // ours only: not passed on to Google Analytics
+  var OURS = { search_none: "nores", fieldnote_mission: "fnclick", near_note: "nnote", zip_state: "zipst" };   // ours only: not passed on to Google Analytics
   var rolls = 0;
   var before = window.ambleTrack;
   window.ambleTrack = function (name, params) {
@@ -50,6 +105,7 @@
     }
     if (OURS[name]) { send({ a: OURS[name], i: (params && params.item) || "" }); return; }
     if (name === "mission_open" && params && params.how === "roll") rolls++;
+    if (name === "mission_open" && params && params.mission_id) watch(String(params.mission_id));
     var a = ACTIONS[name];
     if (a) send({ a: a, i: (params && (params.mission_id || params.item || "")) || "" });
     if (before) before(name, params);

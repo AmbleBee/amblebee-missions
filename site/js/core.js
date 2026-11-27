@@ -1,5 +1,6 @@
 /* AmbleBee Missions: picks and shows missions from catalog.json (built from missions/ by the GitHub Action).
-   Everything runs in the visitor's browser. Nothing is sent anywhere; location stays in the tab.
+   Everything runs in the visitor's browser. Location stays in the tab; of a ZIP or city, only its state is counted
+   (site/js/main.js countPlace, site/js/count.js), never the ZIP, the city or the location.
 
    The site's script is split across site/js/, loaded in order from index.html, sharing one scope:
    core, filters, ticket, gift, image, reveal, browse, main. */

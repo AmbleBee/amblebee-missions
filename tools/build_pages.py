@@ -439,6 +439,13 @@ def about_html(m, text, names, live):
     return f'<section class="mission-about" aria-labelledby="about-title">{head}{paras}</section>'
 
 
+# On Anywhere missions: there are real places too. Hidden until site/js/util.js shows it (no ZIP saved, and not closed
+# before in this browser); ✕ closes it for good. The link opens "Where are you?" on the homepage (site/js/main.js, #where).
+NEAR_NOTE = ('<p class="near-note" data-near-note hidden>These work anywhere. <a class="linkish" href="/#where">Add your ZIP or pick '
+             'a state</a> to see places near you too. <button type="button" class="note-x" aria-label="Hide this tip" '
+             'title="Hide this tip">✕</button></p>')
+
+
 def welcome_html(pack, pack_path, live, collections):
     """A short "New to AmbleBee?" box on every mission page, for people who land there straight from Google
     or a shared link and have never seen the rest of the site."""
@@ -687,6 +694,7 @@ def build_pages(out):
         also_html = f'<p class="also-in">Also in: {also_links}</p>' if also else ""
         main = f"""<div class="page">
 <p class="crumbs"><a href="/missions/">Every mission</a> › <a href="{esc(pack_path)}">{esc(pack.get("name"))}</a></p>
+{NEAR_NOTE if pack["id"] == "anywhere" else ""}
 {mission_html(m, pack, icons, today)}
 <div class="ticket-actions">
   <a class="btn primary" href="{esc(app_link)}&amp;do=card">{icon(UI_ICON["share"], 20)}Share this mission</a>
